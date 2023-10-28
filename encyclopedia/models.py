@@ -7,8 +7,8 @@ from django_jalali.db import models as jmodels
 
 
 class ArticleEncyclopediaCategory(models.Model):
-    name = models.CharField(max_length=50, verbose_name="عنوان")
-    parent = models.ForeignKey("ArticleEncyclopediaCategory", on_delete=SET_NULL, blank=True, null=True,
+    name = models.CharField(max_length=50, verbose_name="عنوان",unique=True)
+    parent = models.ForeignKey("ArticleEncyclopediaCategory",unique=True, on_delete=SET_NULL, blank=True, null=True,
                                verbose_name="منبع")
 
     class Meta:
@@ -20,7 +20,7 @@ class ArticleEncyclopediaCategory(models.Model):
 
 
 class ArticleReference(models.Model):
-    name = models.CharField(max_length=100, verbose_name="عنوان")
+    name = models.CharField(max_length=100, verbose_name="عنوان",unique=True)
 
     class Meta:
         verbose_name = "مرجع"
@@ -40,7 +40,7 @@ class EncyclopediaArticle(models.Model):
 
 
 class ArticleEncyclopedia(models.Model):
-    name = models.CharField(max_length=100, verbose_name="عنوان")
+    name = models.CharField(max_length=100, verbose_name="عنوان",unique=True)
     category = models.ForeignKey("ArticleEncyclopediaCategory", on_delete=SET_NULL, null=True, verbose_name="دسته بندی")
     created_at = jmodels.jDateField(auto_now_add=True, verbose_name="تاریخ ساخت")
     abstract = RichTextField()
@@ -64,9 +64,9 @@ class EncyclopaediaPrescriptionTherapy(models.Model):
 
     state = models.IntegerField(choices=State.choices, default=State.SUSPEND)
 
-    name = models.CharField(max_length=100, verbose_name="عنوان")
+    name = models.CharField(max_length=100, verbose_name="عنوان",unique=True)
     reason_for_consumption = models.TextField(verbose_name="علت مصرف")
-    prescription_compounds = models.TextField(verbose_name="ترکیبات نسخه")
+    prescription_compounds = models.TextField(verbose_name="ترکیبات نسخه",,unique=True)
     the_amount_of_compounds = models.TextField(verbose_name="میزان ترکیبات")
     who_to_use = models.TextField(verbose_name="طریقه مصرف")
     complications_of_compounds = models.TextField(verbose_name="عوارض ترکیبات")
@@ -90,7 +90,7 @@ class EncyclopediaCombinedDrugs(models.Model):
 
     state = models.IntegerField(choices=State.choices, default=State.SUSPEND)
 
-    name = models.CharField(max_length=100, verbose_name="عنوان")
+    name = models.CharField(max_length=100, verbose_name="عنوان",unique=True)
     classification = models.CharField(max_length=100, verbose_name="طبقه بندی")
     latin_name = models.CharField(max_length=100, verbose_name="نام لاتین")
     # جوی
@@ -150,11 +150,11 @@ class HerbalEncyclopedia(models.Model):
 
     state = models.IntegerField(choices=State.choices, default=State.SUSPEND)
 
-    name = models.CharField(max_length=50, verbose_name='نام')
-    another_name = models.CharField(max_length=50, verbose_name='نام دیگر')
-    latin_name = models.CharField(max_length=54, verbose_name='نام لاتین')
+    name = models.CharField(max_length=50, verbose_name='نام',unique=True)
+    another_name = models.CharField(max_length=50, verbose_name='نام دیگر',unique=True)
+    latin_name = models.CharField(max_length=54, verbose_name='نام لاتین',unique=True)
     habitat = models.CharField(max_length=40, verbose_name='زیستگاه')
-    history = models.CharField(max_length=50, verbose_name='تاریخه')
+    history = models.CharField(max_length=50, verbose_name='تاریخه',unique=True)
     components = models.TextField(verbose_name='اجزاء')
     compounds = models.TextField(verbose_name='ترکیبات')
     pharmacology = models.TextField(verbose_name='داروشناسی')
@@ -215,9 +215,9 @@ class EncyclopediaOfDiseases(models.Model):
 
     state = models.IntegerField(choices=State.choices, default=State.SUSPEND)
 
-    name = models.CharField(max_length=50, verbose_name='نام')
-    another_name = models.CharField(max_length=50, verbose_name='نام دیگر')
-    latin_name = models.CharField(max_length=50, verbose_name='نام لاتین')
+    name = models.CharField(max_length=50, verbose_name='نام',unique=True)
+    another_name = models.CharField(max_length=50, verbose_name='نام دیگر',unique=True)
+    latin_name = models.CharField(max_length=50, verbose_name='نام لاتین',unique=True)
     classification = models.CharField(max_length=50, verbose_name='دسته بندی')
     native = models.CharField(max_length=50, verbose_name='زیست بوم')
     history = models.CharField(max_length=50, verbose_name='تاریخچه')

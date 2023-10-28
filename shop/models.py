@@ -19,7 +19,7 @@ class Shop(models.Model):
         BRONZE = 2
         GOLD = 3
 
-    name = models.CharField(max_length=40, verbose_name='نام')
+    name = models.CharField(max_length=40, verbose_name='نام',unique=True)
     trade_id = models.CharField(max_length=19, verbose_name='شناسه تجاری')
     certificate_image = models.FileField(upload_to="shop/certificate/",
                                          validators=[FileExtensionValidator(['jpg', 'png', 'jpeg']), ],
@@ -53,7 +53,7 @@ class ShopImage(models.Model):
 
 class ShopPhone(models.Model):
     shop = models.ForeignKey(Shop, on_delete=SET_NULL, null=True, verbose_name='فروشگاه')
-    phone = models.CharField(max_length=13, verbose_name='تلفن')
+    phone = models.CharField(max_length=13, verbose_name='تلفن',unique=True)
 
     class Meta:
         verbose_name = 'تلفن فروشگاه'

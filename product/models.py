@@ -50,7 +50,7 @@ class Product(models.Model):
 
     trade_id = models.CharField(max_length=19)
     class_id = models.ForeignKey(ClassId, on_delete=SET_NULL, null=True, verbose_name='شناسه صنف')
-    name = models.CharField(max_length=33, verbose_name="نام کالا")
+    name = models.CharField(max_length=33, verbose_name="نام کالا",unique=True)
     type = models.IntegerField(choices=Type.choices, verbose_name='نوع کالا')
     material = models.IntegerField(choices=Material.choices, verbose_name='جنس کالا')
     description = models.TextField()
@@ -74,7 +74,7 @@ class ProductImage(models.Model):
 
 
 class ProductUnit(models.Model):
-    name = models.CharField(max_length=22)
+    name = models.CharField(max_length=22,unique=True)
 
     class Meta:
         verbose_name = "شناسه صنف"

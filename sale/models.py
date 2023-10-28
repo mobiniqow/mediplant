@@ -20,7 +20,7 @@ class SaleBasket(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, verbose_name='کاربر')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='تاریخ ایجاد')
-    price = models.IntegerField(validators=[MinValueValidator(0)], verbose_name='قیمت')
+    price = models.IntegerField(validators=[MinValueValidator(0)], verbose_name='قیمت',unique=True)
     address = models.TextField(verbose_name='آدرس')
     state = models.IntegerField(choices=State.choices, default=0, verbose_name='وضعیت')
     discount = models.IntegerField(validators=[MinValueValidator(0)], verbose_name='تخفیف')
