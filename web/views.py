@@ -9,4 +9,4 @@ def index(request):
             # انجام دیگر عملیات مورد نیاز
     else:
         form =ShopForm(request.POST, request.FILES)
-    return render(request, 'indexx.html', {'form': form})
+    return render(request, 'index.html', {'form': form})

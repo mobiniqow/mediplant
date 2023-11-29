@@ -1,5 +1,9 @@
 from django import forms
-from .models import Shop, User
+
+from account.models import User
+from city.models import CityLocation, City
+from shop.models import Shop
+
 
 class ShopForm(forms.ModelForm):
     user_name = forms.CharField(max_length=83, label='نام و نام خانوادگی')
