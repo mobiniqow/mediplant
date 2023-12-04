@@ -8,12 +8,441 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e855760-72d9-494d-ba2b-fb8678205837" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mediplant/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mediplant/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mediplant/settings/dev.py" beforeDir="false" afterPath="$PROJECT_DIR$/mediplant/settings/dev.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/raw/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/about-us.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/raw/about-us.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/css/all.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/css/color-01.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/css/color-02.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/css/color-03.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/css/color-04.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/css/color-05.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/css/color-06.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/css/color-07.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/css/color-08.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/css/color-09.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/css/dark-mode.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/css/demo-1.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/css/demo-2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/css/fontawesome.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/css/htdocs_error/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/css/new-page.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/css/plugins/animate.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/css/plugins/bootstrap-select.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/css/plugins/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/css/plugins/nouislider.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/css/plugins/owl.carousel.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/css/plugins/owl.theme.default.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/css/plugins/slick.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/css/plugins/swiper-bundle.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/css/responsive.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/css/slider/uikit-rtl.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/css/slider/uikit-rtl.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/css/slider/uikit.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/css/slider/uikit.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/css/vendor/msicons.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BBadr/BBadr.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BBadr/BBadr.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BBadr/BBadr.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BBaran/BBaran.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BBaran/BBaran.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BBaran/BBaran.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BBardiya/BBardiya.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BBardiya/BBardiya.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BBardiya/BBardiya.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BCompset/BCompset.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BCompset/BCompset.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BCompset/BCompset.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BDavat/BDavat.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BDavat/BDavat.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BDavat/BDavat.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BElham/BElham.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BElham/BElham.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BElham/BElham.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BEsfehan/BEsfehanBold.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BEsfehan/BEsfehanBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BEsfehan/BEsfehanBold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BFantezy/BFantezy.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BFantezy/BFantezy.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BFantezy/BFantezy.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BFarnaz/BFarnaz.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BFarnaz/BFarnaz.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BFarnaz/BFarnaz.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BFerdosi/BFerdosi.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BFerdosi/BFerdosi.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BFerdosi/BFerdosi.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BHamid/BHamid.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BHamid/BHamid.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BHamid/BHamid.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BHelal/BHelal.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BHelal/BHelal.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BHelal/BHelal.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BHoma/BHoma.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BHoma/BHoma.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BHoma/BHoma.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BJadid/BJadidBold.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BJadid/BJadidBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BJadid/BJadidBold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BJalal/BJalal.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BJalal/BJalal.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BJalal/BJalal.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BKoodak/BKoodakBold.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BKoodak/BKoodakBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BKoodak/BKoodakBold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BKourosh/BKourosh.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BKourosh/BKourosh.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BKourosh/BKourosh.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BLotus/BLotus.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BLotus/BLotus.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BLotus/BLotus.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BMahsa/BMahsa.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BMahsa/BMahsa.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BMahsa/BMahsa.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BMehr/BMehrBold.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BMehr/BMehrBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BMehr/BMehrBold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BMitra/BMitra.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BMitra/BMitra.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BMitra/BMitra.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BMorvarid/BMorvarid.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BMorvarid/BMorvarid.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BMorvarid/BMorvarid.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BNarm/BNarm.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BNarm/BNarm.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BNarm/BNarm.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BNasim/BNasimBold.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BNasim/BNasimBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BNasim/BNasimBold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BNazanin/BNazanin.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BNazanin/BNazanin.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BNazanin/BNazanin.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BRoya/BRoya.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BRoya/BRoya.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BRoya/BRoya.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BSetareh/BSetarehBold.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BSetareh/BSetarehBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BSetareh/BSetarehBold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BShadi/BShadi.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BShiraz/BShiraz.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BShiraz/BShiraz.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BShiraz/BShiraz.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BSina/BSinaBold.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BSina/BSinaBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BSina/BSinaBold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BTabassom/BTabassom.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BTabassom/BTabassom.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BTabassom/BTabassom.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BTehran/BTehran.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BTehran/BTehran.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BTehran/BTehran.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BTitr/BTitrBold.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BTitr/BTitrBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BTitr/BTitrBold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BTitr/BTitrTGEBold.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BTitr/BTitrTGEBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BTitr/BTitrTGEBold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BTraffic/BTraffic.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BTraffic/BTraffic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BTraffic/BTraffic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BVahid/BVahidBold.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BVahid/BVahidBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BVahid/BVahidBold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BYagut/BYagut.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BYagut/BYagut.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BYagut/BYagut.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BYas/BYas.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BYas/BYas.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BYas/BYas.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BYekan/BYekan+.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BYekan/BYekan.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BYekan/BYekan.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BYekan/BYekan.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BZar/BZar.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BZar/BZar.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BZar/BZar.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BZiba/BZiba.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BZiba/BZiba.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/BZiba/BZiba.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/Lalezar/Lalezar-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/Vazir/Vazir-Bold.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/Vazir/Vazir-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/Vazir/Vazir-Bold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/Vazir/Vazir-Medium.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/Vazir/Vazir-Medium.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/Vazir/Vazir-Thin.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/Vazir/Vazir.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/Vazir/Vazir.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/Vazir/Vazir.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/aviny/aviny-700.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/HELP-US-OUT.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/css/font-awesome.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/css/font-awesome.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/fonts/FontAwesome.otf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/fonts/fontawesome-webfont.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/fonts/fontawesome-webfont.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/fonts/fontawesome-webfont.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/fonts/fontawesome-webfont.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/fonts/fontawesome-webfont.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/less/animated.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/less/bordered-pulled.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/less/core.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/less/fixed-width.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/less/font-awesome.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/less/icons.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/less/larger.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/less/list.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/less/mixins.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/less/path.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/less/rotated-flipped.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/less/screen-reader.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/less/stacked.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/less/variables.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/scss/_animated.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/scss/_bordered-pulled.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/scss/_core.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/scss/_fixed-width.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/scss/_icons.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/scss/_larger.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/scss/_list.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/scss/_mixins.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/scss/_path.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/scss/_rotated-flipped.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/scss/_screen-reader.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/scss/_stacked.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/scss/_variables.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/font-awesome/scss/font-awesome.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/icomoon/icomoon.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/iranSans/IRANSansWeb(FaNum).eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/iranSans/IRANSansWeb(FaNum).ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/iranSans/IRANSansWeb(FaNum).woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/iranSans/IRANSansWeb(FaNum)_Bold.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/iranSans/IRANSansWeb(FaNum)_Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/iranSans/IRANSansWeb(FaNum)_Bold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/iranSans/IRANSansWeb(FaNum)_Light.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/iranSans/IRANSansWeb(FaNum)_Light.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/iranSans/IRANSansWeb(FaNum)_Light.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/iranSans/IRANSansWeb(FaNum)_Medium.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/iranSans/IRANSansWeb(FaNum)_Medium.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/iranSans/IRANSansWeb(FaNum)_Medium.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/iranSans/IRANSansWeb(FaNum)_UltraLight.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/iranSans/IRANSansWeb(FaNum)_UltraLight.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/iranSans/IRANSansWeb(FaNum)_UltraLight.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/iranyekanweb/iranyekanweb.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/iranyekanweb/iranyekanweb.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/iranyekanweb/iranyekanweb.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/iranyekanweb/iranyekanweb.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/iranyekanweb/iranyekanwebbold.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/iranyekanweb/iranyekanwebbold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/iranyekanweb/iranyekanwebbold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/iranyekanweb/iranyekanwebbold.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/iranyekanweb/iranyekanwebregular.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/iranyekanweb/iranyekanwebregular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/iranyekanweb/iranyekanwebregular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/fonts/iranyekanweb/iranyekanwebregular.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/app/android.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/app/apple.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/banner/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/banner/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/banner/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/banner/6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/banner/7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/banner/banner-page-store.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/bg/news.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/bg/newsletter.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/common/about.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/common/login.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/favicon/favicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/hero-bg/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/hero-bg/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/hero-bg/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/hero-bg/4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/hero-bg/5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/hero-bg/7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/hero-bg/8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/hero-bg/payment.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/htdocs_error/something-lost.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/bag-8.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/blog.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/bottom-quotes.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/cart_5.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/cat-1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/cat-2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/cat-3.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/cat-4.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/cat-5.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/cat-6.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/cat-7.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/cat-8.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/cat-9.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/category-icon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/close-1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/close.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/compare.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/cosmetics-8.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/discover.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/dress-8.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/filter.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/foo-location.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/foo-mail.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/foo-wp.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/glasses-8.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/grid.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/home.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/jewelry-8.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/list.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/listing.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/location.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/menu.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/offer.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/perfume-8.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/phone.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/pro_cart.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/pro_wishlist.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/product.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/quickview.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/search.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/send.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/setting.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/shoes-8.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/top-quotes.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/track-1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/track-2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/track-3.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/track-4.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/track-5.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/user.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/icons/wishlist.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/instragram-image/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/instragram-image/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/instragram-image/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/instragram-image/4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/instragram-image/5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/instragram-image/6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/instragram-image/7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/logo/footer-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/logo/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/news/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/news/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/news/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/news/4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/news/5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/news/6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/news/7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/10_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/11_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/12_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/13_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/14_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/15_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/16_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/17_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/18_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/19_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/20_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/21_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/22_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/23_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/24_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/25_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/26_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/27_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/28_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/29_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/30_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/31_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/32_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/33_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/34_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/35_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/36_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/37_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/38_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/39_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/3_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/3_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/40_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/4_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/4_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/5_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/5_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/6_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/6_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/7_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/7_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/8_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/8_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/9_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/product-images/9_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/service/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/service/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/service/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/service/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/user/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/user/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/user/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/user/4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/user/5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/user/6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/user/7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/vendor/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/vendor/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/vendor/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/vendor/4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/img/vendor/5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/js/demo-1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/js/demo-2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/js/js/uikit-icons.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/js/js/uikit-icons.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/js/js/uikit.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/js/js/uikit.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/js/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/js/plugins/bootstrap-select.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/js/plugins/bootstrap.bundle.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/js/plugins/bootstrap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/js/plugins/countdownTimer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/js/plugins/fontawesome.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/js/plugins/infiniteslidev2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/js/plugins/jquery-3.5.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/js/plugins/jquery.zoom.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/js/plugins/nouislider.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/js/plugins/owl.carousel.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/js/plugins/popper.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/js/plugins/slick.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/js/plugins/swiper-bundle.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/webfonts/fa-brands-400.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/webfonts/fa-brands-400.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/webfonts/fa-regular-400.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/webfonts/fa-regular-400.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/webfonts/fa-solid-900.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/webfonts/fa-solid-900.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/webfonts/fa-v4compatibility.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/assets/webfonts/fa-v4compatibility.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/blog-detail-left-sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/raw/blog-detail-left-sidebar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/blog-full-width.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/raw/blog-full-width.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/raw/cart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/raw/checkout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/compare.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/raw/compare.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/contact-us.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/raw/contact-us.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/faq.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/raw/faq.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/index 2.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/raw/index 2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/raw/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/privacy-policy.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/raw/privacy-policy.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/product-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/raw/product-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/product-full-width.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/raw/product-full-width.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/product-left-sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/raw/product-left-sidebar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/raw/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/shop-left-sidebar-col-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/raw/shop-left-sidebar-col-3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/terms-condition.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/raw/terms-condition.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/torob.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/raw/torob.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/raw/track-order.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/raw/track-order.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +455,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -59,6 +488,8 @@
       <recent name="C:\Users\mobiniqow\PycharmProjects\mediplant" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\mobiniqow\Documents\projects\mediplant\static" />
+      <recent name="C:\Users\mobiniqow\Documents\projects\mediplant\templates" />
       <recent name="C:\Users\mobiniqow\PycharmProjects\mediplant\mediplant\settings" />
     </key>
   </component>
@@ -113,6 +544,7 @@
       <workItem from="1700292844266" duration="78000" />
       <workItem from="1701254156748" duration="982000" />
       <workItem from="1701261943623" duration="198000" />
+      <workItem from="1701620483189" duration="4000" />
     </task>
     <servers />
   </component>
