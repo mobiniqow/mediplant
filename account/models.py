@@ -68,7 +68,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     national_code = models.CharField(max_length=10, unique=True, verbose_name='کدملی')
     email = models.EmailField(verbose_name='ایمیل')
     birth_day = jmodels.jDateField(verbose_name='تاریخ تولد')
-    ref_code = models.CharField(max_length=8, verbose_name='کد معرفی',unique=True)
+    ref_code = models.CharField(max_length=8, verbose_name='کد معرفی', unique=True)
     # country = models.ForeignKey(Country, on_delete=SET_NULL, null=True, verbose_name='کشور')
     city = models.ForeignKey(City, on_delete=SET_NULL, null=True, verbose_name='شهر')
     location = models.ForeignKey(CityLocation, on_delete=SET_NULL, null=True, verbose_name='محدوده')
@@ -89,6 +89,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def has_module_perms(self, app_label):
         return self.is_staff
+
     class Meta:
-        verbose_name='کاربر'
-        verbose_name_plural='کاربران'
+        verbose_name = 'کاربر'
+        verbose_name_plural = 'کاربران'

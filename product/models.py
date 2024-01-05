@@ -1,8 +1,13 @@
 from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.db.models import SET_NULL
+
+
 class ClassId(models.Model):
     name = models.CharField(max_length=22)
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = "شناسه صنف"
@@ -48,23 +53,24 @@ class Product(models.Model):
         ACTIVE = 1
         DE_ACTIVE = 2
 
-    trade_id = models.CharField(max_length=19)
+    trade_id = models.CharField(max_length=19, verbose_name='شناسه بازرگانی')
     class_id = models.ForeignKey(ClassId, on_delete=SET_NULL, null=True, verbose_name='شناسه صنف')
-    name = models.CharField(max_length=33, verbose_name="نام کالا",unique=True)
+    category = models.ForeignKey('Category', on_delete=SET_NULL, null=True, verbose_name='کتگوری')
+    name = models.CharField(max_length=33, verbose_name="نام کالا", unique=True)
     type = models.IntegerField(choices=Type.choices, verbose_name='نوع کالا')
     material = models.IntegerField(choices=Material.choices, verbose_name='جنس کالا')
-    description = models.TextField()
-    price = models.IntegerField(verbose_name='واحد قیمت بر حسب کیلو')
+    description = models.TextField(verbose_name='جنس کالا', )
+    price = models.IntegerField(verbose_name='واحد قیمت بر حسب واحد')
     state = models.IntegerField(choices=State.choices, default=State.SUSPEND, verbose_name='وضعیت کالا')
-    is_active = models.BooleanField(default=False)
-    unit = models.ForeignKey('ProductUnit', on_delete=SET_NULL, null=True, verbose_name='شناسه صنف')
+    is_active = models.BooleanField(default=False, verbose_name='فعال بودن')
+    unit = models.ForeignKey('ProductUnit', on_delete=SET_NULL, null=True, verbose_name='شناسه واحد')
 
     class Meta:
         verbose_name = "محصول"
         verbose_name_plural = "محصولات"
 
     def __str__(self):
-        pass
+        return self.name
 
 
 class ProductImage(models.Model):
@@ -72,10 +78,22 @@ class ProductImage(models.Model):
     image = models.FileField(upload_to='product/image',
                              validators=[FileExtensionValidator(['jpg', 'png', 'jpeg', 'svg'])], verbose_name='تصاویر')
 
+    class Meta:
+        verbose_name = "عکس محصول"
+        verbose_name_plural = "عکس محصول"
+
 
 class ProductUnit(models.Model):
-    name = models.CharField(max_length=22,unique=True)
+    name = models.CharField(max_length=22, unique=True)
 
     class Meta:
-        verbose_name = "شناسه صنف"
-        verbose_name_plural = "شناسه های صنف"
+        verbose_name = "واحد"
+        verbose_name_plural = "واحد ها"
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=40)
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return self.name

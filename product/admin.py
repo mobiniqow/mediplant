@@ -1,35 +1,26 @@
 from django.contrib import admin
-from .models import ClassId, Product, ProductImage, ProductUnit
+from .models import ClassId, Product, ProductImage, ProductUnit, Category
 
-@admin.register(ClassId)
-class ClassIdAdmin(admin.ModelAdmin):
-    list_display = ['name']
-    search_fields = ['name']
-    list_per_page = 20
 
-    class Meta:
-        model = ClassId
+class ProductImageInline(admin.TabularInline):
+    model = ProductImage
+    fields = ('image',)
 
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['trade_id', 'class_id', 'name', 'type', 'material', 'state', 'is_active']
     search_fields = ['trade_id', 'name']
-    list_filter = ['class_id', 'type', 'material', 'state', 'is_active']
+    list_filter = ['class_id', 'type', 'material', 'state', 'is_active', 'category']
     list_per_page = 20
-
-    class Meta:
-        model = Product
+    inlines = [ProductImageInline, ]
 
 
-@admin.register(ProductImage)
-class ProductImageAdmin(admin.ModelAdmin):
-    list_display = ['product', 'image']
-    search_fields = ['product__name']
+@admin.register(ClassId)
+class ClassIdAdmin(admin.ModelAdmin):
+    list_display = ['name', ]
+    search_fields = ['name', ]
     list_per_page = 20
-
-    class Meta:
-        model = ProductImage
 
 
 @admin.register(ProductUnit)
@@ -38,5 +29,9 @@ class ProductUnitAdmin(admin.ModelAdmin):
     search_fields = ['name']
     list_per_page = 20
 
-    class Meta:
-        model = ProductUnit
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['name']
+    search_fields = ['name']
+    list_per_page = 20

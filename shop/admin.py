@@ -1,5 +1,20 @@
 from django.contrib import admin
-from .models import Shop, ShopImage, ShopPhone, ShopProduct
+from .models import Shop, ShopImage, ShopPhone, ShopProduct, CertificateImage
+
+
+class ShopPhoneInline(admin.TabularInline):
+    model = ShopPhone
+    fields = ('phone',)
+
+
+class ShopImageInline(admin.TabularInline):
+    model = ShopImage
+    fields = ('image',)
+
+
+class CertificateImageInline(admin.TabularInline):
+    model = CertificateImage
+    fields = ('image',)
 
 
 @admin.register(Shop)
@@ -7,6 +22,7 @@ class ShopAdmin(admin.ModelAdmin):
     list_display = ['name', 'trade_id', 'state', 'user']
     search_fields = ['name', 'trade_id', 'user__username']
     list_filter = ['state']
+    inlines = [ShopPhoneInline, ShopImageInline, CertificateImageInline]
     list_per_page = 20
 
     class Meta:
@@ -15,7 +31,7 @@ class ShopAdmin(admin.ModelAdmin):
 
 @admin.register(ShopImage)
 class ShopImageAdmin(admin.ModelAdmin):
-    list_display = ['shop', 'certificate_image']
+    list_display = ['shop', 'image']
     search_fields = ['shop__name']
     list_per_page = 20
 

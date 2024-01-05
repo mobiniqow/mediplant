@@ -1,0 +1,91 @@
+{% load static %}
+<div class="ms-header-bottom d-none d-lg-block">
+    <div class="container position-relative">
+        <div class="row">
+            <div class="ms-flex">
+                <!-- Header Logo Start -->
+                <div class="align-self-center ms-header-logo">
+                    <div class="header-logo">
+                        <a href="index.html"><img src="{% static 'assets/img/logo/logo.png'  %}" alt="Site Logo"></a>
+                    </div>
+                </div>
+                <!-- Header Logo End -->
+
+                <!-- Header Search Start -->
+                <div class="align-self-center ms-header-search">
+                    <div class="header-search">
+                        <form class="ms-search-group-form" action="#">
+                            <div class="ms-search-select-inner">
+                                <select class="ms-search-cat selectpicker" multiple data-live-search=""
+                                        data-live-search-placeholder=" جستجو دسته بندی" data-actions-box="true">
+                                    <option>محصولات لبنی</option>
+                                    <option>فست فود</option>
+                                    <option>نانوایی</option>
+                                    <option>سبزیجات</option>
+                                    <option>غیر گیاهی</option>
+                                </select>
+                            </div>
+                            <input class="form-control ms-search-bar" placeholder="جستجو محصولات" type="text">
+                            <button class="search_submit" type="submit"><img
+                                    src="{% static 'assets/img/icons/search.svg'  %}" class="svg_img search_svg" alt="">
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <!-- Header Search End -->
+
+                <!-- Header Button Start -->
+                <div class="align-self-center">
+                    <div class="ms-header-bottons">
+                        <!-- Header User Start -->
+                        <div class="ms-acc-drop">
+                            <a href="javascript:void(0)"
+                               class="ms-header-btn ms-header-user dropdown-toggle ms-user-toggle" title="حساب کاربری">
+                                <div class="header-icon">
+                                    <img src="{% static 'assets/img/icons/user.svg'  %}" class="svg_img header_svg"
+                                         alt="">
+                                </div>
+                                <div class="ms-btn-desc">
+                                    <span class="ms-btn-title">حساب کاربری</span>
+                                    <span class="ms-btn-stitle">ورود</span>
+                                </div>
+                            </a>
+                            <ul class="ms-dropdown-menu">
+                                <li><a class="dropdown-item" href="register.html">ثبت نام</a></li>
+                                <li><a class="dropdown-item" href="checkout.html">بررسی خرید</a></li>
+                                <li><a class="dropdown-item" href="privacy-policy.html">حریم خصوصی</a></li>
+                                <li><a class="dropdown-item" href="login.html">ورود</a></li>
+                            </ul>
+                        </div>
+                        <!-- Header User End -->
+                        <!-- Header wishlist Start -->
+                        <a href="javascript:void(0)" class="ms-header-btn ms-wish-toggle" title="علاقه مندی">
+                            <div class="header-icon">
+                                <img src="{% static 'assets/img/icons/wishlist.svg'  %}" class="svg_img header_svg"
+                                     alt="">
+                            </div>
+                            <div class="ms-btn-desc">
+                                <span class="ms-btn-title">علاقه مندی‌ها</span>
+                                <span class="ms-btn-stitle"><span class="ms-wishlist-count">3</span> مورد </span>
+                            </div>
+                        </a>
+                        <!-- Header wishlist End -->
+                        <!-- Header Cart Start -->
+                        <a href="javascript:void(0)" class="ms-header-btn ms-cart-toggle" title="سبد خرید">
+                            <div class="header-icon">
+                                <img src="{% static 'assets/img/icons/cart_5.svg'  %}" class="svg_img header_svg"
+                                     alt="">
+                                <span class="main-label-note-new"></span>
+                            </div>
+                            <div class="ms-btn-desc">
+                                <span class="ms-btn-title">سبد خرید</span>
+                                <span class="ms-btn-stitle"><span class="ms-cart-count">3</span> مورد </span>
+                            </div>
+                        </a>
+                        <!-- Header Cart End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

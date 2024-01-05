@@ -8,7 +8,7 @@ from django_jalali.db import models as jmodels
 
 class ArticleEncyclopediaCategory(models.Model):
     name = models.CharField(max_length=50, verbose_name="عنوان", unique=True)
-    parent = models.ForeignKey("ArticleEncyclopediaCategory", unique=True, on_delete=SET_NULL, blank=True, null=True,
+    parent = models.ForeignKey("ArticleEncyclopediaCategory",  on_delete=SET_NULL, blank=True, null=True,
                                verbose_name="منبع")
 
     class Meta:

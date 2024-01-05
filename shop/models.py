@@ -19,12 +19,8 @@ class Shop(models.Model):
         BRONZE = 2
         GOLD = 3
 
-    name = models.CharField(max_length=40, verbose_name='نام',unique=True)
+    name = models.CharField(max_length=40, verbose_name='نام', unique=True)
     trade_id = models.CharField(max_length=19, verbose_name='شناسه تجاری')
-    certificate_image = models.FileField(upload_to="shop/certificate/",
-                                         validators=[FileExtensionValidator(['jpg', 'png', 'jpeg']), ],
-                                         verbose_name='تصویر گواهی')
-
     state = models.IntegerField(choices=ShopStatus.choices, default=ShopStatus.PENDING, verbose_name='وضعیت')
     user = models.ForeignKey(User, on_delete=SET_NULL, null=True, verbose_name='کاربر')
     shop_home = models.CharField(max_length=15, verbose_name='آدرس فروشگاه')
@@ -42,9 +38,20 @@ class Shop(models.Model):
 
 class ShopImage(models.Model):
     shop = models.ForeignKey(Shop, on_delete=SET_NULL, null=True, verbose_name='فروشگاه')
+    image = models.FileField(upload_to="shop/images/",
+                             validators=[FileExtensionValidator(['jpg', 'png', 'jpeg']), ],
+                             verbose_name='تصویر  ')
+
+    class Meta:
+        verbose_name = 'تصویر فروشگاه'
+        verbose_name_plural = 'تصاویر فروشگاه'
+
+
+class CertificateImage(models.Model):
+    shop = models.ForeignKey(Shop, on_delete=SET_NULL, null=True, verbose_name='فروشگاه')
     certificate_image = models.FileField(upload_to="shop/certificate/",
                                          validators=[FileExtensionValidator(['jpg', 'png', 'jpeg']), ],
-                                         verbose_name='تصویر گواهی')
+                                         verbose_name='تصویر مجوز')
 
     class Meta:
         verbose_name = 'تصویر فروشگاه'
@@ -53,7 +60,7 @@ class ShopImage(models.Model):
 
 class ShopPhone(models.Model):
     shop = models.ForeignKey(Shop, on_delete=SET_NULL, null=True, verbose_name='فروشگاه')
-    phone = models.CharField(max_length=13, verbose_name='تلفن',unique=True)
+    phone = models.CharField(max_length=13, verbose_name='تلفن', unique=True)
 
     class Meta:
         verbose_name = 'تلفن فروشگاه'

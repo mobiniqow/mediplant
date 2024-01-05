@@ -20,7 +20,7 @@ class ShopForm(forms.ModelForm):
 
     class Meta:
         model = Shop
-        fields = ['name', 'trade_id', 'certificate_image', 'shop_home', 'image', 'mobile', 'description', 'rate_state']
+        fields = ['name', 'trade_id', 'shop_home', 'image', 'mobile', 'description', 'rate_state']
 
     def save(self, commit=True):
         shop = super().save(commit=False)
