@@ -8,23 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e855760-72d9-494d-ba2b-fb8678205837" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/raw/extentions/header_category.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/raw/extentions/header_ext.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/encyclopedia/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/encyclopedia/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mediplant/settings/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/mediplant/settings/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mediplant/settings/dev.py" beforeDir="false" afterPath="$PROJECT_DIR$/mediplant/settings/dev.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/product/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/product/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/raw/index 2.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/raw/index 2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/raw/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/raw/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,6 +128,7 @@
       <workItem from="1704357349241" duration="4168000" />
       <workItem from="1704431158091" duration="3375000" />
       <workItem from="1704434739758" duration="12639000" />
+      <workItem from="1704517869250" duration="745000" />
     </task>
     <servers />
   </component>
