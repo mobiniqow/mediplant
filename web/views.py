@@ -1,12 +1,17 @@
-from django.shortcuts import render
-from .forms import ShopForm
+from django.views.generic import TemplateView
 
-def index(request):
-    if request.method == 'POST':
-        form = ShopForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            # انجام دیگر عملیات مورد نیاز
-    else:
-        form =ShopForm(request.POST, request.FILES)
-    return render(request, 'index.html', {'form': form,'title':'صفحه اصلی'})
+from banner.models import Banner
+
+
+class IndexView(TemplateView):
+    template_name = "index.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        banners = Banner.objects.filter(state=Banner.State.ACTIVE).order_by('?')[:6]
+        print(len(banner))
+        # banners =
+        context['title'] = 'صفحه اصلی'
+        context['title'] = 'صفحه اصلی'
+        context['banner'] = banners
+        return context
