@@ -61,13 +61,20 @@
     "WebServerToolWindowFactoryState": "false",
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "main",
+<<<<<<< Updated upstream
     "last_opened_file_path": "/home/mobiniqow/IdeaProjects/ibrokers_new",
+=======
+    "last_opened_file_path": "C:/Users/mobiniqow/Desktop/mediplant",
+>>>>>>> Stashed changes
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+<<<<<<< Updated upstream
     "settings.editor.selected.configurable": "configurable.group.build",
+=======
+>>>>>>> Stashed changes
     "show.migrate.to.gradle.popup": "false",
     "vue.rearranger.settings.migration": "true"
   }
@@ -142,12 +149,16 @@
       <workItem from="1704431158091" duration="3375000" />
       <workItem from="1704434739758" duration="12639000" />
       <workItem from="1704517869250" duration="745000" />
+<<<<<<< Updated upstream
       <workItem from="1704633993333" duration="41000" />
       <workItem from="1704685750966" duration="416000" />
       <workItem from="1704692152490" duration="1212000" />
       <workItem from="1704715816972" duration="1695000" />
       <workItem from="1704724847464" duration="5566000" />
       <workItem from="1704732297564" duration="1740000" />
+=======
+      <workItem from="1704642386433" duration="780000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>

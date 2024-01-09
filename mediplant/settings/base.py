@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     'account_logger.apps.AccountLoggerConfig',
     'feedback.apps.FeedbackConfig',
     'banner.apps.BannerConfig',
+    'django.contrib.humanize',
 ]
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

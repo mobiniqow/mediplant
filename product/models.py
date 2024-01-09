@@ -55,7 +55,7 @@ class Product(models.Model):
 
     trade_id = models.CharField(max_length=19, verbose_name='شناسه بازرگانی')
     class_id = models.ForeignKey(ClassId, on_delete=SET_NULL, null=True, verbose_name='شناسه صنف')
-    category = models.ForeignKey('Category', on_delete=SET_NULL, null=True, verbose_name='کتگوری')
+    category = models.ForeignKey('Category', on_delete=SET_NULL, null=True, verbose_name='کتگوری', blank=True)
     name = models.CharField(max_length=33, verbose_name="نام کالا", unique=True)
     type = models.IntegerField(choices=Type.choices, verbose_name='نوع کالا')
     material = models.IntegerField(choices=Material.choices, verbose_name='جنس کالا')
@@ -74,7 +74,8 @@ class Product(models.Model):
 
 
 class ProductImage(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True, verbose_name='محصول')
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True, verbose_name='محصول',
+                                related_name='images')
     image = models.FileField(upload_to='product/image',
                              validators=[FileExtensionValidator(['jpg', 'png', 'jpeg', 'svg'])], verbose_name='تصاویر')
 
@@ -94,6 +95,12 @@ class ProductUnit(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=40)
     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
+    image = models.FileField(upload_to='product/image',
+                             validators=[FileExtensionValidator(['jpg', 'png', 'jpeg', 'svg'])], verbose_name='تصاویر')
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name = "دسته بندی"
+        verbose_name_plural = "دسته بندی ها"
