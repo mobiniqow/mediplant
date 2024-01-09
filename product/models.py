@@ -16,42 +16,42 @@ class ClassId(models.Model):
 
 class Product(models.Model):
     class Type(models.IntegerChoices):
-        GIAH = 0
-        ARAGH = 1
-        ROGHAN = 2
-        AFSHORE = 3
-        SHARBAT = 4
-        GHORS = 5
-        KAPSOL = 6
-        SAMGH = 7
-        GOL = 8
-        DANE = 9
-        BARG = 10
-        SAGHE = 11
-        RISHE = 12
-        POST = 13
-        MIVE = 14
-        POMAD = 15
-        ZOMAD = 16
-        PODR = 17
-        HASTE = 18
-        KERM = 19
-        MOKAMEL = 20
-        SHOYANDE = 21
-        BOKHORI = 22
-        DOD_KARDANI = 23
+        GIAH = 0, 'گیاه'
+        ARAGH = 1, 'عرق'
+        ROGHAN = 2, 'روغن'
+        AFSHORE = 3, 'افشوره'
+        SHARBAT = 4, 'شربت'
+        GHORS = 5, 'قرص'
+        KAPSOL = 6, 'کپسول'
+        SAMGH = 7, 'سمق'
+        GOL = 8, 'گل'
+        DANE = 9, 'دانه'
+        BARG = 10, 'برگ'
+        SAGHE = 11, 'ساقه'
+        RISHE = 12, 'ریشه'
+        POST = 13, 'پوست'
+        MIVE = 14, 'میوه'
+        POMAD = 15, 'پماد'
+        ZOMAD = 16, 'ضماد'
+        PODR = 17, 'پودر'
+        HASTE = 18, 'هسته'
+        KERM = 19, 'کرم'
+        MOKAMEL = 20, 'مکمل'
+        SHOYANDE = 21, 'شوینده'
+        BOKHORI = 22, 'بخور'
+        DOD_KARDANI = 23, 'دود کردنی'
 
     class Material(models.IntegerChoices):
-        BASTE_BANDI = 1
-        PACK = 2
-        DANE_E = 3
-        KILOE = 4
-        SHISHE_E = 5
+        BASTE_BANDI = 1, 'بسته بندی'
+        PACK = 2, 'پک'
+        DANE_E = 3, 'دانه ای'
+        KILOE = 4, 'کیلوای'
+        SHISHE_E = 5, 'شیشه ای'
 
     class State(models.IntegerChoices):
-        SUSPEND = 0
-        ACTIVE = 1
-        DE_ACTIVE = 2
+        SUSPEND = 0, 'معلق'
+        ACTIVE = 1, 'فعال'
+        DE_ACTIVE = 2, 'غیر فعا'
 
     trade_id = models.CharField(max_length=19, verbose_name='شناسه بازرگانی')
     class_id = models.ForeignKey(ClassId, on_delete=SET_NULL, null=True, verbose_name='شناسه صنف')
@@ -90,6 +90,9 @@ class ProductUnit(models.Model):
     class Meta:
         verbose_name = "واحد"
         verbose_name_plural = "واحد ها"
+
+    def __str__(self):
+        return self.name
 
 
 class Category(models.Model):

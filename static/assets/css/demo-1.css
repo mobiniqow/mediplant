@@ -2691,6 +2691,7 @@ i.msicon.msi-star.fill {
 .ms-product-inner .ms-pro-image .image img {
     z-index: 1;
     max-width: 100%;
+    height: 100%;
     -webkit-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
 }
@@ -6273,16 +6274,17 @@ body.ms-menu-open:before {
     background-size: cover;
 }
 
-.ms-hero .ms-main-content .ms-slider-content .ms-main-slider .slide-1 {
-    background-image: url(../img/hero-bg/4.jpg);
+.ms-hero .ms-main-content .ms-slider-content .ms-main-slider .slide-1 img{
+    /*background-image: url(../img/hero-bg/4.jpg);*/
+
 }
 
 .ms-hero .ms-main-content .ms-slider-content .ms-main-slider .slide-2 {
-    background-image: url(../img/hero-bg/5.jpg);
+    /*background-image: url(../img/hero-bg/5.jpg);*/
 }
 
 .ms-hero .ms-main-content .ms-slider-content .ms-main-slider .slide-3 {
-    background-image: url(../img/hero-bg/6.jpg);
+    /*background-image: url(../img/hero-bg/6.jpg);*/
 }
 
 .ms-hero .ms-main-content .ms-banner-content {
@@ -6309,6 +6311,7 @@ body.ms-menu-open:before {
 
 .ms-hero .ms-main-content .ms-banner-content .ms-slider-grid-item .ms-detail {
     padding: 0 15px;
+    z-index: 1000;
 }
 
 .ms-hero .ms-main-content .ms-banner-content .ms-slider-grid-item .ms-detail p {
@@ -6324,11 +6327,11 @@ body.ms-menu-open:before {
 }
 
 .ms-hero .ms-main-content .ms-banner-content .ms-slider-grid-item.grid-img-4 {
-    background-image: url(../img/hero-bg/7.jpg);
+    /*background-image: url(../img/hero-bg/7.jpg);*/
 }
 
 .ms-hero .ms-main-content .ms-banner-content .ms-slider-grid-item.grid-img-5 {
-    background-image: url(../img/hero-bg/8.jpg);
+    /*background-image: url(../img/hero-bg/8.jpg);*/
 }
 
 .ms-hero .swiper-buttons {
@@ -6414,13 +6417,18 @@ body.ms-menu-open:before {
 .ms-animated-banner {
     width: 100%;
     height: 450px;
-    background-image: url(../img/banner/1.jpg);
+    /*background-image: url(../img/banner/1.jpg);*/
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
     position: relative;
     border-radius: 3px;
+}
+.ms-animated-banner > img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
 }
 
 .ms-animated-banner .ms-bnr-detail {

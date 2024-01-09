@@ -833,6 +833,7 @@
                         <!-- Main slider  -->
                         <div class="swiper-wrapper">
                             <div class="ms-slide-item swiper-slide d-flex slide-1">
+                                <img src="static/assets/img/hero-bg/5.jpg" style="position: absolute" width="100%" height="100%">
                                 <div class="ms-slide-content slider-animation">
                                     <h2 class="ms-slide-stitle">تازه و سالم</h2>
                                     <h1 class="ms-slide-title">میوه ها و سبزیجات</h1>
@@ -843,6 +844,7 @@
                                 </div>
                             </div>
                             <div class="ms-slide-item swiper-slide d-flex slide-2">
+                                <img src="static/assets/img/hero-bg/4.jpg" style="position: absolute" width="100%" height="100%">
                                 <div class="ms-slide-content slider-animation">
                                     <h2 class="ms-slide-stitle">ارگانیک و سالم</h2>
                                     <h1 class="ms-slide-title">میان وعده و ادویه جات</h1>
@@ -864,6 +866,7 @@
             <!-- Hero Banner 1 Start -->
             <div class="ms-banner-content align-self-center">
                 <div class="ms-slider-grid-item grid-img-4">
+                    <img src="static/assets/img/hero-bg/8.jpg" style="position: absolute" height="100%" width="100%">
                     <div class="ms-detail">
                         <p>تازه</p>
                         <h6 class="grid-animation"><span class="ms-grid-sub-title">میوه جات</span></h6>
@@ -874,6 +877,7 @@
             <!-- Hero Banner 2 Start -->
             <div class="ms-banner-content align-self-center">
                 <div class="ms-slider-grid-item grid-img-5">
+                    <img src="static/assets/img/hero-bg/8.jpg" style="position: absolute" height="100%" width="100%">
                     <div class="ms-detail">
                         <p>ارگانیک</p>
                         <h6 class="grid-animation"><span class="ms-grid-sub-title">سبزیجات</span></h6>
@@ -954,9 +958,9 @@
                                                          src="{{ product.image_list.0.image.url }}"
                                                          alt="Product">
                                                     {% if product.image_list|length > 1 %}
-                                                    <img class="hover-image"
-                                                         src="{{ product.image_list.1.image.url }}"
-                                                         alt="Product">
+                                                        <img class="hover-image"
+                                                             src="{{ product.image_list.1.image.url }}"
+                                                             alt="Product">
                                                     {% endif %}
                                                 </a>
                                                 <div class="ms-pro-actions">
@@ -983,7 +987,9 @@
                                             <a href="shop-left-sidebar-col-3.html">
                                                 <h6 class="ms-pro-stitle">{{ product.name }}</h6>
                                             </a>
-                                            <h5 class="ms-pro-title"><a href="product-left-sidebar.html">{{ product.description|slice:":26" }}</a></h5>
+                                            <h5 class="ms-pro-title"><a
+                                                    href="product-left-sidebar.html">{{ product.description|slice:":26" }}</a>
+                                            </h5>
                                             <div class="ms-pro-rat-price">
                                                 <span class="ms-pro-rating">
                                                     <i class="fa-solid fa-star fill"></i>
@@ -994,7 +1000,7 @@
                                                 </span>
 
                                                 <span class="ms-price">
-                                                    <span class="new-price">{{ product.price |intcomma:False   }}  تومان </span>
+                                                    <span class="new-price">{{ product.price |intcomma:False }}  تومان </span>
 {#                                                <span class="old-price">65 هزار</span>#}
                                                 </span>
                                             </div>
@@ -2771,6 +2777,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="ms-animated-banner">
+                    <img src="static/assets/img/banner/1.jpg">
                     <h2 class="d-none">تخفیفات</h2>
                     <div class="ms-bnr-detail">
                         <div class="ms-bnr-info">
@@ -2794,7 +2801,7 @@
             <div class="col-xl-3 col-md-6 col-sm-12 col-xs-6 ms-new-product-content">
                 <div class="col-md-12">
                     <div class="section-title">
-                        <h2 class="ms-title">محصولات <span>جدید</span></h2>
+                        <h2 class="ms-title">محصولات<span>جدید</span></h2>
                     </div>
                 </div>
                 <div class="ms-new-product-block">
@@ -2803,21 +2810,23 @@
                             <div class="ms-pro-image-outer">
                                 <div class="ms-pro-image">
                                     <a href="product-left-sidebar.html" class="image">
-                                        <img class="main-image" src="{% static 'assets/img/product-images/10_1.jpg' %}"
+                                        <img class="main-image" src="{{ new_product.0.image_list.0.image.url }}"
                                              alt="Product">
                                     </a>
                                 </div>
                             </div>
                             <div class="ms-pro-content">
-                                <h5 class="ms-pro-title"><a href="product-left-sidebar.html">بادام هندی</a></h5>
-                                <h6 class="ms-pro-stitle"><a href="shop-left-sidebar-col-3.html">میوه های خشک شده</a>
+                                <h5 class="ms-pro-title"><a
+                                        href="product-left-sidebar.html">{{ new_product.0.name }}</a></h5>
+                                <h6 class="ms-pro-stitle"><a
+                                        href="shop-left-sidebar-col-3.html">{{ new_product.0.description }}</a>
                                 </h6>
                                 <div class="ms-pro-rat-price">
                                     <div class="ms-pro-rat-pri-inner">
                                             <span class="ms-price">
-                                                <span class="new-price">50 هزار</span>
-                                            <span class="old-price">55 هزار</span>
-                                            <span class="qty">- 2 پاکت</span>
+                                                <span class="new-price">{{ new_product.0.price | intcomma:False }}  تومان</span>
+{#                                            <span class="old-price">55 هزار</span>#}
+                                            <span class="qty">- {{ new_product.0.get_type_display }}   </span>
                                             </span>
                                     </div>
                                 </div>
@@ -2835,21 +2844,23 @@
                             <div class="ms-pro-image-outer">
                                 <div class="ms-pro-image">
                                     <a href="product-left-sidebar.html" class="image">
-                                        <img class="main-image" src="{% static 'assets/img/product-images/18_1.jpg' %}"
+                                        <img class="main-image" src="{{ new_product.1.image_list.0.image.url }}"
                                              alt="Product">
                                     </a>
                                 </div>
                             </div>
                             <div class="ms-pro-content">
-                                <h5 class="ms-pro-title"><a href="product-left-sidebar.html">لیمو - بدون دانه</a>
-                                </h5>
-                                <h6 class="ms-pro-stitle"><a href="shop-left-sidebar-col-3.html">سبزیجات</a></h6>
+                                <h5 class="ms-pro-title"><a
+                                        href="product-left-sidebar.html">{{ new_product.1.name }}</a></h5>
+                                <h6 class="ms-pro-stitle"><a
+                                        href="shop-left-sidebar-col-3.html">{{ new_product.1.description }}</a>
+                                </h6>
                                 <div class="ms-pro-rat-price">
                                     <div class="ms-pro-rat-pri-inner">
                                             <span class="ms-price">
-                                                <span class="new-price">62 هزار</span>
-                                            <span class="old-price">65 هزار</span>
-                                            <span class="qty">- 1 کیلوگرم</span>
+                                                <span class="new-price">{{ new_product.1.price | intcomma:False }}  تومان</span>
+{#                                            <span class="old-price">55 هزار</span>#}
+                                            <span class="qty">- {{ new_product.1.get_type_display }}   </span>
                                             </span>
                                     </div>
                                 </div>
@@ -2867,21 +2878,23 @@
                             <div class="ms-pro-image-outer">
                                 <div class="ms-pro-image">
                                     <a href="product-left-sidebar.html" class="image">
-                                        <img class="main-image" src="{% static 'assets/img/product-images/38_1.jpg' %}"
+                                        <img class="main-image" src="{{ new_product.2.image_list.0.image.url }}"
                                              alt="Product">
                                     </a>
                                 </div>
                             </div>
                             <div class="ms-pro-content">
-                                <h5 class="ms-pro-title"><a href="product-left-sidebar.html">کیک و شیرینی</a>
-                                </h5>
-                                <h6 class="ms-pro-stitle"><a href="shop-left-sidebar-col-3.html">نانوایی</a></h6>
+                                <h5 class="ms-pro-title"><a
+                                        href="product-left-sidebar.html">{{ new_product.2.name }}</a></h5>
+                                <h6 class="ms-pro-stitle"><a
+                                        href="shop-left-sidebar-col-3.html">{{ new_product.2.description }}</a>
+                                </h6>
                                 <div class="ms-pro-rat-price">
                                     <div class="ms-pro-rat-pri-inner">
                                             <span class="ms-price">
-                                                <span class="new-price">52 هزار</span>
-                                            <span class="old-price">55 هزار</span>
-                                            <span class="qty">- 1 پاکت</span>
+                                                <span class="new-price">{{ new_product.2.price | intcomma:False }}  تومان</span>
+{#                                            <span class="old-price">55 هزار</span>#}
+                                            <span class="qty">- {{ new_product.2.get_type_display }}   </span>
                                             </span>
                                     </div>
                                 </div>
@@ -2909,20 +2922,23 @@
                             <div class="ms-pro-image-outer">
                                 <div class="ms-pro-image">
                                     <a href="product-left-sidebar.html" class="image">
-                                        <img class="main-image" src="{% static 'assets/img/product-images/13_1.jpg' %}"
+                                        <img class="main-image" src="{{ new_product.3.image_list.0.image.url }}"
                                              alt="Product">
                                     </a>
                                 </div>
                             </div>
                             <div class="ms-pro-content">
-                                <h5 class="ms-pro-title"><a href="product-left-sidebar.html">پیاز</a></h5>
-                                <h6 class="ms-pro-stitle"><a href="shop-left-sidebar-col-3.html">سبزیجات</a></h6>
+                                <h5 class="ms-pro-title"><a
+                                        href="product-left-sidebar.html">{{ new_product.3.name }}</a></h5>
+                                <h6 class="ms-pro-stitle"><a
+                                        href="shop-left-sidebar-col-3.html">{{ new_product.3.description }}</a>
+                                </h6>
                                 <div class="ms-pro-rat-price">
                                     <div class="ms-pro-rat-pri-inner">
                                             <span class="ms-price">
-                                                <span class="new-price">42 هزار</span>
-                                            <span class="old-price">45 هزار</span>
-                                            <span class="qty">- 5 کیلوگرم</span>
+                                                <span class="new-price">{{ new_product.3.price | intcomma:False }}  تومان</span>
+{#                                            <span class="old-price">55 هزار</span>#}
+                                            <span class="qty">- {{ new_product.3.get_type_display }}   </span>
                                             </span>
                                     </div>
                                 </div>
@@ -2940,20 +2956,23 @@
                             <div class="ms-pro-image-outer">
                                 <div class="ms-pro-image">
                                     <a href="product-left-sidebar.html" class="image">
-                                        <img class="main-image" src="{% static 'assets/img/product-images/37_1.jpg' %}"
+                                        <img class="main-image" src="{{ new_product.4.image_list.0.image.url }}"
                                              alt="Product">
                                     </a>
                                 </div>
                             </div>
                             <div class="ms-pro-content">
-                                <h5 class="ms-pro-title"><a href="product-left-sidebar.html">بستنی</a></h5>
-                                <h6 class="ms-pro-stitle"><a href="shop-left-sidebar-col-3.html">لبنیات</a></h6>
+                                <h5 class="ms-pro-title"><a
+                                        href="product-left-sidebar.html">{{ new_product.4.name }}</a></h5>
+                                <h6 class="ms-pro-stitle"><a
+                                        href="shop-left-sidebar-col-3.html">{{ new_product.4.description }}</a>
+                                </h6>
                                 <div class="ms-pro-rat-price">
                                     <div class="ms-pro-rat-pri-inner">
                                             <span class="ms-price">
-                                                <span class="new-price">25 هزار</span>
-                                            <span class="old-price">30 هزار</span>
-                                            <span class="qty">- 250 گرم</span>
+                                                <span class="new-price">{{ new_product.4.price | intcomma:False }}  تومان</span>
+{#                                            <span class="old-price">55 هزار</span>#}
+                                            <span class="qty">- {{ new_product.4.get_type_display }}   </span>
                                             </span>
                                     </div>
                                 </div>
@@ -2971,21 +2990,23 @@
                             <div class="ms-pro-image-outer">
                                 <div class="ms-pro-image">
                                     <a href="product-left-sidebar.html" class="image">
-                                        <img class="main-image" src="{% static 'assets/img/product-images/18_1.jpg' %}"
+                                        <img class="main-image" src="{{ new_product.5.image_list.0.image.url }}"
                                              alt="Product">
                                     </a>
                                 </div>
                             </div>
                             <div class="ms-pro-content">
-                                <h5 class="ms-pro-title"><a href="product-left-sidebar.html">لیمو - بدون دانه</a>
-                                </h5>
-                                <h6 class="ms-pro-stitle"><a href="shop-left-sidebar-col-3.html">سبزیجات</a></h6>
+                                <h5 class="ms-pro-title"><a
+                                        href="product-left-sidebar.html">{{ new_product.5.name }}</a></h5>
+                                <h6 class="ms-pro-stitle"><a
+                                        href="shop-left-sidebar-col-3.html">{{ new_product.5.description }}</a>
+                                </h6>
                                 <div class="ms-pro-rat-price">
                                     <div class="ms-pro-rat-pri-inner">
                                             <span class="ms-price">
-                                                <span class="new-price">62 هزار</span>
-                                            <span class="old-price">65 هزار</span>
-                                            <span class="qty">- 1 کیلوگرم</span>
+                                                <span class="new-price">{{ new_product.5.price | intcomma:False }}  تومان</span>
+{#                                            <span class="old-price">55 هزار</span>#}
+                                            <span class="qty">- {{ new_product.5.get_type_display }}   </span>
                                             </span>
                                     </div>
                                 </div>
@@ -3013,22 +3034,23 @@
                             <div class="ms-pro-image-outer">
                                 <div class="ms-pro-image">
                                     <a href="product-left-sidebar.html" class="image">
-                                        <img class="main-image" src="{% static 'assets/img/product-images/8_1.jpg' %}"
+                                        <img class="main-image" src="{{ new_product.6.image_list.0.image.url }}"
                                              alt="Product">
                                     </a>
                                 </div>
                             </div>
                             <div class="ms-pro-content">
-                                <h5 class="ms-pro-title"><a href="product-left-sidebar.html">بسته ارزشی بادام هندی</a>
-                                </h5>
-                                <h6 class="ms-pro-stitle"><a href="shop-left-sidebar-col-3.html"> میوه های خشک شده</a>
+                                <h5 class="ms-pro-title"><a
+                                        href="product-left-sidebar.html">{{ new_product.6.name }}</a></h5>
+                                <h6 class="ms-pro-stitle"><a
+                                        href="shop-left-sidebar-col-3.html">{{ new_product.6.description }}</a>
                                 </h6>
                                 <div class="ms-pro-rat-price">
                                     <div class="ms-pro-rat-pri-inner">
                                             <span class="ms-price">
-                                                <span class="new-price">50 هزار</span>
-                                            <span class="old-price">55 هزار</span>
-                                            <span class="qty">- 2 پاکت</span>
+                                                <span class="new-price">{{ new_product.6.price | intcomma:False }}  تومان</span>
+{#                                            <span class="old-price">55 هزار</span>#}
+                                            <span class="qty">- {{ new_product.6.get_type_display }}   </span>
                                             </span>
                                     </div>
                                 </div>
@@ -3046,20 +3068,23 @@
                             <div class="ms-pro-image-outer">
                                 <div class="ms-pro-image">
                                     <a href="product-left-sidebar.html" class="image">
-                                        <img class="main-image" src="{% static 'assets/img/product-images/23_1.jpg' %}"
+                                        <img class="main-image" src="{{ new_product.7.image_list.0.image.url }}"
                                              alt="Product">
                                     </a>
                                 </div>
                             </div>
                             <div class="ms-pro-content">
-                                <h5 class="ms-pro-title"><a href="product-left-sidebar.html">بلوبری</a></h5>
-                                <h6 class="ms-pro-stitle"><a href="shop-left-sidebar-col-3.html">میوه ها</a></h6>
+                                <h5 class="ms-pro-title"><a
+                                        href="product-left-sidebar.html">{{ new_product.7.name }}</a></h5>
+                                <h6 class="ms-pro-stitle"><a
+                                        href="shop-left-sidebar-col-3.html">{{ new_product.7.description }}</a>
+                                </h6>
                                 <div class="ms-pro-rat-price">
                                     <div class="ms-pro-rat-pri-inner">
                                             <span class="ms-price">
-                                                <span class="new-price">52 هزار</span>
-                                            <span class="old-price">55 هزار</span>
-                                            <span class="qty">- 1 پاکت</span>
+                                                <span class="new-price">{{ new_product.7.price | intcomma:False }}  تومان</span>
+{#                                            <span class="old-price">55 هزار</span>#}
+                                            <span class="qty">- {{ new_product.7.get_type_display }}   </span>
                                             </span>
                                     </div>
                                 </div>
@@ -3077,25 +3102,28 @@
                             <div class="ms-pro-image-outer">
                                 <div class="ms-pro-image">
                                     <a href="product-left-sidebar.html" class="image">
-                                        <img class="main-image" src="{% static 'assets/img/product-images/33_1.jpg' %}"
+                                        <img class="main-image" src="{{ new_product.8.image_list.0.image.url }}"
                                              alt="Product">
                                     </a>
                                 </div>
                             </div>
                             <div class="ms-pro-content">
-                                <h5 class="ms-pro-title"><a href="product-left-sidebar.html">خرچنگ</a></h5>
-                                <h6 class="ms-pro-stitle"><a href="shop-left-sidebar-col-3.html">غذای دریایی</a></h6>
+                                <h5 class="ms-pro-title"><a
+                                        href="product-left-sidebar.html">{{ new_product.8.name }}</a></h5>
+                                <h6 class="ms-pro-stitle"><a
+                                        href="shop-left-sidebar-col-3.html">{{ new_product.8.description }}</a>
+                                </h6>
                                 <div class="ms-pro-rat-price">
                                     <div class="ms-pro-rat-pri-inner">
                                             <span class="ms-price">
-                                                <span class="new-price">10 هزار</span>
-                                            <span class="old-price">11 هزار</span>
-                                            <span class="qty">- 500 گرم</span>
+                                                <span class="new-price">{{ new_product.8.price | intcomma:False }}  تومان</span>
+{#                                            <span class="old-price">55 هزار</span>#}
+                                            <span class="qty">- {{ new_product.8.get_type_display }}   </span>
                                             </span>
                                     </div>
                                 </div>
                             </div>
-                            <span class="label nonveg" title="Veg">
+                            <span class="label veg" title="Veg">
                                     <span class="dot"></span>
                                 </span>
                             <a href="javascript:void(0)" class="add-to-cart" title="خرید"><img
@@ -3118,84 +3146,91 @@
                             <div class="ms-pro-image-outer">
                                 <div class="ms-pro-image">
                                     <a href="product-left-sidebar.html" class="image">
-                                        <img class="main-image" src="{% static 'assets/img/product-images/18_1.jpg' %}"
+                                        <img class="main-image" src="{{ new_product.9.image_list.0.image.url }}"
                                              alt="Product">
                                     </a>
                                 </div>
                             </div>
                             <div class="ms-pro-content">
-                                <h5 class="ms-pro-title"><a href="product-left-sidebar.html">لیمو - بدون دانه</a>
-                                </h5>
-                                <h6 class="ms-pro-stitle"><a href="shop-left-sidebar-col-3.html">سبزیجات</a></h6>
-                                <div class="ms-pro-rat-price">
-                                    <div class="ms-pro-rat-pri-inner">
-                                            <span class="ms-price">
-                                                <span class="new-price">62 هزار</span>
-                                            <span class="old-price">65 هزار</span>
-                                            <span class="qty">- 1 کیلوگرم</span>
-                                            </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <span class="label veg" title="Veg">
-                                    <span class="dot"></span>
-                                </span>
-                            <a href="javascript:void(0)" class="add-to-cart" title="خرید"><img
-                                    src="{% static 'assets/img/icons/pro_cart.svg' %}" class="svg_img pro_svg"
-                                    alt="cart"></a>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 ms-all-product-block">
-                        <div class="ms-all-product-inner">
-                            <div class="ms-pro-image-outer">
-                                <div class="ms-pro-image">
-                                    <a href="product-left-sidebar.html" class="image">
-                                        <img class="main-image" src="{% static 'assets/img/product-images/37_1.jpg' %}"
-                                             alt="Product">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="ms-pro-content">
-                                <h5 class="ms-pro-title"><a href="product-left-sidebar.html">بستنی</a></h5>
-                                <h6 class="ms-pro-stitle"><a href="shop-left-sidebar-col-3.html">لبنیات</a></h6>
-                                <div class="ms-pro-rat-price">
-                                    <div class="ms-pro-rat-pri-inner">
-                                            <span class="ms-price">
-                                                <span class="new-price">25 هزار</span>
-                                            <span class="old-price">30 هزار</span>
-                                            <span class="qty">- 250 گرم</span>
-                                            </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <span class="label veg" title="Veg">
-                                    <span class="dot"></span>
-                                </span>
-                            <a href="javascript:void(0)" class="add-to-cart" title="خرید"><img
-                                    src="{% static 'assets/img/icons/pro_cart.svg' %}" class="svg_img pro_svg"
-                                    alt="cart"></a>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 ms-all-product-block">
-                        <div class="ms-all-product-inner">
-                            <div class="ms-pro-image-outer">
-                                <div class="ms-pro-image">
-                                    <a href="product-left-sidebar.html" class="image">
-                                        <img class="main-image" src="{% static 'assets/img/product-images/8_1.jpg' %}"
-                                             alt="Product">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="ms-pro-content">
-                                <h5 class="ms-pro-title"><a href="product-left-sidebar.html"> بادام هندی </a></h5>
-                                <h6 class="ms-pro-stitle"><a href="shop-left-sidebar-col-3.html"> میوه خشک شده</a>
+                                <h5 class="ms-pro-title"><a
+                                        href="product-left-sidebar.html">{{ new_product.9.name }}</a></h5>
+                                <h6 class="ms-pro-stitle"><a
+                                        href="shop-left-sidebar-col-3.html">{{ new_product.9.description }}</a>
                                 </h6>
                                 <div class="ms-pro-rat-price">
                                     <div class="ms-pro-rat-pri-inner">
                                             <span class="ms-price">
-                                                <span class="new-price">50 هزار</span>
-                                            <span class="old-price">55 هزار</span>
-                                            <span class="qty">- 2 پاکت</span>
+                                                <span class="new-price">{{ new_product.9.price | intcomma:False }}  تومان</span>
+{#                                            <span class="old-price">55 هزار</span>#}
+                                            <span class="qty">- {{ new_product.9.get_type_display }}   </span>
+                                            </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="label veg" title="Veg">
+                                    <span class="dot"></span>
+                                </span>
+                            <a href="javascript:void(0)" class="add-to-cart" title="خرید"><img
+                                    src="{% static 'assets/img/icons/pro_cart.svg' %}" class="svg_img pro_svg"
+                                    alt="cart"></a>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 ms-all-product-block">
+                        <div class="ms-all-product-inner">
+                            <div class="ms-pro-image-outer">
+                                <div class="ms-pro-image">
+                                    <a href="product-left-sidebar.html" class="image">
+                                        <img class="main-image" src="{{ new_product.10.image_list.0.image.url }}"
+                                             alt="Product">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ms-pro-content">
+                                <h5 class="ms-pro-title"><a
+                                        href="product-left-sidebar.html">{{ new_product.10.name }}</a></h5>
+                                <h6 class="ms-pro-stitle"><a
+                                        href="shop-left-sidebar-col-3.html">{{ new_product.10.description }}</a>
+                                </h6>
+                                <div class="ms-pro-rat-price">
+                                    <div class="ms-pro-rat-pri-inner">
+                                            <span class="ms-price">
+                                                <span class="new-price">{{ new_product.10.price | intcomma:False }}  تومان</span>
+{#                                            <span class="old-price">55 هزار</span>#}
+                                            <span class="qty">- {{ new_product.10.get_type_display }}   </span>
+                                            </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="label veg" title="Veg">
+                                    <span class="dot"></span>
+                                </span>
+                            <a href="javascript:void(0)" class="add-to-cart" title="خرید"><img
+                                    src="{% static 'assets/img/icons/pro_cart.svg' %}" class="svg_img pro_svg"
+                                    alt="cart"></a>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 ms-all-product-block">
+                        <div class="ms-all-product-inner">
+                            <div class="ms-pro-image-outer">
+                                <div class="ms-pro-image">
+                                    <a href="product-left-sidebar.html" class="image">
+                                        <img class="main-image" src="{{ new_product.11.image_list.0.image.url }}"
+                                             alt="Product">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ms-pro-content">
+                                <h5 class="ms-pro-title"><a
+                                        href="product-left-sidebar.html">{{ new_product.11.name }}</a></h5>
+                                <h6 class="ms-pro-stitle"><a
+                                        href="shop-left-sidebar-col-3.html">{{ new_product.11.description }}</a>
+                                </h6>
+                                <div class="ms-pro-rat-price">
+                                    <div class="ms-pro-rat-pri-inner">
+                                            <span class="ms-price">
+                                                <span class="new-price">{{ new_product.11.price | intcomma:False }}  تومان</span>
+{#                                            <span class="old-price">55 هزار</span>#}
+                                            <span class="qty">- {{ new_product.11.get_type_display }}   </span>
                                             </span>
                                     </div>
                                 </div>
@@ -3265,461 +3300,82 @@
                 <div class="section-bg-color section-space-p30 main-border-radius">
                     <div class="section-title">
                         <h2 class="ms-title">معامله <span>روز</span></h2>
-                        <div id="dealend" class="dealend-timer"></div>
+                        {#                        <div id="dealend" class="dealend-timer"></div>#}
                     </div>
                     <div class="ms-deal-block m-minus-12">
                         <div class="deal-owl-carousel owl-carousel" dir="ltr">
-                            <div class="ms-product-content">
-                                <div class="ms-product-inner">
-                                    <div class="ms-pro-image-outer">
-                                        <div class="ms-pro-image">
-                                            <a href="product-left-sidebar.html" class="image">
+                            {% for product in day_product %}
+                                <div class="ms-product-content" >
+                                    <div class="ms-product-inner">
+                                        <div class="ms-pro-image-outer">
+                                            <div class="ms-pro-image">
+                                                <a href="product-left-sidebar.html" class="image">
                                                     <span class="label veg">
                                                         <span class="dot"></span>
                                                     </span>
-                                                <img class="main-image"
-                                                     src="{% static 'assets/img/product-images/30_1.jpg' %}"
-                                                     alt="Product">
-                                                <img class="hover-image"
-                                                     src="{% static 'assets/img/product-images/30_1.jpg' %}"
-                                                     alt="Product">
-                                            </a>
-                                            <span class="flags">
-                                                    <span class="new">جدید</span>
-                                                </span>
-                                            <div class="ms-pro-actions">
-                                                <a href="javascript:void(0)" class="ms-btn-group wishlist"
-                                                   title="علاقه مندی">
-                                                    <img src="{% static 'assets/img/icons/pro_wishlist.svg' %}"
-                                                         class="svg_img pro_svg" alt="">
+                                                    <img class="main-image"
+                                                         src="{{ product.image_list.0.image.url }}"
+                                                         alt="Product">
+                                                    {% if product.image_list|length > 1 %}
+                                                        <img class="hover-image"
+                                                             src="{{ product.image_list.1.image.url }}"
+                                                             alt="Product">
+                                                    {% endif %}
                                                 </a>
-                                                <a href="#" class="ms-btn-group quickview" data-link-action="quickview"
-                                                   title="بازدید سریع" data-bs-toggle="modal"
-                                                   data-bs-target="#ms_quickview_modal">
-                                                    <img src="{% static 'assets/img/icons/quickview.svg' %}"
-                                                         class="svg_img pro_svg" alt="">
-                                                </a>
-                                                <a href="javascript:void(0)" class="ms-btn-group compare"
-                                                   title="مقایسه">
-                                                    <img src="{% static 'assets/img/icons/compare.svg' %}"
-                                                         class="svg_img pro_svg" alt="">
-                                                </a>
-                                                <a href="javascript:void(0)" title="خرید"
-                                                   class="ms-btn-group add-to-cart">
-                                                    <img src="{% static 'assets/img/icons/pro_cart.svg' %}"
-                                                         class="svg_img pro_svg" alt="">
-                                                </a>
+                                                {#                                                <span class="flags">#}
+                                                {#                                                    <span class="new">جدید</span>#}
+                                                {#                                                </span>#}
+                                                <div class="ms-pro-actions">
+                                                    <a href="javascript:void(0)" class="ms-btn-group wishlist"
+                                                       title="علاقه مندی">
+                                                        <img src="{% static 'assets/img/icons/pro_wishlist.svg' %}"
+                                                             class="svg_img pro_svg" alt="">
+                                                    </a>
+                                                    <a href="#" class="ms-btn-group quickview"
+                                                       data-link-action="quickview"
+                                                       title="بازدید سریع" data-bs-toggle="modal"
+                                                       data-bs-target="#ms_quickview_modal">
+                                                        <img src="{% static 'assets/img/icons/quickview.svg' %}"
+                                                             class="svg_img pro_svg" alt="">
+                                                    </a>
+                                                    <a href="javascript:void(0)" class="ms-btn-group compare"
+                                                       title="مقایسه">
+                                                        <img src="{% static 'assets/img/icons/compare.svg' %}"
+                                                             class="svg_img pro_svg" alt="">
+                                                    </a>
+                                                    <a href="javascript:void(0)" title="خرید"
+                                                       class="ms-btn-group add-to-cart">
+                                                        <img src="{% static 'assets/img/icons/pro_cart.svg' %}"
+                                                             class="svg_img pro_svg" alt="">
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="ms-pro-content">
-                                        <a href="shop-left-sidebar-col-3.html">
-                                            <h6 class="ms-pro-stitle">خوراکی ها</h6>
-                                        </a>
-                                        <h5 class="ms-pro-title"><a href="product-left-sidebar.html">اسنک چیپس موز</a>
-                                        </h5>
-                                        <div class="ms-pro-rat-price">
+                                        <div class="ms-pro-content">
+                                            <a href="shop-left-sidebar-col-3.html">
+                                                <h6 class="ms-pro-stitle">{{ product.name }}</h6>
+                                            </a>
+                                            <h5 class="ms-pro-title"><a
+                                                    href="product-left-sidebar.html">{{ product.description }}</a>
+                                            </h5>
+                                            <div class="ms-pro-rat-price">
                                                 <span class="ms-pro-rating">
                                                     <i class="fa-solid fa-star fill"></i>
                                                     <i class="fa-solid fa-star fill"></i>
                                                     <i class="fa-solid fa-star"></i>
                                                     <i class="fa-solid fa-star"></i>
                                                     <i class="fa-solid fa-star"></i>
-                                                    <span class="qty" dir="rtl">2 پاکت</span>
+{#                                                    <span class="qty" dir="rtl">2 پاکت</span>#}
                                                 </span>
-                                            <span class="ms-price">
-                                                <span class="old-price">50 هزار</span>
-                                                <span class="new-price">45 هزار</span>
+                                                <span class="ms-price">
+{#                                                <span class="old-price">50 هزار</span>#}
+                                                <span class="new-price">{{ product.price|intcomma:False }} هزار</span>
                                                 </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ms-product-content">
-                                <div class="ms-product-inner">
-                                    <div class="ms-pro-image-outer">
-                                        <div class="ms-pro-image">
-                                            <a href="product-left-sidebar.html" class="image">
-                                                    <span class="label veg">
-                                                        <span class="dot"></span>
-                                                    </span>
-                                                <img class="main-image"
-                                                     src="{% static 'assets/img/product-images/13_1.jpg' %}"
-                                                     alt="Product">
-                                                <img class="hover-image"
-                                                     src="{% static 'assets/img/product-images/13_1.jpg' %}"
-                                                     alt="Product">
-                                            </a>
-                                            <span class="flags">
-                                                    <span class="sale">فروش</span>
-                                                </span>
-                                            <div class="ms-pro-actions">
-                                                <a href="javascript:void(0)" class="ms-btn-group wishlist"
-                                                   title="علاقه مندی">
-                                                    <img src="{% static 'assets/img/icons/pro_wishlist.svg' %}"
-                                                         class="svg_img pro_svg" alt="">
-                                                </a>
-                                                <a href="#" class="ms-btn-group quickview" data-link-action="quickview"
-                                                   title="بازدید سریع" data-bs-toggle="modal"
-                                                   data-bs-target="#ms_quickview_modal">
-                                                    <img src="{% static 'assets/img/icons/quickview.svg' %}"
-                                                         class="svg_img pro_svg" alt="">
-                                                </a>
-                                                <a href="javascript:void(0)" class="ms-btn-group compare"
-                                                   title="مقایسه">
-                                                    <img src="{% static 'assets/img/icons/compare.svg' %}"
-                                                         class="svg_img pro_svg" alt="">
-                                                </a>
-                                                <a href="javascript:void(0)" title="خرید"
-                                                   class="ms-btn-group add-to-cart">
-                                                    <img src="{% static 'assets/img/icons/pro_cart.svg' %}"
-                                                         class="svg_img pro_svg" alt="">
-                                                </a>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="ms-pro-content">
-                                        <a href="shop-left-sidebar-col-3.html">
-                                            <h6 class="ms-pro-stitle">ریشه غلات</h6>
-                                        </a>
-                                        <h5 class="ms-pro-title"><a href="product-left-sidebar.html">پیاز</a></h5>
-                                        <div class="ms-pro-rat-price">
-                                                <span class="ms-pro-rating">
-                                                    <i class="fa-solid fa-star fill"></i>
-                                                    <i class="fa-solid fa-star fill"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <span class="qty" dir="rtl">10 کیلوگرم</span>
-                                                </span>
-                                            <span class="ms-price">
-                                                <span class="old-price">50 هزار</span>
-                                                <span class="new-price">45 هزار</span>
-                                                </span>
-                                        </div>
-                                    </div>
                                 </div>
-                            </div>
-                            <div class="ms-product-content">
-                                <div class="ms-product-inner">
-                                    <div class="ms-pro-image-outer">
-                                        <div class="ms-pro-image">
-                                            <a href="product-left-sidebar.html" class="image">
-                                                    <span class="label veg">
-                                                        <span class="dot"></span>
-                                                    </span>
-                                                <img class="main-image"
-                                                     src="{% static 'assets/img/product-images/25_1.jpg' %}"
-                                                     alt="Product">
-                                                <img class="hover-image"
-                                                     src="{% static 'assets/img/product-images/25_1.jpg' %}"
-                                                     alt="Product">
-                                            </a>
-                                            <span class="flags">
-                                                    <span class="new">جدید</span>
-                                                </span>
-                                            <div class="ms-pro-actions">
-                                                <a href="javascript:void(0)" class="ms-btn-group wishlist"
-                                                   title="علاقه مندی">
-                                                    <img src="{% static 'assets/img/icons/pro_wishlist.svg' %}"
-                                                         class="svg_img pro_svg" alt="">
-                                                </a>
-                                                <a href="#" class="ms-btn-group quickview" data-link-action="quickview"
-                                                   title="بازدید سریع" data-bs-toggle="modal"
-                                                   data-bs-target="#ms_quickview_modal">
-                                                    <img src="{% static 'assets/img/icons/quickview.svg' %}"
-                                                         class="svg_img pro_svg" alt="">
-                                                </a>
-                                                <a href="javascript:void(0)" class="ms-btn-group compare"
-                                                   title="مقایسه">
-                                                    <img src="{% static 'assets/img/icons/compare.svg' %}"
-                                                         class="svg_img pro_svg" alt="">
-                                                </a>
-                                                <a href="javascript:void(0)" title="خرید"
-                                                   class="ms-btn-group add-to-cart">
-                                                    <img src="{% static 'assets/img/icons/pro_cart.svg' %}"
-                                                         class="svg_img pro_svg" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ms-pro-content">
-                                        <a href="shop-left-sidebar-col-3.html">
-                                            <h6 class="ms-pro-stitle">میوه تازه</h6>
-                                        </a>
-                                        <h5 class="ms-pro-title"><a href="product-left-sidebar.html">لیمو</a></h5>
-                                        <div class="ms-pro-rat-price">
-                                                <span class="ms-pro-rating">
-                                                    <i class="fa-solid fa-star fill"></i>
-                                                    <i class="fa-solid fa-star fill"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <span class="qty" dir="rtl">500 گرم</span>
-                                                </span>
-                                            <span class="ms-price">
-                                                <span class="old-price">50 هزار</span>
-                                                <span class="new-price">45 هزار</span>
-                                                </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ms-product-content">
-                                <div class="ms-product-inner">
-                                    <div class="ms-pro-image-outer">
-                                        <div class="ms-pro-image">
-                                            <a href="product-left-sidebar.html" class="image">
-                                                    <span class="label veg">
-                                                        <span class="dot"></span>
-                                                    </span>
-                                                <img class="main-image"
-                                                     src="{% static 'assets/img/product-images/2_1.jpg' %}"
-                                                     alt="Product">
-                                                <img class="hover-image"
-                                                     src="{% static 'assets/img/product-images/2_2.jpg' %}"
-                                                     alt="Product">
-                                            </a>
-                                            <span class="flags">
-                                                    <span class="sale">فروش</span>
-                                                </span>
-                                            <div class="ms-pro-actions">
-                                                <a href="javascript:void(0)" class="ms-btn-group wishlist"
-                                                   title="علاقه مندی">
-                                                    <img src="{% static 'assets/img/icons/pro_wishlist.svg' %}"
-                                                         class="svg_img pro_svg" alt="">
-                                                </a>
-                                                <a href="#" class="ms-btn-group quickview" data-link-action="quickview"
-                                                   title="بازدید سریع" data-bs-toggle="modal"
-                                                   data-bs-target="#ms_quickview_modal">
-                                                    <img src="{% static 'assets/img/icons/quickview.svg' %}"
-                                                         class="svg_img pro_svg" alt="">
-                                                </a>
-                                                <a href="javascript:void(0)" class="ms-btn-group compare"
-                                                   title="مقایسه">
-                                                    <img src="{% static 'assets/img/icons/compare.svg' %}"
-                                                         class="svg_img pro_svg" alt="">
-                                                </a>
-                                                <a href="javascript:void(0)" title="خرید"
-                                                   class="ms-btn-group add-to-cart">
-                                                    <img src="{% static 'assets/img/icons/pro_cart.svg' %}"
-                                                         class="svg_img pro_svg" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ms-pro-content">
-                                        <a href="shop-left-sidebar-col-3.html">
-                                            <h6 class="ms-pro-stitle"> میوه باارزش</h6>
-                                        </a>
-                                        <h5 class="ms-pro-title"><a href="product-left-sidebar.html">کیسه خرما</a></h5>
-                                        <div class="ms-pro-rat-price">
-                                                <span class="ms-pro-rating">
-                                                    <i class="fa-solid fa-star fill"></i>
-                                                    <i class="fa-solid fa-star fill"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                </span>
-                                            <span class="ms-price">
-                                                <span class="old-price">50 هزار</span>
-                                                <span class="new-price">45 هزار</span>
-                                                </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ms-product-content">
-                                <div class="ms-product-inner">
-                                    <div class="ms-pro-image-outer">
-                                        <div class="ms-pro-image">
-                                            <a href="product-left-sidebar.html" class="image">
-                                                    <span class="label nonveg">
-                                                        <span class="dot"></span>
-                                                    </span>
-                                                <img class="main-image"
-                                                     src="{% static 'assets/img/product-images/19_1.jpg' %}"
-                                                     alt="Product">
-                                                <img class="hover-image"
-                                                     src="{% static 'assets/img/product-images/19_1.jpg' %}"
-                                                     alt="Product">
-                                            </a>
-                                            <div class="ms-pro-actions">
-                                                <a href="javascript:void(0)" class="ms-btn-group wishlist"
-                                                   title="علاقه مندی">
-                                                    <img src="{% static 'assets/img/icons/pro_wishlist.svg' %}"
-                                                         class="svg_img pro_svg" alt="">
-                                                </a>
-                                                <a href="#" class="ms-btn-group quickview" data-link-action="quickview"
-                                                   title="بازدید سریع" data-bs-toggle="modal"
-                                                   data-bs-target="#ms_quickview_modal">
-                                                    <img src="{% static 'assets/img/icons/quickview.svg' %}"
-                                                         class="svg_img pro_svg" alt="">
-                                                </a>
-                                                <a href="javascript:void(0)" class="ms-btn-group compare"
-                                                   title="مقایسه">
-                                                    <img src="{% static 'assets/img/icons/compare.svg' %}"
-                                                         class="svg_img pro_svg" alt="">
-                                                </a>
-                                                <a href="javascript:void(0)" title="خرید"
-                                                   class="ms-btn-group add-to-cart">
-                                                    <img src="{% static 'assets/img/icons/pro_cart.svg' %}"
-                                                         class="svg_img pro_svg" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ms-pro-content">
-                                        <a href="shop-left-sidebar-col-3.html">
-                                            <h6 class="ms-pro-stitle">تخم مرغ</h6>
-                                        </a>
-                                        <h5 class="ms-pro-title"><a href="product-left-sidebar.html">تخم مرغ مزرعه</a>
-                                        </h5>
-                                        <div class="ms-pro-rat-price">
-                                                <span class="ms-pro-rating">
-                                                    <i class="fa-solid fa-star fill"></i>
-                                                    <i class="fa-solid fa-star fill"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <span class="qty" dir="rtl">3 پاکت</span>
-                                                </span>
-                                            <span class="ms-price">
-                                                <span class="old-price">50 هزار</span>
-                                                <span class="new-price">45 هزار</span>
-                                                </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ms-product-content">
-                                <div class="ms-product-inner">
-                                    <div class="ms-pro-image-outer">
-                                        <div class="ms-pro-image">
-                                            <a href="product-left-sidebar.html" class="image">
-                                                    <span class="label veg">
-                                                        <span class="dot"></span>
-                                                    </span>
-                                                <img class="main-image"
-                                                     src="{% static 'assets/img/product-images/24_1.jpg' %}"
-                                                     alt="Product">
-                                                <img class="hover-image"
-                                                     src="{% static 'assets/img/product-images/24_1.jpg' %}"
-                                                     alt="Product">
-                                            </a>
-                                            <span class="flags">
-                                                    <span class="new">جدید</span>
-                                                </span>
-                                            <div class="ms-pro-actions">
-                                                <a href="javascript:void(0)" class="ms-btn-group wishlist"
-                                                   title="علاقه مندی">
-                                                    <img src="{% static 'assets/img/icons/pro_wishlist.svg' %}"
-                                                         class="svg_img pro_svg" alt="">
-                                                </a>
-                                                <a href="#" class="ms-btn-group quickview" data-link-action="quickview"
-                                                   title="بازدید سریع" data-bs-toggle="modal"
-                                                   data-bs-target="#ms_quickview_modal">
-                                                    <img src="{% static 'assets/img/icons/quickview.svg' %}"
-                                                         class="svg_img pro_svg" alt="">
-                                                </a>
-                                                <a href="javascript:void(0)" class="ms-btn-group compare"
-                                                   title="مقایسه">
-                                                    <img src="{% static 'assets/img/icons/compare.svg' %}"
-                                                         class="svg_img pro_svg" alt="">
-                                                </a>
-                                                <a href="javascript:void(0)" title="خرید"
-                                                   class="ms-btn-group add-to-cart">
-                                                    <img src="{% static 'assets/img/icons/pro_cart.svg' %}"
-                                                         class="svg_img pro_svg" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ms-pro-content">
-                                        <a href="shop-left-sidebar-col-3.html">
-                                            <h6 class="ms-pro-stitle">میوه تازه</h6>
-                                        </a>
-                                        <h5 class="ms-pro-title"><a href="product-left-sidebar.html">گیلاس</a></h5>
-                                        <div class="ms-pro-rat-price">
-                                                <span class="ms-pro-rating">
-                                                    <i class="fa-solid fa-star fill"></i>
-                                                    <i class="fa-solid fa-star fill"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <span class="qty" dir="rtl">1 کیلوگرم</span>
-                                                </span>
-                                            <span class="ms-price">
-                                                <span class="old-price">50 هزار</span>
-                                                <span class="new-price">45 هزار</span>
-                                                </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ms-product-content">
-                                <div class="ms-product-inner">
-                                    <div class="ms-pro-image-outer">
-                                        <div class="ms-pro-image">
-                                            <a href="product-left-sidebar.html" class="image">
-                                                    <span class="label veg">
-                                                        <span class="dot"></span>
-                                                    </span>
-                                                <img class="main-image"
-                                                     src="{% static 'assets/img/product-images/17_1.jpg' %}"
-                                                     alt="Product">
-                                                <img class="hover-image"
-                                                     src="{% static 'assets/img/product-images/17_1.jpg' %}"
-                                                     alt="Product">
-                                            </a>
-                                            <div class="ms-pro-actions">
-                                                <a href="javascript:void(0)" class="ms-btn-group wishlist"
-                                                   title="علاقه مندی">
-                                                    <img src="{% static 'assets/img/icons/pro_wishlist.svg' %}"
-                                                         class="svg_img pro_svg" alt="">
-                                                </a>
-                                                <a href="#" class="ms-btn-group quickview" data-link-action="quickview"
-                                                   title="بازدید سریع" data-bs-toggle="modal"
-                                                   data-bs-target="#ms_quickview_modal">
-                                                    <img src="{% static 'assets/img/icons/quickview.svg' %}"
-                                                         class="svg_img pro_svg" alt="">
-                                                </a>
-                                                <a href="javascript:void(0)" class="ms-btn-group compare"
-                                                   title="مقایسه">
-                                                    <img src="{% static 'assets/img/icons/compare.svg' %}"
-                                                         class="svg_img pro_svg" alt="">
-                                                </a>
-                                                <a href="javascript:void(0)" title="خرید"
-                                                   class="ms-btn-group add-to-cart">
-                                                    <img src="{% static 'assets/img/icons/pro_cart.svg' %}"
-                                                         class="svg_img pro_svg" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ms-pro-content">
-                                        <a href="shop-left-sidebar-col-3.html">
-                                            <h6 class="ms-pro-stitle">ریشه غلات</h6>
-                                        </a>
-                                        <h5 class="ms-pro-title"><a href="product-left-sidebar.html">زنجبیل -
-                                            ارگانیک</a></h5>
-                                        <div class="ms-pro-rat-price">
-                                                <span class="ms-pro-rating">
-                                                    <i class="fa-solid fa-star fill"></i>
-                                                    <i class="fa-solid fa-star fill"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <span class="qty" dir="rtl">100 گرم</span>
-                                                </span>
-                                            <span class="ms-price">
-                                                <span class="old-price">50 هزار</span>
-                                                <span class="new-price">45 هزار</span>
-                                                </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>

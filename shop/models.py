@@ -7,17 +7,17 @@ from product.models import Product
 
 class Shop(models.Model):
     class ShopStatus(models.IntegerChoices):
-        PENDING = 0
-        ACTIVE = 1
-        DE_ACTIVE = 2
-        REPORTED = 3
-        NEED_TO_COMPLETE = 4
+        PENDING = 0, "انتظار"
+        ACTIVE = 1, 'فعال'
+        DE_ACTIVE = 2, 'غیر فعال'
+        REPORTED = 3, 'گزارش شده'
+        NEED_TO_COMPLETE = 4, 'نیاز به تکمیل پروفایل'
 
     class ShopRate(models.IntegerChoices):
-        BLACK = 0
-        WHITE = 1
-        BRONZE = 2
-        GOLD = 3
+        BLACK = 0, 'سیاه'
+        WHITE = 1, 'سفید'
+        BRONZE = 2, 'برنز'
+        GOLD = 3, 'طلایی'
 
     name = models.CharField(max_length=40, verbose_name='نام', unique=True)
     trade_id = models.CharField(max_length=19, verbose_name='شناسه تجاری')
@@ -69,8 +69,8 @@ class ShopPhone(models.Model):
 
 class ShopProduct(models.Model):
     class Inventory(models.IntegerChoices):
-        AVAILABLE = 0
-        NOT_AVAILABLE = 1
+        AVAILABLE = 0, 'در دسترس'
+        NOT_AVAILABLE = 1, 'در دسترس نیست'
 
     shop = models.ForeignKey(Shop, on_delete=models.SET_NULL, null=True, verbose_name='فروشگاه')
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True, verbose_name='محصول')

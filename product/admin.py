@@ -12,6 +12,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ['trade_id', 'class_id', 'name', 'type', 'material', 'state', 'is_active']
     search_fields = ['trade_id', 'name']
     list_filter = ['class_id', 'type', 'material', 'state', 'is_active', 'category']
+    list_editable = ('is_active', 'state', 'type')
     list_per_page = 20
     inlines = [ProductImageInline, ]
 
