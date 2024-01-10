@@ -8,7 +8,7 @@ from django_jalali.db import models as jmodels
 
 class ArticleEncyclopediaCategory(models.Model):
     name = models.CharField(max_length=50, verbose_name="عنوان", unique=True)
-    parent = models.ForeignKey("ArticleEncyclopediaCategory",  on_delete=SET_NULL, blank=True, null=True,
+    parent = models.ForeignKey("ArticleEncyclopediaCategory", on_delete=SET_NULL, blank=True, null=True,
                                verbose_name="منبع")
 
     class Meta:
@@ -47,11 +47,15 @@ class NewsPaperEncyclopedia(models.Model):
 
 class ArticleEncyclopedia(models.Model):
     name = models.CharField(max_length=100, verbose_name="عنوان", unique=True)
-    category = models.ForeignKey("ArticleEncyclopediaCategory", on_delete=SET_NULL, null=True, verbose_name="دسته بندی")
+    category = models.ForeignKey("ArticleEncyclopediaCategory", on_delete=SET_NULL,
+                                 null=True, verbose_name="دسته بندی")
     created_at = jmodels.jDateField(auto_now_add=True, verbose_name="تاریخ ساخت")
+    # created_at = models.DateField(auto_now_add=True, verbose_name="تاریخ ساخت")
     author = models.CharField(max_length=100, verbose_name="نویسنده", unique=True)
     abstract = RichTextField()
     content = RichTextField()
+    image = models.FileField(upload_to="article-encyclopedia/",
+                             validators=[FileExtensionValidator(['jpg', 'png', 'svg', 'jpeg'])], verbose_name='تصویر')
     registered = models.CharField(max_length=140, verbose_name="ثبت در")
 
     class Meta:

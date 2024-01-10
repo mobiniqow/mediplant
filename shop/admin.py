@@ -14,7 +14,7 @@ class ShopImageInline(admin.TabularInline):
 
 class CertificateImageInline(admin.TabularInline):
     model = CertificateImage
-    fields = ('image',)
+    fields = ('certificate_image',)
 
 
 @admin.register(Shop)

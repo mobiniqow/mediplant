@@ -1,6 +1,7 @@
 from django.views.generic import TemplateView
 
 from banner.models import Banner
+from encyclopedia.models import ArticleEncyclopedia
 from product.models import Category, Product, ProductImage
 from shop.models import ShopProduct, Shop
 
@@ -29,12 +30,22 @@ class IndexView(TemplateView):
             'images').order_by('id').filter(is_active=True)[:12]
         for i in day_product:
             i.image_list = i.images.all()
-        best_shops = Shop.objects.all()
+        # top 10 shops
+        best_shops = Shop.objects.all()[:10]
+        for i in best_shops:
+            i.images_list = []
+            i.product_number = len(ShopProduct.objects.filter(shop=i))
+            for j in ShopProduct.objects.filter(shop=i)[:4]:
+                i.images_list.append(
+                    {"image": ProductImage.objects.filter(product=j.product).first(), "product_id": j.id})
+        articles = ArticleEncyclopedia.objects.all()[:7]
         context['title'] = 'صفحه اصلی'
         context['banner'] = banners
+        context['articles'] = articles
         context['new_product'] = new_product
         context['day_product'] = day_product
-
+        context['best_shops'] = best_shops
         context['products'] = products
         context['categories'] = categories
+        print(best_shops[0].images_list)
         return context

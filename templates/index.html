@@ -1,8 +1,7 @@
 {% load static %}
 {% load humanize %}
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="fa">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -833,7 +832,8 @@
                         <!-- Main slider  -->
                         <div class="swiper-wrapper">
                             <div class="ms-slide-item swiper-slide d-flex slide-1">
-                                <img src="static/assets/img/hero-bg/5.jpg" style="position: absolute" width="100%" height="100%">
+                                <img src="static/assets/img/hero-bg/5.jpg" style="position: absolute" width="100%"
+                                     height="100%">
                                 <div class="ms-slide-content slider-animation">
                                     <h2 class="ms-slide-stitle">تازه و سالم</h2>
                                     <h1 class="ms-slide-title">میوه ها و سبزیجات</h1>
@@ -844,7 +844,8 @@
                                 </div>
                             </div>
                             <div class="ms-slide-item swiper-slide d-flex slide-2">
-                                <img src="static/assets/img/hero-bg/4.jpg" style="position: absolute" width="100%" height="100%">
+                                <img src="static/assets/img/hero-bg/4.jpg" style="position: absolute" width="100%"
+                                     height="100%">
                                 <div class="ms-slide-content slider-animation">
                                     <h2 class="ms-slide-stitle">ارگانیک و سالم</h2>
                                     <h1 class="ms-slide-title">میان وعده و ادویه جات</h1>
@@ -3305,7 +3306,7 @@
                     <div class="ms-deal-block m-minus-12">
                         <div class="deal-owl-carousel owl-carousel" dir="ltr">
                             {% for product in day_product %}
-                                <div class="ms-product-content" >
+                                <div class="ms-product-content">
                                     <div class="ms-product-inner">
                                         <div class="ms-pro-image-outer">
                                             <div class="ms-pro-image">
@@ -3395,161 +3396,40 @@
                         class="fa-solid fa-angles-left"></i></a></span>
             </div>
             <div class="ms-top-vendor owl-carousel" dir="ltr">
-                <div class="ms-top-vendor-block" dir="rtl">
-                    <div class="ms-vendor-detail">
-                        <div class="ms-vendor-img">
-                            <img src="{% static 'assets/img/vendor/1.jpg' %}" alt="product">
-                        </div>
-                        <div class="ms-vendor-info">
-                            <a href="single-vendor.html">فروشگاه مگا مارت</a>
-                            <p>80 محصول</p>
-                            <span class="ms-pro-rating">
+                {% for i in best_shops %}
+                    <div class="ms-top-vendor-block" dir="rtl">
+                        <div class="ms-vendor-detail">
+                            <div class="ms-vendor-img">
+                                <img src="{{ i.image.url }}" alt="product">
+                            </div>
+                            <div class="ms-vendor-info">
+                                <a href="single-vendor.html">فروشگاه {{ i.name |slice:":9" }}</a>
+
+                                <p>{{ i.product_number }} محصول</p>
+                                <span class="ms-pro-rating">
                                     <i class="fa-solid fa-star fill"></i>
                                     <i class="fa-solid fa-star fill"></i>
                                     <i class="fa-solid fa-star"></i>
                                     <i class="fa-solid fa-star"></i>
                                     <i class="fa-solid fa-star"></i>
                                 </span>
-                            <div class="ms-sale">
-                                <p title="Weekly sales">فروش 785</p>
+                                <div class="ms-sale">
+                                    <p title="Weekly sales">فروش 785</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="ms-vendor-products">
-                        <a href="product-left-sidebar.html"><img src="{% static 'assets/img/product-images/10_1.jpg' %}"
-                                                                 alt="product"></a>
-                        <a href="product-left-sidebar.html"><img src="{% static 'assets/img/product-images/8_1.jpg' %}"
-                                                                 alt="product"></a>
-                        <a href="product-left-sidebar.html"><img src="{% static 'assets/img/product-images/6_1.jpg' %}"
-                                                                 alt="product"></a>
-                        <a href="product-left-sidebar.html"><img src="{% static 'assets/img/product-images/9_1.jpg' %}"
-                                                                 alt="product"></a>
-                    </div>
-                </div>
-                <div class="ms-top-vendor-block" dir="rtl">
-                    <div class="ms-vendor-detail">
-                        <div class="ms-vendor-img">
-                            <img src="{% static 'assets/img/vendor/2.jpg' %}" alt="product">
-                        </div>
-                        <div class="ms-vendor-info">
-                            <a href="single-vendor.html">فروشگاه فرمیشو</a>
-                            <p>20 محصول</p>
-                            <span class="ms-pro-rating">
-                                    <i class="fa-solid fa-star fill"></i>
-                                    <i class="fa-solid fa-star fill"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </span>
-                            <div class="ms-sale">
-                                <p title="Weekly sales">فروش 587</p>
-                            </div>
+                        <div class="ms-vendor-products">
+                            <a href="product-left-sidebar.html"><img src="{{ i.images_list.0.image.image.url }}"
+                                                                     alt="product"></a>
+                            <a href="product-left-sidebar.html"><img src="{{ i.images_list.1.image.image.url }}"
+                                                                     alt="product"></a>
+                            <a href="product-left-sidebar.html"><img src="{{ i.images_list.2.image.image.url }}"
+                                                                     alt="product"></a>
+                            <a href="product-left-sidebar.html"><img src="{{ i.images_list.3.image.image.url }}"
+                                                                     alt="product"></a>
                         </div>
                     </div>
-                    <div class="ms-vendor-products">
-                        <a href="product-left-sidebar.html"><img src="{% static 'assets/img/product-images/11_1.jpg' %}"
-                                                                 alt="product"></a>
-                        <a href="product-left-sidebar.html"><img src="{% static 'assets/img/product-images/12_1.jpg' %}"
-                                                                 alt="product"></a>
-                        <a href="product-left-sidebar.html"><img src="{% static 'assets/img/product-images/13_1.jpg' %}"
-                                                                 alt="product"></a>
-                        <a href="product-left-sidebar.html"><img src="{% static 'assets/img/product-images/14_1.jpg' %}"
-                                                                 alt="product"></a>
-                    </div>
-                </div>
-                <div class="ms-top-vendor-block" dir="rtl">
-                    <div class="ms-vendor-detail">
-                        <div class="ms-vendor-img">
-                            <img src="{% static 'assets/img/vendor/3.jpg' %}" alt="product">
-                        </div>
-                        <div class="ms-vendor-info">
-                            <a href="single-vendor.html">فروشگاه جعبه اقیانوس</a>
-                            <p>15 محصول</p>
-                            <span class="ms-pro-rating">
-                                    <i class="fa-solid fa-star fill"></i>
-                                    <i class="fa-solid fa-star fill"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </span>
-                            <div class="ms-sale">
-                                <p title="Weekly sales">فروش 258</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ms-vendor-products">
-                        <a href="product-left-sidebar.html"><img src="{% static 'assets/img/product-images/32_1.jpg' %}"
-                                                                 alt="product"></a>
-                        <a href="product-left-sidebar.html"><img src="{% static 'assets/img/product-images/33_1.jpg' %}"
-                                                                 alt="product"></a>
-                        <a href="product-left-sidebar.html"><img src="{% static 'assets/img/product-images/34_1.jpg' %}"
-                                                                 alt="product"></a>
-                        <a href="product-left-sidebar.html"><img src="{% static 'assets/img/product-images/35_1.jpg' %}"
-                                                                 alt="product"></a>
-                    </div>
-                </div>
-                <div class="ms-top-vendor-block" dir="rtl">
-                    <div class="ms-vendor-detail">
-                        <div class="ms-vendor-img">
-                            <img src="{% static 'assets/img/vendor/4.jpg' %}" alt="product">
-                        </div>
-                        <div class="ms-vendor-info">
-                            <a href="single-vendor.html">فروشگاه شیری</a>
-                            <p>25 محصول</p>
-                            <span class="ms-pro-rating">
-                                    <i class="fa-solid fa-star fill"></i>
-                                    <i class="fa-solid fa-star fill"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </span>
-                            <div class="ms-sale">
-                                <p title="Weekly sales">فروش 754</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ms-vendor-products">
-                        <a href="product-left-sidebar.html"><img src="{% static 'assets/img/product-images/36_1.jpg' %}"
-                                                                 alt="product"></a>
-                        <a href="product-left-sidebar.html"><img src="{% static 'assets/img/product-images/37_1.jpg' %}"
-                                                                 alt="product"></a>
-                        <a href="product-left-sidebar.html"><img src="{% static 'assets/img/product-images/38_1.jpg' %}"
-                                                                 alt="product"></a>
-                        <a href="product-left-sidebar.html"><img src="{% static 'assets/img/product-images/40_1.jpg' %}"
-                                                                 alt="product"></a>
-                    </div>
-                </div>
-                <div class="ms-top-vendor-block" dir="rtl">
-                    <div class="ms-vendor-detail">
-                        <div class="ms-vendor-img">
-                            <img src="{% static 'assets/img/vendor/5.jpg' %}" alt="product">
-                        </div>
-                        <div class="ms-vendor-info">
-                            <a href="single-vendor.html">فروشگاه ستاره سبز</a>
-                            <p>15 مورد</p>
-                            <span class="ms-pro-rating">
-                                    <i class="fa-solid fa-star fill"></i>
-                                    <i class="fa-solid fa-star fill"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </span>
-                            <div class="ms-sale">
-                                <p title="Weekly sales">فروش 879</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ms-vendor-products">
-                        <a href="product-left-sidebar.html"><img src="{% static 'assets/img/product-images/22_1.jpg' %}"
-                                                                 alt="product"></a>
-                        <a href="product-left-sidebar.html"><img src="{% static 'assets/img/product-images/23_1.jpg' %}"
-                                                                 alt="product"></a>
-                        <a href="product-left-sidebar.html"><img src="{% static 'assets/img/product-images/24_1.jpg' %}"
-                                                                 alt="product"></a>
-                        <a href="product-left-sidebar.html"><img src="{% static 'assets/img/product-images/25_1.jpg' %}"
-                                                                 alt="product"></a>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -3620,101 +3500,23 @@
                     </span>
             </div>
             <div class="ms-blog-carousel owl-carousel" dir="ltr">
-                <div class="ms-blog-item">
-                    <div class="news-info" dir="rtl">
-                        <figure class="news-img">
-                            <a href="#"><img src="{% static 'assets/img/news/1.jpg' %}" alt="news imag"></a>
-                        </figure>
-                        <div class="detail">
-                            <label>28 شهریور 1320 - <a href="#">ارگانیک</a></label>
-                            <h3><a href="#">راهنمای بازاریابی: 5 گام برای موفقیت</a></h3>
-                            <p class="text-length">"لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
-                            <div class="more-info">
-                                <a href="blog-detail-left-sidebar.html">ادامه مطلب<span></span></a>
+                {% for i in articles %}
+                    <div class="ms-blog-item">
+                        <div class="news-info" dir="rtl">
+                            <figure class="news-img">
+                                <a href="#"><img src="{{ i.image.url }}" alt="news imag"></a>
+                            </figure>
+                            <div class="detail">
+                                <label>{{ i.created_at |date}}<a href="#"></a></label>
+                                <h3><a href="#">{{ i.abstract|safe|truncatechars_html:33}}</a></h3>
+                                <p class="text-length">{{ i.content|safe|truncatechars_html:43}}</p>
+                                <div class="more-info">
+                                    <a href="blog-detail-left-sidebar.html">ادامه مطلب<span></span></a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="ms-blog-item">
-                    <div class="news-info" dir="rtl">
-                        <figure class="news-img">
-                            <a href="#"><img src="{% static 'assets/img/news/2.jpg' %}" alt="news imag"></a>
-                        </figure>
-                        <div class="detail">
-                            <label>28 شهریور 1320 - <a href="#">میوه ها</a></label>
-                            <h3><a href="#">بهترین راه برای حل مشکل معامله تجاری</a></h3>
-                            <p class="text-length">"لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
-                            </p>
-                            <div class="more-info">
-                                <a href="blog-detail-left-sidebar.html">ادامه مطلب<span></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="ms-blog-item">
-                    <div class="news-info" dir="rtl">
-                        <figure class="news-img">
-                            <a href="#"><img src="{% static 'assets/img/news/3.jpg' %}" alt="news imag"></a>
-                        </figure>
-                        <div class="detail">
-                            <label>28 شهریور 1320 - <a href="#">سبزیجات</a></label>
-                            <h3><a href="#">31 آمار خدمات مشتری در سال 2019 می دانند.</a></h3>
-                            <p class="text-length">"لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
-                            </p>
-                            <div class="more-info">
-                                <a href="blog-detail-left-sidebar.html">ادامه مطلب<span></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="ms-blog-item">
-                    <div class="news-info" dir="rtl">
-                        <figure class="news-img">
-                            <a href="#"><img src="{% static 'assets/img/news/4.jpg' %}" alt="news imag"></a>
-                        </figure>
-                        <div class="detail">
-                            <label>28 شهریور 1320 - <a href="#">فست فود</a></label>
-                            <h3><a href="#">ایده های تجاری برای رشد کسب و کار شما.</a></h3>
-                            <p class="text-length">"لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
-                            </p>
-                            <div class="more-info">
-                                <a href="blog-detail-left-sidebar.html">ادامه مطلب<span></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="ms-blog-item">
-                    <div class="news-info" dir="rtl">
-                        <figure class="news-img">
-                            <a href="#"><img src="{% static 'assets/img/news/5.jpg' %}" alt="news imag"></a>
-                        </figure>
-                        <div class="detail">
-                            <label>28 شهریور 1320 - <a href="#">میوه ها</a></label>
-                            <h3><a href="#">راهنمای بازاریابی: 5 گام برای موفقیت</a></h3>
-                            <p class="text-length">"لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
-                            </p>
-                            <div class="more-info">
-                                <a href="blog-detail-left-sidebar.html">ادامه مطلب<span></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="ms-blog-item">
-                    <div class="news-info" dir="rtl">
-                        <figure class="news-img">
-                            <a href="#"><img src="{% static 'assets/img/news/6.jpg' %}" alt="news imag"></a>
-                        </figure>
-                        <div class="detail">
-                            <label>28 شهریور 1320 - <a href="#">سبزیجات</a></label>
-                            <h3><a href="#">31 آمار خدمات مشتری در سال 2019 می دانند.</a></h3>
-                            <p class="text-length">"لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
-                            </p>
-                            <div class="more-info">
-                                <a href="blog-detail-left-sidebar.html">ادامه مطلب<span></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>

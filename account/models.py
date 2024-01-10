@@ -51,9 +51,9 @@ class User(AbstractBaseUser, PermissionsMixin):
         SILVER = 1
         GOLD = 2
 
-    created_at = jmodels.jDateField(auto_now_add=True, verbose_name='زمان ساخت')
-    updated_at = jmodels.jDateField(auto_now=True, verbose_name='زمان اخرین ویرایش')
-    avatar = models.FileField(upload_to='account/user/avatar',
+    # created_at = jmodels.jDateField(auto_now_add=True, verbose_name='زمان ساخت')
+    # updated_at = jmodels.jDateField(auto_now=True, verbose_name='زمان اخرین ویرایش')
+    avatar = models.FileField(upload_to='paccount/user/avatar',
                               validators=[FileExtensionValidator(['jpg', 'png', 'jpeg']), ], blank=True,
                               verbose_name='تصویر')
     state = models.IntegerField(choices=State.choices, default=State.SUSPEND, verbose_name='وضعیت')
@@ -67,7 +67,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     gender = models.BooleanField(verbose_name='جنسیت')
     national_code = models.CharField(max_length=10, unique=True, verbose_name='کدملی')
     email = models.EmailField(verbose_name='ایمیل')
-    birth_day = jmodels.jDateField(verbose_name='تاریخ تولد')
+    # birth_day = jmodels.jDateField(verbose_name='تاریخ تولد')
     ref_code = models.CharField(max_length=8, verbose_name='کد معرفی', unique=True)
     # country = models.ForeignKey(Country, on_delete=SET_NULL, null=True, verbose_name='کشور')
     city = models.ForeignKey(City, on_delete=SET_NULL, null=True, verbose_name='شهر')

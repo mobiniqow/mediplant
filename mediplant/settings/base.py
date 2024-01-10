@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ckeditor',
     'ckeditor_uploader',
+    'jdatetime',
     'encyclopedia.apps.EncyclopediaConfig',
     'city.apps.CityConfig',
     'account.apps.AccountConfig',

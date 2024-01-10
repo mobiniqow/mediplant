@@ -23,11 +23,10 @@ class Shop(models.Model):
     trade_id = models.CharField(max_length=19, verbose_name='شناسه تجاری')
     state = models.IntegerField(choices=ShopStatus.choices, default=ShopStatus.PENDING, verbose_name='وضعیت')
     user = models.ForeignKey(User, on_delete=SET_NULL, null=True, verbose_name='کاربر')
-    shop_home = models.CharField(max_length=15, verbose_name='آدرس فروشگاه')
+    shop_home = models.TextField( verbose_name='آدرس فروشگاه')
     image = models.FileField(upload_to="shop/image/",
                              validators=[FileExtensionValidator(['jpg', 'png', 'jpeg']), ],
                              verbose_name='تصویر')
-    mobile = models.CharField(max_length=15, verbose_name='موبایل')
     description = models.TextField(verbose_name='توضیحات')
     rate_state = models.IntegerField(choices=ShopRate.choices, default=ShopRate.WHITE, verbose_name='وضعیت امتیاز')
 
