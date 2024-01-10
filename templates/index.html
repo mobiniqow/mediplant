@@ -3507,9 +3507,9 @@
                                 <a href="#"><img src="{{ i.image.url }}" alt="news imag"></a>
                             </figure>
                             <div class="detail">
-                                <label>{{ i.created_at |date}}<a href="#"></a></label>
-                                <h3><a href="#">{{ i.abstract|safe|truncatechars_html:33}}</a></h3>
-                                <p class="text-length">{{ i.content|safe|truncatechars_html:43}}</p>
+                                <label>{{ i.created_at |date }}<a href="#"></a></label>
+                                <h3><a href="#">{{ i.abstract|safe|truncatechars_html:33 }}</a></h3>
+                                <p class="text-length">{{ i.content|safe|truncatechars_html:43 }}</p>
                                 <div class="more-info">
                                     <a href="blog-detail-left-sidebar.html">ادامه مطلب<span></span></a>
                                 </div>
@@ -3524,124 +3524,124 @@
 <!-- End News Section -->
 
 <!-- Start Listing Section -->
-<section class="ms-listing-section listing padding-tb-30">
-    <div class="container">
-        <div class="row">
-            <div class="section-title">
-                <h2>دیدن <span> موارد</span></h2>
-                <span class="title-link">
-                        <a href="discover.html">همه موارد<i class="fa-solid fa-angles-left"></i></a>
-                    </span>
-            </div>
-            <div class="ms-listing">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="ms-list-block">
-                            <h4 class="ms-list-title">میوه ها
-                                <span class="label veg">
-                                        <span class="dot"></span>
-                                    </span>
-                            </h4>
-                            <ul>
-                                <li class="ms-list-item">
-                                    <a href="shop-left-sidebar-col-3.html">سیب<span> %30 تخفیف</span></a>
-                                    <img class="ms-list-img" src="{% static 'assets/img/product-images/21_1.jpg' %}"
-                                         alt="product">
-                                </li>
-                                <li class="ms-list-item">
-                                    <a href="shop-left-sidebar-col-3.html">آناناس<span> %10 تخفیف</span></a>
-                                    <img class="ms-list-img" src="{% static 'assets/img/product-images/30_1.jpg' %}"
-                                         alt="product">
-                                </li>
-                                <li class="ms-list-item">
-                                    <a href="shop-left-sidebar-col-3.html">بلوبری<span> %5 تخفیف</span></a>
-                                    <img class="ms-list-img" src="{% static 'assets/img/product-images/23_1.jpg' %}"
-                                         alt="product">
-                                </li>
-                                <li class="ms-list-item">
-                                    <a href="shop-left-sidebar-col-3.html">گیلاس<span> %5 تخفیف</span></a>
-                                    <img class="ms-list-img" src="{% static 'assets/img/product-images/24_1.jpg' %}"
-                                         alt="product">
-                                </li>
-                                <li class="ms-list-item">
-                                    <a href="shop-left-sidebar-col-3.html">آتشی<span> %15 تخفیف</span></a>
-                                    <img class="ms-list-img" src="{% static 'assets/img/product-images/22_1.jpg' %}"
-                                         alt="product">
-                                </li>
-                                <li class="ms-list-item">
-                                    <a href="shop-left-sidebar-col-3.html">میوه گوارا<span> %25 تخفیف</span></a>
-                                    <img class="ms-list-img" src="{% static 'assets/img/product-images/27_1.jpg' %}"
-                                         alt="product">
-                                </li>
-                                <li class="ms-list-item">
-                                    <a href="shop-left-sidebar-col-3.html">میوه لیمویی<span> %15 تخفیف</span></a>
-                                    <img class="ms-list-img" src="{% static 'assets/img/product-images/25_1.jpg' %}"
-                                         alt="product">
-                                </li>
-                                <li class="ms-list-item">
-                                    <a href="shop-left-sidebar-col-3.html">میوه انبه<span> %30 تخفیف</span></a>
-                                    <img class="ms-list-img" src="{% static 'assets/img/product-images/28_1.jpg' %}"
-                                         alt="product">
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-6 m-t-767">
-                        <div class="ms-list-block">
-                            <h4 class="ms-list-title">تنقلات و ادویه جات
-                                <span class="label veg">
-                                        <span class="dot"></span>
-                                    </span>
-                            </h4>
-                            <ul>
-                                <li class="ms-list-item">
-                                    <a href="shop-left-sidebar-col-3.html">چیپس<span> %30 تخفیف</span></a>
-                                    <img class="ms-list-img" src="{% static 'assets/img/product-images/1_1.jpg' %}"
-                                         alt="product">
-                                </li>
-                                <li class="ms-list-item">
-                                    <a href="shop-left-sidebar-col-3.html">تاریخ<span> %10 تخفیف</span></a>
-                                    <img class="ms-list-img" src="{% static 'assets/img/product-images/2_1.jpg' %}"
-                                         alt="product">
-                                </li>
-                                <li class="ms-list-item">
-                                    <a href="shop-left-sidebar-col-3.html">بادام ها<span> %5 تخفیف</span></a>
-                                    <img class="ms-list-img" src="{% static 'assets/img/product-images/3_1.jpg' %}"
-                                         alt="product">
-                                </li>
-                                <li class="ms-list-item">
-                                    <a href="shop-left-sidebar-col-3.html">چیپس آناناسی<span> %15 تخفیف</span></a>
-                                    <img class="ms-list-img" src="{% static 'assets/img/product-images/4_1.jpg' %}"
-                                         alt="product">
-                                </li>
-                                <li class="ms-list-item">
-                                    <a href="shop-left-sidebar-col-3.html">میان وعده<span> %30 تخفیف</span></a>
-                                    <img class="ms-list-img" src="{% static 'assets/img/product-images/5_1.jpg' %}"
-                                         alt="product">
-                                </li>
-                                <li class="ms-list-item">
-                                    <a href="shop-left-sidebar-col-3.html">آجیل مخلوط<span> %10 تخفیف</span></a>
-                                    <img class="ms-list-img" src="{% static 'assets/img/product-images/6_1.jpg' %}"
-                                         alt="product">
-                                </li>
-                                <li class="ms-list-item">
-                                    <a href="shop-left-sidebar-col-3.html"> میوه ها<span> %5 تخفیف</span></a>
-                                    <img class="ms-list-img" src="{% static 'assets/img/product-images/7_1.jpg' %}"
-                                         alt="product">
-                                </li>
-                                <li class="ms-list-item">
-                                    <a href="shop-left-sidebar-col-3.html">آجیل تند<span> %15 تخفیف</span></a>
-                                    <img class="ms-list-img" src="{% static 'assets/img/product-images/8_1.jpg' %}"
-                                         alt="product">
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+{#<section class="ms-listing-section listing padding-tb-30">#}
+{#    <div class="container">#}
+{#        <div class="row">#}
+{#            <div class="section-title">#}
+{#                <h2>دیدن <span> موارد</span></h2>#}
+{#                <span class="title-link">#}
+{#                        <a href="discover.html">همه موارد<i class="fa-solid fa-angles-left"></i></a>#}
+{#                    </span>#}
+{#            </div>#}
+{#            <div class="ms-listing">#}
+{#                <div class="row">#}
+{#                    <div class="col-md-6">#}
+{#                        <div class="ms-list-block">#}
+{#                            <h4 class="ms-list-title">میوه ها#}
+{#                                <span class="label veg">#}
+{#                                        <span class="dot"></span>#}
+{#                                    </span>#}
+{#                            </h4>#}
+{#                            <ul>#}
+{#                                <li class="ms-list-item">#}
+{#                                    <a href="shop-left-sidebar-col-3.html">سیب<span> %30 تخفیف</span></a>#}
+{#                                    <img class="ms-list-img" src="{% static 'assets/img/product-images/21_1.jpg' %}"#}
+{#                                         alt="product">#}
+{#                                </li>#}
+{#                                <li class="ms-list-item">#}
+{#                                    <a href="shop-left-sidebar-col-3.html">آناناس<span> %10 تخفیف</span></a>#}
+{#                                    <img class="ms-list-img" src="{% static 'assets/img/product-images/30_1.jpg' %}"#}
+{#                                         alt="product">#}
+{#                                </li>#}
+{#                                <li class="ms-list-item">#}
+{#                                    <a href="shop-left-sidebar-col-3.html">بلوبری<span> %5 تخفیف</span></a>#}
+{#                                    <img class="ms-list-img" src="{% static 'assets/img/product-images/23_1.jpg' %}"#}
+{#                                         alt="product">#}
+{#                                </li>#}
+{#                                <li class="ms-list-item">#}
+{#                                    <a href="shop-left-sidebar-col-3.html">گیلاس<span> %5 تخفیف</span></a>#}
+{#                                    <img class="ms-list-img" src="{% static 'assets/img/product-images/24_1.jpg' %}"#}
+{#                                         alt="product">#}
+{#                                </li>#}
+{#                                <li class="ms-list-item">#}
+{#                                    <a href="shop-left-sidebar-col-3.html">آتشی<span> %15 تخفیف</span></a>#}
+{#                                    <img class="ms-list-img" src="{% static 'assets/img/product-images/22_1.jpg' %}"#}
+{#                                         alt="product">#}
+{#                                </li>#}
+{#                                <li class="ms-list-item">#}
+{#                                    <a href="shop-left-sidebar-col-3.html">میوه گوارا<span> %25 تخفیف</span></a>#}
+{#                                    <img class="ms-list-img" src="{% static 'assets/img/product-images/27_1.jpg' %}"#}
+{#                                         alt="product">#}
+{#                                </li>#}
+{#                                <li class="ms-list-item">#}
+{#                                    <a href="shop-left-sidebar-col-3.html">میوه لیمویی<span> %15 تخفیف</span></a>#}
+{#                                    <img class="ms-list-img" src="{% static 'assets/img/product-images/25_1.jpg' %}"#}
+{#                                         alt="product">#}
+{#                                </li>#}
+{#                                <li class="ms-list-item">#}
+{#                                    <a href="shop-left-sidebar-col-3.html">میوه انبه<span> %30 تخفیف</span></a>#}
+{#                                    <img class="ms-list-img" src="{% static 'assets/img/product-images/28_1.jpg' %}"#}
+{#                                         alt="product">#}
+{#                                </li>#}
+{#                            </ul>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="col-md-6 m-t-767">#}
+{#                        <div class="ms-list-block">#}
+{#                            <h4 class="ms-list-title">تنقلات و ادویه جات#}
+{#                                <span class="label veg">#}
+{#                                        <span class="dot"></span>#}
+{#                                    </span>#}
+{#                            </h4>#}
+{#                            <ul>#}
+{#                                <li class="ms-list-item">#}
+{#                                    <a href="shop-left-sidebar-col-3.html">چیپس<span> %30 تخفیف</span></a>#}
+{#                                    <img class="ms-list-img" src="{% static 'assets/img/product-images/1_1.jpg' %}"#}
+{#                                         alt="product">#}
+{#                                </li>#}
+{#                                <li class="ms-list-item">#}
+{#                                    <a href="shop-left-sidebar-col-3.html">تاریخ<span> %10 تخفیف</span></a>#}
+{#                                    <img class="ms-list-img" src="{% static 'assets/img/product-images/2_1.jpg' %}"#}
+{#                                         alt="product">#}
+{#                                </li>#}
+{#                                <li class="ms-list-item">#}
+{#                                    <a href="shop-left-sidebar-col-3.html">بادام ها<span> %5 تخفیف</span></a>#}
+{#                                    <img class="ms-list-img" src="{% static 'assets/img/product-images/3_1.jpg' %}"#}
+{#                                         alt="product">#}
+{#                                </li>#}
+{#                                <li class="ms-list-item">#}
+{#                                    <a href="shop-left-sidebar-col-3.html">چیپس آناناسی<span> %15 تخفیف</span></a>#}
+{#                                    <img class="ms-list-img" src="{% static 'assets/img/product-images/4_1.jpg' %}"#}
+{#                                         alt="product">#}
+{#                                </li>#}
+{#                                <li class="ms-list-item">#}
+{#                                    <a href="shop-left-sidebar-col-3.html">میان وعده<span> %30 تخفیف</span></a>#}
+{#                                    <img class="ms-list-img" src="{% static 'assets/img/product-images/5_1.jpg' %}"#}
+{#                                         alt="product">#}
+{#                                </li>#}
+{#                                <li class="ms-list-item">#}
+{#                                    <a href="shop-left-sidebar-col-3.html">آجیل مخلوط<span> %10 تخفیف</span></a>#}
+{#                                    <img class="ms-list-img" src="{% static 'assets/img/product-images/6_1.jpg' %}"#}
+{#                                         alt="product">#}
+{#                                </li>#}
+{#                                <li class="ms-list-item">#}
+{#                                    <a href="shop-left-sidebar-col-3.html"> میوه ها<span> %5 تخفیف</span></a>#}
+{#                                    <img class="ms-list-img" src="{% static 'assets/img/product-images/7_1.jpg' %}"#}
+{#                                         alt="product">#}
+{#                                </li>#}
+{#                                <li class="ms-list-item">#}
+{#                                    <a href="shop-left-sidebar-col-3.html">آجیل تند<span> %15 تخفیف</span></a>#}
+{#                                    <img class="ms-list-img" src="{% static 'assets/img/product-images/8_1.jpg' %}"#}
+{#                                         alt="product">#}
+{#                                </li>#}
+{#                            </ul>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#</section>#}
 <!-- End Listing Section -->
 
 
@@ -3672,81 +3672,81 @@
 </section>
 
 <!-- Instagram Start -->
-<section class="ms-instagram-section padding-t-30">
-    <h2 class="d-none">اینستاگرام</h2>
-    <div class="ms-insta-wrapper" data-animation="fadeIn" dir="ltr">
-        <div class="ms-insta-outer">
-            <div class="insta-auto">
-                <!-- instagram item -->
-                <div class="ms-insta-item">
-                    <div class="ms-insta-inner">
-                        <a href="#" target="_blank">
-                            <img src="{% static 'assets/img/instragram-image/1.jpg' %}" alt="instragram-image">
-                        </a>
-                    </div>
-                </div>
-                <!-- instagram item -->
-                <div class="ms-insta-item">
-                    <div class="ms-insta-inner">
-                        <a href="#" target="_blank">
-                            <img src="{% static 'assets/img/instragram-image/2.jpg' %}" alt="instragram-image">
-                        </a>
-                    </div>
-                </div>
-                <!-- instagram item -->
-                <div class="ms-insta-item">
-                    <div class="ms-insta-inner">
-                        <a href="#" target="_blank">
-                            <img src="{% static 'assets/img/instragram-image/3.jpg' %}" alt="instragram-image">
-                        </a>
-                    </div>
-                </div>
-                <!-- instagram item -->
-                <div class="ms-insta-item">
-                    <div class="ms-insta-inner">
-                        <a href="#" target="_blank">
-                            <img src="{% static 'assets/img/instragram-image/4.jpg' %}" alt="instragram-image">
-                        </a>
-                    </div>
-                </div>
-                <!-- instagram item -->
-                <!-- instagram item -->
-                <div class="ms-insta-item">
-                    <div class="ms-insta-inner">
-                        <a href="#" target="_blank">
-                            <img src="{% static 'assets/img/instragram-image/5.jpg' %}" alt="instragram-image">
-                        </a>
-                    </div>
-                </div>
-                <!-- instagram item -->
-                <div class="ms-insta-item">
-                    <div class="ms-insta-inner">
-                        <a href="#" target="_blank">
-                            <img src="{% static 'assets/img/instragram-image/6.jpg' %}" alt="instragram-image">
-                        </a>
-                    </div>
-                </div>
-                <!-- instagram item -->
-                <div class="ms-insta-item">
-                    <div class="ms-insta-inner">
-                        <a href="#" target="_blank">
-                            <img src="{% static 'assets/img/instragram-image/7.jpg' %}" alt="instragram-image">
-                        </a>
-                    </div>
-                </div>
-                <!-- instagram item -->
-                <div class="ms-insta-item">
-                    <div class="ms-insta-inner">
-                        <a href="#" target="_blank">
-                            <img src="{% static 'assets/img/instragram-image/5.jpg' %}" alt="instragram-image">
-                        </a>
-                    </div>
-                </div>
-                <!-- instagram item -->
-            </div>
-        </div>
-    </div>
-</section>
+{#<section class="ms-instagram-section padding-t-30">#}
+{#    <h2 class="d-none">اینستاگرام</h2>#}
+{#    <div class="ms-insta-wrapper" data-animation="fadeIn" dir="ltr">#}
+{#        <div class="ms-insta-outer">#}
+{#            <div class="insta-auto">#}
+{#                <!-- instagram item -->#}
+{#                <div class="ms-insta-item">#}
+{#                    <div class="ms-insta-inner">#}
+{#                        <a href="#" target="_blank">#}
+{#                            <img src="{% static 'assets/img/instragram-image/1.jpg' %}" alt="instragram-image">#}
+{#                        </a>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <!-- instagram item -->#}
+{#                <div class="ms-insta-item">#}
+{#                    <div class="ms-insta-inner">#}
+{#                        <a href="#" target="_blank">#}
+{#                            <img src="{% static 'assets/img/instragram-image/2.jpg' %}" alt="instragram-image">#}
+{#                        </a>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <!-- instagram item -->#}
+{#                <div class="ms-insta-item">#}
+{#                    <div class="ms-insta-inner">#}
+{#                        <a href="#" target="_blank">#}
+{#                            <img src="{% static 'assets/img/instragram-image/3.jpg' %}" alt="instragram-image">#}
+{#                        </a>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <!-- instagram item -->#}
+{#                <div class="ms-insta-item">#}
+{#                    <div class="ms-insta-inner">#}
+{#                        <a href="#" target="_blank">#}
+{#                            <img src="{% static 'assets/img/instragram-image/4.jpg' %}" alt="instragram-image">#}
+{#                        </a>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <!-- instagram item -->#}
+{#                <!-- instagram item -->#}
+{#                <div class="ms-insta-item">#}
+{#                    <div class="ms-insta-inner">#}
+{#                        <a href="#" target="_blank">#}
+{#                            <img src="{% static 'assets/img/instragram-image/5.jpg' %}" alt="instragram-image">#}
+{#                        </a>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <!-- instagram item -->#}
+{#                <div class="ms-insta-item">#}
+{#                    <div class="ms-insta-inner">#}
+{#                        <a href="#" target="_blank">#}
+{#                            <img src="{% static 'assets/img/instragram-image/6.jpg' %}" alt="instragram-image">#}
+{#                        </a>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <!-- instagram item -->#}
+{#                <div class="ms-insta-item">#}
+{#                    <div class="ms-insta-inner">#}
+{#                        <a href="#" target="_blank">#}
+{#                            <img src="{% static 'assets/img/instragram-image/7.jpg' %}" alt="instragram-image">#}
+{#                        </a>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <!-- instagram item -->#}
+{#                <div class="ms-insta-item">#}
+{#                    <div class="ms-insta-inner">#}
+{#                        <a href="#" target="_blank">#}
+{#                            <img src="{% static 'assets/img/instragram-image/5.jpg' %}" alt="instragram-image">#}
+{#                        </a>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <!-- instagram item -->#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#</section>#}
 <!-- Instagram End -->
 
 <!-- Footer Start -->
@@ -4008,25 +4008,25 @@
 <!-- Quickview Modal end -->
 
 <!-- Newsletter Modal Start -->
-<div id="ms-popnews-bg"></div>
-<div id="ms-popnews-box">
-    <div id="ms-popnews-close">×</div>
-    <div class="row">
-        <div class="col-md-6 disp-no-767">
-            <img src="{% static 'assets/img/bg/newsletter.png' %}" alt="newsletter">
-        </div>
-        <div class="col-md-6">
-            <div id="ms-popnews-box-content">
-                <h2>خبرنامه</h2>
-                <p>برای تماس و دریافت به‌روزرسانی، مستر کارت را به اشتراک بگذارید</p>
-                <form id="ms-popnews-form" action="#" method="post">
-                    <input type="email" name="newsemail" placeholder="ایمیل" required>
-                    <button type="button" class="ms-btn-2" name="subscribe">مشترک شوید</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+{#<div id="ms-popnews-bg"></div>#}
+{#<div id="ms-popnews-box">#}
+{#    <div id="ms-popnews-close">×</div>#}
+{#    <div class="row">#}
+{#        <div class="col-md-6 disp-no-767">#}
+{#            <img src="{% static 'assets/img/bg/newsletter.png' %}" alt="newsletter">#}
+{#        </div>#}
+{#        <div class="col-md-6">#}
+{#            <div id="ms-popnews-box-content">#}
+{#                <h2>خبرنامه</h2>#}
+{#                <p>برای تماس و دریافت به‌روزرسانی، مستر کارت را به اشتراک بگذارید</p>#}
+{#                <form id="ms-popnews-form" action="#" method="post">#}
+{#                    <input type="email" name="newsemail" placeholder="ایمیل" required>#}
+{#                    <button type="button" class="ms-btn-2" name="subscribe">مشترک شوید</button>#}
+{#                </form>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
 <!-- Newsletter Modal end -->
 
 <!-- خرید Notify -->
