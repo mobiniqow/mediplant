@@ -47,5 +47,4 @@ class IndexView(TemplateView):
         context['best_shops'] = best_shops
         context['products'] = products
         context['categories'] = categories
-        print(best_shops[0].images_list)
         return context
