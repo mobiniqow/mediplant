@@ -832,26 +832,26 @@
                         <!-- Main slider  -->
                         <div class="swiper-wrapper">
                             <div class="ms-slide-item swiper-slide d-flex slide-1">
-                                <img src="static/assets/img/hero-bg/5.jpg" style="position: absolute" width="100%"
+                                <img src="{{ banner.0.image.url }}" style="position: absolute" width="100%"
                                      height="100%">
                                 <div class="ms-slide-content slider-animation">
                                     <h2 class="ms-slide-stitle">تازه و سالم</h2>
                                     <h1 class="ms-slide-title">میوه ها و سبزیجات</h1>
                                     <div class="ms-slide-desc">
                                         <p>شروع قیمت از <b>29 تا</b>99 هزار</p>
-                                        <a href="#" class="ms-btn-2">خرید <i class="fa-solid fa-angles-left"></i></a>
+                                        <a href="{{ banner.0.link_url }}" class="ms-btn-2">خرید <i class="fa-solid fa-angles-left"></i></a>
                                     </div>
                                 </div>
                             </div>
                             <div class="ms-slide-item swiper-slide d-flex slide-2">
-                                <img src="static/assets/img/hero-bg/4.jpg" style="position: absolute" width="100%"
+                                <img src="{{ banner.1.image.url }}" style="position: absolute" width="100%"
                                      height="100%">
                                 <div class="ms-slide-content slider-animation">
                                     <h2 class="ms-slide-stitle">ارگانیک و سالم</h2>
                                     <h1 class="ms-slide-title">میان وعده و ادویه جات</h1>
                                     <div class="ms-slide-desc">
                                         <p>شروع قیمت از <b>29 تا</b>99 هزار</p>
-                                        <a href="#" class="ms-btn-2">خرید <i class="fa-solid fa-angles-left"></i></a>
+                                        <a href="{{ banner.1.link_url }}" class="ms-btn-2">خرید <i class="fa-solid fa-angles-left"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -867,22 +867,22 @@
             <!-- Hero Banner 1 Start -->
             <div class="ms-banner-content align-self-center">
                 <div class="ms-slider-grid-item grid-img-4">
-                    <img src="static/assets/img/hero-bg/8.jpg" style="position: absolute" height="100%" width="100%">
+                    <img src="{{ banner.2.image.url }}" style="position: absolute" height="100%" width="100%">
                     <div class="ms-detail">
                         <p>تازه</p>
                         <h6 class="grid-animation"><span class="ms-grid-sub-title">میوه جات</span></h6>
-                        <a href="#" class="ms-btn-2">خرید <i class="fa-solid fa-angles-left"></i></a>
+                        <a href="{{ banner.2.link_url }}" class="ms-btn-2">خرید <i class="fa-solid fa-angles-left"></i></a>
                     </div>
                 </div>
             </div>
             <!-- Hero Banner 2 Start -->
             <div class="ms-banner-content align-self-center">
                 <div class="ms-slider-grid-item grid-img-5">
-                    <img src="static/assets/img/hero-bg/8.jpg" style="position: absolute" height="100%" width="100%">
+                    <img src="{{ banner.2.image.url }}" style="position: absolute" height="100%" width="100%">
                     <div class="ms-detail">
                         <p>ارگانیک</p>
                         <h6 class="grid-animation"><span class="ms-grid-sub-title">سبزیجات</span></h6>
-                        <a href="#" class="ms-btn-2">خرید <i class="fa-solid fa-angles-left"></i></a>
+                        <a href="{{ banner.2.image.link_url }}" class="ms-btn-2">خرید <i class="fa-solid fa-angles-left"></i></a>
                     </div>
                 </div>
             </div>
@@ -2778,13 +2778,13 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="ms-animated-banner">
-                    <img src="static/assets/img/banner/1.jpg">
+                    <img src="{{ banner.3.image.url }}">
                     <h2 class="d-none">تخفیفات</h2>
                     <div class="ms-bnr-detail">
                         <div class="ms-bnr-info">
                             <h2>لبنیات و نانوایی <br>محصولات تازه</h2>
                             <h3>%30 تخفیف فروش <span>عجله کن!!!</span></h3>
-                            <a href="shop-left-sidebar-col-3.html" class="ms-btn-2">خرید</a>
+                            <a href="{{ banner.3.link_url }}" class="ms-btn-2">خرید</a>
                         </div>
                     </div>
                 </div>
@@ -3261,13 +3261,13 @@
                 <div class="ms-ofr-banners">
                     <div class="ms-bnr-body">
                         <div class="ms-bnr-img">
-                            <span class="lbl">%70 تخفیف</span>
-                            <img src="{% static 'assets/img/banner/2.jpg' %}" alt="banner">
+{#                            <span class="lbl">%70 تخفیف</span>#}
+                            <img src="{{ banner.4.image.url }}" alt="banner">
                         </div>
                         <div class="ms-bnr-detail">
                             <h5>میان وعده و ادویه جات</h5>
                             <p>طعم یک چیز خاص</p>
-                            <a href="shop-left-sidebar-col-3.html" class="ms-btn-2">خرید</a>
+                            <a href="{{ banner.4.link_url }}" class="ms-btn-2">خرید</a>
                         </div>
                     </div>
                 </div>
@@ -3277,13 +3277,13 @@
                 <div class="ms-ofr-banners m-t-767">
                     <div class="ms-bnr-body">
                         <div class="ms-bnr-img">
-                            <span class="lbl">%50 تخفیف</span>
-                            <img src="{% static 'assets/img/banner/3.jpg' %}" alt="banner">
+{#                            <span class="lbl">%50 تخفیف</span>#}
+                            <img src="{{ banner.5.image.url }}" alt="banner">
                         </div>
                         <div class="ms-bnr-detail">
                             <h5>میوه ها و سبزیجات</h5>
                             <p>یک وعده غذایی سالم برای همه</p>
-                            <a href="shop-left-sidebar-col-3.html" class="ms-btn-2">خرید</a>
+                            <a href="{{ banner.5.link_url }}" class="ms-btn-2">خرید</a>
                         </div>
                     </div>
                 </div>
