@@ -1,6 +1,8 @@
 import django
 
+
 django.setup()
+from product.models import Category
 
 from encyclopedia.models import ArticleEncyclopedia, ArticleEncyclopediaCategory
 from faker import factory, Faker
@@ -19,20 +21,21 @@ import random
 # for i in Shop.objects.all():
 #     i.image = images[random.randint(0, 3)]
 #     i.save()
-for j in range(44):
-    author = Recipe(
-        ArticleEncyclopedia,
-        category=ArticleEncyclopediaCategory.objects.order_by('?').first(),
-        abstract=fake.text(),
-        content=fake.text(),
-        # product=i,
-        image=images[j % 4]
-        # product=Product.objects.order_by("?").first(),
-        # capacity=random.uniform(11, 11111),
-        # price=random.uniform(11, 11111),
-        # inventory_state=random.uniform(0, 2),
-        # phone=f"093223324{i}",
-        # createdDate=fake.future_datetime(end_date="+30d", tzinfo=None),
-        # updatedDate=fake.future_datetime(end_date="+30d", tzinfo=None),
-    )
-    author.make()
+for j in Category.objects.all():
+    for i in range(4):
+        author = Recipe(
+            Category,
+            # category=ArticleEncyclopediaCategory.objects.order_by('?').first(),
+            # abstract=fake.text(),
+            parent=j,
+            # product=i,
+            image=images[i % 4]
+            # product=Product.objects.order_by("?").first(),
+            # capacity=random.uniform(11, 11111),
+            # price=random.uniform(11, 11111),
+            # inventory_state=random.uniform(0, 2),
+            # phone=f"093223324{i}",
+            # createdDate=fake.future_datetime(end_date="+30d", tzinfo=None),
+            # updatedDate=fake.future_datetime(end_date="+30d", tzinfo=None),
+        )
+        author.make()

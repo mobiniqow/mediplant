@@ -39,6 +39,14 @@ class IndexView(TemplateView):
                 i.images_list.append(
                     {"image": ProductImage.objects.filter(product=j.product).first(), "product_id": j.id})
         articles = ArticleEncyclopedia.objects.all()[:7]
+
+        category_and_sub_category = {}
+
+        category_and_sub_category['base'] = Category.objects.filter(parent=None)
+
+        for i in category_and_sub_category['base']:
+            i.children = Category.objects.filter(parent=i.id)
+
         context['title'] = 'صفحه اصلی'
         context['banner'] = banners
         context['articles'] = articles
@@ -47,4 +55,6 @@ class IndexView(TemplateView):
         context['best_shops'] = best_shops
         context['products'] = products
         context['categories'] = categories
+        context['categories_map'] = category_and_sub_category
+
         return context

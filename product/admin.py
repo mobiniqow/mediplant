@@ -33,6 +33,6 @@ class ProductUnitAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ['name']
+    list_display = ['name','parent']
     search_fields = ['name']
     list_per_page = 20
