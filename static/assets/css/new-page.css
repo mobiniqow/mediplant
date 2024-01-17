@@ -11151,7 +11151,7 @@ body.ms-menu-open:before {
     margin: 0;
 }
 .item-cc{
-    display: flex;
+    display: block;
     align-items: center;
     grid-gap: 8px;
     background: #dbf2d5;

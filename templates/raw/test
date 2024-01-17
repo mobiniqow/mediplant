@@ -302,7 +302,7 @@ Copyright 2022-2023
                                                 </ul>
                                             </li>
                                             <li class="dropdown drop-list">
-                                                <a href="blog-detail-left-sidebar.html" class="dropdown-arrow">مقالات</a>
+                                                <a href="../blog-detail.html" class="dropdown-arrow">مقالات</a>
                                             </li>
                                             <!-- <li class="dropdown drop-list">
                                                 <a href="javascript:void(0)" class="dropdown-arrow">صفحات<i class="fas fa-chevron-right"></i></a>

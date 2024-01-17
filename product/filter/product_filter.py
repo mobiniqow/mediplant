@@ -1,4 +1,6 @@
-from django_filters import rest_framework as filters
+from django_filters import rest_framework as drf_filters
+
+from product.models import Product
 
 
 class ProductFilter(drf_filters.FilterSet):

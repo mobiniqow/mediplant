@@ -50,7 +50,6 @@ class ArticleEncyclopedia(models.Model):
     category = models.ForeignKey("ArticleEncyclopediaCategory", on_delete=SET_NULL,
                                  null=True, verbose_name="دسته بندی")
     created_at = jmodels.jDateField(auto_now_add=True, verbose_name="تاریخ ساخت")
-    # created_at = models.DateField(auto_now_add=True, verbose_name="تاریخ ساخت")
     author = models.CharField(max_length=100, verbose_name="نویسنده", unique=True)
     abstract = RichTextField()
     content = RichTextField()

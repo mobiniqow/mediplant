@@ -44,7 +44,10 @@ INSTALLED_APPS = [
     'feedback.apps.FeedbackConfig',
     'banner.apps.BannerConfig',
     'django.contrib.humanize',
+    'rest_framework',
+    'django_filters',
 ]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

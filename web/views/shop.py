@@ -80,3 +80,41 @@ class CategoryView(TemplateView):
         context['categories_map'] = category_and_sub_category
 
         return context
+
+
+class ShopView(TemplateView):
+    template_name = "shop.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        category_and_sub_category = {}
+        category_and_sub_category['base'] = Category.objects.filter(parent=None)
+        categories = Category.objects.filter(parent=None)
+
+        for i in category_and_sub_category['base']:
+            i.children = Category.objects.filter(parent=i.id)
+
+        banners = Banner.objects.filter(state=Banner.State.ACTIVE).order_by('?')[:6]
+        context['title'] = 'صفحه اصلی'
+        context['banner'] = banners
+        context['categories'] = categories
+        context['categories_map'] = category_and_sub_category
+
+        return context
+
+
+class ShopDetailsView(TemplateView):
+    template_name = "shop-details.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        category_and_sub_category = {}
+
+        category_and_sub_category['base'] = Category.objects.filter(parent=None)
+
+        for i in category_and_sub_category['base']:
+            i.children = Category.objects.filter(parent=i.id)
+        context['categories_map'] = category_and_sub_category
+
+        return context

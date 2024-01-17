@@ -1,4 +1,5 @@
-from .base import  *
+from .base import *
+
 ALLOWED_HOSTS = ["*"]
 DATABASES = {
     'default': {
@@ -10,9 +11,6 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
-
-
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = '/var/www/html/mediplant/media'
