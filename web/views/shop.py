@@ -1,12 +1,13 @@
 from django.views.generic import TemplateView
 
+from abstract_view.base_template_view import BaseTemplateView
 from banner.models import Banner
 from encyclopedia.models import ArticleEncyclopedia
 from product.models import Category, Product, ProductImage
 from shop.models import ShopProduct, Shop
 
 
-class IndexView(TemplateView):
+class IndexView(BaseTemplateView):
     template_name = "index.html"
 
     def get_context_data(self, **kwargs):
@@ -14,6 +15,10 @@ class IndexView(TemplateView):
         banners = Banner.objects.filter(state=Banner.State.ACTIVE).order_by('?')[:6]
         categories = Category.objects.filter(parent=None)
         # کالا ها با عکس
+        for i in ShopProduct.objects.all():
+            i.inventory_state = ShopProduct.Inventory.AVAILABLE
+            i.save()
+
         shop_products = ShopProduct.objects.filter(inventory_state=ShopProduct.Inventory.AVAILABLE)
         product_ids = [shop_product.product_id for shop_product in shop_products]
         products = Product.objects.select_related('class_id', 'category', 'unit').prefetch_related('images').filter(
@@ -40,12 +45,6 @@ class IndexView(TemplateView):
                     {"image": ProductImage.objects.filter(product=j.product).first(), "product_id": j.id})
         articles = ArticleEncyclopedia.objects.all()[:7]
 
-        category_and_sub_category = {}
-
-        category_and_sub_category['base'] = Category.objects.filter(parent=None)
-
-        for i in category_and_sub_category['base']:
-            i.children = Category.objects.filter(parent=i.id)
 
         context['title'] = 'صفحه اصلی'
         context['banner'] = banners
@@ -55,29 +54,22 @@ class IndexView(TemplateView):
         context['best_shops'] = best_shops
         context['products'] = products
         context['categories'] = categories
-        context['categories_map'] = category_and_sub_category
-
         return context
 
 
-class CategoryView(TemplateView):
+class CategoryView(BaseTemplateView):
     template_name = "category.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        category_and_sub_category = {}
-        category_and_sub_category['base'] = Category.objects.filter(parent=None)
         categories = Category.objects.filter(parent=None)
 
-        for i in category_and_sub_category['base']:
-            i.children = Category.objects.filter(parent=i.id)
-
         banners = Banner.objects.filter(state=Banner.State.ACTIVE).order_by('?')[:6]
+
         context['title'] = 'صفحه اصلی'
         context['banner'] = banners
         context['categories'] = categories
-        context['categories_map'] = category_and_sub_category
 
         return context
 

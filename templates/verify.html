@@ -1,0 +1,685 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <title>Masterkart - الگوی HTML تجارت الکترونیک چند منظوره</title>
+    <meta name="keywords"
+          content="Bootstrap 5.x, ecommerce, farming, food market, grocery market, grocery shop, grocery store, grocery supper market, multi vendor, organic food, supermarket, supermarket grocery">
+    <meta name="description" content="Multipurpose eCommerce HTML Template">
+    <meta name="author" content="Pilarest">
+
+    <!-- site Favicon -->
+    <link rel="icon" href="{% static 'assets/img/favicon/favicon.png' %}" sizes="32x32">
+
+    <!-- css Icon Font -->
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/msicons.min.css' %}">
+
+    <!-- css All Plugins Files -->
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap-select.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/slick.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/nouislider.css' %}">
+
+    <!-- Main Style -->
+    <link rel="stylesheet" id="main_style" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+    <link rel="stylesheet" class="color-css" href="{% static 'assets/css/color-01.css' %}">
+
+</head>
+
+<body>
+<!-- Loader -->
+<div id="ms-overlay">
+    <div class="loader"></div>
+</div>
+
+<!-- Header start  -->
+{#    {% include './extentions/header.html' with categories=categories_map %}#}
+<!-- Header End  -->
+
+<!-- Category sidebar Start -->
+
+<div class="ms-side-cat-overlay"></div>
+<div class="col-lg-3 ms-category-sidebar">
+    <div class="cat-sidebar">
+        <div class="cat-sidebar-box">
+            <div class="ms-cat-sidebar-wrap">
+                <!-- Sidebar Category Block -->
+                <div class="ms-sidebar-block">
+                    <div class="ms-sb-title">
+                        <h3 class="ms-sidebar-title">دسته بندی
+                            <button class="ms-close">×</button>
+                        </h3>
+                    </div>
+                    <div class="ms-sb-block-content">
+                        <ul>
+                            <li class="ms-list">
+                                <div class="ms-sidebar-block-item"><img
+                                        src="{% static 'assets/img/icons/dress-8.svg' %}" class="svg_img" alt="drink">لباس
+                                </div>
+                                <ul style="display: block;">
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">پیراهن
+                                            <span title="Available Stock">- 25</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html"> شلوار
+                                            جین <span title="Available Stock">- 52</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a
+                                                href="shop-left-sidebar-col-3.html">ژاکت<span title="Available Stock">- 500</span></a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">لباس و
+                                            روپوش <span title="Available Stock">- 35</span></a></div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ms-sb-block-content">
+                        <ul>
+                            <li class="ms-list">
+                                <div class="ms-sidebar-block-item"><img
+                                        src="{% static 'assets/img/icons/shoes-8.svg' %}" class="svg_img" alt="drink">کفش
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">ورزشی
+                                            <span title="Available Stock">- 25</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">مجلسی
+                                            <span title="Available Stock">- 52</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">مختلف
+                                            <span title="Available Stock">- 40</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">کفش ایمن<span
+                                                title="Available Stock">- 35</span></a></div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ms-sb-block-content">
+                        <ul>
+                            <li class="ms-list">
+                                <div class="ms-sidebar-block-item"><img
+                                        src="{% static 'assets/img/icons/jewelry-8.svg' %}" class="svg_img" alt="drink">جواهرات
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">گوشواره
+                                            <span title="Available Stock">- 50</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">حلقه
+                                            ازدواج <span title="Available Stock">- 35</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">گردنبند
+                                            <span title="Available Stock">- 40</span></a></div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ms-sb-block-content">
+                        <ul>
+                            <li class="ms-list">
+                                <div class="ms-sidebar-block-item"><img
+                                        src="{% static 'assets/img/icons/perfume-8.svg' %}" class="svg_img" alt="drink">عطر
+                                    و ادکلن
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">عطر لباس<span
+                                                title="Available Stock">- 4 پاکت</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">اسپری
+                                            <span title="Available Stock">- 52 پاکت</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">عطر گل
+                                            <span title="Available Stock">- 10 پاکت</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">خوشبو
+                                            کننده هوا<span title="Available Stock">- 35 پاکت</span></a></div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ms-sb-block-content">
+                        <ul>
+                            <li class="ms-list">
+                                <div class="ms-sidebar-block-item"><img
+                                        src="{% static 'assets/img/icons/cosmetics-8.svg' %}" class="svg_img"
+                                        alt="drink">لوازم آرایشی
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a
+                                                href="shop-left-sidebar-col-3.html">شامپو<span
+                                                title="Available Stock"></span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">ضد آفتاب<span
+                                                title="Available Stock"></span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">شامپو
+                                            بدن<span title="Available Stock"></span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">کیت
+                                            آرایش<span title="Available Stock"></span></a></div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ms-sb-block-content">
+                        <ul>
+                            <li class="ms-list">
+                                <div class="ms-sidebar-block-item"><img
+                                        src="{% static 'assets/img/icons/glasses-8.svg' %}" class="svg_img" alt="drink">عینک
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">عینک
+                                            آفتابی <span title="Available Stock">- 20</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">لنز عینک
+                                            <span title="Available Stock">- 52</span></a></div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ms-sb-block-content">
+                        <ul>
+                            <li class="ms-list">
+                                <div class="ms-sidebar-block-item"><img src="{% static 'assets/img/icons/bag-8.svg' %}"
+                                                                        class="svg_img" alt="drink">کیف
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">کیسه
+                                            خرید <span title="Available Stock">- 25</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">کوله
+                                            پشتی بدنسازی <span title="Available Stock">- 52</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">کیف پول
+                                            <span title="Available Stock">- 40</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">کیف جیبی
+                                            <span title="Available Stock">- 35</span></a></div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Category sidebar End -->
+
+<!-- Cart sidebar Start -->
+<div class="ms-side-cart-overlay"></div>
+<div id="ms-side-cart" class="ms-side-cart">
+    <div class="ms-cart-inner">
+        <div class="ms-cart-top">
+            <div class="ms-cart-title">
+                <span class="cart_title">سبد خرید من</span>
+                <a href="javascript:void(0)" class="ms-cart-close"><img src="{% static 'assets/img/icons/close.svg' %}"
+                                                                        class="svg_img pro_svg" alt="close"></a>
+            </div>
+            <ul class="ms-cart-pro-items">
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/25_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="cart-pro-title">لیمو تازه</a>
+                        <span class="cart-price"><span>2500 تومان x</span> کیلوگرم</span>
+                        <div class="qty-plus-minus">
+                            <input class="qty-input" type="text" name="ms-qtybtn" value="1">
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/17_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="cart-pro-title">زنجبیل - ارگانیک</a>
+                        <span class="cart-price"><span>5000 تومان x</span> گرم</span>
+                        <div class="qty-plus-minus">
+                            <input class="qty-input" type="text" name="ms-qtybtn" value="1">
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/2_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="cart-pro-title"> بسته خرما</a>
+                        <span class="cart-price"><span>6000 تومان x</span> بسته</span>
+                        <div class="qty-plus-minus">
+                            <input class="qty-input" type="text" name="ms-qtybtn" value="1">
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="ms-cart-bottom">
+            <div class="cart-sub-total">
+                <table class="table cart-table">
+                    <tbody>
+                    <tr>
+                        <td class="text-left">جمع فرعی:</td>
+                        <td class="text-right">300 هزار</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">مالیات بر ارزش افزوده (20%):</td>
+                        <td class="text-right">60 هزار</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">جمع :</td>
+                        <td class="text-right primary-color">360 هزار</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="cart_btn">
+                <a href="cart.html" class="ms-btn-1">مشاهده سبد خرید</a>
+                <a href="checkout.html" class="ms-btn-2">بررسی خرید</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Cart sidebar End -->
+
+<!-- Wishlist sidebar Start -->
+<div class="ms-side-wish-overlay"></div>
+<div id="ms-side-wish" class="ms-side-wish">
+    <div class="ms-wish-inner">
+        <div class="ms-wish-top">
+            <div class="ms-wish-title">
+                <span class="wish_title">لیست علاقه مندی‌ها</span>
+                <a href="javascript:void(0)" class="ms-wish-close"><img src="{% static 'assets/img/icons/close.svg' %}"
+                                                                        class="svg_img pro_svg" alt="close"></a>
+            </div>
+            <ul class="ms-wish-pro-items">
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/18_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="wish-pro-title">لیمو</a>
+                        <span class="wish-price"><span>25 هزار x </span> کیلوگرم </span>
+                        <div class="ms-availability">
+                            <p class="stock avail">موجود در انبار</p>
+                            <a href="" class="ms-btn-2">خرید</a>
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/20_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="wish-pro-title">مارچوبه</a>
+                        <span class="wish-price"><span>5 هزار x</span> گرم</span>
+                        <div class="ms-availability">
+                            <p class="stock not-avail">موجودی</p>
+                            <div class="ms-wish-contact-btns">
+                                <a href="" class="ms-btn-2 btn-disabled">خرید</a>
+                                <a href="" class="ms-btn-1">مخاطب</a>
+                            </div>
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/31_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="wish-pro-title">انبه</a>
+                        <span class="wish-price"><span>59 هزار x</span> بسته</span>
+                        <div class="ms-availability">
+                            <p class="stock avail">موجود در انبار</p>
+                            <a href="" class="ms-btn-2">خرید</a>
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/23_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="wish-pro-title">توت فرنگی</a>
+                        <span class="wish-price"><span>59 هزار x</span> کیلوگرم</span>
+                        <div class="ms-availability">
+                            <p class="stock avail">موجود در انبار</p>
+                            <a href="" class="ms-btn-2">خرید</a>
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Wishlist sidebar End -->
+
+<!-- Breadcrumb start -->
+{#    <div class="ms-breadcrumb m-b-30">#}
+{#        <div class="container">#}
+{#            <div class="row">#}
+{#                <div class="col-12">#}
+{#                    <div class="row ms_breadcrumb_inner">#}
+{#                        <div class="col-md-6 col-sm-12">#}
+{#                            <h2 class="ms-breadcrumb-title">ورود</h2>#}
+{#                        </div>#}
+{#                        <div class="col-md-6 col-sm-12">#}
+{#                            <!-- ms-breadcrumb-list start -->#}
+{#                            <ul class="ms-breadcrumb-list">#}
+{#                                <li class="ms-breadcrumb-item"><a href="index.html">خانه</a><i class="fas fa-chevron-left"></i></li>#}
+{#                                <li class="ms-breadcrumb-item active">ورود</li>#}
+{#                            </ul>#}
+{#                            <!-- ms-breadcrumb-list end -->#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+<!-- Breadcrumb end -->
+
+<!-- Login section -->
+<section class="ms-login padding-tb-30">
+    <div class="container">
+        <div class="section-title-2">
+            <h2 class="ms-title">ورود<span></span></h2>
+            <p>به سفارشات، لیست خواسته ها و توصیه های خود دسترسی پیدا کنید</p>
+        </div>
+        <div class="ms-login-content p-t-15">
+            <div class="ms-login-box">
+                <div class="ms-login-wrapper">
+                    <div class="ms-login-container">
+                        <div class="ms-login-form">
+                            <form method="POST">
+
+                                    <span class="ms-login-wrap">
+                                        <label>کد رو وارد کنید</label>
+                                        {% csrf_token %}
+                                        <input type="text" name="code" placeholder="کد ارسال شده را وارد کنید" required>
+                                        <input type="hidden" name="phone" maxlength="4" value="{{ phone }}" required>
+                                    </span>
+
+                                    <span class="ms-login-wrap ms-login-btn">
+                                        <button class="ms-btn-2 btn" type="submit">تایید</button>
+                                    </span>
+
+                            </form>
+                                 <p>{{ error }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ms-login-box d-n-991">
+                <div class="ms-login-img">
+                    <img src="{% static 'assets/img/common/login.png' %}" alt="login">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Login section End -->
+
+<!-- Footer Start -->
+<footer class="ms-footer m-t-30">
+    <div class="footer-container">
+        <div class="footer-top padding-tb-60">
+            <div class="container">
+                <div class="row m-minus-991">
+                    <div class="col-sm-12 col-lg-3 ms-footer-cat">
+                        <div class="ms-footer-widget ms-footer-company">
+                            <img src="{% static 'assets/img/logo/footer-logo.png' %}" class="ms-footer-logo"
+                                 alt="footer logo">
+                            <p class="ms-footer-detail">مسترکارت بزرگترین بازار محصولات خواربار فروشی است. نیازهای
+                                روزانه خود را از فروشگاه ما دریافت کنید.</p>
+                            <div class="ms-app-store">
+                                <a href="#" class="app-img"><img src="{% static 'assets/img/app/android.png' %}"
+                                                                 class="adroid" alt="apple"></a>
+                                <a href="#" class="app-img"><img src="{% static 'assets/img/app/apple.png' %}"
+                                                                 class="apple" alt="apple"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-2 ms-footer-info">
+                        <div class="ms-footer-widget">
+                            <h4 class="ms-footer-heading">دسته بندی</h4>
+                            <div class="ms-footer-links ms-footer-dropdown">
+                                <ul class="align-items-center">
+                                    <li class="ms-footer-link"><a href="shop-left-sidebar-col-3.html"> شیر و لبنیات </a>
+                                    </li>
+                                    <li class="ms-footer-link"><a href="shop-banner-left-sidebar-col-3.html">میان وعده و
+                                        ادویه</a></li>
+                                    <li class="ms-footer-link"><a href="shop-full-width-col-5.html">فست فود</a></li>
+                                    <li class="ms-footer-link"><a href="shop-list-left-sidebar.html">آبمیوه و
+                                        نوشیدنی</a></li>
+                                    <li class="ms-footer-link"><a href="shop-list-full-col-2.html">نانوایی</a></li>
+                                    <li class="ms-footer-link"><a href="shop-banner-right-sidebar-col-4.html">غذای
+                                        دریایی</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-2 ms-footer-account">
+                        <div class="ms-footer-widget">
+                            <h4 class="ms-footer-heading">شرکت</h4>
+                            <div class="ms-footer-links ms-footer-dropdown">
+                                <ul class="align-items-center">
+                                    <li class="ms-footer-link"><a href="../about-us.html">درباره ما</a></li>
+                                    <li class="ms-footer-link"><a href="track-order.html">تحویل</a></li>
+                                    <li class="ms-footer-link"><a href="privacy-policy.html">اطلاع قانونی</a></li>
+                                    <li class="ms-footer-link"><a href="terms-condition.html">شرایط و ضوابط</a></li>
+                                    <li class="ms-footer-link"><a href="checkout.html">پرداخت امن</a></li>
+                                    <li class="ms-footer-link"><a href="contact-us.html">تماس با ما</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-2 ms-footer-service">
+                        <div class="ms-footer-widget">
+                            <h4 class="ms-footer-heading">حساب کاربری</h4>
+                            <div class="ms-footer-links ms-footer-dropdown">
+                                <ul class="align-items-center">
+                                    <li class="ms-footer-link"><a href="profile.html">ثبت نام</a></li>
+                                    <li class="ms-footer-link"><a href="cart.html">مشاهده سبد خرید</a></li>
+                                    <li class="ms-footer-link"><a href="privacy-policy.html">سیاست بازگشت</a></li>
+                                    <li class="ms-footer-link"><a href="#">فروشنده شوید</a></li>
+                                    <li class="ms-footer-link"><a href="#">برنامه های وابسته</a></li>
+                                    <li class="ms-footer-link"><a href="checkout.html">مبلغ پرداختی</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-3 ms-footer-cont-social">
+                        <div class="ms-footer-contact">
+                            <div class="ms-footer-widget">
+                                <h4 class="ms-footer-heading">مخاطب</h4>
+                                <div class="ms-footer-links ms-footer-dropdown">
+                                    <ul class="align-items-center">
+                                        <li class="ms-footer-link ms-foo-location"><span><img
+                                                src="{% static 'assets/img/icons/foo-location.svg' %}"
+                                                class="svg_img foo_svg" alt=""></span>
+                                            <p>ایران - تهران </p>
+                                        </li>
+                                        <li class="ms-footer-link ms-foo-call">
+                                                <span>
+                                                    <img src="{% static 'assets/img/icons/foo-wp.svg' %}"
+                                                         class="svg_img foo_svg" alt="">
+                                                </span>
+                                            <a href="tel:+009876543210">6789 345 0912</a>
+                                        </li>
+                                        <li class="ms-footer-link ms-foo-mail">
+                                                <span>
+                                                    <img src="{% static 'assets/img/icons/foo-mail.svg' %}"
+                                                         class="svg_img foo_svg" alt="">
+                                                </span>
+                                            <a href="mailto:example@email.com">example@email.com</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ms-footer-social">
+                            <div class="ms-footer-widget">
+                                <div class="ms-footer-links ms-footer-dropdown">
+                                    <ul class="align-items-center">
+                                        <li class="ms-footer-link"><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                        <li class="ms-footer-link"><a href="#"><i class="fa fa-twitter-square"></i></a>
+                                        </li>
+                                        <li class="ms-footer-link"><a href="#"><i class="fa fa-facebook-square"></i></a>
+                                        </li>
+                                        <li class="ms-footer-link"><a href="#"><i class="fa fa-linkedin-square"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="ms-bottom-info">
+                        <!-- Footer Copyright Start -->
+                        <div class="footer-copy">
+                            <div class="footer-bottom-copy ">
+                                <div class="ms-copy">کپی رایت © <a class="site-name" href="index.html">پیلارست</a> تمامی
+                                    حقوق محفوظ است. پشتیبانی شده توسط Pilarest
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Footer Copyright End -->
+                        <!-- Footer payment -->
+                        <div class="footer-bottom-right">
+                            <div class="footer-bottom-payment d-flex justify-content-center">
+                                <div class="payment-link">
+                                    <img src="{% static 'assets/img/hero-bg/payment.png' %}" alt="payment">
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- Footer payment -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer Area End -->
+
+<!-- Features sidebar  -->
+<div class="ms-features-sidebar-overlay"></div>
+<div class="ms-features-sidebar">
+    <div class="tool-title">
+        <h3>تنظیمات</h3>
+    </div>
+    <a href="#" class="ms-tools-sidebar-toggle open-features">
+        <img alt="icon" src="{% static 'assets/img/icons/setting.svg' %}" class="svg_img">
+    </a>
+    <div class="ms-features-block">
+        <div class="ms-features-title">رنگ‌ها</div>
+        <ul class="bg-panel ms-change-color">
+            <li class="active" data-color="01">
+                <a href="javascript:void(0)" class="colorcode1"></a>
+            </li>
+            <li data-color="02">
+                <a href="javascript:void(0)" class="colorcode2"></a>
+            </li>
+            <li data-color="03">
+                <a href="javascript:void(0)" class="colorcode3"></a>
+            </li>
+            <li data-color="04">
+                <a href="javascript:void(0)" class="colorcode4"></a>
+            </li>
+            <li data-color="05">
+                <a href="javascript:void(0)" class="colorcode5"></a>
+            </li>
+            <li data-color="06">
+                <a href="javascript:void(0)" class="colorcode6"></a>
+            </li>
+            <li data-color="07" class="">
+                <a href="javascript:void(0)" class="colorcode7"></a>
+            </li>
+            <li data-color="08">
+                <a href="javascript:void(0)" class="colorcode8"></a>
+            </li>
+            <li data-color="09">
+                <a href="javascript:void(0)" class="colorcode9"></a>
+            </li>
+        </ul>
+    </div>
+    <div class="ms-features-block">
+        <div class="ms-tools-sidebar-content">
+            <div class="ms-features-title">حالت پس رمینه</div>
+            <div class="ms-change-mode active" id="ms-change-mode">
+                <div class="ms-mode-switch">
+                    <div class="ms-mode-btn">انتخاب</div>
+                    <div class="ms-mode-on">روشن</div>
+                    <div class="ms-mode-off">خاموش</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Plugins JS -->
+<script src="{% static 'assets/js/plugins/jquery-3.5.1.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/popper.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/bootstrap-select.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/fontawesome.js' %}"></script>
+<script src="{% static 'assets/js/plugins/owl.carousel.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/infiniteslidev2.js' %}"></script>
+<script src="{% static 'assets/js/plugins/jquery.zoom.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/slick.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/nouislider.js' %}"></script>
+
+<!-- Main Js -->
+<script src="{% static 'assets/js/main.js' %}"></script>
+</body>
+
+</html>

@@ -1,15 +1,4 @@
 from pathlib import Path
-import os
-
-import account_logger.apps
-import banner.apps
-import doctor_visit.apps
-import feedback.apps
-import product.apps
-import report.apps
-import sale.apps
-import transaction.apps
-
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 SECRET_KEY = 'django-insecure-66m-$ghl%c523szciay*#l3a6vy(q^m8yh$oids82ikcriig95'
 
@@ -24,6 +13,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "corsheaders",
     'ckeditor',
     'ckeditor_uploader',
     'jdatetime',
@@ -51,7 +41,8 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',

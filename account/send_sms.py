@@ -1,13 +1,24 @@
+from threading import Thread
+
+
 def send_otp_message(phone, code):
     print(f"phone::{phone}=> code::{code}")
-    Thread(target=sms, args=(phone, code)).start()
+    # Thread(target=sms, args=(phone, code)).start()
+
 
 def sms(_phone, _message):
-    url = "https://rest.payamak-panel.com/api/SendSMS/BaseServiceNumber"
+    from ippanel import Client
 
-    payload = f'username=09117507790&password=BOD%40E&text={_message}&to={_phone}&bodyId=151748'
-    headers = {
-        'Content-Type': 'application/x-www-form-urlencoded'
+    api_key = "zOpl9jdnKmSkYIL90GEWSYgLdfSs4S_C8WUf1XgLukE="
+
+    sms = Client(api_key)
+    pattern_values = {
+        "verification-code": _message,
     }
 
-    response = requests.request("POST", url, headers=headers, data=payload)
+    message_id = sms.send_pattern(
+        "wjam509dz9v4tb0",  # pattern code
+        "+3000505",  # originator
+        _phone,  # recipient
+        pattern_values,  # pattern values
+    )

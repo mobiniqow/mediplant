@@ -1,6 +1,7 @@
 from django.core.validators import FileExtensionValidator, MinValueValidator
 from django.db import models
 from django.db.models import SET_NULL
+
 from account.models import User
 from product.models import Product
 
@@ -27,6 +28,7 @@ class Shop(models.Model):
     image = models.FileField(upload_to="shop/image/",
                              validators=[FileExtensionValidator(['jpg', 'png', 'jpeg']), ],
                              verbose_name='تصویر')
+    national_code = models.CharField(max_length=10, unique=True, verbose_name='کدملی', blank=True)
     description = models.TextField(verbose_name='توضیحات')
     rate_state = models.IntegerField(choices=ShopRate.choices, default=ShopRate.WHITE, verbose_name='وضعیت امتیاز')
 

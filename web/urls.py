@@ -1,6 +1,7 @@
 from django.urls import path
 
 from .views.articles import BlogsView, BlogsDetailsView
+from .views.auth import LoginView, VerifyView, ProfileView
 from .views.others import AboutUsView, ContactUsView
 from .views.shop import CategoryView, IndexView, ShopView, ShopDetailsView
 
@@ -13,4 +14,7 @@ urlpatterns = [
     path("blog/<int:id>/", BlogsDetailsView.as_view(), ),
     path('shop/', ShopView.as_view()),
     path('shop/<int:id>/', ShopDetailsView.as_view()),
+    path('login/', LoginView.as_view()),
+    path('verify/<str:phone>/', VerifyView.as_view(), name='verify'),
+    path('profile/', ProfileView.as_view()),
 ]

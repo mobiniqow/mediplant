@@ -33,6 +33,7 @@
     <link rel="stylesheet" id="main_style" href="{% static 'assets/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
     <link rel="stylesheet" class="color-css" href="{% static 'assets/css/color-01.css' %}">
+    {#    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>#}
 
 </head>
 
@@ -1941,9 +1942,30 @@
 <script src="{% static 'assets/js/plugins/jquery.zoom.min.js' %}"></script>
 <script src="{% static 'assets/js/plugins/slick.min.js' %}"></script>
 <script src="{% static 'assets/js/plugins/nouislider.js' %}"></script>
-
 <!-- Main Js -->
 <script src="{% static 'assets/js/main.js' %}"></script>
 </body>
+<script>
+    var items =[]
+    function get(name) {
+        if (name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search))
+            return decodeURIComponent(name[1]);
+    }
 
+    function da() {
+        $.ajax({
+            type: "GET",
+
+            url: `http://localhost:8000/product/?category=${get('category')}`,
+            success: function (html) {
+                //$("#more").after(html);
+                console.log(html['results']);
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                console.log(XMLHttpRequest.statusCode())
+            }
+        });
+    }
+
+</script>
 </html>

@@ -1,10 +1,5 @@
 {% load static %}
 <header class="ms-header">
-    <!-- Header Top Start -->
-
-    <!-- Header Top  End -->
-
-    <!-- Header Bottom  Start -->
     <div class="ms-header-bottom d-none d-lg-block">
         <div class="container position-relative">
             <div class="row">
@@ -53,12 +48,16 @@
                                              alt="">
                                     </div>
                                     <div class="ms-btn-desc">
-                                        <span class="ms-btn-title">حساب کاربری</span>
-                                        <span class="ms-btn-stitle">ورود</span>
+                                        {% if not categories.user.is_anonymous  %}
+                                           <span onclick='window.open("/profile/","_self")' class="ms-btn-title"> حساب کاربری </span>
+                                            {% else %}
+                                            <span onclick='window.open("/login/","_self")' class="ms-btn-stitle">ورود</span>
+                                        {% endif %}
+
                                     </div>
                                 </a>
 {#                                <ul class="ms-dropdown-menu">#}
-{#                                    <li><a class="dropdown-item" href="register.html">ثبت نام</a></li>#}
+{#                                    <li><a class="dropdown-item" href="profile.html">ثبت نام</a></li>#}
 {#                                    <li><a class="dropdown-item" href="checkout.html">بررسی خرید</a></li>#}
 {#                                    <li><a class="dropdown-item" href="privacy-policy.html">حریم خصوصی</a></li>#}
 {#                                    <li><a class="dropdown-item" href="login.html">ورود</a></li>#}

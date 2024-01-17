@@ -9,8 +9,14 @@ class ProductFilter(drf_filters.FilterSet):
     material = drf_filters.ChoiceFilter(choices=Product.Material.choices)
     state = drf_filters.ChoiceFilter(choices=Product.State.choices)
     is_active = drf_filters.BooleanFilter(field_name='is_active')
-    category = drf_filters.CharFilter(field_name='category__name', lookup_expr='exact')
+    category = drf_filters.CharFilter(field_name='category', lookup_expr='exact')
 
     class Meta:
         model = Product
-        fields = ['name', 'type', 'material', 'state', 'is_active', 'category']
+        fields = ['name',
+                  'type',
+                  'material',
+                  'state',
+                  'is_active',
+                  'category',
+                  ]

@@ -1,14 +1,16 @@
 import re
-from django.core.exceptions import ValidationError
-from django.core.validators import FileExtensionValidator
-from django.db import models
-from django.db.models import SET_NULL
-from django_jalali.db import models as jmodels
+import string
+import random
+
 from django.contrib.auth.models import (
     BaseUserManager,
     AbstractBaseUser,
     PermissionsMixin,
 )
+from django.core.exceptions import ValidationError
+from django.core.validators import FileExtensionValidator
+from django.db import models
+from django.db.models import SET_NULL
 
 from city.models import City, CityLocation
 
@@ -51,31 +53,24 @@ class User(AbstractBaseUser, PermissionsMixin):
         SILVER = 1
         GOLD = 2
 
-    # created_at = jmodels.jDateField(auto_now_add=True, verbose_name='زمان ساخت')
-    # updated_at = jmodels.jDateField(auto_now=True, verbose_name='زمان اخرین ویرایش')
     avatar = models.FileField(upload_to='paccount/user/avatar',
                               validators=[FileExtensionValidator(['jpg', 'png', 'jpeg']), ], blank=True,
                               verbose_name='تصویر')
     state = models.IntegerField(choices=State.choices, default=State.SUSPEND, verbose_name='وضعیت')
     activation_state = models.IntegerField(choices=UserActivationState.choices, default=UserActivationState.WHITE,
                                            verbose_name='نوع پلن')
-    user_name = models.CharField(max_length=83, verbose_name='نام و نام خانوادگی')
+    user_name = models.CharField(max_length=83, verbose_name='نام و نام خانوادگی', blank=True)
     phone = models.CharField(max_length=17, unique=True, validators=[phone_validator], verbose_name='شماره تلفن')
     objects = BasicUserManager()
     USERNAME_FIELD = "phone"
     is_staff = models.BooleanField(default=False)
-    gender = models.BooleanField(verbose_name='جنسیت')
-    national_code = models.CharField(max_length=10, unique=True, verbose_name='کدملی')
-    email = models.EmailField(verbose_name='ایمیل')
-    # birth_day = jmodels.jDateField(verbose_name='تاریخ تولد')
-    ref_code = models.CharField(max_length=8, verbose_name='کد معرفی', unique=True)
-    # country = models.ForeignKey(Country, on_delete=SET_NULL, null=True, verbose_name='کشور')
-    city = models.ForeignKey(City, on_delete=SET_NULL, null=True, verbose_name='شهر')
-    location = models.ForeignKey(CityLocation, on_delete=SET_NULL, null=True, verbose_name='محدوده')
-    address = models.TextField(verbose_name='ادرس')
-    postal_code = models.CharField(max_length=20, verbose_name='کد پستی')
-
-    # point = g_models.PointField(verbose_name='نقشه')
+    gender = models.BooleanField(verbose_name='جنسیت', default=False)
+    email = models.EmailField(verbose_name='ایمیل', blank=True)
+    referral_code = models.CharField(max_length=8, unique=True, editable=False)
+    city = models.ForeignKey(City, on_delete=SET_NULL, null=True, verbose_name='شهر', blank=True)
+    location = models.ForeignKey(CityLocation, on_delete=SET_NULL, null=True, verbose_name='محدوده', blank=True)
+    address = models.TextField(verbose_name='آدرس', blank=True)
+    postal_code = models.CharField(max_length=20, verbose_name='کد پستی', blank=True)
 
     def __str__(self):
         return self.phone
@@ -93,3 +88,15 @@ class User(AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = 'کاربر'
         verbose_name_plural = 'کاربران'
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            # تولید کد معرف برای کاربر جدید
+            self.referral_code = self.generate_referral_code()
+
+        super().save(*args, **kwargs)
+
+    def generate_referral_code(self):
+        letters_and_digits = string.ascii_letters + string.digits
+        referral_code = ''.join(random.choice(letters_and_digits) for _ in range(8))
+        return referral_code
