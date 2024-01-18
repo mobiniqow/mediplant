@@ -1,9 +1,6 @@
 from django.views.generic import TemplateView
 
-from banner.models import Banner
-from encyclopedia.models import ArticleEncyclopedia
-from product.models import Category, Product, ProductImage
-from shop.models import ShopProduct, Shop
+from product.models import Category
 
 
 class AboutUsView(TemplateView):

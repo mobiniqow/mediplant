@@ -110,3 +110,21 @@ class ShopDetailsView(TemplateView):
         context['categories_map'] = category_and_sub_category
 
         return context
+
+
+class SearchProduct(TemplateView):
+    template_name = 'search-product-in-shop.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        category_and_sub_category = {}
+        product_id = kwargs['product_id']
+        shops_product = ShopProduct.objects.filter(product_id=product_id)
+        print(shops_product)
+        category_and_sub_category['base'] = Category.objects.filter(parent=None)
+
+        for i in category_and_sub_category['base']:
+            i.children = Category.objects.filter(parent=i.id)
+        context['categories_map'] = category_and_sub_category
+
+        return context

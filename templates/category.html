@@ -1,4 +1,5 @@
 {% load static %}
+{% load humanize %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -515,20 +516,20 @@
                 <!-- Shop Top End -->
 
                 <!-- Select Bar Start -->
-                <div class="ms-select-bar d-flex">
-                    <span class="ms-select-btn">لباس ها<a class="ms-select-cancel"
-                                                          href="javascript:void(0)">×</a></span>
-                    <span class="ms-select-btn">میوه جات<a class="ms-select-cancel"
-                                                           href="javascript:void(0)">×</a></span>
-                    <span class="ms-select-btn">گوشت<a class="ms-select-cancel" href="javascript:void(0)">×</a></span>
-                    <span class="ms-select-btn">لبنیات<a class="ms-select-cancel" href="javascript:void(0)">×</a></span>
-                    <span class="ms-select-btn">عطر و ادکلن<a class="ms-select-cancel"
-                                                              href="javascript:void(0)">×</a></span>
-                    <span class="ms-select-btn">جواهرات<a class="ms-select-cancel"
-                                                          href="javascript:void(0)">×</a></span>
-                    <span class="ms-select-btn ms-select-btn-clear"><a class="ms-select-clear"
-                                                                       href="javascript:void(0)">پاک کردن همه</a></span>
-                </div>
+                {#                <div class="ms-select-bar d-flex">#}
+                {#                    <span class="ms-select-btn">لباس ها<a class="ms-select-cancel"#}
+                {#                                                          href="javascript:void(0)">×</a></span>#}
+                {#                    <span class="ms-select-btn">میوه جات<a class="ms-select-cancel"#}
+                {#                                                           href="javascript:void(0)">×</a></span>#}
+                {#                    <span class="ms-select-btn">گوشت<a class="ms-select-cancel" href="javascript:void(0)">×</a></span>#}
+                {#                    <span class="ms-select-btn">لبنیات<a class="ms-select-cancel" href="javascript:void(0)">×</a></span>#}
+                {#                    <span class="ms-select-btn">عطر و ادکلن<a class="ms-select-cancel"#}
+                {#                                                              href="javascript:void(0)">×</a></span>#}
+                {#                    <span class="ms-select-btn">جواهرات<a class="ms-select-cancel"#}
+                {#                                                          href="javascript:void(0)">×</a></span>#}
+                {#                    <span class="ms-select-btn ms-select-btn-clear"><a class="ms-select-clear"#}
+                {#                                                                       href="javascript:void(0)">پاک کردن همه</a></span>#}
+                {#                </div>#}
                 <!-- Select Bar End -->
 
                 <!-- Shop content Start -->
@@ -982,6 +983,8 @@
 <script>
     var pagination = true;
     const itemsPerPage = 16;
+    var totalCount = 16;
+
     function get(name) {
         if (name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search))
             return decodeURIComponent(name[1]);
@@ -1010,78 +1013,76 @@
     }
 
 
-
-    function openUrl(pageNumber){
-
-            $.ajax({
-                type: "GET",
-                url: `http://localhost:8000/product/?category=${get('category')}&page=${pageNumber}`,
-                success: function (html) {
-                    if(pagination){
-                        totalCount = html['count'];
-                        print(totalCount);
-                        totalPages = Math.ceil(totalCount / itemsPerPage);
-                        createPaginationButtons();
-                        pagination = false;
-                    }
-                    var items = html['results'];
-                    var container = $("#base-container");
-                    for (var i = 0; i < items.length; i++) {
-                        var item = items[i];
-                        var html = `
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content ms-product-content">
-                    <div class="ms-product-inner">
-                        <div class="ms-pro-image-outer">
-                            <div class="ms-pro-image">
-                                <a href="product-left-sidebar.html" class="image">
-                                    <span class="label veg">
-                                        <span class="dot"></span>
+    function openUrl(pageNumber) {
+        $.ajax({
+            type: "GET",
+            url: `http://localhost:8000/product/?category=${get('category')}&page=${pageNumber}`,
+            success: function (html) {
+                var container = $("#base-container");
+                container.children('div').remove();
+                if (pagination) {
+                    totalCount = html['count'];
+                    totalPages = Math.ceil(totalCount / itemsPerPage);
+                    createPaginationButtons();
+                    pagination = false;
+                }
+                var items = html['results'];
+                for (var i = 0; i < items.length; i++) {
+                    var item = items[i];
+                    var html = `
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content ms-product-content">
+                        <div class="ms-product-inner">
+                            <div class="ms-pro-image-outer">
+                                <div class="ms-pro-image">
+                                    <a href="product/${item['id']}/" class="image">
+                                        <span class="label veg">
+                                            <span class="dot"></span>
+                                        </span>
+                                        <img class="main-image" src="${item['image'][0]['image']}" alt="Product">
+                                        <img class="hover-image" src="${item['image'][1]['image']}" alt="Product">
+                                    </a>
+                                    <span class="flags">
+                                        {#<span class="sale">فروش</span>#}
                                     </span>
-                                    <img class="main-image" src="${item['image'][0]['image']}" alt="Product">
-                                    <img class="hover-image" src="${item['image'][1]['image']}" alt="Product">
-                                </a>
-                                <span class="flags">
-                                    {#<span class="sale">فروش</span>#}
-                                </span>
-                                {#<div class="ms-pro-actions">#}
-                                {#    <a class="ms-btn-group wishlist" title="علاقه مندی">#}
-                                {#        <img src="{% static 'assets/img/icons/pro_wishlist.svg' %}" class="svg_img pro_svg" alt="">#}
-                                {#    </a>#}
-                                {#    <a href="#" class="ms-btn-group quickview" data-link-action="quickview" title="بازدید سریع" data-bs-toggle="modal" data-bs-target="#ms_quickview_modal">#}
-                                {#        <img src="{% static 'assets/img/icons/quickview.svg' %}" class="svg_img pro_svg" alt="">#}
-                                {#    </a>#}
-                                {#    <a href="javascript:void(0)" class="ms-btn-group compare" title="مقایسه">#}
-                                {#        <img src="{% static 'assets/img/icons/compare.svg' %}" class="svg_img pro_svg" alt="">#}
-                                {#    </a>#}
-                                {#    <a href="javascript:void(0)" title="خرید" class="ms-btn-group add-to-cart">#}
-                                {#        <img src="{% static 'assets/img/icons/pro_cart.svg' %}" class="svg_img pro_svg" alt="">#}
-                                {#    </a>#}
-                                {#</div>#}
+                                    {#<div class="ms-pro-actions">#}
+                                    {#    <a class="ms-btn-group wishlist" title="علاقه مندی">#}
+                                    {#        <img src="{% static 'assets/img/icons/pro_wishlist.svg' %}" class="svg_img pro_svg" alt="">#}
+                                    {#    </a>#}
+                                    {#    <a href="#" class="ms-btn-group quickview" data-link-action="quickview" title="بازدید سریع" data-bs-toggle="modal" data-bs-target="#ms_quickview_modal">#}
+                                    {#        <img src="{% static 'assets/img/icons/quickview.svg' %}" class="svg_img pro_svg" alt="">#}
+                                    {#    </a>#}
+                                    {#    <a href="javascript:void(0)" class="ms-btn-group compare" title="مقایسه">#}
+                                    {#        <img src="{% static 'assets/img/icons/compare.svg' %}" class="svg_img pro_svg" alt="">#}
+                                    {#    </a>#}
+                                    {#    <a href="javascript:void(0)" title="خرید" class="ms-btn-group add-to-cart">#}
+                                    {#        <img src="{% static 'assets/img/icons/pro_cart.svg' %}" class="svg_img pro_svg" alt="">#}
+                                    {#    </a>#}
+                                    {#</div>#}
+                                </div>
                             </div>
-                        </div>
-                        <div class="ms-pro-content">
-                            <a href="shop-left-sidebar-col-3.html">
-                                <h6 class="ms-pro-stitle">${item['name']}</h6>
-                            </a>
-                            <h5 class="ms-pro-title"><a href="product-left-sidebar.html">${item['description']}</a></h5>
-                            {#<p class="ms-info">${item['description']}</p>#}
-                            <div class="ms-pro-rat-price">
-                                <span class="ms-pro-rating">
-                                    <i class="fa-solid fa-star fill"></i>
-                                    <i class="fa-solid fa-star fill"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </span>
-                                <span class="ms-price">
-                                    <span class="new-price">${item.price}</span>
-                                    {#<span class="old-price">${item.oldPrice}</span>#}
-                                </span>
+                            <div class="ms-pro-content">
+                                <a href="product/${item['id']}/">
+                                    <h6 class="ms-pro-stitle">${item['name']}</h6>
+                                </a>
+                                <h5 class="ms-pro-title"><a href="product/${item['id']}/">${item['description']}</a></h5>
+                                {#<p class="ms-info">${item['description']}</p>#}
+                                <div class="ms-pro-rat-price">
+                                    <span class="ms-pro-rating">
+                                        <i class="fa-solid fa-star fill"></i>
+                                        <i class="fa-solid fa-star fill"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </span>
+                                    <span class="ms-price">
+                                        <span class="new-price">${item['price']}</span>
+                                        {#<span class="old-price">${item.oldPrice}</span>#}
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            `;
+                `;
                         container.append(html);
                     }
                 },
