@@ -79,8 +79,8 @@ class ShopView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
         category_and_sub_category = {}
+
         category_and_sub_category['base'] = Category.objects.filter(parent=None)
         categories = Category.objects.filter(parent=None)
 
