@@ -85,3 +85,6 @@ class ShopProduct(models.Model):
     class Meta:
         verbose_name = 'محصول فروشگاه'
         verbose_name_plural = 'محصولات فروشگاه'
+
+    def __str__(self):
+        return self.shop.name

@@ -1,4 +1,5 @@
 {% load static %}
+{% load humanize %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -427,154 +428,87 @@
     <div class="it-product">
         <div class="itt">
             <div class="div-img-product">
-                <img class="img-product" src="{% static 'assets/img/product-images/10_1.jpg' %}">
+                <img class="img-product" src="{{ product_shops.0.image.image.url }}">
             </div>
             <div class="div-info-detail">
                 <div class="c-info-detail">
-                    <p>پنیر چیپس</p>
+                    <p>{{ product_shops.0.product.name }}</p>
                     <div class="item-c">
                         <div>
-                            <p>4.5</p>از<span>5</span>
+                            <p>4</p>از<span>5</span>
                         </div>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                        </div>
-                        <div class="shop">
-                            <h2><span>41</span> فروشنده دیگر </h2>
-                            <div>
-                                <ul>
-                                    <li class="fa fa-bell-o"></li>
-                                    <li class="fa fa-heart-o"></li>
-                                    <li class="fa fa-share-nodes"></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="pricee">
-                            <div>
-                                <p>فروشگاه بابایی</p>
-                                <h3><span>۱۷۰۰۰</span> تومان</h3>
-                            </div>
-                            <div>
-                                <h2>ارزان ترین</h2>
-                            </div>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                    </div>
+                    <div class="shop">
+                        <h2><span>{{ product_shops|length|add:-1 }}</span> فروشنده دیگر </h2>
+                        <div>
+                            <ul>
+                                <li class="fa fa-bell-o"></li>
+                                <li class="fa fa-heart-o"></li>
+                                <li class="fa fa-share-nodes"></li>
+                            </ul>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="shoping">
-                <div class="shoping-titr">
-                    <h2>فروشنده ها</h2>
-                    <p>راهنمای خرین امن</p>
-                </div>
-                <!-- -->
-                <div class="item-shoping">
-                    <div class="it-sh">
-                        <div class="r-sh">
-                            <h2> طب سنتی</h2>
-                            <p>ساری</p>
+                    <div class="pricee">
+                        <div>
+                            <p>فروشگاه بابایی</p>
+                            <h3><span>{{ product_shops.0.price|intcomma:False }}</span> تومان</h3>
                         </div>
-                        <div class="details-it-shop">
-                            <div class="item-cc">
-                                <span class="fa fa-star checked"></span>
-                                <div>
-                                    <p>4.5</p>
-                                </div>
-                            </div>
-                            <p class="p-cc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از </p>
-                            <p class="original-item o-t">
-                                <span>&#10003</span>اصالت و سلامت فیزیکی کالا
-                            </p>
+                        <div>
+                            <h2>ارزان ترین</h2>
                         </div>
-                    </div>
-                    <div class="btn-price">
-                        <p><span>۱۸۰۰۰</span> تومان</p>
-                        <button class="btn-p">خرید اینترنتی</button>
-                    </div>
-                </div>
-                <div class="item-shoping">
-                    <div class="it-sh">
-                        <div class="r-sh">
-                            <h2> طب سنتی</h2>
-                            <p>ساری</p>
-                        </div>
-                        <div class="details-it-shop">
-                            <div class="item-cc">
-                                <span class="fa fa-star checked"></span>
-                                <div>
-                                    <p>4.5</p>
-                                </div>
-                            </div>
-                            <p class="p-cc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از </p>
-                            <p class="original-item o-t">
-                                <span>&#10003</span>اصالت و سلامت فیزیکی کالا
-                            </p>
-                        </div>
-                    </div>
-                    <div class="btn-price">
-                        <p><span>۱۸۰۰۰</span> تومان</p>
-                        <button class="btn-p">خرید اینترنتی</button>
-                    </div>
-                </div>
-                <div class="item-shoping">
-                    <div class="it-sh">
-                        <div class="r-sh">
-                            <h2> طب سنتی</h2>
-                            <p>ساری</p>
-                        </div>
-                        <div class="details-it-shop">
-                            <div class="item-cc">
-                                <span class="fa fa-star checked"></span>
-                                <div>
-                                    <p>4.5</p>
-                                </div>
-                            </div>
-                            <p class="p-cc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از </p>
-                            <p class="original-item o-t">
-                                <span>&#10003</span>اصالت و سلامت فیزیکی کالا
-                            </p>
-                        </div>
-                    </div>
-                    <div class="btn-price">
-                        <p><span>۱۸۰۰۰</span> تومان</p>
-                        <button class="btn-p">خرید اینترنتی</button>
-                    </div>
-                </div>
-                <div class="item-shoping">
-                    <div class="it-sh">
-                        <div class="r-sh">
-                            <h2> طب سنتی</h2>
-                            <p>ساری</p>
-                        </div>
-                        <div class="details-it-shop">
-                            <div class="item-cc">
-                                <span class="fa fa-star checked"></span>
-                                <div>
-                                    <p>4.5</p>
-                                </div>
-                            </div>
-                            <p class="p-cc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از </p>
-                            <p class="original-item o-t">
-                                <span>&#10003</span>اصالت و سلامت فیزیکی کالا
-                            </p>
-                        </div>
-                    </div>
-                    <div class="btn-price">
-                        <p><span>۱۸۰۰۰</span> تومان</p>
-                        <button class="btn-p">خرید اینترنتی</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="product-detaill">
-            <h2>مشخصات محصول</h2>
-            <div class="product-detaill-scroll">
-                <div class="it-product-scroll">
-                    <div class="name-it-scroll">
-                        <p>تاریخ کالا</p>
+        <div class="shoping">
+            <div class="shoping-titr">
+                <h2>فروشنده ها</h2>
+                {#                    <p>راهنمای خرین امن</p>#}
+            </div>
+            <!-- -->
+
+            {% for i in product_shops|slice:"1:" %}
+
+                <div class="item-shoping">
+                    <div class="it-sh">
+                        <div class="r-sh">
+                            <h2> {{ i.shop.name }}</h2>
+                            <p>ساری</p>
+                        </div>
+                        <div class="details-it-shop">
+                            <div class="item-cc">
+                                <span class="fa fa-star checked"></span>
+                                <div>
+                                    <p>4.5</p>
+                                </div>
+                            </div>
+                            <p class="p-cc">{{ i.product.name }}</p>
+                            <p class="original-item o-t">
+                                <span>&#10003</span>اصالت و سلامت فیزیکی کالا
+                            </p>
+                        </div>
                     </div>
+                    <div class="btn-price">
+                        <p><span>{{ i.price|intcomma:False }}</span> تومان</p>
+                        <button class="btn-p">خرید اینترنتی</button>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+    <div class="product-detaill">
+        <h2>مشخصات محصول</h2>
+        <div class="product-detaill-scroll">
+            <div class="it-product-scroll">
+                <div class="name-it-scroll">
+                    <p>تاریخ کالا</p>
+                </div>
                     <div class="detaill-it-scroll">
                         <p>۱۴۰۲/۰۲/۰۲</p>
                     </div>
