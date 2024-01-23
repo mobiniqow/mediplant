@@ -41,24 +41,16 @@ class Product(models.Model):
         BOKHORI = 22, 'بخور'
         DOD_KARDANI = 23, 'دود کردنی'
 
-    class Material(models.IntegerChoices):
-        BASTE_BANDI = 1, 'بسته بندی'
-        PACK = 2, 'پک'
-        DANE_E = 3, 'دانه ای'
-        KILOE = 4, 'کیلوای'
-        SHISHE_E = 5, 'شیشه ای'
-
     class State(models.IntegerChoices):
         SUSPEND = 0, 'معلق'
         ACTIVE = 1, 'فعال'
-        DE_ACTIVE = 2, 'غیر فعا'
+        DE_ACTIVE = 2, 'غیر فعال'
 
     trade_id = models.CharField(max_length=19, verbose_name='شناسه بازرگانی')
     class_id = models.ForeignKey(ClassId, on_delete=SET_NULL, null=True, verbose_name='شناسه صنف')
     category = models.ForeignKey('Category', on_delete=SET_NULL, null=True, verbose_name='کتگوری', blank=True)
     name = models.CharField(max_length=33, verbose_name="نام کالا", unique=True)
     type = models.IntegerField(choices=Type.choices, verbose_name='نوع کالا')
-    material = models.IntegerField(choices=Material.choices, verbose_name='جنس کالا')
     description = models.TextField(verbose_name='جنس کالا', )
     price = models.IntegerField(verbose_name='واحد قیمت بر حسب واحد')
     state = models.IntegerField(choices=State.choices, default=State.SUSPEND, verbose_name='وضعیت کالا')

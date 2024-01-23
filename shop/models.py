@@ -73,6 +73,13 @@ class ShopProduct(models.Model):
         AVAILABLE = 0, 'در دسترس'
         NOT_AVAILABLE = 1, 'در دسترس نیست'
 
+    class Material(models.IntegerChoices):
+        BASTE_BANDI = 1, 'بسته بندی'
+        PACK = 2, 'پک'
+        DANE_E = 3, 'دانه ای'
+        KILOE = 4, 'کیلوای'
+        SHISHE_E = 5, 'شیشه ای'
+
     shop = models.ForeignKey(Shop, on_delete=models.SET_NULL, null=True, verbose_name='فروشگاه')
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True, verbose_name='محصول')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='تاریخ ایجاد')
@@ -81,6 +88,7 @@ class ShopProduct(models.Model):
     inventory_state = models.IntegerField(choices=Inventory.choices, default=Inventory.NOT_AVAILABLE,
                                           verbose_name='وضعیت موجودی')
     price = models.IntegerField(validators=[MinValueValidator(0)], default=0, verbose_name='قیمت')
+    material = models.IntegerField(choices=Material.choices, verbose_name='جنس کالا', default=Material.BASTE_BANDI)
 
     class Meta:
         verbose_name = 'محصول فروشگاه'

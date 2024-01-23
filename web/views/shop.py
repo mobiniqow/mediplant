@@ -119,9 +119,11 @@ class SearchProduct(BaseTemplateView):
         context = super().get_context_data(**kwargs)
         product_id = kwargs['product_id']
         shops_product = ShopProduct.objects.filter(product_id=product_id).order_by('price')
-
+        products = Product.objects.select_related('class_id', 'category', 'unit').prefetch_related('images')[:10]
         for i in shops_product:
             i.image = ProductImage.objects.filter(product=i.product).first()
-        print(shops_product)
+        for i in products:
+            i.image_list = i.images.all()
+        context['products'] = products
         context['product_shops'] = shops_product
         return context

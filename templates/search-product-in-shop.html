@@ -507,163 +507,49 @@
         <div class="product-detaill-scroll">
             <div class="it-product-scroll">
                 <div class="name-it-scroll">
-                    <p>تاریخ کالا</p>
+                    <p>نوع کالا</p>
                 </div>
-                    <div class="detaill-it-scroll">
-                        <p>۱۴۰۲/۰۲/۰۲</p>
-                    </div>
+                <div class="detaill-it-scroll">
+                    <p>{{ product_shops.0.product.get_type_display }}</p>
                 </div>
-                <div class="it-product-scroll">
-                    <div class="name-it-scroll">
-                        <p>برند</p>
-                    </div>
-                    <div class="detaill-it-scroll">
-                        <p>کاله</p>
-                    </div>
+            </div>
+            <div class="it-product-scroll">
+                <div class="name-it-scroll">
+                    <p>دسته بندی</p>
                 </div>
-                <div class="it-product-scroll">
-                    <div class="name-it-scroll">
-                        <p>تاریخ انقضاء</p>
-                    </div>
-                    <div class="detaill-it-scroll">
-                        <p>۱۴۰۲/۰۲/۰۲</p>
-                    </div>
+                <div class="detaill-it-scroll">
+                    <p>{{ product_shops.0.product.category.name }}</p>
                 </div>
-                <div class="it-product-scroll">
-                    <div class="name-it-scroll">
-                        <p>معرفی محصول</p>
-                    </div>
-                    <div class="detaill-it-scroll w-paragraph">
-                        <p class="paragraph">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد</p>
-                    </div>
+            </div>
+
+            <div class="it-product-scroll">
+                <div class="name-it-scroll">
+                    <p>معرفی محصول</p>
                 </div>
-                <div class="it-product-scroll">
-                    <div class="name-it-scroll">
-                        <p> نحوه مصرف</p>
-                    </div>
-                    <div class="detaill-it-scroll w-paragraph">
-                        <p class="paragraph">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                            طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای
-                            شرایط فعلی تکنولوژی مورد</p>
-                    </div>
+                <div class="detaill-it-scroll w-paragraph">
+                    <p class="paragraph">{{ product_shops.0.product.description }}</p>
                 </div>
             </div>
         </div>
+    </div>
 </div>
 <div class="items-result">
     <div id="table1" class="pagination-table">
+        {% for i in products %}
+
         <div class="it-table">
-            <img class="img-table" src="{% static 'assets/img/bg/newsletter.png' %}">
+            <a href="/search/product/{{i.id}}/" ><img class="img-table" src="{{ i.image_list.0.image.url }}"></a>
             <div style="display: flex; justify-content: space-between; margin: 0 16px;" class="name-ittt-table">
                 <a class="name">نام محصول :</a>
-                <a class="name-it">سیب</a>
+                <a class="name-it">{{ i.name|truncatechars:12 }}</a>
             </div>
             <div style="display: flex; justify-content: space-between; margin: 16px;" class="name-ittt-table">
                 <a class="name"> قیمت محصول :</a>
-                <a class="name-it">۱۸ هزار</a>
+                <a class="name-it">{{ i.price|intcomma:False}}  تومان </a>
             </div>
-            <span class="offer">offer</span>
+{#            <span class="offer">offer</span>#}
         </div>
-        <div class="it-table">
-            <img class="img-table" src="{% static 'assets/img/bg/newsletter.png' %}">
-            <div style="display: flex; justify-content: space-between; margin: 0 16px;" class="name-ittt-table">
-                <a class="name">نام محصول :</a>
-                <a class="name-it">سیب</a>
-            </div>
-            <div style="display: flex; justify-content: space-between; margin: 16px;" class="name-ittt-table">
-                <a class="name"> قیمت محصول :</a>
-                <a class="name-it">۱۸ هزار</a>
-            </div>
-            <span class="offer">offer</span>
-        </div>
-        <div class="it-table">
-            <img class="img-table" src="{% static 'assets/img/bg/newsletter.png' %}">
-            <div style="display: flex; justify-content: space-between; margin: 0 16px;" class="name-ittt-table">
-                <a class="name">نام محصول :</a>
-                <a class="name-it">سیب</a>
-            </div>
-            <div style="display: flex; justify-content: space-between; margin: 16px;" class="name-ittt-table">
-                <a class="name"> قیمت محصول :</a>
-                <a class="name-it">۱۸ هزار</a>
-            </div>
-        </div>
-        <div class="it-table">
-            <img class="img-table" src="{% static 'assets/img/bg/newsletter.png' %}">
-            <div style="display: flex; justify-content: space-between; margin: 0 16px;" class="name-ittt-table">
-                <a class="name">نام محصول :</a>
-                <a class="name-it">سیب</a>
-            </div>
-            <div style="display: flex; justify-content: space-between; margin: 16px;" class="name-ittt-table">
-                <a class="name"> قیمت محصول :</a>
-                <a class="name-it">۱۸ هزار</a>
-            </div>
-        </div>
-        <div class="it-table">
-            <img class="img-table" src="{% static 'assets/img/bg/newsletter.png' %}">
-            <div style="display: flex; justify-content: space-between; margin: 0 16px;" class="name-ittt-table">
-                <a class="name">نام محصول :</a>
-                <a class="name-it">سیب</a>
-            </div>
-            <div style="display: flex; justify-content: space-between; margin: 16px;" class="name-ittt-table">
-                <a class="name"> قیمت محصول :</a>
-                <a class="name-it">۱۸ هزار</a>
-            </div>
-        </div>
-        <div class="it-table">
-            <img class="img-table" src="{% static 'assets/img/bg/newsletter.png' %}">
-            <div style="display: flex; justify-content: space-between; margin: 0 16px;" class="name-ittt-table">
-                <a class="name">نام محصول :</a>
-                <a class="name-it">سیب</a>
-            </div>
-            <div style="display: flex; justify-content: space-between; margin: 16px;" class="name-ittt-table">
-                <a class="name"> قیمت محصول :</a>
-                <a class="name-it">۱۸ هزار</a>
-            </div>
-        </div>
-        <div class="it-table">
-            <img class="img-table" src="{% static 'assets/img/bg/newsletter.png' %}">
-            <div style="display: flex; justify-content: space-between; margin: 0 16px;" class="name-ittt-table">
-                <a class="name">نام محصول :</a>
-                <a class="name-it">سیب</a>
-            </div>
-            <div style="display: flex; justify-content: space-between; margin: 16px;" class="name-ittt-table">
-                <a class="name"> قیمت محصول :</a>
-                <a class="name-it">۱۸ هزار</a>
-            </div>
-        </div>
-        <div class="it-table">
-            <img class="img-table" src="{% static 'assets/img/bg/newsletter.png' %}">
-            <div style="display: flex; justify-content: space-between; margin: 0 16px;" class="name-ittt-table">
-                <a class="name">نام محصول :</a>
-                <a class="name-it">سیب</a>
-            </div>
-            <div style="display: flex; justify-content: space-between; margin: 16px;" class="name-ittt-table">
-                <a class="name"> قیمت محصول :</a>
-                <a class="name-it">۱۸ هزار</a>
-            </div>
-        </div>
-        <div class="it-table">
-            <img class="img-table" src="{% static 'assets/img/bg/newsletter.png' %}">
-            <div style="display: flex; justify-content: space-between; margin: 0 16px;" class="name-ittt-table">
-                <a class="name">نام محصول :</a>
-                <a class="name-it">سیب</a>
-            </div>
-            <div style="display: flex; justify-content: space-between; margin: 16px;" class="name-ittt-table">
-                <a class="name"> قیمت محصول :</a>
-                <a class="name-it">۱۸ هزار</a>
-            </div>
-        </div>
-        <div class="it-table">
-            <img class="img-table" src="{% static 'assets/img/bg/newsletter.png' %}">
-            <div style="display: flex; justify-content: space-between; margin: 0 16px;" class="name-ittt-table">
-                <a class="name">نام محصول :</a>
-                <a class="name-it">سیب</a>
-            </div>
-            <div style="display: flex; justify-content: space-between; margin: 16px;" class="name-ittt-table">
-                <a class="name"> قیمت محصول :</a>
-                <a class="name-it">۱۸ هزار</a>
-            </div>
-        </div>
+        {% endfor %}
     </div>
     </div>
 <!-- content end -->
