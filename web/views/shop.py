@@ -1,10 +1,11 @@
+from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView
 
 from abstract_view.base_template_view import BaseTemplateView
 from banner.models import Banner
 from encyclopedia.models import ArticleEncyclopedia
 from product.models import Category, Product, ProductImage
-from shop.models import ShopProduct, Shop
+from shop.models import ShopProduct, Shop, ShopImage
 
 
 class IndexView(BaseTemplateView):
@@ -96,18 +97,19 @@ class ShopView(TemplateView):
         return context
 
 
-class ShopDetailsView(TemplateView):
-    template_name = "shop-details.html"
+class ShopDetailsView(BaseTemplateView):
+    template_name = "shop.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        category_and_sub_category = {}
-
-        category_and_sub_category['base'] = Category.objects.filter(parent=None)
-
-        for i in category_and_sub_category['base']:
-            i.children = Category.objects.filter(parent=i.id)
-        context['categories_map'] = category_and_sub_category
+        shop_id = kwargs['id']
+        shop = get_object_or_404(Shop, id=shop_id)
+        shop.banners = ShopImage.objects.filter(shop=shop)
+        product = ShopProduct.objects.filter(shop=shop)
+        for i in product:
+            i.image = ProductImage.objects.filter(product=i.product).first()
+        context['shop'] = shop
+        context['product'] = product
 
         return context
 

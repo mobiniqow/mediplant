@@ -3,6 +3,7 @@ from django.urls import path
 from .views.articles import BlogsView, BlogsDetailsView
 from .views.auth import LoginView, VerifyView, ProfileView
 from .views.others import AboutUsView, ContactUsView
+from .views.product import ShopProductView
 from .views.shop import CategoryView, IndexView, ShopView, ShopDetailsView, SearchProduct
 
 urlpatterns = [
@@ -18,4 +19,5 @@ urlpatterns = [
     path('login/', LoginView.as_view()),
     path('verify/<str:phone>/', VerifyView.as_view(), name='verify'),
     path('profile/', ProfileView.as_view()),
+    path('product/<int:product_id>/', ShopProductView.as_view()),
 ]
