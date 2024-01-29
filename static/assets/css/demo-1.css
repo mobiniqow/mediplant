@@ -476,7 +476,12 @@ input {
 .section-bg {
     background-color: #fff;
 }
-
+.box-section-title{
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
 .section-title {
     padding-bottom: 15px;
     display: -webkit-box;
@@ -2624,7 +2629,7 @@ i.msicon.msi-star.fill {
 /*===== New Product css =====*/
 
 .ms-pro-tab {
-    margin-top: -30px;
+    margin-top: 0;
 }
 
 .ms-pro-tab-nav {
@@ -2646,6 +2651,7 @@ i.msicon.msi-star.fill {
 
 .ms-pro-tab-nav .nav-item:not(:last-child) {
     margin-left: 50px;
+    width: 20px;
 }
 
 .ms-pro-tab-nav .nav-item .nav-link {
@@ -2690,7 +2696,8 @@ i.msicon.msi-star.fill {
 
 .ms-product-inner .ms-pro-image .image img {
     z-index: 1;
-    max-width: 100%;
+    width: 100%;
+    height: 100%;
     -webkit-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
 }
@@ -2730,6 +2737,7 @@ i.msicon.msi-star.fill {
 
 .ms-product-inner .ms-pro-image .image .veg {
     border: 1px solid #46c389;
+    position: absolute;
 }
 
 .ms-product-inner .ms-pro-image .image .veg .dot {
@@ -5394,7 +5402,7 @@ body.ms-menu-open:before {
     transition: all 0.3s ease-in-out;
     border-radius: 0px;
     width: 100%;
-    height: 100%;
+    height: 300px;
 }
 
 .ms-blog .news-info .detail,
@@ -5812,7 +5820,9 @@ body.ms-menu-open:before {
 
 
 /*===== Banners section css =====*/
-
+.ms-ofr-banners{
+    height: 100%;
+}
 .ms-ofr-banners .ms-bnr-body {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -5822,6 +5832,7 @@ body.ms-menu-open:before {
     -ms-flex-direction: row;
     flex-direction: row;
     position: relative;
+    height: 100%;
 }
 
 .ms-ofr-banners .ms-bnr-body .ms-bnr-img {
@@ -5830,6 +5841,7 @@ body.ms-menu-open:before {
 
 .ms-ofr-banners .ms-bnr-body .ms-bnr-img img {
     width: 100%;
+    height: 100%;
     border-radius: 3px;
 }
 
@@ -6003,7 +6015,11 @@ body.ms-menu-open:before {
     font-size: 16px;
     font-weight: 400;
     text-transform: uppercase;
-    color: #17181c;
+    color: #17181c !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 130px;
 }
 
 .ms-category .ms-category-block .ms-cat-box .ms-cat-icon .items {
@@ -6410,16 +6426,20 @@ body.ms-menu-open:before {
 
 
 /*===== Animated banner Section =====*/
-
-.ms-animated-banner {
+.ms-animated-banner{
+    display: flex;
+    position: relative;
+}
+.ms-animated-banner-img {
     width: 100%;
     height: 450px;
-    background-image: url(../img/banner/1.jpg);
+    /* background-image: url(../img/banner/1.jpg); */
+    display: flex;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
-    position: relative;
+    position: absolute;
     border-radius: 3px;
 }
 
@@ -6564,6 +6584,7 @@ body.ms-menu-open:before {
 
 .ms-new-product-block .ms-pro-content {
     width: calc(100% - 80px);
+    overflow: hidden;
 }
 
 .ms-new-product-block .ms-pro-content .ms-pro-title a {
@@ -6724,6 +6745,7 @@ body.ms-menu-open:before {
 
 .ms-top-vendor .ms-top-vendor-block .ms-vendor-detail .ms-vendor-img img {
     width: 100%;
+    height: 100%;
     -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
     border-radius: 3px;

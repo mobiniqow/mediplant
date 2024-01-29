@@ -30,8 +30,10 @@
     <link rel="stylesheet" href="{% static 'assets/css/plugins/slick.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/plugins/nouislider.css' %}">
 
+    <link rel="stylesheet" href="../static/assets/css/new-page.css">
+
     <!-- Main Style -->
-    <link rel="stylesheet" id="main_style" href="{% static 'assets/css/new-page.css' %}">
+    <link rel="stylesheet" id="main_style" href="{% static '../static/assets/css/new-page.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
     <link rel="stylesheet" class="color-css" href="{% static 'assets/css/color-01.css' %}">
 
@@ -472,7 +474,7 @@
             </div>
             <!-- -->
 
-            {% for i in product_shops|slice:"1:" %}
+            <!-- {% for i in product_shops|slice:"1:" %}
 
                 <div class="item-shoping">
                     <div class="it-sh">
@@ -498,7 +500,31 @@
                         <button class="btn-p">خرید اینترنتی</button>
                     </div>
                 </div>
-            {% endfor %}
+            {% endfor %} -->
+            <div class="item-shoping">
+                <div class="it-sh">
+                    <div class="r-sh">
+                        <h2> طب سنتی</h2>
+                        <p>ساری</p>
+                    </div>
+                    <div class="details-it-shop">
+                        <div class="item-cc">
+                            <span class="fa fa-star checked"></span>
+                            <div>
+                                <p>4.5</p>
+                            </div>
+                        </div>
+                        <p class="p-cc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از </p>
+                        <p class="original-item o-t">
+                            <span>&#10003</span>اصالت و سلامت فیزیکی کالا
+                        </p>
+                    </div>
+                </div>
+                <div class="btn-price">
+                    <p><span>۱۸۰۰۰</span> تومان</p>
+                    <button class="btn-p">خرید اینترنتی</button>
+                </div>
+            </div>
 
         </div>
     </div>

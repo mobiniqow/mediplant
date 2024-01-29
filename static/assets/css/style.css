@@ -2701,7 +2701,7 @@ i.msicon.msi-star.fill {
 
 .ms-product-inner .ms-pro-image .image img {
     z-index: 1;
-    max-width: 100%;
+    width: 100%;
     -webkit-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
 }
@@ -5835,7 +5835,9 @@ body.ms-menu-open:before {
 
 
 /*===== Banners section css =====*/
-
+.ms-ofr-banners{
+    height: 100%;
+}
 .ms-ofr-banners .ms-bnr-body {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -5845,6 +5847,7 @@ body.ms-menu-open:before {
     -ms-flex-direction: row;
     flex-direction: row;
     position: relative;
+    height: 100%;
 }
 
 .ms-ofr-banners .ms-bnr-body .ms-bnr-img {
@@ -5853,6 +5856,7 @@ body.ms-menu-open:before {
 
 .ms-ofr-banners .ms-bnr-body .ms-bnr-img img {
     width: 100%;
+    height: 100%;
     border-radius: 3px;
 }
 
@@ -6019,17 +6023,21 @@ body.ms-menu-open:before {
     transition: all 0.3s ease-in-out;
     width: 50px;
     height: 50px;
-}
+} */
 
-.ms-category .ms-category-block .ms-cat-box .ms-cat-icon .ms-cat-title {
+.ms-category .ms-category-block .ms-cat-box .ms-cat-icon .ms-cat-title-category {
     margin: 15px 0 0 0;
     font-size: 16px;
     font-weight: 400;
     text-transform: uppercase;
     color: #17181c;
+    /* border: 1px solid black; */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.ms-category .ms-category-block .ms-cat-box .ms-cat-icon .items {
+/* .ms-category .ms-category-block .ms-cat-box .ms-cat-icon .items {
     margin: 0;
     font-size: 14px;
     line-height: 28px;
@@ -9827,6 +9835,7 @@ body.ms-menu-open:before {
     overflow: hidden;
 }
 .swiper-container {
+    /* border: 1px solid black; */
     width: 100%;
     border-radius: 4px;
 }
@@ -10143,3 +10152,4 @@ body.ms-menu-open:before {
     border-radius: 4px;
 }
 /* product-detail */
+
