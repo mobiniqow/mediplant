@@ -1,0 +1,388 @@
+{% load static %}
+<header class="ms-header">
+    <div class="ms-header-bottom d-none d-lg-block">
+        <div class="container position-relative">
+            <div class="row">
+                <div class="ms-flex">
+                    <!-- Header Logo Start -->
+                    <div class="align-self-center ms-header-logo">
+                        <div class="header-logo">
+                            <a href="index.html"><img src="{% static 'assets/img/logo/logo.png' %}" alt="Site Logo"></a>
+                        </div>
+                    </div>
+                    <!-- Header Logo End -->
+
+                    <!-- Header Search Start -->
+                    <div class="align-self-center ms-header-search">
+                        <div class="header-search">
+                            <form class="ms-search-group-form" action="#">
+{#                                <div class="ms-search-select-inner">#}
+{#                                    <select class="ms-search-cat selectpicker" multiple data-live-search=""#}
+{#                                            data-live-search-placeholder=" جستجو دسته بندی" data-actions-box="true">#}
+{#                                        {% for i in categories.base %}#}
+                                            {#                                            {% if not i.parent %}#}
+{#                                            <option>{{ i.name }}</option>#}
+                                            {#                                            {% endif %}#}
+{#                                        {% endfor %}#}
+{#                                    </select>#}
+{#                                </div>#}
+                                <input class="form-control ms-search-bar" placeholder="جستجو محصولات" type="text">
+                                <button class="search_submit" type="submit"><img
+                                        src="{% static 'assets/img/icons/search.svg' %}" class="svg_img search_svg"
+                                        alt=""></button>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Header Search End -->
+
+                    <!-- Header Button Start -->
+                    <div class="align-self-center">
+                        <div class="ms-header-bottons">
+                            <!-- Header User Start -->
+                            <div class="ms-acc-drop">
+                                <a href="javascript:void(0)"
+                                   class="ms-header-btn ms-header-user dropdown-toggle ms-user-toggle"
+                                   title="حساب کاربری">
+                                    <div class="header-icon">
+                                        <img src="{% static 'assets/img/icons/user.svg' %}" class="svg_img header_svg"
+                                             alt="">
+                                    </div>
+                                    <div class="ms-btn-desc">
+                                        {% if not categories.user.is_anonymous  %}
+                                           <span onclick='window.open("/profile/","_self")' class="ms-btn-title"> حساب کاربری </span>
+                                            {% else %}
+                                            <span onclick='window.open("/login/","_self")' class="ms-btn-stitle">ورود</span>
+                                        {% endif %}
+
+                                    </div>
+                                </a>
+{#                                <ul class="ms-dropdown-menu">#}
+{#                                    <li><a class="dropdown-item" href="profile.html">ثبت نام</a></li>#}
+{#                                    <li><a class="dropdown-item" href="checkout.html">بررسی خرید</a></li>#}
+{#                                    <li><a class="dropdown-item" href="privacy-policy.html">حریم خصوصی</a></li>#}
+{#                                    <li><a class="dropdown-item" href="login.html">ورود</a></li>#}
+{#                                </ul>#}
+                            </div>
+                            <!-- Header User End -->
+                            <!-- Header wishlist Start -->
+{#                            <a href="javascript:void(0)" class="ms-header-btn ms-wish-toggle" title="علاقه مندی">#}
+{#                                <div class="header-icon">#}
+{#                                    <img src="{% static 'assets/img/icons/wishlist.svg' %}" class="svg_img header_svg"#}
+{#                                         alt="">#}
+{#                                </div>#}
+{#                                <div class="ms-btn-desc">#}
+{#                                    <span class="ms-btn-title">علاقه مندی‌ها</span>#}
+{#                                    <span class="ms-btn-stitle"><span class="ms-wishlist-count">3</span> مورد </span>#}
+{#                                </div>#}
+{#                            </a>#}
+                            <!-- Header wishlist End -->
+                            <!-- Header Cart Start -->
+{#                            <a href="javascript:void(0)" class="ms-header-btn ms-cart-toggle" title="سبد خرید">#}
+{#                                <div class="header-icon">#}
+{#                                    <img src="{% static 'assets/img/icons/cart_5.svg' %}" class="svg_img header_svg"#}
+{#                                         alt="">#}
+{#                                    <span class="main-label-note-new"></span>#}
+{#                                </div>#}
+{#                                <div class="ms-btn-desc">#}
+{#                                    <span class="ms-btn-title">سبد خرید</span>#}
+{#                                    <span class="ms-btn-stitle"><span class="ms-cart-count">3</span> مورد </span>#}
+{#                                </div>#}
+{#                            </a>#}
+                            <!-- Header Cart End -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header Button End -->
+
+    <!-- Header menu -->
+    <div class="ms-header-cat d-none d-lg-block">
+        <div class="container position-relative">
+            <div class="row justify-content-between">
+
+                <!-- Category Toggle -->
+{#                <div class="col ms-category-icon-block">#}
+{#                    <div class="ms-category-menu">#}
+{#                        <div class="ms-category-toggle">#}
+{#                            <img src="{% static 'assets/img/icons/category-icon.svg' %}"#}
+{#                                 class="svg_img header_svg svg_cat" alt="icon">#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+
+                <!-- Main Menu Start -->
+                <div id="ms-main-menu-desk" class="d-none d-lg-block sticky-nav">
+                    <div class="position-relative nav-desk">
+                        <div class="row">
+                            <div class="col-md-12 align-self-center">
+                                <div class="ms-main-menu">
+                                    <ul>
+                                        <li class="non-drop"><a href="/">خانه</a></li>
+                                        <li class="dropdown drop-list position-static">
+                                            <a href="javascript:void(0)" class="dropdown-arrow">دسته بندی‌ها<i
+                                                    class="fas fa-chevron-right"></i></a>
+                                            <ul class="mega-menu d-block">
+                                                <li class="d-flex">
+                                                    <span class="bg"></span>
+                                                    {% for i in categories.base %}
+                                                        {#                                                        {% if not i.parent %}#}
+                                                        <ul class="d-block">
+                                                            <li class="menu_title"><a
+                                                                    href="javascript:void(0)">{{ i.name|safe|truncatechars_html:17 }}</a>
+                                                                {#                                                                <li class="menu_title"><a href="javascript:void(0)">{{ i.id  }}</a>#}
+                                                            </li>
+                                                            {#                                                                {% for j in categories[f'{i}'] %}#}
+                                                            {#                                                                    <li><a href="shop-left-sidebar-col-3.html">{{ j.parent.id }}</a></li>#}
+                                                            {#                                                                    {% if j.id == i.id  %}#}
+                                                            {#                                                                    <li><a href="shop-left-sidebar-col-3.html"> {{ j.name|safe|truncatechars_html:17 }}</a></li>#}
+                                                            {#                                                                    {% endif %}#}
+                                                            {#                                                                {% endfor %}#}
+                                                            {% for j in i.children %}
+                                                                <li>
+                                                                    <a href="/search/?category={{ j.id }}">{{ j.name|safe|truncatechars_html:17 }}</a>
+                                                                </li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                        {#                                                        {% endif %}#}
+                                                    {% endfor %}
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown drop-list">
+                                            <a href="./blog-full-width.html" class="dropdown-arrow">فروشگاه ها</a>
+                                        </li>
+                                        <li class="dropdown drop-list">
+                                            <a href="./blog-full-width.html" class="dropdown-arrow">پزشکان</a>
+                                        </li>
+                                        <li class="dropdown drop-list">
+                                            <a href="/article" class="dropdown-arrow">مقالات</a>
+                                        </li>
+                                        <!-- <li class="dropdown drop-list">
+                                                <a href="javascript:void(0)" class="dropdown-arrow">صفحات<i class="fas fa-chevron-right"></i></a>
+                                                <ul class="sub-menu">
+                                                    <li><a href="about-us.html">درباره ما</a></li>
+                                                    <li><a href="contact-us.html">تماس با ما</a></li>
+                                                    <li><a href="cart.html">صفحه پرداخت</a></li>
+                                                    <li><a href="checkout.html">بررسی خرید</a></li>
+                                                    <li><a href="compare.html">مقایسه</a></li>
+                                                    <li><a href="terms-condition.html">شرایط و ضوابط</a></li>
+                                                </ul>
+                                            </li> -->
+                                        <li class="dropdown drop-list">
+                                            <a href="/about-us" class="dropdown-arrow">درباره ما</a>
+                                        </li>
+                                        <li class="dropdown drop-list">
+                                            <a href="/contact-us" class="dropdown-arrow">تماس با ما</a>
+                                        </li>
+{#                                        <li class="non-drop">#}
+{#                                            <a href="discover.html"><img#}
+{#                                                    src="{% static 'assets/img/icons/discover.svg' %}" class="svg_img"#}
+{#                                                    alt="discover">همه موارد</a>#}
+{#                                        </li>#}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Main Menu End -->
+
+{#                <div class="col ms-location-block">#}
+{#                    <div class="ms-location-menu">#}
+{#                        <div class="ms-location-toggle">#}
+{#                            <img src="{% static 'assets/img/icons/location.svg' %}" class="svg_img header_svg svg_loc"#}
+{#                                 alt="icon">#}
+{#                            <span class="ms-location-title d-1199 ms-location" id="ms_location"></span>#}
+{#                            <i class="fas fa-chevron-down"></i>#}
+{#                        </div>#}
+{#                        <div class="ms-location-content">#}
+{#                            <div class="ms-location-dropdown">#}
+{#                                <div class="row ms-location-wrapper">#}
+{#                                    <ul class="loc-grid">#}
+{#                                        <li class="loc-list current">#}
+{#                                            <img src="{% static 'assets/img/icons/location.svg' %}"#}
+{#                                                 class="svg_img header_svg svg_loc" alt="icon">#}
+{#                                            <span class="ms-detail-current">موقعیت فعلی</span>#}
+{#                                        </li>#}
+{#                                        <li class="loc-list">#}
+{#                                            <img src="{% static 'assets/img/icons/location.svg' %}"#}
+{#                                                 class="svg_img header_svg svg_loc" alt="icon">#}
+{#                                            <span class="ms-detail">تهران</span>#}
+{#                                        </li>#}
+{#                                        <li class="loc-list">#}
+{#                                            <img src="{% static 'assets/img/icons/location.svg' %}"#}
+{#                                                 class="svg_img header_svg svg_loc" alt="icon">#}
+{#                                            <span class="ms-detail">مشهد</span>#}
+{#                                        </li>#}
+{#                                        <li class="loc-list">#}
+{#                                            <img src="{% static 'assets/img/icons/location.svg' %}"#}
+{#                                                 class="svg_img header_svg svg_loc" alt="icon">#}
+{#                                            <span class="ms-detail">اصفهان</span>#}
+{#                                        </li>#}
+{#                                        <li class="loc-list">#}
+{#                                            <img src="{% static 'assets/img/icons/location.svg' %}"#}
+{#                                                 class="svg_img header_svg svg_loc" alt="icon">#}
+{#                                            <span class="ms-detail">شیراز</span>#}
+{#                                        </li>#}
+{#                                        <li class="loc-list">#}
+{#                                            <img src="{% static 'assets/img/icons/location.svg' %}"#}
+{#                                                 class="svg_img header_svg svg_loc" alt="icon">#}
+{#                                            <span class="ms-detail">مازندران</span>#}
+{#                                        </li>#}
+{#                                    </ul>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+            </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header menu End -->
+
+    <!-- Mobile Menu sidebar Start -->
+    <div class="ms-mobile-menu-overlay"></div>
+    <div id="ms-mobile-menu" class="ms-mobile-menu">
+        <div class="ms-menu-title">
+            <span class="menu_title">منو</span>
+            <button class="ms-close-menu">×</button>
+        </div>
+        <div class="ms-menu-inner">
+            <div class="ms-menu-content">
+                <div class="ms-mobile-search">
+                    <form>
+                        <input type="text" name="search" placeholder="جستجو...">
+                        <button class="search_submit" type="submit"><img
+                                src="{% static 'assets/img/icons/search.svg' %}"
+                                class="svg_img search_svg" alt=""></button>
+                    </form>
+                </div>
+                <ul>
+                    <li><a href="/">خانه</a></li>
+                    <li><a href="javascript:void(0)">دسته بندی‌ها</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="javascript:void(0)">کلاسیک ساده</a>
+                                <ul class="sub-menu">
+                                    <li><a href="shop-left-sidebar-col-3.html">ستون کناری سمت راست 3</a></li>
+                                    <li><a href="shop-left-sidebar-col-4.html">ستون کناری سمت راست 4</a></li>
+                                    <li><a href="shop-right-sidebar-col-3.html">ستون کناری سمت چپ 3</a></li>
+                                    <li><a href="shop-right-sidebar-col-4.html">ستون کناری سمت چپ 4</a></li>
+                                    <li><a href="shop-full-width.html">عرض کامل 4 ستون</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">کلاسیک ساده</a>
+                                <ul class="sub-menu">
+                                    <li><a href="shop-banner-left-sidebar-col-3.html">ستون سمت راست 3 با بنر</a></li>
+                                    <li><a href="shop-banner-left-sidebar-col-4.html">ستون سمت راست 4 با بنر</a></li>
+                                    <li><a href="shop-banner-right-sidebar-col-3.html">ستون سمت چپ 3 با بنر</a></li>
+                                    <li><a href="shop-banner-right-sidebar-col-4.html">ستون سمت چپ 4 با بنر</a></li>
+                                    <li><a href="shop-banner-full-width.html">عرض کامل 4 ستون با بنر</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">ستون ساده</a>
+                                <ul class="sub-menu">
+                                    <li><a href="shop-full-width-col-3.html">عرض کامل 3 ستون</a></li>
+                                    <li><a href="shop-full-width-col-4.html">عرض کامل 4 ستون</a></li>
+                                    <li><a href="shop-full-width-col-5.html">عرض کامل 5 ستون</a></li>
+                                    <li><a href="shop-full-width-col-6.html">عرض کامل 6 ستون</a></li>
+                                    <li><a href="shop-banner-full-width-col-3.html">عرض کامل 3 ستون با بنر</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">لیست ساده</a>
+                                <ul class="sub-menu">
+                                    <li><a href="shop-list-left-sidebar.html">فروشگاه نوار کناری سمت راست</a></li>
+                                    <li><a href="shop-list-right-sidebar.html">فروشگاه نوار کناری سمت چپ</a></li>
+                                    <li><a href="shop-list-banner-left-sidebar.html">نوار کناری بنر سمت راست</a></li>
+                                    <li><a href="shop-list-banner-right-sidebar.html">نوار کناری سمت چپ بنر</a></li>
+                                    <li><a href="shop-list-full-col-2.html">عرض کامل 2 ستون</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="javascript:void(0)">محصولات</a>
+                        <ul class="sub-menu">
+                            <li><a href="product-left-sidebar.html">نوار کناری سمت راست محصول</a></li>
+                            <li><a href="product-right-sidebar.html">نوار کناری سمت چپ محصول</a></li>
+                            <li><a href="product-full-width.html">عرض کامل محصول</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="javascript:void(0)">مقالات</a>
+                        <ul class="sub-menu">
+                            <li><a href="blog-left-sidebar.html">نوار کناری سمت راست</a></li>
+                            <li><a href="blog-right-sidebar.html">نوار کناری سمت چپ</a></li>
+                            <li><a href="blog-full-width.html">تمام عرض</a></li>
+                            <li><a href="blog-detail-left-sidebar.html">جزئیات نوار کناری سمت راست</a></li>
+                            <li><a href="blog-detail-right-sidebar.html">جزئیات نوار کناری سمت چپ</a></li>
+                            <li><a href="blog-detail-full-width.html">جزئیات با عرض کامل</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="javascript:void(0)">صفحات</a>
+                        <ul class="sub-menu">
+                            <li><a href="about-us.html">درباره ما</a></li>
+                            <li><a href="contact-us.html">تماس با ما</a></li>
+                            <li><a href="cart.html">صفحه پرداخت</a></li>
+                            <li><a href="checkout.html">بررسی خرید</a></li>
+                            <li><a href="compare.html">مقایسه</a></li>
+                            <li><a href="faq.html">سوالات</a></li>
+                            <li><a href="login.html">ورود</a></li>
+                            <li><a href="register.html">ثبت نام</a></li>
+                            <li><a href="track-order.html">پیگیری سفارش</a></li>
+                            <li><a href="terms-condition.html">شرایط و ضوابط</a></li>
+                            <li><a href="privacy-policy.html">سیاست حفظ حریم خصوصی</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="header-res-lan-curr">
+                <!-- Social Start -->
+                <div class="header-res-social">
+                    <div class="header-top-social">
+                        <ul class="mb-0">
+                            <li class="list-inline-item">
+                                <a href="#">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Social End -->
+            </div>
+        </div>
+    </div>
+    <!-- Mobile Menu sidebar End -->
+
+    <!-- Header responsive Bottom  Start -->
+    <div class="ms-header-bottom d-lg-none">
+        <div class="container position-relative">
+            <div class="row ">
+                <div class="ms-flex">
+                    <!-- Header Logo Start -->
+                    <div class="col ms-header-logo">
+                        <div class="header-logo">
+                            <a href="index.html">
+                                <img src="{% static 'assets/img/logo/logo.png' %}" alt="Site Logo">
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Header Logo End -->
+                    <!-- Header menu Start -->
+                    <a href="javascript:void(0)" class="ms-header-btn ms-site-menu-icon d-lg-none">
+                        <img src="{% static 'assets/img/icons/menu.svg' %}" class="svg_img" alt="menu">
+                    </a>
+                    <!-- Header menu End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header responsive Bottom  End -->
+</header>
