@@ -470,35 +470,23 @@
         <div id="table1" class="pagination-table">
             {% for i in product %}
                 <div class="it-table">
-                <img class="img-table" src="{{ i.image.image.url }}">
-                <div style="display: flex; justify-content: space-between; margin: 0 16px;" class="name-ittt-table">
-                    <a class="name">نام محصول :</a>
-                    <a class="name-it">{{ i.product.name|truncatechars:12 }}</a>
-                </div>
-                <div style="display: flex; justify-content: space-between; margin: 16px;" class="name-ittt-table">
-                    <a class="name"> قیمت محصول :</a>
-                    <a class="name-it">{{ i.price|intcomma:False }}</a>
-                </div>
+                <a href="product/{{ i.id }}">
+                    <img class="img-table" src="{{ i.image.image.url }}">
+                    <div style="display: flex; justify-content: space-between; margin: 0 16px;" class="name-ittt-table">
+                        <a class="name">نام محصول :</a>
+                        <a class="name-it">{{ i.product.name|truncatechars:12 }}</a>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin: 16px;" class="name-ittt-table">
+                        <a class="name"> قیمت محصول :</a>
+                        <a class="name-it">{{ i.price|intcomma:False }}</a>
+                    </div>
+                </a>
 {#                <span class="offer">offer</span>#}
             </div>
             {% endfor %}
         </div>
-        <div id="table2" class="pagination-table">
-            qq
-        </div>
-        <div id="table3" class="pagination-table">
-            ww
-        </div>
 
-        <ul class="uk-pagination uk-flex-center" uk-margin>
-            <li><a href="#"><span uk-pagination-next></span></a></li>
-            <li class="page-item"><a href="#table1" class="page-link">1</a></li>
-            <li class="page-item"><a href="#table2" class="page-link">2</a></li>
-            <li class="page-item"><a href="#table3" class="page-link">3</a></li>
-            <li class="page-item"><a href="#" class="page-link">4</a></li>
-            <li class="page-item"><a href="#" class="page-link">5</a></li>
-            <li><a href="#"><span uk-pagination-previous></span></a></li>
-        </ul>
+
     </div>
 </div>
 

@@ -455,13 +455,13 @@
                     <div class="ms-ofr-banners">
                         <div class="ms-bnr-body">
                             <div class="ms-bnr-img">
-                                <span class="lbl">%70 تخفیف</span>
+                                {#                                <span class="lbl">%70 تخفیف</span>#}
                                 <img src="{{ banner.0.image.url }}" alt="banner">
                             </div>
                             <div class="ms-bnr-detail">
-                                <h5>میوه های تازه</h5>
-                                <p>طعم یک چیز خاص</p>
-                                <a href="{{ banner.0.link_url }}" class="ms-btn-2">خرید</a>
+                                <h5>{{ banner.0.name|truncatechars:12 }}</h5>
+                                <p>{{ banner.0.content|truncatechars:12 }}</p>
+                                <a href="{{ banner.0.link_url }}" class="ms-btn-2">مشاهده</a>
                             </div>
                         </div>
                     </div>
@@ -471,12 +471,12 @@
                     <div class="ms-ofr-banners m-t-767">
                         <div class="ms-bnr-body">
                             <div class="ms-bnr-img">
-                                <span class="lbl">%50 تخفیف</span>
+                                {#                                <span class="lbl">%50 تخفیف</span>#}
                                 <img src="{{ banner.1.image.url }}" alt="banner">
                             </div>
                             <div class="ms-bnr-detail">
-                                <h5>ارگانیک و سبزیجات</h5>
-                                <p>یک وعده غذایی سالم</p>
+                                <h5>{{ banner.1.name|truncatechars:12 }}</h5>
+                                <p>{{ banner.1.content|truncatechars:12 }}</p>
                                 <a href="{{ banner.1.link_url }}" class="ms-btn-2">خرید</a>
                             </div>
                         </div>
@@ -502,10 +502,8 @@
                         <div class="ms-select-inner">
                             <select name="ms-select" id="ms-select">
                                 <option selected disabled>ترتیب بندی</option>
-                                <option value="1">موقعیت</option>
-                                <option value="2">مرتبط</option>
-                                <option value="3">اول به آخر</option>
-                                <option value="4">آخر به اول</option>
+                                <option value="1">پرفروش ترین</option>
+                                <option value="2">محبوب ترین</option>
                                 <option value="5">قیمت کمتر به بیشتر</option>
                                 <option value="6">قیمت بیشتر به کمتر</option>
                             </select>
@@ -557,26 +555,42 @@
                         <!-- Sidebar Category Block -->
                         <div class="ms-sidebar-block">
                             <div class="ms-sb-title">
-                                <h3 class="ms-sidebar-title">دسته بندی
+                                <h3 class="ms-sidebar-title">فیلتر ها
                                     <div class="ms-sidebar-res"><i class="fas fa-chevron-down"></i></div>
                                 </h3>
                             </div>
                             <div class="ms-sb-block-content">
                                 <ul>
-                                    {% for i in categories %}
                                         <li>
                                             <div class="ms-sidebar-block-item">
-                                                <input type="checkbox" checked>
+                                                <input type="checkbox"  id="cate_checkbox_{{ i.id }}" onchange="toggleCheckbox(this)" >
                                                 <a href="javascript:void(0)">
-                                                <span><img src="{{ i.image.url }}"
-                                                           class="svg_img"
-                                                           alt="drink">{{ i.name|truncatechars_html:23 }}</span>
+                                                <span>
+{#                                                    <img src="{{ i.image.url }}"#}
+{#                                                           class="svg_img"#}
+{#                                                           alt="drink">#}
+                                                    فقط موجود ها
+                                                    </span>
                                                     {#                                                <span class="products" title="Products">- 68</span>#}
                                                 </a>
                                                 <span class="checked"></span>
                                             </div>
                                         </li>
-                                    {% endfor %}
+                                        <li>
+                                            <div class="ms-sidebar-block-item">
+                                                <input type="checkbox"  id="cate_checkbox_{{ i.id }}" onchange="toggleCheckbox(this)" >
+                                                <a href="javascript:void(0)">
+                                                <span>
+{#                                                    <img src="{{ i.image.url }}"#}
+{#                                                           class="svg_img"#}
+{#                                                           alt="drink">#}
+                                                    ارسال امروز
+                                                    </span>
+                                                    {#                                                <span class="products" title="Products">- 68</span>#}
+                                                </a>
+                                                <span class="checked"></span>
+                                            </div>
+                                        </li>
                                 </ul>
                             </div>
                         </div>
@@ -999,8 +1013,8 @@
             var a = document.createElement("a");
             a.href = "#";
             a.textContent = i;
-            a.addEventListener("click", function(page) {
-                return function(event) {
+            a.addEventListener("click", function (page) {
+                return function (event) {
                     event.preventDefault();
                     showPaginationInfo(page);
                     callPageFunction(page);
@@ -1016,7 +1030,7 @@
     function openUrl(pageNumber) {
         $.ajax({
             type: "GET",
-            url: `http://localhost:8000/product/?category=${get('category')}&page=${pageNumber}`,
+            url: `/product/?category=${get('category')}&page=${pageNumber}`,
             success: function (html) {
                 var container = $("#base-container");
                 container.children('div').remove();
@@ -1029,6 +1043,12 @@
                 var items = html['results'];
                 for (var i = 0; i < items.length; i++) {
                     var item = items[i];
+                    let image_1 = ''
+                    let image_2 = ''
+                    if (items[i]['image'].length > 0) {
+                        image_1 = items[i]['image'][0]['image']
+                        image_2 = items[i]['image'][1]['image']
+                    }
                     var html = `
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content ms-product-content">
                         <div class="ms-product-inner">
@@ -1038,8 +1058,8 @@
                                         <span class="label veg">
                                             <span class="dot"></span>
                                         </span>
-                                        <img class="main-image" src="${item['image'][0]['image']}" alt="Product">
-                                        <img class="hover-image" src="${item['image'][1]['image']}" alt="Product">
+                                        <img class="main-image" src="${image_1}" alt="Product">
+                                        <img class="hover-image" src="${image_2}" alt="Product">
                                     </a>
                                     <span class="flags">
                                         {#<span class="sale">فروش</span>#}
@@ -1067,13 +1087,13 @@
                                 <h5 class="ms-pro-title"><a href="product/${item['id']}/">${item['description']}</a></h5>
                                 {#<p class="ms-info">${item['description']}</p>#}
                                 <div class="ms-pro-rat-price">
-                                    <span class="ms-pro-rating">
-                                        <i class="fa-solid fa-star fill"></i>
-                                        <i class="fa-solid fa-star fill"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                    </span>
+                                    {#<span class="ms-pro-rating">#}
+                                    {#    <i class="fa-solid fa-star fill"></i>#}
+                                    {#    <i class="fa-solid fa-star fill"></i>#}
+                                    {#    <i class="fa-solid fa-star"></i>#}
+                                    {#    <i class="fa-solid fa-star"></i>#}
+                                    {#    <i class="fa-solid fa-star"></i>#}
+                                    {#</span>#}
                                     <span class="ms-price">
                                         <span class="new-price">${item['price']}</span>
                                         {#<span class="old-price">${item.oldPrice}</span>#}
@@ -1083,13 +1103,14 @@
                         </div>
                     </div>
                 `;
-                        container.append(html);
-                    }
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    console.log(XMLHttpRequest.statusCode());
+                    console.log(i)
+                    container.append(html);
                 }
-            });
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                console.log(XMLHttpRequest.statusCode());
+            }
+        });
 
     }
 
@@ -1109,14 +1130,18 @@
     // تابع برای اضافه کردن کلاس active به دکمه فعال
     function setActiveButton(pageNumber) {
         console.log(pageNumber);
+        openUrl(2)
         {#var paginationList = document.getElementById("pagination-list");#}
         {#var buttons = paginationList.getElementsByTagName("a");#}
         {#for (var i = 0; i < buttons.length; i++) {#}
         {#    buttons[i].classList.remove("active");#}
-            {#buttons[pageNumber  ].classList.add("active");#}
-        }
+        {#buttons[pageNumber  ].classList.add("active");#}
+    }
 
     showPaginationInfo(1);
-
+  function toggleCheckbox(element)
+ {
+     console.log(element.id)
+ }
 </script>
 </html>

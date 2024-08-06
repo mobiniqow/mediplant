@@ -16,8 +16,8 @@ urlpatterns = [
     path("blog/<int:id>/", BlogsDetailsView.as_view(),),
     path('shop/', ShopView.as_view()),
     path('shop/<int:id>/', ShopDetailsView.as_view()),
+    path('shop/<int:shop_id>/product/<int:product_id>/', ShopProductView.as_view()),
     path('login/', LoginView.as_view()),
     path('verify/<str:phone>/', VerifyView.as_view(), name='verify'),
     path('profile/', ProfileView.as_view()),
-    path('product/<int:product_id>/', ShopProductView.as_view()),
 ]

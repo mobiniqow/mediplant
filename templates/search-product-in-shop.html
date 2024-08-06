@@ -47,209 +47,212 @@
 </div>
 
 <!-- Header start  -->
-  {% include './extentions/header.html' with categories=categories_map %}
+{% include './extentions/header.html' with categories=categories_map %}
 <!-- Header End  -->
 
-    <!-- Category sidebar Start -->
-    <div class="ms-side-cat-overlay"></div>
-    <div class="col-lg-3 ms-category-sidebar">
-        <div class="cat-sidebar">
-            <div class="cat-sidebar-box">
-                <div class="ms-cat-sidebar-wrap">
-                    <!-- Sidebar Category Block -->
-                    <div class="ms-sidebar-block">
-                        <div class="ms-sb-title">
-                            <h3 class="ms-sidebar-title">دسته بندی
-                                <button class="ms-close">×</button>
-                            </h3>
-                        </div>
-                        <div class="ms-sb-block-content">
-                            <ul>
-                                <li class="ms-list">
-                                    <div class="ms-sidebar-block-item"><img
-                                            src="{% static 'assets/img/icons/dress-8.svg' %}" class="svg_img"
-                                            alt="drink">لباس
-                                    </div>
-                                    <ul style="display: block;">
-                                        <li>
-                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">پیراهن
-                                                <span title="Available Stock">- 25</span></a></div>
-                                        </li>
-                                        <li>
-                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">
-                                                شلوار جین <span title="Available Stock">- 52</span></a></div>
-                                        </li>
-                                        <li>
-                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">ژاکت<span
-                                                    title="Available Stock">- 500</span></a></div>
-                                        </li>
-                                        <li>
-                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">لباس
-                                                و روپوش <span title="Available Stock">- 35</span></a></div>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="ms-sb-block-content">
-                            <ul>
-                                <li class="ms-list">
-                                    <div class="ms-sidebar-block-item"><img
-                                            src="{% static 'assets/img/icons/shoes-8.svg' %}" class="svg_img"
-                                            alt="drink">کفش
-                                    </div>
-                                    <ul>
-                                        <li>
-                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">ورزشی
-                                                <span title="Available Stock">- 25</span></a></div>
-                                        </li>
-                                        <li>
-                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">مجلسی
-                                                <span title="Available Stock">- 52</span></a></div>
-                                        </li>
-                                        <li>
-                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">مختلف
-                                                <span title="Available Stock">- 40</span></a></div>
-                                        </li>
-                                        <li>
-                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">کفش
-                                                ایمن<span title="Available Stock">- 35</span></a></div>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="ms-sb-block-content">
-                            <ul>
-                                <li class="ms-list">
-                                    <div class="ms-sidebar-block-item"><img
-                                            src="{% static 'assets/img/icons/jewelry-8.svg' %}" class="svg_img"
-                                            alt="drink">جواهرات
-                                    </div>
-                                    <ul>
-                                        <li>
-                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">گوشواره
-                                                <span title="Available Stock">- 50</span></a></div>
-                                        </li>
-                                        <li>
-                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">حلقه
-                                                ازدواج <span title="Available Stock">- 35</span></a></div>
-                                        </li>
-                                        <li>
-                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">گردنبند
-                                                <span title="Available Stock">- 40</span></a></div>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="ms-sb-block-content">
-                            <ul>
-                                <li class="ms-list">
-                                    <div class="ms-sidebar-block-item"><img
-                                            src="{% static 'assets/img/icons/perfume-8.svg' %}" class="svg_img"
-                                            alt="drink">عطر و ادکلن
-                                    </div>
-                                    <ul>
-                                        <li>
-                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">عطر
-                                                لباس<span title="Available Stock">- 4 پاکت</span></a></div>
-                                        </li>
-                                        <li>
-                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">اسپری
-                                                <span title="Available Stock">- 52 پاکت</span></a></div>
-                                        </li>
-                                        <li>
-                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">عطر
-                                                گل <span title="Available Stock">- 10 پاکت</span></a></div>
-                                        </li>
-                                        <li>
-                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">خوشبو
-                                                کننده هوا<span title="Available Stock">- 35 پاکت</span></a></div>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="ms-sb-block-content">
-                            <ul>
-                                <li class="ms-list">
-                                    <div class="ms-sidebar-block-item"><img
-                                            src="{% static 'assets/img/icons/cosmetics-8.svg' %}" class="svg_img"
-                                            alt="drink">لوازم آرایشی
-                                    </div>
-                                    <ul>
-                                        <li>
-                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">شامپو<span
-                                                    title="Available Stock"></span></a></div>
-                                        </li>
-                                        <li>
-                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">ضد
-                                                آفتاب<span title="Available Stock"></span></a></div>
-                                        </li>
-                                        <li>
-                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">شامپو
-                                                بدن<span title="Available Stock"></span></a></div>
-                                        </li>
-                                        <li>
-                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">کیت
-                                                آرایش<span title="Available Stock"></span></a></div>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="ms-sb-block-content">
-                            <ul>
-                                <li class="ms-list">
-                                    <div class="ms-sidebar-block-item"><img
-                                            src="{% static 'assets/img/icons/glasses-8.svg' %}" class="svg_img"
-                                            alt="drink">عینک
-                                    </div>
-                                    <ul>
-                                        <li>
-                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">عینک
-                                                آفتابی <span title="Available Stock">- 20</span></a></div>
-                                        </li>
-                                        <li>
-                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">لنز
-                                                عینک <span title="Available Stock">- 52</span></a></div>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="ms-sb-block-content">
-                            <ul>
-                                <li class="ms-list">
-                                    <div class="ms-sidebar-block-item"><img
-                                            src="{% static 'assets/img/icons/bag-8.svg' %}" class="svg_img" alt="drink">کیف
-                                    </div>
-                                    <ul>
-                                        <li>
-                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">کیسه
-                                                خرید <span title="Available Stock">- 25</span></a></div>
-                                        </li>
-                                        <li>
-                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">کوله
-                                                پشتی بدنسازی <span title="Available Stock">- 52</span></a></div>
-                                        </li>
-                                        <li>
-                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">کیف
-                                                پول <span title="Available Stock">- 40</span></a></div>
-                                        </li>
-                                        <li>
-                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">کیف جیبی <span title="Available Stock">- 35</span></a></div>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
+<!-- Category sidebar Start -->
+<div class="ms-side-cat-overlay"></div>
+<div class="col-lg-3 ms-category-sidebar">
+    <div class="cat-sidebar">
+        <div class="cat-sidebar-box">
+            <div class="ms-cat-sidebar-wrap">
+                <!-- Sidebar Category Block -->
+                <div class="ms-sidebar-block">
+                    <div class="ms-sb-title">
+                        <h3 class="ms-sidebar-title">دسته بندی
+                            <button class="ms-close">×</button>
+                        </h3>
+                    </div>
+                    <div class="ms-sb-block-content">
+                        <ul>
+                            <li class="ms-list">
+                                <div class="ms-sidebar-block-item"><img
+                                        src="{% static 'assets/img/icons/dress-8.svg' %}" class="svg_img"
+                                        alt="drink">لباس
+                                </div>
+                                <ul style="display: block;">
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">پیراهن
+                                            <span title="Available Stock">- 25</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">
+                                            شلوار جین <span title="Available Stock">- 52</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a
+                                                href="shop-left-sidebar-col-3.html">ژاکت<span
+                                                title="Available Stock">- 500</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">لباس
+                                            و روپوش <span title="Available Stock">- 35</span></a></div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ms-sb-block-content">
+                        <ul>
+                            <li class="ms-list">
+                                <div class="ms-sidebar-block-item"><img
+                                        src="{% static 'assets/img/icons/shoes-8.svg' %}" class="svg_img"
+                                        alt="drink">کفش
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">ورزشی
+                                            <span title="Available Stock">- 25</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">مجلسی
+                                            <span title="Available Stock">- 52</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">مختلف
+                                            <span title="Available Stock">- 40</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">کفش
+                                            ایمن<span title="Available Stock">- 35</span></a></div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ms-sb-block-content">
+                        <ul>
+                            <li class="ms-list">
+                                <div class="ms-sidebar-block-item"><img
+                                        src="{% static 'assets/img/icons/jewelry-8.svg' %}" class="svg_img"
+                                        alt="drink">جواهرات
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">گوشواره
+                                            <span title="Available Stock">- 50</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">حلقه
+                                            ازدواج <span title="Available Stock">- 35</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">گردنبند
+                                            <span title="Available Stock">- 40</span></a></div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ms-sb-block-content">
+                        <ul>
+                            <li class="ms-list">
+                                <div class="ms-sidebar-block-item"><img
+                                        src="{% static 'assets/img/icons/perfume-8.svg' %}" class="svg_img"
+                                        alt="drink">عطر و ادکلن
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">عطر
+                                            لباس<span title="Available Stock">- 4 پاکت</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">اسپری
+                                            <span title="Available Stock">- 52 پاکت</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">عطر
+                                            گل <span title="Available Stock">- 10 پاکت</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">خوشبو
+                                            کننده هوا<span title="Available Stock">- 35 پاکت</span></a></div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ms-sb-block-content">
+                        <ul>
+                            <li class="ms-list">
+                                <div class="ms-sidebar-block-item"><img
+                                        src="{% static 'assets/img/icons/cosmetics-8.svg' %}" class="svg_img"
+                                        alt="drink">لوازم آرایشی
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a
+                                                href="shop-left-sidebar-col-3.html">شامپو<span
+                                                title="Available Stock"></span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">ضد
+                                            آفتاب<span title="Available Stock"></span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">شامپو
+                                            بدن<span title="Available Stock"></span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">کیت
+                                            آرایش<span title="Available Stock"></span></a></div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ms-sb-block-content">
+                        <ul>
+                            <li class="ms-list">
+                                <div class="ms-sidebar-block-item"><img
+                                        src="{% static 'assets/img/icons/glasses-8.svg' %}" class="svg_img"
+                                        alt="drink">عینک
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">عینک
+                                            آفتابی <span title="Available Stock">- 20</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">لنز
+                                            عینک <span title="Available Stock">- 52</span></a></div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ms-sb-block-content">
+                        <ul>
+                            <li class="ms-list">
+                                <div class="ms-sidebar-block-item"><img
+                                        src="{% static 'assets/img/icons/bag-8.svg' %}" class="svg_img" alt="drink">کیف
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">کیسه
+                                            خرید <span title="Available Stock">- 25</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">کوله
+                                            پشتی بدنسازی <span title="Available Stock">- 52</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">کیف
+                                            پول <span title="Available Stock">- 40</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">کیف جیبی
+                                            <span title="Available Stock">- 35</span></a></div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 <!-- Category sidebar End -->
 
 <!-- Cart sidebar Start -->
@@ -300,32 +303,32 @@
                     </div>
                 </li>
             </ul>
+        </div>
+        <div class="ms-cart-bottom">
+            <div class="cart-sub-total">
+                <table class="table cart-table">
+                    <tbody>
+                    <tr>
+                        <td class="text-left">جمع فرعی:</td>
+                        <td class="text-right">300 هزار</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">مالیات بر ارزش افزوده (20%):</td>
+                        <td class="text-right">60 هزار</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">جمع :</td>
+                        <td class="text-right primary-color">360 هزار</td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="ms-cart-bottom">
-                <div class="cart-sub-total">
-                    <table class="table cart-table">
-                        <tbody>
-                            <tr>
-                                <td class="text-left">جمع فرعی:</td>
-                                <td class="text-right">300 هزار</td>
-                            </tr>
-                            <tr>
-                                <td class="text-left">مالیات بر ارزش افزوده (20%):</td>
-                                <td class="text-right">60 هزار</td>
-                            </tr>
-                            <tr>
-                                <td class="text-left">جمع :</td>
-                                <td class="text-right primary-color">360 هزار</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="cart_btn">
-                    <a href="cart.html" class="ms-btn-1">مشاهده سبد خرید</a>
-                    <a href="checkout.html" class="ms-btn-2">بررسی خرید</a>
-                </div>
+            <div class="cart_btn">
+                <a href="cart.html" class="ms-btn-1">مشاهده سبد خرید</a>
+                <a href="checkout.html" class="ms-btn-2">بررسی خرید</a>
             </div>
         </div>
+    </div>
 </div>
 <!-- Cart sidebar End -->
 
@@ -395,34 +398,34 @@
                         <a href="javascript:void(0)" class="remove">×</a>
                     </div>
                 </li>
-                </ul>
-            </div>
+            </ul>
         </div>
     </div>
-    <!-- Wishlist sidebar End -->
+</div>
+<!-- Wishlist sidebar End -->
 
-    <!-- Breadcrumb start -->
-    <div class="ms-breadcrumb m-b-30">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="row ms_breadcrumb_inner">
-                        <div class="col-md-6 col-sm-12">
-                            <h2 class="ms-breadcrumb-title">لیست فروشگاه های موجود</h2>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <!-- ms-breadcrumb-list start -->
-{#                            <ul class="ms-breadcrumb-list">#}
-{#                                <li class="ms-breadcrumb-item"><a href="index.html">خانه</a><i class="fas fa-chevron-left"></i></li>#}
-{#                                <li class="ms-breadcrumb-item active"> درباره ما</li>#}
-{#                            </ul>#}
-                            <!-- ms-breadcrumb-list end -->
-                        </div>
+<!-- Breadcrumb start -->
+<div class="ms-breadcrumb m-b-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="row ms_breadcrumb_inner">
+                    <div class="col-md-6 col-sm-12">
+                        <h2 class="ms-breadcrumb-title">لیست فروشگاه های موجود</h2>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <!-- ms-breadcrumb-list start -->
+                        {#                            <ul class="ms-breadcrumb-list">#}
+                        {#                                <li class="ms-breadcrumb-item"><a href="index.html">خانه</a><i class="fas fa-chevron-left"></i></li>#}
+                        {#                                <li class="ms-breadcrumb-item active"> درباره ما</li>#}
+                        {#                            </ul>#}
+                        <!-- ms-breadcrumb-list end -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 <!-- Breadcrumb end -->
 
 <!-- content -->
@@ -474,57 +477,34 @@
             </div>
             <!-- -->
 
-            <!-- {% for i in product_shops|slice:"1:" %}
-
+            {% for i in product_shops|slice:"1:" %}
                 <div class="item-shoping">
                     <div class="it-sh">
                         <div class="r-sh">
-                            <h2> {{ i.shop.name }}</h2>
-                            <p>ساری</p>
+                            <h2> {{ i.shop.name |truncatechars:'17' }}</h2>
+                            <p>{{ i.shop.user.city |truncatechars:'17' }}</p>
+                        </div>
+                        <div class="r-sh">
                         </div>
                         <div class="details-it-shop">
-                            <div class="item-cc">
-                                <span class="fa fa-star checked"></span>
-                                <div>
-                                    <p>4.5</p>
-                                </div>
-                            </div>
-                            <p class="p-cc">{{ i.product.name }}</p>
+                            {#                            <div class="item-cc">#}
+                            {#                                <span class="fa fa-star checked"></span>#}
+                            {#                                <div>#}
+                            {#                                    <p>4.5</p>#}
+                            {#                                </div>#}
+                            {#                            </div>#}
+                            <p class="p-cc">{{ i.product.name|truncatechars:'20' }}</p>
                             <p class="original-item o-t">
                                 <span>&#10003</span>اصالت و سلامت فیزیکی کالا
                             </p>
                         </div>
                     </div>
-                    <div class="btn-price">
+                    <a class="btn-price" href="/shop/{{i.shop.id}}">
                         <p><span>{{ i.price|intcomma:False }}</span> تومان</p>
                         <button class="btn-p">خرید اینترنتی</button>
-                    </div>
+                    </a>
                 </div>
-            {% endfor %} -->
-            <div class="item-shoping">
-                <div class="it-sh">
-                    <div class="r-sh">
-                        <h2> طب سنتی</h2>
-                        <p>ساری</p>
-                    </div>
-                    <div class="details-it-shop">
-                        <div class="item-cc">
-                            <span class="fa fa-star checked"></span>
-                            <div>
-                                <p>4.5</p>
-                            </div>
-                        </div>
-                        <p class="p-cc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از </p>
-                        <p class="original-item o-t">
-                            <span>&#10003</span>اصالت و سلامت فیزیکی کالا
-                        </p>
-                    </div>
-                </div>
-                <div class="btn-price">
-                    <p><span>۱۸۰۰۰</span> تومان</p>
-                    <button class="btn-p">خرید اینترنتی</button>
-                </div>
-            </div>
+            {% endfor %}
 
         </div>
     </div>
@@ -544,7 +524,7 @@
                     <p>دسته بندی</p>
                 </div>
                 <div class="detaill-it-scroll">
-                    <p>{{ product_shops.0.product.category.name }}</p>
+                    <p>{{ product_shops.0.product.category.name|truncatechars:'23' }}</p>
                 </div>
             </div>
 
@@ -553,7 +533,7 @@
                     <p>معرفی محصول</p>
                 </div>
                 <div class="detaill-it-scroll w-paragraph">
-                    <p class="paragraph">{{ product_shops.0.product.description }}</p>
+                    <p class="paragraph">{{ product_shops.0.product.description|truncatechars:'23' }}</p>
                 </div>
             </div>
         </div>
@@ -563,26 +543,26 @@
     <div id="table1" class="pagination-table">
         {% for i in products %}
 
-        <div class="it-table">
-            <a href="/search/product/{{i.id}}/" ><img class="img-table" src="{{ i.image_list.0.image.url }}"></a>
-            <div style="display: flex; justify-content: space-between; margin: 0 16px;" class="name-ittt-table">
-                <a class="name">نام محصول :</a>
-                <a class="name-it">{{ i.name|truncatechars:12 }}</a>
+            <div class="it-table">
+                <a href="/search/product/{{ i.id }}/"><img class="img-table" src="{{ i.image_list.0.image.url }}"></a>
+                <div style="display: flex; justify-content: space-between; margin: 0 16px;" class="name-ittt-table">
+                    <a class="name">نام محصول :</a>
+                    <a class="name-it">{{ i.name|truncatechars:12 }}</a>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin: 16px;" class="name-ittt-table">
+                    <a class="name"> قیمت محصول :</a>
+                    <a class="name-it">{{ i.price|intcomma:False }} تومان </a>
+                </div>
+                {#            <span class="offer">offer</span>#}
             </div>
-            <div style="display: flex; justify-content: space-between; margin: 16px;" class="name-ittt-table">
-                <a class="name"> قیمت محصول :</a>
-                <a class="name-it">{{ i.price|intcomma:False}}  تومان </a>
-            </div>
-{#            <span class="offer">offer</span>#}
-        </div>
         {% endfor %}
     </div>
-    </div>
+</div>
 <!-- content end -->
 
 <!-- Footer Start -->
 {% include './extentions/footer.html' %}
-    <!-- Footer Area End -->
+<!-- Footer Area End -->
 
 <!-- Back to top  -->
 <a class="ms-back-to-top"></a>
@@ -605,41 +585,41 @@
             <li data-color="02">
                 <a href="javascript:void(0)" class="colorcode2"></a>
             </li>
-                <li data-color="03">
-                    <a href="javascript:void(0)" class="colorcode3"></a>
-                </li>
-                <li data-color="04">
-                    <a href="javascript:void(0)" class="colorcode4"></a>
-                </li>
-                <li data-color="05">
-                    <a href="javascript:void(0)" class="colorcode5"></a>
-                </li>
-                <li data-color="06">
-                    <a href="javascript:void(0)" class="colorcode6"></a>
-                </li>
-                <li data-color="07" class="">
-                    <a href="javascript:void(0)" class="colorcode7"></a>
-                </li>
-                <li data-color="08">
-                    <a href="javascript:void(0)" class="colorcode8"></a>
-                </li>
-                <li data-color="09">
-                    <a href="javascript:void(0)" class="colorcode9"></a>
-                </li>
-            </ul>
-        </div>
-        <div class="ms-features-block">
-            <div class="ms-tools-sidebar-content">
-                <div class="ms-features-title">حالت پس رمینه</div>
-                <div class="ms-change-mode active" id="ms-change-mode">
-                    <div class="ms-mode-switch">
-                        <div class="ms-mode-btn">انتخاب</div>
-                        <div class="ms-mode-on">روشن</div>
-                        <div class="ms-mode-off">خاموش</div>
-                    </div>
+            <li data-color="03">
+                <a href="javascript:void(0)" class="colorcode3"></a>
+            </li>
+            <li data-color="04">
+                <a href="javascript:void(0)" class="colorcode4"></a>
+            </li>
+            <li data-color="05">
+                <a href="javascript:void(0)" class="colorcode5"></a>
+            </li>
+            <li data-color="06">
+                <a href="javascript:void(0)" class="colorcode6"></a>
+            </li>
+            <li data-color="07" class="">
+                <a href="javascript:void(0)" class="colorcode7"></a>
+            </li>
+            <li data-color="08">
+                <a href="javascript:void(0)" class="colorcode8"></a>
+            </li>
+            <li data-color="09">
+                <a href="javascript:void(0)" class="colorcode9"></a>
+            </li>
+        </ul>
+    </div>
+    <div class="ms-features-block">
+        <div class="ms-tools-sidebar-content">
+            <div class="ms-features-title">حالت پس رمینه</div>
+            <div class="ms-change-mode active" id="ms-change-mode">
+                <div class="ms-mode-switch">
+                    <div class="ms-mode-btn">انتخاب</div>
+                    <div class="ms-mode-on">روشن</div>
+                    <div class="ms-mode-off">خاموش</div>
                 </div>
             </div>
         </div>
+    </div>
 </div>
 
 <!-- Plugins JS -->

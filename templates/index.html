@@ -409,26 +409,24 @@
                         <!-- Main slider  -->
                         <div class="swiper-wrapper">
                             <div class="ms-slide-item swiper-slide d-flex slide-1">
-                                <img src="{{ banner.0.image.url }}" style="position: absolute" width="100%"
+                                <img src="{{ top_banners.0.image.url }}" style="position: absolute" width="100%"
                                      height="100%">
                                 <div class="ms-slide-content slider-animation">
-                                    <h2 class="ms-slide-stitle">تازه و سالم</h2>
-                                    <h1 class="ms-slide-title">میوه ها و سبزیجات</h1>
+                                    <h2 class="ms-slide-stitle">{{ top_banners.0.name|truncatechars:20 }}</h2>
+                                    <h1 class="ms-slide-title">{{ top_banners.0.content|truncatechars:20 }}</h1>
                                     <div class="ms-slide-desc">
-                                        <p>شروع قیمت از <b>29 تا</b>99 هزار</p>
-                                        <a href="{{ banner.0.link_url }}" class="ms-btn-2">خرید <i class="fa-solid fa-angles-left"></i></a>
+                                        <a href="{{ top_banners.0.link_url }}" class="ms-btn-2">مشاهده <i class="fa-solid fa-angles-left"></i></a>
                                     </div>
                                 </div>
                             </div>
                             <div class="ms-slide-item swiper-slide d-flex slide-2">
-                                <img src="{{ banner.1.image.url }}" style="position: absolute" width="100%"
+                                <img src="{{ top_banners.1.image.url }}" style="position: absolute" width="100%"
                                      height="100%">
                                 <div class="ms-slide-content slider-animation">
-                                    <h2 class="ms-slide-stitle">ارگانیک و سالم</h2>
-                                    <h1 class="ms-slide-title">میان وعده و ادویه جات</h1>
+                                    <h2 class="ms-slide-stitle">{{ top_banners.1.name |truncatechars:20 }}</h2>
+                                    <h1 class="ms-slide-title">{{ top_banners.1.content|truncatechars:20 }}</h1>
                                     <div class="ms-slide-desc">
-                                        <p>شروع قیمت از <b>29 تا</b>99 هزار</p>
-                                        <a href="{{ banner.1.link_url }}" class="ms-btn-2">خرید <i class="fa-solid fa-angles-left"></i></a>
+                                        <a href="{{ top_banners.1.link_url }}" class="ms-btn-2">مشاهده <i class="fa-solid fa-angles-left"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -443,23 +441,21 @@
             </div>
             <!-- Hero Banner 1 Start -->
             <div class="ms-banner-content align-self-center">
-                <div class="ms-slider-grid-item grid-img-4">
-                    <img src="{{ banner.2.image.url }}" style="position: absolute" height="100%" width="100%">
+                <div class="ms-slider-grid-item" style="background-image:url( {{ two_banners.0.image.url }});">
+{#                    <img src="{{ two_banners.0.image.url }}" style="position: absolute" height="100%" width="100%">#}
                     <div class="ms-detail">
-                        <p>تازه</p>
-                        <h6 class="grid-animation"><span class="ms-grid-sub-title">میوه جات</span></h6>
-                        <a href="{{ banner.2.link_url }}" class="ms-btn-2">خرید <i class="fa-solid fa-angles-left"></i></a>
+                        <h6 class="grid-animation"><span class="ms-grid-sub-title">{{ two_banners.0.name |truncatechars:19 }}</span></h6>
+                        <a href="{{ two_banners.0.link_url }}" class="ms-btn-2">مشاهده<i class="fa-solid fa-angles-left"></i></a>
                     </div>
                 </div>
             </div>
             <!-- Hero Banner 2 Start -->
-            <div class="ms-banner-content align-self-center">
-                <div class="ms-slider-grid-item grid-img-5">
-                    <img src="{{ banner.2.image.url }}" style="position: absolute" height="100%" width="100%">
+             <div class="ms-banner-content align-self-center">
+                <div class="ms-slider-grid-item" style="background-image:url( {{ two_banners.1.image.url }});">
+{#                    <img src="{{ two_banners.0.image.url }}" style="position: absolute" height="100%" width="100%">#}
                     <div class="ms-detail">
-                        <p>ارگانیک</p>
-                        <h6 class="grid-animation"><span class="ms-grid-sub-title">سبزیجات</span></h6>
-                        <a href="{{ banner.2.image.link_url }}" class="ms-btn-2">خرید <i class="fa-solid fa-angles-left"></i></a>
+                        <h6 class="grid-animation"><span class="ms-grid-sub-title">{{ two_banners.1.name |truncatechars:19}}</span></h6>
+                        <a href="{{ two_banners.1.link_url }}" class="ms-btn-2">مشاهده <i class="fa-solid fa-angles-left"></i></a>
                     </div>
                 </div>
             </div>
@@ -501,16 +497,16 @@
             </div>
 
             <!-- Tab Start -->
-            <div class=" ms-pro-tab">
+            <div class="ms-pro-tab">
                 <ul class="ms-pro-tab-nav nav justify-content-end">
                     <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#all">همه</a></li>
                     <li class="nav-item"><a class="nav-link" data-bs-toggle="tab"
-                                            href="#snack">{{ categories.0.name }}</a>
+                                            href="#snack">پرفروش ترین</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" data-bs-toggle="tab"
-                                            href="#fruit">{{ categories.1.name }}</a></li>
+                                            href="#fruit">حدید ترین</a></li>
                     <li class="nav-item"><a class="nav-link" data-bs-toggle="tab"
-                                            href="#veg">{{ categories.2.name }}</a></li>
+                                            href="#veg">پربازدیدترین</a></li>
                 </ul>
             </div>
             <!-- Tab End -->
@@ -541,41 +537,41 @@
                                                              alt="Product">
                                                     {% endif %}
                                                 </a>
-                                                <div class="ms-pro-actions">
-                                                    <a class="ms-btn-group wishlist" title="علاقه مندی"><img
-                                                            src="{% static 'assets/img/icons/pro_wishlist.svg' %}"
-                                                            class="svg_img pro_svg" alt=""></a>
-                                                    <a href="#" class="ms-btn-group quickview"
-                                                       data-link-action="quickview" title="بازدید سریع"
-                                                       data-bs-toggle="modal" data-bs-target="#ms_quickview_modal"><img
-                                                            src="{% static 'assets/img/icons/quickview.svg' %}"
-                                                            class="svg_img pro_svg" alt=""></a>
-                                                    <a href="javascript:void(0)" class="ms-btn-group compare"
-                                                       title="مقایسه"><img
-                                                            src="{% static 'assets/img/icons/compare.svg' %}"
-                                                            class="svg_img pro_svg" alt=""></a>
-                                                    <a href="javascript:void(0)" title="خرید"
-                                                       class="ms-btn-group add-to-cart"><img
-                                                            src="{% static 'assets/img/icons/pro_cart.svg' %}"
-                                                            class="svg_img pro_svg" alt=""></a>
-                                                </div>
+{#                                                <div class="ms-pro-actions">#}
+{#                                                    <a class="ms-btn-group wishlist" title="علاقه مندی"><img#}
+{#                                                            src="{% static 'assets/img/icons/pro_wishlist.svg' %}"#}
+{#                                                            class="svg_img pro_svg" alt=""></a>#}
+{#                                                    <a href="#" class="ms-btn-group quickview"#}
+{#                                                       data-link-action="quickview" title="بازدید سریع"#}
+{#                                                       data-bs-toggle="modal" data-bs-target="#ms_quickview_modal"><img#}
+{#                                                            src="{% static 'assets/img/icons/quickview.svg' %}"#}
+{#                                                            class="svg_img pro_svg" alt=""></a>#}
+{#                                                    <a href="javascript:void(0)" class="ms-btn-group compare"#}
+{#                                                       title="مقایسه"><img#}
+{#                                                            src="{% static 'assets/img/icons/compare.svg' %}"#}
+{#                                                            class="svg_img pro_svg" alt=""></a>#}
+{#                                                    <a href="javascript:void(0)" title="خرید"#}
+{#                                                       class="ms-btn-group add-to-cart"><img#}
+{#                                                            src="{% static 'assets/img/icons/pro_cart.svg' %}"#}
+{#                                                            class="svg_img pro_svg" alt=""></a>#}
+{#                                                </div>#}
                                             </div>
                                         </div>
                                         <div class="ms-pro-content">
                                             <a href="shop-left-sidebar-col-3.html">
-                                                <h6 class="ms-pro-stitle">{{ product.name }}</h6>
+                                                <h6 class="ms-pro-stitle">{{ product.name  |truncatechars:13}}</h6>
                                             </a>
                                             <h5 class="ms-pro-title"><a
                                                     href="product-left-sidebar.html">{{ product.description|slice:":26" }}</a>
                                             </h5>
                                             <div class="ms-pro-rat-price">
-                                                <span class="ms-pro-rating">
-                                                    <i class="fa-solid fa-star fill"></i>
-                                                    <i class="fa-solid fa-star fill"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                </span>
+{#                                                <span class="ms-pro-rating">#}
+{#                                                    <i class="fa-solid fa-star fill"></i>#}
+{#                                                    <i class="fa-solid fa-star fill"></i>#}
+{#                                                    <i class="fa-solid fa-star"></i>#}
+{#                                                    <i class="fa-solid fa-star"></i>#}
+{#                                                    <i class="fa-solid fa-star"></i>#}
+{#                                                </span>#}
 
                                                 <span class="ms-price">
                                                     <span class="new-price">{{ product.price |intcomma:False }}  تومان </span>
@@ -2354,14 +2350,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="ms-animated-banner">
-                    <img class="ms-animated-banner-img" src="{{ banner.3.image.url }}">
+                <div class="ms-animated-banner" style="background-image: url( {{ middle_banner.image.url }} )">
+{#                    <img class="ms-animated-banner-img" src="{{ middle_banner.image.url }}">#}
                     <h2 class="d-none">تخفیفات</h2>
                     <div class="ms-bnr-detail">
                         <div class="ms-bnr-info">
-                            <h2>لبنیات و نانوایی <br>محصولات تازه</h2>
-                            <h3>%30 تخفیف فروش <span>عجله کن!!!</span></h3>
-                            <a href="{{ banner.3.link_url }}" class="ms-btn-2">خرید</a>
+                            <h2> {{ middle_banner.name|truncatechars:20 }}</h2>
+                            <h3>{{ middle_banner.content|truncatechars:20  }}</h3>
+                            <a href="{{ middle_banner.link_url }}" class="ms-btn-2">مشاهده</a>
                         </div>
                     </div>
                 </div>
@@ -2379,7 +2375,7 @@
             <div class="col-xl-3 col-md-6 col-sm-12 col-xs-6 ms-new-product-content">
                 <div class="col-md-12">
                     <div class="section-title">
-                        <h2 class="ms-title">محصولات<span>جدید</span></h2>
+                        <h2 class="ms-title"> محصولات <span>جدید</span></h2>
                     </div>
                 </div>
                 <div class="ms-new-product-block">
@@ -2839,32 +2835,33 @@
                     <div class="ms-bnr-body">
                         <div class="ms-bnr-img">
 {#                            <span class="lbl">%70 تخفیف</span>#}
-                            <img src="{{ banner.4.image.url }}" alt="banner">
+                            <img src="{{ bottom_banner.0.image.url }}" alt="banner">
                         </div>
                         <div class="ms-bnr-detail">
-                            <h5>میان وعده و ادویه جات</h5>
-                            <p>طعم یک چیز خاص</p>
-                            <a href="{{ banner.4.link_url }}" class="ms-btn-2">خرید</a>
+                            <h5>{{ bottom_banner.0.name |truncatechars:10}}</h5>
+                            <p>{{ bottom_banner.0.content|truncatechars:15 }}</p>
+                            <a href="{{ bottom_banner.0.link_url }}" class="ms-btn-2">مشاهده</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-6">
-                <div class="ms-ofr-banners m-t-767">
+             <div class="col-md-6">
+                <div class="ms-ofr-banners">
                     <div class="ms-bnr-body">
                         <div class="ms-bnr-img">
-{#                            <span class="lbl">%50 تخفیف</span>#}
-                            <img src="{{ banner.5.image.url }}" alt="banner">
+{#                            <span class="lbl">%70 تخفیف</span>#}
+                            <img src="{{ bottom_banner.1.image.url }}" alt="banner">
                         </div>
                         <div class="ms-bnr-detail">
-                            <h5>میوه ها و سبزیجات</h5>
-                            <p>یک وعده غذایی سالم برای همه</p>
-                            <a href="{{ banner.5.link_url }}" class="ms-btn-2">خرید</a>
+                            <h5>{{ bottom_banner.1.name |truncatechars:10}}</h5>
+                            <p>{{ bottom_banner.1.content|truncatechars:15 }}</p>
+                            <a href="{{ bottom_banner.1.link_url }}" class="ms-btn-2">مشاهده</a>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </section>
@@ -2903,30 +2900,30 @@
                                                 {#                                                <span class="flags">#}
                                                 {#                                                    <span class="new">جدید</span>#}
                                                 {#                                                </span>#}
-                                                <div class="ms-pro-actions">
-                                                    <a href="javascript:void(0)" class="ms-btn-group wishlist"
-                                                       title="علاقه مندی">
-                                                        <img src="{% static 'assets/img/icons/pro_wishlist.svg' %}"
-                                                             class="svg_img pro_svg" alt="">
-                                                    </a>
-                                                    <a href="#" class="ms-btn-group quickview"
-                                                       data-link-action="quickview"
-                                                       title="بازدید سریع" data-bs-toggle="modal"
-                                                       data-bs-target="#ms_quickview_modal">
-                                                        <img src="{% static 'assets/img/icons/quickview.svg' %}"
-                                                             class="svg_img pro_svg" alt="">
-                                                    </a>
-                                                    <a href="javascript:void(0)" class="ms-btn-group compare"
-                                                       title="مقایسه">
-                                                        <img src="{% static 'assets/img/icons/compare.svg' %}"
-                                                             class="svg_img pro_svg" alt="">
-                                                    </a>
-                                                    <a href="javascript:void(0)" title="خرید"
-                                                       class="ms-btn-group add-to-cart">
-                                                        <img src="{% static 'assets/img/icons/pro_cart.svg' %}"
-                                                             class="svg_img pro_svg" alt="">
-                                                    </a>
-                                                </div>
+{#                                                <div class="ms-pro-actions">#}
+{#                                                    <a href="javascript:void(0)" class="ms-btn-group wishlist"#}
+{#                                                       title="علاقه مندی">#}
+{#                                                        <img src="{% static 'assets/img/icons/pro_wishlist.svg' %}"#}
+{#                                                             class="svg_img pro_svg" alt="">#}
+{#                                                    </a>#}
+{#                                                    <a href="#" class="ms-btn-group quickview"#}
+{#                                                       data-link-action="quickview"#}
+{#                                                       title="بازدید سریع" data-bs-toggle="modal"#}
+{#                                                       data-bs-target="#ms_quickview_modal">#}
+{#                                                        <img src="{% static 'assets/img/icons/quickview.svg' %}"#}
+{#                                                             class="svg_img pro_svg" alt="">#}
+{#                                                    </a>#}
+{#                                                    <a href="javascript:void(0)" class="ms-btn-group compare"#}
+{#                                                       title="مقایسه">#}
+{#                                                        <img src="{% static 'assets/img/icons/compare.svg' %}"#}
+{#                                                             class="svg_img pro_svg" alt="">#}
+{#                                                    </a>#}
+{#                                                    <a href="javascript:void(0)" title="خرید"#}
+{#                                                       class="ms-btn-group add-to-cart">#}
+{#                                                        <img src="{% static 'assets/img/icons/pro_cart.svg' %}"#}
+{#                                                             class="svg_img pro_svg" alt="">#}
+{#                                                    </a>#}
+{#                                                </div>#}
                                             </div>
                                         </div>
                                         <div class="ms-pro-content">
@@ -2937,14 +2934,14 @@
                                                     href="product-left-sidebar.html">{{ product.description }}</a>
                                             </h5>
                                             <div class="ms-pro-rat-price">
-                                                <span class="ms-pro-rating">
-                                                    <i class="fa-solid fa-star fill"></i>
-                                                    <i class="fa-solid fa-star fill"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
+{#                                                <span class="ms-pro-rating">#}
+{#                                                    <i class="fa-solid fa-star fill"></i>#}
+{#                                                    <i class="fa-solid fa-star fill"></i>#}
+{#                                                    <i class="fa-solid fa-star"></i>#}
+{#                                                    <i class="fa-solid fa-star"></i>#}
+{#                                                    <i class="fa-solid fa-star"></i>#}
 {#                                                    <span class="qty" dir="rtl">2 پاکت</span>#}
-                                                </span>
+{#                                                </span>#}
                                                 <span class="ms-price">
 {#                                                <span class="old-price">50 هزار</span>#}
                                                 <span class="new-price">{{ product.price|intcomma:False }} هزار</span>
@@ -2969,8 +2966,8 @@
         <div class="row">
             <div class="section-title">
                 <h2 class="ms-title">برترین <span>فروشندگان</span></h2>
-                <span class="title-link"><a href="multi-vendor.html">همه فروشندگان<i
-                        class="fa-solid fa-angles-left"></i></a></span>
+{#                <span class="title-link"><a href="multi-vendor.html">همه فروشندگان<i#}
+{#                        class="fa-solid fa-angles-left"></i></a></span>#}
             </div>
             <div class="ms-top-vendor owl-carousel" dir="ltr">
                 {% for i in best_shops %}
@@ -2983,13 +2980,13 @@
                                 <a href="single-vendor.html">فروشگاه {{ i.name |slice:":9" }}</a>
 
                                 <p>{{ i.product_number }} محصول</p>
-                                <span class="ms-pro-rating">
-                                    <i class="fa-solid fa-star fill"></i>
-                                    <i class="fa-solid fa-star fill"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </span>
+{#                                <span class="ms-pro-rating">#}
+{#                                    <i class="fa-solid fa-star fill"></i>#}
+{#                                    <i class="fa-solid fa-star fill"></i>#}
+{#                                    <i class="fa-solid fa-star"></i>#}
+{#                                    <i class="fa-solid fa-star"></i>#}
+{#                                    <i class="fa-solid fa-star"></i>#}
+{#                                </span>#}
                                 <div class="ms-sale">
                                     <p title="Weekly sales">فروش 785</p>
                                 </div>

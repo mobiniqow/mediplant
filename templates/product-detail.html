@@ -1,4 +1,5 @@
 {% load static %}
+{% load humanize %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,20 +14,20 @@
     <meta name="author" content="Pilarest">
 
     <!-- site Favicon -->
-    <link rel="icon" href="{% static 'assets/img/favicon/favicon.png'%}" sizes="32x32">
+    <link rel="icon" href="{% static 'assets/img/favicon/favicon.png'  %}" sizes="32x32">
 
     <!-- css Icon Font -->
-    <link rel="stylesheet" href="{% static 'assets/css/vendor/msicons.min.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/msicons.min.css'  %}">
 
     <!-- css All Plugins Files -->
-    <link rel="stylesheet" href="{% static 'assets/css/plugins/animate.css'%}">
-    <link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap.css'%}">
-    <link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap-select.min.css'%}">
-    <link rel="stylesheet" href="{% static 'assets/css/plugins/owl.carousel.min.css'%}">
-    <link rel="stylesheet" href="{% static 'assets/css/plugins/owl.theme.default.min.css'%}">
-    <link rel="stylesheet" href="{% static 'assets/css/plugins/swiper-bundle.min.css'%}">
-    <link rel="stylesheet" href="{% static 'assets/css/plugins/slick.min.css'%}">
-    <link rel="stylesheet" href="{% static 'assets/css/plugins/nouislider.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/animate.css'  %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap.css'  %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap-select.min.css'  %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/owl.carousel.min.css'  %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/owl.theme.default.min.css'  %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/swiper-bundle.min.css'  %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/slick.min.css'  %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/nouislider.css'  %}">
     <!--  -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="{% static 'assets/css/slider/uikit-rtl.css'  %}">
@@ -35,7 +36,7 @@
     <link rel="stylesheet" href="{% static 'assets/css/slider/uikit.min.css'  %}">
 
     <!-- Main Style -->
-    <link rel="stylesheet" id="main_style" href="{% static 'assets/css/style.css'  %}">
+    <link rel="stylesheet" id="main_style" href="{% static 'assets/css/new-page.css'  %}">
     <link rel="stylesheet" href="{% static 'assets/css/responsive.css'  %}">
     <link rel="stylesheet" class="color-css" href="{% static 'assets/css/color-01.css'  %}">
 
@@ -196,7 +197,7 @@
                                         </div>
                                     </a>
                                     <ul class="ms-dropdown-menu">
-                                        <li><a class="dropdown-item" href="profile.html">ثبت نام</a></li>
+                                        <li><a class="dropdown-item" href="register.html">ثبت نام</a></li>
                                         <li><a class="dropdown-item" href="checkout.html">بررسی خرید</a></li>
                                         <li><a class="dropdown-item" href="privacy-policy.html">حریم خصوصی</a></li>
                                         <li><a class="dropdown-item" href="login.html">ورود</a></li>
@@ -299,15 +300,15 @@
                                             <li class="dropdown drop-list">
                                                 <a href="#" class="dropdown-arrow">محصولات<i class="fas fa-chevron-right"></i></a>
                                                 <ul class="sub-menu">
-                                                    <li><a href="shop-banner-left-sidebar-col-3.html">لیست محصولات</a></li>
+                                                    <li><a href="./shop-left-sidebar-col-3.html">لیست محصولات</a></li>
                                                     <li><a href="compare.html">مقایسه</a></li>
                                                 </ul>
                                             </li>
                                             <li class="dropdown drop-list">
-                                                <a href="blog-detail-left-sidebar.html" class="dropdown-arrow">مقالات</a>
+                                                <a href="../blogs.html" class="dropdown-arrow">مقالات</a>
                                             </li>
                                             <li class="dropdown drop-list">
-                                                <a href="about-us.html" class="dropdown-arrow">درباره ما</a>
+                                                <a href="../about-us.html" class="dropdown-arrow">درباره ما</a>
                                             </li>
                                             <li class="dropdown drop-list">
                                                 <a href="contact-us.html" class="dropdown-arrow">تماس با ما</a>
@@ -444,22 +445,22 @@
                             <ul class="sub-menu">
                                 <li><a href="blog-left-sidebar.html">نوار کناری سمت راست</a></li>
                                 <li><a href="blog-right-sidebar.html">نوار کناری سمت چپ</a></li>
-                                <li><a href="blog-full-width.html">تمام عرض</a></li>
-                                <li><a href="blog-detail-left-sidebar.html">جزئیات نوار کناری سمت راست</a></li>
+                                <li><a href="../blogs.html">تمام عرض</a></li>
+                                <li><a href="../blog-detail.html">جزئیات نوار کناری سمت راست</a></li>
                                 <li><a href="blog-detail-right-sidebar.html">جزئیات نوار کناری سمت چپ</a></li>
                                 <li><a href="blog-detail-full-width.html">جزئیات با عرض کامل</a></li>
                             </ul>
                         </li>
                         <li><a href="javascript:void(0)">صفحات</a>
                             <ul class="sub-menu">
-                                <li><a href="about-us.html">درباره ما</a></li>
+                                <li><a href="../about-us.html">درباره ما</a></li>
                                 <li><a href="contact-us.html">تماس با ما</a></li>
                                 <li><a href="cart.html">صفحه پرداخت</a></li>
                                 <li><a href="checkout.html">بررسی خرید</a></li>
                                 <li><a href="compare.html">مقایسه</a></li>
                                 <li><a href="faq.html">سوالات</a></li>
                                 <li><a href="login.html">ورود</a></li>
-                                <li><a href="profile.html">ثبت نام</a></li>
+                                <li><a href="register.html">ثبت نام</a></li>
                                 <li><a href="track-order.html">پیگیری سفارش</a></li>
                                 <li><a href="terms-condition.html">شرایط و ضوابط</a></li>
                                 <li><a href="privacy-policy.html">سیاست حفظ حریم خصوصی</a></li>
@@ -816,13 +817,13 @@
                 <div class="col-12">
                     <div class="row ms_breadcrumb_inner">
                         <div class="col-md-6 col-sm-12">
-                            <h2 class="ms-breadcrumb-title">صفحه فروشگاه</h2>
+                            <h2 class="ms-breadcrumb-title">جزئیات محصول</h2>
                         </div>
                         <div class="col-md-6 col-sm-12">
                             <!-- ms-breadcrumb-list start -->
                             <ul class="ms-breadcrumb-list">
                                 <li class="ms-breadcrumb-item"><a href="index.html">خانه</a><i class="fas fa-chevron-left"></i></li>
-                                <li class="ms-breadcrumb-item active">صفحه فروشگاه</li>
+                                <li class="ms-breadcrumb-item active">جزئیات محصول</li>
                             </ul>
                             <!-- ms-breadcrumb-list end -->
                         </div>
@@ -833,175 +834,128 @@
     </div>
     <!-- Breadcrumb end -->
 
-    <div class="store-page">
-        <h2>فروشگاه گیاهان دارویی </h2>
-        <div class="baner-store">
-            <div class="box-baner-store">
-                <div class="logo-baner-store">1</div>
-                <div class="name-orgin">نام مدیریت</div>
-            </div>
-        </div>
-        <div class="box-menu-store">
-            <p class="p-menu">منو فروشگاه</p>
-            <div class="items-menu">
-                <div>
-                    <input type="search" class="search-menu" placeholder="جستجو فروشگاه"></input>
-                </div>
-                <button type="button" class="btn-location">موقعیت فروشگاه</button>
-                <button type="button" class="btn-catalog">کاتالوگ فروشگاه</button>
-                <button type="button" class="btn-about"> درباره فروشگاه</button>
-
-            </div>
-            <div class="share-menu">
-                <a href="#" class="fa fa-instagram"></a>
-                <a href="#" class="fa fa-telegram"></a>
-                <a href="#" class="fa fa-facebook"></a>
-            </div>
-        </div>
-        <div class="new-item">
+    <div class="product-detail">
+        <form>
+            <ul class="ms-breadcrumb-list crumb-product">
+                <li class="ms-breadcrumb-item"><a href="index.html">خانه</a><i class="fas fa-chevron-left"></i></li>
+                <li class="ms-breadcrumb-item"><a href="#">دسته بندی</a><i class="fas fa-chevron-left"></i></li>
+                <li class="ms-breadcrumb-item"><a href="index.html">دسته بندی</a><i class="fas fa-chevron-left"></i></li>
+                <li class="ms-breadcrumb-item active">جزئیات محصول</li>
+            </ul>
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                  <div class="swiper-slide" style="background-image:url('assets/img/bg/news.jpg')"></div>
-                  <div class="swiper-slide" style="background-image:url('assets/img/bg/news.jpg')"></div>
-                  <div class="swiper-slide" style="background-image:url('assets/img/bg/news.jpg')"></div>
+                    {% for i in images %}
+                    <div class="swiper-slide" style="background-image:url({{ i.image.url }})"></div>
+                    {% endfor %}
                 </div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
             </div>
-        </div>
+            <div class="titr-name">
+                <a class="name-item">{{  product_shops.product.name}}</a>
+{#                <div class="health">#}
+{#                    <a class="add-to-health">افزودن به علاقه مندی</a>#}
+{#                    <div class="heart" onclick="toggleHeart(this)"></div>#}
+{#                </div>#}
+            </div>
+            <div class="length-item">
+                <p>{{ product_shops.product.name }}</p>
+{#                <div>#}
+{#                    <ul>(#}
+{#                        <li>#}
+{#                            <p>عرق نعناع :</p>#}
+{#                            <span>4عدد</span>#}
+{#                        </li>#}
+{#                        ,#}
+{#                        <li>#}
+{#                            <p> روغن زیتون :</p>#}
+{#                            <span>4عدد</span>#}
+{#                        </li>#}
+{#                        ,#}
+{#                        <li>#}
+{#                            <p> گل گاوزبان :</p>#}
+{#                            <span>۴ بسته ۲۰۰گرمی</span>#}
+{#                        </li>#}
+{#                        )#}
+{#                    </ul>#}
+{#                </div>#}
+            </div>
+            <div class="price">
+                <p>قیمت : </p>
+                <span>{{ product_shops.price|intcomma:False}} تومان </span>
+                <!-- &#10003 -->
+            </div>
+            <p class="original-item">
+                <span>&#10003</span>اصالت و سلامت فیزیکی کالا
+            </p>
+            <div class="info-score">
+                    <ul class="uk-flex-Left" uk-tab>
+                        <li class="page-item page-item1"><a href="#content1" class="page-link">مشخصات کالا</a></li>
+                        <li class="page-item page-item2"><a href="#content2" class="page-link">نظرات کاربران</a></li>
+                    </ul>
 
-        <div class="items-result">
-            <div id="table1" class="pagination-table">
-                <div class="it-table">
-                    <img class="img-table" src="{% static 'assets/img/bg/newsletter.png'  %}">
-                    <div style="display: flex; justify-content: space-between; margin: 0 16px;" class="name-ittt-table">
-                        <a class="name">نام محصول :</a>
-                        <a class="name-it">سیب</a>
+                    <div id="content1" class="paginationn-table">
+{#                        <div class="it-content">#}
+{#                            <p>تاریخ کالا </p>#}
+{#                            <span>1402/02/02</span>#}
+{#                        </div>#}
+                        <div class="it-content">
+                            <p>جنس کالا</p>
+                            <span>{{ product_shops.get_material_display}}</span>
+                        </div>
+                        <div class="it-content">
+                            <p>نوع کالا</p>
+                            <span>{{ product_shops.product.get_type_display}}</span>
+                        </div>
+                        <div class="it-content">
+                            <p>شناسه واحد</p>
+                            <span>{{ product_shops.product.unit.name}}</span>
+                        </div>
+{#                        <div class="it-content">#}
+{#                            <p>تاریخ انقضاء</p>#}
+{#                            <span>1402/02/02</span>#}
+{#                        </div>#}
+                        <div class="it-content">
+                            <p>معرفی محصول</p>
+                            <span>{{ product_shops.product.description |safe}}</span>
+                        </div>
+                        <div class="it-content i-c">
+                            <p>نحوه مصرف</p>
+                            <span> {{product_shops.product.consumption_instruction |safe  }}</span>
+                        </div>
                     </div>
-                    <div style="display: flex; justify-content: space-between; margin: 16px;" class="name-ittt-table">
-                        <a class="name"> قیمت محصول :</a>
-                        <a class="name-it">۱۸ هزار</a>
+                    <div id="content2" class="paginationn-table">
+                        <div class="item-c">
+                            <div>
+                                <p>4.5</p>از<span>5</span>
+                            </div>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        </div>
+                        <div class="item-cc">
+                            <div class="opinion">
+                                <p>1402/02/02</p>
+                                -
+                                <span>مبین ملاپور</span>
+                                (<h3>کاربر طلایی</h3>)
+                            </div>
+                            <div class="proposal">
+                                <p>عالی</p>
+                            </div>
+                            <div class="message">
+                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از </p>
+                            </div>
+                        </div>
                     </div>
-                    <span class="offer">offer</span>
-                </div>
-                <div class="it-table">
-                    <img class="img-table" src="{% static 'assets/img/bg/newsletter.png'  %}">
-                    <div style="display: flex; justify-content: space-between; margin: 0 16px;" class="name-ittt-table">
-                        <a class="name">نام محصول :</a>
-                        <a class="name-it">سیب</a>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; margin: 16px;" class="name-ittt-table">
-                        <a class="name"> قیمت محصول :</a>
-                        <a class="name-it">۱۸ هزار</a>
-                    </div>
-                    <span class="offer">offer</span>
-                </div>
-                <div class="it-table">
-                    <img class="img-table" src="{% static 'assets/img/bg/newsletter.png'  %}">
-                    <div style="display: flex; justify-content: space-between; margin: 0 16px;" class="name-ittt-table">
-                        <a class="name">نام محصول :</a>
-                        <a class="name-it">سیب</a>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; margin: 16px;" class="name-ittt-table">
-                        <a class="name"> قیمت محصول :</a>
-                        <a class="name-it">۱۸ هزار</a>
-                    </div>
-                </div>
-                <div class="it-table">
-                    <img class="img-table" src="{% static 'assets/img/bg/newsletter.png'  %}">
-                    <div style="display: flex; justify-content: space-between; margin: 0 16px;" class="name-ittt-table">
-                        <a class="name">نام محصول :</a>
-                        <a class="name-it">سیب</a>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; margin: 16px;" class="name-ittt-table">
-                        <a class="name"> قیمت محصول :</a>
-                        <a class="name-it">۱۸ هزار</a>
-                    </div>
-                </div>
-                <div class="it-table">
-                    <img class="img-table" src="{% static 'assets/img/bg/newsletter.png'  %}">
-                    <div style="display: flex; justify-content: space-between; margin: 0 16px;" class="name-ittt-table">
-                        <a class="name">نام محصول :</a>
-                        <a class="name-it">سیب</a>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; margin: 16px;" class="name-ittt-table">
-                        <a class="name"> قیمت محصول :</a>
-                        <a class="name-it">۱۸ هزار</a>
-                    </div>
-                </div>
-                <div class="it-table">
-                    <img class="img-table" src="{% static 'assets/img/bg/newsletter.png'  %}">
-                    <div style="display: flex; justify-content: space-between; margin: 0 16px;" class="name-ittt-table">
-                        <a class="name">نام محصول :</a>
-                        <a class="name-it">سیب</a>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; margin: 16px;" class="name-ittt-table">
-                        <a class="name"> قیمت محصول :</a>
-                        <a class="name-it">۱۸ هزار</a>
-                    </div>
-                </div>
-                <div class="it-table">
-                    <img class="img-table" src="{% static 'assets/img/bg/newsletter.png'  %}">
-                    <div style="display: flex; justify-content: space-between; margin: 0 16px;" class="name-ittt-table">
-                        <a class="name">نام محصول :</a>
-                        <a class="name-it">سیب</a>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; margin: 16px;" class="name-ittt-table">
-                        <a class="name"> قیمت محصول :</a>
-                        <a class="name-it">۱۸ هزار</a>
-                    </div>
-                </div>
-                <div class="it-table">
-                    <img class="img-table" src="{% static 'assets/img/bg/newsletter.png'  %}">
-                    <div style="display: flex; justify-content: space-between; margin: 0 16px;" class="name-ittt-table">
-                        <a class="name">نام محصول :</a>
-                        <a class="name-it">سیب</a>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; margin: 16px;" class="name-ittt-table">
-                        <a class="name"> قیمت محصول :</a>
-                        <a class="name-it">۱۸ هزار</a>
-                    </div>
-                </div>
-                <div class="it-table">
-                    <img class="img-table" src="{% static 'assets/img/bg/newsletter.png'  %}">
-                    <div style="display: flex; justify-content: space-between; margin: 0 16px;" class="name-ittt-table">
-                        <a class="name">نام محصول :</a>
-                        <a class="name-it">سیب</a>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; margin: 16px;" class="name-ittt-table">
-                        <a class="name"> قیمت محصول :</a>
-                        <a class="name-it">۱۸ هزار</a>
-                    </div>
-                </div>
-                <div class="it-table">
-                    <img class="img-table" src="{% static 'assets/img/bg/newsletter.png'  %}">
-                    <div style="display: flex; justify-content: space-between; margin: 0 16px;" class="name-ittt-table">
-                        <a class="name">نام محصول :</a>
-                        <a class="name-it">سیب</a>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; margin: 16px;" class="name-ittt-table">
-                        <a class="name"> قیمت محصول :</a>
-                        <a class="name-it">۱۸ هزار</a>
-                    </div>
-                </div>
             </div>
-            <div id="table2" class="pagination-table">
-                qq
+            <div class="btns">
+                <button class="alert" type="button">موجود شد به من خبر بده !</button>
+                <button class="add-to-cart" type="submit">افزودن به سبد</button>
             </div>
-            <div id="table3" class="pagination-table">
-                ww
-            </div>
-
-            <ul class="uk-pagination uk-flex-center" uk-margin>
-                <li><a href="#"><span uk-pagination-next></span></a></li>
-                <li class="page-item"><a href="#table1" class="page-link">1</a></li>
-                <li class="page-item"><a href="#table2" class="page-link">2</a></li>
-                <li class="page-item"><a href="#table3" class="page-link">3</a></li>
-                <li class="page-item"><a href="#" class="page-link">4</a></li>
-                <li class="page-item"><a href="#" class="page-link">5</a></li>
-                <li><a href="#"><span uk-pagination-previous></span></a></li>
-            </ul>
-        </div>
+        </form>
     </div>
 
     <!-- Footer Start -->
@@ -1040,7 +994,7 @@
                                 <h4 class="ms-footer-heading">شرکت</h4>
                                 <div class="ms-footer-links ms-footer-dropdown">
                                     <ul class="align-items-center">
-                                        <li class="ms-footer-link"><a href="about-us.html">درباره ما</a></li>
+                                        <li class="ms-footer-link"><a href="../about-us.html">درباره ما</a></li>
                                         <li class="ms-footer-link"><a href="track-order.html">تحویل</a></li>
                                         <li class="ms-footer-link"><a href="privacy-policy.html">اطلاع قانونی</a></li>
                                         <li class="ms-footer-link"><a href="terms-condition.html">شرایط و ضوابط</a></li>
@@ -1055,7 +1009,7 @@
                                 <h4 class="ms-footer-heading">حساب کاربری</h4>
                                 <div class="ms-footer-links ms-footer-dropdown">
                                     <ul class="align-items-center">
-                                        <li class="ms-footer-link"><a href="profile.html">ثبت نام</a></li>
+                                        <li class="ms-footer-link"><a href="register.html">ثبت نام</a></li>
                                         <li class="ms-footer-link"><a href="cart.html">مشاهده سبد خرید</a></li>
                                         <li class="ms-footer-link"><a href="privacy-policy.html">سیاست بازگشت</a></li>
                                         <li class="ms-footer-link"><a href="#">فروشنده شوید</a></li>
@@ -1152,7 +1106,7 @@
                                     <img class="img-responsive" src="{% static 'assets/img/product-images/2_1.jpg'  %}" alt="">
                                 </div>
                                 <div class="qty-slide">
-                                    <img class="img-responsive" src="{% static 'assets/img/product-images/3_1.jpg'  %}" alt="">
+                                    <img class="img-responsive" src="assets/img/product-images/3_1.jpg" alt="">
                                 </div>
                                 <div class="qty-slide">
                                     <img class="img-responsive" src="{% static 'assets/img/product-images/4_1.jpg'  %}" alt="">
@@ -1169,7 +1123,7 @@
                                     <img class="img-responsive" src="{% static 'assets/img/product-images/2_1.jpg'  %}" alt="">
                                 </div>
                                 <div class="qty-slide">
-                                    <img class="img-responsive" src="{% static 'assets/img/product-images/3_1.jpg'  %}" alt="">
+                                    <img class="img-responsive" src="assets/img/product-images/3_1.jpg" alt="">
                                 </div>
                                 <div class="qty-slide">
                                     <img class="img-responsive" src="{% static 'assets/img/product-images/4_1.jpg'  %}" alt="">
@@ -1319,26 +1273,31 @@
 
     <script>
         var mySwiper = new Swiper('.swiper-container', {
-          slidesPerView: 1,
-          spaceBetween: 10,
-          navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-          },
+            autoplay: {
+                delay: 3000,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
         });
 
+        function toggleHeart(heart) {
+            heart.classList.toggle("active");
+        }
+
         $(document).ready(function() {
-            $("#table1").show();
+            $("#content2").hide();
+            $("#content1").show();
             $(".page-item:first").addClass("active");
 
-            $(".page-link").click(function(e) {
+            $(".page-item").click(function(e) {
                 e.preventDefault();
-                var targetTable = $(this).attr("href");
-                $(".pagination-table").hide();
+                var targetTable = $(this).find("a").attr("href");
+                $(".paginationn-table").hide();
                 $(targetTable).show();
-
                 $(".page-item").removeClass("active");
-                $(this).parent(".page-item").addClass("active");
+                $(this).addClass("active");
             });
         });
     </script>

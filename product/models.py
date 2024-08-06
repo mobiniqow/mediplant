@@ -1,7 +1,7 @@
 from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.db.models import SET_NULL
-
+from ckeditor.fields import RichTextField
 
 class ClassId(models.Model):
     name = models.CharField(max_length=22)
@@ -51,7 +51,8 @@ class Product(models.Model):
     category = models.ForeignKey('Category', on_delete=SET_NULL, null=True, verbose_name='کتگوری', blank=True)
     name = models.CharField(max_length=33, verbose_name="نام کالا", unique=True)
     type = models.IntegerField(choices=Type.choices, verbose_name='نوع کالا')
-    description = models.TextField(verbose_name='جنس کالا', )
+    description = RichTextField(blank=True,null=True, verbose_name='معرفی محصول')
+    consumption_instruction = RichTextField(blank=True, null=True, verbose_name='نحوه مصرف')
     price = models.IntegerField(verbose_name='واحد قیمت بر حسب واحد')
     state = models.IntegerField(choices=State.choices, default=State.SUSPEND, verbose_name='وضعیت کالا')
     is_active = models.BooleanField(default=False, verbose_name='فعال بودن')

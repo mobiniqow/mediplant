@@ -57,6 +57,7 @@ class IndexView(BaseTemplateView):
         context['title'] = 'صفحه اصلی'
         context['top_banners'] = top_banners
         context['two_banners'] = two_banners
+        print(f'middle_banner {middle_banner}')
         context['middle_banner'] = middle_banner
         context['bottom_banner'] = bottom_banner
         context['articles'] = articles
@@ -81,13 +82,13 @@ class CategoryView(BaseTemplateView):
             '?')[:2]
 
         context['title'] = 'صفحه اصلی'
-        context['banners'] = banners
+        context['banner'] = banners
         context['categories'] = categories
 
         return context
 
 
-class ShopView(TemplateView):
+class   ShopView(TemplateView):
     template_name = "shop.html"
 
     def get_context_data(self, **kwargs):
