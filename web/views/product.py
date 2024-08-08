@@ -3,6 +3,7 @@ from product.models import Product, ProductImage
 from shop.models import ShopProduct
 from django.shortcuts import get_object_or_404
 
+
 class ShopProductView(BaseTemplateView):
     template_name = 'product-detail.html'
 

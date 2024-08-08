@@ -36,23 +36,23 @@
 </head>
 
 <body>
-<!-- Loader -->
-<div id="ms-overlay">
-    <div class="loader"></div>
-</div>
+    <!-- Loader -->
+    <div id="ms-overlay">
+        <div class="loader"></div>
+    </div>
 
-<!-- Header start  -->
-{#    {% include './extentions/header.html' with categories=categories_map %}#}
-<!-- Header End  -->
+    <!-- Header start  -->
+       {% include '../extentions/header.html' with categories=categories_map %}
+    <!-- Header End  -->
 
-<!-- Category sidebar Start -->
-<div class="ms-side-cat-overlay"></div>
-<div class="col-lg-3 ms-category-sidebar">
-    <div class="cat-sidebar">
-        <div class="cat-sidebar-box">
-            <div class="ms-cat-sidebar-wrap">
-                <!-- Sidebar Category Block -->
-                <div class="ms-sidebar-block">
+    <!-- Category sidebar Start -->
+    <div class="ms-side-cat-overlay"></div>
+    <div class="col-lg-3 ms-category-sidebar">
+        <div class="cat-sidebar">
+            <div class="cat-sidebar-box">
+                <div class="ms-cat-sidebar-wrap">
+                    <!-- Sidebar Category Block -->
+                    <div class="ms-sidebar-block">
                         <div class="ms-sb-title">
                             <h3 class="ms-sidebar-title">دسته بندی<button class="ms-close">×</button></h3>
                         </div>
@@ -339,52 +339,141 @@
             </div>
         </div>
     </div>
+    <!-- Wishlist sidebar End -->
 
-    <section class="ms-login padding-tb-30">
+    <!-- Breadcrumb start -->
+    <div class="ms-breadcrumb m-b-30">
         <div class="container">
-            <div class="section-title-2">
-                <h2 class="ms-title">ورود<span></span></h2>
-                <p>به سفارشات، لیست خواسته ها و توصیه های خود دسترسی پیدا کنید</p>
-            </div>
-            <div class="ms-login-content p-t-15">
-                <div class="ms-login-box">
-                    <div class="ms-login-wrapper">
-                        <div class="ms-login-container">
-                            <div class="ms-login-form">
-                                <form method="POST">
-                                    <span class="ms-login-wrap">
-                                        <label>شماره تلفن</label>
-{#                                        {{ form.as_p }}#}
-                                        {% csrf_token %}
-                                        <input id="id_phone" maxlength="11" type="text" name="phone"
-                                               placeholder="شماره خود را وارد کنید" required/>
-                                    </span>
-                                    {#                                    <span class="ms-login-wrap">#}
-                                    {#                                        <label>رمز ورود *</label>#}
-                                    {#                                        <input type="password" name="password" placeholder="رمز ورود" required>#}
-                                    {#                                    </span>#}
-                                    {#                                    <span class="ms-login-wrap ms-login-fp">#}
-                                    {#                                        <label><a href="#">آیا رمز خود را فراموش کرده‌اید؟</a></label>#}
-                                    {#                                    </span>#}
-                                    <span class="ms-login-wrap ms-login-btn">
-{#                                        <span><a href="profile.html" class="">ثبت نام</a></span>#}
-                                    <button class="ms-btn-2 btn" type="submit">ورود</button>
-                                    </span>
-                                </form>
-                                <p>{{ error }}</p>
-                            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="row ms_breadcrumb_inner">
+                        <div class="col-md-6 col-sm-12">
+                            <h2 class="ms-breadcrumb-title">پروفایل شما</h2>
                         </div>
-                    </div>
-                </div>
-                <div class="ms-login-box d-n-991">
-                    <div class="ms-login-img">
-                        <img src="{% static 'assets/img/common/login.png' %}" alt="login">
+                        <div class="col-md-6 col-sm-12">
+                            <!-- ms-breadcrumb-list start -->
+{#                            <ul class="ms-breadcrumb-list">#}
+{#                                <li class="ms-breadcrumb-item"><a href="index.html">خانه</a><i class="fas fa-chevron-left"></i></li>#}
+{#                                <li class="ms-breadcrumb-item active">ثبت نام</li>#}
+{#                            </ul>#}
+                            <!-- ms-breadcrumb-list end -->
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <!-- Breadcrumb end -->
+
+    <!-- Register section -->
+    <section class="ms-register padding-tb-30">
+{#        <div class="container">#}
+{#            <div class="section-title-2">#}
+{#                <h2 class="ms-title">ثبت نام<span></span></h2>#}
+{#                <p>بهترین مکان برای خرید و فروش محصولات دیجیتال</p>#}
+{#            </div>#}
+{#            <div class="row p-t-15">#}
+{#                <div class="ms-register-wrapper">#}
+{#                    <div class="ms-register-container">#}
+{#                        <div class="ms-register-form">#}
+{#                            <form action="#" method="post">#}
+{#                                <span class="ms-register-wrap ms-register-half">#}
+{#                                    <label>نام *</label>#}
+{#                                    <input type="text" name="firstname" placeholder="نام" required>#}
+{#                                </span>#}
+{#                                <span class="ms-register-wrap ms-register-half">#}
+{#                                    <label>نام خانوادگی *</label>#}
+{#                                    <input type="text" name="lastname" placeholder="نام خانوادگی" required>#}
+{#                                </span>#}
+{#                                <span class="ms-register-wrap ms-register-half">#}
+{#                                    <label>ایمیل *</label>#}
+{#                                    <input type="email" name="email" placeholder="ایمیل" required>#}
+{#                                </span>#}
+{#                                <span class="ms-register-wrap ms-register-half">#}
+{#                                    <label>تلفن *</label>#}
+{#                                    <input type="text" name="phonenumber" placeholder="تلفن" required>#}
+{#                                </span>#}
+{#                                <span class="ms-register-wrap">#}
+{#                                    <label>آدرس</label>#}
+{#                                    <input type="text" name="address" placeholder="آدرس">#}
+{#                                </span>#}
+{#                                <span class="ms-register-wrap ms-register-half">#}
+{#                                    <label>شهر *</label>#}
+{#                                    <span class="ms-rg-select-inner">#}
+{#                                        <select name="ms_select_city" id="ms-select-city" class="ms-register-select">#}
+{#                                            <option selected disabled>شهر</option>#}
+{#                                            <option value="1">شهر 1</option>#}
+{#                                            <option value="2">شهر 2</option>#}
+{#                                            <option value="3">شهر 3</option>#}
+{#                                            <option value="4">شهر 4</option>#}
+{#                                            <option value="5">شهر 5</option>#}
+{#                                        </select>#}
+{#                                    </span>#}
+{#                                </span>#}
+{#                                <span class="ms-register-wrap ms-register-half">#}
+{#                                    <label>کدپستی</label>#}
+{#                                    <input type="text" name="postalcode" placeholder="کدپستی">#}
+{#                                </span>#}
+{#                                <span class="ms-register-wrap ms-register-half">#}
+{#                                    <label>کشور *</label>#}
+{#                                    <span class="ms-rg-select-inner">#}
+{#                                        <select name="ms_select_country" id="ms-select-country"#}
+{#                                            class="ms-register-select">#}
+{#                                            <option selected disabled>کشور</option>#}
+{#                                            <option value="1">کشور 1</option>#}
+{#                                            <option value="2">کشور 2</option>#}
+{#                                            <option value="3">کشور 3</option>#}
+{#                                            <option value="4">کشور 4</option>#}
+{#                                            <option value="5">کشور 5</option>#}
+{#                                        </select>#}
+{#                                    </span>#}
+{#                                </span>#}
+{#                                <span class="ms-register-wrap ms-register-half">#}
+{#                                    <label>شهر / منطقه</label>#}
+{#                                    <span class="ms-rg-select-inner">#}
+{#                                        <select name="ms_select_state" id="ms-select-state" class="ms-register-select">#}
+{#                                            <option selected disabled>شهر / منطقه</option>#}
+{#                                            <option value="1">شهر / منطقه 1</option>#}
+{#                                            <option value="2">شهر / منطقه 2</option>#}
+{#                                            <option value="3">شهر / منطقه 3</option>#}
+{#                                            <option value="4">شهر / منطقه 4</option>#}
+{#                                            <option value="5">شهر / منطقه 5</option>#}
+{#                                        </select>#}
+{#                                    </span>#}
+{#                                </span>#}
+{#                                <span class="ms-register-wrap ms-recaptcha">#}
+{#                                    <span class="g-recaptcha" data-sitekey="6LfKURIUAAAAAO50vlwWZkyK_G2ywqE52NU7YO0S"#}
+{#                                        data-callback="verifyRecaptchaCallback"#}
+{#                                        data-expired-callback="expiredRecaptchaCallback"></span>#}
+{#                                <input class="form-control d-none" data-recaptcha="true" required data-error="Please complete the Captcha">#}
+{#                                <span class="help-block with-errors"></span>#}
+{#                                </span>#}
+{#                                <span class="ms-register-wrap ms-register-btn">#}
+{#                                    <span>از قبل حساب کاربری دارید؟<a href="login.html">ورود</a></span>#}
+{#                                <button class="ms-btn-2" type="submit">ثبت نام</button>#}
+{#                                </span>#}
+{#                            </form>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#        </div>#}
+{#        </div>#}
+
+    <form class="ms-check-bill-form" action="" method="post">
+        {% csrf_token %}
+            {{ form.as_p }}
+        <button class="ms-btn-2" type="submit">ثبت نام</button>
+{#        {% if form.errors %}#}
+{#          {% for field in form %}#}
+{#               {% for error in field.errors %}#}
+{#                    {{field.label}}: {{ error|escape }}#}
+{#               {% endfor %}#}
+{##}
+{#          {% endfor %}#}
+{#        {% endif %}#}
+    </form>
     </section>
-    <!-- Login section End -->
+    <!-- Sample section End -->
 
     <!-- Footer Start -->
     <footer class="ms-footer m-t-30">
@@ -427,7 +516,7 @@
                                         <li class="ms-footer-link"><a href="privacy-policy.html">اطلاع قانونی</a></li>
                                         <li class="ms-footer-link"><a href="terms-condition.html">شرایط و ضوابط</a></li>
                                         <li class="ms-footer-link"><a href="checkout.html">پرداخت امن</a></li>
-                                        <li class="ms-footer-link"><a href="contact-us.html">تماس با ما</a></li>
+                                        <li class="ms-footer-link"><a href="../contact-us.html">تماس با ما</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -476,14 +565,10 @@
                                 <div class="ms-footer-widget">
                                     <div class="ms-footer-links ms-footer-dropdown">
                                         <ul class="align-items-center">
-                                            <li class="ms-footer-link"><a href="#"><i class="fa fa-instagram"></i></a>
-                                            </li>
-                                            <li class="ms-footer-link"><a href="#"><i class="fa fa-twitter-square"></i></a>
-                                            </li>
-                                            <li class="ms-footer-link"><a href="#"><i class="fa fa-facebook-square"></i></a>
-                                            </li>
-                                            <li class="ms-footer-link"><a href="#"><i class="fa fa-linkedin-square"></i></a>
-                                            </li>
+                                            <li class="ms-footer-link"><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                            <li class="ms-footer-link"><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                            <li class="ms-footer-link"><a href="#"><i class="fa fa-facebook-square"></i></li>
+                                            <li class="ms-footer-link"><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -499,7 +584,7 @@
                             <!-- Footer Copyright Start -->
                             <div class="footer-copy">
                                 <div class="footer-bottom-copy ">
-                                    <div class="ms-copy">کپی رایت © <a class="site-name" href="index.html">پیلارست</a> تمامی حقوق محفوظ است. پشتیبانی شده توسط Pilarest
+                                    <div class="ms-copy">کپی رایت © <a class="site-name" href="../index.html">پیلارست</a> تمامی حقوق محفوظ است. پشتیبانی شده توسط Pilarest
                                     </div>
                                 </div>
                             </div>
@@ -521,6 +606,9 @@
         </div>
     </footer>
     <!-- Footer Area End -->
+
+    <!-- Back to top  -->
+    <a class="ms-back-to-top"></a>
 
     <!-- Features sidebar  -->
     <div class="ms-features-sidebar-overlay"></div>

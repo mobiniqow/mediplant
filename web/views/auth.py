@@ -4,6 +4,7 @@ from django.urls import reverse
 
 from abstract_view.base_template_view import BaseTemplateView
 from account.forms.login import LoginForm
+from account.forms.profile import ProfileForm
 from account.forms.verify import VerifyForm
 from account.models import User
 from account.send_sms import send_otp_message
@@ -21,6 +22,8 @@ class LoginView(BaseTemplateView):
             else:
                 return self.form_invalid(form)
         else:
+            if request.user.is_authenticated:
+                return redirect('/')
             context = self.get_context_data()
             login = LoginForm()
             context['form'] = login
@@ -69,6 +72,40 @@ class VerifyView(BaseTemplateView):
 
         return self.render_to_response(context)
 
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('/')
+        context = self.get_context_data()
+        return self.render_to_response(context)
+
 
 class ProfileView(BaseTemplateView):
-    template_name = "profile.html"
+    template_name = "account/profile.html"
+
+    # def post(self, request, *args, **kwargs):
+    #     print(21)
+    #     form = ProfileForm(request.POST, instance=request.user)
+    #     if form.is_valid():
+    #         form.save()
+    #         return redirect("/")
+    #     context = self.get_context_data(form=form)
+    #     context['form'] = form
+    #     return self.render_to_response(context)
+
+    #
+    def dispatch(self, request, *args, **kwargs):
+        if request.method == 'POST':
+            context = self.get_context_data()
+            form = ProfileForm(request.POST, instance=request.user)
+            if form.is_valid():
+                form.save()
+                return self.render_to_response(context)
+            else:
+                context['form'] = form
+                return self.render_to_response(context)
+        else:
+            user = request.user
+            context = self.get_context_data()
+            profile = ProfileForm(instance=user)
+            context['form'] = profile
+        return self.render_to_response(context)

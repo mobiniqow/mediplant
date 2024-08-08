@@ -53,10 +53,15 @@ class User(AbstractBaseUser, PermissionsMixin):
         SILVER = 1
         GOLD = 2
 
+    class Gender(models.IntegerChoices):
+        MAN = 1, 'مرد'
+        WOMAN = 0, 'زن'
+
     avatar = models.FileField(upload_to='paccount/user/avatar',
                               validators=[FileExtensionValidator(['jpg', 'png', 'jpeg']), ], blank=True,
                               verbose_name='تصویر')
     state = models.IntegerField(choices=State.choices, default=State.SUSPEND, verbose_name='وضعیت')
+    gender = models.IntegerField(choices=Gender.choices, default=Gender.MAN, verbose_name=' ')
     activation_state = models.IntegerField(choices=UserActivationState.choices, default=UserActivationState.WHITE,
                                            verbose_name='نوع پلن')
     user_name = models.CharField(max_length=83, verbose_name='نام و نام خانوادگی', blank=True)
@@ -64,7 +69,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = BasicUserManager()
     USERNAME_FIELD = "phone"
     is_staff = models.BooleanField(default=False)
-    gender = models.BooleanField(verbose_name='جنسیت', default=False)
     email = models.EmailField(verbose_name='ایمیل', blank=True)
     referral_code = models.CharField(max_length=8, unique=True, editable=False)
     city = models.ForeignKey(City, on_delete=SET_NULL, null=True, verbose_name='شهر', blank=True)
