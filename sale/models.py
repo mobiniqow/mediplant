@@ -19,10 +19,10 @@ class SaleBasket(models.Model):
         CANCELLED = 9
 
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, verbose_name='کاربر')
-    session_key = models.CharField(max_length=200,)
-    shop_id = models.ForeignKey(Shop,max_length=200)
+    session_key = models.CharField(max_length=200, )
+    # shop_id = models.ForeignKey(Shop,max_length=200)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='تاریخ ایجاد')
-    price = models.IntegerField(validators=[MinValueValidator(0)], verbose_name='قیمت',unique=True)
+    price = models.IntegerField(validators=[MinValueValidator(0)], verbose_name='قیمت', unique=True)
     address = models.TextField(verbose_name='آدرس')
     state = models.IntegerField(choices=State.choices, default=0, verbose_name='وضعیت')
     discount = models.IntegerField(validators=[MinValueValidator(0)], verbose_name='تخفیف')
@@ -43,5 +43,3 @@ class SaleBasketProduct(models.Model):
     class Meta:
         verbose_name = 'محصول سبد خرید'
         verbose_name_plural = 'محصولات سبد خرید'
-
-
