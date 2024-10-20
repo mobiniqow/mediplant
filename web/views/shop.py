@@ -66,6 +66,15 @@ class IndexView(BaseTemplateView):
         context['best_shops'] = best_shops
         context['products'] = products
         context['categories'] = categories
+        # todo after works in item ha query dorost mikhorands
+        context['best_seller'] = products
+        context['new_product'] = products
+        context['most_views'] = products
+        # todo after works in item ha query dorost mikhorands
+        context['bot_3_new_product'] = products[:3]
+        context['bot_3_most_sell'] = products[:3]
+        context['bot_3_best_rank'] = products [:3]
+        context['bot_3_most_popular'] = products[:3]
         return context
 
 
