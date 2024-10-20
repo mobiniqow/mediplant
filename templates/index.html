@@ -1068,7 +1068,7 @@
             </div>
             <div class="ms-top-vendor owl-carousel" dir="ltr">
                 {% for i in best_shops %}
-                    <div class="ms-top-vendor-block" dir="rtl">
+                    <div class="ms-top-vendor-block" dir="rtl" onclick="eventItemsSh({{ i.id }})">
                         <div class="ms-vendor-detail">
                             <div class="ms-vendor-img">
                                 <img src="{{ i.image.url }}" alt="product">
@@ -1172,7 +1172,7 @@
             </div>
             <div class="ms-blog-carousel owl-carousel" dir="ltr">
                 {% for i in articles %}
-                    <div class="ms-blog-item">
+                    <div class="ms-blog-item" onclick="openArticles({{ i.id }})">
                         <div class="news-info" dir="rtl">
                             <figure class="news-img">
                                 <a href="#"><img src="{{ i.image.url }}" alt="news imag"></a>
@@ -1409,6 +1409,12 @@
 <script>
     function eventItems(product_id) {
         window.location.href = `/shop?product=${product_id}`;
+    }
+    function eventItemsSh(product_id) {
+        window.location.href = `/shop/${product_id}/product/`;
+    }
+    function openArticles(product_id) {
+        window.location.href = `/blog/${product_id}/`;
     }
 </script>
 <!-- Plugins JS -->

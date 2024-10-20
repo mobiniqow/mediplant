@@ -97,7 +97,7 @@ class CategoryView(BaseTemplateView):
         return context
 
 
-class   ShopView(TemplateView):
+class ShopView(TemplateView):
     template_name = "shop.html"
 
     def get_context_data(self, **kwargs):
@@ -120,7 +120,7 @@ class   ShopView(TemplateView):
 
 
 class ShopDetailsView(BaseTemplateView):
-    template_name = "shop.html"
+    template_name = "shop-details.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
