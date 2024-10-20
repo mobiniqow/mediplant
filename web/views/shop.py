@@ -57,7 +57,6 @@ class IndexView(BaseTemplateView):
         context['title'] = 'صفحه اصلی'
         context['top_banners'] = top_banners
         context['two_banners'] = two_banners
-        print(f'middle_banner {middle_banner}')
         context['middle_banner'] = middle_banner
         context['bottom_banner'] = bottom_banner
         context['articles'] = articles

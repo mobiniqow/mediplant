@@ -478,7 +478,7 @@
                 <div class="ms-category-block owl-carousel" dir="ltr">
                     {% for model in categories %}
                         <div class="ms-cat-box ms-cat-box-9">
-                            <a href="product-left-sidebar.html" class="ms-cat-icon">
+                            <a href="/product?category={{ model.id }}" class="ms-cat-icon">
                                 <img src="{{ model.image.url }}" class="svg_img" alt="icon">
                                 <h4 class="ms-cat-title">{{ model.name }}</h4>
                             </a>
@@ -745,7 +745,7 @@
                             <div class="ms-all-product-inner">
                                 <div class="ms-pro-image-outer">
                                     <div class="ms-pro-image">
-                                        <a href=`/shop/?product={{ product.id }}` class="image">
+                                        <a href="/shop/?product={{ product.id }}" class="image">
                                             <img class="main-image" src="{{ product.image_list.0.image.url }}"
                                                  alt="Product">
                                         </a>
@@ -1074,7 +1074,7 @@
                                 <img src="{{ i.image.url }}" alt="product">
                             </div>
                             <div class="ms-vendor-info">
-                                <a href="single-vendor.html">فروشگاه {{ i.name |slice:":9" }}</a>
+                                <a href="/shop/{{i.id}}/product/">فروشگاه {{ i.name |slice:":9" }}</a>
 
                                 <p>{{ i.product_number }} محصول</p>
                                 {#                                <span class="ms-pro-rating">#}
@@ -1090,13 +1090,13 @@
                             </div>
                         </div>
                         <div class="ms-vendor-products">
-                            <a href="product-left-sidebar.html"><img src="{{ i.images_list.0.image.image.url }}"
+                            <a href="/shop/{{i.id  }}/product/{{ i.images_list.0.product_id }}"><img src="{{ i.images_list.0.image.image.url }}"
                                                                      alt="product"></a>
-                            <a href="product-left-sidebar.html"><img src="{{ i.images_list.1.image.image.url }}"
+                            <a href="/shop/{{i.id  }}/product/{{ i.images_list.1.product_id }}"><img src="{{ i.images_list.1.image.image.url }}"
                                                                      alt="product"></a>
-                            <a href="product-left-sidebar.html"><img src="{{ i.images_list.2.image.image.url }}"
+                            <a href="/shop/{{i.id  }}/product/{{ i.images_list.2.product_id }}"><img src="{{ i.images_list.2.image.image.url }}"
                                                                      alt="product"></a>
-                            <a href="product-left-sidebar.html"><img src="{{ i.images_list.3.image.image.url }}"
+                            <a href="/shop/{{i.id  }}/product/{{ i.images_list.3.product_id }}"><img src="{{ i.images_list.3.image.image.url }}"
                                                                      alt="product"></a>
                         </div>
                     </div>
@@ -1415,6 +1415,9 @@
     }
     function openArticles(product_id) {
         window.location.href = `/blog/${product_id}/`;
+    }
+    function openShopProduct(shop,product) {
+        return `/blog/${shop}/product/${product}`;
     }
 </script>
 <!-- Plugins JS -->
