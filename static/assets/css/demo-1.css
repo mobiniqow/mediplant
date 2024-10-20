@@ -2422,7 +2422,8 @@ i.msicon.msi-star.fill {
     transition: all ease-in 0.3s;
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex;
+    display: none;
+    /* display: none */
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
@@ -2650,8 +2651,10 @@ i.msicon.msi-star.fill {
 }
 
 .ms-pro-tab-nav .nav-item:not(:last-child) {
-    margin-left: 50px;
-    width: 20px;
+    margin-left: 24px;
+    /* margin-left: 24px */
+    width: max-content;
+    /* width: max-content */
 }
 
 .ms-pro-tab-nav .nav-item .nav-link {
@@ -2710,47 +2713,7 @@ i.msicon.msi-star.fill {
     opacity: 0;
 }
 
-.ms-product-inner .ms-pro-image .image .label {
-    width: 11px;
-    height: 11px;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    border-radius: 3px;
-}
-
-.ms-product-inner .ms-pro-image .image .label .dot {
-    width: 5px;
-    height: 5px;
-    display: block;
-    border-radius: 50%;
-}
-
-.ms-product-inner .ms-pro-image .image .veg {
-    border: 1px solid #46c389;
-    position: absolute;
-}
-
-.ms-product-inner .ms-pro-image .image .veg .dot {
-    background-color: #46c389;
-}
-
-.ms-product-inner .ms-pro-image .image .nonveg {
-    border: 1px solid #ff9898;
-}
-
-.ms-product-inner .ms-pro-image .image .nonveg .dot {
-    background-color: #ff9898;
-}
+/* 2715 - 2756 -> delete */
 
 .ms-product-inner .ms-pro-image .flags {
     left: auto;
@@ -2914,6 +2877,8 @@ i.msicon.msi-star.fill {
 
 .ms-product-inner .ms-pro-content {
     position: relative;
+    direction: rtl;
+    /* direction: rtl */
     z-index: 10;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -2951,7 +2916,7 @@ i.msicon.msi-star.fill {
 
 .ms-product-inner .ms-pro-content .ms-pro-title {
     padding: 0 20px;
-    font-size: 16px;
+    font-size: 2px;
     margin: 0 0 10px;
 }
 
@@ -2959,7 +2924,8 @@ i.msicon.msi-star.fill {
     text-decoration: none;
     color: #777;
     display: block;
-    font-size: 14px;
+    font-size: 13px;
+    /* font-size: 13px */
     line-height: 20px;
     font-weight: 400;
     text-transform: capitalize;
@@ -5858,7 +5824,8 @@ body.ms-menu-open:before {
 }
 
 .ms-ofr-banners .ms-bnr-body .ms-bnr-detail {
-    max-width: 200px;
+    width: 100%;
+    /* width: 100% */
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -5871,10 +5838,14 @@ body.ms-menu-open:before {
     align-items: flex-start;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
-    justify-content: center;
+    justify-content: end;
+    /* justify-content: end */
     position: absolute;
     top: 50%;
-    left: 50px;
+    left: 0;
+    right: 18px;
+    /* left: 0 / + right: 18px */
+
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
 }
@@ -6239,9 +6210,13 @@ body.ms-menu-open:before {
     flex-direction: column;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
-    justify-content: center;
+    justify-content: end; 
+    /* justify-content: center -> end */
+
     position: relative;
     z-index: 9;
+    margin-bottom: 45px;
+    /* + margin-bottom */
 }
 
 .ms-hero .ms-main-content .ms-slider-content .ms-main-slider .ms-slider .ms-slide-content .ms-slide-stitle {
@@ -6325,6 +6300,8 @@ body.ms-menu-open:before {
 
 .ms-hero .ms-main-content .ms-banner-content .ms-slider-grid-item .ms-detail {
     padding: 0 15px;
+    margin-top: 84px;
+    /* + margitn-top */
 }
 
 .ms-hero .ms-main-content .ms-banner-content .ms-slider-grid-item .ms-detail p {
@@ -6445,7 +6422,8 @@ body.ms-menu-open:before {
 
 .ms-animated-banner .ms-bnr-detail {
     height: 100%;
-    padding: 100px;
+    padding: 23px;
+    /* padding: 32px */
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -6455,7 +6433,8 @@ body.ms-menu-open:before {
     flex-direction: column;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
-    justify-content: center;
+    justify-content: end;
+    /* justify-content: end */
     -webkit-box-align: end;
     -ms-flex-align: end;
     align-items: flex-end;
@@ -6733,6 +6712,8 @@ body.ms-menu-open:before {
     -webkit-box-direction: normal;
     -ms-flex-direction: row;
     flex-direction: row;
+    align-items: center;
+    /* align-items: center */
     position: relative;
     border-bottom: 1px solid #eee;
 }

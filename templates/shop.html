@@ -432,10 +432,20 @@
 <div class="store-page">
     <h2>فروشگاه {{ shop.name }} </h2>
     <div class="baner-store">
-        <div class="box-baner-store">
-            <div class="logo-baner-store">1</div>
-            <div class="name-orgin">نام مدیریت</div>
-        </div>
+        <!-- + class="bg-filter-baner-store"  -->
+        <div class="bg-filter-baner-store">
+            <div class="box-baner-store">
+                <div class="logo-baner-store"></div>
+                <div class="main-share-menu">
+                    <div class="name-orgin">نام مدیریت</div>
+                    <div class="share-menu">
+                        <a href="#" class="fa fa-instagram"></a>
+                        <a href="#" class="fa fa-telegram"></a>
+                        <a href="#" class="fa fa-facebook"></a>
+                    </div>
+                </div>
+            </div>
+        </div>  
     </div>
     <div class="box-menu-store">
         <p class="p-menu">منو فروشگاه</p>
@@ -448,31 +458,20 @@
             <button type="button" class="btn-about"> درباره فروشگاه</button>
 
         </div>
-        <div class="share-menu">
-            <a href="#" class="fa fa-instagram"></a>
-            <a href="#" class="fa fa-telegram"></a>
-            <a href="#" class="fa fa-facebook"></a>
-        </div>
+        
     </div>
-    <div class="new-item">
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                {% for i in shop.banners %}
-                    <div class="swiper-slide" style="background-image:url({{ i.image.url }})"></div>
-                {% endfor %}
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </div>
-    </div>
+   <!-- new item -> delete -->
 
     <div class="items-result">
-        <div id="table1" class="pagination-table">
+
+        <!-- این کلاس اضافه شده -->
+        <div id="page1" class="content">
             {% for i in product %}
-                <div class="it-table">
+            <div id="it-table" class="it-table">
                 <a href="product/{{ i.id }}">
                     <img class="img-table" src="{{ i.image.image.url }}">
-                    <div style="display: flex; justify-content: space-between; margin: 0 16px;" class="name-ittt-table">
+                    <!-- justify-content -> start -->
+                    <div style="display: flex; justify-content: start; margin: 0 16px;" class="name-ittt-table">
                         <a class="name">نام محصول :</a>
                         <a class="name-it">{{ i.product.name|truncatechars:12 }}</a>
                     </div>
@@ -481,9 +480,19 @@
                         <a class="name-it">{{ i.price|intcomma:False }}</a>
                     </div>
                 </a>
-{#                <span class="offer">offer</span>#}
+            {#<span class="offer">offer</span>#}
             </div>
             {% endfor %}
+        </div>
+
+
+        <!-- این pagination اضافه شده -->
+         <!-- برو پایین script هم نوشته شده -->
+        <div class="pagination justify-content-center mt-3 d-flex gap-3">
+            <a style="color: #000;" href="#" onclick="changePage(1)">&laquo;</a>
+            <a style="color: #000;" href="#" onclick="changePage(1)" id="pageLink1">1</a>
+            <a style="color: #000;" href="#" onclick="changePage(2)" id="pageLink2">2</a>
+            <a style="color: #000;" href="#" onclick="changePage(2)">&raquo;</a>
         </div>
 
 
@@ -864,6 +873,25 @@
             $(this).parent(".page-item").addClass("active");
         });
     });
+
+    function changePage(pageNumber) {
+        // تمام محتوای صفحات را پنهان کنید
+        var contents = document.getElementsByClassName('content');
+        for (var i = 0; i < contents.length; i++) {
+            contents[i].style.display = 'none';
+        }
+
+        // محتوای صفحه انتخابی را نمایش دهید
+        document.getElementById('page' + pageNumber).style.display = 'block';
+
+        // لینک‌های صفحه‌بندی را به‌روز کنید
+        var pageLinks = document.querySelectorAll('.pagination a');
+        pageLinks.forEach(link => link.classList.remove('active'));
+        document.getElementById('pageLink' + pageNumber).classList.add('active');
+    }
+
+    // نمایش صفحه 1 به‌طور پیش‌فرض
+    changePage(1);
 </script>
 
 <!-- Main Js -->

@@ -2428,7 +2428,8 @@ i.msicon.msi-star.fill {
     transition: all ease-in 0.3s;
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex;
+    display: none;
+    /* display none */
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
@@ -10850,6 +10851,9 @@ body.ms-menu-open:before {
 .it-content > span{
     color: #888888;
     width: 800px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    /* + text-overflow/ + overflow */
 }
 .i-c{
     border-bottom: none;
@@ -10993,11 +10997,14 @@ body.ms-menu-open:before {
     width: 100%;
     display: grid;
     align-items: center;
+    padding-right: 10px;
+    /* + padding-right: 10px */
 }
 .div-info-detail > div > p{
     margin: 0 0 16px;
     font-family: iranyekanweb-bold;
-    font-size: 18px;
+    font-size: 22px;
+    /* font-size */
 }
 .shop{
     display: flex;
@@ -11103,12 +11110,13 @@ body.ms-menu-open:before {
     width: 300px !important;
 }
 .shoping{
-    /* border: 1px solid black; */
     box-shadow: 0 0 4px 4px #f5f4f9;
     margin: 24px 0 0 0;
     padding: 1px 0 0 0 ;
     border-radius: 4px;
-    /* padding: 10px; */
+    display: grid;
+    gap: 16px;
+    /* + gap */
 }
 .shoping-titr{
     margin: 10px;
@@ -11130,16 +11138,19 @@ body.ms-menu-open:before {
 .item-shoping{
     padding: 18px 10px;
     border-top: 1px solid #ccc;
-    /* margin: 0 10px; */
+    border-bottom: 1px solid #ccc;
+    /* edit border */
     display: flex;
     justify-content: space-between;
 }
 .it-sh{
     display: flex;
 }
+/* r-sh edit */
 .r-sh{
-    display: block;
-    width: 100px;
+    border: 1px solid black;
+    width: 160px;
+    margin-left: 16px;
 }
 .r-sh > h2{
     font-size: 18px;

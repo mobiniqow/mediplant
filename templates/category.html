@@ -1059,7 +1059,6 @@
                                             <span class="dot"></span>
                                         </span>
                                         <img class="main-image" src="${image_1}" alt="Product">
-                                        <img class="hover-image" src="${image_2}" alt="Product">
                                     </a>
                                     <span class="flags">
                                         {#<span class="sale">فروش</span>#}
@@ -1080,26 +1079,35 @@
                                     {#</div>#}
                                 </div>
                             </div>
-                            <div class="ms-pro-content">
-                                <a href="product/${item['id']}/">
-                                    <h6 class="ms-pro-stitle">${item['name']}</h6>
-                                </a>
-                                <h5 class="ms-pro-title"><a href="product/${item['id']}/">${item['description']}</a></h5>
-                                {#<p class="ms-info">${item['description']}</p>#}
-                                <div class="ms-pro-rat-price">
-                                    {#<span class="ms-pro-rating">#}
-                                    {#    <i class="fa-solid fa-star fill"></i>#}
-                                    {#    <i class="fa-solid fa-star fill"></i>#}
-                                    {#    <i class="fa-solid fa-star"></i>#}
-                                    {#    <i class="fa-solid fa-star"></i>#}
-                                    {#    <i class="fa-solid fa-star"></i>#}
-                                    {#</span>#}
-                                    <span class="ms-price">
-                                        <span class="new-price">${item['price']}</span>
-                                        {#<span class="old-price">${item.oldPrice}</span>#}
-                                    </span>
+                            <!-- اضافه شدن تگ a-->
+                            <a href="product/${item['id']}/" class="image">
+                                <div class="ms-pro-content">
+                                    <div>
+                                        <a href="product/${item['id']}/" class="image">
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a href="product/${item['id']}/">
+                                            <h6 class="ms-pro-stitle">${item['name']}</h6>
+                                        </a>
+                                        <h5 class="ms-pro-title"><a href="product/${item['id']}/">${item['description']}</a></h5>
+                                        {#<p class="ms-info">${item['description']}</p>#}
+                                        <div class="ms-pro-rat-price">
+                                            {#<span class="ms-pro-rating">#}
+                                            {#    <i class="fa-solid fa-star fill"></i>#}
+                                            {#    <i class="fa-solid fa-star fill"></i>#}
+                                            {#    <i class="fa-solid fa-star"></i>#}
+                                            {#    <i class="fa-solid fa-star"></i>#}
+                                            {#    <i class="fa-solid fa-star"></i>#}
+                                            {#</span>#}
+                                            <span class="ms-price">
+                                                <span class="new-price">${item['price']}</span>
+                                                {#<span class="old-price">${item.oldPrice}</span>#}
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 `;
