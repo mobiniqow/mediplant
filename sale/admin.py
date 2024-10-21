@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import SaleBasket, SaleBasketProduct
 
+
 class SaleBasketProductInline(admin.TabularInline):
     model = SaleBasketProduct
     extra = 0
