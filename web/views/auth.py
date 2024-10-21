@@ -80,17 +80,6 @@ class VerifyView(BaseTemplateView):
 
 class ProfileView(BaseTemplateView):
     template_name = "account/profile.html"
-
-    # def post(self, request, *args, **kwargs):
-    #     print(21)
-    #     form = ProfileForm(request.POST, instance=request.user)
-    #     if form.is_valid():
-    #         form.save()
-    #         return redirect("/")
-    #     context = self.get_context_data(form=form)
-    #     context['form'] = form
-    #     return self.render_to_response(context)
-
     #
     def dispatch(self, request, *args, **kwargs):
         if request.method == 'POST':

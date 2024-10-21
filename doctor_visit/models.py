@@ -25,6 +25,7 @@ class DoctorVisit(models.Model):
                                       verbose_name='امتیاز پزشک')
     time = models.IntegerField(default=0, validators=[MinValueValidator(0)], verbose_name='زمان')
     comment = models.TextField(verbose_name='نظر')
+    transaction = models.ForeignKey(Transaction, on_delete=models.DELETE, null=True)
 
     class Meta:
         verbose_name = "ویزیت دکتر"
@@ -33,7 +34,8 @@ class DoctorVisit(models.Model):
 
 class Prescription(models.Model):
     doctor_visit = models.ForeignKey(DoctorVisit, on_delete=models.SET_NULL, null=True)
-    traditional_medicine_disease = models.ForeignKey(TraditionalMedicineDisease, on_delete=models.SET_NULL, null=True, verbose_name='بیمار')
+    traditional_medicine_disease = models.ForeignKey(TraditionalMedicineDisease, on_delete=models.SET_NULL, null=True,
+                                                     verbose_name='بیمار')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='تاریخ به‌روزرسانی')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='تاریخ ایجاد')
     description = models.TextField(verbose_name='توضیحات')
