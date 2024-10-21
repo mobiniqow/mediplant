@@ -1,22 +1,15 @@
-from django_filters import rest_framework as drf_filters
+import django_filters
 
-from product.models import Product
+from  sale.models import ShopProduct
 
 
-class ProductFilter(drf_filters.FilterSet):
-    name = drf_filters.CharFilter(field_name='name', lookup_expr='icontains')
-    type = drf_filters.ChoiceFilter(choices=Product.Type.choices)
-    # material = drf_filters.ChoiceFilter(choices=Product.Material.choices)
-    state = drf_filters.ChoiceFilter(choices=Product.State.choices)
-    is_active = drf_filters.BooleanFilter(field_name='is_active')
-    category = drf_filters.CharFilter(field_name='category', lookup_expr='exact')
+class ShopProductFilter(django_filters.FilterSet):
+    price_min = django_filters.NumberFilter(field_name='price', lookup_expr='gte')
+    price_max = django_filters.NumberFilter(field_name='price', lookup_expr='lte')
+    material = django_filters.ChoiceFilter(field_name='material', choices=ShopProduct.Material.choices)
+    product = django_filters.NumberFilter(field_name='product')
+    shop = django_filters.NumberFilter(field_name='shop')
 
     class Meta:
-        model = Product
-        fields = ['name',
-                  'type',
-                  # 'material',
-                  'state',
-                  'is_active',
-                  'category',
-                  ]
+        model = ShopProduct
+        fields = ['price_min', 'price_max', 'material', 'product', 'shop']

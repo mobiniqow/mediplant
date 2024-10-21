@@ -35,3 +35,19 @@ class ShopProductListView(BaseTemplateView):
         context['product_shops'] = product_shops
         context['images'] = product_shops.image
         return context
+
+
+class ProductListView(BaseTemplateView):
+    template_name = 'product_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        product_shops =  ShopProduct.objects.all()
+        products = Product.objects.select_related('class_id', 'category', 'unit').prefetch_related('images')[:10]
+
+        for i in products:
+            i.image_list = i.images.all()
+        context['products'] = products
+        context['product_shops'] = product_shops
+
+        return context

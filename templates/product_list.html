@@ -1085,32 +1085,32 @@ function renderProducts(products) {
     itemsContainer.empty();  // پاک‌کردن محصولات قبلی
 
     products.forEach(function (product) {
+        // گرفتن تصاویر اول و دوم از آرایه تصاویر
+        const image1 = product.images[0]?.image || ''; // تصویر اول
+        const image2 = product.images[1]?.image || ''; // تصویر دوم
+
+        // نمایش 12 کاراکتر اول از نام فروشگاه و سپس نقطه چین
+        const shopName = product.shop_name.length > 12 ? product.shop_name.slice(0, 12) + '...' : product.shop_name;
+
         const productHtml = `
         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content ms-product-content">
             <div class="ms-product-inner">
                 <div class="ms-pro-image-outer">
                     <div class="ms-pro-image">
-                        <a href="#" class="image">
-                            <img class="main-image" src="{% static 'assets/img/product-images/2_1.jpg'  %}" alt="Product">
-                            <img class="hover-image" src="{% static 'assets/img/product-images/2_2.jpg'  %}" alt="Product">
+                        <a href="http://localhost:8000/shop/${product.shop}/product/${product.product}" class="image">
+                            <img class="main-image" src="${image1}" alt="Product">
+                            <img class="hover-image" src="${image2}" alt="Product">
                         </a>
-                        <span class="flags"><span class="sale">فروش</span></span>
                         <div class="ms-pro-actions">
-                            <a href="#" class="ms-btn-group wishlist" title="علاقه‌مندی">❤️</a>
-                            <a href="#" class="ms-btn-group quickview" title="بازدید سریع">👁️</a>
-                            <a href="#" class="ms-btn-group compare" title="مقایسه">🔄</a>
-                            <a href="#" class="ms-btn-group add-to-cart" title="خرید">🛒</a>
+                            <a href="http://localhost:8000/shop/${product.shop}/product/${product.product}" class="ms-btn-group" title="مشاهده محصول">👁️</a>
                         </div>
                     </div>
                 </div>
                 <div class="ms-pro-content">
-                    <a href="#"><h6 class="ms-pro-stitle">محصول ${product.product}</h6></a>
-                    <h5 class="ms-pro-title"><a href="#">کالا ${product.id}</a></h5>
-                    <p class="ms-info">توضیحات محصول</p>
+                    <h6 class="ms-pro-stitle">${shopName}</h6> <!-- نام فروشگاه -->
+                    <h5 class="ms-pro-title"><a href="http://localhost:8000/shop/${product.shop}/product/${product.product}">  ${product.shop_name}</a></h5>
+                    <p class="ms-info">نوع محصول: ${product.type}</p> <!-- نوع محصول -->
                     <div class="ms-pro-rat-price">
-                        <span class="ms-pro-rating">
-                            ⭐⭐⭐⭐✰
-                        </span>
                         <span class="ms-price">
                             <span class="new-price">${product.formatted_price} تومان</span>
                         </span>
@@ -1122,6 +1122,8 @@ function renderProducts(products) {
         itemsContainer.append(productHtml);
     });
 }
+
+
 function renderPagination(currentPage, totalPages) {
     const paginationContainer = $('#pagination');
     paginationContainer.empty();  // پاک‌کردن پیجینیشن قبلی
@@ -1131,23 +1133,33 @@ function renderPagination(currentPage, totalPages) {
         paginationContainer.append(`<li><a href="#" class="prev" data-page="${currentPage - 1}">قبلی</a></li>`);
     }
 
-    // محدوده‌ای از صفحات را نمایش می‌دهیم
-    const pageRange = 2; // نمایش 2 صفحه قبل و بعد از صفحه فعلی
-    const startPage = Math.max(1, currentPage - pageRange);
-    const endPage = Math.min(totalPages, currentPage + pageRange);
+    // نمایش صفحه اول
+    paginationContainer.append(`<li><a href="#" data-page="1">1</a></li>`);
 
-    // شماره صفحات
+    // اگر صفحه اول و دوم با صفحه فعلی فاصله دارند، علامت «...»
+    if (currentPage > 3) {
+        paginationContainer.append(`<li><span>...</span></li>`);
+    }
+
+    // نمایش ۲ صفحه اطراف صفحه فعلی
+    const pageRange = 2; // نمایش ۲ صفحه قبل و بعد از صفحه فعلی
+    const startPage = Math.max(2, currentPage - pageRange); // از ۲ شروع می‌کنیم
+    const endPage = Math.min(totalPages - 1, currentPage + pageRange); // تا صفحه آخر منهای یک
+
+    // شماره صفحات وسط
     for (let i = startPage; i <= endPage; i++) {
         const activeClass = i === currentPage ? 'active' : '';
         paginationContainer.append(`<li><a href="#" class="${activeClass}" data-page="${i}">${i}</a></li>`);
     }
 
-    // اگر صفحات بیشتر از حدی باشد، «...» را نشان بدهیم
-    if (startPage > 1) {
-        paginationContainer.prepend(`<li><span>...</span></li>`);
-    }
-    if (endPage < totalPages) {
+    // اگر صفحه آخر و صفحه قبل از آن با صفحه فعلی فاصله دارند، علامت «...»
+    if (currentPage < totalPages - 2) {
         paginationContainer.append(`<li><span>...</span></li>`);
+    }
+
+    // نمایش صفحه آخر
+    if (totalPages > 1) {
+        paginationContainer.append(`<li><a href="#" data-page="${totalPages}">${totalPages}</a></li>`);
     }
 
     // دکمه بعدی

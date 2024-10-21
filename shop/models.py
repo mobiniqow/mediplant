@@ -24,13 +24,14 @@ class Shop(models.Model):
     trade_id = models.CharField(max_length=19, verbose_name='شناسه تجاری')
     state = models.IntegerField(choices=ShopStatus.choices, default=ShopStatus.PENDING, verbose_name='وضعیت')
     user = models.ForeignKey(User, on_delete=SET_NULL, null=True, verbose_name='کاربر')
-    shop_home = models.TextField( verbose_name='آدرس فروشگاه')
+    shop_home = models.TextField(verbose_name='آدرس فروشگاه')
     image = models.FileField(upload_to="shop/image/",
                              validators=[FileExtensionValidator(['jpg', 'png', 'jpeg']), ],
                              verbose_name='تصویر')
     national_code = models.CharField(max_length=10, unique=True, verbose_name='کدملی', blank=True)
     description = models.TextField(verbose_name='توضیحات')
     rate_state = models.IntegerField(choices=ShopRate.choices, default=ShopRate.WHITE, verbose_name='وضعیت امتیاز')
+    price = models.IntegerField(verbose_name='واحد قیمت بر حسب واحد', default=0)
 
     class Meta:
         verbose_name = 'فروشگاه'
@@ -81,14 +82,23 @@ class ShopProduct(models.Model):
         SHISHE_E = 5, 'شیشه ای'
 
     shop = models.ForeignKey(Shop, on_delete=models.SET_NULL, null=True, verbose_name='فروشگاه')
+
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True, verbose_name='محصول')
+
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='تاریخ ایجاد')
+
     updated_at = models.DateTimeField(auto_now=True, verbose_name='تاریخ بروزرسانی')
+
     capacity = models.IntegerField(validators=[MinValueValidator(0)], default=0, verbose_name='ظرفیت')
+
     inventory_state = models.IntegerField(choices=Inventory.choices, default=Inventory.NOT_AVAILABLE,
                                           verbose_name='وضعیت موجودی')
+
     price = models.IntegerField(validators=[MinValueValidator(0)], default=0, verbose_name='قیمت')
+
     material = models.IntegerField(choices=Material.choices, verbose_name='جنس کالا', default=Material.BASTE_BANDI)
+
+
 
     class Meta:
         verbose_name = 'محصول فروشگاه'

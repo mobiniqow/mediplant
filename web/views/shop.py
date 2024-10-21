@@ -21,7 +21,6 @@ class IndexView(BaseTemplateView):
             '?').first()
         bottom_banner = Banner.objects.filter(state=Banner.State.ACTIVE, type=Banner.Type.INDEX_BOTTOM_SLIDER).order_by(
             '?')[:2]
-        categories = Category.objects.filter(parent=None)
         # کالا ها با عکس
         for i in ShopProduct.objects.all():
             i.inventory_state = ShopProduct.Inventory.AVAILABLE
@@ -64,7 +63,6 @@ class IndexView(BaseTemplateView):
         context['day_product'] = day_product
         context['best_shops'] = best_shops
         context['products'] = products
-        context['categories'] = categories
         # todo after works in item ha query dorost mikhorands
         context['best_seller'] = products
         context['new_product'] = products
