@@ -12,7 +12,7 @@ from account.urls.v1.serializers import UserRegisterSerializer
 
 
 class LoginView(BaseTemplateView):
-    template_name = "login.html"
+    template_name = "account/login.html"
 
     def dispatch(self, request, *args, **kwargs):
         if request.method == 'POST':
@@ -35,7 +35,6 @@ class LoginView(BaseTemplateView):
             user = user.first()
         else:
             serializer = UserRegisterSerializer(data=form.cleaned_data)
-            print(f'create new user ')
             if not serializer.is_valid():
                 context = self.get_context_data(form=form)
                 context['error'] = "شماره تلفن اشتباه وارد شده"
@@ -56,10 +55,11 @@ class LoginView(BaseTemplateView):
 
 
 class VerifyView(BaseTemplateView):
-    template_name = "verify.html"
+    template_name = "account/verify.html"
 
     def post(self, request, *args, **kwargs):
         form = VerifyForm(request.POST)
+        print(form.is_valid())
         if form.is_valid():
             user = User.objects.get(phone=form.cleaned_data['phone'])
             if user.check_password(form.cleaned_data['code']):
@@ -75,8 +75,7 @@ class VerifyView(BaseTemplateView):
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             return redirect('/')
-        context = self.get_context_data()
-        return self.render_to_response(context)
+        return super().dispatch(request, *args, **kwargs)
 
 
 class ProfileView(BaseTemplateView):

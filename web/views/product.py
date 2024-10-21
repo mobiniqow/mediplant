@@ -10,7 +10,7 @@ class ShopProductView(BaseTemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         product_id = kwargs['product_id']
-        product_shops: ShopProduct = get_object_or_404(ShopProduct, id=product_id,)
+        product_shops: ShopProduct = get_object_or_404(ShopProduct, id=product_id, )
         products = Product.objects.select_related('class_id', 'category', 'unit').prefetch_related('images')[:10]
         product_shops.image = ProductImage.objects.filter(product=product_id)
         for i in products:
@@ -19,6 +19,8 @@ class ShopProductView(BaseTemplateView):
         context['product_shops'] = product_shops
         context['images'] = product_shops.image
         return context
+
+
 class ShopProductListView(BaseTemplateView):
     template_name = 'product-detail.html'
 
