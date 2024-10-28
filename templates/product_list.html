@@ -1,5 +1,4 @@
 {% load static %}
-{% load humanize %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,6 +18,8 @@
 
     <!-- css Icon Font -->
     <link rel="stylesheet" href="{% static 'assets/css/vendor/msicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
 
     <!-- css All Plugins Files -->
     <link rel="stylesheet" href="{% static 'assets/css/plugins/animate.css' %}">
@@ -29,12 +30,6 @@
     <link rel="stylesheet" href="{% static 'assets/css/plugins/swiper-bundle.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/plugins/slick.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/plugins/nouislider.css' %}">
-    <!--  -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="../static/assets/css/slider/uikit-rtl.css">
-    <link rel="stylesheet" href="../static/assets/css/slider/uikit-rtl.min.css">
-    <link rel="stylesheet" href="../static/assets/css/slider/uikit.css">
-    <link rel="stylesheet" href="../static/assets/css/slider/uikit.min.css">
 
     <!-- Main Style -->
     <link rel="stylesheet" id="main_style" href="{% static 'assets/css/style.css' %}">
@@ -44,14 +39,13 @@
 </head>
 
 <body>
-
 <!-- Loader -->
 <div id="ms-overlay">
     <div class="loader"></div>
 </div>
 
 <!-- Header start  -->
-{% include './extentions/header.html' with categories=categories_map  %}
+{% include './extentions/header.html' with categories=categories_map is_active=is_active medic_notification=medic_notification shop_notification=shop_notification %}
 <!-- Header End  -->
 
 <!-- Category sidebar Start -->
@@ -75,21 +69,20 @@
                                 </div>
                                 <ul style="display: block;">
                                     <li>
-                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">پیراهن
-                                            <span title="Available Stock">- 25</span></a></div>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">پیراهن <span
+                                                title="Available Stock">- 25</span></a></div>
                                     </li>
                                     <li>
-                                        <div class="ms-sidebar-sub-item"><a href="product_list.html"> شلوار
-                                            جین <span title="Available Stock">- 52</span></a></div>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html"> شلوار جین <span
+                                                title="Available Stock">- 52</span></a></div>
                                     </li>
                                     <li>
-                                        <div class="ms-sidebar-sub-item"><a
-                                                href="product_list.html">ژاکت<span title="Available Stock">- 500</span></a>
-                                        </div>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">ژاکت<span
+                                                title="Available Stock">- 500</span></a></div>
                                     </li>
                                     <li>
-                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">لباس و
-                                            روپوش <span title="Available Stock">- 35</span></a></div>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">لباس و روپوش <span
+                                                title="Available Stock">- 35</span></a></div>
                                     </li>
                                 </ul>
                             </li>
@@ -103,16 +96,16 @@
                                 </div>
                                 <ul>
                                     <li>
-                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">ورزشی
-                                            <span title="Available Stock">- 25</span></a></div>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">ورزشی <span
+                                                title="Available Stock">- 25</span></a></div>
                                     </li>
                                     <li>
-                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">مجلسی
-                                            <span title="Available Stock">- 52</span></a></div>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">مجلسی <span
+                                                title="Available Stock">- 52</span></a></div>
                                     </li>
                                     <li>
-                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">مختلف
-                                            <span title="Available Stock">- 40</span></a></div>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">مختلف <span
+                                                title="Available Stock">- 40</span></a></div>
                                     </li>
                                     <li>
                                         <div class="ms-sidebar-sub-item"><a href="product_list.html">کفش ایمن<span
@@ -130,16 +123,16 @@
                                 </div>
                                 <ul>
                                     <li>
-                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">گوشواره
-                                            <span title="Available Stock">- 50</span></a></div>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">گوشواره <span
+                                                title="Available Stock">- 50</span></a></div>
                                     </li>
                                     <li>
-                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">حلقه
-                                            ازدواج <span title="Available Stock">- 35</span></a></div>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">حلقه ازدواج <span
+                                                title="Available Stock">- 35</span></a></div>
                                     </li>
                                     <li>
-                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">گردنبند
-                                            <span title="Available Stock">- 40</span></a></div>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">گردنبند <span
+                                                title="Available Stock">- 40</span></a></div>
                                     </li>
                                 </ul>
                             </li>
@@ -158,16 +151,16 @@
                                                 title="Available Stock">- 4 پاکت</span></a></div>
                                     </li>
                                     <li>
-                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">اسپری
-                                            <span title="Available Stock">- 52 پاکت</span></a></div>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">اسپری <span
+                                                title="Available Stock">- 52 پاکت</span></a></div>
                                     </li>
                                     <li>
-                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">عطر گل
-                                            <span title="Available Stock">- 10 پاکت</span></a></div>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">عطر گل <span
+                                                title="Available Stock">- 10 پاکت</span></a></div>
                                     </li>
                                     <li>
-                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">خوشبو
-                                            کننده هوا<span title="Available Stock">- 35 پاکت</span></a></div>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">خوشبو کننده
+                                            هوا<span title="Available Stock">- 35 پاکت</span></a></div>
                                     </li>
                                 </ul>
                             </li>
@@ -182,8 +175,7 @@
                                 </div>
                                 <ul>
                                     <li>
-                                        <div class="ms-sidebar-sub-item"><a
-                                                href="product_list.html">شامپو<span
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">شامپو<span
                                                 title="Available Stock"></span></a></div>
                                     </li>
                                     <li>
@@ -191,12 +183,12 @@
                                                 title="Available Stock"></span></a></div>
                                     </li>
                                     <li>
-                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">شامپو
-                                            بدن<span title="Available Stock"></span></a></div>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">شامپو بدن<span
+                                                title="Available Stock"></span></a></div>
                                     </li>
                                     <li>
-                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">کیت
-                                            آرایش<span title="Available Stock"></span></a></div>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">کیت آرایش<span
+                                                title="Available Stock"></span></a></div>
                                     </li>
                                 </ul>
                             </li>
@@ -210,12 +202,12 @@
                                 </div>
                                 <ul>
                                     <li>
-                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">عینک
-                                            آفتابی <span title="Available Stock">- 20</span></a></div>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">عینک آفتابی <span
+                                                title="Available Stock">- 20</span></a></div>
                                     </li>
                                     <li>
-                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">لنز عینک
-                                            <span title="Available Stock">- 52</span></a></div>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">لنز عینک <span
+                                                title="Available Stock">- 52</span></a></div>
                                     </li>
                                 </ul>
                             </li>
@@ -229,20 +221,20 @@
                                 </div>
                                 <ul>
                                     <li>
-                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">کیسه
-                                            خرید <span title="Available Stock">- 25</span></a></div>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">کیسه خرید <span
+                                                title="Available Stock">- 25</span></a></div>
                                     </li>
                                     <li>
-                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">کوله
-                                            پشتی بدنسازی <span title="Available Stock">- 52</span></a></div>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">کوله پشتی بدنسازی
+                                            <span title="Available Stock">- 52</span></a></div>
                                     </li>
                                     <li>
-                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">کیف پول
-                                            <span title="Available Stock">- 40</span></a></div>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">کیف پول <span
+                                                title="Available Stock">- 40</span></a></div>
                                     </li>
                                     <li>
-                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">کیف جیبی
-                                            <span title="Available Stock">- 35</span></a></div>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">کیف جیبی <span
+                                                title="Available Stock">- 35</span></a></div>
                                     </li>
                                 </ul>
                             </li>
@@ -429,66 +421,159 @@
 </div>
 <!-- Breadcrumb end -->
 
-<div class="store-page">
-    <h2>فروشگاه {{ shop.name }} </h2>
-    <div class="baner-store">
-        <div class="box-baner-store">
-            <div class="logo-baner-store">1</div>
-            <div class="name-orgin">نام مدیریت</div>
-        </div>
-    </div>
-    <div class="box-menu-store">
-        <p class="p-menu">منو فروشگاه</p>
-        <div class="items-menu">
-            <div>
-                <input type="search" class="search-menu" placeholder="جستجو فروشگاه"></input>
-            </div>
-            <button type="button" class="btn-location">موقعیت فروشگاه</button>
-            <button type="button" class="btn-catalog">کاتالوگ فروشگاه</button>
-            <button type="button" class="btn-about"> درباره فروشگاه</button>
+<!-- Category section -->
+<section class="ms-category body-bg p-b-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 border-content-color">
+                <div class="ms-category-block owl-carousel" dir="ltr">
+                    {% for model in categories %}
+                        <div class="ms-cat-box ms-cat-box-9">
+                            <a href="/product?category={{ model.id }}" class="ms-cat-icon">
+                                <img src="{{ model.image.url }}" class="svg_img" alt="icon">
+                                <h4 class="ms-cat-title">{{ model.name }}</h4>
+                            </a>
+                        </div>
+                    {% endfor %}
 
-        </div>
-        <div class="share-menu">
-            <a href="#" class="fa fa-instagram"></a>
-            <a href="#" class="fa fa-telegram"></a>
-            <a href="#" class="fa fa-facebook"></a>
-        </div>
-    </div>
-    <div class="new-item">
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                {% for i in shop.banners %}
-                    <div class="swiper-slide" style="background-image:url({{ i.image.url }})"></div>
-                {% endfor %}
+                </div>
             </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
         </div>
     </div>
+</section>
+<!-- Category section End -->
 
-    <div class="items-result">
-        <div id="table1" class="pagination-table">
-            {% for i in product %}
-                <div class="it-table">
-                <a href="product/{{ i.id }}">
-                    <img class="img-table" src="{{ i.image.image.url }}">
-                    <div style="display: flex; justify-content: space-between; margin: 0 16px;" class="name-ittt-table">
-                        <a class="name">نام محصول :</a>
-                        <a class="name-it">{{ i.product.name|truncatechars:12 }}</a>
+<!-- Shop section -->
+<section class="ms-shop padding-tb-30">
+    <div class="container">
+        <div class="row">
+            <div class="ms-shop-rightside col-lg-9 order-lg-last col-md-12 order-md-first margin-b-30">
+                <!-- Shop Top Start -->
+                <div class="ms-pro-list-top d-flex">
+                    <div class="col-md-6 ms-grid-list">
+                        <div class="ms-gl-btn">
+                            <button class="grid-btn btn-grid active">
+                                <img src="{% static 'assets/img/icons/grid.svg' %}" class="svg_img gl_svg" alt="">
+                            </button>
+                            <button class="grid-btn btn-list">
+                                <img src="{% static 'assets/img/icons/list.svg' %}" class="svg_img gl_svg" alt="">
+                            </button>
+                        </div>
                     </div>
-                    <div style="display: flex; justify-content: space-between; margin: 16px;" class="name-ittt-table">
-                        <a class="name"> قیمت محصول :</a>
-                        <a class="name-it">{{ i.price|intcomma:False }}</a>
+                    <div class="col-md-6 ms-sort-select">
+                        <div class="ms-select-inner">
+                            <select name="ms-select" id="ms-select">
+                                <option selected disabled>ترتیب بندی</option>
+{#                                <option value="1">نزد</option>#}
+{#                                <option value="2">مرتبط</option>#}
+{#                                <option value="3">اول به آخر</option>#}
+{#                                <option value="4">آخر به اول</option>#}
+                                <option value="5">قیمت کمتر به بیشتر</option>
+                                <option value="6">قیمت بیشتر به کمتر</option>
+                            </select>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
                     </div>
-                </a>
-{#                <span class="offer">offer</span>#}
+                </div>
+                <!-- Shop Top End -->
+
+                <!-- Select Bar Start -->
+{#                <div class="ms-select-bar d-flex">#}
+{#                    <span class="ms-select-btn">لباس ها<a class="ms-select-cancel"#}
+{#                                                          href="javascript:void(0)">×</a></span>#}
+{#                    <span class="ms-select-btn">میوه جات<a class="ms-select-cancel"#}
+{#                                                           href="javascript:void(0)">×</a></span>#}
+{#                    <span class="ms-select-btn">گوشت<a class="ms-select-cancel" href="javascript:void(0)">×</a></span>#}
+{#                    <span class="ms-select-btn">لبنیات<a class="ms-select-cancel" href="javascript:void(0)">×</a></span>#}
+{#                    <span class="ms-select-btn">عطر و ادکلن<a class="ms-select-cancel"#}
+{#                                                              href="javascript:void(0)">×</a></span>#}
+{#                    <span class="ms-select-btn">جواهرات<a class="ms-select-cancel"#}
+{#                                                          href="javascript:void(0)">×</a></span>#}
+{#                    <span class="ms-select-btn ms-select-btn-clear"><a class="ms-select-clear"#}
+{#                                                                       href="javascript:void(0)">پاک کردن همه</a></span>#}
+{#                </div>#}
+                <!-- Select Bar End -->
+
+                <!-- Shop content Start -->
+                <div class="shop-pro-content">
+                    <div class="shop-pro-inner">
+                        <div class="row" id="items">
+                            <!-- محصولات به صورت داینامیک اینجا اضافه می‌شوند -->
+                        </div>
+                    </div>
+
+                    <!-- Pagination Start -->
+                    <div class="ms-pro-pagination">
+                        <span id="pagination-info">نمایش 1-12 از 21 مورد</span>
+                        <ul class="ms-pro-pagination-inner" id="pagination">
+                            <!-- لینک‌های پیجینیشن به صورت داینامیک اضافه می‌شوند -->
+                        </ul>
+                    </div>
+                    <!-- Pagination End -->
+                </div>
+
+                <!--Shop content End -->
+
             </div>
-            {% endfor %}
-        </div>
-
-
+            <!-- Sidebar Area Start -->
+            <div class="ms-shop-sidebar col-lg-3 order-lg-first col-md-12 order-md-last m-t-991">
+                <div id="shop_sidebar">
+                    <div class="ms-sidebar-wrap">
+                        <!-- Sidebar Category Block -->
+                        <div class="ms-sidebar-block">
+                            <div class="ms-sb-title">
+                                <h3 class="ms-sidebar-title">دسته بندی
+                                    <div class="ms-sidebar-res"><i class="fas fa-chevron-down"></i></div>
+                                </h3>
+                            </div>
+                            <div class="ms-sb-block-content" id="category-list">
+                                <ul>
+                                    <!-- Categories will be populated dynamically from API -->
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Sidebar Weight Block -->
+                        <div class="ms-sidebar-block">
+    <div class="ms-sb-title">
+        <h3 class="ms-sidebar-title">دسته بندی
+            <div class="ms-sidebar-res"><i class="fas fa-chevron-down"></i></div>
+        </h3>
+    </div>
+    <div class="ms-sb-block-content">
+        <ul id="category-list1"></ul>
     </div>
 </div>
+                        <!-- Sidebar Price Block -->
+                        <div class="ms-sidebar-block">
+                            <div class="ms-sb-title">
+                                <h3 class="ms-sidebar-title">قیمت
+                                    <div class="ms-sidebar-res"><i class="fas fa-chevron-down"></i></div>
+                                </h3>
+                            </div>
+                            <div class="ms-sb-block-content ms-price-range-slider es-price-slider" dir="ltr">
+                                <div class="ms-price-filter">
+                                    <div class="ms-price-input">
+                                        <label class="filter__label">
+                                            از<input type="text" class="filter__input">
+                                        </label>
+                                        <span class="ms-price-divider"></span>
+                                        <label class="filter__label">
+                                            به<input type="text" class="filter__input">
+                                        </label>
+                                    </div>
+                                    <div id="ms-sliderPrice" class="filter__slider-price" data-min="0" data-max="250"
+                                         data-step="10"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Sidebar tags -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Shop section End -->
 
 <!-- Footer Start -->
 <footer class="ms-footer m-t-30">
@@ -515,8 +600,7 @@
                             <h4 class="ms-footer-heading">دسته بندی</h4>
                             <div class="ms-footer-links ms-footer-dropdown">
                                 <ul class="align-items-center">
-                                    <li class="ms-footer-link"><a href="product_list.html"> شیر و لبنیات </a>
-                                    </li>
+                                    <li class="ms-footer-link"><a href="product_list.html"> شیر و لبنیات </a></li>
                                     <li class="ms-footer-link"><a href="shop-banner-left-sidebar-col-3.html">میان وعده و
                                         ادویه</a></li>
                                     <li class="ms-footer-link"><a href="shop-full-width-col-5.html">فست فود</a></li>
@@ -595,7 +679,7 @@
                                         <li class="ms-footer-link"><a href="#"><i class="fa fa-instagram"></i></a></li>
                                         <li class="ms-footer-link"><a href="#"><i class="fa fa-twitter-square"></i></a>
                                         </li>
-                                        <li class="ms-footer-link"><a href="#"><i class="fa fa-facebook-square"></i></a>
+                                        <li class="ms-footer-link"><a href="#"><i class="fa fa-facebook-square"></i>
                                         </li>
                                         <li class="ms-footer-link"><a href="#"><i class="fa fa-linkedin-square"></i></a>
                                         </li>
@@ -830,44 +914,267 @@
 <script src="{% static 'assets/js/plugins/jquery.zoom.min.js' %}"></script>
 <script src="{% static 'assets/js/plugins/slick.min.js' %}"></script>
 <script src="{% static 'assets/js/plugins/nouislider.js' %}"></script>
-<!--  -->
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<!--  -->
-<script src="./assets/js/js/uikit-icons.js"></script>
-<script src="./assets/js/js/uikit-icons.min.js"></script>
-<script src="./assets/js/js/uikit.js"></script>
-<script src="./assets/js/js/uikit.min.js"></script>
-
-
-<script>
-    var mySwiper = new Swiper('.swiper-container', {
-        slidesPerView: 1,
-        spaceBetween: 10,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-    });
-
-    $(document).ready(function () {
-        $("#table1").show();
-        $(".page-item:first").addClass("active");
-
-        $(".page-link").click(function (e) {
-            e.preventDefault();
-            var targetTable = $(this).attr("href");
-            $(".pagination-table").hide();
-            $(targetTable).show();
-
-            $(".page-item").removeClass("active");
-            $(this).parent(".page-item").addClass("active");
-        });
-    });
-</script>
 
 <!-- Main Js -->
 <script src="{% static 'assets/js/main.js' %}"></script>
+{# #}
+<script>
+    function fetchProducts(page = 1, filters = {}) {
+        const apiEndpoint = '/shop/api/v1/';
+        let queryString = `?page=${page}`;
+
+        // اضافه کردن فیلترها به URL
+        Object.keys(filters).forEach(key => {
+            if (filters[key]) {
+                queryString += `&${key}=${filters[key]}`;
+            }
+        });
+
+        return $.ajax({
+            url: apiEndpoint + queryString,
+            method: 'GET',
+            error: function (error) {
+                console.error('خطا در بارگذاری محصولات:', error);
+            }
+        });
+    }
+
+    function renderProducts(products) {
+        const itemsContainer = $('#items');
+        itemsContainer.empty();  // پاک‌کردن محصولات قبلی
+
+        products.forEach(function (product) {
+            // گرفتن تصاویر اول و دوم از آرایه تصاویر
+            const image1 = product.images[0]?.image || ''; // تصویر اول
+            const image2 = product.images[1]?.image || ''; // تصویر دوم
+
+            // نمایش 12 کاراکتر اول از نام فروشگاه و سپس نقطه چین
+            const shopName = product.shop_name.length > 12 ? product.shop_name.slice(0, 12) + '...' : product.shop_name;
+
+            const productHtml = `
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content ms-product-content">
+            <div class="ms-product-inner">
+                <div class="ms-pro-image-outer">
+                    <div class="ms-pro-image">
+                        <a href="/shop/${product.shop}/product/${product.product}" class="image">
+                            <img class="main-image" src="${image1}" alt="Product">
+                            <img class="hover-image" src="${image2}" alt="Product">
+                        </a>
+                        <div class="ms-pro-actions">
+                            <a href="/${product.shop}/product/${product.product}" class="ms-btn-group" title="مشاهده محصول">👁️</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="ms-pro-content">
+                    <h6 class="ms-pro-stitle">${shopName}</h6> <!-- نام فروشگاه -->
+                    <h5 class="ms-pro-title"><a href="/shop/${product.shop}/product/${product.product}">  ${product.shop_name}</a></h5>
+                    <p class="ms-info">نوع محصول: ${product.type}</p> <!-- نوع محصول -->
+                    <div class="ms-pro-rat-price">
+                        <span class="ms-price">
+                            <span class="new-price">${product.formatted_price} تومان</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        `;
+            itemsContainer.append(productHtml);
+        });
+    }
+
+
+    function renderPagination(currentPage, totalPages) {
+        const paginationContainer = $('#pagination');
+        paginationContainer.empty();  // پاک‌کردن پیجینیشن قبلی
+
+        // دکمه قبلی
+        if (currentPage > 1) {
+            paginationContainer.append(`<li><a href="#" class="prev" data-page="${currentPage - 1}">قبلی</a></li>`);
+        }
+
+        // نمایش صفحه اول
+        paginationContainer.append(`<li><a href="#" data-page="1">1</a></li>`);
+
+        // اگر صفحه اول و دوم با صفحه فعلی فاصله دارند، علامت «...»
+        if (currentPage > 3) {
+            paginationContainer.append(`<li><span>...</span></li>`);
+        }
+
+        // نمایش ۲ صفحه اطراف صفحه فعلی
+        const pageRange = 2; // نمایش ۲ صفحه قبل و بعد از صفحه فعلی
+        const startPage = Math.max(2, currentPage - pageRange); // از ۲ شروع می‌کنیم
+        const endPage = Math.min(totalPages - 1, currentPage + pageRange); // تا صفحه آخر منهای یک
+
+        // شماره صفحات وسط
+        for (let i = startPage; i <= endPage; i++) {
+            const activeClass = i === currentPage ? 'active' : '';
+            paginationContainer.append(`<li><a href="#" class="${activeClass}" data-page="${i}">${i}</a></li>`);
+        }
+
+        // اگر صفحه آخر و صفحه قبل از آن با صفحه فعلی فاصله دارند، علامت «...»
+        if (currentPage < totalPages - 2) {
+            paginationContainer.append(`<li><span>...</span></li>`);
+        }
+
+        // نمایش صفحه آخر
+        if (totalPages > 1) {
+            paginationContainer.append(`<li><a href="#" data-page="${totalPages}">${totalPages}</a></li>`);
+        }
+
+        // دکمه بعدی
+        if (currentPage < totalPages) {
+            paginationContainer.append(`<li><a href="#" class="next" data-page="${currentPage + 1}">بعدی</a></li>`);
+        }
+    }
+
+    function loadProducts(page = 1, filters = {}) {
+        fetchProducts(page, filters).done(function (response) {
+            // نمایش محصولات
+            renderProducts(response.results);
+
+            // به‌روزرسانی پیجینیشن
+            renderPagination(page, response.total_pages);
+
+            // نمایش اطلاعات پیجینیشن
+            $('#pagination-info').text(`نمایش ${(page - 1) * 9 + 1}-${Math.min(page * 9, response.count)} از ${response.count} مورد`);
+        });
+    }
+
+    $(document).ready(function () {
+        let currentFilters = {};
+
+        // بارگذاری اولیه محصولات
+        loadProducts();
+
+        // هندل کردن کلیک روی لینک‌های پیجینیشن
+        $(document).on('click', '#pagination a', function (event) {
+            event.preventDefault();
+            const page = $(this).data('page');
+            if (page) {
+                loadProducts(page, currentFilters);
+            }
+        });
+
+        // مثال از فیلتر محصولات
+        $('#filter-form').submit(function (event) {
+            event.preventDefault();
+
+            // گرفتن فیلترها از فرم
+            currentFilters = {
+                price_min: $('#price_min').val(),
+                price_max: $('#price_max').val(),
+                material: $('#material').val(),
+                product: $('#product').val(),
+                shop: $('#shop').val(),
+            };
+
+            // بارگذاری محصولات با فیلتر
+            loadProducts(1, currentFilters);
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        fetchCategories();
+
+        function fetchCategories() {
+            fetch('/product/product-types') // Adjust API URL as necessary
+                .then(response => response.json())
+                .then(data => {
+                    const categoryList = document.querySelector('#category-list ul');
+                    categoryList.innerHTML = data.map(category => `
+<li>
+    <div class="ms-sidebar-block-item" style="display: flex; align-items: center;">
+        <input type="checkbox" id="category-${category.value}" onchange="toggleSelection(${category.value})" style="margin-right: 10px; cursor: pointer; width: 20px; height: 20px; position: relative; z-index: 1;">
+        <label for="category-${category.value}" style="flex: 1; display: block; position: relative; z-index: 0;">
+            <span class="label-text" style="margin-right: 5px;">${category.label}</span>
+{#            <span class="products" title="Products">- ${getProductCount(category.value)}</span>#}
+        </label>
+        <span class="checked"></span>
+    </div>
+</li>
+
+
+
+
+                `).join('');
+                })
+                .catch(error => console.error('Error fetching categories:', error));
+        }
+
+        function getProductCount(value) {
+            const productCounts = {
+                0: 68, // گیاه
+                1: 58, // عرق
+                // Add counts for other categories as needed
+            };
+            return productCounts[value] || 0;
+        }
+
+        let selectedItems = [];
+
+        window.toggleSelection = function (value) {
+            const index = selectedItems.indexOf(value);
+            if (index > -1) {
+                selectedItems.splice(index, 1); // Remove if already selected
+            } else {
+                selectedItems.push(value); // Add if not selected
+            }
+            displaySelectedItems();
+        };
+
+        function displaySelectedItems() {
+            console.log("Selected Items:", selectedItems);
+            // You can display selected items in your UI as needed
+        }
+    });
+</script>
+<script>
+    async function fetchCategories() {
+        try {
+            const response = await fetch('/product/categories');
+            const categories = await response.json();
+            console.log(categories)
+            generateCategoryList(categories);
+        } catch (error) {
+            console.error('Error fetching categories:', error);
+        }
+    }
+
+    function generateCategoryList(categories) {
+        const categoryList = document.getElementById('category-list1');
+        categories.forEach(category => {
+            if (category.parent === null) {
+                // Parent category
+                const parentItem = document.createElement('li');
+                const parentBlock = document.createElement('div');
+                parentBlock.classList.add('ms-sidebar-block-item');
+                parentBlock.innerHTML = `<span>${category.name}</span>`;
+                parentItem.appendChild(parentBlock);
+                const subList = document.createElement('ul');
+                categories.forEach(subCategory => {
+                    if (subCategory.parent === category.id) {
+                        const subItem = document.createElement('li');
+                        const subBlock = document.createElement('div');
+                        subBlock.classList.add('ms-sidebar-block-item');
+                        subBlock.innerHTML = `
+                            <input type="checkbox" id="category-${subCategory.id}">
+                            <a href="#">${subCategory.name}</a>
+                            <span class="checked"></span>
+                        `;
+                        subItem.appendChild(subBlock);
+                        subList.appendChild(subItem);
+                    }
+                });
+                parentItem.appendChild(subList);
+                categoryList.appendChild(parentItem);
+            }
+        });
+    }
+
+    // Fetch categories when the page loads
+    document.addEventListener('DOMContentLoaded', fetchCategories);
+</script>
+
 </body>
 
 </html>

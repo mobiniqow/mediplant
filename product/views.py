@@ -1,10 +1,17 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics
+from rest_framework.pagination import PageNumberPagination
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
+from .filter.category_filter import CategoryFilter
 from .filter.product_filter import ProductFilter
-from .models import Product
-from .serializers import ProductSerializers
+from .models import Product, Category
+from .serializers import ProductSerializers, ProductTypeSerializer, CategorySerializer
 
+
+class ProductPagination(PageNumberPagination):
+    page_size = 9
 
 class ProductAPIView(generics.ListAPIView):
     filter_backends = (DjangoFilterBackend,)
@@ -12,3 +19,18 @@ class ProductAPIView(generics.ListAPIView):
     ordering_fields = ['name', 'price']
     queryset = Product.objects.all()
     serializer_class = ProductSerializers
+    pagination_class = ProductPagination
+
+class ProductTypeListView(APIView):
+    def get(self, request):
+        product_types = Product.Type.choices
+        serializer = ProductTypeSerializer(product_types, many=True)
+        return Response(serializer.data)
+
+
+class CategoryListView(generics.ListAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = CategoryFilter
+    pagination_class = None

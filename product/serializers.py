@@ -1,6 +1,8 @@
 from rest_framework import serializers
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
-from product.models import Product, ProductImage
+from product.models import Product, ProductImage, Category
 
 
 class ProductImageSerializer(serializers.ModelSerializer):
@@ -19,3 +21,18 @@ class ProductSerializers(serializers.ModelSerializer):
     def get_image(self, obj):
         product = ProductImage.objects.filter(product=obj)
         return ProductImageSerializer(product, many=True).data
+
+class ProductTypeSerializer(serializers.Serializer):
+    value = serializers.IntegerField()
+    label = serializers.CharField()
+
+    def to_representation(self, instance):
+        return {
+            'value': instance[0],
+            'label': instance[1]
+        }
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ['id', 'name', 'parent', 'image']
