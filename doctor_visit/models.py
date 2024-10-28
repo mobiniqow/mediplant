@@ -2,6 +2,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from doctor.models import PatientProfile, DoctorVisitPrice
 from sickness.models import TraditionalMedicineDisease
+from transaction.models import Transaction
 
 
 class DoctorVisit(models.Model):
@@ -25,7 +26,7 @@ class DoctorVisit(models.Model):
                                       verbose_name='امتیاز پزشک')
     time = models.IntegerField(default=0, validators=[MinValueValidator(0)], verbose_name='زمان')
     comment = models.TextField(verbose_name='نظر')
-    transaction = models.ForeignKey(Transaction, on_delete=models.DELETE, null=True)
+    transaction = models.ForeignKey(Transaction, on_delete=models.SET_NULL, null=True)
 
     class Meta:
         verbose_name = "ویزیت دکتر"
