@@ -15,7 +15,6 @@ class ProductFilter(drf_filters.FilterSet):
         field_name='type',
         to_field_name='type',
     )
-    # type = drf_filters.ChoiceFilter(choices=Product.Type.choices)
 
     class Meta:
         model = Product
