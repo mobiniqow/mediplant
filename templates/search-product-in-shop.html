@@ -8,7 +8,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
-    <title>Masterkart - الگوی HTML تجارت الکترونیک چند منظوره</title>
+    <title>فروشگاه</title>
     <meta name="keywords"
           content="Bootstrap 5.x, ecommerce, farming, food market, grocery market, grocery shop, grocery store, grocery supper market, multi vendor, organic food, supermarket, supermarket grocery">
     <meta name="description" content="Multipurpose eCommerce HTML Template">
@@ -450,17 +450,17 @@
                     </div>
                     <div class="shop">
                         <h2><span>{{ product_shops|length|add:-1 }}</span> فروشنده دیگر </h2>
-                        <div>
-                            <ul>
-                                <li class="fa fa-bell-o"></li>
-                                <li class="fa fa-heart-o"></li>
-                                <li class="fa fa-share-nodes"></li>
-                            </ul>
-                        </div>
+{#                        <div>#}
+{#                            <ul>#}
+{#                                <li class="fa fa-bell-o"></li>#}
+{#                                <li class="fa fa-heart-o"></li>#}
+{#                                <li class="fa fa-share-nodes"></li>#}
+{#                            </ul>#}
+{#                        </div>#}
                     </div>
-                    <div class="pricee">
-                        <div>
-                            <p>فروشگاه بابایی</p>
+                    <div class="pricee" onclick="window.location.href='/shop/{{ product_shops.0.shop.id }}'" style="cursor: pointer;">
+                        <div  >
+                            <p>فروشگاه {{ product_shops.0.shop.name| truncatechars:17}}</p>
                             <h3><span>{{ product_shops.0.price|intcomma:False }}</span> تومان</h3>
                         </div>
                         <div>
@@ -477,67 +477,106 @@
             </div>
             <!-- -->
 
-            {% for i in product_shops|slice:"1:" %}
-                <div class="item-shoping">
-                    <div class="it-sh">
-                        <div class="r-sh">
-                            <h2> {{ i.shop.name |truncatechars:'17' }}</h2>
-                            <p>{{ i.shop.user.city |truncatechars:'17' }}</p>
-                        </div>
-                        <div class="r-sh">
-                        </div>
-                        <div class="details-it-shop">
-                            {#                            <div class="item-cc">#}
-                            {#                                <span class="fa fa-star checked"></span>#}
-                            {#                                <div>#}
-                            {#                                    <p>4.5</p>#}
-                            {#                                </div>#}
-                            {#                            </div>#}
-                            <p class="p-cc">{{ i.product.name|truncatechars:'20' }}</p>
-                            <p class="original-item o-t">
-                                <span>&#10003</span>اصالت و سلامت فیزیکی کالا
-                            </p>
-                        </div>
-                    </div>
-                    <a class="btn-price" href="/shop/{{i.shop.id}}">
-                        <p><span>{{ i.price|intcomma:False }}</span> تومان</p>
-                        <button class="btn-p">خرید اینترنتی</button>
-                    </a>
-                </div>
-            {% endfor %}
+           {% for i in product_shops|slice:"1:" %}
+    <div class="item-shop">
+        <div class="shop-info">
+            <div class="shop-image">
+                <img src="{{ i.shop.image.url }}" alt="{{ i.shop.name }}" />
+            </div>
+            <div class="shop-details">
+                <h2>{{ i.shop.name | truncatechars:17 }}</h2>
+                <p>{{ i.shop.user.city | truncatechars:17 }}</p>
+                <p class="shop-rating">امتیاز: {{ i.shop.get_rate_state_display }}</p>
+                <p class="shop-status">{{ i.shop.get_state_display }}</p>
+            </div>
+        </div>
+        <div class="product-info">
+            <p class="product-name">{{ i.product.name | truncatechars:20 }}</p>
+            <p class="product-material">جنس: {{ i.get_material_display }}</p>
+            <p class="product-capacity">ظرفیت: {{ i.capacity }}</p>
+            <p class="product-inventory">
+                موجودی: {{ i.get_inventory_state_display }}
+            </p>
+            <p class="product-price">
+                <span>{{ i.price | intcomma:False }}</span> تومان
+            </p>
+        </div>
+        <a class="btn-buy" href="/shop/{{ i.shop.id }}">
+            خرید اینترنتی
+        </a>
+    </div>
+{% endfor %}
 
         </div>
     </div>
-    <div class="product-detaill">
-        <h2>مشخصات محصول</h2>
-        <div class="product-detaill-scroll">
-            <div class="it-product-scroll">
-                <div class="name-it-scroll">
-                    <p>نوع کالا</p>
-                </div>
-                <div class="detaill-it-scroll">
-                    <p>{{ product_shops.0.product.get_type_display }}</p>
-                </div>
+   <div class="product-details">
+    <h2>مشخصات محصول</h2>
+    <div class="product-details-scroll">
+        <div class="detail-item">
+            <div class="detail-label">
+                <p>نوع کالا:</p>
             </div>
-            <div class="it-product-scroll">
-                <div class="name-it-scroll">
-                    <p>دسته بندی</p>
-                </div>
-                <div class="detaill-it-scroll">
-                    <p>{{ product_shops.0.product.category.name|truncatechars:'23' }}</p>
-                </div>
+            <div class="detail-value">
+                <p>{{ product_shops.0.product.get_type_display }}</p>
             </div>
+        </div>
 
-            <div class="it-product-scroll">
-                <div class="name-it-scroll">
-                    <p>معرفی محصول</p>
-                </div>
-                <div class="detaill-it-scroll w-paragraph">
-                    <p class="paragraph">{{ product_shops.0.product.description|truncatechars:'23' }}</p>
-                </div>
+        <div class="detail-item">
+            <div class="detail-label">
+                <p>دسته بندی:</p>
+            </div>
+            <div class="detail-value">
+                <p>{{ product_shops.0.product.category.name | truncatechars:23 }}</p>
+            </div>
+        </div>
+
+        <div class="detail-item">
+            <div class="detail-label">
+                <p>معرفی محصول:</p>
+            </div>
+            <div class="detail-value">
+                <p>{{ product_shops.0.product.description | truncatechars:50 }}</p>
+            </div>
+        </div>
+
+        <div class="detail-item">
+            <div class="detail-label">
+                <p>قیمت:</p>
+            </div>
+            <div class="detail-value">
+                <p><span>{{ product_shops.0.price | intcomma }}</span> تومان</p>
+            </div>
+        </div>
+
+        <div class="detail-item">
+            <div class="detail-label">
+                <p>وضعیت موجودی:</p>
+            </div>
+            <div class="detail-value">
+                <p>{{ product_shops.0.get_inventory_state_display }}</p>
+            </div>
+        </div>
+
+        <div class="detail-item">
+            <div class="detail-label">
+                <p>ظرفیت:</p>
+            </div>
+            <div class="detail-value">
+                <p>{{ product_shops.0.capacity }} عدد</p>
+            </div>
+        </div>
+
+        <div class="detail-item">
+            <div class="detail-label">
+                <p>امتیاز محصول:</p>
+            </div>
+            <div class="detail-value">
+                <p>⭐⭐⭐⭐⭐</p> <!-- این بخش برای نمایش امتیاز به صورت استاتیک یا دینامیک با داده‌های واقعی -->
             </div>
         </div>
     </div>
+</div>
+
 </div>
 <div class="items-result">
     <div id="table1" class="pagination-table">
