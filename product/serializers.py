@@ -13,6 +13,7 @@ class ProductImageSerializer(serializers.ModelSerializer):
 
 class ProductSerializers(serializers.ModelSerializer):
     image = serializers.SerializerMethodField(read_only=True)
+    formatted_price = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = Product
@@ -21,6 +22,9 @@ class ProductSerializers(serializers.ModelSerializer):
     def get_image(self, obj):
         product = ProductImage.objects.filter(product=obj)
         return ProductImageSerializer(product, many=True).data
+
+    def get_formatted_price(self, obj):
+        return '{:,.0f}'.format(obj.price)
 
 class ProductTypeSerializer(serializers.Serializer):
     value = serializers.IntegerField()
