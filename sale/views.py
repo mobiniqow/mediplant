@@ -2,78 +2,118 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
-from .models import SaleBasket
+
+from shop.models import ShopProduct, Shop
+from transaction.models import Transaction
+from .models import SaleBasket, SaleBasketProduct
+from django.shortcuts import get_object_or_404
+
+from .serializers import BaseProductSerializer
 
 
 class CreateBasket(APIView):
-    permission_classes = [IsAuthenticated]
-
-    def post(self, request):
+    def post(self, request, shop_id):
+        session_key = request.session.session_key or request.META.get('REMOTE_ADDR')
+        shop = get_object_or_404(Shop, pk=shop_id)
         user = request.user
-        session_key = request.session.session_key
-        shop = request.data.get('shop_id')
-
-        basket = SaleBasket.objects.create(
-            user=user,
-            session_key=session_key,
-            shop_id=shop,
-            price=0,
-            address=request.data.get('address', ''),
-            discount=request.data.get('discount', 0)
-        )
-
+        if user.is_authenticated:
+            basket, created = SaleBasket.objects.get_or_create(
+                shop=shop,
+                user=user,
+                session_key=session_key,
+                defaults={
+                    'price': 0,
+                    'address': request.data.get('address', ''),
+                    'discount': request.data.get('discount', 0)
+                }
+            )
+        else:
+            basket, created = SaleBasket.objects.get_or_create(
+                shop=shop,
+                session_key=session_key,
+                defaults={
+                    'price': 0,
+                    'address': request.data.get('address', ''),
+                    'discount': request.data.get('discount', 0)
+                }
+            )
+        product = SaleBasketProduct.objects.filter(basket=basket)
+        items = BaseProductSerializer(product, many=True).data
         return Response({
-            "message": "Basket created successfully",
-            "basket_id": basket.id
+            "basket_id": basket.id,
+            "items": items,
+            "price": basket.price,
         }, status=status.HTTP_201_CREATED)
 
 
-class AddProductToBasket(APIView):
-    permission_classes = [IsAuthenticated]
-
-    def post(self, request, basket_id):
-        basket = SaleBasket.objects.get(id=basket_id, user=request.user)
-        product_id = request.data.get('product_id')
-        unit = request.data.get('unit', 1)
-
+class ProductToBasket(APIView):
+    def post(self, request, basket_id, product_id):
+        if request.user.is_authenticated:
+            basket = SaleBasket.objects.get(id=basket_id, user=request.user)
+        else:
+            session_key = request.session.session_key or request.META.get('REMOTE_ADDR')
+            basket = SaleBasket.objects.get(id=basket_id, session_key=session_key)
+        shop_product = ShopProduct.objects.filter(product_id=product_id, shop=basket.shop)
+        if not shop_product.exists():
+            return Response({"message": "not found"}, status=status.HTTP_404_NOT_FOUND)
+        if shop_product.first().capacity < 1:
+            return Response({"message": "not capacity found"}, status=status.HTTP_400_BAD_REQUEST)
         product = ShopProduct.objects.get(id=product_id)
-        SaleBasketProduct.objects.create(basket=basket, product=product, unit=unit)
-
-        basket.price += product.price * unit
+        item = SaleBasketProduct.objects.filter(basket=basket, product=product)
+        if item.exists():
+            item = item.first()
+            item.unit = item.unit
+            item.save()
+        else:
+            SaleBasketProduct.objects.create(basket=basket, product=product, unit=1)
+        basket.price += product.price
         basket.save()
-
         return Response({"message": "Product added to basket"}, status=status.HTTP_200_OK)
 
-
-class UpdateProductUnit(APIView):
-    permission_classes = [IsAuthenticated]
-
     def put(self, request, basket_id, product_id):
-        basket_product = SaleBasketProduct.objects.get(basket_id=basket_id, product_id=product_id)
-        new_unit = request.data.get('unit')
-
+        if request.user.is_authenticated:
+            basket = SaleBasket.objects.filter(id=basket_id, user=request.user)
+        else:
+            session_key = request.session.session_key or request.META.get('REMOTE_ADDR')
+            basket = SaleBasket.objects.filter(id=basket_id, session_key=session_key)
+        if not basket.exists():
+            return Response({"message": "not found"}, status=status.HTTP_404_NOT_FOUND)
+        basket = basket.first()
+        basket_product = SaleBasketProduct.objects.filter(basket=basket, product_id=product_id)
+        if not basket_product.exists():
+            return Response({"message": "not found"}, status=status.HTTP_404_NOT_FOUND)
+        basket_product = basket_product.first()
+        new_unit = int(request.data.get('unit'))
         if new_unit <= 0:
             return Response({"error": "Unit must be greater than 0"}, status=status.HTTP_400_BAD_REQUEST)
-
-        # Update total price
+        product = get_object_or_404(ShopProduct, pk=product_id)
+        if new_unit > product.capacity:
+            return Response({"error": "Unit capacity exceeds"}, status=status.HTTP_400_BAD_REQUEST)
         basket = basket_product.basket
         basket.price -= basket_product.product.price * basket_product.unit
         basket_product.unit = new_unit
         basket_product.save()
         basket.price += basket_product.product.price * new_unit
         basket.save()
-
         return Response({"message": "Product unit updated"}, status=status.HTTP_200_OK)
 
-
-class RemoveProductFromBasket(APIView):
-    permission_classes = [IsAuthenticated]
-
     def delete(self, request, basket_id, product_id):
-        basket_product = SaleBasketProduct.objects.get(basket_id=basket_id, product_id=product_id)
+        if request.user.is_authenticated:
+            basket = SaleBasket.objects.filter(id=basket_id, user=request.user).first()
+        else:
+            session_key = request.session.session_key or request.META.get('REMOTE_ADDR')
+            basket = SaleBasket.objects.filter(id=basket_id, session_key=session_key).first()
 
-        # Update total price
-        basket = basket_product.basket
+        # بررسی وجود سبد خرید
+        if not basket:
+            return Response({"error": "Basket not found"}, status=status.HTTP_404_NOT_FOUND)
+
+        # بررسی وجود محصول در سبد خرید
+        basket_product = SaleBasketProduct.objects.filter(basket=basket, product_id=product_id).first()
+        if not basket_product:
+            return Response({"error": "Product not found in the basket"}, status=status.HTTP_404_NOT_FOUND)
+
+        # بروزرسانی قیمت کل
         basket.price -= basket_product.product.price * basket_product.unit
         basket_product.delete()
         basket.save()
@@ -85,7 +125,17 @@ class Checkout(APIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request, basket_id):
-        basket = SaleBasket.objects.get(id=basket_id, user=request.user)
+        session_key = request.session.session_key or request.META.get('REMOTE_ADDR')
+        basket = SaleBasket.objects.filter(id=basket_id, user=request.user)
+        if not basket.exists():
+            basket = SaleBasket.objects.filter(id=basket_id, session_key=session_key)
+            if not basket.exists():
+                return Response({"error": "Basket is not found"}, status=status.HTTP_400_BAD_REQUEST)
+            else:
+                basket = basket.first()
+                basket.user = request.user
+                basket.session_key = None
+                basket.save()
 
         if basket.price <= 0:
             return Response({"error": "Basket is empty"}, status=status.HTTP_400_BAD_REQUEST)
@@ -127,4 +177,3 @@ class UpdateTransactionStatus(APIView):
             basket.save()
 
         return Response({"message": "Transaction state updated"}, status=status.HTTP_200_OK)
-

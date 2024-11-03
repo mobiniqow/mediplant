@@ -27,6 +27,7 @@ urlpatterns = [
     path('city/', include('city.urls')),
     path('product/', include('product.urls')),
     path('article/', include('encyclopedia.urls')),
+    path('basket/', include('sale.urls')),
 
 ]
 
