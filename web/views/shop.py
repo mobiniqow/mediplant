@@ -6,7 +6,7 @@ from banner.models import Banner
 from encyclopedia.models import ArticleEncyclopedia
 from product.models import Category, Product, ProductImage
 from shop.models import ShopProduct, Shop, ShopImage
-
+import math
 
 class IndexView(BaseTemplateView):
     template_name = "index.html"
@@ -120,15 +120,23 @@ class ShopDetailsView(BaseTemplateView):
     template_name = "shop-details.html"
 
     def get_context_data(self, **kwargs):
+        page_size = 15
         context = super().get_context_data(**kwargs)
         shop_id = kwargs['id']
-        shop = get_object_or_404(Shop, id=shop_id)
+        shop = get_object_or_404(Shop, pk=shop_id)
+        banners = ShopImage.objects.filter(shop=shop)
         shop.banners = ShopImage.objects.filter(shop=shop)
         product = ShopProduct.objects.filter(shop=shop)
+        page_number = math.ceil(product.count() / page_size)
+
         for i in product:
             i.image = ProductImage.objects.filter(product=i.product).first()
+            i.price ='{:,.0f}'.format(i.price)
         context['shop'] = shop
-        context['product'] = product
+        context['banners'] = banners
+        context['product'] =   [product[i:i + page_size] for i in range(0, len(product), page_size)]
+        print([i for i in range( page_number )])
+        context['page_number'] = [i for i in range( 1,page_number +1)]
 
         return context
 

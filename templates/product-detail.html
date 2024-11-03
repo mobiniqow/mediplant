@@ -7,19 +7,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-
     <title>Masterkart - الگوی HTML تجارت الکترونیک چند منظوره</title>
     <meta name="keywords"
           content="Bootstrap 5.x, ecommerce, farming, food market, grocery market, grocery shop, grocery store, grocery supper market, multi vendor, organic food, supermarket, supermarket grocery">
     <meta name="description" content="Multipurpose eCommerce HTML Template">
     <meta name="author" content="Pilarest">
-
     <!-- site Favicon -->
     <link rel="icon" href="{% static 'assets/img/favicon/favicon.png' %}" sizes="32x32">
-
     <!-- css Icon Font -->
     <link rel="stylesheet" href="{% static 'assets/css/vendor/msicons.min.css' %}">
-
     <!-- css All Plugins Files -->
     <link rel="stylesheet" href="{% static 'assets/css/plugins/animate.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap.css' %}">
@@ -35,7 +31,6 @@
     <link rel="stylesheet" href="{% static 'assets/css/slider/uikit-rtl.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/slider/uikit.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/slider/uikit.min.css' %}">
-
     <!-- Main Style -->
     <link rel="stylesheet" id="main_style" href="{% static 'assets/css/new-page.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
@@ -140,7 +135,7 @@
                             <!-- Header Wishlist End -->
                             <!-- Header Cart Start -->
                             <a href="javascript:void(0)" class="ms-header-btn ms-cart-toggle">
-                                <div class="header-icon"><img src="{% static '{% static 'assets/img/icons/pro_cart.svg'  %}' %}"
+                                <div class="header-icon"><img src="{% static 'assets/img/icons/pro_cart.svg'  %}"
                                                               class="svg_img header_svg" alt="">
                                     <span class="main-label-note-new"></span>
                                 </div>
@@ -164,7 +159,7 @@
                     <!-- Header Logo Start -->
                     <div class="align-self-center ms-header-logo">
                         <div class="header-logo">
-                            <a href="index.html"><img src="{% static 'assets/img/logo/logo.png' %}" alt="Site Logo"></a>
+                            <a href="/"><img src="{% static 'assets/img/logo/logo.png' %}" alt="Site Logo"></a>
                         </div>
                     </div>
                     <!-- Header Logo End -->
@@ -272,7 +267,7 @@
                             <div class="col-md-12 align-self-center">
                                 <div class="ms-main-menu">
                                     <ul>
-                                        <li class="non-drop"><a href="index.html">خانه</a></li>
+                                        <li class="non-drop"><a href="/">خانه</a></li>
                                         <li class="dropdown drop-list position-static">
                                             <a href="javascript:void(0)" class="dropdown-arrow">دسته بندی‌ها<i
                                                     class="fas fa-chevron-right"></i></a>
@@ -438,7 +433,7 @@
                     </form>
                 </div>
                 <ul>
-                    <li><a href="index.html">خانه</a></li>
+                    <li><a href="/">خانه</a></li>
 
                     <li><a href="javascript:void(0)">دسته بندی‌ها</a>
                         <ul class="sub-menu">
@@ -544,7 +539,7 @@
                     <!-- Header Logo Start -->
                     <div class="col ms-header-logo">
                         <div class="header-logo">
-                            <a href="index.html">
+                            <a href="/">
                                 <img src="{% static 'assets/img/logo/logo.png' %}" alt="Site Logo">
                             </a>
                         </div>
@@ -925,11 +920,11 @@
                     </div>
                     <div class="col-md-6 col-sm-12">
                         <!-- ms-breadcrumb-list start -->
-                        <ul class="ms-breadcrumb-list">
-                            <li class="ms-breadcrumb-item"><a href="index.html">خانه</a><i
-                                    class="fas fa-chevron-left"></i></li>
-                            <li class="ms-breadcrumb-item active">جزئیات محصول</li>
-                        </ul>
+{#                        <ul class="ms-breadcrumb-list">#}
+{#                            <li class="ms-breadcrumb-item"><a href="/">خانه</a><i#}
+{#                                    class="fas fa-chevron-left"></i></li>#}
+{#                            <li class="ms-breadcrumb-item active">جزئیات محصول</li>#}
+{#                        </ul>#}
                         <!-- ms-breadcrumb-list end -->
                     </div>
                 </div>
@@ -941,12 +936,7 @@
 
 <div class="product-detail">
     <form>
-        <ul class="ms-breadcrumb-list crumb-product">
-            <li class="ms-breadcrumb-item"><a href="index.html">خانه</a><i class="fas fa-chevron-left"></i></li>
-            <li class="ms-breadcrumb-item"><a href="#">دسته بندی</a><i class="fas fa-chevron-left"></i></li>
-            <li class="ms-breadcrumb-item"><a href="index.html">دسته بندی</a><i class="fas fa-chevron-left"></i></li>
-            <li class="ms-breadcrumb-item active">جزئیات محصول</li>
-        </ul>
+
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 {% for i in images %}
@@ -958,32 +948,11 @@
         </div>
         <div class="titr-name">
             <a class="name-item">{{ product_shops.product.name }}</a>
-            {#                <div class="health">#}
-            {#                    <a class="add-to-health">افزودن به علاقه مندی</a>#}
-            {#                    <div class="heart" onclick="toggleHeart(this)"></div>#}
-            {#                </div>#}
+
         </div>
         <div class="length-item">
             <p>{{ product_shops.product.name }}</p>
-            {#                <div>#}
-            {#                    <ul>(#}
-            {#                        <li>#}
-            {#                            <p>عرق نعناع :</p>#}
-            {#                            <span>4عدد</span>#}
-            {#                        </li>#}
-            {#                        ,#}
-            {#                        <li>#}
-            {#                            <p> روغن زیتون :</p>#}
-            {#                            <span>4عدد</span>#}
-            {#                        </li>#}
-            {#                        ,#}
-            {#                        <li>#}
-            {#                            <p> گل گاوزبان :</p>#}
-            {#                            <span>۴ بسته ۲۰۰گرمی</span>#}
-            {#                        </li>#}
-            {#                        )#}
-            {#                    </ul>#}
-            {#                </div>#}
+
         </div>
         <div class="price">
             <p>قیمت : </p>
@@ -1057,8 +1026,20 @@
             </div>
         </div>
         <div class="btns">
-            <button class="alert" type="button">موجود شد به من خبر بده !</button>
-            <button class="add-to-cart" type="submit">افزودن به سبد</button>
+{#            <button class="alert" type="button">موجود شد به من خبر بده !</button>#}
+           <button class="add-to-cart" type="button" onclick="showDialog('{{ product_shops.product.name|truncatechars:12 }}', '{{  images.0.image.url }}', '{{ product_shops.material.label }}', {{ product_shops.capacity}})">افزودن به سبد</button>
+
+<div id="dialog" class="dialog">
+    <div class="dialog-content">
+        <span class="close" onclick="closeDialog()">&times;</span>
+        <img id="product-image" src="" alt="محصول">
+        <h2 id="product-name"></h2>
+        <p>تعداد مورد نیاز (کیلو): <input type="number" id="quantity" min="1" value="1" oninput="updateTotalPrice()"></p>
+        <p id="total-price"></p>
+        <button onclick="addToCart()">اضافه کردن </button>
+        <button onclick="closeDialog()">کنسل</button>
+    </div>
+</div>
         </div>
     </form>
 </div>
@@ -1187,7 +1168,7 @@
                         <!-- Footer Copyright Start -->
                         <div class="footer-copy">
                             <div class="footer-bottom-copy ">
-                                <div class="ms-copy">کپی رایت © <a class="site-name" href="index.html">پیلارست</a> تمامی
+                                <div class="ms-copy">کپی رایت © <a class="site-name" href="/">پیلارست</a> تمامی
                                     حقوق محفوظ است. پشتیبانی شده توسط Pilarest
                                 </div>
                             </div>
@@ -1305,7 +1286,7 @@
                                     <input class="qty-input" type="text" name="ms_qtybtn" value="1">
                                 </div>
                                 <div class="ms-quickview-cart ">
-                                    <button class="ms-btn-3"><img src="{% static '{% static 'assets/img/icons/pro_cart.svg'  %}' %}"
+                                    <button class="ms-btn-3"><img src="{% static 'assets/img/icons/pro_cart.svg'  %}"
                                                                   class="svg_img pro_svg" alt=""> خرید
                                     </button>
                                 </div>
@@ -1321,7 +1302,7 @@
 
 <!-- Add to Cart Notify -->
 <div class="ms-cart-notify">
-    <a href="javascript:void(0)" class="ms-cart-toggle"><img src="{% static '{% static 'assets/img/icons/pro_cart.svg'  %}' %}"
+    <a href="javascript:void(0)" class="ms-cart-toggle"><img src="{% static  'assets/img/icons/pro_cart.svg'   %}"
                                                              class="svg_img" alt="cart"><span>3</span></a>
 </div>
 
@@ -1533,7 +1514,40 @@
         });
     });
 </script>
+<script>
+    let maxOrderQuantity = 10; // حداکثر تعداد قابل سفارش
+let pricePerUnit = 100; // قیمت هر واحد
 
+function showDialog(name, image, unit, price) {
+    document.getElementById('product-name').innerText = name;
+    document.getElementById('product-image').src = image;
+    pricePerUnit = price; // بروزرسانی قیمت
+    updateTotalPrice(); // محاسبه قیمت اولیه
+    document.getElementById('dialog').style.display = 'block';
+}
+
+function closeDialog() {
+    document.getElementById('dialog').style.display = 'none';
+}
+
+function updateTotalPrice() {
+    const quantity = parseInt(document.getElementById('quantity').value) || 1;
+    const totalPrice = quantity * pricePerUnit;
+    document.getElementById('total-price').innerText = `قیمت کل: ${totalPrice} تومان`;
+    if (quantity > maxOrderQuantity) {
+        alert(`حداکثر تعداد قابل سفارش ${maxOrderQuantity} است.`);
+        document.getElementById('quantity').value = maxOrderQuantity;
+        updateTotalPrice();
+    }
+}
+
+function addToCart() {
+    const quantity = parseInt(document.getElementById('quantity').value);
+    alert(`محصول ${document.getElementById('product-name').innerText} با ${quantity} ${document.getElementById('product-name').innerText} به سبد خرید اضافه شد.`);
+    closeDialog();
+
+}
+</script>
 
 </body>
 
