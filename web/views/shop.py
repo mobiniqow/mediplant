@@ -5,6 +5,7 @@ from abstract_view.base_template_view import BaseTemplateView
 from banner.models import Banner
 from encyclopedia.models import ArticleEncyclopedia
 from product.models import Category, Product, ProductImage
+from sale.models import SaleBasket, SaleBasketProduct
 from shop.models import ShopProduct, Shop, ShopImage
 import math
 
@@ -51,8 +52,6 @@ class IndexView(BaseTemplateView):
                 i.images_list.append(
                     {"image": ProductImage.objects.filter(product=j.product).first(), "product_id": j.id})
         articles = ArticleEncyclopedia.objects.all()[:7]
-
-
         context['title'] = 'صفحه اصلی'
         context['top_banners'] = top_banners
         context['two_banners'] = two_banners
@@ -135,7 +134,7 @@ class ShopDetailsView(BaseTemplateView):
         context['shop'] = shop
         context['banners'] = banners
         context['product'] =   [product[i:i + page_size] for i in range(0, len(product), page_size)]
-        print([i for i in range( page_number )])
+
         context['page_number'] = [i for i in range( 1,page_number +1)]
 
         return context
@@ -155,4 +154,37 @@ class SearchProduct(BaseTemplateView):
             i.image_list = i.images.all()
         context['products'] = products
         context['product_shops'] = shops_product
+        return context
+
+
+class CheckoutView(BaseTemplateView):
+    template_name = 'checkout.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
+class ShopCartView(BaseTemplateView):
+    template_name = "cart.html"
+
+    def get_context_data(self, **kwargs):
+        page_size = 15
+        context = super().get_context_data(**kwargs)
+        shop_id = kwargs['id']
+        shop = get_object_or_404(Shop, pk=shop_id)
+        basket = get_object_or_404(SaleBasket, shop=shop,state__in=[
+            SaleBasket.State.SUSPEND,
+            SaleBasket.State.IN_PAY,
+            SaleBasket.State.PAY_FAILED
+        ])
+        product = SaleBasketProduct.objects.filter(basket=basket)
+        for i in product:
+            i.image = ProductImage.objects.filter(product=i.product.product).first()
+            print(i.image)
+            i.price ='{:,.0f}'.format(i.product.price)
+            i.price_all ='{:,.0f}'.format(i.product.price*i.unit)
+        context['shop'] = shop
+        context['product'] = product
+
+
         return context

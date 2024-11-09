@@ -52,22 +52,31 @@ class ProductToBasket(APIView):
             basket = SaleBasket.objects.get(id=basket_id, user=request.user)
         else:
             session_key = request.session.session_key or request.META.get('REMOTE_ADDR')
-            basket = SaleBasket.objects.get(id=basket_id, session_key=session_key)
-        shop_product = ShopProduct.objects.filter(product_id=product_id, shop=basket.shop)
+            basket = SaleBasket.objects.filter(id=basket_id, session_key=session_key)
+            if not basket.exists():
+                return Response({"message": "not found"}, status=status.HTTP_404_NOT_FOUND)
+        shop_product = ShopProduct.objects.filter(id=product_id, shop=basket.shop)
         if not shop_product.exists():
             return Response({"message": "not found"}, status=status.HTTP_404_NOT_FOUND)
         if shop_product.first().capacity < 1:
             return Response({"message": "not capacity found"}, status=status.HTTP_400_BAD_REQUEST)
         product = ShopProduct.objects.get(id=product_id)
         item = SaleBasketProduct.objects.filter(basket=basket, product=product)
+        unit = request.data.get('unit', 1)
         if item.exists():
             item = item.first()
-            item.unit = item.unit
+            print(f'item unit {item.unit} product price {product.price}')
+            basket.price -= int(product.price) * int(item.unit)
+            basket.price += int(product.price) * int(unit)
+            item.unit = unit
             item.save()
+            basket.save()
         else:
-            SaleBasketProduct.objects.create(basket=basket, product=product, unit=1)
-        basket.price += product.price
-        basket.save()
+            print(f'basket ghab {basket.price}')
+            basket.price+=product.price * int(unit)
+            basket.save()
+            SaleBasketProduct.objects.create(basket=basket, product=product, unit=unit, )
+            print(f'basket bad {basket.price}')
         return Response({"message": "Product added to basket"}, status=status.HTTP_200_OK)
 
     def put(self, request, basket_id, product_id):

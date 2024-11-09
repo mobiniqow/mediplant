@@ -1,3 +1,5 @@
+from itertools import product
+
 from django.contrib import admin
 from .models import Shop, ShopImage, ShopPhone, ShopProduct, CertificateImage
 
@@ -52,8 +54,8 @@ class ShopPhoneAdmin(admin.ModelAdmin):
 @admin.register(ShopProduct)
 class ShopProductAdmin(admin.ModelAdmin):
     list_display = ['shop', 'product', 'created_at', 'updated_at', 'capacity', 'inventory_state', 'price']
-    search_fields = ['shop__name', 'product__name']
-    list_filter = ['inventory_state']
+    search_fields = ['shop__name', 'product__name','id']
+    list_filter = ['inventory_state','shop']
     list_per_page = 20
 
     class Meta:

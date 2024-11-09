@@ -21,7 +21,7 @@ class SaleBasket(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, verbose_name='کاربر')
     session_key = models.CharField(max_length=200, null=True, verbose_name='کلید جلسه')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='تاریخ ایجاد')
-    price = models.IntegerField(validators=[MinValueValidator(0)], verbose_name='قیمت', unique=True)
+    price = models.IntegerField(validators=[MinValueValidator(0)], verbose_name='قیمت',  )
     address = models.TextField(verbose_name='آدرس')
     state = models.IntegerField(choices=State.choices, default=0, verbose_name='وضعیت')
     discount = models.IntegerField(validators=[MinValueValidator(0)], verbose_name='تخفیف')
@@ -32,6 +32,9 @@ class SaleBasket(models.Model):
         verbose_name = 'سبد خرید'
         verbose_name_plural = 'سبد‌های خرید'
 
+    def __str__(self):
+        state_display = self.get_state_display()
+        return f"سبد خرید برای {self.user} - وضعیت: {state_display} - قیمت: {self.price} تومان"
 
 class SaleBasketProduct(models.Model):
     basket = models.ForeignKey('SaleBasket', on_delete=models.SET_NULL, null=True, verbose_name='سبد خرید')
@@ -42,3 +45,6 @@ class SaleBasketProduct(models.Model):
     class Meta:
         verbose_name = 'محصول سبد خرید'
         verbose_name_plural = 'محصولات سبد خرید'
+
+    def __str__(self):
+        return f"{self.product} - {self.unit} واحد در {self.basket}"

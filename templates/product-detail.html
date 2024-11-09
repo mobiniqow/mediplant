@@ -410,11 +410,11 @@
                     </div>
                     <div class="col-md-6 col-sm-12">
                         <!-- ms-breadcrumb-list start -->
-{#                        <ul class="ms-breadcrumb-list">#}
-{#                            <li class="ms-breadcrumb-item"><a href="/">خانه</a><i#}
-{#                                    class="fas fa-chevron-left"></i></li>#}
-{#                            <li class="ms-breadcrumb-item active">جزئیات محصول</li>#}
-{#                        </ul>#}
+                        {#                        <ul class="ms-breadcrumb-list">#}
+                        {#                            <li class="ms-breadcrumb-item"><a href="/">خانه</a><i#}
+                        {#                                    class="fas fa-chevron-left"></i></li>#}
+                        {#                            <li class="ms-breadcrumb-item active">جزئیات محصول</li>#}
+                        {#                        </ul>#}
                         <!-- ms-breadcrumb-list end -->
                     </div>
                 </div>
@@ -516,20 +516,24 @@
             </div>
         </div>
         <div class="btns">
-{#            <button class="alert" type="button">موجود شد به من خبر بده !</button>#}
-           <button class="add-to-cart" type="button" onclick="showDialog('{{ product_shops.product.name|truncatechars:12 }}', '{{  images.0.image.url }}', '{{ product_shops.material.label }}', {{ product_shops.capacity}})">افزودن به سبد</button>
+            {#            <button class="alert" type="button">موجود شد به من خبر بده !</button>#}
+            <button class="add-to-cart" type="button"
+                    onclick="showDialog('{{ product_shops.product.name|truncatechars:12 }}', '{{ images.0.image.url }}', '{{ product_shops.material.label }}', {{ product_shops.capacity }})">
+                افزودن به سبد
+            </button>
 
-<div id="dialog" class="dialog">
-    <div class="dialog-content">
-        <span class="close" onclick="closeDialog()">&times;</span>
-        <img id="product-image" src="" alt="محصول">
-        <h2 id="product-name"></h2>
-        <p>تعداد مورد نیاز (کیلو): <input type="number" id="quantity" min="1" value="1" oninput="updateTotalPrice()"></p>
-        <p id="total-price"></p>
-        <button onclick="addToCart()">اضافه کردن </button>
-        <button onclick="closeDialog()">کنسل</button>
-    </div>
-</div>
+            <div id="dialog" class="dialog">
+                <div class="dialog-content">
+                    <span class="close" onclick="closeDialog()">&times;</span>
+                    <img id="product-image" src="" alt="محصول">
+                    <h2 id="product-name"></h2>
+                    <p>تعداد مورد نیاز (کیلو): <input type="number" id="quantity" min="1" value="1"
+                                                      oninput="updateTotalPrice()"></p>
+                    <p id="total-price"></p>
+                    <button type="button" onclick="addToCart()">اضافه کردن</button>
+                    <button type="button" onclick="closeDialog()">کنکل</button>
+                </div>
+            </div>
         </div>
     </form>
 </div>
@@ -557,7 +561,8 @@
                                      alt="">
                             </div>
                             <div class="qty-slide">
-                                <img class="img-responsive" src="{% static 'assets/img/product-images/3_1.jpg'  %}" alt="">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/3_1.jpg' %}"
+                                     alt="">
                             </div>
                             <div class="qty-slide">
                                 <img class="img-responsive" src="{% static 'assets/img/product-images/4_1.jpg' %}"
@@ -578,7 +583,8 @@
                                      alt="">
                             </div>
                             <div class="qty-slide">
-                                <img class="img-responsive" src="{% static 'assets/img/product-images/3_1.jpg'  %}" alt="">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/3_1.jpg' %}"
+                                     alt="">
                             </div>
                             <div class="qty-slide">
                                 <img class="img-responsive" src="{% static 'assets/img/product-images/4_1.jpg' %}"
@@ -633,7 +639,7 @@
                                     <input class="qty-input" type="text" name="ms_qtybtn" value="1">
                                 </div>
                                 <div class="ms-quickview-cart ">
-                                    <button class="ms-btn-3"><img src="{% static 'assets/img/icons/pro_cart.svg'  %}"
+                                    <button class="ms-btn-3"><img src="{% static 'assets/img/icons/pro_cart.svg' %}"
                                                                   class="svg_img pro_svg" alt=""> خرید
                                     </button>
                                 </div>
@@ -649,7 +655,7 @@
 
 <!-- Add to Cart Notify -->
 <div class="ms-cart-notify">
-    <a href="javascript:void(0)" class="ms-cart-toggle"><img src="{% static  'assets/img/icons/pro_cart.svg'   %}"
+    <a href="javascript:void(0)" class="ms-cart-toggle"><img src="{% static  'assets/img/icons/pro_cart.svg' %}"
                                                              class="svg_img" alt="cart"><span>3</span></a>
 </div>
 
@@ -796,7 +802,7 @@
                                     <div class="inc ms-qtybtn">-</div>
                                 </div>
                                 <div class="ms-quickview-cart ">
-                                    <button class="ms-btn-3"><img src="{% static 'assets/img/icons/pro_cart.svg'  %}"
+                                    <button class="ms-btn-3"><img src="{% static 'assets/img/icons/pro_cart.svg' %}"
                                                                   class="svg_img pro_svg" alt=""> خرید
                                     </button>
                                 </div>
@@ -832,6 +838,22 @@
 
 
 <script>
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Check if this cookie string begins with the desired name
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
     var mySwiper = new Swiper('.swiper-container', {
         autoplay: {
             delay: 3000,
@@ -863,37 +885,73 @@
 </script>
 <script>
     let maxOrderQuantity = 10; // حداکثر تعداد قابل سفارش
-let pricePerUnit = 100; // قیمت هر واحد
+    let pricePerUnit = 100; // قیمت هر واحد
 
-function showDialog(name, image, unit, price) {
-    document.getElementById('product-name').innerText = name;
-    document.getElementById('product-image').src = image;
-    pricePerUnit = price; // بروزرسانی قیمت
-    updateTotalPrice(); // محاسبه قیمت اولیه
-    document.getElementById('dialog').style.display = 'block';
-}
-
-function closeDialog() {
-    document.getElementById('dialog').style.display = 'none';
-}
-
-function updateTotalPrice() {
-    const quantity = parseInt(document.getElementById('quantity').value) || 1;
-    const totalPrice = quantity * pricePerUnit;
-    document.getElementById('total-price').innerText = `قیمت کل: ${totalPrice} تومان`;
-    if (quantity > maxOrderQuantity) {
-        alert(`حداکثر تعداد قابل سفارش ${maxOrderQuantity} است.`);
-        document.getElementById('quantity').value = maxOrderQuantity;
+    function showDialog(name, image, unit, price) {
+        document.getElementById('product-name').innerText = name;
+        document.getElementById('product-image').src = image;
+        pricePerUnit = price;
         updateTotalPrice();
+        document.getElementById('dialog').style.display = 'block';
     }
-}
 
-function addToCart() {
-    const quantity = parseInt(document.getElementById('quantity').value);
-    alert(`محصول ${document.getElementById('product-name').innerText} با ${quantity} ${document.getElementById('product-name').innerText} به سبد خرید اضافه شد.`);
-    closeDialog();
+    function closeDialog() {
+        document.getElementById('dialog').style.display = 'none';
+    }
 
-}
+    function updateTotalPrice() {
+        const quantity = parseInt(document.getElementById('quantity').value) || 1;
+        const totalPrice = quantity * pricePerUnit;
+        document.getElementById('total-price').innerText = `قیمت کل:${totalPrice} تومان`;
+        if (quantity > maxOrderQuantity) {
+            alert(`حداکثر تعداد قابل سفارش ${maxOrderQuantity} است.`);
+            document.getElementById('quantity').value = maxOrderQuantity;
+            updateTotalPrice();
+        }
+    }
+
+    function addToCart() {
+        const quantity = parseInt(document.getElementById('quantity').value);
+        addItemToCardApi( quantity)
+        alert(`محصول ${document.getElementById('product-name').innerText} با ${quantity} ${document.getElementById('product-name').innerText} به سبد خرید اضافه شد.`);
+
+        {#closeDialog();#}
+    }
+
+    async function addItemToCardApi(quantity)  {
+        let basket_id = await getCart()
+        let product = '{{ product_id }}'
+        var settings = {
+            "url": `/basket/${basket_id['basket_id']}/product/${product}`,
+            "method": "POST",
+            "timeout": 0,
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                 "X-CSRFToken": getCookie('csrftoken')
+            },
+            "data": {
+                "unit": quantity
+            }
+        };
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
+    }
+
+    function getCart() {
+        let shop = "{{ shop_id }}";
+        var settings = {
+            "url": `/basket/${shop}`,
+            "method": "POST",
+            "timeout": 0,
+            "headers": {
+                "X-CSRFToken": getCookie('csrftoken')  // توکن CSRF را به هدر اضافه می‌کنیم
+            }
+        };
+        return $.ajax(settings)
+    }
+
 </script>
 
 </body>

@@ -6,7 +6,7 @@
                 <div class="ms-flex">
                     <div class="align-self-center ms-header-logo">
                         <div class="header-logo">
-                            <a href="index.html"><img src="{% static 'assets/img/logo/logo.png' %}" alt="Site Logo"></a>
+                            <a href="/"><img src="{% static 'assets/img/logo/logo.png' %}" alt="Site Logo"></a>
                         </div>
                     </div>
                     <div class="align-self-center ms-header-search">
@@ -37,21 +37,19 @@
                                     </a>
                                     <ul class="ms-dropdown-menu">
                                         <li><a class="dropdown-item" href="/profile"> ویرایش پروفایل
-                                            </a></li>
+                                        </a></li>
                                         <li><a class="dropdown-item" href="/shop/orders">سفارشات</a></li>
                                         <li><a class="dropdown-item" href="/medic/prescription">نسخه های پزشکی</a></li>
                                         <li><a class="dropdown-item" href="/transactions">ترکنش ها</a></li>
                                         <li><a class="dropdown-item" href="/logout">خروج</a></li>
                                     </ul>
                                 </div>
-                                <!-- Header User End -->
-                                <!-- Header wishlist Start -->
                                 <a href="javascript:void(0)" class="ms-header-btn"
                                    title="علاقه مندی">
                                     <div class="header-icon">
                                         <img src="{% static 'assets/img/icons/wishlist.svg' %}"
                                              class="svg_img header_svg" alt="">
-                                    <span class="{% if medic_notification > 0 %}main-label-note-new{% endif %}"></span>
+                                        <span class="{% if medic_notification > 0 %}main-label-note-new{% endif %}"></span>
 
                                     </div>
                                     <div class="ms-btn-desc">
@@ -60,9 +58,7 @@
                                                 class="ms-wishlist-count">{{ medic_notification }}</span> مورد </span>
                                     </div>
                                 </a>
-                                <!-- Header wishlist End -->
-                                <!-- Header Cart Start -->
-                                <a href="javascript:void(0)" class="ms-header-btn ms-cart-toggle"
+                                <a href="checkout" class="ms-header-btn "
                                    title="سبدهای خرید">
                                     <div class="header-icon">
                                         <img src="{% static 'assets/img/icons/cart_5.svg' %}"
@@ -80,8 +76,37 @@
                         </div>
 
                     {% else %}
-                        <span onclick='window.open("/login/","_self")'
-                              class="ms-btn-stitle">ورود</span>
+                        <div class="align-self-center">
+
+                            <div class="ms-header-bottons">
+                                <div class="ms-acc-drop">
+                                    <a href="javascript:void(0)"
+                                       class="ms-header-btn ms-header-user dropdown-toggle ms-user-toggle"
+                                       title="حساب کاربری">
+                                        <div class="header-icon">
+                                            <img src="{% static 'assets/img/icons/user.svg' %}"
+                                                 class="svg_img header_svg" alt="">
+                                        </div>
+                                        <span onclick='window.open("/login/?callback=" + window.location.pathname, "_self")'
+                                              class="ms-btn-stitle">ورود</span>
+                                    </a>
+                                </div>
+
+                                <a href="checkout" class="ms-header-btn "
+                                   title="سبدهای خرید">
+                                    <div class="header-icon">
+                                        <img src="{% static 'assets/img/icons/cart_5.svg' %}"
+                                             class="svg_img header_svg" alt="">
+                                        <span class="{% if shop_notification > 0 %}main-label-note-new{% endif %}"></span>
+                                    </div>
+                                    <div class="ms-btn-desc">
+                                        <span class="ms-btn-title">سبد خرید</span>
+                                        <span class="ms-btn-stitle"><span
+                                                class="ms-cart-count">{{ shop_notification }}</span> مورد </span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
                     {% endif %}
                 </div>
             </div>
@@ -162,85 +187,7 @@
                                 class="svg_img search_svg" alt=""></button>
                     </form>
                 </div>
-                <ul>
-                    <li><a href="/">خانه</a></li>
-                    <li><a href="javascript:void(0)">دسته بندی‌ها</a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="javascript:void(0)">کلاسیک ساده</a>
-                                <ul class="sub-menu">
-                                    <li><a href="shop-left-sidebar-col-3.html">ستون کناری سمت راست 3</a></li>
-                                    <li><a href="shop-left-sidebar-col-4.html">ستون کناری سمت راست 4</a></li>
-                                    <li><a href="shop-right-sidebar-col-3.html">ستون کناری سمت چپ 3</a></li>
-                                    <li><a href="shop-right-sidebar-col-4.html">ستون کناری سمت چپ 4</a></li>
-                                    <li><a href="shop-full-width.html">عرض کامل 4 ستون</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">کلاسیک ساده</a>
-                                <ul class="sub-menu">
-                                    <li><a href="shop-banner-left-sidebar-col-3.html">ستون سمت راست 3 با بنر</a></li>
-                                    <li><a href="shop-banner-left-sidebar-col-4.html">ستون سمت راست 4 با بنر</a></li>
-                                    <li><a href="shop-banner-right-sidebar-col-3.html">ستون سمت چپ 3 با بنر</a></li>
-                                    <li><a href="shop-banner-right-sidebar-col-4.html">ستون سمت چپ 4 با بنر</a></li>
-                                    <li><a href="shop-banner-full-width.html">عرض کامل 4 ستون با بنر</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">ستون ساده</a>
-                                <ul class="sub-menu">
-                                    <li><a href="shop-full-width-col-3.html">عرض کامل 3 ستون</a></li>
-                                    <li><a href="shop-full-width-col-4.html">عرض کامل 4 ستون</a></li>
-                                    <li><a href="shop-full-width-col-5.html">عرض کامل 5 ستون</a></li>
-                                    <li><a href="shop-full-width-col-6.html">عرض کامل 6 ستون</a></li>
-                                    <li><a href="shop-banner-full-width-col-3.html">عرض کامل 3 ستون با بنر</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">لیست ساده</a>
-                                <ul class="sub-menu">
-                                    <li><a href="shop-list-left-sidebar.html">فروشگاه نوار کناری سمت راست</a></li>
-                                    <li><a href="shop-list-right-sidebar.html">فروشگاه نوار کناری سمت چپ</a></li>
-                                    <li><a href="shop-list-banner-left-sidebar.html">نوار کناری بنر سمت راست</a></li>
-                                    <li><a href="shop-list-banner-right-sidebar.html">نوار کناری سمت چپ بنر</a></li>
-                                    <li><a href="shop-list-full-col-2.html">عرض کامل 2 ستون</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="javascript:void(0)">محصولات</a>
-                        <ul class="sub-menu">
-                            <li><a href="product-left-sidebar.html">نوار کناری سمت راست محصول</a></li>
-                            <li><a href="product-right-sidebar.html">نوار کناری سمت چپ محصول</a></li>
-                            <li><a href="product-full-width.html">عرض کامل محصول</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown"><a href="javascript:void(0)">مقالات</a>
-                        <ul class="sub-menu">
-                            <li><a href="blog-left-sidebar.html">نوار کناری سمت راست</a></li>
-                            <li><a href="blog-right-sidebar.html">نوار کناری سمت چپ</a></li>
-                            <li><a href="blog-full-width.html">تمام عرض</a></li>
-                            <li><a href="blog-detail-left-sidebar.html">جزئیات نوار کناری سمت راست</a></li>
-                            <li><a href="blog-detail-right-sidebar.html">جزئیات نوار کناری سمت چپ</a></li>
-                            <li><a href="blog-detail-full-width.html">جزئیات با عرض کامل</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="javascript:void(0)">صفحات</a>
-                        <ul class="sub-menu">
-                            <li><a href="about-us.html">درباره ما</a></li>
-                            <li><a href="contact-us.html">تماس با ما</a></li>
-                            <li><a href="cart.html">صفحه پرداخت</a></li>
-                            <li><a href="checkout.html">بررسی خرید</a></li>
-                            <li><a href="compare.html">مقایسه</a></li>
-                            <li><a href="faq.html">سوالات</a></li>
-                            <li><a href="login.html">ورود</a></li>
-                            <li><a href="register.html">ثبت نام</a></li>
-                            <li><a href="track-order.html">پیگیری سفارش</a></li>
-                            <li><a href="terms-condition.html">شرایط و ضوابط</a></li>
-                            <li><a href="privacy-policy.html">سیاست حفظ حریم خصوصی</a></li>
-                        </ul>
-                    </li>
-                </ul>
+
             </div>
             <div class="header-res-lan-curr">
                 <!-- Social Start -->
@@ -270,7 +217,7 @@
                     <!-- Header Logo Start -->
                     <div class="col ms-header-logo">
                         <div class="header-logo">
-                            <a href="index.html">
+                            <a href="/">
                                 <img src="{% static 'assets/img/logo/logo.png' %}" alt="Site Logo">
                             </a>
                         </div>
