@@ -1,0 +1,1177 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <title>Masterkart - الگوی HTML تجارت الکترونیک چند منظوره</title>
+    <meta name="keywords"
+          content="Bootstrap 5.x, ecommerce, farming, food market, grocery market, grocery shop, grocery store, grocery supper market, multi vendor, organic food, supermarket, supermarket grocery">
+    <meta name="description" content="Multipurpose eCommerce HTML Template">
+    <meta name="author" content="Pilarest">
+
+    <!-- site Favicon -->
+    <link rel="icon" href="{% static 'assets/img/favicon/favicon.png' %}" sizes="32x32">
+
+    <!-- css Icon Font -->
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/msicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
+
+    <!-- css All Plugins Files -->
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap-select.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/slick.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/nouislider.css' %}">
+
+    <!-- Main Style -->
+    <link rel="stylesheet" id="main_style" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+    <link rel="stylesheet" class="color-css" href="{% static 'assets/css/color-01.css' %}">
+
+</head>
+
+<body>
+<!-- Loader -->
+<div id="ms-overlay">
+    <div class="loader"></div>
+</div>
+
+<!-- Header start  -->
+{% include './extentions/header.html' with categories=categories_map is_active=is_active medic_notification=medic_notification shop_notification=shop_notification %}
+<!-- Header End  -->
+
+<!-- Category sidebar Start -->
+<div class="ms-side-cat-overlay"></div>
+<div class="col-lg-3 ms-category-sidebar">
+    <div class="cat-sidebar">
+        <div class="cat-sidebar-box">
+            <div class="ms-cat-sidebar-wrap">
+                <!-- Sidebar Category Block -->
+                <div class="ms-sidebar-block">
+                    <div class="ms-sb-title">
+                        <h3 class="ms-sidebar-title">دسته بندی
+                            <button class="ms-close">×</button>
+                        </h3>
+                    </div>
+                    <div class="ms-sb-block-content">
+                        <ul>
+                            <li class="ms-list">
+                                <div class="ms-sidebar-block-item"><img
+                                        src="{% static 'assets/img/icons/dress-8.svg' %}" class="svg_img" alt="drink">لباس
+                                </div>
+                                <ul style="display: block;">
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">پیراهن <span
+                                                title="Available Stock">- 25</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html"> شلوار جین <span
+                                                title="Available Stock">- 52</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">ژاکت<span
+                                                title="Available Stock">- 500</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">لباس و روپوش <span
+                                                title="Available Stock">- 35</span></a></div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ms-sb-block-content">
+                        <ul>
+                            <li class="ms-list">
+                                <div class="ms-sidebar-block-item"><img
+                                        src="{% static 'assets/img/icons/shoes-8.svg' %}" class="svg_img" alt="drink">کفش
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">ورزشی <span
+                                                title="Available Stock">- 25</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">مجلسی <span
+                                                title="Available Stock">- 52</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">مختلف <span
+                                                title="Available Stock">- 40</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">کفش ایمن<span
+                                                title="Available Stock">- 35</span></a></div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ms-sb-block-content">
+                        <ul>
+                            <li class="ms-list">
+                                <div class="ms-sidebar-block-item"><img
+                                        src="{% static 'assets/img/icons/jewelry-8.svg' %}" class="svg_img" alt="drink">جواهرات
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">گوشواره <span
+                                                title="Available Stock">- 50</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">حلقه ازدواج <span
+                                                title="Available Stock">- 35</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">گردنبند <span
+                                                title="Available Stock">- 40</span></a></div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ms-sb-block-content">
+                        <ul>
+                            <li class="ms-list">
+                                <div class="ms-sidebar-block-item"><img
+                                        src="{% static 'assets/img/icons/perfume-8.svg' %}" class="svg_img" alt="drink">عطر
+                                    و ادکلن
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">عطر لباس<span
+                                                title="Available Stock">- 4 پاکت</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">اسپری <span
+                                                title="Available Stock">- 52 پاکت</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">عطر گل <span
+                                                title="Available Stock">- 10 پاکت</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">خوشبو کننده
+                                            هوا<span title="Available Stock">- 35 پاکت</span></a></div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ms-sb-block-content">
+                        <ul>
+                            <li class="ms-list">
+                                <div class="ms-sidebar-block-item"><img
+                                        src="{% static 'assets/img/icons/cosmetics-8.svg' %}" class="svg_img"
+                                        alt="drink">لوازم آرایشی
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">شامپو<span
+                                                title="Available Stock"></span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">ضد آفتاب<span
+                                                title="Available Stock"></span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">شامپو بدن<span
+                                                title="Available Stock"></span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">کیت آرایش<span
+                                                title="Available Stock"></span></a></div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ms-sb-block-content">
+                        <ul>
+                            <li class="ms-list">
+                                <div class="ms-sidebar-block-item"><img
+                                        src="{% static 'assets/img/icons/glasses-8.svg' %}" class="svg_img" alt="drink">عینک
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">عینک آفتابی <span
+                                                title="Available Stock">- 20</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">لنز عینک <span
+                                                title="Available Stock">- 52</span></a></div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ms-sb-block-content">
+                        <ul>
+                            <li class="ms-list">
+                                <div class="ms-sidebar-block-item"><img src="{% static 'assets/img/icons/bag-8.svg' %}"
+                                                                        class="svg_img" alt="drink">کیف
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">کیسه خرید <span
+                                                title="Available Stock">- 25</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">کوله پشتی بدنسازی
+                                            <span title="Available Stock">- 52</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">کیف پول <span
+                                                title="Available Stock">- 40</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="product_list.html">کیف جیبی <span
+                                                title="Available Stock">- 35</span></a></div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Category sidebar End -->
+
+<!-- Cart sidebar Start -->
+<div class="ms-side-cart-overlay"></div>
+<div id="ms-side-cart" class="ms-side-cart">
+    <div class="ms-cart-inner">
+        <div class="ms-cart-top">
+            <div class="ms-cart-title">
+                <span class="cart_title">سبد خرید من</span>
+                <a href="javascript:void(0)" class="ms-cart-close"><img src="{% static 'assets/img/icons/close.svg' %}"
+                                                                        class="svg_img pro_svg" alt="close"></a>
+            </div>
+            <ul class="ms-cart-pro-items">
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/25_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="cart-pro-title">لیمو تازه</a>
+                        <span class="cart-price"><span>2500 تومان x</span> کیلوگرم</span>
+                        <div class="qty-plus-minus">
+                            <input class="qty-input" type="text" name="ms-qtybtn" value="1">
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/17_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="cart-pro-title">زنجبیل - ارگانیک</a>
+                        <span class="cart-price"><span>5000 تومان x</span> گرم</span>
+                        <div class="qty-plus-minus">
+                            <input class="qty-input" type="text" name="ms-qtybtn" value="1">
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/2_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="cart-pro-title"> بسته خرما</a>
+                        <span class="cart-price"><span>6000 تومان x</span> بسته</span>
+                        <div class="qty-plus-minus">
+                            <input class="qty-input" type="text" name="ms-qtybtn" value="1">
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="ms-cart-bottom">
+            <div class="cart-sub-total">
+                <table class="table cart-table">
+                    <tbody>
+                    <tr>
+                        <td class="text-left">جمع فرعی:</td>
+                        <td class="text-right">300 هزار</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">مالیات بر ارزش افزوده (20%):</td>
+                        <td class="text-right">60 هزار</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">جمع :</td>
+                        <td class="text-right primary-color">360 هزار</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="cart_btn">
+                <a href="cart.html" class="ms-btn-1">مشاهده سبد خرید</a>
+                <a href="checkout.html" class="ms-btn-2">بررسی خرید</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Cart sidebar End -->
+
+<!-- Wishlist sidebar Start -->
+<div class="ms-side-wish-overlay"></div>
+<div id="ms-side-wish" class="ms-side-wish">
+    <div class="ms-wish-inner">
+        <div class="ms-wish-top">
+            <div class="ms-wish-title">
+                <span class="wish_title">لیست علاقه مندی‌ها</span>
+                <a href="javascript:void(0)" class="ms-wish-close"><img src="{% static 'assets/img/icons/close.svg' %}"
+                                                                        class="svg_img pro_svg" alt="close"></a>
+            </div>
+            <ul class="ms-wish-pro-items">
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/18_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="wish-pro-title">لیمو</a>
+                        <span class="wish-price"><span>25 هزار x </span> کیلوگرم </span>
+                        <div class="ms-availability">
+                            <p class="stock avail">موجود در انبار</p>
+                            <a href="" class="ms-btn-2">خرید</a>
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/20_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="wish-pro-title">مارچوبه</a>
+                        <span class="wish-price"><span>5 هزار x</span> گرم</span>
+                        <div class="ms-availability">
+                            <p class="stock not-avail">موجودی</p>
+                            <div class="ms-wish-contact-btns">
+                                <a href="" class="ms-btn-2 btn-disabled">خرید</a>
+                                <a href="" class="ms-btn-1">مخاطب</a>
+                            </div>
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/31_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="wish-pro-title">انبه</a>
+                        <span class="wish-price"><span>59 هزار x</span> بسته</span>
+                        <div class="ms-availability">
+                            <p class="stock avail">موجود در انبار</p>
+                            <a href="" class="ms-btn-2">خرید</a>
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/23_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="wish-pro-title">توت فرنگی</a>
+                        <span class="wish-price"><span>59 هزار x</span> کیلوگرم</span>
+                        <div class="ms-availability">
+                            <p class="stock avail">موجود در انبار</p>
+                            <a href="" class="ms-btn-2">خرید</a>
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Wishlist sidebar End -->
+
+<!-- Breadcrumb start -->
+<div class="ms-breadcrumb m-b-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="row ms_breadcrumb_inner">
+                    <div class="col-md-6 col-sm-12">
+                        <h2 class="ms-breadcrumb-title">صفحه فروشگاه</h2>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <!-- ms-breadcrumb-list start -->
+                        <ul class="ms-breadcrumb-list">
+                            <li class="ms-breadcrumb-item"><a href="index.html">خانه</a><i
+                                    class="fas fa-chevron-left"></i></li>
+                            <li class="ms-breadcrumb-item active">صفحه فروشگاه</li>
+                        </ul>
+                        <!-- ms-breadcrumb-list end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb end -->
+
+<!-- Category section -->
+<section class="ms-category body-bg p-b-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 border-content-color">
+                <div class="ms-category-block owl-carousel" dir="ltr">
+                    {% for model in categories %}
+                        <div class="ms-cat-box ms-cat-box-9">
+                            <a href="/product?category={{ model.id }}" class="ms-cat-icon">
+                                <img src="{{ model.image.url }}" class="svg_img" alt="icon">
+                                <h4 class="ms-cat-title">{{ model.name }}</h4>
+                            </a>
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Category section End -->
+
+<!-- Shop section -->
+<section class="ms-shop padding-tb-30">
+    <div class="container">
+        <div class="row">
+            <div class="ms-shop-rightside col-lg-9 order-lg-last col-md-12 order-md-first margin-b-30">
+                <!-- Shop Top Start -->
+                <div class="ms-pro-list-top d-flex">
+                    <div class="col-md-6 ms-grid-list">
+                        <div class="ms-gl-btn">
+                            <button class="grid-btn btn-grid active">
+                                <img src="{% static 'assets/img/icons/grid.svg' %}" class="svg_img gl_svg" alt="">
+                            </button>
+                            <button class="grid-btn btn-list">
+                                <img src="{% static 'assets/img/icons/list.svg' %}" class="svg_img gl_svg" alt="">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-6 ms-sort-select">
+                        <div class="ms-select-inner">
+                            <select name="ms-select" id="ms-select">
+                                <option selected disabled>ترتیب بندی</option>
+                                <option value="5">قیمت کمتر به بیشتر</option>
+                                <option value="6">قیمت بیشتر به کمتر</option>
+                            </select>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Shop Top End -->
+
+                <!-- Select Bar Start -->
+                {#                <div class="ms-select-bar d-flex">#}
+                {#                    <span class="ms-select-btn">لباس ها<a class="ms-select-cancel"#}
+                {#                                                          href="javascript:void(0)">×</a></span>#}
+                {#                    <span class="ms-select-btn">میوه جات<a class="ms-select-cancel"#}
+                {#                                                           href="javascript:void(0)">×</a></span>#}
+                {#                    <span class="ms-select-btn">گوشت<a class="ms-select-cancel" href="javascript:void(0)">×</a></span>#}
+                {#                    <span class="ms-select-btn">لبنیات<a class="ms-select-cancel" href="javascript:void(0)">×</a></span>#}
+                {#                    <span class="ms-select-btn">عطر و ادکلن<a class="ms-select-cancel"#}
+                {#                                                              href="javascript:void(0)">×</a></span>#}
+                {#                    <span class="ms-select-btn">جواهرات<a class="ms-select-cancel"#}
+                {#                                                          href="javascript:void(0)">×</a></span>#}
+                {#                    <span class="ms-select-btn ms-select-btn-clear"><a class="ms-select-clear"#}
+                {#                                                                       href="javascript:void(0)">پاک کردن همه</a></span>#}
+                {#                </div>#}
+                <!-- Select Bar End -->
+
+                <!-- Shop content Start -->
+                <div class="shop-pro-content">
+                    <div class="shop-pro-inner">
+                        <div class="row" id="items">
+                            <!-- محصولات به صورت داینامیک اینجا اضافه می‌شوند -->
+                        </div>
+                    </div>
+
+                    <!-- Pagination Start -->
+                    <div class="ms-pro-pagination">
+                        <span id="pagination-info">نمایش 1-12 از 21 مورد</span>
+                        <ul class="ms-pro-pagination-inner" id="pagination">
+                            <!-- لینک‌های پیجینیشن به صورت داینامیک اضافه می‌شوند -->
+                        </ul>
+                    </div>
+                    <!-- Pagination End -->
+                </div>
+
+                <!--Shop content End -->
+
+            </div>
+            <!-- Sidebar Area Start -->
+            <div class="ms-shop-sidebar col-lg-3 order-lg-first col-md-12 order-md-last m-t-991">
+                <div id="shop_sidebar">
+                    <div class="ms-sidebar-wrap">
+                        <!-- Sidebar Category Block -->
+                        <div class="ms-sidebar-block">
+                            <div class="ms-sb-title">
+                                <h3 class="ms-sidebar-title">دسته بندی
+                                    <div class="ms-sidebar-res"><i class="fas fa-chevron-down"></i></div>
+                                </h3>
+                            </div>
+                            <div class="ms-sb-block-content" id="category-list">
+                                <ul>
+                                    <!-- Categories will be populated dynamically from API -->
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Sidebar Weight Block -->
+                        <div class="ms-sidebar-block">
+                            <div class="ms-sb-title">
+                                <h3 class="ms-sidebar-title">دسته بندی
+                                    <div class="ms-sidebar-res"><i class="fas fa-chevron-down"></i></div>
+                                </h3>
+                            </div>
+                            <div class="ms-sb-block-content">
+                                <ul id="category-list1"></ul>
+                            </div>
+                        </div>
+                        <!-- Sidebar Price Block -->
+                        <div class="ms-sidebar-block">
+                            <div class="ms-sb-title">
+                                <h3 class="ms-sidebar-title">قیمت
+                                    <div class="ms-sidebar-res"><i class="fas fa-chevron-down"></i></div>
+                                </h3>
+                            </div>
+                            <div class="ms-sb-block-content ms-price-range-slider es-price-slider" dir="ltr">
+                                <div class="ms-price-filter">
+                                    <div class="ms-price-input">
+                                        <label class="filter__label">
+                                            از<input type="text" class="filter__input">
+                                        </label>
+                                        <span class="ms-price-divider"></span>
+                                        <label class="filter__label">
+                                            به<input type="text" class="filter__input">
+                                        </label>
+                                    </div>
+                                    <div id="ms-sliderPrice" class="filter__slider-price" data-min="0" data-max="250"
+                                         data-step="10"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Sidebar tags -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Shop section End -->
+
+<!-- Footer Start -->
+<footer class="ms-footer m-t-30">
+    <div class="footer-container">
+        <div class="footer-top padding-tb-60">
+            <div class="container">
+                <div class="row m-minus-991">
+                    <div class="col-sm-12 col-lg-3 ms-footer-cat">
+                        <div class="ms-footer-widget ms-footer-company">
+                            <img src="{% static 'assets/img/logo/footer-logo.png' %}" class="ms-footer-logo"
+                                 alt="footer logo">
+                            <p class="ms-footer-detail">مسترکارت بزرگترین بازار محصولات خواربار فروشی است. نیازهای
+                                روزانه خود را از فروشگاه ما دریافت کنید.</p>
+                            <div class="ms-app-store">
+                                <a href="#" class="app-img"><img src="{% static 'assets/img/app/android.png' %}"
+                                                                 class="adroid" alt="apple"></a>
+                                <a href="#" class="app-img"><img src="{% static 'assets/img/app/apple.png' %}"
+                                                                 class="apple" alt="apple"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-2 ms-footer-info">
+                        <div class="ms-footer-widget">
+                            <h4 class="ms-footer-heading">دسته بندی</h4>
+                            <div class="ms-footer-links ms-footer-dropdown">
+                                <ul class="align-items-center">
+                                    <li class="ms-footer-link"><a href="product_list.html"> شیر و لبنیات </a></li>
+                                    <li class="ms-footer-link"><a href="shop-banner-left-sidebar-col-3.html">میان وعده و
+                                        ادویه</a></li>
+                                    <li class="ms-footer-link"><a href="shop-full-width-col-5.html">فست فود</a></li>
+                                    <li class="ms-footer-link"><a href="shop-list-left-sidebar.html">آبمیوه و
+                                        نوشیدنی</a></li>
+                                    <li class="ms-footer-link"><a href="shop-list-full-col-2.html">نانوایی</a></li>
+                                    <li class="ms-footer-link"><a href="shop-banner-right-sidebar-col-4.html">غذای
+                                        دریایی</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-2 ms-footer-account">
+                        <div class="ms-footer-widget">
+                            <h4 class="ms-footer-heading">شرکت</h4>
+                            <div class="ms-footer-links ms-footer-dropdown">
+                                <ul class="align-items-center">
+                                    <li class="ms-footer-link"><a href="about-us.html">درباره ما</a></li>
+                                    <li class="ms-footer-link"><a href="track-order.html">تحویل</a></li>
+                                    <li class="ms-footer-link"><a href="privacy-policy.html">اطلاع قانونی</a></li>
+                                    <li class="ms-footer-link"><a href="terms-condition.html">شرایط و ضوابط</a></li>
+                                    <li class="ms-footer-link"><a href="checkout.html">پرداخت امن</a></li>
+                                    <li class="ms-footer-link"><a href="contact-us.html">تماس با ما</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-2 ms-footer-service">
+                        <div class="ms-footer-widget">
+                            <h4 class="ms-footer-heading">حساب کاربری</h4>
+                            <div class="ms-footer-links ms-footer-dropdown">
+                                <ul class="align-items-center">
+                                    <li class="ms-footer-link"><a href="register.html">ثبت نام</a></li>
+                                    <li class="ms-footer-link"><a href="cart.html">مشاهده سبد خرید</a></li>
+                                    <li class="ms-footer-link"><a href="privacy-policy.html">سیاست بازگشت</a></li>
+                                    <li class="ms-footer-link"><a href="#">فروشنده شوید</a></li>
+                                    <li class="ms-footer-link"><a href="#">برنامه های وابسته</a></li>
+                                    <li class="ms-footer-link"><a href="checkout.html">مبلغ پرداختی</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-3 ms-footer-cont-social">
+                        <div class="ms-footer-contact">
+                            <div class="ms-footer-widget">
+                                <h4 class="ms-footer-heading">مخاطب</h4>
+                                <div class="ms-footer-links ms-footer-dropdown">
+                                    <ul class="align-items-center">
+                                        <li class="ms-footer-link ms-foo-location"><span><img
+                                                src="{% static 'assets/img/icons/foo-location.svg' %}"
+                                                class="svg_img foo_svg" alt=""></span>
+                                            <p>ایران - تهران </p>
+                                        </li>
+                                        <li class="ms-footer-link ms-foo-call">
+                                                <span>
+                                                    <img src="{% static 'assets/img/icons/foo-wp.svg' %}"
+                                                         class="svg_img foo_svg" alt="">
+                                                </span>
+                                            <a href="tel:+009876543210">6789 345 0912</a>
+                                        </li>
+                                        <li class="ms-footer-link ms-foo-mail">
+                                                <span>
+                                                    <img src="{% static 'assets/img/icons/foo-mail.svg' %}"
+                                                         class="svg_img foo_svg" alt="">
+                                                </span>
+                                            <a href="mailto:example@email.com">example@email.com</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ms-footer-social">
+                            <div class="ms-footer-widget">
+                                <div class="ms-footer-links ms-footer-dropdown">
+                                    <ul class="align-items-center">
+                                        <li class="ms-footer-link"><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                        <li class="ms-footer-link"><a href="#"><i class="fa fa-twitter-square"></i></a>
+                                        </li>
+                                        <li class="ms-footer-link"><a href="#"><i class="fa fa-facebook-square"></i>
+                                        </li>
+                                        <li class="ms-footer-link"><a href="#"><i class="fa fa-linkedin-square"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="ms-bottom-info">
+                        <!-- Footer Copyright Start -->
+                        <div class="footer-copy">
+                            <div class="footer-bottom-copy ">
+                                <div class="ms-copy">کپی رایت © <a class="site-name" href="index.html">پیلارست</a> تمامی
+                                    حقوق محفوظ است. پشتیبانی شده توسط Pilarest
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Footer Copyright End -->
+                        <!-- Footer payment -->
+                        <div class="footer-bottom-right">
+                            <div class="footer-bottom-payment d-flex justify-content-center">
+                                <div class="payment-link">
+                                    <img src="{% static 'assets/img/hero-bg/payment.png' %}" alt="payment">
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- Footer payment -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer Area End -->
+
+<!-- Quickview Modal -->
+<div class="modal fade quickview-modal" id="ms_quickview_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <button type="button" class="btn-close qty_close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-5 col-sm-12 col-xs-12" dir="ltr">
+                        <div class="qty-product-cover">
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/1_1.jpg' %}"
+                                     alt="">
+                            </div>
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/2_1.jpg' %}"
+                                     alt="">
+                            </div>
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/3_1.jpg' %}"
+                                     alt="">
+                            </div>
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/4_1.jpg' %}"
+                                     alt="">
+                            </div>
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/5_1.jpg' %}"
+                                     alt="">
+                            </div>
+                        </div>
+                        <div class="qty-nav-thumb">
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/1_1.jpg' %}"
+                                     alt="">
+                            </div>
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/2_1.jpg' %}"
+                                     alt="">
+                            </div>
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/3_1.jpg' %}"
+                                     alt="">
+                            </div>
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/4_1.jpg' %}"
+                                     alt="">
+                            </div>
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/5_1.jpg' %}"
+                                     alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-sm-12 col-xs-12">
+                        <div class="quickview-pro-content">
+                            <h5 class="ms-quick-title"><a href="product-left-sidebar.html">پاکت میوه خشک مخلوط تریل
+                                ارگانیک مرغوب</a></h5>
+                            <div class="ms-quickview-rating">
+                                <i class="fa-solid fa-star fill"></i>
+                                <i class="fa-solid fa-star fill"></i>
+                                <i class="fa-solid fa-star fill"></i>
+                                <i class="fa-solid fa-star fill"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+
+                            <div class="ms-quickview-desc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                                با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان
+                                که لازم است
+                            </div>
+                            <div class="ms-quickview-price">
+                                <span class="new-price">150 هزار تومان</span>
+                                <span class="old-price">130 هزار تومان</span>
+                            </div>
+
+                            <div class="ms-pro-variation">
+                                <div class="ms-pro-variation-inner ms-pro-variation-size ms-pro-size">
+                                    <span>اندازه</span>
+                                    <div class="ms-pro-variation-content">
+                                        <ul class="ms-opt-size">
+                                            <li class="active"><a href="javascript:void(0)" class="ms-opt-sz"
+                                                                  data-tooltip="Small">250 گرم</a></li>
+                                            <li><a href="javascript:void(0)" class="ms-opt-sz" data-tooltip="Medium">500
+                                                گرم</a></li>
+                                            <li><a href="javascript:void(0)" class="ms-opt-sz" data-tooltip="Large">1
+                                                کیلوگرم</a></li>
+                                            <li><a href="javascript:void(0)" class="ms-opt-sz"
+                                                   data-tooltip="Extra Large">2 کیلوگرم</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ms-quickview-qty">
+                                <div class="qty-plus-minus">
+                                    <input class="qty-input" type="text" name="ms_qtybtn" value="1">
+                                </div>
+                                <div class="ms-quickview-cart ">
+                                    <button class="ms-btn-3"><img src="{% static 'assets/img/icons/pro_cart.svg' %}"
+                                                                  class="svg_img pro_svg" alt=""> خرید
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Quickview Modal end -->
+
+<!-- Add to Cart Notify -->
+<div class="ms-cart-notify">
+    <a href="javascript:void(0)" class="ms-cart-toggle"><img src="{% static 'assets/img/icons/pro_cart.svg' %}"
+                                                             class="svg_img" alt="cart"><span>3</span></a>
+</div>
+
+<!-- Add to Wishlist Notify  -->
+<div class="ms-wish-notify"></div>
+
+<!-- Add to Compare list Notify  -->
+<div class="ms-compare-notify"></div>
+
+<!-- Back to top  -->
+<a class="ms-back-to-top"></a>
+
+<!-- Features sidebar  -->
+<div class="ms-features-sidebar-overlay"></div>
+<div class="ms-features-sidebar">
+    <div class="tool-title">
+        <h3>تنظیمات</h3>
+    </div>
+    <a href="#" class="ms-tools-sidebar-toggle open-features">
+        <img alt="icon" src="{% static 'assets/img/icons/setting.svg' %}" class="svg_img">
+    </a>
+    <div class="ms-features-block">
+        <div class="ms-features-title">رنگ‌ها</div>
+        <ul class="bg-panel ms-change-color">
+            <li class="active" data-color="01">
+                <a href="javascript:void(0)" class="colorcode1"></a>
+            </li>
+            <li data-color="02">
+                <a href="javascript:void(0)" class="colorcode2"></a>
+            </li>
+            <li data-color="03">
+                <a href="javascript:void(0)" class="colorcode3"></a>
+            </li>
+            <li data-color="04">
+                <a href="javascript:void(0)" class="colorcode4"></a>
+            </li>
+            <li data-color="05">
+                <a href="javascript:void(0)" class="colorcode5"></a>
+            </li>
+            <li data-color="06">
+                <a href="javascript:void(0)" class="colorcode6"></a>
+            </li>
+            <li data-color="07" class="">
+                <a href="javascript:void(0)" class="colorcode7"></a>
+            </li>
+            <li data-color="08">
+                <a href="javascript:void(0)" class="colorcode8"></a>
+            </li>
+            <li data-color="09">
+                <a href="javascript:void(0)" class="colorcode9"></a>
+            </li>
+        </ul>
+    </div>
+    <div class="ms-features-block">
+        <div class="ms-tools-sidebar-content">
+            <div class="ms-features-title">حالت پس رمینه</div>
+            <div class="ms-change-mode active" id="ms-change-mode">
+                <div class="ms-mode-switch">
+                    <div class="ms-mode-btn">انتخاب</div>
+                    <div class="ms-mode-on">روشن</div>
+                    <div class="ms-mode-off">خاموش</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Plugins JS -->
+<script src="{% static 'assets/js/plugins/jquery-3.5.1.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/popper.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/bootstrap-select.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/fontawesome.js' %}"></script>
+<script src="{% static 'assets/js/plugins/owl.carousel.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/infiniteslidev2.js' %}"></script>
+<script src="{% static 'assets/js/plugins/jquery.zoom.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/slick.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/nouislider.js' %}"></script>
+
+<!-- Main Js -->
+<script src="{% static 'assets/js/main.js' %}"></script>
+{# #}
+<script>
+    var productType =[];
+    var categories =[];
+    function fetchProducts(page = 1, filters = {}) {
+        const apiEndpoint = '/product/api/';
+        let queryString = `?page=${page}`;
+        productType.forEach((value, index) => {
+            queryString += `&type=${value}`;
+        })
+        categories.forEach((value, index) => {
+            queryString += `&category=${value}`;
+        })
+        console.log(`queryString ${queryString}`)
+
+        return $.ajax({
+            url: apiEndpoint + queryString,
+            method: 'GET',
+            error: function (error) {
+                console.error('خطا در بارگذاری محصولات:', error);
+            }
+        });
+    }
+
+    function renderProducts(products) {
+        const itemsContainer = $('#items');
+        itemsContainer.empty();  // پاک‌کردن محصولات قبلی
+
+        products.forEach(function (product) {
+            // گرفتن تصاویر اول و دوم از آرایه تصاویر
+            const image1 = product.image [0]?.image || ''; // تصویر اول
+            const image2 = product.image [1]?.image || ''; // تصویر دوم
+
+            // نمایش 12 کاراکتر اول از نام فروشگاه و سپس نقطه چین
+            const shopName = product.name.length > 12 ? product.name.slice(0, 12) + '...' : product.name;
+
+            const productHtml = `
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content ms-product-content">
+            <div class="ms-product-inner">
+                <div class="ms-pro-image-outer">
+                    <div class="ms-pro-image">
+                        <a href="/product/${product.id}" class="image">
+                            <img class="main-image" src="${image1}" alt="Product">
+                            <img class="hover-image" src="${image2}" alt="Product">
+                        </a>
+                        <div class="ms-pro-actions">
+                            <a href="/product/${product.id}" class="ms-btn-group" title="مشاهده محصول">👁️</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="ms-pro-content">
+                    <h6 class="ms-pro-stitle">${shopName}</h6> <!-- نام فروشگاه -->
+                    <h5 class="ms-pro-title"><a href="/shop/${product.shop}/product/${product.id}">  ${  shopName}</a></h5>
+                    <p class="ms-info">نوع محصول: ${product.state}</p> <!-- نوع محصول -->
+                    <div class="ms-pro-rat-price">
+                        <span class="ms-price">
+                            <span class="new-price">${product.formatted_price} تومان</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        `;
+            itemsContainer.append(productHtml);
+        });
+    }
+
+
+    function renderPagination(currentPage, totalPages) {
+        const paginationContainer = $('#pagination');
+        paginationContainer.empty();  // پاک‌کردن پیجینیشن قبلی
+
+        // دکمه قبلی
+        if (currentPage > 1) {
+            paginationContainer.append(`<li><a href="#" class="prev" data-page="${currentPage - 1}">قبلی</a></li>`);
+        }
+
+        // نمایش صفحه اول
+        paginationContainer.append(`<li><a href="#" data-page="1">1</a></li>`);
+
+        // اگر صفحه اول و دوم با صفحه فعلی فاصله دارند، علامت «...»
+        if (currentPage > 3) {
+            paginationContainer.append(`<li><span>...</span></li>`);
+        }
+
+         const pageRange = 2;
+        const startPage = Math.max(2, currentPage - pageRange);
+        const endPage = Math.min(totalPages - 1, currentPage + pageRange);
+
+         for (let i = startPage; i <= endPage; i++) {
+            const activeClass = i === currentPage ? 'active' : '';
+            paginationContainer.append(`<li><a href="#" class="${activeClass}" data-page="${i}">${i}</a></li>`);
+        }
+
+         if (currentPage < totalPages - 2) {
+            paginationContainer.append(`<li><span>...</span></li>`);
+        }
+
+         if (totalPages > 1) {
+            paginationContainer.append(`<li><a href="#" data-page="${totalPages}">${totalPages}</a></li>`);
+        }
+
+         if (currentPage < totalPages) {
+            paginationContainer.append(`<li><a href="#" class="next" data-page="${currentPage + 1}">بعدی</a></li>`);
+        }
+    }
+
+    function loadProducts(page = 1, filters = {}) {
+        fetchProducts(page, filters).done(function (response) {
+            renderProducts(response.results);
+            console.log(`response.total_pages ${response.total_pages}`);
+            renderPagination(page, response.total_pages);
+            $('#pagination-info').text(`نمایش ${(page - 1) * 9 + 1}-${Math.min(page * 9, response.count)} از ${response.count} مورد`);
+        });
+    }
+
+    $(document).ready(function () {
+        let currentFilters = {};
+
+        // بارگذاری اولیه محصولات
+        loadProducts();
+
+        // هندل کردن کلیک روی لینک‌های پیجینیشن
+        $(document).on('click', '#pagination a', function (event) {
+            event.preventDefault();
+            const page = $(this).data('page');
+            if (page) {
+                loadProducts(page, currentFilters);
+            }
+        });
+
+        // مثال از فیلتر محصولات
+        $('#filter-form').submit(function (event) {
+            event.preventDefault();
+
+            // گرفتن فیلترها از فرم
+            currentFilters = {
+                price_min: $('#price_min').val(),
+                price_max: $('#price_max').val(),
+                material: $('#material').val(),
+                product: $('#product').val(),
+                shop: $('#shop').val(),
+            };
+
+            // بارگذاری محصولات با فیلتر
+            loadProducts(1, currentFilters);
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        fetchCategories();
+
+        function fetchCategories() {
+            fetch('/product/product-types') // Adjust API URL as necessary
+                .then(response => response.json())
+                .then(data => {
+                    const categoryList = document.querySelector('#category-list ul');
+                    categoryList.innerHTML = data.map(category => `
+                                <li>
+                                    <div class="ms-sidebar-block-item" style="display: flex; align-items: center;">
+                                        <input type="checkbox" id="category-${category.value}" onchange="toggleSelection(${category.value})">
+                                        <span   style="margin-right: 10px; cursor: pointer; width: 20px; height: 20px;">   </span>
+                                        <label for="category-${category.value}" style="flex: 1; display: block; position: relative; z-index: 0;">
+                                            <span class="label-text" style="margin-right: 5px;">${category.label}</span>
+{#                                            <span class="products" title="Products">- ${getProductCount(category.value)}</span>#}
+                                        </label>
+                                        <span class="checked"></span>
+                                    </div>
+                                </li>
+                `).join('');
+                })
+                .catch(error => console.error('Error fetching categories:', error));
+        }
+
+        function getProductCount(value) {
+            const productCounts = {
+                0: 68, // گیاه
+                1: 58, // عرق
+                // Add counts for other categories as needed
+            };
+            return productCounts[value] || 0;
+        }
+
+        {#var productType = [];#}
+
+        window.toggleSelection = function (value) {
+            {#console.log(productType);#}
+            const index = productType.indexOf(value);
+            if (index > -1) {
+                productType.splice(index, 1); // Remove if already selected
+            } else {
+                productType.push(value); // Add if not selected
+            }
+            loadProducts()
+            displaySelectedItems();
+        };
+
+        function displaySelectedItems() {
+            console.log("Selected Items:", productType);
+            // You can display selected items in your UI as needed
+        }
+    });
+</script>
+<script>
+    async function fetchCategories() {
+        try {
+            const response = await fetch('/product/categories');
+            const categories = await response.json();
+            console.log(categories)
+            generateCategoryList(categories);
+        } catch (error) {
+            console.error('Error fetching categories:', error);
+        }
+    }
+         window.toggleSelection1 = function (value) {
+            {#console.log(categories);#}
+            const index = categories.indexOf(value);
+            if (index > -1) {
+                categories.splice(index, 1); // Remove if already selected
+            } else {
+                categories.push(value); // Add if not selected
+            }
+            loadProducts()
+        };
+    function generateCategoryList(categories) {
+        const categoryList = document.getElementById('category-list1');
+        categories.forEach(category => {
+            if (category.parent === null) {
+                // Parent category
+                const parentItem = document.createElement('li');
+                const parentBlock = document.createElement('div');
+                parentBlock.classList.add('ms-sidebar-block-item');
+                parentBlock.innerHTML = `<span>${category.name}</span>`;
+                parentItem.appendChild(parentBlock);
+                const subList = document.createElement('ul');
+                categories.forEach(subCategory => {
+                    if (subCategory.parent === category.id) {
+                        const subItem = document.createElement('li');
+                        const subBlock = document.createElement('div');
+                        subBlock.classList.add('ms-sidebar-block-item');
+                        subBlock.innerHTML = `
+                            <input type="checkbox" onchange="toggleSelection1(${subCategory.id})" id="category-${subCategory.id}">
+                            <a href="#">${subCategory.name}</a>
+                            <span class="checked"></span>
+                        `;
+                        subItem.appendChild(subBlock);
+                        subList.appendChild(subItem);
+                    }
+                });
+                parentItem.appendChild(subList);
+                categoryList.appendChild(parentItem);
+            }
+        });
+    }
+
+    // Fetch categories when the page loads
+    document.addEventListener('DOMContentLoaded', fetchCategories);
+</script>
+
+</body>
+
+</html>
