@@ -464,6 +464,8 @@
                         <div class="ms-select-inner">
                             <select name="ms-select" id="ms-select">
                                 <option selected disabled>ترتیب بندی</option>
+                                <option value="3">جدیدترین</option>
+                                <option value="4">بیشترین بازدید</option>
                                 <option value="5">قیمت کمتر به بیشتر</option>
                                 <option value="6">قیمت بیشتر به کمتر</option>
                             </select>
@@ -471,26 +473,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Shop Top End -->
 
-                <!-- Select Bar Start -->
-                {#                <div class="ms-select-bar d-flex">#}
-                {#                    <span class="ms-select-btn">لباس ها<a class="ms-select-cancel"#}
-                {#                                                          href="javascript:void(0)">×</a></span>#}
-                {#                    <span class="ms-select-btn">میوه جات<a class="ms-select-cancel"#}
-                {#                                                           href="javascript:void(0)">×</a></span>#}
-                {#                    <span class="ms-select-btn">گوشت<a class="ms-select-cancel" href="javascript:void(0)">×</a></span>#}
-                {#                    <span class="ms-select-btn">لبنیات<a class="ms-select-cancel" href="javascript:void(0)">×</a></span>#}
-                {#                    <span class="ms-select-btn">عطر و ادکلن<a class="ms-select-cancel"#}
-                {#                                                              href="javascript:void(0)">×</a></span>#}
-                {#                    <span class="ms-select-btn">جواهرات<a class="ms-select-cancel"#}
-                {#                                                          href="javascript:void(0)">×</a></span>#}
-                {#                    <span class="ms-select-btn ms-select-btn-clear"><a class="ms-select-clear"#}
-                {#                                                                       href="javascript:void(0)">پاک کردن همه</a></span>#}
-                {#                </div>#}
-                <!-- Select Bar End -->
-
-                <!-- Shop content Start -->
                 <div class="shop-pro-content">
                     <div class="shop-pro-inner">
                         <div class="row" id="items">
@@ -518,7 +501,7 @@
                         <!-- Sidebar Category Block -->
                         <div class="ms-sidebar-block">
                             <div class="ms-sb-title">
-                                <h3 class="ms-sidebar-title">دسته بندی
+                                <h3 class="ms-sidebar-title">جنس محصول
                                     <div class="ms-sidebar-res"><i class="fas fa-chevron-down"></i></div>
                                 </h3>
                             </div>
@@ -915,8 +898,10 @@
 <script src="{% static 'assets/js/main.js' %}"></script>
 {# #}
 <script>
-    var productType =[];
-    var categories =[];
+    var productType = [];
+    var categories = [];
+    var orderType = "";
+
     function fetchProducts(page = 1, filters = {}) {
         const apiEndpoint = '/product/api/';
         let queryString = `?page=${page}`;
@@ -926,6 +911,9 @@
         categories.forEach((value, index) => {
             queryString += `&category=${value}`;
         })
+        if (orderType != "") {
+            queryString += `&ordering=${orderType}`
+        }
         console.log(`queryString ${queryString}`)
 
         return $.ajax({
@@ -943,30 +931,26 @@
 
         products.forEach(function (product) {
             // گرفتن تصاویر اول و دوم از آرایه تصاویر
-            const image1 = product.image [0]?.image || ''; // تصویر اول
-            const image2 = product.image [1]?.image || ''; // تصویر دوم
+            const image1 = product.image[0]?.image || ''; // تصویر اول
+            const image2 = product.image[1]?.image || ''; // تصویر دوم
 
             // نمایش 12 کاراکتر اول از نام فروشگاه و سپس نقطه چین
             const shopName = product.name.length > 12 ? product.name.slice(0, 12) + '...' : product.name;
 
             const productHtml = `
-        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content ms-product-content">
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content ms-product-content" data-id="${product.id}">
             <div class="ms-product-inner">
                 <div class="ms-pro-image-outer">
                     <div class="ms-pro-image">
-                        <a href="/product/${product.id}" class="image">
+                        <a href="javascript:void(0);" class="image">
                             <img class="main-image" src="${image1}" alt="Product">
                             <img class="hover-image" src="${image2}" alt="Product">
                         </a>
-                        <div class="ms-pro-actions">
-                            <a href="/product/${product.id}" class="ms-btn-group" title="مشاهده محصول">👁️</a>
-                        </div>
                     </div>
                 </div>
                 <div class="ms-pro-content">
                     <h6 class="ms-pro-stitle">${shopName}</h6> <!-- نام فروشگاه -->
-                    <h5 class="ms-pro-title"><a href="/shop/${product.shop}/product/${product.id}">  ${  shopName}</a></h5>
-                    <p class="ms-info">نوع محصول: ${product.state}</p> <!-- نوع محصول -->
+                    <h5 class="ms-pro-title"><a href="/shop/${product.shop}/product/${product.id}">  ${shopName}</a></h5>
                     <div class="ms-pro-rat-price">
                         <span class="ms-price">
                             <span class="new-price">${product.formatted_price} تومان</span>
@@ -978,44 +962,47 @@
         `;
             itemsContainer.append(productHtml);
         });
+
+        // اضافه کردن رویداد کلیک به هر div محصول
+        $('.pro-gl-content').on('click', function () {
+            const productId = $(this).data('id'); // دریافت id محصول
+            window.location.href = `/search/product/${productId}/`; // هدایت به صفحه محصول
+        });
     }
 
 
     function renderPagination(currentPage, totalPages) {
         const paginationContainer = $('#pagination');
-        paginationContainer.empty();  // پاک‌کردن پیجینیشن قبلی
+        paginationContainer.empty();
 
-        // دکمه قبلی
         if (currentPage > 1) {
             paginationContainer.append(`<li><a href="#" class="prev" data-page="${currentPage - 1}">قبلی</a></li>`);
         }
 
-        // نمایش صفحه اول
         paginationContainer.append(`<li><a href="#" data-page="1">1</a></li>`);
 
-        // اگر صفحه اول و دوم با صفحه فعلی فاصله دارند، علامت «...»
         if (currentPage > 3) {
             paginationContainer.append(`<li><span>...</span></li>`);
         }
 
-         const pageRange = 2;
+        const pageRange = 2;
         const startPage = Math.max(2, currentPage - pageRange);
         const endPage = Math.min(totalPages - 1, currentPage + pageRange);
 
-         for (let i = startPage; i <= endPage; i++) {
+        for (let i = startPage; i <= endPage; i++) {
             const activeClass = i === currentPage ? 'active' : '';
             paginationContainer.append(`<li><a href="#" class="${activeClass}" data-page="${i}">${i}</a></li>`);
         }
 
-         if (currentPage < totalPages - 2) {
+        if (currentPage < totalPages - 2) {
             paginationContainer.append(`<li><span>...</span></li>`);
         }
 
-         if (totalPages > 1) {
+        if (totalPages > 1) {
             paginationContainer.append(`<li><a href="#" data-page="${totalPages}">${totalPages}</a></li>`);
         }
 
-         if (currentPage < totalPages) {
+        if (currentPage < totalPages) {
             paginationContainer.append(`<li><a href="#" class="next" data-page="${currentPage + 1}">بعدی</a></li>`);
         }
     }
@@ -1030,12 +1017,8 @@
     }
 
     $(document).ready(function () {
-        let currentFilters = {};
-
-        // بارگذاری اولیه محصولات
+        var currentFilters = {};
         loadProducts();
-
-        // هندل کردن کلیک روی لینک‌های پیجینیشن
         $(document).on('click', '#pagination a', function (event) {
             event.preventDefault();
             const page = $(this).data('page');
@@ -1043,12 +1026,8 @@
                 loadProducts(page, currentFilters);
             }
         });
-
-        // مثال از فیلتر محصولات
         $('#filter-form').submit(function (event) {
             event.preventDefault();
-
-            // گرفتن فیلترها از فرم
             currentFilters = {
                 price_min: $('#price_min').val(),
                 price_max: $('#price_max').val(),
@@ -1056,8 +1035,6 @@
                 product: $('#product').val(),
                 shop: $('#shop').val(),
             };
-
-            // بارگذاری محصولات با فیلتر
             loadProducts(1, currentFilters);
         });
     });
@@ -1070,19 +1047,23 @@
                 .then(response => response.json())
                 .then(data => {
                     const categoryList = document.querySelector('#category-list ul');
-                    categoryList.innerHTML = data.map(category => `
-                                <li>
-                                    <div class="ms-sidebar-block-item" style="display: flex; align-items: center;">
-                                        <input type="checkbox" id="category-${category.value}" onchange="toggleSelection(${category.value})">
-                                        <span   style="margin-right: 10px; cursor: pointer; width: 20px; height: 20px;">   </span>
-                                        <label for="category-${category.value}" style="flex: 1; display: block; position: relative; z-index: 0;">
-                                            <span class="label-text" style="margin-right: 5px;">${category.label}</span>
-{#                                            <span class="products" title="Products">- ${getProductCount(category.value)}</span>#}
-                                        </label>
-                                        <span class="checked"></span>
-                                    </div>
-                                </li>
-                `).join('');
+                    categoryList.innerHTML = data.map(category => {
+                        // کوتاه کردن نام دسته‌بندی در صورتی که طول آن بیشتر از 23 کاراکتر باشد
+                        const categoryName = category.label.length > 23 ? category.label.slice(0, 23) + '...' : category.label;
+
+                        return `
+                        <li>
+                            <div class="ms-sidebar-block-item" style="display: flex; align-items: center;">
+                                <input type="checkbox" id="category-${category.value}" onchange="toggleSelection(${category.value})">
+                                <span style="margin-right: 10px; cursor: pointer; width: 20px; height: 20px;"></span>
+                                <label for="category-${category.value}" style="flex: 1; display: block; position: relative; z-index: 0;">
+                                    <span class="label-text" style="margin-right: 5px;">${categoryName}</span>
+                                </label>
+                                <span class="checked"></span>
+                            </div>
+                        </li>
+                    `;
+                    }).join('');
                 })
                 .catch(error => console.error('Error fetching categories:', error));
         }
@@ -1127,16 +1108,18 @@
             console.error('Error fetching categories:', error);
         }
     }
-         window.toggleSelection1 = function (value) {
-            {#console.log(categories);#}
-            const index = categories.indexOf(value);
-            if (index > -1) {
-                categories.splice(index, 1); // Remove if already selected
-            } else {
-                categories.push(value); // Add if not selected
-            }
-            loadProducts()
-        };
+
+    window.toggleSelection1 = function (value) {
+        {#console.log(categories);#}
+        const index = categories.indexOf(value);
+        if (index > -1) {
+            categories.splice(index, 1); // Remove if already selected
+        } else {
+            categories.push(value); // Add if not selected
+        }
+        loadProducts()
+    };
+
     function generateCategoryList(categories) {
         const categoryList = document.getElementById('category-list1');
         categories.forEach(category => {
@@ -1145,7 +1128,8 @@
                 const parentItem = document.createElement('li');
                 const parentBlock = document.createElement('div');
                 parentBlock.classList.add('ms-sidebar-block-item');
-                parentBlock.innerHTML = `<span>${category.name}</span>`;
+                parentBlock.innerHTML = `<span>${category.name.length > 23 ? category.name.slice(0, 23) + '...' : category.name}</span>`;
+
                 parentItem.appendChild(parentBlock);
                 const subList = document.createElement('ul');
                 categories.forEach(subCategory => {
@@ -1153,10 +1137,9 @@
                         const subItem = document.createElement('li');
                         const subBlock = document.createElement('div');
                         subBlock.classList.add('ms-sidebar-block-item');
-                        subBlock.innerHTML = `
-                            <input type="checkbox" onchange="toggleSelection1(${subCategory.id})" id="category-${subCategory.id}">
-                            <a href="#">${subCategory.name}</a>
-                            <span class="checked"></span>
+                        subBlock.innerHTML = `<input type="checkbox" onchange="toggleSelection1(${subCategory.id})" id="category-${subCategory.id}">
+<a href="#">${subCategory.name.length > 23 ? subCategory.name.slice(0, 23) + '...' : subCategory.name}</a>
+<span class="checked"></span>    <span class="checked"></span>
                         `;
                         subItem.appendChild(subBlock);
                         subList.appendChild(subItem);
@@ -1171,7 +1154,27 @@
     // Fetch categories when the page loads
     document.addEventListener('DOMContentLoaded', fetchCategories);
 </script>
-
+<script>
+    // پیدا کردن المنت select
+    const selectElement = document.getElementById('ms-select');
+    selectElement.addEventListener('change', function () {
+        const selectedValue = selectElement.value;
+        if (selectedValue == "5") {
+            orderType = "-price"
+            console.log("قیمت کمتر به بیشتر انتخاب شد.");
+        } else if (selectedValue == "6") {
+            orderType = "price"
+            console.log("قیمت بیشتر به کمتر انتخاب شد.");
+        } else if (selectedValue == "4") {
+            orderType = "views"
+            console.log("بیشترین بازدید.");
+        } else if (selectedValue == "3") {
+            orderType = "id"
+            console.log("جدیدترین.");
+        }
+        loadProducts();
+    });
+</script>
 </body>
 
 </html>

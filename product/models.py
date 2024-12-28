@@ -1,4 +1,4 @@
-from django.core.validators import FileExtensionValidator
+from django.core.validators import FileExtensionValidator, MinValueValidator
 from django.db import models
 from django.db.models import SET_NULL
 from ckeditor.fields import RichTextField
@@ -52,6 +52,7 @@ class Product(models.Model):
     name = models.CharField(max_length=33, verbose_name="نام کالا", unique=True)
     type = models.IntegerField(choices=Type.choices, verbose_name='نوع کالا')
     description = RichTextField(blank=True,null=True, verbose_name='معرفی محصول')
+    views = models.IntegerField(default=0,validators=[MinValueValidator(0)])
     consumption_instruction = RichTextField(blank=True, null=True, verbose_name='نحوه مصرف')
     price = models.IntegerField(verbose_name='واحد قیمت بر حسب واحد')
     state = models.IntegerField(choices=State.choices, default=State.SUSPEND, verbose_name='وضعیت کالا')

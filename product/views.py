@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 import math
 from .filter.category_filter import CategoryFilter
-from .filter.product_filter import ProductFilter
+from .filter.product_filter import ProductFilter, OrderingFilter
 from .models import Product, Category
 from .serializers import ProductSerializers, ProductTypeSerializer, CategorySerializer
 
@@ -26,13 +26,12 @@ class ProductPagination(PageNumberPagination):
 
 
 class ProductAPIView(generics.ListAPIView):
-    filter_backends = (DjangoFilterBackend,)
+    filter_backends = (DjangoFilterBackend, OrderingFilter)
     filterset_class = ProductFilter
-    ordering_fields = ['name', 'price']
+    ordering_fields = ['name', 'price', 'id','views']
     queryset = Product.objects.all()
     serializer_class = ProductSerializers
     pagination_class = ProductPagination
-
 class ProductTypeListView(APIView):
     def get(self, request):
         product_types = Product.Type.choices
