@@ -39,7 +39,121 @@
     <link rel="stylesheet" id="main_style" href="{% static 'assets/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
     <link rel="stylesheet" class="color-css" href="{% static 'assets/css/color-01.css' %}">
-    <style>
+    <style>  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+  }
+
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+  }
+
+  .close-btn {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    float: right;
+  }
+
+  .close-btn:hover,
+  .close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+        /* استایل اصلی برای منو */
+.items-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-menu {
+    padding: 10px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.search-menu:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+.search-btn {
+    padding: 10px;
+    margin-left: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-btn:hover {
+    background-color: #45a049;
+}
+
+.btn-location,
+.btn-catalog,
+.btn-about {
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-location:hover,
+.btn-catalog:hover,
+.btn-about:hover {
+    background-color: #45a049;
+}
+
+@media screen and (max-width: 768px) {
+    .items-menu {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .search-container {
+        margin-bottom: 10px;
+    }
+
+    .search-menu {
+        width: 100%;
+    }
+}
+
         /* کانتینر محصولات */
         #items-result {
             display: flex;
@@ -385,11 +499,11 @@
                     </div>
                     <div class="col-md-6 col-sm-12">
                         <!-- ms-breadcrumb-list start -->
-                        <ul class="ms-breadcrumb-list">
-                            <li class="ms-breadcrumb-item"><a href="index.html">خانه</a><i
-                                    class="fas fa-chevron-left"></i></li>
-                            <li class="ms-breadcrumb-item active">صفحه فروشگاه</li>
-                        </ul>
+                     <ul class="ms-breadcrumb-list">
+                        <li class="ms-breadcrumb-item"><a href="/">خانه</a><i class="fas fa-chevron-left"></i></li>
+                        <li class="ms-breadcrumb-item"><a href="/shop">فروشگاه</a><i class="fas fa-chevron-left"></i></li>
+                        <li class="ms-breadcrumb-item active" aria-current="page">صفحه فروشگاه</li>
+                    </ul>
                         <!-- ms-breadcrumb-list end -->
                     </div>
                 </div>
@@ -411,15 +525,25 @@
     </div>
     <div class="box-menu-store">
         <p class="p-menu">منو فروشگاه</p>
-        <div class="items-menu">
-            <div>
-                <input type="search" class="search-menu" placeholder="جستجو فروشگاه"></input>
-            </div>
-            <button type="button" class="btn-location">موقعیت فروشگاه</button>
-            <button type="button" class="btn-catalog">کاتالوگ فروشگاه</button>
-            <button type="button" class="btn-about"> درباره فروشگاه</button>
-
+     <div class="items-menu">
+        <div class="search-container">
+            <input type="search" id="search-input" class="search-menu" placeholder="جستجو فروشگاه">
+            <button type="button" class="search-btn" onclick="searchProduct()">🔍</button>
         </div>
+<button type="button" class="btn-location" onclick="openMap({{ shop.location_lat }},{{ shop.location_lng }})">موقعیت فروشگاه</button>
+         <div id="map-container" style="height: 400px; width: 100%; display: none;"></div>
+       <button type="button" class="btn-catalog" onclick="openModal('catalog')">کاتالوگ فروشگاه</button>
+<button type="button" class="btn-about" onclick="openModal('about')">درباره فروشگاه</button>
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+    <div id="modal-body">
+      <!-- محتوای داینامیک اینجا نمایش داده می‌شود -->
+    </div>
+  </div>
+</div>
+    </div>
+
         {#            <div class="share-menu">#}
         {#                <a href="#" class="fa fa-instagram"></a>#}
         {#                <a href="#" class="fa fa-telegram"></a>#}
@@ -714,8 +838,8 @@
             url: url,
             method: 'GET',
             success: function (data) {
-                renderProducts(data.results); 
-                renderPagination(page, data.total_pages); 
+                renderProducts(data.results);
+                renderPagination(page, data.total_pages);
                 $('#pagination-info').text(`نمایش ${(page - 1) * 9 + 1}-${Math.min(page * 9, data.count)} از ${data.count} مورد`);
             },
             error: function (error) {
@@ -732,7 +856,7 @@
         if (products && products.length > 0) {
             products.forEach(product => {
                 const productHTML = `
-                <div class="it-table" onclick="location.href='/product/${product.id}'">
+                <div class="it-table" onclick="location.href='product/${product.id}'">
                     <img class="img-table" src="${product.image_url || '/static/assets/img/bg/newsletter.png'}">
                     <div class="name-ittt-table">
                         <span class="name">نام محصول :</span>
@@ -814,6 +938,42 @@
         }
         return text;
     }
+{#    #}
+function searchProduct() {
+    const searchQuery = document.getElementById('search-input').value; // گرفتن مقدار ورودی
+    console.log(searchQuery); // چاپ در کنسول
+}
+
+</script>
+
+<script>
+  function openMap(latitude,longitude) {
+    const zoomLevel = 14;  // میزان زوم نقشه
+      const mapUrl = `https://www.google.com/maps?q=${latitude},${longitude}&z=${zoomLevel}`;
+      window.open(mapUrl, '_blank');
+
+  }
+</script>
+
+</script>
+</script>
+<script>
+    function openModal(type) {
+  // تنظیم محتوای مودال بر اساس نوع
+  const modalBody = document.getElementById('modal-body');
+  if (type === 'catalog') {
+    modalBody.innerHTML = '<p>در حال حاضر کاتالوگ فروشگاه در دسترس نیست. به زودی اضافه می‌شود.</p>';
+  } else if (type === 'about') {
+    modalBody.innerHTML = '<p>{{ shop.description }}</p>';
+  }
+
+  // نمایش مودال
+  document.getElementById("myModal").style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("myModal").style.display = "none";
+}
 
 </script>
 </body>

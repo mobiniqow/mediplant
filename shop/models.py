@@ -32,7 +32,8 @@ class Shop(models.Model):
     description = models.TextField(verbose_name='توضیحات')
     rate_state = models.IntegerField(choices=ShopRate.choices, default=ShopRate.WHITE, verbose_name='وضعیت امتیاز')
     price = models.IntegerField(verbose_name='واحد قیمت بر حسب واحد', default=0)
-
+    location_lat = models.CharField(max_length=12, default="35.7475")
+    location_lng = models.CharField(max_length=12, default="51.2358")
     class Meta:
         verbose_name = 'فروشگاه'
         verbose_name_plural = 'فروشگاه‌ها'
