@@ -39,7 +39,65 @@
     <link rel="stylesheet" id="main_style" href="{% static 'assets/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
     <link rel="stylesheet" class="color-css" href="{% static 'assets/css/color-01.css' %}">
+    <style>
+        /* کانتینر محصولات */
+        #items-result {
+            display: flex;
+            flex-wrap: wrap; /* محصولات به صورت چند خطی نمایش داده شوند */
+            gap: 16px; /* فاصله بین محصولات */
+            justify-content: space-between; /* فاصله مناسب بین محصولات */
+            padding: 16px; /* فضای اضافی در اطراف محصولات */
+        }
 
+        /* استایل برای هر محصول */
+        .it-table {
+            width: 100%; /* در موبایل و صفحات کوچک‌تر، عرض کامل */
+            max-width: 240px; /* حداکثر عرض هر محصول */
+            box-sizing: border-box; /* اندازه‌گیری با احتساب padding و margin */
+            border: 1px solid #ddd; /* خط مرزی برای محصولات */
+            padding: 12px;
+            border-radius: 8px; /* گوشه‌های گرد */
+            background-color: #fff; /* رنگ پس‌زمینه */
+            cursor: pointer; /* نشان‌گر موس برای اشاره به محصول */
+            transition: box-shadow 0.3s ease, transform 0.3s ease; /* انیمیشن برای تغییر سایه و بزرگ شدن */
+        }
+
+        /* هنگام هاور کردن محصول، سایه آن تغییر کند */
+        .it-table:hover {
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px); /* بزرگتر شدن محصول هنگام هاور */
+        }
+
+        /* تصویر محصول */
+        .it-table img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            object-fit: cover; /* حفظ تناسب تصویر */
+        }
+
+        /* استایل برای اطلاعات محصول */
+        .name-ittt-table {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+        }
+
+        /* برای متن‌ها */
+        .name-it {
+            font-weight: bold;
+            color: #333;
+            text-align: right; /* راستچین برای زبان فارسی */
+            font-size: 14px;
+        }
+
+        /* استایل برای عنوان "نام محصول" و "قیمت محصول" */
+        .name {
+            font-size: 13px;
+            color: #666;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -380,34 +438,17 @@
             <div class="swiper-button-prev"></div>
         </div>
     </div>
-
-    <div class="items-result">
-        {% for chunk in product %}
-            <div id="table{{ forloop.counter }}" class="pagination-table">
-                {% for i in chunk %}
-                    <div class="it-table" onclick="location.href='product/{{ i.id }}'" style="cursor: pointer;">
-                        <img class="img-table" src="{% static 'assets/img/bg/newsletter.png' %}">
-                        <div style="display: flex; justify-content: space-between; margin: 0 16px;"
-                             class="name-ittt-table">
-                            <span class="name">نام محصول :</span>
-                            <span class="name-it">{{ i.product.name |truncatechars:12 }}</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; margin: 16px;"
-                             class="name-ittt-table">
-                            <span class="name"> قیمت محصول :</span>
-                            <span class="name-it">{{ i.price }} تومان</span>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div> <!-- پایان div برای جدول -->
-        {% endfor %}
+    <div class="items-result" id="items-result">
+        <!-- نتایج محصولات اینجا نمایش داده می‌شوند -->
     </div>
-    <ul class="uk-pagination uk-flex-center" uk-margin>
-        <li><a href="#"><span uk-pagination-next></span></a></li>
-        {% for i in page_number %}
-            <li class="page-item"><a href="#table{{ i }}" class="page-link">{{ i }}</a></li>
-        {% endfor %}
-        <li><a href="#"><span uk-pagination-previous></span></a></li>
+
+    <div class="ms-pro-pagination">
+        <span id="pagination-info">نمایش 1-12 از 21 مورد</span>
+        <ul class="ms-pro-pagination-inner" id="pagination">
+            <!-- لینک‌های پیجینیشن به صورت داینامیک اضافه می‌شوند -->
+        </ul>
+    </div>
+    <!-- پیجینیشن اینجا نمایش داده می‌شود -->
     </ul>
 </div>
 </div>
@@ -597,40 +638,40 @@
 
 <script>
     function getCookie(name) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
             }
         }
+        return cookieValue;
     }
-    return cookieValue;
-}
 
     async function loadCart() {
         const csrftoken = getCookie('csrftoken');
 
         try {
-             const response = await fetch('/basket/19', {
+            const response = await fetch('/basket/19', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'X-CSRFToken': csrftoken
                 },
-                body: JSON.stringify({ basket_id: 19 })
+                body: JSON.stringify({basket_id: 19})
             });
 
             const data = await response.json();
             console.log(data)
             const items = data.items;
             const itemsContainer = document.getElementById('ms-cart-pro-items');
-             itemsContainer.innerHTML = '';
-             let subtotal = 0;
-             items.forEach(item => {
+            itemsContainer.innerHTML = '';
+            let subtotal = 0;
+            items.forEach(item => {
                 const itemHTML = `
                     <li>
                         <a href="product-left-sidebar.html" class="ms-pro-img">
@@ -665,7 +706,116 @@
     // فراخوانی تابع loadCart در هنگام بارگذاری صفحه
     document.addEventListener('DOMContentLoaded', loadCart);
 </script>
+<script>
+    function fetchProducts(page = 1,search="") {
+        const shopId = {{ shop.id }};
+        const url = `/shop/api/v1/?shop=${shopId}&page=${page}`;
+        $.ajax({
+            url: url,
+            method: 'GET',
+            success: function (data) {
+                renderProducts(data.results); 
+                renderPagination(page, data.total_pages); 
+                $('#pagination-info').text(`نمایش ${(page - 1) * 9 + 1}-${Math.min(page * 9, data.count)} از ${data.count} مورد`);
+            },
+            error: function (error) {
+                console.error('Error fetching products:', error);
+            }
+        });
+    }
 
+    function renderProducts(products) {
+        const itemsResult = $('#items-result');
+        itemsResult.empty();
+
+        // بررسی وجود محصولات و رندر کردن آن‌ها
+        if (products && products.length > 0) {
+            products.forEach(product => {
+                const productHTML = `
+                <div class="it-table" onclick="location.href='/product/${product.id}'">
+                    <img class="img-table" src="${product.image_url || '/static/assets/img/bg/newsletter.png'}">
+                    <div class="name-ittt-table">
+                        <span class="name">نام محصول :</span>
+                        <span class="name-it">${truncateChars(product.name, 12)}</span>
+                    </div>
+                    <div class="name-ittt-table">
+                        <span class="name">قیمت محصول :</span>
+                        <span class="name-it">${product.price} تومان</span>
+                    </div>
+                </div>
+            `;
+                itemsResult.append(productHTML);
+            });
+        } else {
+            itemsResult.append('<p>محصولی یافت نشد.</p>');
+        }
+    }
+
+    // رندر کردن پیجینیشن و اطلاعات تعداد نمایش
+    function renderPagination(currentPage, totalPages) {
+        const paginationContainer = $('#pagination');
+        paginationContainer.empty();
+
+        // نمایش لینک "قبلی" اگر صفحه فعلی بزرگتر از 1 باشد
+        if (currentPage > 1) {
+            paginationContainer.append(`<li><a href="#" class="prev" data-page="${currentPage - 1}">قبلی</a></li>`);
+        }
+
+        // همیشه صفحه اول را نشان می‌دهیم
+        paginationContainer.append(`<li><a href="#" data-page="1" class="${currentPage === 1 ? 'active' : ''}">1</a></li>`);
+
+        // اگر صفحه فعلی بیشتر از 3 باشد، نمایش "..."
+        if (currentPage > 3) {
+            paginationContainer.append(`<li><span>...</span></li>`);
+        }
+
+        // نمایش صفحات میانه
+        const pageRange = 2;
+        const startPage = Math.max(2, currentPage - pageRange);
+        const endPage = Math.min(totalPages - 1, currentPage + pageRange);
+
+        for (let i = startPage; i <= endPage; i++) {
+            const activeClass = i === currentPage ? 'active' : '';
+            paginationContainer.append(`<li><a href="#" class="${activeClass}" data-page="${i}">${i}</a></li>`);
+        }
+
+        // اگر صفحه فعلی خیلی دور از آخرین صفحه باشد، نمایش "..."
+        if (currentPage < totalPages - 2) {
+            paginationContainer.append(`<li><span>...</span></li>`);
+        }
+
+        // همیشه صفحه آخر را نشان می‌دهیم، مگر اینکه تعداد صفحات 1 باشد
+        if (totalPages > 1) {
+            paginationContainer.append(`<li><a href="#" data-page="${totalPages}" class="${currentPage === totalPages ? 'active' : ''}">${totalPages}</a></li>`);
+        }
+
+        // نمایش لینک "بعدی" اگر صفحه فعلی کوچکتر از صفحه آخر باشد
+        if (currentPage < totalPages) {
+            paginationContainer.append(`<li><a href="#" class="next" data-page="${currentPage + 1}">بعدی</a></li>`);
+        }
+    }
+
+    // تنظیم رویداد برای کلیک روی صفحات
+    $(document).on('click', '#pagination a', function (event) {
+        event.preventDefault();
+        const page = $(this).data('page');
+        fetchProducts(page);  // فراخوانی تابع برای دریافت داده‌های صفحه جدید
+    });
+
+    // بارگذاری محصولات صفحه اول
+    $(document).ready(function () {
+        fetchProducts(1);  // نمایش محصولات صفحه اول
+    });
+
+    // تابع برای کوتاه کردن متن به طول معین (تعداد کاراکترها)
+    function truncateChars(text, length) {
+        if (text.length > length) {
+            return text.substring(0, length) + '...';
+        }
+        return text;
+    }
+
+</script>
 </body>
 
 </html>
