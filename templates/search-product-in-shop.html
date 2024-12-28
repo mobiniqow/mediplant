@@ -36,7 +36,106 @@
     <link rel="stylesheet" id="main_style" href="{% static '../static/assets/css/new-page.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
     <link rel="stylesheet" class="color-css" href="{% static 'assets/css/color-01.css' %}">
+   <style>
+       .item-shop {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #fff;
+    transition: box-shadow 0.3s ease;
+    max-width: 100%;
+    box-sizing: border-box;
+}
 
+.item-shop:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.shop-info {
+    display: flex;
+    flex: 1;
+    padding-right: 20px; /* افزایش فاصله سمت راست */
+}
+
+.shop-image {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 8px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shop-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.shop-details {
+    margin-left: 20px; /* افزایش فاصله بین متن‌ها */
+    flex: 1;
+}
+
+.shop-details h2 {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0;
+}
+
+.shop-details p {
+    margin: 10px 0; /* افزایش فاصله بین پاراگراف‌ها */
+    color: #777;
+}
+
+.product-info {
+    text-align: right;
+    flex-basis: 250px;
+    margin-left: auto;
+    padding-left: 20px; /* افزایش فاصله سمت چپ */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-info .product-name {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.product-info .product-price {
+    font-size: 1.2em;
+    color: #333;
+    margin: 10px 0;
+}
+
+
+.product-info .btn-buy {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1em;
+    margin-top: 15px; /* تغییر فاصله از بالای دکمه */
+    margin-right: auto; /* جابجایی دکمه به سمت چپ */
+    transition: background-color 0.3s;
+}
+
+.product-info .btn-buy:hover {
+    background-color: #0056b3;
+}
+
+   </style>
 </head>
 
 <body>
@@ -47,7 +146,7 @@
 </div>
 
 <!-- Header start  -->
-{% include './extentions/header.html'  %} with categories=categories_map %}
+{% include './extentions/header.html' with categories=categories_map %}
 <!-- Header End  -->
 
 <!-- Category sidebar Start -->
@@ -450,16 +549,17 @@
                     </div>
                     <div class="shop">
                         <h2><span>{{ product_shops|length|add:-1 }}</span> فروشنده دیگر </h2>
-{#                        <div>#}
-{#                            <ul>#}
-{#                                <li class="fa fa-bell-o"></li>#}
-{#                                <li class="fa fa-heart-o"></li>#}
-{#                                <li class="fa fa-share-nodes"></li>#}
-{#                            </ul>#}
-{#                        </div>#}
+                        {#                        <div>#}
+                        {#                            <ul>#}
+                        {#                                <li class="fa fa-bell-o"></li>#}
+                        {#                                <li class="fa fa-heart-o"></li>#}
+                        {#                                <li class="fa fa-share-nodes"></li>#}
+                        {#                            </ul>#}
+                        {#                        </div>#}
                     </div>
-                    <div class="pricee" onclick="window.location.href='/shop/{{ product_shops.0.shop.id }}'" style="cursor: pointer;">
-                        <div  >
+                    <div class="pricee" onclick="window.location.href='/shop/{{ product_shops.0.shop.id }}/product/{{  product_shops.0.id }}'"
+                         style="cursor: pointer;">
+                        <div>
                             <p>فروشگاه {{ product_shops.0.shop.name| truncatechars:17}}</p>
                             <h3><span>{{ product_shops.0.price|intcomma:False }}</span> تومان</h3>
                         </div>
@@ -477,105 +577,98 @@
             </div>
             <!-- -->
 
-           {% for i in product_shops|slice:"1:" %}
-    <div class="item-shop">
-        <div class="shop-info">
-            <div class="shop-image">
-                <img src="{{ i.shop.image.url }}" alt="{{ i.shop.name }}" />
-            </div>
-            <div class="shop-details">
-                <h2>{{ i.shop.name | truncatechars:17 }}</h2>
-                <p>{{ i.shop.user.city | truncatechars:17 }}</p>
-                <p class="shop-rating">امتیاز: {{ i.shop.get_rate_state_display }}</p>
-                <p class="shop-status">{{ i.shop.get_state_display }}</p>
-            </div>
+            {% for i in product_shops|slice:"1:" %}
+<div class="item-shop">
+    <div class="shop-info">
+        <div class="shop-image">
+            <img src="{{ i.shop.image.url }}" alt="{{ i.shop.name }}"/>
         </div>
-        <div class="product-info">
-            <p class="product-name">{{ i.product.name | truncatechars:20 }}</p>
-            <p class="product-material">جنس: {{ i.get_material_display }}</p>
-            <p class="product-capacity">ظرفیت: {{ i.capacity }}</p>
-            <p class="product-inventory">
-                موجودی: {{ i.get_inventory_state_display }}
-            </p>
-            <p class="product-price">
-                <span>{{ i.price | intcomma:False }}</span> تومان
-            </p>
-        </div>
-        <a class="btn-buy" href="/shop/{{ i.shop.id }}">
-            خرید اینترنتی
-        </a>
-    </div>
-{% endfor %}
-
+        <div class="shop-details">
+            <h2>{{ i.shop.name | truncatechars:17 }}</h2>
+            <p>{{ i.shop.user.city | truncatechars:17 }}</p>
+            <p class="shop-rating">امتیاز: {{ i.shop.get_rate_state_display }}</p>
         </div>
     </div>
-   <div class="product-details">
-    <h2>مشخصات محصول</h2>
-    <div class="product-details-scroll">
-        <div class="detail-item">
-            <div class="detail-label">
-                <p>نوع کالا:</p>
-            </div>
-            <div class="detail-value">
-                <p>{{ product_shops.0.product.get_type_display }}</p>
-            </div>
-        </div>
 
-        <div class="detail-item">
-            <div class="detail-label">
-                <p>دسته بندی:</p>
-            </div>
-            <div class="detail-value">
-                <p>{{ product_shops.0.product.category.name | truncatechars:23 }}</p>
-            </div>
-        </div>
-
-        <div class="detail-item">
-            <div class="detail-label">
-                <p>معرفی محصول:</p>
-            </div>
-            <div class="detail-value">
-                <p>{{ product_shops.0.product.description | truncatechars:50 }}</p>
-            </div>
-        </div>
-
-        <div class="detail-item">
-            <div class="detail-label">
-                <p>قیمت:</p>
-            </div>
-            <div class="detail-value">
-                <p><span>{{ product_shops.0.price | intcomma }}</span> تومان</p>
-            </div>
-        </div>
-
-        <div class="detail-item">
-            <div class="detail-label">
-                <p>وضعیت موجودی:</p>
-            </div>
-            <div class="detail-value">
-                <p>{{ product_shops.0.get_inventory_state_display }}</p>
-            </div>
-        </div>
-
-        <div class="detail-item">
-            <div class="detail-label">
-                <p>ظرفیت:</p>
-            </div>
-            <div class="detail-value">
-                <p>{{ product_shops.0.capacity }} عدد</p>
-            </div>
-        </div>
-
-        <div class="detail-item">
-            <div class="detail-label">
-                <p>امتیاز محصول:</p>
-            </div>
-            <div class="detail-value">
-                <p>⭐⭐⭐⭐⭐</p> <!-- این بخش برای نمایش امتیاز به صورت استاتیک یا دینامیک با داده‌های واقعی -->
-            </div>
-        </div>
+    <div class="product-info">
+        <p class="product-name">{{ i.product.name | truncatechars:20 }}</p>
+        <p class="product-price">
+            <span>{{ i.price | intcomma:False }}</span> تومان
+        </p>
+        <a class="btn-buy" href="/shop/{{ i.shop.id }}/product/{{ i.id }}">خرید اینترنتی</a>
     </div>
 </div>
+            {% endfor %}
+
+        </div>
+    </div>
+    <div class="product-details">
+        <h2>مشخصات محصول</h2>
+        <div class="product-details-scroll">
+            <div class="detail-item">
+                <div class="detail-label">
+                    <p>نوع کالا:</p>
+                </div>
+                <div class="detail-value">
+                    <p>{{ product_shops.0.product.get_type_display }}</p>
+                </div>
+            </div>
+
+            <div class="detail-item">
+                <div class="detail-label">
+                    <p>دسته بندی:</p>
+                </div>
+                <div class="detail-value">
+                    <p>{{ product_shops.0.product.category.name | truncatechars:23 }}</p>
+                </div>
+            </div>
+
+            <div class="detail-item">
+                <div class="detail-label">
+                    <p>معرفی محصول:</p>
+                </div>
+                <div class="detail-value">
+                    <p>{{ product_shops.0.product.description | truncatechars:50 }}</p>
+                </div>
+            </div>
+
+            <div class="detail-item">
+                <div class="detail-label">
+                    <p>قیمت:</p>
+                </div>
+                <div class="detail-value">
+                    <p><span>{{ product_shops.0.price | intcomma }}</span> تومان</p>
+                </div>
+            </div>
+
+            <div class="detail-item">
+                <div class="detail-label">
+                    <p>وضعیت موجودی:</p>
+                </div>
+                <div class="detail-value">
+                    <p>{{ product_shops.0.get_inventory_state_display }}</p>
+                </div>
+            </div>
+
+            <div class="detail-item">
+                <div class="detail-label">
+                    <p>ظرفیت:</p>
+                </div>
+                <div class="detail-value">
+                    <p>{{ product_shops.0.capacity }} عدد</p>
+                </div>
+            </div>
+
+            <div class="detail-item">
+                <div class="detail-label">
+                    <p>امتیاز محصول:</p>
+                </div>
+                <div class="detail-value">
+                    <p>⭐⭐⭐⭐⭐</p> <!-- این بخش برای نمایش امتیاز به صورت استاتیک یا دینامیک با داده‌های واقعی -->
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 <div class="items-result">
@@ -600,7 +693,7 @@
 <!-- content end -->
 
 <!-- Footer Start -->
-{% include './extentions/footer.html'  %} %}
+{% include './extentions/footer.html' %} %}
 <!-- Footer Area End -->
 
 <!-- Back to top  -->
