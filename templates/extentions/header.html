@@ -1,4 +1,24 @@
 {% load static %}
+<style>
+    .ms-header-bottons a {
+        margin-left: 20px; /* فاصله‌ای که می‌خواهید بین دکمه‌ها باشد */
+    }
+
+    .ms-btn-stitle {
+        margin-left: 10px; /* فاصله چپ */
+        margin-right: 10px; /* فاصله راست */
+    }
+
+    .ms-header-btn .header-icon img {
+        margin-right: 8px; /* فاصله کوچیک بین آیکن و متن */
+    }
+
+    .ms-header-btn .ms-btn-stitle {
+        /* اگر لازم بود فاصله بیشتری برای متن ایجاد کنید، می‌توانید margin-left اضافه کنید */
+        /* margin-left: 5px; */
+    }
+
+</style>
 <header class="ms-header">
     <div class="ms-header-bottom d-none d-lg-block">
         <div class="container position-relative">
@@ -77,23 +97,22 @@
 
                     {% else %}
                         <div class="align-self-center">
-
                             <div class="ms-header-bottons">
                                 <div class="ms-acc-drop">
                                     <a href="javascript:void(0)"
                                        class="ms-header-btn ms-header-user dropdown-toggle ms-user-toggle"
                                        title="حساب کاربری">
                                         <div class="header-icon">
-                                            <img src="{% static 'assets/img/icons/user.svg' %}"
+                                            <img src="{% static 'assets/img/icons/user.svg' %}" onclick='window.open("/login/?callback=" + window.location.pathname, "_self")'
                                                  class="svg_img header_svg" alt="">
                                         </div>
                                         <span onclick='window.open("/login/?callback=" + window.location.pathname, "_self")'
-                                              class="ms-btn-stitle">ورود</span>
+                                              class="ms-btn-stitle">ورود</span> 
                                     </a>
                                 </div>
 
                                 <a href="checkout" class="ms-header-btn "
-                                   title="سبدهای خرید">
+                                   title="سبد خرید">
                                     <div class="header-icon">
                                         <img src="{% static 'assets/img/icons/cart_5.svg' %}"
                                              class="svg_img header_svg" alt="">
@@ -106,6 +125,7 @@
                                     </div>
                                 </a>
                             </div>
+
                         </div>
                     {% endif %}
                 </div>
@@ -132,12 +152,14 @@
                                                         {#                                                        {% if not i.parent %}#}
                                                         <ul class="d-block">
                                                             <li class="menu_title"><a
-                                                                    href="javascript:void(0)">{{ i.name|safe|truncatechars_html:17 }}</a>
+                                                                    href="javascript:void(0)">
+                                                                {{ i.name|safe|truncatechars_html:17 }}</a>
                                                             </li>
 
                                                             {% for j in i.children %}
                                                                 <li>
-                                                                    <a href="/product/?category={{ j.id }}">{{ j.name|safe|truncatechars_html:17 }}</a>
+                                                                    <a href="/product/?category={{ j.id }}">
+                                                                        {{ j.name|safe|truncatechars_html:17 }}</a>
                                                                 </li>
                                                             {% endfor %}
                                                         </ul>

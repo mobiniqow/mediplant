@@ -99,7 +99,7 @@ class ShopProduct(models.Model):
 
     material = models.IntegerField(choices=Material.choices, verbose_name='جنس کالا', default=Material.BASTE_BANDI)
 
-
+    how_to_use = models.CharField( max_length=255,default="نحوه مصرف")
 
     class Meta:
         verbose_name = 'محصول فروشگاه'
