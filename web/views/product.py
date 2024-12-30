@@ -1,5 +1,8 @@
+from multiprocessing.managers import State
+
 from abstract_view.base_template_view import BaseTemplateView
 from product.models import Product, ProductImage
+from sale.models import SaleBasket, SaleBasketProduct
 from shop.models import ShopProduct
 from django.shortcuts import get_object_or_404
 
@@ -21,6 +24,16 @@ class ShopProductView(BaseTemplateView):
         context['images'] = product_shops.image
         context['shop_id'] = shop_id
         context['product_id'] = product_shops.id
+        quantity=0
+
+        session_key = self.request.session.session_key or self.request.META.get('REMOTE_ADDR')
+        basket = SaleBasket.objects.filter(shop=shop_id, session_key=session_key,
+                                           state__in=[SaleBasket.State.SUSPEND, SaleBasket.State.IN_PAY])
+        if basket.exists():
+            item = SaleBasketProduct.objects.filter(basket=basket[0], product=product_id)
+            if item.exists():
+                quantity = item[0].unit
+        context['quantity'] = quantity
         return context
 
 
@@ -45,7 +58,7 @@ class ProductListView(BaseTemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        product_shops =  ShopProduct.objects.all()
+        product_shops = ShopProduct.objects.all()
         products = Product.objects.select_related('class_id', 'category', 'unit').prefetch_related('images')[:10]
 
         for i in products:

@@ -48,13 +48,23 @@ class CreateBasket(APIView):
 
 class ProductToBasket(APIView):
     def post(self, request, basket_id, product_id):
-        if request.user.is_authenticated:
-            basket = SaleBasket.objects.get(id=basket_id, user=request.user)
+        print(request.user)
+        if request.user != None:
+            session_key = request.session.session_key or request.META.get('REMOTE_ADDR')
+            basket = SaleBasket.objects.filter(id=basket_id, session_key=session_key)
+            if basket.exists():
+                basket = basket[0]
+                if basket.user is None:
+                    basket.user = request.user
+                    basket.save()
+            basket = get_object_or_404(SaleBasket,id=basket_id, user=request.user)
         else:
             session_key = request.session.session_key or request.META.get('REMOTE_ADDR')
             basket = SaleBasket.objects.filter(id=basket_id, session_key=session_key)
             if not basket.exists():
                 return Response({"message": "not found"}, status=status.HTTP_404_NOT_FOUND)
+            else:
+                basket = basket[0]
         shop_product = ShopProduct.objects.filter(id=product_id, shop=basket.shop)
         if not shop_product.exists():
             return Response({"message": "not found"}, status=status.HTTP_404_NOT_FOUND)
@@ -65,18 +75,19 @@ class ProductToBasket(APIView):
         unit = request.data.get('unit', 1)
         if item.exists():
             item = item.first()
-            print(f'item unit {item.unit} product price {product.price}')
             basket.price -= int(product.price) * int(item.unit)
-            basket.price += int(product.price) * int(unit)
-            item.unit = unit
-            item.save()
+            if unit == "0":
+                SaleBasketProduct.objects.filter(basket=basket, product=product).delete()
+            else:
+                basket.price += int(product.price) * int(unit)
+                item.unit = unit
+                item.save()
             basket.save()
         else:
-            print(f'basket ghab {basket.price}')
-            basket.price+=product.price * int(unit)
-            basket.save()
-            SaleBasketProduct.objects.create(basket=basket, product=product, unit=unit, )
-            print(f'basket bad {basket.price}')
+            if unit != 0:
+                basket.price+=product.price * int(unit)
+                basket.save()
+                SaleBasketProduct.objects.create(basket=basket, product=product, unit=unit, )
         return Response({"message": "Product added to basket"}, status=status.HTTP_200_OK)
 
     def put(self, request, basket_id, product_id):

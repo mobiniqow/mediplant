@@ -68,11 +68,16 @@ class User(AbstractBaseUser, PermissionsMixin):
     phone = models.CharField(max_length=17, unique=True, validators=[phone_validator], verbose_name='شماره تلفن')
     objects = BasicUserManager()
     USERNAME_FIELD = "phone"
+    phone_otp = models.CharField(max_length=6, blank=True, null=True, verbose_name="OTP for phone verification")
+    email_otp = models.CharField(max_length=6, blank=True, null=True, verbose_name="OTP for email verification")
+    phone_otp_sent_at = models.DateTimeField(null=True, blank=True, verbose_name="Time when phone OTP was sent")
+    email_otp_sent_at = models.DateTimeField(null=True, blank=True, verbose_name="Time when email OTP was sent")
+
     is_staff = models.BooleanField(default=False)
     email = models.EmailField(verbose_name='ایمیل', blank=True)
     referral_code = models.CharField(max_length=8, unique=True, editable=False)
-    city = models.ForeignKey(City, on_delete=SET_NULL, null=True, verbose_name='شهر', blank=True)
-    location = models.ForeignKey(CityLocation, on_delete=SET_NULL, null=True, verbose_name='محدوده', blank=True)
+    city = models.CharField(max_length=100, null=True, verbose_name='شهر', blank=True)
+    location = models.CharField(max_length=100, null=True, verbose_name='محدوده', blank=True)
     address = models.TextField(verbose_name='آدرس', blank=True)
     postal_code = models.CharField(max_length=20, verbose_name='کد پستی', blank=True)
 

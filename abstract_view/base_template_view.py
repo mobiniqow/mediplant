@@ -15,7 +15,12 @@ class BaseTemplateView(TemplateView):
         context['categories_map'] = category_and_sub_category
         context['is_active'] = self.request.user is not None
         categories = Category.objects.filter(parent=None)
-
+        if self.request.user :
+            from account.urls.v1.views import get_tokens_for_user
+            token = get_tokens_for_user(self.request.user)
+            context['token'] = token['access']
+        else:
+            context['token'] = ""
         context['categories'] = categories
         if context['is_active']:
             # todo ino ok konam shomareshshesho

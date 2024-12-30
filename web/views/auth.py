@@ -1,3 +1,4 @@
+from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import login
 from django.shortcuts import redirect
 from django.urls import reverse
@@ -9,7 +10,6 @@ from account.forms.verify import VerifyForm
 from account.models import User
 from account.send_sms import send_otp_message
 from account.urls.v1.serializers import UserRegisterSerializer
-
 
 class LoginView(BaseTemplateView):
     template_name = "account/login.html"
@@ -59,7 +59,6 @@ class VerifyView(BaseTemplateView):
 
     def post(self, request, *args, **kwargs):
         form = VerifyForm(request.POST)
-        print(form.is_valid())
         if form.is_valid():
             user = User.objects.get(phone=form.cleaned_data['phone'])
             if user.check_password(form.cleaned_data['code']):
@@ -69,7 +68,6 @@ class VerifyView(BaseTemplateView):
                 return redirect("/")
         context = self.get_context_data(form=form)
         context['error'] = "کد صحیح نمیباشد"
-
         return self.render_to_response(context)
 
     def dispatch(self, request, *args, **kwargs):
@@ -80,7 +78,7 @@ class VerifyView(BaseTemplateView):
 
 class ProfileView(BaseTemplateView):
     template_name = "account/profile.html"
-    #
+
     def dispatch(self, request, *args, **kwargs):
         if request.method == 'POST':
             context = self.get_context_data()
@@ -94,6 +92,14 @@ class ProfileView(BaseTemplateView):
         else:
             user = request.user
             context = self.get_context_data()
+
+            # Create JWT token for the authenticated user
+            refresh = RefreshToken.for_user(user)
+            access_token = str(refresh.access_token)  # Get the access token as string
+            context['user'] = request.user
+            context['token'] = access_token  # Pass the JWT token to the context
+
             profile = ProfileForm(instance=user)
             context['form'] = profile
+
         return self.render_to_response(context)

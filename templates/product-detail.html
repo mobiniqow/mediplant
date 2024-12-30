@@ -527,11 +527,11 @@
                     <span class="close" onclick="closeDialog()">&times;</span>
                     <img id="product-image" src="" alt="محصول">
                     <h2 id="product-name"></h2>
-                    <p>تعداد مورد نیاز (کیلو): <input type="number" id="quantity" min="1" value="1"
+                    <p>تعداد  : <input type="number" id="quantity" min="0" value="1"
                                                       oninput="updateTotalPrice()"></p>
                     <p id="total-price"></p>
                     <button type="button" onclick="addToCart()">اضافه کردن</button>
-                    <button type="button" onclick="closeDialog()">کنکل</button>
+                    <button type="button" onclick="closeDialog()">لغو</button>
                 </div>
             </div>
         </div>
@@ -902,7 +902,7 @@
     function updateTotalPrice() {
         const quantity = parseInt(document.getElementById('quantity').value) || 1;
         const totalPrice = quantity * pricePerUnit;
-        document.getElementById('total-price').innerText = `قیمت کل:${totalPrice} تومان`;
+        document.getElementById('total-price').innerText = ` قیمت کل : ${totalPrice} تومان`;
         if (quantity > maxOrderQuantity) {
             alert(`حداکثر تعداد قابل سفارش ${maxOrderQuantity} است.`);
             document.getElementById('quantity').value = maxOrderQuantity;
@@ -921,14 +921,24 @@
     async function addItemToCardApi(quantity)  {
         let basket_id = await getCart()
         let product = '{{ product_id }}'
+        let token = "{{ token }}";
+        let header = {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "X-CSRFToken": getCookie('csrftoken'),
+            }
+        if (token !=""){
+            
+           header = {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "X-CSRFToken": getCookie('csrftoken'),
+                 "Authorization": "Bearer {{token}}"
+            } 
+        }
         var settings = {
             "url": `/basket/${basket_id['basket_id']}/product/${product}`,
             "method": "POST",
             "timeout": 0,
-            "headers": {
-                "Content-Type": "application/x-www-form-urlencoded",
-                 "X-CSRFToken": getCookie('csrftoken')
-            },
+            "headers":header,
             "data": {
                 "unit": quantity
             }

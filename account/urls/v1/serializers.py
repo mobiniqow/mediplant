@@ -13,6 +13,10 @@ class ProfileSerializer(serializers.ModelSerializer):
         fields = (
             "phone",
             "user_name",
+            "postal_code",
+            "location",
+            "address",
+            "city",
             "avatar",
         )
         read_only_fields = ("phone",)
