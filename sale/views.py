@@ -76,7 +76,7 @@ class ProductToBasket(APIView):
         if item.exists():
             item = item.first()
             basket.price -= int(product.price) * int(item.unit)
-            if unit == "0":
+            if unit == "0"or unit == 0:
                 SaleBasketProduct.objects.filter(basket=basket, product=product).delete()
             else:
                 basket.price += int(product.price) * int(unit)

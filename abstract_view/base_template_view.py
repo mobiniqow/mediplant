@@ -25,7 +25,7 @@ class BaseTemplateView(TemplateView):
         if context['is_active']:
             # todo ino ok konam shomareshshesho
             context['medic_notification'] = 0
-            context['shop_notification'] = 2
+            context['shop_notification'] = 4
 
             # context['']
         return context

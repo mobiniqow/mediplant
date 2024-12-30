@@ -166,7 +166,6 @@ class CheckoutView(BaseTemplateView):
 
 class ShopCartView(BaseTemplateView):
     template_name = "cart.html"
-
     def get_context_data(self, **kwargs):
         page_size = 15
         context = super().get_context_data(**kwargs)
@@ -180,9 +179,10 @@ class ShopCartView(BaseTemplateView):
         product = SaleBasketProduct.objects.filter(basket=basket)
         for i in product:
             i.image = ProductImage.objects.filter(product=i.product.product).first()
-            print(i.image)
             i.price ='{:,.0f}'.format(i.product.price)
             i.price_all ='{:,.0f}'.format(i.product.price*i.unit)
+        print( self.request.user.postal_code)
+        context['user'] = self.request.user
         context['shop'] = shop
         context['product'] = product
 

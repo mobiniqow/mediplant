@@ -542,7 +542,7 @@
     let marker;
     let loc = "{{ user.location }}"
     let selectedLocation = {lat: 35.6895, lng: 51.3890};
-    if (loc != "") {
+    if (loc !== "None" && loc!="" ) {
         loc = loc.split(",")
         selectedLocation = {lat: loc[0], lng: loc[1]};
     }
