@@ -5,6 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 
 from shop.models import ShopProduct, Shop
 from transaction.models import Transaction
+from transaction.serializers import TransactionSerializer
 from .models import SaleBasket, SaleBasketProduct
 from django.shortcuts import get_object_or_404
 
@@ -146,16 +147,9 @@ class Checkout(APIView):
 
     def post(self, request, basket_id):
         session_key = request.session.session_key or request.META.get('REMOTE_ADDR')
-        basket = SaleBasket.objects.filter(id=basket_id, user=request.user)
-        if not basket.exists():
-            basket = SaleBasket.objects.filter(id=basket_id, session_key=session_key)
-            if not basket.exists():
-                return Response({"error": "Basket is not found"}, status=status.HTTP_400_BAD_REQUEST)
-            else:
-                basket = basket.first()
-                basket.user = request.user
-                basket.session_key = None
-                basket.save()
+
+        basket = get_object_or_404(SaleBasket,id=basket_id, user=request.user)
+        # basket = get_object_or_404(SaleBasket,id=basket_id,session_key=session_key )
 
         if basket.price <= 0:
             return Response({"error": "Basket is empty"}, status=status.HTTP_400_BAD_REQUEST)
@@ -173,7 +167,7 @@ class Checkout(APIView):
 
         return Response({
             "message": "Transaction initiated",
-            "transaction_id": transaction.id
+            "transaction_id": TransactionSerializer(transaction).data
         }, status=status.HTTP_201_CREATED)
 
 

@@ -19,6 +19,7 @@ class BaseTemplateView(TemplateView):
             from account.urls.v1.views import get_tokens_for_user
             token = get_tokens_for_user(self.request.user)
             context['token'] = token['access']
+            print(token['access'])
         else:
             context['token'] = ""
         context['categories'] = categories
