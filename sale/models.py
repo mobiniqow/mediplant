@@ -2,7 +2,6 @@ from django.core.validators import MinValueValidator
 from django.db import models
 from account.models import User
 from shop.models import Shop, ShopProduct
-from transaction.models import Transaction
 
 
 class SaleBasket(models.Model):
@@ -26,7 +25,7 @@ class SaleBasket(models.Model):
     state = models.IntegerField(choices=State.choices, default=0, verbose_name='وضعیت')
     discount = models.IntegerField(validators=[MinValueValidator(0)], verbose_name='تخفیف')
     shop = models.ForeignKey(Shop, on_delete=models.SET_NULL, null=True, verbose_name='فروشگاه')
-    transaction = models.ForeignKey(Transaction, on_delete=models.SET_NULL, null=True, verbose_name='تراکنش')
+    transaction = models.ForeignKey('transaction.Transaction', on_delete=models.SET_NULL, null=True, verbose_name='تراکنش')
 
     class Meta:
         verbose_name = 'سبد خرید'

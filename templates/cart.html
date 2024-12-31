@@ -233,15 +233,17 @@
                                 <form action="#" method="post">
                                     <span class="ms-cart-wrap">
                                             <label>کد پستی</label>
-                                            <input type="text" name="postalcode" placeholder="{{user.postal_code}}" readonly>
+                                            <input type="text" name="postalcode" placeholder="{{ user.postal_code }}"
+                                                   readonly>
                                         </span>
                                     <span class="ms-cart-wrap">
                                             <label>آدرس</label>
-                                            <input type="text" name="postalcode" placeholder="{{user.address}}" readonly>
+                                            <input type="text" name="postalcode" placeholder="{{ user.address }}"
+                                                   readonly>
                                         </span>
                                     <span class="ms-cart-wrap">
                                             <label>لوکیشن</label>
-                                           <div id="mapDialog" >
+                                           <div id="mapDialog">
                                             <div class="dialog-content">
                                                 <div id="map" style="width: 100%; height: 400px;"></div>
                                              </div>
@@ -273,7 +275,7 @@
                                     </div>
                                     <div class="ms-cart-summary-total">
                                         <span class="text-left">مقدار کل</span>
-                                        <span class="text-right">{{  product.0.basket.price }} هزار تومان</span>
+                                        <span class="text-right">{{ product.0.basket.price }} هزار تومان </span>
                                     </div>
                                 </div>
 
@@ -281,7 +283,9 @@
                         </div>
                     </div>
                 </div>
-                <button  class="ms-btn-2 col-lg-12 col-md-12  ms-sb-block-content" onclick="raod_to_pay()">خرید</button>
+                <button class="ms-btn-2 col-lg-12 col-md-12  ms-sb-block-content"
+                        onclick="raod_to_pay('{{ product.0.basket.id }}')">خرید
+                </button>
             </div>
         </div>
     </div>
@@ -1108,11 +1112,12 @@
     let marker;
     let loc = "{{ user.location }}"
     let selectedLocation = {lat: 35.6895, lng: 51.3890};
-    if (loc !== "None" && loc!="" ) {
+    if (loc !== "None" && loc != "") {
         loc = loc.split(",")
         selectedLocation = {lat: loc[0], lng: loc[1]};
     }
-    function initMap() { 
+
+    function initMap() {
         map = new L.Map("map", {
             key: "web.3188f8eb47ad4ebebec20e3bb4bc9a11",
             maptype: "dreamy-gold",
@@ -1120,17 +1125,39 @@
             traffic: false,
             center: selectedLocation, draggable: false,// مرکز نقشه
             zoom: 16, // سطح زوم
-        });  
+        });
         marker = new L.Marker(selectedLocation, {draggable: false}).addTo(map);
 
     }
+
     initMap()
-    
+
 </script>
 <script>
-    function raod_to_pay(){
-        
+    function raod_to_pay(basket) {
+        console.log("oamada {{ token }}")
+        var settings = {
+            "url": `/transaction/payment/start/${basket}`,
+            "method": "POST",
+            "timeout": 0,
+            "headers": {
+                "Authorization": "Bearer {{token}} "  // Replace `token` with actual token value
+            },
+        };
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+
+            // Check if payment URL is available
+            if (response.payment_url && response.payment_url.authority) {
+                var paymentUrl = `https://payment.zarinpal.com/pg/StartPay/${response.payment_url.authority}`;
+                window.location.href = paymentUrl; // Redirect to payment page
+            } else {
+                console.error("Payment URL is not available in the response");
+            }
+        });
     }
+
 </script>
 </body>
 

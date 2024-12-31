@@ -1,24 +1,89 @@
-from django.core.validators import MinValueValidator
 from django.db import models
-from account.models import User
+from django.conf import settings
+from django.utils import timezone
+import requests 
+
+import json
+
+from sale.models import SaleBasket
 
 
 class Transaction(models.Model):
-    class State(models.IntegerChoices):
-        SUSPEND = 0
-        PAYMENT_GATEWAY = 1
-        FAILED = 2
-        SUCCESSFUL = 3
-        REPORTED = 4
 
-    price = models.IntegerField(validators=[MinValueValidator(0)], verbose_name='مبلغ')
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name='تاریخ ایجاد')
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, verbose_name='کاربر')
-    state = models.IntegerField(choices=State.choices, default=State.SUSPEND, verbose_name='وضعیت')
-    transaction_number = models.CharField(max_length=20, verbose_name='شماره تراکنش')
-    payment_gateway = models.CharField(max_length=50, verbose_name='نام درگاه پرداخت')
-    description = models.TextField(blank=True, verbose_name='توضیحات')
+    TRANSACTION_TYPES = [
+        ('deposit', 'Deposit'),
+        ('withdrawal', 'Withdrawal'),
+    ]
 
-    class Meta:
-        verbose_name = 'تراکنش'
-        verbose_name_plural = 'تراکنش‌ها'
+    TRANSACTION_STATUS = [
+        ('success', 'Success'),
+        ('failed', 'Failed'),
+        ('pending', 'Pending'),
+    ]
+
+    user = models.ForeignKey("account.User", on_delete=models.CASCADE)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    transaction_type = models.CharField(max_length=10, choices=TRANSACTION_TYPES)
+    status = models.CharField(max_length=10, choices=TRANSACTION_STATUS, default='pending')
+    timestamp = models.DateTimeField(default=timezone.now)
+    authority = models.CharField(max_length=100, null=True, blank=True)
+    message = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return f"Transaction {self.transaction_type} - {self.amount} - {self.status}"
+
+    def save(self, *args, **kwargs):
+        if self.transaction_type == 'deposit' and self.status == 'success':
+            # پرداخت موفق
+            cart = SaleBasket.objects.filter(user=self.user).first()
+            if cart:
+                cart.items.all().delete()
+        super().save(*args, **kwargs)
+
+
+class Payment(models.Model):
+    user = models.ForeignKey("account.User", on_delete=models.CASCADE)
+    cart = models.ForeignKey(SaleBasket, on_delete=models.CASCADE)
+    transaction = models.OneToOneField(Transaction, on_delete=models.CASCADE)
+    payment_url = models.URLField(null=True, blank=True)
+    status = models.CharField(max_length=10, choices=[('pending', 'Pending'), ('completed', 'Completed'), ('failed', 'Failed')], default='pending')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Payment for {self.cart.user.user_name} - {self.status}"
+
+    def initiate_payment(self):
+        # Logic to start the payment using Zarinpal API
+        amount = self.cart.price
+        if amount <= 0:
+            raise ValueError("سبد خرید خالی است یا مبلغ پرداخت صحیح نیست.")
+
+        url = "https://api.zarinpal.com/pg/v4/payment/request.json"
+        data = {
+            'merchant_id': settings.MERCHANT_ID,
+            'amount': str(amount),
+            'callback_url': settings.CALLBACK_URL,
+            'description': f"پرداخت برای سبد خرید {self.user.user_name}",
+        }
+        headers = {'Content-Type': 'application/json'}
+        response = requests.post(url, data=json.dumps(data), headers=headers)
+
+        if response.status_code == 200:
+            response_data = json.loads(response.text)
+            if response_data['data']['code'] == 100:
+                self.payment_url = response_data['data']
+                transaction = self.transaction
+                transaction.authority =  response_data  ['data']['authority']
+                transaction.save()
+                self.status = 'pending'
+                self.save()
+                return self.payment_url
+            else:
+                self.status = 'failed'
+                self.save()
+                raise Exception(f"خطا در درخواست پرداخت: {response_data['data']['message']}")
+        else:
+            self.status = 'failed'
+            self.save()
+            raise Exception("خطا در ارتباط با زرین‌پال")
+

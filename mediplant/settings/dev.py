@@ -22,6 +22,10 @@ CORS_ALLOW_ALL_ORIGINS = True
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+
+MERCHANT_ID = "5ed2e796-0448-40db-920c-1df64ddb0551"
+CALLBACK_URL = "http://localhost:8000/transaction/payment/verify/"
+
 TAILWIND_APP_NAME = 'theme'
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(days=14),

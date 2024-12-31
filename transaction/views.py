@@ -1,109 +1,143 @@
+from sale.models import SaleBasket
+from .models import Transaction, Payment
 import requests
-from rest_framework import status
-from rest_framework.response import Response
-from rest_framework.views import APIView
+import json
+from django.shortcuts import get_object_or_404
+from django.http import JsonResponse
+from rest_framework.decorators import api_view
 from django.conf import settings
 
-from sale.models import SaleBasket
-from .models import Transaction
 
-ZARINPAL_MERCHANT_ID = 'your-merchant-id-here'
-ZARINPAL_START_PAY_URL = 'https://www.zarinpal.com/pg/StartPay/{authority}'
-ZARINPAL_REQUEST_URL = 'https://api.zarinpal.com/pg/v4/payment/request.json'
-ZARINPAL_VERIFY_URL = 'https://api.zarinpal.com/pg/v4/payment/verify.json'
+@api_view(['POST',])
+def start_payment(request,shop_id):
+    user = request.user
+    cart = get_object_or_404(SaleBasket,user=user,pk=shop_id)
+    if not cart:
+        return JsonResponse({"error": "سبد خرید یافت نشد"})
+    amount = cart.price
+    transaction = Transaction.objects.create(
+        user=user,
+        amount=amount,
+        transaction_type='deposit',
+        status='pending',
+        message=f"پرداخت برای سبد خرید {user.user_name}"
+    )
+
+    # ایجاد پرداخت جدید
+    payment = Payment.objects.create(
+        user=user,
+        cart=cart,
+        transaction=transaction
+    )
+
+    # شروع پرداخت از طریق زرین‌پال
+    try:
+        payment_url = payment.initiate_payment()
+        return JsonResponse({"payment_url": payment_url})
+    except Exception as e:
+        return JsonResponse({"error": str(e)})
 
 
-class InitiatePayment(APIView):
-    def post(self, request, basket_id):
-        basket = SaleBasket.objects.get(id=basket_id, user=request.user)
-
-        if basket.price <= 0:
-            return Response({"error": "Basket is empty"}, status=status.HTTP_400_BAD_REQUEST)
-        transaction = Transaction.objects.create(
-            price=basket.price,
-            user=request.user,
-            payment_gateway='ZarinPal',
-            transaction_number='TRX-' + str(basket_id)
-        )
-
+@api_view(['GET'])
+def verify_payment(request):
+    status = request.GET.get("Status")
+    authority = request.GET.get("Authority")
+    # amount = request.GET.get("Amount")
+    payment = Payment.objects.get(transaction__authority=authority)
+    if status == "Ok":
+        # ارسال درخواست تایید پرداخت از زرین‌پال
+        url = "https://payment.zarinpal.com/pg/v4/payment/verify.json"
         data = {
-            'merchant_id': ZARINPAL_MERCHANT_ID,
-            'amount': basket.price,
-            'description': f'پرداخت برای سبد خرید {basket_id}',
-            'callback_url': f'{settings.CALLBACK_URL}/payment/callback/',
-            'metadata': {
-                'email': request.user.email,
-                'mobile': request.user.profile.phone_number
-            }
+            'merchant_id': settings.MERCHANT_ID,
+            'amount': payment.cart.price,
+            'authority': authority
         }
+        headers = {'Content-Type': 'application/json'}
+        response = requests.post(url, data=json.dumps(data), headers=headers)
 
-        response = requests.post(ZARINPAL_REQUEST_URL, json=data)
-        result = response.json()
+        if response.status_code == 200:
+            response_data = response.json()
+            if response_data['data']['code'] == 100:
+                # تایید پرداخت موفق
+                transaction = Transaction.objects.filter(authority=authority).first()
+                if transaction:
+                    transaction.status = 'success'
+                    transaction.save()
 
-        if result.get('data') and result['data']['code'] == 100:
-            authority = result['data']['authority']
-            transaction.transaction_number = authority
+                    # بروزرسانی وضعیت پرداخت
+                    payment = Payment.objects.filter(transaction=transaction).first()
+                    payment.status = 'completed'
+                    payment.save()
+
+                    return JsonResponse({"message": "پرداخت موفقیت‌آمیز بود"})
+                else:
+                    return JsonResponse({"error": "تراکنش یافت نشد"})
+            else:
+                return JsonResponse({"error": "پرداخت ناموفق بود"})
+        else:
+            return JsonResponse({"error": "خطا در ارتباط با زرین‌پال"})
+    else:
+        return JsonResponse({"error": "پرداخت ناموفق"})
+
+@api_view(['POST'])
+def get_payment_url(request):
+    user = request.user
+    cart_id = request.data.get('cart_id')
+
+    cart = SaleBasket.objects.filter(user=user, id=cart_id).first()
+
+    if not cart:
+        return JsonResponse({"error": "سبد خرید یافت نشد"}, status=404)
+
+    total_amount = sum(item.course.price * item.quantity for item in cart.items.all())
+
+    if total_amount <= 0:
+        return JsonResponse({"error": "سبد خرید خالی است یا مبلغ پرداخت صحیح نیست."}, status=400)
+
+    transaction = Transaction.objects.create(
+        wallet=user.wallet,
+        amount=total_amount,
+        transaction_type='deposit',
+        status='pending',
+        message=f"پرداخت برای سبد خرید {cart_id}"
+    )
+
+    url = "https://api.zarinpal.com/pg/v4/payment/request.json"
+    data = {
+        'merchant_id': settings.MERCHANT_ID,
+        'amount': total_amount,
+        'callback_url': settings.CALLBACK_URL,
+        'description': f"پرداخت برای سبد خرید {cart_id}"
+    }
+    headers = {'Content-Type': 'application/json'}
+    response = requests.post(url, data=json.dumps(data), headers=headers)
+
+    if response.status_code == 200:
+        response_data = response.json()
+
+        if response_data['data']['code'] == 100:
+            authority = response_data['data']['authority']
+            transaction.authority = authority
             transaction.save()
 
-            return Response({
-                'url': ZARINPAL_START_PAY_URL.format(authority=authority)
-            }, status=status.HTTP_200_OK)
+            payment_url = response_data['data']['url']
+            return JsonResponse({"payment_url": payment_url})
 
-        return Response({"error": "Error in payment initiation"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        else:
+            return JsonResponse({"error": response_data['data']['message']}, status=400)
+
+    else:
+        return JsonResponse({"error": "خطا در ارتباط با زرین‌پال"}, status=500)
 
 
-class ZarinpalCallback(APIView):
-    def get(self, request):
-        authority = request.GET.get('Authority')
-        status = request.GET.get('Status')
+@api_view(['GET'])
+def get_transactions(request):
+    user = request.user
+    transactions = Transaction.objects.filter(user=user).values(
+        'id', 'transaction_type', 'amount', 'status', 'timestamp', 'message', 'authority'
+    )
 
-        try:
-            transaction = Transaction.objects.get(transaction_number=authority)
-        except Transaction.DoesNotExist:
-            return Response({"error": "Transaction not found"}, status=status.HTTP_404_NOT_FOUND)
+    if not transactions:
+        return JsonResponse({"error": "تراکنشی یافت نشد"}, status=404)
 
-        if status == 'OK':
-            data = {
-                'merchant_id': ZARINPAL_MERCHANT_ID,
-                'amount': transaction.price,
-                'authority': authority
-            }
-
-            response = requests.post(ZARINPAL_VERIFY_URL, json=data)
-            result = response.json()
-
-            if result.get('data') and result['data']['code'] == 100:
-                transaction.state = Transaction.State.SUCCESSFUL
-                transaction.save()
-
-                basket = SaleBasket.objects.get(transaction=transaction)
-                basket.state = SaleBasket.State.PAY_SUCCESS
-                basket.save()
-
-                return Response({"message": "Payment successful"}, status=status.HTTP_200_OK)
-
-            transaction.state = Transaction.State.FAILED
-            transaction.save()
-            return Response({"error": "Payment failed during verification"}, status=status.HTTP_400_BAD_REQUEST)
-
-        transaction.state = Transaction.State.FAILED
-        transaction.save()
-
-        return Response({"error": "Payment not successful"}, status=status.HTTP_400_BAD_REQUEST)
-
-class CheckTransactionStatus(APIView):
-    permission_classes = [IsAuthenticated]
-
-    def get(self, request, transaction_id):
-        try:
-            transaction = Transaction.objects.get(id=transaction_id, user=request.user)
-        except Transaction.DoesNotExist:
-            return Response({"error": "Transaction not found"}, status=status.HTTP_404_NOT_FOUND)
-
-        return Response({
-            "transaction_id": transaction.id,
-            "status": transaction.state,
-            "payment_gateway": transaction.payment_gateway,
-            "price": transaction.price
-        }, status=status.HTTP_200_OK)
-
+    return JsonResponse(list(transactions), safe=False)
