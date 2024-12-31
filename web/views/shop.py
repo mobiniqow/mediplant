@@ -213,3 +213,24 @@ class AfterBankGateWay(BaseTemplateView):
         context['product'] = product
 
         return context
+
+class OrderListView(TemplateView):
+    template_name = "order_list.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        category_and_sub_category = {}
+
+        category_and_sub_category['base'] = Category.objects.filter(parent=None)
+        categories = Category.objects.filter(parent=None)
+
+        for i in category_and_sub_category['base']:
+            i.children = Category.objects.filter(parent=i.id)
+
+        banners = Banner.objects.filter(state=Banner.State.ACTIVE).order_by('?')[:6]
+        context['title'] = 'صفحه اصلی'
+        context['banner'] = banners
+        context['categories'] = categories
+        context['categories_map'] = category_and_sub_category
+
+        return context

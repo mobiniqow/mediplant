@@ -5,7 +5,8 @@ from .views.articles import BlogsView, BlogsDetailsView
 from .views.auth import LoginView, VerifyView, ProfileView
 from .views.others import AboutUsView, ContactUsView
 from .views.product import ShopProductListView, ShopProductView, ProductListView
-from .views.shop import CategoryView, IndexView, ShopView, ShopDetailsView, SearchProduct, CheckoutView, ShopCartView
+from .views.shop import CategoryView, IndexView, ShopView, ShopDetailsView, SearchProduct, CheckoutView, ShopCartView, \
+    OrderListView
 
 urlpatterns = [
     path("", IndexView.as_view(),),
@@ -17,6 +18,7 @@ urlpatterns = [
     path("blog", BlogsView.as_view(),),
     path("blog/<int:id>/", BlogsDetailsView.as_view(),),
     path('shop/', ShopView.as_view()),
+    path('shop/orders', OrderListView.as_view()),
     path('shop/<int:id>/', ShopDetailsView.as_view()),
     path('shop/<int:id>/cart', ShopCartView.as_view()),
     path('shop/<int:id>/checkout', CheckoutView.as_view()),
