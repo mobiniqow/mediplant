@@ -11,17 +11,11 @@
     <meta name="keywords"
           content="Bootstrap 5.x, ecommerce, farming, food market, grocery market, grocery shop, grocery store, grocery supper market, multi vendor, organic food, supermarket, supermarket grocery">
     <meta name="description" content="Multipurpose eCommerce HTML Template">
-    <meta name="author" content="Pilarest">
-
-    <!-- site Favicon -->
-    <link rel="icon" href="{% static 'assets/img/favicon/favicon.png' %}" sizes="32x32">
-
-    <!-- css Icon Font -->
+    <meta name="author" content="Pilarest"> 
+    <link rel="icon" href="{% static 'assets/img/favicon/favicon.png' %}" sizes="32x32"> 
     <link rel="stylesheet" href="{% static 'assets/css/vendor/msicons.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/all.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
-
-    <!-- css All Plugins Files -->
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}"> 
     <link rel="stylesheet" href="{% static 'assets/css/plugins/animate.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/plugins/swiper-bundle.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap.css' %}">
@@ -45,7 +39,7 @@
 </div>
 
 <!-- Header start  -->
-{% include './extentions/header.html' with categories=categories_map is_active=is_active medic_notification=medic_notification shop_notification=shop_notification%}
+{% include './extentions/header.html' with categories=categories_map is_active=is_active medic_notification=medic_notification shop_notification=shop_notification %}
 <!-- Header End  -->
 
 <!-- Category sidebar Start -->
@@ -549,7 +543,8 @@
                                                 <h6 class="ms-pro-stitle">{{ product.name  |truncatechars:13 }}</h6>
                                             </a>
                                             <h5 class="ms-pro-title"><a
-                                                    href="product-left-sidebar.html">{{ product.description|slice:":26" }}</a>
+                                                    href="product-left-sidebar.html">
+                                                {{ product.description|slice:":26" }}</a>
                                             </h5>
                                             <div class="ms-pro-rat-price">
                                                 <span class="ms-price">
@@ -594,7 +589,8 @@
                                                 <h6 class="ms-pro-stitle">{{ product.name  |truncatechars:13 }}</h6>
                                             </a>
                                             <h5 class="ms-pro-title"><a
-                                                    href="product-left-sidebar.html">{{ product.description|slice:":26" }}</a>
+                                                    href="product-left-sidebar.html">
+                                                {{ product.description|slice:":26" }}</a>
                                             </h5>
                                             <div class="ms-pro-rat-price">
                                                 <span class="ms-price">
@@ -638,7 +634,8 @@
                                                 <h6 class="ms-pro-stitle">{{ product.name  |truncatechars:13 }}</h6>
                                             </a>
                                             <h5 class="ms-pro-title"><a
-                                                    href="product-left-sidebar.html">{{ product.description|slice:":26" }}</a>
+                                                    href="product-left-sidebar.html">
+                                                {{ product.description|slice:":26" }}</a>
                                             </h5>
                                             <div class="ms-pro-rat-price">
                                                 <span class="ms-price">
@@ -682,7 +679,8 @@
                                                 <h6 class="ms-pro-stitle">{{ product.name  |truncatechars:13 }}</h6>
                                             </a>
                                             <h5 class="ms-pro-title"><a
-                                                    href="product-left-sidebar.html">{{ product.description|slice:":26" }}</a>
+                                                    href="product-left-sidebar.html">
+                                                {{ product.description|slice:":26" }}</a>
                                             </h5>
                                             <div class="ms-pro-rat-price">
                                                 <span class="ms-price">
@@ -765,12 +763,12 @@
                                         </div>
                                     </div>
                                 </div>
-{#                                <span class="label veg" title="Veg">#}
-{#                                    <span class="dot"></span>#}
-{#                                </span>#}
-{#                                <a href="javascript:void(0)" class="add-to-cart" title="خرید"><img#}
-{#                                        src="{% static 'assets/img/icons/pro_cart.svg' %}" class="svg_img pro_svg"#}
-{#                                        alt="cart"></a>#}
+                                {#                                <span class="label veg" title="Veg">#}
+                                {#                                    <span class="dot"></span>#}
+                                {#                                </span>#}
+                                {#                                <a href="javascript:void(0)" class="add-to-cart" title="خرید"><img#}
+                                {#                                        src="{% static 'assets/img/icons/pro_cart.svg' %}" class="svg_img pro_svg"#}
+                                {#                                        alt="cart"></a>#}
                             </div>
                         </div>
                     {% endfor %}
@@ -784,7 +782,7 @@
                     </div>
                 </div>
                 <div class="ms-new-product-block">
-                     {% for product in bot_3_most_sell %}
+                    {% for product in bot_3_most_sell %}
                         <div class="col-sm-12 ms-all-product-block" onclick="eventItems({{ product.id }})">
                             <div class="ms-all-product-inner">
                                 <div class="ms-pro-image-outer">
@@ -811,12 +809,12 @@
                                         </div>
                                     </div>
                                 </div>
-{#                                <span class="label veg" title="Veg">#}
-{#                                    <span class="dot"></span>#}
-{#                                </span>#}
-{#                                <a href="javascript:void(0)" class="add-to-cart" title="خرید"><img#}
-{#                                        src="{% static 'assets/img/icons/pro_cart.svg' %}" class="svg_img pro_svg"#}
-{#                                        alt="cart"></a>#}
+                                {#                                <span class="label veg" title="Veg">#}
+                                {#                                    <span class="dot"></span>#}
+                                {#                                </span>#}
+                                {#                                <a href="javascript:void(0)" class="add-to-cart" title="خرید"><img#}
+                                {#                                        src="{% static 'assets/img/icons/pro_cart.svg' %}" class="svg_img pro_svg"#}
+                                {#                                        alt="cart"></a>#}
                             </div>
                         </div>
                     {% endfor %}
@@ -830,7 +828,7 @@
                     </div>
                 </div>
                 <div class="ms-new-product-block">
-                   {% for product in bot_3_best_rank %}
+                    {% for product in bot_3_best_rank %}
                         <div class="col-sm-12 ms-all-product-block" onclick="eventItems({{ product.id }})">
                             <div class="ms-all-product-inner">
                                 <div class="ms-pro-image-outer">
@@ -857,12 +855,12 @@
                                         </div>
                                     </div>
                                 </div>
-{#                                <span class="label veg" title="Veg">#}
-{#                                    <span class="dot"></span>#}
-{#                                </span>#}
-{#                                <a href="javascript:void(0)" class="add-to-cart" title="خرید"><img#}
-{#                                        src="{% static 'assets/img/icons/pro_cart.svg' %}" class="svg_img pro_svg"#}
-{#                                        alt="cart"></a>#}
+                                {#                                <span class="label veg" title="Veg">#}
+                                {#                                    <span class="dot"></span>#}
+                                {#                                </span>#}
+                                {#                                <a href="javascript:void(0)" class="add-to-cart" title="خرید"><img#}
+                                {#                                        src="{% static 'assets/img/icons/pro_cart.svg' %}" class="svg_img pro_svg"#}
+                                {#                                        alt="cart"></a>#}
                             </div>
                         </div>
                     {% endfor %}
@@ -876,7 +874,7 @@
                     </div>
                 </div>
                 <div class="ms-new-product-block">
-                      {% for product in bot_3_most_popular %}
+                    {% for product in bot_3_most_popular %}
                         <div class="col-sm-12 ms-all-product-block" onclick="eventItems({{ product.id }})">
                             <div class="ms-all-product-inner">
                                 <div class="ms-pro-image-outer">
@@ -903,12 +901,12 @@
                                         </div>
                                     </div>
                                 </div>
-{#                                <span class="label veg" title="Veg">#}
-{#                                    <span class="dot"></span>#}
-{#                                </span>#}
-{#                                <a href="javascript:void(0)" class="add-to-cart" title="خرید"><img#}
-{#                                        src="{% static 'assets/img/icons/pro_cart.svg' %}" class="svg_img pro_svg"#}
-{#                                        alt="cart"></a>#}
+                                {#                                <span class="label veg" title="Veg">#}
+                                {#                                    <span class="dot"></span>#}
+                                {#                                </span>#}
+                                {#                                <a href="javascript:void(0)" class="add-to-cart" title="خرید"><img#}
+                                {#                                        src="{% static 'assets/img/icons/pro_cart.svg' %}" class="svg_img pro_svg"#}
+                                {#                                        alt="cart"></a>#}
                             </div>
                         </div>
                     {% endfor %}
@@ -979,7 +977,7 @@
                                     <div class="ms-product-inner">
                                         <div class="ms-pro-image-outer">
                                             <div class="ms-pro-image">
-                                                <a   class="image">
+                                                <a class="image">
                                                     <span class="label veg">
                                                         <span class="dot"></span>
                                                     </span>
@@ -1022,11 +1020,11 @@
                                             </div>
                                         </div>
                                         <div class="ms-pro-content">
-                                            <a  >
+                                            <a>
                                                 <h6 class="ms-pro-stitle">{{ product.name }}</h6>
                                             </a>
                                             <h5 class="ms-pro-title"><a
-                                                    >{{ product.description }}</a>
+                                            >{{ product.description }}</a>
                                             </h5>
                                             <div class="ms-pro-rat-price">
                                                 {#                                                <span class="ms-pro-rating">#}
@@ -1072,7 +1070,7 @@
                                 <img src="{{ i.image.url }}" alt="product">
                             </div>
                             <div class="ms-vendor-info">
-                                <a href="/shop/{{i.id}}/">فروشگاه {{ i.name |slice:":9" }}</a>
+                                <a href="/shop/{{ i.id }}/">فروشگاه {{ i.name |slice:":9" }}</a>
 
                                 <p>{{ i.product_number }} محصول</p>
                                 {#                                <span class="ms-pro-rating">#}
@@ -1088,14 +1086,18 @@
                             </div>
                         </div>
                         <div class="ms-vendor-products">
-                            <a href="/shop/{{i.id  }}/product/{{ i.images_list.0.product_id }}"><img src="{{ i.images_list.0.image.image.url }}"
-                                                                     alt="product"></a>
-                            <a href="/shop/{{i.id  }}/product/{{ i.images_list.1.product_id }}"><img src="{{ i.images_list.1.image.image.url }}"
-                                                                     alt="product"></a>
-                            <a href="/shop/{{i.id  }}/product/{{ i.images_list.2.product_id }}"><img src="{{ i.images_list.2.image.image.url }}"
-                                                                     alt="product"></a>
-                            <a href="/shop/{{i.id  }}/product/{{ i.images_list.3.product_id }}"><img src="{{ i.images_list.3.image.image.url }}"
-                                                                     alt="product"></a>
+                            <a href="/shop/{{ i.id }}/product/{{ i.images_list.0.product_id }}"><img
+                                    src="{{ i.images_list.0.image.image.url }}"
+                                    alt="product"></a>
+                            <a href="/shop/{{ i.id }}/product/{{ i.images_list.1.product_id }}"><img
+                                    src="{{ i.images_list.1.image.image.url }}"
+                                    alt="product"></a>
+                            <a href="/shop/{{ i.id }}/product/{{ i.images_list.2.product_id }}"><img
+                                    src="{{ i.images_list.2.image.image.url }}"
+                                    alt="product"></a>
+                            <a href="/shop/{{ i.id }}/product/{{ i.images_list.3.product_id }}"><img
+                                    src="{{ i.images_list.3.image.image.url }}"
+                                    alt="product"></a>
                         </div>
                     </div>
                 {% endfor %}
@@ -1356,7 +1358,7 @@
     <div class="tool-title">
         <h3>تنظیمات</h3>
     </div>
-     <div class="ms-features-block">
+    <div class="ms-features-block">
         <div class="ms-features-title">رنگ‌ها</div>
         <ul class="bg-panel ms-change-color">
             <li class="active" data-color="01">
@@ -1405,16 +1407,20 @@
     function eventItems(product_id) {
         window.location.href = `/search/product/${product_id}`;
     }
+
     function eventItemsSh(product_id) {
         window.location.href = `/shop/${product_id}/product/`;
     }
+
     function openShop(product_id) {
         window.location.href = `/shop/${product_id}/`;
     }
+
     function openArticles(product_id) {
         window.location.href = `/blog/${product_id}/`;
     }
-    function openShopProduct(shop,product) {
+
+    function openShopProduct(shop, product) {
         return `/blog/${shop}/product/${product}`;
     }
 </script>
