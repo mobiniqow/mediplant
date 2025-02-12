@@ -2,7 +2,7 @@ from django.core.validators import MinValueValidator
 from django.db import models
 from account.models import User
 from shop.models import Shop, ShopProduct
-
+import jdatetime
 
 class SaleBasket(models.Model):
     class State(models.IntegerChoices):
@@ -26,10 +26,15 @@ class SaleBasket(models.Model):
     discount = models.IntegerField(validators=[MinValueValidator(0)], verbose_name='تخفیف')
     shop = models.ForeignKey(Shop, on_delete=models.SET_NULL, null=True, verbose_name='فروشگاه')
     transaction = models.ForeignKey('transaction.Transaction', on_delete=models.SET_NULL, null=True, verbose_name='تراکنش')
+    delivery_date = models.DateField(null=True, blank=True, verbose_name='زمان تحویل')
 
     class Meta:
         verbose_name = 'سبد خرید'
         verbose_name_plural = 'سبد‌های خرید'
+
+    def get_delivery_date(self):
+        """تبدیل تاریخ میلادی به تاریخ شمسی"""
+        return jdatetime.datetime.fromgregorian(datetime=self.delivery_date).strftime('%Y/%m/%d')
 
     def __str__(self):
         state_display = self.get_state_display()

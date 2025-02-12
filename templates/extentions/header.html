@@ -86,9 +86,9 @@
                                         <span class="{% if shop_notification > 0 %}main-label-note-new{% endif %}"></span>
                                     </div>
                                     <div class="ms-btn-desc">
-                                        <span class="ms-btn-title">سبد خرید</span>
+                                        <span href="javascript:void(0)" class="ms-header-btn ms-cart-toggle">سبد خرید</span>
                                         <span class="ms-btn-stitle"><span
-                                                class="ms-cart-count">{{ shop_notification }}</span> مورد </span>
+                                                class="ms-cart-count ms-cart-toggle">{{ shop_notification }}</span> مورد </span>
                                     </div>
                                 </a>
                                 <!-- Header Cart End -->
@@ -111,7 +111,7 @@
                                     </a>
                                 </div>
 
-                                <a href="checkout" class="ms-header-btn "
+                                <a href="javascript:void(0)" class="ms-header-btn ms-cart-toggle"
                                    title="سبد خرید">
                                     <div class="header-icon">
                                         <img src="{% static 'assets/img/icons/cart_5.svg' %}"

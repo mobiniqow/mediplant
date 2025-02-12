@@ -844,74 +844,83 @@
     <!-- Breadcrumb end -->
 
     <!-- Track Order section -->
-    <section class="ms-track padding-tb-30">
-        <div class="container">
-            <div class="section-title-2">
-                <h2 class="ms-title">پیگیری<span> سفارش</span></h2>
-                <p>ما شادی و نیازها را سریعتر از آنچه فکرش را بکنید ارائه می کنیم</p>
-            </div>
-            <div class="row p-t-15">
-                <div class="container">
-                    <div class="ms-track-box">
-                        <!-- Details-->
-                        <div class="row">
-                            <div class="col-md-4 m-b-767">
-                                <div class="ms-track-card"><span class="ms-track-title">سفارش</span><span>#6152</span></div>
+     <section class="ms-track padding-tb-30">
+    <div class="container">
+        <div class="section-title-2">
+            <h2 class="ms-title">پیگیری<span> سفارش</span></h2>
+            <p>ما شادی و نیازها را سریعتر از آنچه فکرش را بکنید ارائه می کنیم</p>
+        </div>
+        <div class="row p-t-15">
+            <div class="container">
+                <div class="ms-track-box">
+                    <!-- Details-->
+                    <div class="row">
+                        <div class="col-md-4 m-b-767">
+                            <div class="ms-track-card"><span class="ms-track-title">سفارش</span><span>{{ transaction.id }}</span></div>
+                        </div>
+                        <div class="col-md-4 m-b-767">
+                            <div class="ms-track-card"><span class="ms-track-title">فروشگاه</span><span>{{ shop.name }}</span></div>
+                        </div>
+                        <div class="col-md-4 m-b-767">
+                            <div class="ms-track-card"><span class="ms-track-title">زمان تحویل</span><span>{{ date }}</span></div>
+                        </div>
+                    </div>
+                    <!-- Progress-->
+                    <div class="ms-steps">
+                        <div class="ms-steps-body">
+                            <div class="ms-step">
+                                <span class="ms-step-indicator">
+                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                </span>
+                                <span class="ms-step-icon">
+                                    <img src="{% static 'assets/img/icons/track-1.svg'  %}" class="svg_img" alt="track">
+                                </span>سفارش<br> تایید شده
                             </div>
-                            <div class="col-md-4 m-b-767">
-                                <div class="ms-track-card"><span class="ms-track-title">پسته خلالی</span><span>v534hb</span></div>
+
+                            <div class="ms-step">
+                                <span class="ms-step-indicator">
+                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                </span>
+                                <span class="ms-step-icon">
+                                    <img src="{% static 'assets/img/icons/track-2.svg'  %}" class="svg_img" alt="track">
+                                </span>در حال پردازش<br> سفارش
                             </div>
-                            <div class="col-md-4 m-b-767">
-                                <div class="ms-track-card"><span class="ms-track-title">زمان تحویل</span><span>شهریور 1401</span></div>
+                            <div class="ms-step">
+                                <span class="ms-step-indicator">
+                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                </span>
+                                <span class="ms-step-icon">
+                                    <img src="{% static 'assets/img/icons/track-3.svg'  %}" class="svg_img" alt="track">
+                                </span>کیفیت<br> تست
+                            </div>
+                            <div class="ms-step">
+                                <span class="ms-step-indicator">
+                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                </span>
+                                <span class="ms-step-icon">
+                                    <img src="{% static 'assets/img/icons/track-4.svg'  %}" class="svg_img" alt="track">
+                                </span>محصول<br> اعزام شد
+                            </div>
+                            <div class="ms-step">
+                                <span class="ms-step-indicator">
+                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                </span>
+                                <span class="ms-step-icon">
+                                    <img src="{% static 'assets/img/icons/track-5.svg'  %}" class="svg_img" alt="track">
+                                </span>محصول<br> دریافت شد
                             </div>
                         </div>
-                        <!-- Progress-->
-                        <div class="ms-steps">
-                            <div class="ms-steps-body">
-                                <div class="ms-step ms-step-completed">
-                                    <span class="ms-step-indicator">
-                                        <i class="fa fa-check" aria-hidden="true"></i>
-                                    </span>
-                                    <span class="ms-step-icon">
-                                        <img src="{% static 'assets/img/icons/track-1.svg'  %}" class="svg_img" alt="track">
-                                    </span>سفارش<br> تایید شده
-                                </div>
-
-                                <div class="ms-step ms-step-completed">
-                                    <span class="ms-step-indicator">
-                                        <i class="fa fa-check" aria-hidden="true"></i>
-                                    </span>
-                                    <span class="ms-step-icon">
-                                        <img src="{% static 'assets/img/icons/track-2.svg'  %}" class="svg_img" alt="track">
-                                    </span>در حال پردازش<br> سفارش
-                                </div>
-                                <div class="ms-step ms-step-active">
-                                    <span class="ms-step-icon">
-                                        <img src="{% static 'assets/img/icons/track-3.svg'  %}" class="svg_img" alt="track">
-                                    </span>کیفیت<br> تست
-                                </div>
-                                <div class="ms-step">
-                                    <span class="ms-step-icon">
-                                        <img src="{% static 'assets/img/icons/track-4.svg'  %}" class="svg_img" alt="track">
-                                    </span>محصول<br> اعزام شد
-                                </div>
-                                <div class="ms-step">
-                                    <span class="ms-step-icon">
-                                        <img src="{% static 'assets/img/icons/track-5.svg'  %}" class="svg_img" alt="track">
-                                    </span>محصول<br> دریافت شد
-                                </div>
-                            </div>
-                            <div class="ms-steps-header">
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
+                        <div class="ms-steps-header">
+                            <div class="progress">
+                                <div class="progress-bar" id="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
     <!-- Track Order section End -->
 
     <!-- Footer Start -->
@@ -1119,6 +1128,43 @@
 
     <!-- Main Js -->
     <script src="{% static 'assets/js/main.js'  %}"></script>
+
+<script>
+function updateTrackingProgress(step) {
+    // Define the steps
+    const steps = document.querySelectorAll('.ms-step');
+    const progressBar = document.getElementById('progress-bar');
+
+    // Reset all steps and remove previous checkmarks
+    steps.forEach((stepElement, index) => {
+        stepElement.classList.remove('ms-step-completed', 'ms-step-active');
+        const indicator = stepElement.querySelector('.ms-step-indicator');
+        if (indicator) {
+            indicator.innerHTML = '';  // Clear previous checkmark
+        }
+    });
+
+    // Update progress and steps based on the input step
+    steps.forEach((stepElement, index) => {
+        if (index < step) {
+            stepElement.classList.add('ms-step-completed');
+            const indicator = stepElement.querySelector('.ms-step-indicator');
+            if (indicator) {
+                indicator.innerHTML = '<i class="fa fa-check" aria-hidden="true"></i>';  // Add checkmark for completed steps
+            }
+        } else if (index === step) {
+            stepElement.classList.add('ms-step-active');
+        }
+    });
+
+    // Update the progress bar width based on the step
+    const progressWidth = (step  ) * 20; // Assuming 5 steps
+    progressBar.style.width = progressWidth + '%';
+}
+
+// Example usage: update tracking progress based on the input number
+updateTrackingProgress({{ step }}); // Change the number to 1 to 5
+</script>
 </body>
 
 </html>

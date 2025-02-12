@@ -26,7 +26,7 @@ class SaleBasketProductAdmin(admin.ModelAdmin):
     list_display = ['id', 'basket', 'product', 'created_at', 'unit']
     search_fields = ['basket__id', 'product__name']
     list_per_page = 20
-
+    list_filter = ['basket__id',  ]
     class Meta:
         model = SaleBasketProduct
         verbose_name = 'محصول سبد خرید'

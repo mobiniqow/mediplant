@@ -1,6 +1,7 @@
 from django.views.generic import TemplateView
 
 from product.models import Category
+from sale.models import SaleBasket
 
 
 class BaseTemplateView(TemplateView):
@@ -15,6 +16,15 @@ class BaseTemplateView(TemplateView):
         context['categories_map'] = category_and_sub_category
         context['is_active'] = self.request.user is not None
         categories = Category.objects.filter(parent=None)
+
+        if not self.request.user.is_authenticated:
+            session_key = self.request.session.session_key or self.request.META.get('REMOTE_ADDR')
+            basket = SaleBasket.objects.filter( session_key=session_key,state__lte=SaleBasket.State.IN_PAY)
+        else:
+            basket = SaleBasket.objects.filter( user=self.request.user,state__lte=SaleBasket.State.IN_PAY)
+
+        context['basket'] = basket
+
         if self.request.user :
             from account.urls.v1.views import get_tokens_for_user
             token = get_tokens_for_user(self.request.user)
@@ -26,7 +36,7 @@ class BaseTemplateView(TemplateView):
         if context['is_active']:
             # todo ino ok konam shomareshshesho
             context['medic_notification'] = 0
-            context['shop_notification'] = 4
+            context['shop_notification'] = len(basket)
 
             # context['']
         return context

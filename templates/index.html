@@ -11,7 +11,7 @@
     <meta name="keywords"
           content="Bootstrap 5.x, ecommerce, farming, food market, grocery market, grocery shop, grocery store, grocery supper market, multi vendor, organic food, supermarket, supermarket grocery">
     <meta name="description" content="Multipurpose eCommerce HTML Template">
-    <meta name="author" content="Pilarest"> 
+    <meta name="author" content="Pilarest">
     <link rel="icon" href="{% static 'assets/img/favicon/favicon.png' %}" sizes="32x32"> 
     <link rel="stylesheet" href="{% static 'assets/css/vendor/msicons.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/all.css' %}">
@@ -36,19 +36,13 @@
 <!-- Loader -->
 <div id="ms-overlay">
     <div class="loader"></div>
-</div>
-
-<!-- Header start  -->
-{% include './extentions/header.html' with categories=categories_map is_active=is_active medic_notification=medic_notification shop_notification=shop_notification %}
-<!-- Header End  -->
-
-<!-- Category sidebar Start -->
+</div> 
+{% include './extentions/header.html' with categories=categories_map is_active=is_active medic_notification=medic_notification shop_notification=shop_notification %} 
 <div class="ms-side-cat-overlay"></div>
 <div class="col-lg-3 ms-category-sidebar">
     <div class="cat-sidebar">
         <div class="cat-sidebar-box">
-            <div class="ms-cat-sidebar-wrap">
-                <!-- Sidebar Category Block -->
+            <div class="ms-cat-sidebar-wrap"> 
                 <div class="ms-sidebar-block">
                     <div class="ms-sb-title">
                         <h3 class="ms-sidebar-title">دسته بندی
@@ -241,86 +235,10 @@
         </div>
     </div>
 </div>
-<!-- Category sidebar End -->
-
-<!-- Cart sidebar Start -->
+ 
 <div class="ms-side-cart-overlay"></div>
-<div id="ms-side-cart" class="ms-side-cart">
-    <div class="ms-cart-inner">
-        <div class="ms-cart-top">
-            <div class="ms-cart-title">
-                <span class="cart_title">سبد خرید من</span>
-                <a href="javascript:void(0)" class="ms-cart-close"><img src="{% static 'assets/img/icons/close.svg' %}"
-                                                                        class="svg_img pro_svg" alt="close"></a>
-            </div>
-            <ul class="ms-cart-pro-items">
-                <li>
-                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
-                            src="{% static 'assets/img/product-images/25_1.jpg' %}" alt="product"></a>
-                    <div class="ms-pro-content">
-                        <a href="product-left-sidebar.html" class="cart-pro-title">لیمو تازه</a>
-                        <span class="cart-price"><span>2500 تومان x</span> کیلوگرم</span>
-                        <div class="qty-plus-minus">
-                            <input class="qty-input" type="text" name="ms-qtybtn" value="1">
-                        </div>
-                        <a href="javascript:void(0)" class="remove">×</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
-                            src="{% static 'assets/img/product-images/17_1.jpg' %}" alt="product"></a>
-                    <div class="ms-pro-content">
-                        <a href="product-left-sidebar.html" class="cart-pro-title">زنجبیل - ارگانیک</a>
-                        <span class="cart-price"><span>5000 تومان x</span> گرم</span>
-                        <div class="qty-plus-minus">
-                            <input class="qty-input" type="text" name="ms-qtybtn" value="1">
-                        </div>
-                        <a href="javascript:void(0)" class="remove">×</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
-                            src="{% static 'assets/img/product-images/2_1.jpg' %}" alt="product"></a>
-                    <div class="ms-pro-content">
-                        <a href="product-left-sidebar.html" class="cart-pro-title"> بسته خرما</a>
-                        <span class="cart-price"><span>6000 تومان x</span> بسته</span>
-                        <div class="qty-plus-minus">
-                            <input class="qty-input" type="text" name="ms-qtybtn" value="1">
-                        </div>
-                        <a href="javascript:void(0)" class="remove">×</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="ms-cart-bottom">
-            <div class="cart-sub-total">
-                <table class="table cart-table">
-                    <tbody>
-                    <tr>
-                        <td class="text-left">جمع فرعی:</td>
-                        <td class="text-right">300 هزار</td>
-                    </tr>
-                    <tr>
-                        <td class="text-left">مالیات بر ارزش افزوده (20%):</td>
-                        <td class="text-right">60 هزار</td>
-                    </tr>
-                    <tr>
-                        <td class="text-left">جمع :</td>
-                        <td class="text-right primary-color">360 هزار</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="cart_btn">
-                <a href="cart.html" class="ms-btn-1">مشاهده سبد خرید</a>
-                <a href="checkout.html" class="ms-btn-2">بررسی خرید</a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Cart sidebar End -->
+{% include './extentions/shops_basket.html' with basket=basket toke=token %}
 
-<!-- Wishlist sidebar Start -->
 <div class="ms-side-wish-overlay"></div>
 <div id="ms-side-wish" class="ms-side-wish">
     <div class="ms-wish-inner">
@@ -390,17 +308,15 @@
         </div>
     </div>
 </div>
-<!-- Wishlist sidebar End -->
 
-<!-- Hero Slider Start -->
 <section class="section ms-hero m-t-30">
     <div class="container">
         <div class="ms-main-content">
-            <!-- Hero Slider Start -->
+            
             <div class="ms-slider-content">
                 <div class="ms-main-slider">
                     <div class="ms-slider swiper-container main-slider-nav main-slider-dot">
-                        <!-- Main slider  -->
+                        
                         <div class="swiper-wrapper">
                             <div class="ms-slide-item swiper-slide d-flex slide-1">
                                 <img src="{{ top_banners.0.image.url }}" style="position: absolute" width="100%"
@@ -438,7 +354,7 @@
             <!-- Hero Banner 1 Start -->
             <div class="ms-banner-content align-self-center">
                 <div class="ms-slider-grid-item" style="background-image:url( {{ two_banners.0.image.url }});">
-                    {#                    <img src="{{ two_banners.0.image.url }}" style="position: absolute" height="100%" width="100%">#}
+
                     <div class="ms-detail">
                         <h6 class="grid-animation"><span
                                 class="ms-grid-sub-title">{{ two_banners.0.name |truncatechars:19 }}</span></h6>
@@ -447,10 +363,10 @@
                     </div>
                 </div>
             </div>
-            <!-- Hero Banner 2 Start -->
+
             <div class="ms-banner-content align-self-center">
                 <div class="ms-slider-grid-item" style="background-image:url( {{ two_banners.1.image.url }});">
-                    {#                    <img src="{{ two_banners.0.image.url }}" style="position: absolute" height="100%" width="100%">#}
+
                     <div class="ms-detail">
                         <h6 class="grid-animation"><span
                                 class="ms-grid-sub-title">{{ two_banners.1.name |truncatechars:19 }}</span></h6>
@@ -462,9 +378,7 @@
         </div>
     </div>
 </section>
-<!-- Hero Slider End -->
 
-<!-- Category section -->
 <section class="ms-category body-bg p-b-30">
     <div class="container">
         <div class="row">

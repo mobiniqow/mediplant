@@ -9,6 +9,9 @@ from sale.models import SaleBasket, SaleBasketProduct
 from shop.models import ShopProduct, Shop, ShopImage
 import math
 
+from transaction.models import Transaction, Payment
+
+
 class IndexView(BaseTemplateView):
     template_name = "index.html"
 
@@ -69,7 +72,7 @@ class IndexView(BaseTemplateView):
         # todo after works in item ha query dorost mikhorands
         context['bot_3_new_product'] = products[:3]
         context['bot_3_most_sell'] = products[:3]
-        context['bot_3_best_rank'] = products [:3]
+        context['bot_3_best_rank'] = products[:3]
         context['bot_3_most_popular'] = products[:3]
         return context
 
@@ -82,7 +85,6 @@ class CategoryView(BaseTemplateView):
 
         categories = Category.objects.filter(parent=None)
 
-
         banners = Banner.objects.filter(state=Banner.State.ACTIVE, type=Banner.Type.SEARCH_TOP_TWO_BANNER).order_by(
             '?')[:2]
 
@@ -93,7 +95,7 @@ class CategoryView(BaseTemplateView):
         return context
 
 
-class ShopView(TemplateView):
+class ShopView(BaseTemplateView):
     template_name = "shop.html"
 
     def get_context_data(self, **kwargs):
@@ -107,11 +109,11 @@ class ShopView(TemplateView):
             i.children = Category.objects.filter(parent=i.id)
 
         banners = Banner.objects.filter(state=Banner.State.ACTIVE).order_by('?')[:6]
+
         context['title'] = 'صفحه اصلی'
         context['banner'] = banners
         context['categories'] = categories
         context['categories_map'] = category_and_sub_category
-
         return context
 
 
@@ -130,13 +132,25 @@ class ShopDetailsView(BaseTemplateView):
 
         for i in product:
             i.image = ProductImage.objects.filter(product=i.product).first()
-            i.price ='{:,.0f}'.format(i.price)
+            i.price = '{:,.0f}'.format(i.price)
+
         context['shop'] = shop
         context['banners'] = banners
-        context['product'] =   [product[i:i + page_size] for i in range(0, len(product), page_size)]
+        context['product'] = [product[i:i + page_size] for i in range(0, len(product), page_size)]
+        context['page_number'] = [i for i in range(1, page_number + 1)]
 
-        context['page_number'] = [i for i in range( 1,page_number +1)]
-
+        if   self.request.user.is_anonymous:
+            print('asal')
+            session_key = self.request.session.session_key or self.request.META.get('REMOTE_ADDR')
+            basket = SaleBasket.objects.filter(session_key=session_key, state__lte=SaleBasket.State.IN_PAY, shop=shop)
+            products = SaleBasketProduct.objects.filter(basket__in=basket)
+        else:
+            basket = SaleBasket.objects.filter(user=self.request.user, state__lte=SaleBasket.State.IN_PAY, shop=shop).first()
+            products = SaleBasketProduct.objects.filter(basket=basket)
+            print(f'sdsda {products}')
+            print(f'sdsda {SaleBasket.objects.filter(user=self.request.user, state__lte=SaleBasket.State.IN_PAY, shop=shop).count()}')
+        context['cart_product'] = products
+        context['shop_notification'] = len(products)
         return context
 
 
@@ -164,14 +178,16 @@ class CheckoutView(BaseTemplateView):
         context = super().get_context_data(**kwargs)
         return context
 
+
 class ShopCartView(BaseTemplateView):
     template_name = "cart.html"
+
     def get_context_data(self, **kwargs):
         page_size = 15
         context = super().get_context_data(**kwargs)
         shop_id = kwargs['id']
         shop = get_object_or_404(Shop, pk=shop_id)
-        basket = get_object_or_404(SaleBasket, shop=shop,state__in=[
+        basket = get_object_or_404(SaleBasket, shop=shop, state__in=[
             SaleBasket.State.SUSPEND,
             SaleBasket.State.IN_PAY,
             SaleBasket.State.PAY_FAILED
@@ -179,25 +195,28 @@ class ShopCartView(BaseTemplateView):
         product = SaleBasketProduct.objects.filter(basket=basket)
         for i in product:
             i.image = ProductImage.objects.filter(product=i.product.product).first()
-            i.price ='{:,.0f}'.format(i.product.price)
-            i.price_all ='{:,.0f}'.format(i.product.price*i.unit)
-        print( self.request.user.postal_code)
+            i.price = '{:,.0f}'.format(i.product.price)
+            i.price_all = '{:,.0f}'.format(i.product.price * i.unit)
+        print(self.request.user.postal_code)
         context['user'] = self.request.user
         context['shop'] = shop
         context['product'] = product
-
 
         return context
 
 
 class AfterBankGateWay(BaseTemplateView):
     template_name = "track-order.html"
+
     def get_context_data(self, **kwargs):
         page_size = 15
         context = super().get_context_data(**kwargs)
         shop_id = kwargs['id']
-        shop = get_object_or_404(Shop, pk=shop_id)
-        basket = get_object_or_404(SaleBasket, shop=shop,state__in=[
+
+        transaction = Transaction.objects.get(id=shop_id)
+        shop =  get_object_or_404(Shop, pk=transaction.cart.shop.id)
+
+        basket = get_object_or_404(SaleBasket, shop=shop, state__in=[
             SaleBasket.State.SUSPEND,
             SaleBasket.State.IN_PAY,
             SaleBasket.State.PAY_FAILED
@@ -205,14 +224,20 @@ class AfterBankGateWay(BaseTemplateView):
         product = SaleBasketProduct.objects.filter(basket=basket)
         for i in product:
             i.image = ProductImage.objects.filter(product=i.product.product).first()
-            i.price ='{:,.0f}'.format(i.product.price)
-            i.price_all ='{:,.0f}'.format(i.product.price*i.unit)
-        print( self.request.user.postal_code)
+            i.price = '{:,.0f}'.format(i.product.price)
+            i.price_all = '{:,.0f}'.format(i.product.price * i.unit)
+
         context['user'] = self.request.user
         context['shop'] = shop
         context['product'] = product
 
+
+        context['date'] = basket.get_delivery_date()
+        context['step'] = 4
+        context['transaction'] = transaction
+
         return context
+
 
 class OrderListView(TemplateView):
     template_name = "order_list.html"
@@ -233,4 +258,41 @@ class OrderListView(TemplateView):
         context['categories'] = categories
         context['categories_map'] = category_and_sub_category
 
+        return context
+
+
+class CallbackView(BaseTemplateView):
+    template_name = "call-back.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        authority = self.request.GET.get('Authority', None)
+        status = self.request.GET.get('Status', None)
+
+        # گرفتن تراکنش بر اساس Authority
+        transaction = Transaction.objects.filter(authority=authority).first()
+        shop_id = Payment.objects.filter(transaction=transaction).first().cart.shop.id
+        # جزئیات تراکنش
+        transaction_details = transaction.get_transaction_details()
+
+        # پیام مناسب بسته به وضعیت پرداخت
+        if status == "OK":
+            payment_status_message = "پرداخت با موفقیت انجام شد"
+        else:
+            payment_status_message = "پرداخت ناموفق"
+
+        context['payment_status_message'] = payment_status_message
+        context['authority'] = authority
+        context['status'] = status
+        context['shop_id'] = shop_id
+        context['transaction'] = transaction
+        context['transaction_details'] = transaction_details
+        return context
+
+class ShopTransactions(BaseTemplateView):
+    template_name = 'transactions.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         return context

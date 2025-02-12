@@ -6,7 +6,7 @@ import requests
 import json
 
 from sale.models import SaleBasket
-
+import jdatetime
 
 class Transaction(models.Model):
 
@@ -28,17 +28,37 @@ class Transaction(models.Model):
     timestamp = models.DateTimeField(default=timezone.now)
     authority = models.CharField(max_length=100, null=True, blank=True)
     message = models.TextField(null=True, blank=True)
+    address = models.TextField(null=True, blank=True)
+    lat = models.TextField(null=True, blank=True)
+    lng =models.TextField(null=True, blank=True)
+    code_posti = models.CharField(max_length=40,default="")
+    cart = models.ForeignKey(SaleBasket, on_delete=models.CASCADE,null=True,blank=True,related_name='cart_transaction')
+    card = models.CharField(max_length=33,null=True,blank=True)
+    card_hash = models.CharField(max_length=128,null=True,blank=True)
+    ref_id = models.CharField(max_length=32,null=True,blank=True)
 
     def __str__(self):
         return f"Transaction {self.transaction_type} - {self.amount} - {self.status}"
 
-    def save(self, *args, **kwargs):
-        if self.transaction_type == 'deposit' and self.status == 'success':
-            # پرداخت موفق
-            cart = SaleBasket.objects.filter(user=self.user).first()
-            if cart:
-                cart.items.all().delete()
-        super().save(*args, **kwargs)
+    def get_shamsi_date(self):
+        """تبدیل تاریخ میلادی به تاریخ شمسی"""
+        return jdatetime.datetime.fromgregorian(datetime=self.timestamp).strftime('%Y/%m/%d')
+
+    def get_transaction_details(self):
+        """بازگشت جزئیات پرداخت به صورت شمسی"""
+        return {
+            'amount': self.amount,
+            'card_number': self.card,  # اگر شماره کارت موجود باشد
+            'date_shamsi': self.get_shamsi_date(),
+        }
+    # def save(self, *args, **kwargs):
+    #     if self.transaction_type == 'deposit' and self.status == 'success':
+    #         # پرداخت موفق
+    #         # cart = SaleBasket.objects.filter(user=self.user).first()
+    #         # cart
+    #         # if cart:
+    #         #     cart.items.all().delete()
+    #     super().save(*args, **kwargs)
 
 
 class Payment(models.Model):

@@ -2,25 +2,38 @@ from sale.models import SaleBasket
 from .models import Transaction, Payment
 import requests
 import json
+from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
-from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from django.conf import settings
-
-
-@api_view(['POST',])
-def start_payment(request,shop_id):
+from rest_framework.views import APIView
+from django.http import JsonResponse, HttpResponseRedirect
+@api_view(['POST', ])
+def start_payment(request, shop_id):
     user = request.user
-    cart = get_object_or_404(SaleBasket,user=user,pk=shop_id)
+    cart = get_object_or_404(SaleBasket, user=user, pk=shop_id)
     if not cart:
         return JsonResponse({"error": "سبد خرید یافت نشد"})
     amount = cart.price
+    address = request.data.get('address')
+    lat = request.data.get('lat')
+    lng = request.data.get('lng')
+    code_posti = request.data.get('code_posti')
+    print(address)
+    print(lat)
+    print(lng)
+    print(code_posti)
     transaction = Transaction.objects.create(
         user=user,
+        cart=cart,
         amount=amount,
         transaction_type='deposit',
         status='pending',
-        message=f"پرداخت برای سبد خرید {user.user_name}"
+        message=f"پرداخت برای سبد خرید {user.user_name}",
+        address=address,
+        lat=lat,
+        lng=lng,
+        code_posti=code_posti
     )
 
     # ایجاد پرداخت جدید
@@ -40,11 +53,17 @@ def start_payment(request,shop_id):
 
 @api_view(['GET'])
 def verify_payment(request):
+    # دریافت پارامترهای Authority و Status از URL
     status = request.GET.get("Status")
     authority = request.GET.get("Authority")
-    # amount = request.GET.get("Amount")
-    payment = Payment.objects.get(transaction__authority=authority)
-    if status == "Ok":
+
+    # دریافت اطلاعات پرداخت
+    try:
+        payment = Payment.objects.get(transaction__authority=authority)
+    except Payment.DoesNotExist:
+        return JsonResponse({"error": "پرداخت یافت نشد"})
+
+    if status == "OK":
         # ارسال درخواست تایید پرداخت از زرین‌پال
         url = "https://payment.zarinpal.com/pg/v4/payment/verify.json"
         data = {
@@ -54,30 +73,44 @@ def verify_payment(request):
         }
         headers = {'Content-Type': 'application/json'}
         response = requests.post(url, data=json.dumps(data), headers=headers)
+        print(response.text)
 
         if response.status_code == 200:
             response_data = response.json()
-            if response_data['data']['code'] == 100:
+            if response_data['data']['code'] in [100, 101]:
                 # تایید پرداخت موفق
                 transaction = Transaction.objects.filter(authority=authority).first()
                 if transaction:
                     transaction.status = 'success'
                     transaction.save()
+                    print(response_data['data']['card_pan'])
 
                     # بروزرسانی وضعیت پرداخت
-                    payment = Payment.objects.filter(transaction=transaction).first()
                     payment.status = 'completed'
+                    transaction.card = response_data['data']['card_pan']
+                    transaction.card_hash = response_data['data']['card_hash']
+                    transaction.ref_id = response_data['data']['ref_id']
+
+                    sb = SaleBasket.objects.filter(id=payment.cart.id).first()
+                    sb.state = SaleBasket.State.PAY_SUCCESS
+                    sb.save()
+
+                    transaction.save()
                     payment.save()
 
-                    return JsonResponse({"message": "پرداخت موفقیت‌آمیز بود"})
+                    # ریدایرکت به /callback/ با پارامترهای Authority و Status
+                    return HttpResponseRedirect(f"/callback/?Authority={authority}&Status=OK")
                 else:
                     return JsonResponse({"error": "تراکنش یافت نشد"})
             else:
-                return JsonResponse({"error": "پرداخت ناموفق بود"})
+                # ریدایرکت به /callback/ با پارامترهای Authority و Status و خطا
+                return HttpResponseRedirect(f"/callback/?Authority={authority}&Status=FAILED")
         else:
-            return JsonResponse({"error": "خطا در ارتباط با زرین‌پال"})
+            # ریدایرکت به /callback/ با پارامترهای Authority و Status و خطا در ارتباط
+            return HttpResponseRedirect(f"/callback/?Authority={authority}&Status=ERROR")
     else:
-        return JsonResponse({"error": "پرداخت ناموفق"})
+        # ریدایرکت به /callback/ در صورتی که Status برابر با OK نباشد
+        return HttpResponseRedirect(f"/callback/?Authority={authority}&Status=FAILED")
 
 @api_view(['POST'])
 def get_payment_url(request):
@@ -141,3 +174,25 @@ def get_transactions(request):
         return JsonResponse({"error": "تراکنشی یافت نشد"}, status=404)
 
     return JsonResponse(list(transactions), safe=False)
+
+
+
+class ListTransactions(APIView):
+    def get(self,request,**kwargs):
+        print(request.user.is_authenticated)
+        transactions = Transaction.objects.all().select_related('cart', 'cart__shop')
+        transaction_data = []
+        for transaction in transactions:
+            transaction_info = {
+                'date': transaction.get_shamsi_date(),
+                'shop': transaction.cart.shop.name if transaction.cart and transaction.cart.shop else 'Unknown Shop',
+                'shop_id': transaction.cart.shop.id if transaction.cart and transaction.cart.shop else 'Unknown Shop',
+                'transaction_id': transaction.id,
+                'amount': transaction.amount,
+                'items_count': transaction.cart.salebasketproduct_set.count() if transaction.cart else 0,
+                'status': transaction.status,
+            }
+
+            transaction_data.append(transaction_info)
+
+        return Response(transaction_data)

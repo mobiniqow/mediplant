@@ -197,13 +197,13 @@
                                 <span class="ms-register-wrap ms-register-half">
                                     <label>نام و نام خانوادگی *</label>
                                     <input id="edit-firstname" type="text" name="user_name"
-                                           placeholder="{{ user.user_name }}" readonly
+                                           value="{{ user.user_name }}" readonly
                                            onclick="openEditDialog('نام و نام خانوادگی','edit-firstname')">
                                 </span>
 
                         <span class="ms-register-wrap ms-register-half">
                                     <label>شهر</label>
-                                    <input id="edit-city" type="text" name="city" placeholder="{{ user.city }}"
+                                    <input id="edit-city" type="text" name="city" value="{{ user.city }}"
                                            readonly
                                            onclick="openEditDialog('شهر','edit-city')">
                                 </span>
@@ -224,12 +224,12 @@
                         <span class="ms-register-wrap ms-register-half">
                                     <label>کدپستی</label>
                                     <input type="text" id="edit-post-code" name="postal_code"
-                                           placeholder="{{ user.postal_code }}"
+                                           value="{{ user.postal_code }}"
                                            readonly onclick="openEditDialog('کدپستی','edit-post-code')">
                                 </span>
                         <span class="ms-register-wrap">
                                     <label>آدرس</label>
-                                    <input type="text" id="edit-address" name="address" placeholder="{{ user.address }}"
+                                    <input type="text" id="edit-address" name="address" value="{{ user.address }}"
                                            readonly
                                            onclick="openEditDialog('آدرس','edit-address',true)">
                                 </span>
@@ -376,6 +376,7 @@
 <script>
     function openEditDialog(title, filedId, isTextarea) {
         var inputField = document.getElementById(filedId);
+        console.log(`inputField.value ${filedId}`)
         inputField.disabled = false;
         document.getElementById('dialog-title').innerText = title;
         var inputContainer = document.getElementById('input-container');
@@ -384,35 +385,30 @@
         if (isTextarea) {
             inputElement = document.createElement('textarea');
             inputElement.id = 'edit-input';
-            inputElement.placeholder = title;
+            inputElement.placeholder = inputField.value;
         } else {
             inputElement = document.createElement('input');
             inputElement.type = 'text';
             inputElement.id = 'edit-input';
-            inputElement.placeholder = title;
+            inputElement.placeholder = inputField.value;
         }
 
-        inputElement.value = inputField.value; 
-        inputContainer.appendChild(inputElement);  
- 
+        inputElement.value = inputField.value;
+        inputContainer.appendChild(inputElement);
         document.getElementById('editDialog').style.display = 'flex';
- 
         document.getElementById('closeDialog').addEventListener('click', function () {
             document.getElementById('editDialog').style.display = 'none';
         });
 
-        // ذخیره تغییرات
         document.getElementById('save-btn').addEventListener('click', function () {
             var editedValue = document.getElementById('edit-input').value;
-            inputField.value = editedValue; // ذخیره مقدار ویرایش شده
+            inputField.value = editedValue;
             document.getElementById('editDialog').style.display = 'none';
             updateProfile(document.getElementById(filedId).name, editedValue)
-
         });
 
-        // کنسل کردن تغییرات
         document.getElementById('cancel-btn').addEventListener('click', function () {
-            document.getElementById('editDialog').style.display = 'none'; // بستن دیالوگ بدون ذخیره
+            document.getElementById('editDialog').style.display = 'none';
         });
     }
 

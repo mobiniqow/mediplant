@@ -233,13 +233,13 @@
                                 <form action="#" method="post">
                                     <span class="ms-cart-wrap">
                                             <label>کد پستی</label>
-                                            <input type="text" name="postalcode" placeholder="{{ user.postal_code }}"
-                                                   readonly>
+                                            <input id="code_posti" type="text" name="postalcode" value="{{ user.postal_code }}"
+                                                    >
                                         </span>
                                     <span class="ms-cart-wrap">
                                             <label>آدرس</label>
-                                            <input type="text" name="postalcode" placeholder="{{ user.address }}"
-                                                   readonly>
+                                            <input id="address_details" type="text" name="postalcode" value="{{ user.address }}"
+                                                    >
                                         </span>
                                     <span class="ms-cart-wrap">
                                             <label>لوکیشن</label>
@@ -1126,7 +1126,21 @@
             center: selectedLocation, draggable: false,// مرکز نقشه
             zoom: 16, // سطح زوم
         });
-        marker = new L.Marker(selectedLocation, {draggable: false}).addTo(map);
+           marker = new L.Marker(selectedLocation, {draggable: true}).addTo(map);
+
+        // رویداد برای کلیک روی نقشه
+        map.on('click', function (event) {
+            const clickedLocation = event.latlng;
+            selectedLocation = clickedLocation;
+
+            // تغییر مکان مارکر
+            marker.setLatLng(clickedLocation);
+        });
+
+        // رویداد برای جابجایی مارکر
+        marker.on('dragend', function () {
+            selectedLocation = marker.getLatLng();
+        });
 
     }
 
@@ -1135,6 +1149,11 @@
 </script>
 <script>
     function raod_to_pay(basket) {
+        var postalCode = $('#code_posti').val();
+        var address_details = $('#address_details').val();
+        console.log(selectedLocation)
+        console.log(postalCode)
+        console.log(address_details)
         console.log("oamada {{ token }}")
         var settings = {
             "url": `/transaction/payment/start/${basket}`,
@@ -1143,6 +1162,12 @@
             "headers": {
                 "Authorization": "Bearer {{token}} "  // Replace `token` with actual token value
             },
+            "data":{
+                "code_posti": postalCode,
+                "address": address_details,
+                "lat": selectedLocation.lat,
+                "lng": selectedLocation.lng
+            }
         };
 
         $.ajax(settings).done(function (response) {

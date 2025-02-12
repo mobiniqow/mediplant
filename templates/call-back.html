@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'callback/assets/call-cack.css' %}">
+    <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <div class="box-index">
+      {% if status == 'OK' %}
+        <img src="{% static 'callback/assets/success.png' %}" class="img-success" alt="">
+        <h2 class="success">تراکنش موفق</h2>
+      {% else %}
+        <img src="{% static 'callback/assets/failed.png' %}" class="img-success" alt="">
+        <h2 class="failed">پرداخت ناموفق</h2>
+        <p>متاسفانه پرداخت شما با خطا مواجه شد. لطفاً دوباره تلاش کنید.</p>
+      {% endif %}
+
+      <p>کد پیگیری : {{ authority }}</p>
+
+      {% if status == 'OK' %}
+        <div class="box-main">
+          <ul>
+            <li>
+              <p>{{ transaction.id }}</p>
+              <p>شماره صورت حساب</p>
+            </li>
+            <li>
+              <p>{{ transaction_details.date_shamsi }}</p>
+              <p>تاریخ پرداخت</p>
+            </li>
+            <li>
+              <p>{{ transaction.card }}</p>
+              <p>شماره کارت</p>
+            </li>
+            <li class="li-not-border">
+              <p>{{ transaction.amount }}</p>
+              <p>مبلغ تراکنش</p>
+            </li>
+          </ul>
+        </div>
+      {% endif %}
+
+      <button onclick="window.location.href='/shop/{{ shop_id }}/cart'">بازگشت</button>
+    </div>
+  </div>
+</body>
+</html>

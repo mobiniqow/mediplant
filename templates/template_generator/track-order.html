@@ -1,9 +1,4 @@
-<!--========================================================= 
-Item Name: Masterkart - Multipurpose eCommerce HTML Template.
-Author: Pilarest
-Version: 1.0
-Copyright 2022-2023
-============================================================-->
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,27 +17,25 @@ Copyright 2022-2023
 
     <!-- css Icon Font -->
     <link rel="stylesheet" href="{% static 'assets/css/vendor/msicons.min.css'  %}">
-    <link rel="stylesheet" href="{% static 'assets/css/all.css'  %}">
-    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css'  %}">
 
     <!-- css All Plugins Files -->
     <link rel="stylesheet" href="{% static 'assets/css/plugins/animate.css'  %}">
-    <link rel="stylesheet" href="{% static 'assets/css/plugins/swiper-bundle.min.css'  %}">
     <link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap.css'  %}">
     <link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap-select.min.css'  %}">
     <link rel="stylesheet" href="{% static 'assets/css/plugins/owl.carousel.min.css'  %}">
     <link rel="stylesheet" href="{% static 'assets/css/plugins/owl.theme.default.min.css'  %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/swiper-bundle.min.css'  %}">
     <link rel="stylesheet" href="{% static 'assets/css/plugins/slick.min.css'  %}">
     <link rel="stylesheet" href="{% static 'assets/css/plugins/nouislider.css'  %}">
 
     <!-- Main Style -->
-    <link rel="stylesheet" id="main_style" href="{% static 'assets/css/demo-1.css'  %}">
+    <link rel="stylesheet" id="main_style" href="{% static 'assets/css/style.css'  %}">
     <link rel="stylesheet" href="{% static 'assets/css/responsive.css'  %}">
     <link rel="stylesheet" class="color-css" href="{% static 'assets/css/color-01.css'  %}">
 
 </head>
 
-<body>
+<body class="aboutus_page">
     <!-- Loader -->
     <div id="ms-overlay">
         <div class="loader"></div>
@@ -299,12 +292,12 @@ Copyright 2022-2023
                                             <li class="dropdown drop-list">
                                                 <a href="#" class="dropdown-arrow">محصولات<i class="fas fa-chevron-right"></i></a>
                                                 <ul class="sub-menu">
-                                                    <li><a href="./shop-left-sidebar-col-3.html">لیست محصولات</a></li>
+                                                    <li><a href="shop-banner-left-sidebar-col-3.html">لیست محصولات</a></li>
                                                     <li><a href="compare.html">مقایسه</a></li>
                                                 </ul>
                                             </li>
                                             <li class="dropdown drop-list">
-                                                <a href="./blog-full-width.html" class="dropdown-arrow">مقالات</a>
+                                                <a href="blog-detail-left-sidebar.html" class="dropdown-arrow">مقالات</a>
                                             </li>
                                             <!-- <li class="dropdown drop-list">
                                                 <a href="javascript:void(0)" class="dropdown-arrow">صفحات<i class="fas fa-chevron-right"></i></a>
@@ -314,7 +307,12 @@ Copyright 2022-2023
                                                     <li><a href="cart.html">صفحه پرداخت</a></li>
                                                     <li><a href="checkout.html">بررسی خرید</a></li>
                                                     <li><a href="compare.html">مقایسه</a></li>
+                                                    <li><a href="faq.html">سوالات</a></li>
+                                                    <li><a href="login.html">ورود</a></li>
+                                                    <li><a href="register.html">ثبت نام</a></li>
+                                                    <li><a href="track-order.html">پیگیری سفارش</a></li>
                                                     <li><a href="terms-condition.html">شرایط و ضوابط</a></li>
+                                                    <li><a href="privacy-policy.html">سیاست حفظ حریم خصوصی</a></li>
                                                 </ul>
                                             </li> -->
                                             <li class="dropdown drop-list">
@@ -446,22 +444,13 @@ Copyright 2022-2023
                         </li>
                         <li><a href="javascript:void(0)">محصولات</a>
                             <ul class="sub-menu">
-                                <li><a href="product-left-sidebar.html">نوار کناری سمت راست محصول</a></li>
-                                <li><a href="product-right-sidebar.html">نوار کناری سمت چپ محصول</a></li>
-                                <li><a href="product-full-width.html">عرض کامل محصول</a></li>
+                                <li><a href="./shop-left-sidebar-col-3.html">لیست محصولات</a></li>
+                                <li><a href="compare.html">مقایسه</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown"><a href="javascript:void(0)">مقالات</a>
-                            <ul class="sub-menu">
-                                <li><a href="blog-left-sidebar.html">نوار کناری سمت راست</a></li>
-                                <li><a href="blog-right-sidebar.html">نوار کناری سمت چپ</a></li>
-                                <li><a href="blog-full-width.html">تمام عرض</a></li>
-                                <li><a href="blog-detail-left-sidebar.html">جزئیات نوار کناری سمت راست</a></li>
-                                <li><a href="blog-detail-right-sidebar.html">جزئیات نوار کناری سمت چپ</a></li>
-                                <li><a href="blog-detail-full-width.html">جزئیات با عرض کامل</a></li>
-                            </ul>
+                        <li class="dropdown"><a href="./blog-full-width.html">مقالات</a>
                         </li>
-                        <li><a href="javascript:void(0)">صفحات</a>
+                        <!-- <li><a href="javascript:void(0)">صفحات</a>
                             <ul class="sub-menu">
                                 <li><a href="about-us.html">درباره ما</a></li>
                                 <li><a href="contact-us.html">تماس با ما</a></li>
@@ -475,7 +464,7 @@ Copyright 2022-2023
                                 <li><a href="terms-condition.html">شرایط و ضوابط</a></li>
                                 <li><a href="privacy-policy.html">سیاست حفظ حریم خصوصی</a></li>
                             </ul>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
                 <div class="header-res-lan-curr">
@@ -483,13 +472,10 @@ Copyright 2022-2023
                     <div class="header-res-social">
                         <div class="header-top-social">
                             <ul class="mb-0">
-                                <li class="list-inline-item">
-                                    <a href="#">
-                                        <i class="fa fa-instagram"></i>
-                                    </a>
-                                </li>
+                                <li class="list-inline-item"><a href="#"><i class="fa fa-instagram"></i></a></li>
                                 <li class="list-inline-item"><a href="#"><i class="fa fa-twitter-square"></i></a></li>
                                 <li class="list-inline-item"><a href="#"><i class="fa fa-facebook-square"></i></li>
+                                <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -518,6 +504,7 @@ Copyright 2022-2023
                             <img src="{% static 'assets/img/icons/menu.svg'  %}" class="svg_img" alt="menu">
                         </a>
                         <!-- Header menu End -->
+
                     </div>
                 </div>
             </div>
@@ -822,62 +809,101 @@ Copyright 2022-2023
     </div>
     <!-- Wishlist sidebar End -->
 
-    <div class="support">
-       <h2>تیکت ها</h2>
-       <div class="box-titr">
-            <div class="it-box-one">
-                <input placeholder="موضوع تیکت" type="text" class="input-title">
-            </div>
-            <div class="it-box-two">
-                <input placeholder="شماره همراه" type="text" class="input-title">
-            </div>
-            <div class="it-box-four">
-                <textarea placeholder="متن خود را بنویسید" class="textarea"></textarea>
-            </div>
-            <div class="it-box-three">
-                <button class="btn-sent-tiket">ارسال</button>
-            </div>
-       </div>
-
-       <div class="list-tiket">
-            <div class="titr-list">
-                <div>زمان ارسال</div>
-                <div>موضوع</div>
-                <div>شماره کاربر</div>
-                <div>توضیحات</div>
-                <div>وضعیت</div>
-                <div>مشاهده</div>
-            </div>
-
-            <div class="content-list">
-                <div>1402/02/18</div>
-                <div class="paragraph">ssdc</div>
-                <div>0911111111</div>
-                <div class="paragraph">sdfsdfssacsacacacacacacdfsdf</div>
-                <div>
-                    <div class="activee">بررسی شده</div>
-                    <!-- <div class="not-activee">در انتظار بررسی</div> -->
-                </div>
-                <div>
-                    <img class="img-eye" src="./assets//img/icons/view_709612.png">
+    <!-- Breadcrumb start -->
+    <div class="ms-breadcrumb m-b-30">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row ms_breadcrumb_inner">
+                        <div class="col-md-6 col-sm-12">
+                            <h2 class="ms-breadcrumb-title">پیگیری سفارش</h2>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <!-- ms-breadcrumb-list start -->
+                            <ul class="ms-breadcrumb-list">
+                                <li class="ms-breadcrumb-item"><a href="index.html">خانه</a><i class="fas fa-chevron-left"></i></li>
+                                <li class="ms-breadcrumb-item active">پیگیری سفارش</li>
+                            </ul>
+                            <!-- ms-breadcrumb-list end -->
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="content-list">
-                <div>1402/02/18</div>
-                <div class="paragraph">ssdc</div>
-                <div>0911111111</div>
-                <div class="paragraph">sdfsdfsdfsdf</div>
-                <div>
-                    <!-- <div class="active">تایید شده</div> -->
-                    <div class="not-active">در انتظار بررسی</div>
-                </div>
-                <div>
-                    <img class="img-eye" src="./assets//img/icons/view_709612.png">
-                </div>
-            </div>
-       </div>
+        </div>
     </div>
-   
+    <!-- Breadcrumb end -->
+
+    <!-- Track Order section -->
+    <section class="ms-track padding-tb-30">
+        <div class="container">
+            <div class="section-title-2">
+                <h2 class="ms-title">پیگیری<span> سفارش</span></h2>
+                <p>ما شادی و نیازها را سریعتر از آنچه فکرش را بکنید ارائه می کنیم</p>
+            </div>
+            <div class="row p-t-15">
+                <div class="container">
+                    <div class="ms-track-box">
+                        <!-- Details-->
+                        <div class="row">
+                            <div class="col-md-4 m-b-767">
+                                <div class="ms-track-card"><span class="ms-track-title">سفارش</span><span>#6152</span></div>
+                            </div>
+                            <div class="col-md-4 m-b-767">
+                                <div class="ms-track-card"><span class="ms-track-title">پسته خلالی</span><span>v534hb</span></div>
+                            </div>
+                            <div class="col-md-4 m-b-767">
+                                <div class="ms-track-card"><span class="ms-track-title">زمان تحویل</span><span>شهریور 1401</span></div>
+                            </div>
+                        </div>
+                        <!-- Progress-->
+                        <div class="ms-steps">
+                            <div class="ms-steps-body">
+                                <div class="ms-step ms-step-completed">
+                                    <span class="ms-step-indicator">
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                    </span>
+                                    <span class="ms-step-icon">
+                                        <img src="{% static 'assets/img/icons/track-1.svg'  %}" class="svg_img" alt="track">
+                                    </span>سفارش<br> تایید شده
+                                </div>
+
+                                <div class="ms-step ms-step-completed">
+                                    <span class="ms-step-indicator">
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                    </span>
+                                    <span class="ms-step-icon">
+                                        <img src="{% static 'assets/img/icons/track-2.svg'  %}" class="svg_img" alt="track">
+                                    </span>در حال پردازش<br> سفارش
+                                </div>
+                                <div class="ms-step ms-step-active">
+                                    <span class="ms-step-icon">
+                                        <img src="{% static 'assets/img/icons/track-3.svg'  %}" class="svg_img" alt="track">
+                                    </span>کیفیت<br> تست
+                                </div>
+                                <div class="ms-step">
+                                    <span class="ms-step-icon">
+                                        <img src="{% static 'assets/img/icons/track-4.svg'  %}" class="svg_img" alt="track">
+                                    </span>محصول<br> اعزام شد
+                                </div>
+                                <div class="ms-step">
+                                    <span class="ms-step-icon">
+                                        <img src="{% static 'assets/img/icons/track-5.svg'  %}" class="svg_img" alt="track">
+                                    </span>محصول<br> دریافت شد
+                                </div>
+                            </div>
+                            <div class="ms-steps-header">
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Track Order section End -->
+
     <!-- Footer Start -->
     <footer class="ms-footer m-t-30">
         <div class="footer-container">
@@ -1010,113 +1036,8 @@ Copyright 2022-2023
     </footer>
     <!-- Footer Area End -->
 
-    <!-- Quickview Modal -->
-    <div class="modal fade quickview-modal" id="ms_quickview_modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <button type="button" class="btn-close qty_close" data-bs-dismiss="modal" aria-label="Close"></button>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-5 col-sm-12 col-xs-12" dir="ltr">
-                            <div class="qty-product-cover">
-                                <div class="qty-slide">
-                                    <img class="img-responsive" src="{% static 'assets/img/product-images/1_1.jpg'  %}" alt="">
-                                </div>
-                                <div class="qty-slide">
-                                    <img class="img-responsive" src="{% static 'assets/img/product-images/2_1.jpg'  %}" alt="">
-                                </div>
-                                <div class="qty-slide">
-                                    <img class="img-responsive" src="{% static 'assets/img/product-images/3_1.jpg'  %}" alt="">
-                                </div>
-                                <div class="qty-slide">
-                                    <img class="img-responsive" src="{% static 'assets/img/product-images/4_1.jpg'  %}" alt="">
-                                </div>
-                                <div class="qty-slide">
-                                    <img class="img-responsive" src="{% static 'assets/img/product-images/5_1.jpg'  %}" alt="">
-                                </div>
-                            </div>
-                            <div class="qty-nav-thumb">
-                                <div class="qty-slide">
-                                    <img class="img-responsive" src="{% static 'assets/img/product-images/1_1.jpg'  %}" alt="">
-                                </div>
-                                <div class="qty-slide">
-                                    <img class="img-responsive" src="{% static 'assets/img/product-images/2_1.jpg'  %}" alt="">
-                                </div>
-                                <div class="qty-slide">
-                                    <img class="img-responsive" src="{% static 'assets/img/product-images/3_1.jpg'  %}" alt="">
-                                </div>
-                                <div class="qty-slide">
-                                    <img class="img-responsive" src="{% static 'assets/img/product-images/4_1.jpg'  %}" alt="">
-                                </div>
-                                <div class="qty-slide">
-                                    <img class="img-responsive" src="{% static 'assets/img/product-images/5_1.jpg'  %}" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-7 col-sm-12 col-xs-12">
-                            <div class="quickview-pro-content">
-                                <h5 class="ms-quick-title"><a href="product-left-sidebar.html">پاکت میوه خشک مخلوط تریل ارگانیک مرغوب</a></h5>
-                                <div class="ms-quickview-rating">
-                                    <i class="fa-solid fa-star fill"></i>
-                                    <i class="fa-solid fa-star fill"></i>
-                                    <i class="fa-solid fa-star fill"></i>
-                                    <i class="fa-solid fa-star fill"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-
-                                <div class="ms-quickview-desc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</div>
-                                <div class="ms-quickview-price">
-                                    <span class="new-price">150 هزار تومان</span>
-                                    <span class="old-price">130 هزار تومان</span>
-                                </div>
-
-                                <div class="ms-pro-variation">
-                                    <div class="ms-pro-variation-inner ms-pro-variation-size ms-pro-size">
-                                        <span>اندازه</span>
-                                        <div class="ms-pro-variation-content">
-                                            <ul class="ms-opt-size">
-                                                <li class="active"><a href="javascript:void(0)" class="ms-opt-sz" data-tooltip="Small">250 گرم</a></li>
-                                                <li><a href="javascript:void(0)" class="ms-opt-sz" data-tooltip="Medium">500 گرم</a></li>
-                                                <li><a href="javascript:void(0)" class="ms-opt-sz" data-tooltip="Large">1 کیلوگرم</a></li>
-                                                <li><a href="javascript:void(0)" class="ms-opt-sz" data-tooltip="Extra Large">2 کیلوگرم</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="ms-quickview-qty">
-                                    <div class="qty-plus-minus">
-                                        <input class="qty-input" type="text" name="ms_qtybtn" value="1">
-                                    </div>
-                                    <div class="ms-quickview-cart ">
-                                        <button class="ms-btn-3"><img src="{% static 'assets/img/icons/pro_cart.svg'  %}" class="svg_img pro_svg" alt=""> خرید</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Quickview Modal end -->
-
-
-    <!-- خرید Notify -->
-    <div class="ms-cart-notify">
-        <a href="javascript:void(0)" class="ms-cart-toggle"><img src="{% static 'assets/img/icons/pro_cart.svg'  %}" class="svg_img" alt="cart"><span>3</span></a>
-    </div>
-
-    <!-- Add to Wishlist Notify  -->
-    <div class="ms-wish-notify"></div>
-
-    <!-- Add to Compare list Notify  -->
-    <div class="ms-compare-notify"></div>
-
     <!-- Back to top  -->
     <a class="ms-back-to-top"></a>
-
-    <!-- Add to Compare list Notify  -->
-    <div class="ms-compare-notify"></div>
 
     <!-- Features sidebar  -->
     <div class="ms-features-sidebar-overlay"></div>
@@ -1178,10 +1099,9 @@ Copyright 2022-2023
     <script src="{% static 'assets/js/plugins/popper.min.js'  %}"></script>
     <script src="{% static 'assets/js/plugins/bootstrap.bundle.min.js'  %}"></script>
     <script src="{% static 'assets/js/plugins/bootstrap-select.min.js'  %}"></script>
-    <script src="{% static 'assets/js/plugins/swiper-bundle.min.js'  %}"></script>
     <script src="{% static 'assets/js/plugins/fontawesome.js'  %}"></script>
     <script src="{% static 'assets/js/plugins/owl.carousel.min.js'  %}"></script>
-    <script src="{% static 'assets/js/plugins/countdownTimer.js'  %}"></script>
+    <script src="{% static 'assets/js/plugins/swiper-bundle.min.js'  %}"></script>
     <script src="{% static 'assets/js/plugins/infiniteslidev2.js'  %}"></script>
     <script src="{% static 'assets/js/plugins/jquery.zoom.min.js'  %}"></script>
     <script src="{% static 'assets/js/plugins/slick.min.js'  %}"></script>
@@ -1189,7 +1109,6 @@ Copyright 2022-2023
 
     <!-- Main Js -->
     <script src="{% static 'assets/js/main.js'  %}"></script>
-    <script src="{% static 'assets/js/demo-1.js'  %}"></script>
 </body>
 
 </html>

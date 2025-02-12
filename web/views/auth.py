@@ -10,6 +10,8 @@ from account.forms.verify import VerifyForm
 from account.models import User
 from account.send_sms import send_otp_message
 from account.urls.v1.serializers import UserRegisterSerializer
+from sale.models import SaleBasket
+
 
 class LoginView(BaseTemplateView):
     template_name = "account/login.html"
@@ -64,7 +66,13 @@ class VerifyView(BaseTemplateView):
             if user.check_password(form.cleaned_data['code']):
                 user.state = User.State.ACTIVE
                 user.save()
+                session_key = self.request.session.session_key or self.request.META.get('REMOTE_ADDR')
+                basket = SaleBasket.objects.filter(session_key=session_key, state__lte=SaleBasket.State.IN_PAY)
                 login(request, user)
+                for i in basket:
+                    i.user = request.user
+                    i.session_key = None
+                    i.save()
                 return redirect("/")
         context = self.get_context_data(form=form)
         context['error'] = "کد صحیح نمیباشد"

@@ -48,3 +48,5 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_LIFETIME": timedelta(days=99),
     "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=99),
 }
+
+APPEND_SLASH=True
