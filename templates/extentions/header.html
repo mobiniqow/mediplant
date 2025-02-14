@@ -39,7 +39,7 @@
                             </form>
                         </div>
                     </div>
-                    {% if categories.user.state == user.State.GUEST %}
+                    {% if categories.user.state != user.State.GUEST %}
                         <div class="align-self-center">
                             <div class="ms-header-bottons">
                                 <div class="ms-acc-drop">
@@ -94,8 +94,7 @@
                                 </a>
                                 <!-- Header Cart End -->
                             </div>
-                        </div>
-
+                        </div> 
                     {% else %}
                         <div class="align-self-center">
                             <div class="ms-header-bottons">
@@ -154,7 +153,7 @@
                                                         {#                                                        {% if not i.parent %}#}
                                                         <ul class="d-block">
                                                             <li class="menu_title"><a
-                                                                    href="javascript:void(0)">
+                                                                    href="/product/?category={{ i.id }}">
                                                                 {{ i.name|safe|truncatechars_html:17 }}</a>
                                                             </li>
 

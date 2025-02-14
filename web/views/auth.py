@@ -24,7 +24,9 @@ class LoginView(BaseTemplateView):
             else:
                 return self.form_invalid(form)
         else:
-            if request.user.is_authenticated:
+            print(f'request.user.state = {request.user.state }')
+            print(f'User.State.GUEST = {User.State.GUEST }')
+            if request.user.state != User.State.GUEST:
                 return redirect('/')
             context = self.get_context_data()
             login = LoginForm()
@@ -79,7 +81,7 @@ class VerifyView(BaseTemplateView):
         return self.render_to_response(context)
 
     def dispatch(self, request, *args, **kwargs):
-        if request.user.is_authenticated:
+        if request.user.state != User.State.GUEST:
             return redirect('/')
         return super().dispatch(request, *args, **kwargs)
 

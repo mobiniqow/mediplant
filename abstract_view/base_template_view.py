@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView
-
+from django.contrib.auth import login
 from account.models import User
 # from account.models import User, GuestUser
 from product.models import Category
@@ -26,7 +26,7 @@ class BaseTemplateView(TemplateView):
             basket = SaleBasket.objects.filter( user=self.request.user,state__lte=SaleBasket.State.IN_PAY)
 
         context['basket'] = basket
-
+        print(f'self.request.user.id {self.request.user.state }')
         if self.request.user.id is not None :
             from account.urls.v1.views import get_tokens_for_user
             token = get_tokens_for_user(self.request.user)
@@ -34,10 +34,11 @@ class BaseTemplateView(TemplateView):
             print(token['access'])
         else:
             from account.urls.v1.views import get_tokens_for_user
-            guest_user = User.objects.create_guest_user()  # فرض می‌کنیم ویژگی `is_guest` وجود دارد
+            guest_user = User.objects.create_guest_user()
+            guest_user.save()
             guest_token = get_tokens_for_user(guest_user)
             context['token'] = guest_token['access']
-            print(guest_token['access'])
+            login(self.request, guest_user)
         context['categories'] = categories
         if context['is_active']:
             # todo ino ok konam shomareshshesho
