@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="{% static 'assets/css/plugins/slick.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/plugins/nouislider.css' %}">
 
-    <link rel="stylesheet" href="../static/assets/css/new-page.css">
+    <link rel="stylesheet" href="../../static/assets/css/new-page.css">
 
     <!-- Main Style -->
     <link rel="stylesheet" id="main_style" href="{% static '../static/assets/css/new-page.css' %}">
@@ -146,7 +146,7 @@
 </div>
 
 <!-- Header start  -->
-{% include './extentions/header.html' with categories=categories_map %}
+{% include '../extentions/header.html' with categories=categories_map %}
 <!-- Header End  -->
 
 <!-- Category sidebar Start -->
@@ -693,7 +693,7 @@
 <!-- content end -->
 
 <!-- Footer Start -->
-{% include './extentions/footer.html' %} %}
+{% include '../extentions/footer.html' %} %}
 <!-- Footer Area End -->
 
 <!-- Back to top  -->

@@ -8,7 +8,7 @@ from django.shortcuts import get_object_or_404
 
 
 class ShopProductView(BaseTemplateView):
-    template_name = 'product-detail.html'
+    template_name = 'shop/product-detail.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -38,7 +38,7 @@ class ShopProductView(BaseTemplateView):
 
 
 class ShopProductListView(BaseTemplateView):
-    template_name = 'product-detail.html'
+    template_name = 'shop/product-detail.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -54,7 +54,7 @@ class ShopProductListView(BaseTemplateView):
 
 
 class ProductListView(BaseTemplateView):
-    template_name = 'product_list.html'
+    template_name = 'shop/product_list.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

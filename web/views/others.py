@@ -4,7 +4,7 @@ from product.models import Category
 
 
 class AboutUsView(TemplateView):
-    template_name = "about-us.html"
+    template_name = "shop/about-us.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -19,7 +19,7 @@ class AboutUsView(TemplateView):
 
 
 class ContactUsView(TemplateView):
-    template_name = "contact-us.html"
+    template_name = "shop/contact-us.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

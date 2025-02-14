@@ -8,14 +8,14 @@ from .views.shop import CategoryView, IndexView, ShopView, ShopDetailsView, Sear
     OrderListView, CallbackView, ShopTransactions, AfterBankGateWay, ShopCartDetailsOrderView
 
 urlpatterns = [
-    path("", IndexView.as_view(),),
-    path("search/", CategoryView.as_view(),),
-    path("product/", ProductListView.as_view(),),
-    path("search/product/<int:product_id>/", SearchProduct.as_view(),),
-    path("about-us", AboutUsView.as_view(),),
-    path("contact-us", ContactUsView.as_view(),),
-    path("blog", BlogsView.as_view(),),
-    path("blog/<int:id>/", BlogsDetailsView.as_view(),),
+    path("", IndexView.as_view(), ),
+    path("search/", CategoryView.as_view(), ),
+    path("product/", ProductListView.as_view(), ),
+    path("search/product/<int:product_id>/", SearchProduct.as_view(), ),
+    path("about-us", AboutUsView.as_view(), ),
+    path("contact-us", ContactUsView.as_view(), ),
+    path("blog", BlogsView.as_view(), ),
+    path("blog/<int:id>/", BlogsDetailsView.as_view(), ),
     path('shop/', ShopView.as_view()),
     path('shop-transactions/', ShopTransactions.as_view()),
     path('callback/', CallbackView.as_view()),
@@ -28,6 +28,6 @@ urlpatterns = [
     path('login/', LoginView.as_view()),
     path('verify/<str:phone>/', VerifyView.as_view(), name='verify'),
     path('profile/', ProfileView.as_view()),
-    path('track-order/<int:id>/',AfterBankGateWay.as_view()),
-    path('track-order/<int:id>/items',ShopCartDetailsOrderView.as_view()),
+    path('track-order/<int:id>/', AfterBankGateWay.as_view()),
+    path('track-order/<int:id>/items', ShopCartDetailsOrderView.as_view()),
 ]

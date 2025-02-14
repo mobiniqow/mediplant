@@ -13,7 +13,7 @@ from transaction.models import Transaction, Payment
 
 
 class IndexView(BaseTemplateView):
-    template_name = "index.html"
+    template_name = "shop/index.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -78,7 +78,7 @@ class IndexView(BaseTemplateView):
 
 
 class CategoryView(BaseTemplateView):
-    template_name = "category.html"
+    template_name = "shop/category.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -96,7 +96,7 @@ class CategoryView(BaseTemplateView):
 
 
 class ShopView(BaseTemplateView):
-    template_name = "shop.html"
+    template_name = "shop/shop.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -118,7 +118,7 @@ class ShopView(BaseTemplateView):
 
 
 class ShopDetailsView(BaseTemplateView):
-    template_name = "shop-details.html"
+    template_name = "shop/shop-details.html"
 
     def get_context_data(self, **kwargs):
         page_size = 15
@@ -157,7 +157,7 @@ class ShopDetailsView(BaseTemplateView):
 
 
 class SearchProduct(BaseTemplateView):
-    template_name = 'search-product-in-shop.html'
+    template_name = 'shop/search-product-in-shop.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -174,7 +174,7 @@ class SearchProduct(BaseTemplateView):
 
 
 class CheckoutView(BaseTemplateView):
-    template_name = 'checkout.html'
+    template_name = 'shop/checkout.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -182,7 +182,7 @@ class CheckoutView(BaseTemplateView):
 
 
 class ShopCartView(BaseTemplateView):
-    template_name = "cart.html"
+    template_name = "shop/cart.html"
 
     def get_context_data(self, **kwargs):
         page_size = 15
@@ -208,7 +208,7 @@ class ShopCartView(BaseTemplateView):
 
 
 class AfterBankGateWay(BaseTemplateView):
-    template_name = "track-order.html"
+    template_name = "shop/track-order.html"
 
     def get_context_data(self, **kwargs):
         page_size = 15
@@ -241,7 +241,7 @@ class AfterBankGateWay(BaseTemplateView):
 
 
 class OrderListView(TemplateView):
-    template_name = "order_list.html"
+    template_name = "shop/order_list.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -263,7 +263,7 @@ class OrderListView(TemplateView):
 
 
 class CallbackView(BaseTemplateView):
-    template_name = "call-back.html"
+    template_name = "shop/call-back.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -293,7 +293,7 @@ class CallbackView(BaseTemplateView):
 
 
 class ShopTransactions(BaseTemplateView):
-    template_name = 'transactions.html'
+    template_name = 'shop/transactions.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -301,7 +301,7 @@ class ShopTransactions(BaseTemplateView):
 
 
 class ShopCartDetailsOrderView(BaseTemplateView):
-    template_name = "cart_details_order.html"
+    template_name = "shop/cart_details_order.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

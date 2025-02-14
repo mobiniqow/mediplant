@@ -6,7 +6,7 @@ from product.models import Category
 
 
 class BlogsView(TemplateView):
-    template_name = "blogs.html"
+    template_name = "shop/blogs.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -21,7 +21,7 @@ class BlogsView(TemplateView):
 
 
 class BlogsDetailsView(TemplateView):
-    template_name = "blog-detail.html"
+    template_name = "shop/blog-detail.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

@@ -37,7 +37,7 @@
 <div id="ms-overlay">
     <div class="loader"></div>
 </div>
-{% include './extentions/header.html' with categories=categories_map is_active=is_active medic_notification=medic_notification shop_notification=shop_notification %}
+{% include '../extentions/header.html' with categories=categories_map is_active=is_active medic_notification=medic_notification shop_notification=shop_notification %}
 <div class="ms-side-cat-overlay"></div>
 <div class="col-lg-3 ms-category-sidebar">
     <div class="cat-sidebar">
@@ -237,7 +237,7 @@
 </div>
 
 <div class="ms-side-cart-overlay"></div>
-{% include './extentions/shops_basket.html' with basket=basket toke=token %}
+{% include '../extentions/shops_basket.html' with basket=basket toke=token %}
 
 <div class="ms-side-wish-overlay"></div>
 <div id="ms-side-wish" class="ms-side-wish">
@@ -644,7 +644,7 @@
                             <div class="ms-all-product-inner">
                                 <div class="ms-pro-image-outer">
                                     <div class="ms-pro-image">
-                                        <a href="/shop/?product={{ product.id }}" class="image">
+                                        <a href="/shop?product={{ product.id }}" class="image">
                                             <img class="main-image" src="{{ product.image_list.0.image.url }}"
                                                  alt="Product">
                                         </a>
@@ -652,9 +652,9 @@
                                 </div>
                                 <div class="ms-pro-content">
                                     <h5 class="ms-pro-title"><a
-                                            href="/shop/?product={{ product.id }}">{{ product.name }}</a></h5>
+                                            href="/shop?product={{ product.id }}">{{ product.name }}</a></h5>
                                     <h6 class="ms-pro-stitle"><a
-                                            href="/shop/?product={{ product.id }}">{{ product.description }}</a>
+                                            href="/shop?product={{ product.id }}">{{ product.description }}</a>
                                     </h6>
                                     <div class="ms-pro-rat-price">
                                         <div class="ms-pro-rat-pri-inner">
@@ -698,9 +698,9 @@
                                 </div>
                                 <div class="ms-pro-content">
                                     <h5 class="ms-pro-title"><a
-                                            href="/shop/?product={{ product.id }}">{{ product.name }}</a></h5>
+                                            href="/shop?product={{ product.id }}">{{ product.name }}</a></h5>
                                     <h6 class="ms-pro-stitle"><a
-                                            href="/shop/?product={{ product.id }}">{{ product.description }}</a>
+                                            href="/shop?product={{ product.id }}">{{ product.description }}</a>
                                     </h6>
                                     <div class="ms-pro-rat-price">
                                         <div class="ms-pro-rat-pri-inner">
@@ -744,9 +744,9 @@
                                 </div>
                                 <div class="ms-pro-content">
                                     <h5 class="ms-pro-title"><a
-                                            href="/shop/?product={{ product.id }}">{{ product.name }}</a></h5>
+                                            href="/shop?product={{ product.id }}">{{ product.name }}</a></h5>
                                     <h6 class="ms-pro-stitle"><a
-                                            href="/shop/?product={{ product.id }}">{{ product.description }}</a>
+                                            href="/shop?product={{ product.id }}">{{ product.description }}</a>
                                     </h6>
                                     <div class="ms-pro-rat-price">
                                         <div class="ms-pro-rat-pri-inner">
@@ -790,9 +790,9 @@
                                 </div>
                                 <div class="ms-pro-content">
                                     <h5 class="ms-pro-title"><a
-                                            href="/shop/?product={{ product.id }}">{{ product.name }}</a></h5>
+                                            href="/shop?product={{ product.id }}">{{ product.name }}</a></h5>
                                     <h6 class="ms-pro-stitle"><a
-                                            href="/shop/?product={{ product.id }}">{{ product.description }}</a>
+                                            href="/shop?product={{ product.id }}">{{ product.description }}</a>
                                     </h6>
                                     <div class="ms-pro-rat-price">
                                         <div class="ms-pro-rat-pri-inner">
@@ -1123,8 +1123,7 @@
     </div>
 </section>
 
-
-{% include './extentions/footer.html' %}
+{% include '../extentions/footer.html' %}
 <!-- Footer Area End -->
 
 
