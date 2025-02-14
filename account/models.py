@@ -40,6 +40,30 @@ class BasicUserManager(BaseUserManager):
         user.save()
         return user
 
+    def create_guest_user(self):
+        guest = GuestCounter.objects.create()
+        phone = self.generate_17_digit_number(guest.id)
+        user = self.model(phone=phone)
+        user.state = User.State.GUEST
+        user.save()
+        return user
+
+    def generate_17_digit_number(self,input_number):
+        # تبدیل عدد ورودی به رشته
+        input_str = str(input_number)
+
+        # محاسبه تعداد صفرهای مورد نیاز برای پر کردن
+        remaining_length = 17 - len(input_str) - 3  # 3 رقم برای 123 در ابتدا
+
+        # بررسی اینکه طول عدد ورودی بیشتر از 14 رقم نباشد
+        if remaining_length < 0:
+            raise ValueError("عدد ورودی نباید بیشتر از 14 رقم باشد.")
+
+        # ایجاد عدد 17 رقمی که با 123 شروع می‌شود و باقی با صفر پر می‌شود
+        result = "123" + "0" * remaining_length + input_str
+
+        return result
+
 
 class User(AbstractBaseUser, PermissionsMixin):
     class State(models.IntegerChoices):
@@ -47,6 +71,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         ACTIVE = 1
         REPORTED = 2
         BANNED = 3
+        GUEST = 4
 
     class UserActivationState(models.IntegerChoices):
         WHITE = 0
@@ -86,7 +111,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     @property
     def is_active(self):
-        return self.state == User.State.ACTIVE
+        return self.state == User.State.ACTIVE or self.state == User.State.GUEST
 
     def has_perm(self, perm, obj=None):
         return self.is_staff
@@ -109,3 +134,15 @@ class User(AbstractBaseUser, PermissionsMixin):
         letters_and_digits = string.ascii_letters + string.digits
         referral_code = ''.join(random.choice(letters_and_digits) for _ in range(8))
         return referral_code
+
+
+class GuestCounter(models.Model):
+    session_key = models.CharField(max_length=40, null=True, blank=True)
+    ip = models.GenericIPAddressField(null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'مهمان'
+        verbose_name_plural = 'مهمان‌ها'
+
+    def __str__(self):
+        return self.id

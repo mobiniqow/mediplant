@@ -39,7 +39,7 @@
                             </form>
                         </div>
                     </div>
-                    {% if not categories.user.is_anonymous %}
+                    {% if categories.user.state == user.State.GUEST %}
                         <div class="align-self-center">
                             <div class="ms-header-bottons">
                                 <div class="ms-acc-drop">
@@ -86,7 +86,8 @@
                                         <span class="{% if shop_notification > 0 %}main-label-note-new{% endif %}"></span>
                                     </div>
                                     <div class="ms-btn-desc">
-                                        <span href="javascript:void(0)" class="ms-header-btn ms-cart-toggle">سبد خرید</span>
+                                        <span href="javascript:void(0)"
+                                              class="ms-header-btn ms-cart-toggle">سبد خرید</span>
                                         <span class="ms-btn-stitle"><span
                                                 class="ms-cart-count ms-cart-toggle">{{ shop_notification }}</span> مورد </span>
                                     </div>
@@ -103,11 +104,12 @@
                                        class="ms-header-btn ms-header-user dropdown-toggle ms-user-toggle"
                                        title="حساب کاربری">
                                         <div class="header-icon">
-                                            <img src="{% static 'assets/img/icons/user.svg' %}" onclick='window.open("/login/?callback=" + window.location.pathname, "_self")'
+                                            <img src="{% static 'assets/img/icons/user.svg' %}"
+                                                 onclick='window.open("/login/?callback=" + window.location.pathname, "_self")'
                                                  class="svg_img header_svg" alt="">
                                         </div>
                                         <span onclick='window.open("/login/?callback=" + window.location.pathname, "_self")'
-                                              class="ms-btn-stitle">ورود</span> 
+                                              class="ms-btn-stitle">ورود</span>
                                     </a>
                                 </div>
 

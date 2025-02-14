@@ -71,23 +71,22 @@
 <script>
 function getAllBasket() {
     var settings = {
-        "url": "/basket/",  // URL برای گرفتن سبد خرید
+        "url": "/basket/", 
         "method": "GET",
         "timeout": 0,
         "headers": {
-            "Authorization": "Bearer {{ token }}",  // اضافه کردن توکن به درخواست
+            "Authorization": "Bearer {{ token }}",  
         },
     };
 
     $.ajax(settings).done(function (response) {
-        updateBasket(response);  // ارسال داده‌ها به تابع برای به‌روزرسانی HTML
+        updateBasket(response);  
     });
 }
 function updateBasket(basketItems) {
-    var basketContainer = $('.ms-cart-pro-items');  // انتخاب کانتینر برای نمایش سبد خرید
-    basketContainer.empty();  // پاک کردن محتوای قبلی
+    var basketContainer = $('.ms-cart-pro-items');  
+    basketContainer.empty();  
 
-    // بررسی اگر سبد خرید خالی نباشد
     if (basketItems.length > 0) {
         basketItems.forEach(function(item) {
             var basketItemHTML = `

@@ -288,6 +288,7 @@ class UpdateTransactionStatus(APIView):
 
 class MyBasket(APIView):
     def get(self, request):
+        print("omadam to")
         session_key = request.session.session_key or request.META.get('REMOTE_ADDR')
         if request.user.is_authenticated:
             basket = SaleBasket.objects.filter(user=request.user)
