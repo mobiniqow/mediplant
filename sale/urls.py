@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import CreateDeleteBasket, ProductToBasket, Checkout, \
-    UpdateTransactionStatus, MyBasket, DeleteProductFromBasket
+    UpdateTransactionStatus, MyBasket, DeleteProductFromBasket, CancelBasket
 
 urlpatterns = [
     path('<int:shopid>', CreateDeleteBasket.as_view()),
@@ -11,5 +11,5 @@ urlpatterns = [
          name='update_transaction_status'),
     path('', MyBasket.as_view()),
     path('<int:basket_id>/', MyBasket.as_view()),
-
+    path('cancel_cart/<int:basket_id>/', CancelBasket.as_view(), name='cancell_cart'),
 ]

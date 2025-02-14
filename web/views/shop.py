@@ -139,16 +139,18 @@ class ShopDetailsView(BaseTemplateView):
         context['product'] = [product[i:i + page_size] for i in range(0, len(product), page_size)]
         context['page_number'] = [i for i in range(1, page_number + 1)]
 
-        if   self.request.user.is_anonymous:
+        if self.request.user.is_anonymous:
             print('asal')
             session_key = self.request.session.session_key or self.request.META.get('REMOTE_ADDR')
             basket = SaleBasket.objects.filter(session_key=session_key, state__lte=SaleBasket.State.IN_PAY, shop=shop)
             products = SaleBasketProduct.objects.filter(basket__in=basket)
         else:
-            basket = SaleBasket.objects.filter(user=self.request.user, state__lte=SaleBasket.State.IN_PAY, shop=shop).first()
+            basket = SaleBasket.objects.filter(user=self.request.user, state__lte=SaleBasket.State.IN_PAY,
+                                               shop=shop).first()
             products = SaleBasketProduct.objects.filter(basket=basket)
             print(f'sdsda {products}')
-            print(f'sdsda {SaleBasket.objects.filter(user=self.request.user, state__lte=SaleBasket.State.IN_PAY, shop=shop).count()}')
+            print(
+                f'sdsda {SaleBasket.objects.filter(user=self.request.user, state__lte=SaleBasket.State.IN_PAY, shop=shop).count()}')
         context['cart_product'] = products
         context['shop_notification'] = len(products)
         return context
@@ -214,7 +216,7 @@ class AfterBankGateWay(BaseTemplateView):
         shop_id = kwargs['id']
 
         transaction = Transaction.objects.get(id=shop_id)
-        shop =  get_object_or_404(Shop, pk=transaction.cart.shop.id)
+        shop = get_object_or_404(Shop, pk=transaction.cart.shop.id)
 
         basket = get_object_or_404(SaleBasket, shop=shop, state__in=[
             SaleBasket.State.SUSPEND,
@@ -230,7 +232,6 @@ class AfterBankGateWay(BaseTemplateView):
         context['user'] = self.request.user
         context['shop'] = shop
         context['product'] = product
-
 
         context['date'] = basket.get_delivery_date()
         context['step'] = 4
@@ -290,9 +291,36 @@ class CallbackView(BaseTemplateView):
         context['transaction_details'] = transaction_details
         return context
 
+
 class ShopTransactions(BaseTemplateView):
     template_name = 'transactions.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        return context
+
+
+class ShopCartDetailsOrderView(BaseTemplateView):
+    template_name = "cart_details_order.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        transaction_id = kwargs['id']
+        transaction = get_object_or_404(Transaction, pk=transaction_id)
+        cart = transaction.cart
+        products = SaleBasketProduct.objects.filter(basket=cart)
+        transaction.amount = f'{int(transaction.amount):,}'
+        for i in products:
+            i.image = ProductImage.objects.filter(product=i.product.product).first()
+            i.price = '{:,.0f}'.format(i.product.price)
+            i.price_all = '{:,.0f}'.format(i.product.price * i.unit)
+        context['user'] = self.request.user
+        context['products'] = products
+        context['transaction'] = transaction
+        print(transaction.id)
+        print(cart.state)
+        context['cancelable'] = (transaction.status=='pending' or cart.state == SaleBasket.State.IN_PAY
+                                 or cart.state == SaleBasket.State.PAY_FAILED)
+        context['buyable'] = (transaction.status=='pending'  or cart.state == SaleBasket.State.PAY_FAILED)
+
         return context

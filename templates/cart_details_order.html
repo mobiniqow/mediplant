@@ -165,7 +165,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        {% for i in product %}
+                                        {% for i in products %}
                                             <tr>
                                                 <td data-label="محصولات" class="ms-cart-pro-name">
                                                     <a href="/shop/{{ shop.id }}/product/{{ i.product.id }}">
@@ -176,45 +176,26 @@
                                                 <td data-label="قیمت" class="ms-cart-pro-price">
                                                     <span class="amount">{{ i.price }} تومان</span>
                                                 </td>
-                                                <td data-label="تعداد" class="ms-cart-pro-qty"
+                                                   <td data-label="تعداد" class="ms-cart-pro-qty"
                                                     style="text-align: center;">
-                                                    <div class="cart-qty-plus-minus">
-                                                        <input class="cart-plus-minus" type="text"
-                                                               name="cartqtybutton{{ i.id }}" value="{{ i.unit }}"
-                                                               data-shop-id="{{ shop.id }}"
-                                                               data-product-id="{{ i.product.id }}">
-                                                        <div class="ms_cart_qtybtn">
-                                                            <button class="ms_qtybtn" data-action="increase">+</button>
-                                                            <button class="ms_qtybtn" data-action="decrease">-</button>
-                                                        </div>
-                                                    </div>
+                                                    <span class="amount">{{ i.unit }}</span>
                                                 </td>
                                                 <td data-label="مجموع" class="ms-cart-pro-subtotal">{{ i.price_all }}
                                                     تومان
                                                 </td>
-                                                <td data-label="حذف" class="ms-cart-pro-remove"
-                                                    onclick="addItemToCardApi('0','{{ i.basket.shop.id }}','{{ i.product.id }}')">
-                                                    <a href="#"><i class="fa fa-trash"></i></a>
-                                                </td>
+                                            
                                             </tr>
                                         {% endfor %}
 
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="ms-cart-update-bottom">
-                                            <a href="/shop/{{ shop.id }}">به خرید ادامه دهید</a>
-                                            <button class="ms-btn-2">بررسی</button>
-                                        </div>
-                                    </div>
-                                </div>
+                       
                             </form>
                         </div>
                     </div>
                 </div>
-                <!--cart content End -->
+            
             </div>
             <!-- Sidebar Area Start -->
             <div class="ms-cart-rightside col-lg-4 col-md-12 m-t-991">
@@ -229,17 +210,17 @@
                         <div class="ms-sb-block-content">
                             <h4 class="ms-ship-title">تخمین حمل و نقل</h4>
                             <div class="ms-cart-form">
-                                <p>مقصد خود را برای دریافت تخمین حمل و نقل وارد کنید</p>
+{#                                <p>مقصد خود را برای دریافت تخمین حمل و نقل وارد کنید</p>#}
                                 <form action="#" method="post">
                                     <span class="ms-cart-wrap">
                                             <label>کد پستی</label>
-                                            <input id="code_posti" type="text" name="postalcode" value="{{ user.postal_code }}"
-                                                    >
+                                            <input id="code_posti" type="text" name="postalcode" value="{{ transaction.code_posti }}"
+                                                   readonly >
                                         </span>
                                     <span class="ms-cart-wrap">
                                             <label>آدرس</label>
-                                            <input id="address_details" type="text" name="postalcode" value="{{ user.address }}"
-                                                    >
+                                            <input id="address_details" type="text" name="postalcode" value="{{ transaction.address }}"
+                                                    readonly >
                                         </span>
                                     <span class="ms-cart-wrap">
                                             <label>لوکیشن</label>
@@ -256,26 +237,26 @@
                         <div class="ms-sb-block-content">
                             <div class="ms-cart-summary-bottom">
                                 <div class="ms-cart-summary">
-                                    <div>
-                                        <span class="text-left">هزینه های تحویل</span>
-                                        <span class="text-right">درمحل تحویل با مشتری</span>
-                                    </div>
-                                    <div>
-                                        <span class="text-left">تخفیف کوپن</span>
-                                        <span class="text-right"><a class="ms-cart-coupan">درخواست کوپن</a></span>
-                                    </div>
-                                    <div class="ms-cart-coupan-content">
-                                        <form class="ms-cart-coupan-form" name="ms-cart-coupan-form" method="post"
-                                              action="#">
-                                            <input class="ms-coupan" type="text" required=""
-                                                   placeholder="کوپن را وارد نمایید" name="ms-coupan" value="">
-                                            <button class="ms-btn-2" type="submit" name="subscribe" value="">درخواست
-                                            </button>
-                                        </form>
-                                    </div>
+{#                                    <div>#}
+{#                                        <span class="text-left">هزینه های تحویل</span>#}
+{#                                        <span class="text-right">درمحل تحویل با مشتری</span>#}
+{#                                    </div>#}
+{#                                    <div>#}
+{#                                        <span class="text-left">تخفیف کوپن</span>#}
+{#                                        <span class="text-right"><a class="ms-cart-coupan">درخواست کوپن</a></span>#}
+{#                                    </div>#}
+{#                                    <div class="ms-cart-coupan-content">#}
+{#                                        <form class="ms-cart-coupan-form" name="ms-cart-coupan-form" method="post"#}
+{#                                              action="#">#}
+{#                                            <input class="ms-coupan" type="text" required=""#}
+{#                                                   placeholder="کوپن را وارد نمایید" name="ms-coupan" value="">#}
+{#                                            <button class="ms-btn-2" type="submit" name="subscribe" value="">درخواست#}
+{#                                            </button>#}
+{#                                        </form>#}
+{#                                    </div>#}
                                     <div class="ms-cart-summary-total">
                                         <span class="text-left">مقدار کل</span>
-                                        <span class="text-right">{{ product.0.basket.price }} هزار تومان </span>
+                                        <span class="text-right">{{ transaction.amount }} هزار تومان </span>
                                     </div>
                                 </div>
 
@@ -283,9 +264,17 @@
                         </div>
                     </div>
                 </div>
+                {% if buyable %}
                 <button class="ms-btn-2 col-lg-12 col-md-12  ms-sb-block-content"
-                        onclick="raod_to_pay('{{ product.0.basket.id }}')">خرید
+                        onclick="raod_to_pay('{{ transaction.id }}')">پرداخت
                 </button>
+                {% endif %}
+            <div class="padding-bottom-3"></div>
+                {% if cancelable %}
+                <button class="ms-btn-2 col-lg-12 col-md-12  ms-sb-block-content"
+                        onclick="cancel_buy('{{ transaction.id }}')">انصراف
+                </button>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -1106,12 +1095,11 @@
         });
     }
 </script>
-<script>
-
+<script> 
     let map;
     let marker;
     let loc = "{{ user.location }}"
-    let selectedLocation = {lat: 35.6895, lng: 51.3890};
+    let selectedLocation = {lat: {{ transaction.lat }}, lng: {{ transaction.lng }}};
     if (loc !== "None" && loc != "") {
         loc = loc.split(",")
         selectedLocation = {lat: loc[0], lng: loc[1]};
@@ -1126,21 +1114,9 @@
             center: selectedLocation, draggable: false,// مرکز نقشه
             zoom: 16, // سطح زوم
         });
-           marker = new L.Marker(selectedLocation, {draggable: true}).addTo(map);
+           marker = new L.Marker(selectedLocation, {draggable: false}).addTo(map);
 
-        // رویداد برای کلیک روی نقشه
-        map.on('click', function (event) {
-            const clickedLocation = event.latlng;
-            selectedLocation = clickedLocation;
-
-            // تغییر مکان مارکر
-            marker.setLatLng(clickedLocation);
-        });
-
-        // رویداد برای جابجایی مارکر
-        marker.on('dragend', function () {
-            selectedLocation = marker.getLatLng();
-        });
+    
 
     }
 
@@ -1148,6 +1124,21 @@
 
 </script>
 <script>
+    function cancel_buy(basket) {   
+        var settings = {
+            "url": `/basket/cancel_cart/${basket}`,
+            "method": "DELETE",
+            "timeout": 0,
+            "headers": {
+                "Authorization": "Bearer {{token}}"  // Replace `token` with actual token value
+            },
+        };
+
+        $.ajax(settings).done(function (response) {
+              window.location.href = '/shop-transactions/';
+        });
+    }
+
     function raod_to_pay(basket) {
         var postalCode = $('#code_posti').val();
         var address_details = $('#address_details').val();
@@ -1182,7 +1173,6 @@
             }
         });
     }
-
 </script>
 </body>
 

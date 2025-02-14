@@ -5,7 +5,7 @@ from .views.auth import LoginView, VerifyView, ProfileView
 from .views.others import AboutUsView, ContactUsView
 from .views.product import ShopProductListView, ShopProductView, ProductListView
 from .views.shop import CategoryView, IndexView, ShopView, ShopDetailsView, SearchProduct, CheckoutView, ShopCartView, \
-    OrderListView, CallbackView, ShopTransactions, AfterBankGateWay
+    OrderListView, CallbackView, ShopTransactions, AfterBankGateWay, ShopCartDetailsOrderView
 
 urlpatterns = [
     path("", IndexView.as_view(),),
@@ -19,7 +19,7 @@ urlpatterns = [
     path('shop/', ShopView.as_view()),
     path('shop-transactions/', ShopTransactions.as_view()),
     path('callback/', CallbackView.as_view()),
-    path('shop/orders', OrderListView.as_view()),
+    # path('shop/orders', OrderListView.as_view()),
     path('shop/<int:id>/', ShopDetailsView.as_view()),
     path('shop/<int:id>/cart', ShopCartView.as_view()),
     path('shop/<int:id>/checkout', CheckoutView.as_view()),
@@ -28,5 +28,6 @@ urlpatterns = [
     path('login/', LoginView.as_view()),
     path('verify/<str:phone>/', VerifyView.as_view(), name='verify'),
     path('profile/', ProfileView.as_view()),
-    path('track-order/<int:id>/',AfterBankGateWay.as_view())
+    path('track-order/<int:id>/',AfterBankGateWay.as_view()),
+    path('track-order/<int:id>/items',ShopCartDetailsOrderView.as_view()),
 ]

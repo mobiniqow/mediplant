@@ -409,8 +409,9 @@
             <div>فروشگاه</div>
             <div>مبلغ</div>
             <div>تعداد اقلام</div>
+            <div>لیست محصولات</div>
             <div>وضعیت</div>
-            <div>مشاهده</div>
+            <div></div>
         </div>
         <div id="transaction-list"></div>
     </div>
@@ -643,9 +644,9 @@
                 <div class="paragraph" onClick="window.location.href='/shop/${transaction.shop_id}'">${transaction.shop}</div>
                 <div>${transaction.amount}</div>
                 <div class="paragraph">${transaction.items_count}</div>
-                <div>
-                    <div class="${transaction.status === 'success' ? 'activee' : 'not-activee'}">
-                        ${transaction.status === 'success' ? 'بررسی شده' : 'در انتظار بررسی'}
+                <div onClick="window.location.href='/track-order/${transaction.transaction_id}/items'">
+                    <div  class="activee">
+                        مشاهده
                     </div>
                 </div>
                 <div>

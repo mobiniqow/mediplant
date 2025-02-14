@@ -180,7 +180,7 @@ def get_transactions(request):
 class ListTransactions(APIView):
     def get(self,request,**kwargs):
         print(request.user.is_authenticated)
-        transactions = Transaction.objects.all().select_related('cart', 'cart__shop')
+        transactions = Transaction.objects.exclude(status='cancel').select_related('cart', 'cart__shop')
         transaction_data = []
         for transaction in transactions:
             transaction_info = {

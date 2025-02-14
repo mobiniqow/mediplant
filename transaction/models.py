@@ -19,6 +19,7 @@ class Transaction(models.Model):
         ('success', 'Success'),
         ('failed', 'Failed'),
         ('pending', 'Pending'),
+        ('cancel', 'Cancel'),
     ]
 
     user = models.ForeignKey("account.User", on_delete=models.CASCADE)
