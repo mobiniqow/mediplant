@@ -9,6 +9,7 @@ from .views.shop import CategoryView, IndexView, ShopView, ShopDetailsView, Sear
 
 urlpatterns = [
     path("", IndexView.as_view(), ),
+
     path("search/", CategoryView.as_view(), ),
     path("product/", ProductListView.as_view(), ),
     path("search/product/<int:product_id>/", SearchProduct.as_view(), ),
