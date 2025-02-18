@@ -14,10 +14,9 @@ class ProductFilter(drf_filters.FilterSet):
         field_name='category',
         to_field_name='id',
     )
-    type = drf_filters.ModelMultipleChoiceFilter(
-        queryset=Product.objects.values_list('type', flat=True).distinct(),
-        field_name='type',
-        to_field_name='type',
+    type = drf_filters.MultipleChoiceFilter(
+        choices=Product. Type,  # فرض می‌کنیم که `TYPES_CHOICES` یک لیست از گزینه‌ها باشد
+        field_name='type'
     )
 
     class Meta:
