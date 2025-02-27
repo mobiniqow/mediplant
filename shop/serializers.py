@@ -2,7 +2,7 @@ from rest_framework import serializers
 
 from product.models import ProductImage, Product
 from product.serializers import ProductImageSerializer
-from .models import ShopProduct
+from .models import ShopProduct, Shop
 
 
 class ShopProductSerializer(serializers.ModelSerializer):
@@ -35,3 +35,9 @@ class ShopProductSerializer(serializers.ModelSerializer):
 
     def get_type(self, obj):
         return Product.Type(obj.product.type).label
+
+
+class ShopSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Shop
+        fields = "__all__"

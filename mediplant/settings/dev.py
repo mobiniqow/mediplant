@@ -10,6 +10,16 @@ STATIC_URL = '/static/'
 # STATIC_ROOT = os.path.join(BASE_DIR,"static")
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 # print([os.path.join(BASE_DIR, "static")])
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'mediplant',
+#         'USER': 'postgres',
+#         'PASSWORD': '1423joh89ydfas!@#$djkafsk',
+#         'HOST': 'localhost',
+#         'PORT': '5433',
+#     }
+# }
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 20003
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
@@ -50,3 +60,10 @@ SIMPLE_JWT = {
 }
 
 APPEND_SLASH=True
+#
+# import os
+#
+# GDAL_LIBRARY_PATH = os.getenv('GDAL_LIBRARY_PATH', r'"C:\OSGeo4W\bin\gdal310.dll"')
+# # GDAL_LIBRARY_PATH = os.getenv('GDAL_LIBRARY_PATH', '/usr/lib/libgdal.so')
+# if GDAL_LIBRARY_PATH:
+#     os.environ['GDAL_LIBRARY_PATH'] = GDAL_LIBRARY_PATH

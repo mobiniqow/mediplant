@@ -17,7 +17,7 @@ urlpatterns = [
     path("contact-us", ContactUsView.as_view(), ),
     path("blog", BlogsView.as_view(), ),
     path("blog/<int:id>/", BlogsDetailsView.as_view(), ),
-    path('shop/', ShopView.as_view()),
+    path('shops/', ShopView.as_view()),
     path('shop-transactions/', ShopTransactions.as_view()),
     path('callback/', CallbackView.as_view()),
     # path('shop/orders', OrderListView.as_view()),

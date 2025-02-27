@@ -1,6 +1,7 @@
 from django.core.validators import FileExtensionValidator, MinValueValidator
 from django.db import models
 from django.db.models import SET_NULL
+# from django.contrib.gis.db import models as gis_models
 
 from account.models import User
 from product.models import Product
@@ -34,6 +35,13 @@ class Shop(models.Model):
     price = models.IntegerField(verbose_name='واحد قیمت بر حسب واحد', default=0)
     location_lat = models.CharField(max_length=12, default="35.7475")
     location_lng = models.CharField(max_length=12, default="51.2358")
+    # location = gis_models.PointField(null=True, blank=True, verbose_name='موقعیت مکانی',)
+
+    def save(self, *args, **kwargs):
+        from django.contrib.gis.geos import Point
+        # تبدیل عرض و طول جغرافیایی به یک نقطه
+        self.location = Point(float(self.location_lat), float(self.location_lng))
+        super().save(*args, **kwargs)
     class Meta:
         verbose_name = 'فروشگاه'
         verbose_name_plural = 'فروشگاه‌ها'

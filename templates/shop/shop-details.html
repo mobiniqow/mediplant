@@ -27,8 +27,7 @@
     <link rel="stylesheet" href="{% static 'assets/css/plugins/owl.theme.default.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/plugins/swiper-bundle.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/plugins/slick.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/plugins/nouislider.css' %}">
-    <!--  -->
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/nouislider.css' %}"> 
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="{% static 'assets/css/slider/uikit-rtl.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/slider/uikit-rtl.min.css' %}">
@@ -53,13 +52,14 @@
             background-color: rgba(0, 0, 0, 0.4);
             padding-top: 60px;
         }
-.clear-btn {
-    background: none;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-    margin-left: 10px;
-}
+
+        .clear-btn {
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
 
         .modal-content {
             background-color: #fefefe;
@@ -266,8 +266,8 @@
 <!-- Header start  -->
 {% include '../extentions/header.html' with categories=categories_map is_active=is_active medic_notification=medic_notification shop_notification=shop_notification %}
 
-<div class="ms-side-cart-overlay"></div> 
-{% include '../extentions/basket_products.html' with token=token shop_id=shop.id%}
+<div class="ms-side-cart-overlay"></div>
+{% include '../extentions/basket_products.html' with token=token shop_id=shop.id %}
 
 <div class="ms-side-wish-overlay"></div>
 <div id="ms-side-wish" class="ms-side-wish">
@@ -350,14 +350,12 @@
                         <h2 class="ms-breadcrumb-title">صفحه فروشگاه</h2>
                     </div>
                     <div class="col-md-6 col-sm-12">
-                        <!-- ms-breadcrumb-list start -->
                         <ul class="ms-breadcrumb-list">
-                            <li class="ms-breadcrumb-item"><a href="/static">خانه</a><i class="fas fa-chevron-left"></i></li>
-                            <li class="ms-breadcrumb-item"><a href="/shop">فروشگاه</a><i
+                            <li class="ms-breadcrumb-item"><a href="/">خانه</a><i class="fas fa-chevron-left"></i></li>
+                            <li class="ms-breadcrumb-item"><a href="/shops/">فروشگاه</a><i
                                     class="fas fa-chevron-left"></i></li>
                             <li class="ms-breadcrumb-item active" aria-current="page">صفحه فروشگاه</li>
                         </ul>
-                        <!-- ms-breadcrumb-list end -->
                     </div>
                 </div>
             </div>
@@ -367,7 +365,7 @@
 <!-- Breadcrumb end -->
 
 <div class="store-page">
-    <h2>فروشگاه {{ shop.name }} </h2>
+    <h2> فروشگاه {{ shop.name }} </h2>
     <div class="baner-store">
         <div class="box-baner-store">
             <div class="logo-baner-store">
@@ -379,11 +377,14 @@
     <div class="box-menu-store">
         <p class="p-menu">منو فروشگاه</p>
         <div class="items-menu">
-       <div class="search-container">
-    <input type="search" id="search-input" class="search-menu" placeholder="جستجو فروشگاه" oninput="toggleClearButton()">
-    <button type="button" id="clear-btn" class="clear-btn" onclick="clearSearch()" style="display: none;">❌</button>
-    <button type="button" class="search-btn" onclick="searchProduct()">🔍</button>
-</div>
+            <div class="search-container">
+                <input type="search" id="search-input" class="search-menu" placeholder="جستجو فروشگاه"
+                       oninput="toggleClearButton()">
+                <button type="button" id="clear-btn" class="clear-btn" onclick="clearSearch()" style="display: none;">
+                    ❌
+                </button>
+                <button type="button" class="search-btn" onclick="searchProduct()">🔍</button>
+            </div>
 
 
             <button type="button" class="btn-location"
@@ -812,26 +813,27 @@
         fetchProducts(1, searchQuery);
         console.log(searchQuery); // چاپ در کنسول
     }
-// تابع برای نمایش یا مخفی کردن دکمه ضربدر
-function toggleClearButton() {
-    var searchInput = document.getElementById('search-input');
-    var clearBtn = document.getElementById('clear-btn');
-    
-    // اگر فیلد جستجو خالی نیست، دکمه ضربدر را نشان بده
-    if (searchInput.value !== "") {
-        clearBtn.style.display = "inline-block";
-    } else {
-        clearBtn.style.display = "none";
-    }
-}
 
-// تابع برای پاک کردن داده‌ها در فیلد جستجو
-function clearSearch() {
-    var searchInput = document.getElementById('search-input');
-    searchInput.value = "";  // پاک کردن مقدار فیلد
-            fetchProducts(1, "");
-    toggleClearButton();     // بروزرسانی وضعیت دکمه ضربدر
-}
+    // تابع برای نمایش یا مخفی کردن دکمه ضربدر
+    function toggleClearButton() {
+        var searchInput = document.getElementById('search-input');
+        var clearBtn = document.getElementById('clear-btn');
+
+        // اگر فیلد جستجو خالی نیست، دکمه ضربدر را نشان بده
+        if (searchInput.value !== "") {
+            clearBtn.style.display = "inline-block";
+        } else {
+            clearBtn.style.display = "none";
+        }
+    }
+
+    // تابع برای پاک کردن داده‌ها در فیلد جستجو
+    function clearSearch() {
+        var searchInput = document.getElementById('search-input');
+        searchInput.value = "";  // پاک کردن مقدار فیلد
+        fetchProducts(1, "");
+        toggleClearButton();     // بروزرسانی وضعیت دکمه ضربدر
+    }
 </script>
 
 <script>
@@ -842,7 +844,7 @@ function clearSearch() {
 
     }
 </script>
-  
+
 <script>
     function openModal(type) {
         // تنظیم محتوای مودال بر اساس نوع
@@ -863,7 +865,7 @@ function clearSearch() {
 
 </script>
 <script>
-    
+
 </script>
 </body>
 

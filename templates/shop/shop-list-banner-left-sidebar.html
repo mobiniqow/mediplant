@@ -12,16 +12,13 @@
           content="Bootstrap 5.x, ecommerce, farming, food market, grocery market, grocery shop, grocery store, grocery supper market, multi vendor, organic food, supermarket, supermarket grocery">
     <meta name="description" content="Multipurpose eCommerce HTML Template">
     <meta name="author" content="Pilarest">
-
-    <!-- site Favicon -->
-    <link rel="icon" href="{% static 'assets/img/favicon/favicon.png' %}" sizes="32x32">
-
-    <!-- css Icon Font -->
+    
+    <link rel="icon" href="{% static 'assets/img/favicon/favicon.png' %}" sizes="32x32"> 
+    
     <link rel="stylesheet" href="{% static 'assets/css/vendor/msicons.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/all.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
-
-    <!-- css All Plugins Files -->
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}"> 
+    
     <link rel="stylesheet" href="{% static 'assets/css/plugins/animate.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap-select.min.css' %}">
@@ -29,9 +26,8 @@
     <link rel="stylesheet" href="{% static 'assets/css/plugins/owl.theme.default.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/plugins/swiper-bundle.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/plugins/slick.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/plugins/nouislider.css' %}">
-
-    <!-- Main Style -->
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/nouislider.css' %}"> 
+    
     <link rel="stylesheet" id="main_style" href="{% static 'assets/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
     <link rel="stylesheet" class="color-css" href="{% static 'assets/css/color-01.css' %}">
@@ -637,7 +633,7 @@
     var orderType = "";
 
     function fetchProducts(page = 1, filters = {}) {
-        const apiEndpoint = '/product/api/';
+        const apiEndpoint = '/shop/api/v1/';
         let queryString = `?page=${page}`;
         productType.forEach((value, index) => {
             queryString += `&type=${value}`;

@@ -50,9 +50,9 @@
 <!-- Header End  -->
 
 <!-- Category sidebar Start -->
- 
-<div class="ms-side-cart-overlay"></div> 
-{% include '../extentions/basket_products.html' with token=token shop_id=shop.id%}
+
+<div class="ms-side-cart-overlay"></div>
+{% include '../extentions/basket_products.html' with token=token shop_id=shop.id %}
 <!-- Cart sidebar End -->
 
 <!-- Wishlist sidebar Start -->
@@ -137,13 +137,14 @@
                         <h2 class="ms-breadcrumb-title">جزئیات محصول</h2>
                     </div>
                     <div class="col-md-6 col-sm-12">
-                        <!-- ms-breadcrumb-list start -->
-                        {#                        <ul class="ms-breadcrumb-list">#}
-                        {#                            <li class="ms-breadcrumb-item"><a href="/">خانه</a><i#}
-                        {#                                    class="fas fa-chevron-left"></i></li>#}
-                        {#                            <li class="ms-breadcrumb-item active">جزئیات محصول</li>#}
-                        {#                        </ul>#}
-                        <!-- ms-breadcrumb-list end -->
+                        <ul class="ms-breadcrumb-list">
+                            <li class="ms-breadcrumb-item"><a href="/">خانه</a><i class="fas fa-chevron-left"></i></li>
+                            <li class="ms-breadcrumb-item"><a href="/shops/">فروشگاه</a><i
+                                    class="fas fa-chevron-left"></i></li>
+                            <li class="ms-breadcrumb-item"><a href="/shop/{{ shop_id }}">صفحه فروشگاه</a><i
+                                    class="fas fa-chevron-left"></i></li>
+                            <li class="ms-breadcrumb-item active" aria-current="page">جزئیات محصول</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -255,8 +256,8 @@
                     <span class="close" onclick="closeDialog()">&times;</span>
                     <img id="product-image" src="" alt="محصول">
                     <h2 id="product-name"></h2>
-                    <p>تعداد  : <input type="number" id="quantity" min="0" value="1"
-                                                      oninput="updateTotalPrice()"></p>
+                    <p>تعداد : <input type="number" id="quantity" min="0" value="1"
+                                      oninput="updateTotalPrice()"></p>
                     <p id="total-price"></p>
                     <button type="button" onclick="addToCart()">اضافه کردن</button>
                     <button type="button" onclick="closeDialog()">لغو</button>
@@ -383,7 +384,7 @@
 
 <!-- Add to Cart Notify -->
 <div class="ms-cart-notify">
-    <a href="javascript:void(0)" class="ms-cart-toggle"><img src="{% static  'assets/img/icons/pro_cart.svg' %}"
+    <a href="javascript:void(0)" class="ms-cart-toggle"><img src="{% static 'assets/img/icons/pro_cart.svg' %}"
                                                              class="svg_img" alt="cart"><span>3</span></a>
 </div>
 
@@ -402,9 +403,7 @@
     <div class="tool-title">
         <h3>تنظیمات</h3>
     </div>
-    <a href="#" class="ms-tools-sidebar-toggle open-features">
-        <img alt="icon" src="{% static 'assets/img/icons/setting.svg' %}" class="svg_img">
-    </a>
+ 
     <div class="ms-features-block">
         <div class="ms-features-title">رنگ‌ها</div>
         <ul class="bg-panel ms-change-color">
@@ -640,33 +639,33 @@
 
     function addToCart() {
         const quantity = parseInt(document.getElementById('quantity').value);
-        addItemToCardApi( quantity)
+        addItemToCardApi(quantity)
         alert(`محصول ${document.getElementById('product-name').innerText} با ${quantity} ${document.getElementById('product-name').innerText} به سبد خرید اضافه شد.`);
 
         {#closeDialog();#}
     }
 
-    async function addItemToCardApi(quantity)  {
+    async function addItemToCardApi(quantity) {
         let basket_id = await getCart()
         let product = '{{ product_id }}'
         let token = "{{ token }}";
         let header = {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-CSRFToken": getCookie('csrftoken'),
+        }
+        if (token != "") {
+
+            header = {
                 "Content-Type": "application/x-www-form-urlencoded",
                 "X-CSRFToken": getCookie('csrftoken'),
+                "Authorization": "Bearer {{token}}"
             }
-        if (token !=""){
-            
-           header = {
-                "Content-Type": "application/x-www-form-urlencoded",
-                "X-CSRFToken": getCookie('csrftoken'),
-                 "Authorization": "Bearer {{token}}"
-            } 
         }
         var settings = {
             "url": `/basket/${basket_id['basket_id']}/product/${product}`,
             "method": "POST",
             "timeout": 0,
-            "headers":header,
+            "headers": header,
             "data": {
                 "unit": quantity
             }

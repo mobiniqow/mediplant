@@ -40,7 +40,7 @@ Copyright 2022-2023
 
 </head>
 
-<body class="aboutus_page">
+<body>
     <!-- Loader -->
     <div id="ms-overlay">
         <div class="loader"></div>
@@ -99,7 +99,6 @@ Copyright 2022-2023
                             </div>
                             <!-- Currency End -->
                             <a class="ms-help" href="faq.html"> پشتیبانی</a>
-                            <a class="ms-help" href="faq.html">سوالات</a>
                             <a class="ms-help" href="track-order.html">پیگیری سفارش</a>
                         </div>
                     </div>
@@ -196,7 +195,6 @@ Copyright 2022-2023
                                     <ul class="ms-dropdown-menu">
                                         <li><a class="dropdown-item" href="register.html">ثبت نام</a></li>
                                         <li><a class="dropdown-item" href="checkout.html">بررسی خرید</a></li>
-                                        <li><a class="dropdown-item" href="privacy-policy.html">حریم خصوصی</a></li>
                                         <li><a class="dropdown-item" href="login.html">ورود</a></li>
                                     </ul>
                                 </div>
@@ -295,16 +293,25 @@ Copyright 2022-2023
                                                 </ul>
                                             </li>
                                             <li class="dropdown drop-list">
-                                                <a href="#" class="dropdown-arrow">محصولات<i class="fas fa-chevron-right"></i></a>
+                                                <a href="javascript:void(0)" class="dropdown-arrow">محصولات<i class="fas fa-chevron-right"></i></a>
                                                 <ul class="sub-menu">
-                                                    <li><a href="shop-banner-left-sidebar-col-3.html">لیست محصولات</a></li>
-                                                    <li><a href="compare.html">مقایسه</a></li>
+                                                    <li><a href="product-left-sidebar.html">نوار کناری سمت راست محصول</a></li>
+                                                    <li><a href="product-right-sidebar.html">نوار کناری سمت چپ محصول</a></li>
+                                                    <li><a href="product-full-width.html">عرض کامل محصول</a></li>
                                                 </ul>
                                             </li>
                                             <li class="dropdown drop-list">
-                                                <a href="blog-detail-left-sidebar.html" class="dropdown-arrow">مقالات</a>
+                                                <a href="javascript:void(0)" class="dropdown-arrow">مقالات<i class="fas fa-chevron-right"></i></a>
+                                                <ul class="sub-menu">
+                                                    <li><a href="blog-left-sidebar.html">نوار کناری سمت راست</a></li>
+                                                    <li><a href="blog-right-sidebar.html">نوار کناری سمت چپ</a></li>
+                                                    <li><a href="blog-full-width.html">تمام عرض</a></li>
+                                                    <li><a href="blog-detail-left-sidebar.html">جزئیات نوار کناری سمت راست</a></li>
+                                                    <li><a href="blog-detail-right-sidebar.html">جزئیات نوار کناری سمت چپ</a></li>
+                                                    <li><a href="blog-detail-full-width.html">جزئیات با عرض کامل</a></li>
+                                                </ul>
                                             </li>
-                                            <!-- <li class="dropdown drop-list">
+                                            <li class="dropdown drop-list">
                                                 <a href="javascript:void(0)" class="dropdown-arrow">صفحات<i class="fas fa-chevron-right"></i></a>
                                                 <ul class="sub-menu">
                                                     <li><a href="about-us.html">درباره ما</a></li>
@@ -319,12 +326,6 @@ Copyright 2022-2023
                                                     <li><a href="terms-condition.html">شرایط و ضوابط</a></li>
                                                     <li><a href="privacy-policy.html">سیاست حفظ حریم خصوصی</a></li>
                                                 </ul>
-                                            </li> -->
-                                            <li class="dropdown drop-list">
-                                                <a href="about-us.html" class="dropdown-arrow">درباره ما</a>
-                                            </li>
-                                            <li class="dropdown drop-list">
-                                                <a href="contact-us.html" class="dropdown-arrow">تماس با ما</a>
                                             </li>
                                             <li class="non-drop">
                                                 <a href="discover.html"><img src="assets/img/icons/discover.svg" class="svg_img" alt="discover">همه موارد</a>
@@ -449,13 +450,22 @@ Copyright 2022-2023
                         </li>
                         <li><a href="javascript:void(0)">محصولات</a>
                             <ul class="sub-menu">
-                                <li><a href="./shop-left-sidebar-col-3.html">لیست محصولات</a></li>
-                                <li><a href="compare.html">مقایسه</a></li>
+                                <li><a href="product-left-sidebar.html">نوار کناری سمت راست محصول</a></li>
+                                <li><a href="product-right-sidebar.html">نوار کناری سمت چپ محصول</a></li>
+                                <li><a href="product-full-width.html">عرض کامل محصول</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown"><a href="./blog-full-width.html">مقالات</a>
+                        <li class="dropdown"><a href="javascript:void(0)">مقالات</a>
+                            <ul class="sub-menu">
+                                <li><a href="blog-left-sidebar.html">نوار کناری سمت راست</a></li>
+                                <li><a href="blog-right-sidebar.html">نوار کناری سمت چپ</a></li>
+                                <li><a href="blog-full-width.html">تمام عرض</a></li>
+                                <li><a href="blog-detail-left-sidebar.html">جزئیات نوار کناری سمت راست</a></li>
+                                <li><a href="blog-detail-right-sidebar.html">جزئیات نوار کناری سمت چپ</a></li>
+                                <li><a href="blog-detail-full-width.html">جزئیات با عرض کامل</a></li>
+                            </ul>
                         </li>
-                        <!-- <li><a href="javascript:void(0)">صفحات</a>
+                        <li><a href="javascript:void(0)">صفحات</a>
                             <ul class="sub-menu">
                                 <li><a href="about-us.html">درباره ما</a></li>
                                 <li><a href="contact-us.html">تماس با ما</a></li>
@@ -469,7 +479,7 @@ Copyright 2022-2023
                                 <li><a href="terms-condition.html">شرایط و ضوابط</a></li>
                                 <li><a href="privacy-policy.html">سیاست حفظ حریم خصوصی</a></li>
                             </ul>
-                        </li> -->
+                        </li>
                     </ul>
                 </div>
                 <div class="header-res-lan-curr">
@@ -821,13 +831,13 @@ Copyright 2022-2023
                 <div class="col-12">
                     <div class="row ms_breadcrumb_inner">
                         <div class="col-md-6 col-sm-12">
-                            <h2 class="ms-breadcrumb-title">پیگیری سفارش</h2>
+                            <h2 class="ms-breadcrumb-title">صفحه فروشگاه</h2>
                         </div>
                         <div class="col-md-6 col-sm-12">
                             <!-- ms-breadcrumb-list start -->
                             <ul class="ms-breadcrumb-list">
                                 <li class="ms-breadcrumb-item"><a href="index.html">خانه</a><i class="fas fa-chevron-left"></i></li>
-                                <li class="ms-breadcrumb-item active">پیگیری سفارش</li>
+                                <li class="ms-breadcrumb-item active">صفحه فروشگاه</li>
                             </ul>
                             <!-- ms-breadcrumb-list end -->
                         </div>
@@ -838,67 +848,863 @@ Copyright 2022-2023
     </div>
     <!-- Breadcrumb end -->
 
-    <!-- Track Order section -->
-    <section class="ms-track padding-tb-30">
+    <!-- Category section -->
+    <section class="ms-category ms-category-shop body-bg p-b-30">
         <div class="container">
-            <div class="section-title-2">
-                <h2 class="ms-title">پیگیری<span> سفارش</span></h2>
-                <p>ما شادی و نیازها را سریعتر از آنچه فکرش را بکنید ارائه می کنیم</p>
+            <div class="row">
+                <div class="col-xl-12 border-content-color">
+                    <div class="ms-category-block owl-carousel" dir="ltr">
+                        <div class="ms-cat-box ms-cat-box-1">
+                            <a href="shop-left-sidebar-col-3.html" class="ms-cat-icon">
+                                <span class="ms-lbl">%30</span>
+                                <img src="assets/img/icons/cat-1.svg" class="svg_img" alt="icon">
+                                <h4 class="ms-cat-title">میوه ها</h4>
+                                <p class="items" dir="rtl">320 عدد</p>
+                            </a>
+                        </div>
+                        <div class="ms-cat-box ms-cat-box-2">
+                            <a href="shop-left-sidebar-col-3.html" class="ms-cat-icon">
+                                <img src="assets/img/icons/cat-2.svg" class="svg_img" alt="icon">
+                                <h4 class="ms-cat-title">نانوایی</h4>
+                                <p class="items" dir="rtl">65 عدد</p>
+                            </a>
+                        </div>
+                        <div class="ms-cat-box ms-cat-box-3">
+                            <a href="shop-left-sidebar-col-3.html" class="ms-cat-icon">
+                                <span class="ms-lbl">%15</span>
+                                <img src="assets/img/icons/cat-3.svg" class="svg_img" alt="icon">
+                                <h4 class="ms-cat-title">سبزیجات</h4>
+                                <p class="items" dir="rtl">548 عدد</p>
+                            </a>
+                        </div>
+                        <div class="ms-cat-box ms-cat-box-4">
+                            <a href="shop-left-sidebar-col-3.html" class="ms-cat-icon">
+                                <span class="ms-lbl">%10</span>
+                                <img src="assets/img/icons/cat-4.svg" class="svg_img" alt="icon">
+                                <h4 class="ms-cat-title">شیر لبنی</h4>
+                                <p class="items" dir="rtl">48 عدد</p>
+                            </a>
+                        </div>
+                        <div class="ms-cat-box ms-cat-box-5">
+                            <a href="shop-left-sidebar-col-3.html" class="ms-cat-icon">
+                                <img src="assets/img/icons/cat-5.svg" class="svg_img" alt="icon">
+                                <h4 class="ms-cat-title">میان وعده</h4>
+                                <p class="items" dir="rtl">59 عدد</p>
+                            </a>
+                        </div>
+                        <div class="ms-cat-box ms-cat-box-6">
+                            <a href="shop-left-sidebar-col-3.html" class="ms-cat-icon">
+                                <img src="assets/img/icons/cat-6.svg" class="svg_img" alt="icon">
+                                <h4 class="ms-cat-title">آبمیوه و نوشیدنی </h4>
+                                <p class="items" dir="rtl">845 عدد</p>
+                            </a>
+                        </div>
+                        <div class="ms-cat-box ms-cat-box-7">
+                            <a href="shop-left-sidebar-col-3.html" class="ms-cat-icon">
+                                <img src="assets/img/icons/cat-7.svg" class="svg_img" alt="icon">
+                                <h4 class="ms-cat-title">غذای دریایی</h4>
+                                <p class="items" dir="rtl">652 عدد</p>
+                            </a>
+                        </div>
+                        <div class="ms-cat-box ms-cat-box-8">
+                            <a href="shop-left-sidebar-col-3.html" class="ms-cat-icon">
+                                <span class="ms-lbl">%20</span>
+                                <img src="assets/img/icons/cat-8.svg" class="svg_img" alt="icon">
+                                <h4 class="ms-cat-title">فست فود</h4>
+                                <p class="items" dir="rtl">253 عدد</p>
+                            </a>
+                        </div>
+                        <div class="ms-cat-box ms-cat-box-9">
+                            <a href="shop-left-sidebar-col-3.html" class="ms-cat-icon">
+                                <img src="assets/img/icons/cat-9.svg" class="svg_img" alt="icon">
+                                <h4 class="ms-cat-title">تخم مرغ</h4>
+                                <p class="items" dir="rtl">154 عدد</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="row p-t-15">
-                <div class="container">
-                    <div class="ms-track-box">
-                        <!-- Details-->
-                        <div class="row">
-                            <div class="col-md-4 m-b-767">
-                                <div class="ms-track-card"><span class="ms-track-title">سفارش</span><span>#6152</span></div>
-                            </div>
-                            <div class="col-md-4 m-b-767">
-                                <div class="ms-track-card"><span class="ms-track-title">پسته خلالی</span><span>v534hb</span></div>
-                            </div>
-                            <div class="col-md-4 m-b-767">
-                                <div class="ms-track-card"><span class="ms-track-title">زمان تحویل</span><span>شهریور 1401</span></div>
+        </div>
+    </section>
+    <!-- Category section End -->
+
+    <!-- Shop section -->
+    <section class="ms-shop padding-tb-30">
+        <div class="container">
+            <!-- Shop Banners Start -->
+            <div class="m-b-30">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="ms-ofr-banners">
+                            <div class="ms-bnr-body">
+                                <div class="ms-bnr-img">
+                                    <span class="lbl">%70 تخفیف</span>
+                                    <img src="assets/img/banner/6.jpg" alt="banner">
+                                </div>
+                                <div class="ms-bnr-detail">
+                                    <h5>میوه های تازه</h5>
+                                    <p>طعم یک چیز خاص</p>
+                                    <a href="shop-left-sidebar-col-3.html" class="ms-btn-2">خرید</a>
+                                </div>
                             </div>
                         </div>
-                        <!-- Progress-->
-                        <div class="ms-steps">
-                            <div class="ms-steps-body">
-                                <div class="ms-step ms-step-completed">
-                                    <span class="ms-step-indicator">
-                                        <i class="fa fa-check" aria-hidden="true"></i>
-                                    </span>
-                                    <span class="ms-step-icon">
-                                        <img src="assets/img/icons/track-1.svg" class="svg_img" alt="track">
-                                    </span>سفارش<br> تایید شده
-                                </div>
+                    </div>
 
-                                <div class="ms-step ms-step-completed">
-                                    <span class="ms-step-indicator">
-                                        <i class="fa fa-check" aria-hidden="true"></i>
-                                    </span>
-                                    <span class="ms-step-icon">
-                                        <img src="assets/img/icons/track-2.svg" class="svg_img" alt="track">
-                                    </span>در حال پردازش<br> سفارش
+                    <div class="col-md-6">
+                        <div class="ms-ofr-banners m-t-767">
+                            <div class="ms-bnr-body">
+                                <div class="ms-bnr-img">
+                                    <span class="lbl">%50 تخفیف</span>
+                                    <img src="assets/img/banner/7.jpg" alt="banner">
                                 </div>
-                                <div class="ms-step ms-step-active">
-                                    <span class="ms-step-icon">
-                                        <img src="assets/img/icons/track-3.svg" class="svg_img" alt="track">
-                                    </span>کیفیت<br> تست
-                                </div>
-                                <div class="ms-step">
-                                    <span class="ms-step-icon">
-                                        <img src="assets/img/icons/track-4.svg" class="svg_img" alt="track">
-                                    </span>محصول<br> اعزام شد
-                                </div>
-                                <div class="ms-step">
-                                    <span class="ms-step-icon">
-                                        <img src="assets/img/icons/track-5.svg" class="svg_img" alt="track">
-                                    </span>محصول<br> دریافت شد
+                                <div class="ms-bnr-detail">
+                                    <h5>ارگانیک و سبزیجات</h5>
+                                    <p>یک وعده غذایی سالم</p>
+                                    <a href="shop-left-sidebar-col-3.html" class="ms-btn-2">خرید</a>
                                 </div>
                             </div>
-                            <div class="ms-steps-header">
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="ms-shop-rightside col-lg-9 order-lg-last col-md-12 order-md-first margin-b-30">
+                    <!-- Shop Top Start -->
+                    <div class="ms-pro-list-top d-flex">
+                        <div class="col-md-6 ms-grid-list">
+                            <div class="ms-gl-btn">
+                                <button class="grid-btn btn-grid">
+                                    <img src="assets/img/icons/grid.svg" class="svg_img gl_svg" alt="">
+                                </button>
+                                <button class="grid-btn btn-list active">
+                                    <img src="assets/img/icons/list.svg" class="svg_img gl_svg" alt="">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-6 ms-sort-select">
+                            <div class="ms-select-inner">
+                                <select name="ms-select" id="ms-select">
+                                    <option selected disabled>ترتیب بندی</option>
+                                    <option value="1">موقعیت</option>
+                                    <option value="2">مرتبط</option>
+                                    <option value="3">اول به آخر</option>
+                                    <option value="4">آخر به اول</option>
+                                    <option value="5">قیمت کمتر به بیشتر</option>
+                                    <option value="6">قیمت بیشتر به کمتر</option>
+                                </select>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Shop Top End -->
+
+                    <!-- Select Bar Start -->
+                    <div class="ms-select-bar d-flex">
+                        <span class="ms-select-btn">لباس ها<a class="ms-select-cancel" href="javascript:void(0)">×</a></span>
+                        <span class="ms-select-btn">میوه جات<a class="ms-select-cancel" href="javascript:void(0)">×</a></span>
+                        <span class="ms-select-btn">گوشت<a class="ms-select-cancel" href="javascript:void(0)">×</a></span>
+                        <span class="ms-select-btn">لبنیات<a class="ms-select-cancel" href="javascript:void(0)">×</a></span>
+                        <span class="ms-select-btn">عطر و ادکلن<a class="ms-select-cancel" href="javascript:void(0)">×</a></span>
+                        <span class="ms-select-btn">جواهرات<a class="ms-select-cancel" href="javascript:void(0)">×</a></span>
+                        <span class="ms-select-btn ms-select-btn-clear"><a class="ms-select-clear" href="javascript:void(0)">پاک کردن همه</a></span>
+                    </div>
+                    <!-- Select Bar End -->
+
+                    <!-- Shop content Start -->
+                    <div class="shop-pro-content">
+                        <div class="shop-pro-inner list-view">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content ms-product-content width-100">
+                                    <div class="ms-product-inner">
+                                        <div class="ms-pro-image-outer">
+                                            <div class="ms-pro-image">
+                                                <a href="product-left-sidebar.html" class="image">
+                                                    <span class="label veg">
+                                                        <span class="dot"></span>
+                                                    </span>
+                                                    <img class="main-image" src="assets/img/product-images/2_1.jpg" alt="Product">
+                                                    <img class="hover-image" src="assets/img/product-images/2_2.jpg" alt="Product">
+                                                </a>
+                                                <span class="flags">
+                                                    <span class="sale">فروش</span>
+                                                </span>
+                                                <div class="ms-pro-actions">
+                                                    <a class="ms-btn-group wishlist" title="علاقه مندی"><img src="assets/img/icons/pro_wishlist.svg" class="svg_img pro_svg" alt=""></a>
+                                                    <a href="#" class="ms-btn-group quickview" data-link-action="quickview" title="بازدید سریع" data-bs-toggle="modal" data-bs-target="#ms_quickview_modal"><img src="assets/img/icons/quickview.svg" class="svg_img pro_svg" alt=""></a>
+                                                    <a href="javascript:void(0)" class="ms-btn-group compare" title="مقایسه"><img src="assets/img/icons/compare.svg" class="svg_img pro_svg" alt=""></a>
+                                                    <a href="javascript:void(0)" title="خرید" class="ms-btn-group add-to-cart"><img src="assets/img/icons/pro_cart.svg" class="svg_img pro_svg" alt=""></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ms-pro-content">
+                                            <a href="shop-left-sidebar-col-3.html">
+                                                <h6 class="ms-pro-stitle"> میوه جات</h6>
+                                            </a>
+                                            <h5 class="ms-pro-title"><a href="product-left-sidebar.html">کیسه خرما</a></h5>
+                                            <p class="ms-info">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+                                            <div class="ms-pro-rat-price">
+                                                <span class="ms-pro-rating">
+                                                    <i class="fa-solid fa-star fill"></i>
+                                                    <i class="fa-solid fa-star fill"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                </span>
+                                                <span class="ms-price">
+                                                    <span class="new-price">78 هزار</span>
+                                                <span class="old-price">85 هزار</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content ms-product-content width-100">
+                                    <div class="ms-product-inner">
+                                        <div class="ms-pro-image-outer">
+                                            <div class="ms-pro-image">
+                                                <a href="product-left-sidebar.html" class="image">
+                                                    <span class="label veg">
+                                                        <span class="dot"></span>
+                                                    </span>
+                                                    <img class="main-image" src="assets/img/product-images/1_1.jpg" alt="Product">
+                                                    <img class="hover-image" src="assets/img/product-images/1_2.jpg" alt="Product">
+                                                </a>
+                                                <div class="ms-pro-actions">
+                                                    <a class="ms-btn-group wishlist" title="علاقه مندی"><img src="assets/img/icons/pro_wishlist.svg" class="svg_img pro_svg" alt=""></a>
+                                                    <a href="#" class="ms-btn-group quickview" data-link-action="quickview" title="بازدید سریع" data-bs-toggle="modal" data-bs-target="#ms_quickview_modal"><img src="assets/img/icons/quickview.svg" class="svg_img pro_svg" alt=""></a>
+                                                    <a href="javascript:void(0)" class="ms-btn-group compare" title="مقایسه"><img src="assets/img/icons/compare.svg" class="svg_img pro_svg" alt=""></a>
+                                                    <a href="javascript:void(0)" title="خرید" class="ms-btn-group add-to-cart"><img src="assets/img/icons/pro_cart.svg" class="svg_img pro_svg" alt=""></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ms-pro-content">
+                                            <a href="shop-left-sidebar-col-3.html">
+                                                <h6 class="ms-pro-stitle">چیپس و سیب زمینی سرخ شده</h6>
+                                            </a>
+                                            <h5 class="ms-pro-title"><a href="product-left-sidebar.html"> چیپس مثلثی ترد</a></h5>
+                                            <p class="ms-info">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+
+                                            <div class="ms-pro-rat-price">
+                                                <span class="ms-pro-rating">
+                                                    <i class="fa-solid fa-star fill"></i>
+                                                    <i class="fa-solid fa-star fill"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                </span>
+                                                <span class="ms-price">
+                                                    <span class="new-price">59 هزار</span>
+                                                <span class="old-price">87 هزار</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content ms-product-content width-100">
+                                    <div class="ms-product-inner">
+                                        <div class="ms-pro-image-outer">
+                                            <div class="ms-pro-image">
+                                                <a href="product-left-sidebar.html" class="image">
+                                                    <span class="label veg">
+                                                        <span class="dot"></span>
+                                                    </span>
+                                                    <img class="main-image" src="assets/img/product-images/3_1.jpg" alt="Product">
+                                                    <img class="hover-image" src="assets/img/product-images/3_2.jpg" alt="Product">
+                                                </a>
+                                                <span class="flags">
+                                                    <span class="sale">فروش</span>
+                                                </span>
+                                                <div class="ms-pro-actions">
+                                                    <a class="ms-btn-group wishlist" title="علاقه مندی"><img src="assets/img/icons/pro_wishlist.svg" class="svg_img pro_svg" alt=""></a>
+                                                    <a href="#" class="ms-btn-group quickview" data-link-action="quickview" title="بازدید سریع" data-bs-toggle="modal" data-bs-target="#ms_quickview_modal"><img src="assets/img/icons/quickview.svg" class="svg_img pro_svg" alt=""></a>
+                                                    <a href="javascript:void(0)" class="ms-btn-group compare" title="مقایسه"><img src="assets/img/icons/compare.svg" class="svg_img pro_svg" alt=""></a>
+                                                    <a href="javascript:void(0)" title="خرید" class="ms-btn-group add-to-cart"><img src="assets/img/icons/pro_cart.svg" class="svg_img pro_svg" alt=""></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ms-pro-content">
+                                            <a href="shop-left-sidebar-col-3.html">
+                                                <h6 class="ms-pro-stitle"> میوه جات خشک</h6>
+                                            </a>
+                                            <h5 class="ms-pro-title"><a href="product-left-sidebar.html">بسته بادام هندی</a></h5>
+                                            <p class="ms-info">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+                                            <div class="ms-pro-rat-price">
+                                                <span class="ms-pro-rating">
+                                                    <i class="fa-solid fa-star fill"></i>
+                                                    <i class="fa-solid fa-star fill"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                </span>
+                                                <span class="ms-price">
+                                                    <span class="new-price">58 هزار</span>
+                                                <span class="old-price">65 هزار</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content ms-product-content width-100">
+                                    <div class="ms-product-inner">
+                                        <div class="ms-pro-image-outer">
+                                            <div class="ms-pro-image">
+                                                <a href="product-left-sidebar.html" class="image">
+                                                    <span class="label veg">
+                                                        <span class="dot"></span>
+                                                    </span>
+                                                    <img class="main-image" src="assets/img/product-images/4_1.jpg" alt="Product">
+                                                    <img class="hover-image" src="assets/img/product-images/4_2.jpg" alt="Product">
+                                                </a>
+                                                <span class="flags">
+                                                    <span class="new">جدید</span>
+                                                </span>
+                                                <div class="ms-pro-actions">
+                                                    <a class="ms-btn-group wishlist" title="علاقه مندی"><img src="assets/img/icons/pro_wishlist.svg" class="svg_img pro_svg" alt=""></a>
+                                                    <a href="#" class="ms-btn-group quickview" data-link-action="quickview" title="بازدید سریع" data-bs-toggle="modal" data-bs-target="#ms_quickview_modal"><img src="assets/img/icons/quickview.svg" class="svg_img pro_svg" alt=""></a>
+                                                    <a href="javascript:void(0)" class="ms-btn-group compare" title="مقایسه"><img src="assets/img/icons/compare.svg" class="svg_img pro_svg" alt=""></a>
+                                                    <a href="javascript:void(0)" title="خرید" class="ms-btn-group add-to-cart"><img src="assets/img/icons/pro_cart.svg" class="svg_img pro_svg" alt=""></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ms-pro-content">
+                                            <a href="shop-left-sidebar-col-3.html">
+                                                <h6 class="ms-pro-stitle">غذا</h6>
+                                            </a>
+                                            <h5 class="ms-pro-title"><a href="product-left-sidebar.html">گوشت و ادویه جات</a></h5>
+                                            <p class="ms-info">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+                                            <div class="ms-pro-rat-price">
+                                                <span class="ms-pro-rating">
+                                                    <i class="fa-solid fa-star fill"></i>
+                                                    <i class="fa-solid fa-star fill"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                </span>
+                                                <span class="ms-price">
+                                                    <span class="new-price">45 هزار</span>
+                                                <span class="old-price">50 هزار</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content ms-product-content width-100">
+                                    <div class="ms-product-inner">
+                                        <div class="ms-pro-image-outer">
+                                            <div class="ms-pro-image">
+                                                <a href="product-left-sidebar.html" class="image">
+                                                    <span class="label veg">
+                                                        <span class="dot"></span>
+                                                    </span>
+                                                    <img class="main-image" src="assets/img/product-images/5_1.jpg" alt="Product">
+                                                    <img class="hover-image" src="assets/img/product-images/5_2.jpg" alt="Product">
+                                                </a>
+                                                <span class="flags">
+                                                    <span class="new">جدید</span>
+                                                </span>
+                                                <div class="ms-pro-actions">
+                                                    <a class="ms-btn-group wishlist" title="علاقه مندی"><img src="assets/img/icons/pro_wishlist.svg" class="svg_img pro_svg" alt=""></a>
+                                                    <a href="#" class="ms-btn-group quickview" data-link-action="quickview" title="بازدید سریع" data-bs-toggle="modal" data-bs-target="#ms_quickview_modal"><img src="assets/img/icons/quickview.svg" class="svg_img pro_svg" alt=""></a>
+                                                    <a href="javascript:void(0)" class="ms-btn-group compare" title="مقایسه"><img src="assets/img/icons/compare.svg" class="svg_img pro_svg" alt=""></a>
+                                                    <a href="javascript:void(0)" title="خرید" class="ms-btn-group add-to-cart"><img src="assets/img/icons/pro_cart.svg" class="svg_img pro_svg" alt=""></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ms-pro-content">
+                                            <a href="shop-left-sidebar-col-3.html">
+                                                <h6 class="ms-pro-stitle">گوشت</h6>
+                                            </a>
+                                            <h5 class="ms-pro-title"><a href="product-left-sidebar.html"> مخلوط توت و انگور</a></h5>
+                                            <p class="ms-info">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+                                            <div class="ms-pro-rat-price">
+                                                <span class="ms-pro-rating">
+                                                    <i class="fa-solid fa-star fill"></i>
+                                                    <i class="fa-solid fa-star fill"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                </span>
+                                                <span class="ms-price">
+                                                    <span class="new-price">25 هزار</span>
+                                                <span class="old-price">35 هزار</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content ms-product-content width-100">
+                                    <div class="ms-product-inner">
+                                        <div class="ms-pro-image-outer">
+                                            <div class="ms-pro-image">
+                                                <a href="product-left-sidebar.html" class="image">
+                                                    <span class="label veg">
+                                                        <span class="dot"></span>
+                                                    </span>
+                                                    <img class="main-image" src="assets/img/product-images/6_1.jpg" alt="Product">
+                                                    <img class="hover-image" src="assets/img/product-images/6_2.jpg" alt="Product">
+                                                </a>
+                                                <span class="flags">
+                                                    <span class="sale">فروش</span>
+                                                </span>
+                                                <div class="ms-pro-actions">
+                                                    <a class="ms-btn-group wishlist" title="علاقه مندی"><img src="assets/img/icons/pro_wishlist.svg" class="svg_img pro_svg" alt=""></a>
+                                                    <a href="#" class="ms-btn-group quickview" data-link-action="quickview" title="بازدید سریع" data-bs-toggle="modal" data-bs-target="#ms_quickview_modal"><img src="assets/img/icons/quickview.svg" class="svg_img pro_svg" alt=""></a>
+                                                    <a href="javascript:void(0)" class="ms-btn-group compare" title="مقایسه"><img src="assets/img/icons/compare.svg" class="svg_img pro_svg" alt=""></a>
+                                                    <a href="javascript:void(0)" title="خرید" class="ms-btn-group add-to-cart"><img src="assets/img/icons/pro_cart.svg" class="svg_img pro_svg" alt=""></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ms-pro-content">
+                                            <a href="shop-left-sidebar-col-3.html">
+                                                <h6 class="ms-pro-stitle"> میوه جات خشک</h6>
+                                            </a>
+                                            <h5 class="ms-pro-title"><a href="product-left-sidebar.html">بسته آجیل مخلوط</a></h5>
+                                            <p class="ms-info">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+                                            <div class="ms-pro-rat-price">
+                                                <span class="ms-pro-rating">
+                                                    <i class="fa-solid fa-star fill"></i>
+                                                    <i class="fa-solid fa-star fill"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                </span>
+                                                <span class="ms-price">
+                                                    <span class="new-price">45 هزار</span>
+                                                <span class="old-price">56 هزار</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content ms-product-content width-100">
+                                    <div class="ms-product-inner">
+                                        <div class="ms-pro-image-outer">
+                                            <div class="ms-pro-image">
+                                                <a href="product-left-sidebar.html" class="image">
+                                                    <span class="label veg">
+                                                        <span class="dot"></span>
+                                                    </span>
+                                                    <img class="main-image" src="assets/img/product-images/7_1.jpg" alt="Product">
+                                                    <img class="hover-image" src="assets/img/product-images/7_2.jpg" alt="Product">
+                                                </a>
+                                                <div class="ms-pro-actions">
+                                                    <a class="ms-btn-group wishlist" title="علاقه مندی"><img src="assets/img/icons/pro_wishlist.svg" class="svg_img pro_svg" alt=""></a>
+                                                    <a href="#" class="ms-btn-group quickview" data-link-action="quickview" title="بازدید سریع" data-bs-toggle="modal" data-bs-target="#ms_quickview_modal"><img src="assets/img/icons/quickview.svg" class="svg_img pro_svg" alt=""></a>
+                                                    <a href="javascript:void(0)" class="ms-btn-group compare" title="مقایسه"><img src="assets/img/icons/compare.svg" class="svg_img pro_svg" alt=""></a>
+                                                    <a href="javascript:void(0)" title="خرید" class="ms-btn-group add-to-cart"><img src="assets/img/icons/pro_cart.svg" class="svg_img pro_svg" alt=""></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ms-pro-content">
+                                            <a href="shop-left-sidebar-col-3.html">
+                                                <h6 class="ms-pro-stitle">غذا</h6>
+                                            </a>
+                                            <h5 class="ms-pro-title"><a href="product-left-sidebar.html">مخلوط آجیل و بادام</a></h5>
+                                            <p class="ms-info">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+                                            <div class="ms-pro-rat-price">
+                                                <span class="ms-pro-rating">
+                                                    <i class="fa-solid fa-star fill"></i>
+                                                    <i class="fa-solid fa-star fill"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                </span>
+                                                <span class="ms-price">
+                                                    <span class="new-price">49 هزار</span>
+                                                <span class="old-price">65 هزار</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content ms-product-content width-100">
+                                    <div class="ms-product-inner">
+                                        <div class="ms-pro-image-outer">
+                                            <div class="ms-pro-image">
+                                                <a href="product-left-sidebar.html" class="image">
+                                                    <span class="label veg">
+                                                        <span class="dot"></span>
+                                                    </span>
+                                                    <img class="main-image" src="assets/img/product-images/8_1.jpg" alt="Product">
+                                                    <img class="hover-image" src="assets/img/product-images/8_2.jpg" alt="Product">
+                                                </a>
+                                                <div class="ms-pro-actions">
+                                                    <a class="ms-btn-group wishlist" title="علاقه مندی"><img src="assets/img/icons/pro_wishlist.svg" class="svg_img pro_svg" alt=""></a>
+                                                    <a href="#" class="ms-btn-group quickview" data-link-action="quickview" title="بازدید سریع" data-bs-toggle="modal" data-bs-target="#ms_quickview_modal"><img src="assets/img/icons/quickview.svg" class="svg_img pro_svg" alt=""></a>
+                                                    <a href="javascript:void(0)" class="ms-btn-group compare" title="مقایسه"><img src="assets/img/icons/compare.svg" class="svg_img pro_svg" alt=""></a>
+                                                    <a href="javascript:void(0)" title="خرید" class="ms-btn-group add-to-cart"><img src="assets/img/icons/pro_cart.svg" class="svg_img pro_svg" alt=""></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ms-pro-content">
+                                            <a href="shop-left-sidebar-col-3.html">
+                                                <h6 class="ms-pro-stitle">گوشت</h6>
+                                            </a>
+                                            <h5 class="ms-pro-title"><a href="product-left-sidebar.html">آجیل ادویه دار </a></h5>
+                                            <p class="ms-info">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+                                            <div class="ms-pro-rat-price">
+                                                <span class="ms-pro-rating">
+                                                    <i class="fa-solid fa-star fill"></i>
+                                                    <i class="fa-solid fa-star fill"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                </span>
+                                                <span class="ms-price">
+                                                    <span class="new-price">32 هزار</span>
+                                                <span class="old-price">45 هزار</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content ms-product-content width-100">
+                                    <div class="ms-product-inner">
+                                        <div class="ms-pro-image-outer">
+                                            <div class="ms-pro-image">
+                                                <a href="product-left-sidebar.html" class="image">
+                                                    <span class="label nonveg">
+                                                        <span class="dot"></span>
+                                                    </span>
+                                                    <img class="main-image" src="assets/img/product-images/9_1.jpg" alt="Product">
+                                                    <img class="hover-image" src="assets/img/product-images/9_2.jpg" alt="Product">
+                                                </a>
+                                                <div class="ms-pro-actions">
+                                                    <a class="ms-btn-group wishlist" title="علاقه مندی"><img src="assets/img/icons/pro_wishlist.svg" class="svg_img pro_svg" alt=""></a>
+                                                    <a href="#" class="ms-btn-group quickview" data-link-action="quickview" title="بازدید سریع" data-bs-toggle="modal" data-bs-target="#ms_quickview_modal"><img src="assets/img/icons/quickview.svg" class="svg_img pro_svg" alt=""></a>
+                                                    <a href="javascript:void(0)" class="ms-btn-group compare" title="مقایسه"><img src="assets/img/icons/compare.svg" class="svg_img pro_svg" alt=""></a>
+                                                    <a href="javascript:void(0)" title="خرید" class="ms-btn-group add-to-cart"><img src="assets/img/icons/pro_cart.svg" class="svg_img pro_svg" alt=""></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ms-pro-content">
+                                            <a href="shop-left-sidebar-col-3.html">
+                                                <h6 class="ms-pro-stitle">غذا</h6>
+                                            </a>
+                                            <h5 class="ms-pro-title"><a href="product-left-sidebar.html">بادام بو داده </a></h5>
+                                            <p class="ms-info">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+                                            <div class="ms-pro-rat-price">
+                                                <span class="ms-pro-rating">
+                                                    <i class="fa-solid fa-star fill"></i>
+                                                    <i class="fa-solid fa-star fill"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                </span>
+                                                <span class="ms-price">
+                                                    <span class="new-price">49 هزار</span>
+                                                <span class="old-price">65 هزار</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Pagination Start -->
+                        <div class="ms-pro-pagination">
+                            <span>نمایش 1-12 از 21 مورد</span>
+                            <ul class="ms-pro-pagination-inner">
+                                <li><a class="next" href="#">بعدی <i class="fas fa-chevron-left" aria-hidden="true"></i></a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a class="active" href="#">1</a></li>
+                            </ul>
+                        </div>
+                        <!-- Pagination End -->
+                    </div>
+                    <!--Shop content End -->
+
+                </div>
+                <!-- Sidebar Area Start -->
+                <div class="ms-shop-sidebar col-lg-3 order-lg-first col-md-12 order-md-last m-t-991">
+                    <div id="shop_sidebar">
+                        <div class="ms-sidebar-wrap">
+                            <!-- Sidebar Category Block -->
+                            <div class="ms-sidebar-block">
+                                <div class="ms-sb-title">
+                                    <h3 class="ms-sidebar-title">دسته بندی
+                                        <div class="ms-sidebar-res"><i class="fas fa-chevron-down"></i></div>
+                                    </h3>
+                                </div>
+                                <div class="ms-sb-block-content">
+                                    <ul>
+                                        <li>
+                                            <div class="ms-sidebar-block-item">
+                                                <input type="checkbox" checked>
+                                                <a href="javascript:void(0)">
+                                                    <span><img src="assets/img/icons/dress-8.svg" class="svg_img" alt="drink">لباس ها</span>
+                                                    <span class="products" title="Products">- 68</span>
+                                                </a>
+                                                <span class="checked"></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-block-item">
+                                                <input type="checkbox">
+                                                <a href="javascript:void(0)">
+                                                    <span><img src="assets/img/icons/shoes-8.svg" class="svg_img" alt="drink">کفش</span>
+                                                    <span class="products" title="Products">- 58</span>
+                                                </a>
+                                                <span class="checked"></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-block-item">
+                                                <input type="checkbox">
+                                                <a href="javascript:void(0)">
+                                                    <span><img src="assets/img/icons/jewelry-8.svg" class="svg_img" alt="drink">جواهر سازی</span>
+                                                    <span class="products" title="Products">- 84</span>
+                                                </a>
+                                                <span class="checked"></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-block-item">
+                                                <input type="checkbox">
+                                                <a href="javascript:void(0)">
+                                                    <span><img src="assets/img/icons/perfume-8.svg" class="svg_img" alt="drink">عطر</span>
+                                                    <span class="products" title="Products">- 63</span>
+                                                </a>
+                                                <span class="checked"></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-block-item">
+                                                <input type="checkbox">
+                                                <a href="javascript:void(0)">
+                                                    <span><img src="assets/img/icons/cosmetics-8.svg" class="svg_img" alt="drink">لوازم آرایشی</span>
+                                                    <span class="products" title="Products">- 75</span>
+                                                </a>
+                                                <span class="checked"></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-block-item">
+                                                <input type="checkbox">
+                                                <a href="javascript:void(0)">
+                                                    <span><img src="assets/img/icons/glasses-8.svg" class="svg_img" alt="drink">عینک</span>
+                                                    <span class="products" title="Products">- 26</span>
+                                                </a>
+                                                <span class="checked"></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-block-item">
+                                                <input type="checkbox">
+                                                <a href="javascript:void(0)">
+                                                    <span><img src="assets/img/icons/bag-8.svg" class="svg_img" alt="drink">کیسه ها</span>
+                                                    <span class="products" title="Products">- 39</span>
+                                                </a>
+                                                <span class="checked"></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-block-item">
+                                                <input type="checkbox">
+                                                <a href="javascript:void(0)">
+                                                    <span><img src="assets/img/icons/jewelry-8.svg" class="svg_img" alt="drink">جواهر سازی</span>
+                                                    <span class="products" title="Products">- 48</span>
+                                                </a>
+                                                <span class="checked"></span>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Sidebar Weight Block -->
+                            <div class="ms-sidebar-block">
+                                <div class="ms-sb-title">
+                                    <h3 class="ms-sidebar-title">وزن
+                                        <div class="ms-sidebar-res"><i class="fas fa-chevron-down"></i></div>
+                                    </h3>
+                                </div>
+                                <div class="ms-sb-block-content">
+                                    <ul>
+                                        <li>
+                                            <div class="ms-sidebar-block-item">
+                                                <input type="checkbox" value="" checked>
+                                                <a href="#">بسته 500 گرمی</a>
+                                                <span class="checked"></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-block-item">
+                                                <input type="checkbox" value="">
+                                                <a href="#">بسته 1 کیلوگرمی</a>
+                                                <span class="checked"></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-block-item">
+                                                <input type="checkbox" value="">
+                                                <a href="#">بسته 2 کیلویی</a>
+                                                <span class="checked"></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-block-item">
+                                                <input type="checkbox" value="">
+                                                <a href="#">بسته 5 کیلوگرمی</a>
+                                                <span class="checked"></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-block-item">
+                                                <input type="checkbox" value="">
+                                                <a href="#">بسته 10 کیلوگرمی</a>
+                                                <span class="checked"></span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Sidebar Color item -->
+                            <div class="ms-sidebar-block color-block ms-sidebar-block-clr">
+                                <div class="ms-sb-title">
+                                    <h3 class="ms-sidebar-title">رنگ
+                                        <div class="ms-sidebar-res"><i class="fas fa-chevron-down"></i></div>
+                                    </h3>
+                                </div>
+                                <div class="ms-sb-block-content">
+                                    <ul>
+                                        <li>
+                                            <div class="ms-sidebar-block-item">
+                                                <input type="checkbox" value="">
+                                                <span class="ms-clr-block" style="background-color:#c4d6f9;"></span>
+                                                <span class="checked"></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-block-item">
+                                                <input type="checkbox" value="">
+                                                <span class="ms-clr-block" style="background-color:#ff748b;"></span>
+                                                <span class="checked"></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-block-item">
+                                                <input type="checkbox" value="">
+                                                <span class="ms-clr-block" style="background-color:#000000;"></span>
+                                                <span class="checked"></span>
+                                            </div>
+                                        </li>
+                                        <li class="active">
+                                            <div class="ms-sidebar-block-item">
+                                                <input type="checkbox" value="">
+                                                <span class="ms-clr-block" style="background-color:#2bff4a;"></span>
+                                                <span class="checked"></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-block-item">
+                                                <input type="checkbox" value="">
+                                                <span class="ms-clr-block" style="background-color:#ff7c5e;"></span>
+                                                <span class="checked"></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-block-item">
+                                                <input type="checkbox" value="">
+                                                <span class="ms-clr-block" style="background-color:#f155ff;"></span>
+                                                <span class="checked"></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-block-item">
+                                                <input type="checkbox" value="">
+                                                <span class="ms-clr-block" style="background-color:#ffef00;"></span>
+                                                <span class="checked"></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-block-item">
+                                                <input type="checkbox" value="">
+                                                <span class="ms-clr-block" style="background-color:#c89fff;"></span>
+                                                <span class="checked"></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-block-item">
+                                                <input type="checkbox" value="">
+                                                <span class="ms-clr-block" style="background-color:#7bfffa;"></span>
+                                                <span class="checked"></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-block-item">
+                                                <input type="checkbox" value="">
+                                                <span class="ms-clr-block" style="background-color:#56ffc1;"></span>
+                                                <span class="checked"></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-block-item">
+                                                <input type="checkbox" value="">
+                                                <span class="ms-clr-block" style="background-color:#ffdb9f;"></span>
+                                                <span class="checked"></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-block-item">
+                                                <input type="checkbox" value="">
+                                                <span class="ms-clr-block" style="background-color:#9f9f9f;"></span>
+                                                <span class="checked"></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-block-item">
+                                                <input type="checkbox" value="">
+                                                <span class="ms-clr-block" style="background-color:#6556ff;"></span>
+                                                <span class="checked"></span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Sidebar Price Block -->
+                            <div class="ms-sidebar-block">
+                                <div class="ms-sb-title">
+                                    <h3 class="ms-sidebar-title">قیمت
+                                        <div class="ms-sidebar-res"><i class="fas fa-chevron-down"></i></div>
+                                    </h3>
+                                </div>
+                                <div class="ms-sb-block-content ms-price-range-slider es-price-slider" dir="ltr">
+                                    <div class="ms-price-filter">
+                                        <div class="ms-price-input">
+                                            <label class="filter__label">
+                                                از<input type="text" class="filter__input">
+                                            </label>
+                                            <span class="ms-price-divider"></span>
+                                            <label class="filter__label">
+                                                به<input type="text" class="filter__input">
+                                            </label>
+                                        </div>
+                                        <div id="ms-sliderPrice" class="filter__slider-price" data-min="0" data-max="250" data-step="10"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Sidebar tags -->
+                            <div class="ms-sidebar-block">
+                                <div class="ms-sb-title">
+                                    <h3 class="ms-sidebar-title">برچسب‌ها
+                                        <div class="ms-sidebar-res"><i class="fas fa-chevron-down"></i></div>
+                                    </h3>
+                                </div>
+                                <div class="ms-tag-block ms-sb-block-content">
+                                    <a href="shop-left-sidebar-col-3.html" class="ms-btn-2">لباس ها</a>
+                                    <a href="shop-left-sidebar-col-3.html" class="ms-btn-2">میوه جات</a>
+                                    <a href="shop-left-sidebar-col-3.html" class="ms-btn-2">گوشت</a>
+                                    <a href="shop-left-sidebar-col-3.html" class="ms-btn-2">لبنیات</a>
+                                    <a href="shop-left-sidebar-col-3.html" class="ms-btn-2">غذای دریایی</a>
+                                    <a href="shop-left-sidebar-col-3.html" class="ms-btn-2">فست فود</a>
+                                    <a href="shop-left-sidebar-col-3.html" class="ms-btn-2">اسباب بازی</a>
+                                    <a href="shop-left-sidebar-col-3.html" class="ms-btn-2">عطر</a>
+                                    <a href="shop-left-sidebar-col-3.html" class="ms-btn-2">جواهر سازی</a>
+                                    <a href="shop-left-sidebar-col-3.html" class="ms-btn-2">کیف ها</a>
                                 </div>
                             </div>
                         </div>
@@ -907,7 +1713,7 @@ Copyright 2022-2023
             </div>
         </div>
     </section>
-    <!-- Track Order section End -->
+    <!-- Shop section End -->
 
     <!-- Footer Start -->
     <footer class="ms-footer m-t-30">
@@ -1040,6 +1846,107 @@ Copyright 2022-2023
         </div>
     </footer>
     <!-- Footer Area End -->
+
+    <!-- Quickview Modal -->
+    <div class="modal fade quickview-modal" id="ms_quickview_modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <button type="button" class="btn-close qty_close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-12 col-xs-12" dir="ltr">
+                            <div class="qty-product-cover">
+                                <div class="qty-slide">
+                                    <img class="img-responsive" src="assets/img/product-images/1_1.jpg" alt="">
+                                </div>
+                                <div class="qty-slide">
+                                    <img class="img-responsive" src="assets/img/product-images/2_1.jpg" alt="">
+                                </div>
+                                <div class="qty-slide">
+                                    <img class="img-responsive" src="assets/img/product-images/3_1.jpg" alt="">
+                                </div>
+                                <div class="qty-slide">
+                                    <img class="img-responsive" src="assets/img/product-images/4_1.jpg" alt="">
+                                </div>
+                                <div class="qty-slide">
+                                    <img class="img-responsive" src="assets/img/product-images/5_1.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="qty-nav-thumb">
+                                <div class="qty-slide">
+                                    <img class="img-responsive" src="assets/img/product-images/1_1.jpg" alt="">
+                                </div>
+                                <div class="qty-slide">
+                                    <img class="img-responsive" src="assets/img/product-images/2_1.jpg" alt="">
+                                </div>
+                                <div class="qty-slide">
+                                    <img class="img-responsive" src="assets/img/product-images/3_1.jpg" alt="">
+                                </div>
+                                <div class="qty-slide">
+                                    <img class="img-responsive" src="assets/img/product-images/4_1.jpg" alt="">
+                                </div>
+                                <div class="qty-slide">
+                                    <img class="img-responsive" src="assets/img/product-images/5_1.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-sm-12 col-xs-12">
+                            <div class="quickview-pro-content">
+                                <h5 class="ms-quick-title"><a href="product-left-sidebar.html">پاکت میوه خشک مخلوط تریل ارگانیک مرغوب</a></h5>
+                                <div class="ms-quickview-rating">
+                                    <i class="fa-solid fa-star fill"></i>
+                                    <i class="fa-solid fa-star fill"></i>
+                                    <i class="fa-solid fa-star fill"></i>
+                                    <i class="fa-solid fa-star fill"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+
+                                <div class="ms-quickview-desc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</div>
+                                <div class="ms-quickview-price">
+                                    <span class="new-price">150 هزار تومان</span>
+                                    <span class="old-price">130 هزار تومان</span>
+                                </div>
+
+                                <div class="ms-pro-variation">
+                                    <div class="ms-pro-variation-inner ms-pro-variation-size ms-pro-size">
+                                        <span>اندازه</span>
+                                        <div class="ms-pro-variation-content">
+                                            <ul class="ms-opt-size">
+                                                <li class="active"><a href="javascript:void(0)" class="ms-opt-sz" data-tooltip="Small">250 گرم</a></li>
+                                                <li><a href="javascript:void(0)" class="ms-opt-sz" data-tooltip="Medium">500 گرم</a></li>
+                                                <li><a href="javascript:void(0)" class="ms-opt-sz" data-tooltip="Large">1 کیلوگرم</a></li>
+                                                <li><a href="javascript:void(0)" class="ms-opt-sz" data-tooltip="Extra Large">2 کیلوگرم</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ms-quickview-qty">
+                                    <div class="qty-plus-minus">
+                                        <input class="qty-input" type="text" name="ms_qtybtn" value="1">
+                                    </div>
+                                    <div class="ms-quickview-cart ">
+                                        <button class="ms-btn-3"><img src="assets/img/icons/pro_cart.svg" class="svg_img pro_svg" alt=""> خرید</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Quickview Modal end -->
+
+    <!-- Add to Cart Notify -->
+    <div class="ms-cart-notify">
+        <a href="javascript:void(0)" class="ms-cart-toggle"><img src="assets/img/icons/pro_cart.svg" class="svg_img" alt="cart"><span>3</span></a>
+    </div>
+
+    <!-- Add to Wishlist Notify  -->
+    <div class="ms-wish-notify"></div>
+
+    <!-- Add to Compare list Notify  -->
+    <div class="ms-compare-notify"></div>
 
     <!-- Back to top  -->
     <a class="ms-back-to-top"></a>

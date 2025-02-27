@@ -96,7 +96,7 @@ class CategoryView(BaseTemplateView):
 
 
 class ShopView(BaseTemplateView):
-    template_name = "shop/shop.html"
+    template_name = "shop/shop-list-banner-left-sidebar.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -109,7 +109,9 @@ class ShopView(BaseTemplateView):
             i.children = Category.objects.filter(parent=i.id)
 
         banners = Banner.objects.filter(state=Banner.State.ACTIVE).order_by('?')[:6]
+        shops = Shop.objects.filter(state=Shop.ShopStatus.ACTIVE)
 
+        context['shops'] = shops
         context['title'] = 'صفحه اصلی'
         context['banner'] = banners
         context['categories'] = categories
@@ -319,8 +321,8 @@ class ShopCartDetailsOrderView(BaseTemplateView):
         context['transaction'] = transaction
         print(transaction.id)
         print(cart.state)
-        context['cancelable'] = (transaction.status=='pending' or cart.state == SaleBasket.State.IN_PAY
+        context['cancelable'] = (transaction.status == 'pending' or cart.state == SaleBasket.State.IN_PAY
                                  or cart.state == SaleBasket.State.PAY_FAILED)
-        context['buyable'] = (transaction.status=='pending'  or cart.state == SaleBasket.State.PAY_FAILED)
+        context['buyable'] = (transaction.status == 'pending' or cart.state == SaleBasket.State.PAY_FAILED)
 
         return context

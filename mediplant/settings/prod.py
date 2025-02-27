@@ -5,20 +5,20 @@ from .base import *
 ALLOWED_HOSTS = ["*"]
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'mediplant',
-        'USER': 'postgres',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'mediplant_db',
+        'USER': 'mediplant_user',
         'PASSWORD': '1423joh89ydfas!@#$djkafsk',
-        'HOST': 'localhost',
+        'HOST': 'db',
         'PORT': '5432',
     }
 }
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = '/var/www/html/mediplant/media'
+MEDIA_ROOT = '/var/html/www/mediplant/media'
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/var/www/html/mediplant/static'
+STATIC_ROOT = '/var/html/www/mediplant/static'
 
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 SIMPLE_JWT = {
@@ -42,3 +42,11 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_LIFETIME": timedelta(days=99),
     "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=99),
 }
+
+import os
+
+GDAL_LIBRARY_PATH = os.getenv('GDAL_LIBRARY_PATH', '/usr/lib/libgdal.so')
+
+if GDAL_LIBRARY_PATH:
+    os.environ['GDAL_LIBRARY_PATH'] = GDAL_LIBRARY_PATH
+
