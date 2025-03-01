@@ -23,6 +23,7 @@ class ShopProductView(BaseTemplateView):
         context['product_shops'] = product_shops
         context['images'] = product_shops.image
         context['shop_id'] = shop_id
+
         context['product_id'] = product_shops.id
         quantity=0
 

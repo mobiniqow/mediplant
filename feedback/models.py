@@ -1,43 +1,28 @@
+from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
-from django.db import models 
-
-from doctor_visit.models import DoctorVisit
-from sale.models import SaleBasket
+from account.models import User
 
 
-class FeedBackShop(models.Model):
-
+class FeedbackCart(models.Model):
     class State(models.IntegerChoices):
-        SUSPEND = 0, 'تعلیق شده'
-        ACCEPT = 1, 'تایید شده'
-        FAILED = 2, 'ناموفق'
-        REPORT = 3, 'گزارش شده'
+        SUSPEND = 0
+        SUCCESS = 1
+        TimeOut = 2
 
-    state = models.IntegerField(choices=State.choices, default=State.SUSPEND, verbose_name='وضعیت')
-    shop = models.ForeignKey(SaleBasket, on_delete=models.CASCADE, verbose_name='سبد خرید')
-    comment = models.TextField(verbose_name='نظر')
-    rate = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], verbose_name='امتیاز')
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name='تاریخ ایجاد')
-
-    class Meta:
-        verbose_name = 'بازخورد فروشگاه'
-        verbose_name_plural = 'بازخوردهای فروشگاه'
+    state = models.IntegerField(choices=State.choices, default=State.SUSPEND)
+    cart = models.ForeignKey('sale.SaleBasket', on_delete=models.SET_NULL, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    slug = models.SlugField(unique=True, blank=True, null=True, verbose_name="نامک")
+    is_feedback_sent = models.BooleanField(default=False)  # این فیلد بررسی می‌کند که آیا لینک ارسال شده است یا نه.
 
 
-class FeedBackDoctorVisit(models.Model):
+class FeedbackObject(models.Model):
+    feedback = models.ForeignKey(FeedbackCart, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="کاربر")
+    product = models.ForeignKey('shop.ShopProduct', on_delete=models.CASCADE, verbose_name="محصول فروشگاه",related_name='feedback_product')
+    rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], verbose_name="امتیاز")
+    comment = models.TextField(verbose_name="نظر", blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_approved = models.BooleanField(default=False, verbose_name="تایید شده")
 
-    class State(models.IntegerChoices):
-        SUSPEND = 0, 'تعلیق شده'
-        ACCEPT = 1, 'تایید شده'
-        FAILED = 2, 'ناموفق'
-        REPORT = 3, 'گزارش شده'
 
-    state = models.IntegerField(choices=State.choices, default=State.SUSPEND, verbose_name='وضعیت')
-    visit = models.ForeignKey(DoctorVisit, on_delete=models.CASCADE, verbose_name='ویزیت')
-    comment = models.TextField(verbose_name='نظر')
-    rate = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], verbose_name='امتیاز')
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name='تاریخ ایجاد')
-
-    class Meta:
-        verbose_name = 'بازخورد ویزیت'
-        verbose_name_plural = 'بازخوردهای ویزیت ها'

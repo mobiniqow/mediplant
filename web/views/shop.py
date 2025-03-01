@@ -25,7 +25,7 @@ class IndexView(BaseTemplateView):
             '?').first()
         bottom_banner = Banner.objects.filter(state=Banner.State.ACTIVE, type=Banner.Type.INDEX_BOTTOM_SLIDER).order_by(
             '?')[:2]
-        # کالا ها با عکس
+
         for i in ShopProduct.objects.all():
             i.inventory_state = ShopProduct.Inventory.AVAILABLE
             i.save()
@@ -34,19 +34,19 @@ class IndexView(BaseTemplateView):
         product_ids = [shop_product.product_id for shop_product in shop_products]
         products = Product.objects.select_related('class_id', 'category', 'unit').prefetch_related('images').filter(
             id__in=product_ids)[:10]
-        # برای اینکه عکس ها از حالت این لاین در بیان
+
         for i in products:
             i.image_list = i.images.all()
         new_product = Product.objects.select_related('class_id', 'category', 'unit').prefetch_related(
             'images').order_by('id').filter(is_active=True)[:12]
         for i in new_product:
             i.image_list = i.images.all()
-        # moamelat roz
+
         day_product = Product.objects.select_related('class_id', 'category', 'unit').prefetch_related(
             'images').order_by('id').filter(is_active=True)[:12]
         for i in day_product:
             i.image_list = i.images.all()
-        # top 10 shops
+
         best_shops = Shop.objects.all()[:10]
         for i in best_shops:
             i.images_list = []
@@ -144,15 +144,17 @@ class ShopDetailsView(BaseTemplateView):
         if self.request.user.is_anonymous:
             print('asal')
             session_key = self.request.session.session_key or self.request.META.get('REMOTE_ADDR')
-            basket = SaleBasket.objects.filter(session_key=session_key, state__lte=SaleBasket.State.IN_PAY, shop=shop)
+            basket = SaleBasket.objects.filter(session_key=session_key, state__lte=SaleBasket.State.PAY_FAILED,
+                                               shop=shop)
             products = SaleBasketProduct.objects.filter(basket__in=basket)
         else:
-            basket = SaleBasket.objects.filter(user=self.request.user, state__lte=SaleBasket.State.IN_PAY,
+            basket = SaleBasket.objects.filter(user=self.request.user, state__lte=SaleBasket.State.PAY_FAILED,
                                                shop=shop).first()
-            products = SaleBasketProduct.objects.filter(basket=basket)
-            print(f'sdsda {products}')
-            print(
-                f'sdsda {SaleBasket.objects.filter(user=self.request.user, state__lte=SaleBasket.State.IN_PAY, shop=shop).count()}')
+            if basket:
+                products = SaleBasketProduct.objects.filter(basket=basket)
+            else:
+                products = SaleBasketProduct.objects.none()  # برگرداندن یک QuerySet خالی
+
         context['cart_product'] = products
         context['shop_notification'] = len(products)
         return context
@@ -194,14 +196,13 @@ class ShopCartView(BaseTemplateView):
         basket = get_object_or_404(SaleBasket, shop=shop, state__in=[
             SaleBasket.State.SUSPEND,
             SaleBasket.State.IN_PAY,
-            SaleBasket.State.PAY_FAILED
+            SaleBasket.State.PAY_FAILED,
         ])
         product = SaleBasketProduct.objects.filter(basket=basket)
         for i in product:
             i.image = ProductImage.objects.filter(product=i.product.product).first()
             i.price = '{:,.0f}'.format(i.product.price)
             i.price_all = '{:,.0f}'.format(i.product.price * i.unit)
-        print(self.request.user.postal_code)
         context['user'] = self.request.user
         context['shop'] = shop
         context['product'] = product

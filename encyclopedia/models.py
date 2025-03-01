@@ -50,7 +50,7 @@ class ArticleEncyclopedia(models.Model):
     category = models.ForeignKey("ArticleEncyclopediaCategory", on_delete=SET_NULL,
                                  null=True, verbose_name="دسته بندی")
     created_at = jmodels.jDateField(auto_now_add=True, verbose_name="تاریخ ساخت")
-    author = models.CharField(max_length=100, verbose_name="نویسنده", unique=True)
+    author = models.CharField(max_length=100, verbose_name="نویسنده", )
     abstract = RichTextField()
     content = RichTextField()
     image = models.FileField(upload_to="article-encyclopedia/",
@@ -244,6 +244,7 @@ class EncyclopediaOfDiseases(models.Model):
     hereditary_history = models.TextField(verbose_name='سابقه وراثتی')
     type_of_disease = models.TextField(verbose_name='نوع بیماری')
     phase_description_from_start_to_finish = models.TextField(verbose_name='توضیجات فاز شروع تا پایان بیماری')
+    created_at = models.DateTimeField(auto_now_add=True)  # این خط را اضافه کن
 
     class Meta:
         verbose_name = 'دایره المعارف بیماری '
@@ -255,8 +256,8 @@ class EncyclopediaOfDiseasesArticle(models.Model):
     article = models.ForeignKey(ArticleEncyclopedia, on_delete=models.CASCADE)
 
     class Meta:
-        verbose_name = "مقاله"
-        verbose_name_plural = "مقالات"
+        verbose_name = "مقاله بیماری"
+        verbose_name_plural = "مقالات بیماری"
 
 
 class EncyclopediaOfDiseasesReference(models.Model):

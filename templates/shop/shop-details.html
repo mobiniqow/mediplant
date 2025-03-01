@@ -850,12 +850,11 @@
         // تنظیم محتوای مودال بر اساس نوع
         const modalBody = document.getElementById('modal-body');
         if (type === 'catalog') {
-            modalBody.innerHTML = '<p>در حال حاضر کاتالوگ فروشگاه در دسترس نیست. به زودی اضافه می‌شود.</p>';
+            modalBody.innerHTML = '<p>{{ shop.catalog }}</p>';
         } else if (type === 'about') {
             modalBody.innerHTML = '<p>{{ shop.description }}</p>';
         }
-
-        // نمایش مودال
+ 
         document.getElementById("myModal").style.display = "block";
     }
 

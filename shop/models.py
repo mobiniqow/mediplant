@@ -1,9 +1,11 @@
 from django.core.validators import FileExtensionValidator, MinValueValidator
 from django.db import models
 from django.db.models import SET_NULL
+from ckeditor.fields import RichTextField
 # from django.contrib.gis.db import models as gis_models
 
 from account.models import User
+from feedback.models import FeedbackObject
 from product.models import Product
 
 
@@ -31,17 +33,18 @@ class Shop(models.Model):
                              verbose_name='تصویر')
     national_code = models.CharField(max_length=10, unique=True, verbose_name='کدملی', blank=True)
     description = models.TextField(verbose_name='توضیحات')
+    catalog = RichTextField(blank=True,null=True, verbose_name='کاتالوگ')
     rate_state = models.IntegerField(choices=ShopRate.choices, default=ShopRate.WHITE, verbose_name='وضعیت امتیاز')
     price = models.IntegerField(verbose_name='واحد قیمت بر حسب واحد', default=0)
     location_lat = models.CharField(max_length=12, default="35.7475")
     location_lng = models.CharField(max_length=12, default="51.2358")
     # location = gis_models.PointField(null=True, blank=True, verbose_name='موقعیت مکانی',)
 
-    def save(self, *args, **kwargs):
-        from django.contrib.gis.geos import Point
+    # def save(self, *args, **kwargs):
+    #     from django.contrib.gis.geos import Point
         # تبدیل عرض و طول جغرافیایی به یک نقطه
-        self.location = Point(float(self.location_lat), float(self.location_lng))
-        super().save(*args, **kwargs)
+        # self.location = Point(float(self.location_lat), float(self.location_lng))
+        # super().save(*args, **kwargs)
     class Meta:
         verbose_name = 'فروشگاه'
         verbose_name_plural = 'فروشگاه‌ها'
@@ -115,3 +118,5 @@ class ShopProduct(models.Model):
 
     def __str__(self):
         return self.shop.name
+
+

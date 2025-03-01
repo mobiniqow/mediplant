@@ -312,7 +312,6 @@
 <section class="section ms-hero m-t-30">
     <div class="container">
         <div class="ms-main-content">
-
             <div class="ms-slider-content">
                 <div class="ms-main-slider">
                     <div class="ms-slider swiper-container main-slider-nav main-slider-dot">
@@ -426,7 +425,7 @@
                                     <div class="ms-product-inner">
                                         <div class="ms-pro-image-outer">
                                             <div class="ms-pro-image">
-                                                <a href="product-left-sidebar.html" class="image">
+                                                <a onclick="eventItems({{ product.id }})" class="image">
                                                     <span class="label veg">
                                                         <span class="dot"></span>
                                                     </span>
@@ -442,12 +441,13 @@
                                             </div>
                                         </div>
                                         <div class="ms-pro-content">
-                                            <a href="product_list.html">
+                                            <a onclick="eventItems({{ product.id }})"  >
                                                 <h6 class="ms-pro-stitle">{{ product.name  |truncatechars:13 }}</h6>
                                             </a>
                                             <h5 class="ms-pro-title"><a
-                                                    href="product-left-sidebar.html">
-                                                {{ product.description|slice:":26" }}</a>
+                                                    onclick="eventItems({{ product.id }})">
+                                               {{ product.description|striptags|slice:":26" }}
+</a>
                                             </h5>
                                             <div class="ms-pro-rat-price">
                                                 <span class="ms-price">
@@ -644,7 +644,7 @@
                             <div class="ms-all-product-inner">
                                 <div class="ms-pro-image-outer">
                                     <div class="ms-pro-image">
-                                        <a href="/shop?product={{ product.id }}" class="image">
+                                        <a onclick="eventItems({{ product.id }})" class="image">
                                             <img class="main-image" src="{{ product.image_list.0.image.url }}"
                                                  alt="Product">
                                         </a>
@@ -652,9 +652,9 @@
                                 </div>
                                 <div class="ms-pro-content">
                                     <h5 class="ms-pro-title"><a
-                                            href="/shop?product={{ product.id }}">{{ product.name }}</a></h5>
+                                            onclick="eventItems({{ product.id }})">{{ product.name }}</a></h5>
                                     <h6 class="ms-pro-stitle"><a
-                                            href="/shop?product={{ product.id }}">{{ product.description }}</a>
+                                            onclick="eventItems({{ product.id }})">{{ product.description|striptags|slice:":26" }}</a>
                                     </h6>
                                     <div class="ms-pro-rat-price">
                                         <div class="ms-pro-rat-pri-inner">
@@ -690,7 +690,7 @@
                             <div class="ms-all-product-inner">
                                 <div class="ms-pro-image-outer">
                                     <div class="ms-pro-image">
-                                        <a href=`/shop/?product={{ product.id }}` class="image">
+                                        <a onclick="eventItems({{ product.id }})" class="image">
                                             <img class="main-image" src="{{ product.image_list.0.image.url }}"
                                                  alt="Product">
                                         </a>
@@ -698,9 +698,9 @@
                                 </div>
                                 <div class="ms-pro-content">
                                     <h5 class="ms-pro-title"><a
-                                            href="/shop?product={{ product.id }}">{{ product.name }}</a></h5>
+                                            onclick="eventItems({{ product.id }})">{{ product.name }}</a></h5>
                                     <h6 class="ms-pro-stitle"><a
-                                            href="/shop?product={{ product.id }}">{{ product.description }}</a>
+                                            onclick="eventItems({{ product.id }})">{{ product.description|striptags|slice:":26" }}</a>
                                     </h6>
                                     <div class="ms-pro-rat-price">
                                         <div class="ms-pro-rat-pri-inner">
@@ -736,7 +736,7 @@
                             <div class="ms-all-product-inner">
                                 <div class="ms-pro-image-outer">
                                     <div class="ms-pro-image">
-                                        <a href=`/shop/?product={{ product.id }}` class="image">
+                                        <a onclick="eventItems({{ product.id }})" class="image">
                                             <img class="main-image" src="{{ product.image_list.0.image.url }}"
                                                  alt="Product">
                                         </a>
@@ -744,9 +744,9 @@
                                 </div>
                                 <div class="ms-pro-content">
                                     <h5 class="ms-pro-title"><a
-                                            href="/shop?product={{ product.id }}">{{ product.name }}</a></h5>
+                                            onclick="eventItems({{ product.id }})">{{ product.name }}</a></h5>
                                     <h6 class="ms-pro-stitle"><a
-                                            href="/shop?product={{ product.id }}">{{ product.description }}</a>
+                                            onclick="eventItems({{ product.id }})">{{ product.description|striptags|slice:":26" }}</a>
                                     </h6>
                                     <div class="ms-pro-rat-price">
                                         <div class="ms-pro-rat-pri-inner">
@@ -782,7 +782,7 @@
                             <div class="ms-all-product-inner">
                                 <div class="ms-pro-image-outer">
                                     <div class="ms-pro-image">
-                                        <a href=`/shop/?product={{ product.id }}` class="image">
+                                        <a onclick="eventItems({{ product.id }})" class="image">
                                             <img class="main-image" src="{{ product.image_list.0.image.url }}"
                                                  alt="Product">
                                         </a>
@@ -790,9 +790,9 @@
                                 </div>
                                 <div class="ms-pro-content">
                                     <h5 class="ms-pro-title"><a
-                                            href="/shop?product={{ product.id }}">{{ product.name }}</a></h5>
+                                            onclick="eventItems({{ product.id }})">{{ product.name }}</a></h5>
                                     <h6 class="ms-pro-stitle"><a
-                                            href="/shop?product={{ product.id }}">{{ product.description }}</a>
+                                            onclick="eventItems({{ product.id }})">{{ product.description|striptags|slice:":26" }}</a>
                                     </h6>
                                     <div class="ms-pro-rat-price">
                                         <div class="ms-pro-rat-pri-inner">
@@ -927,7 +927,7 @@
                                                 <h6 class="ms-pro-stitle">{{ product.name }}</h6>
                                             </a>
                                             <h5 class="ms-pro-title"><a
-                                            >{{ product.description }}</a>
+                                            >{{ product.description|striptags|slice:":26" }}</a>
                                             </h5>
                                             <div class="ms-pro-rat-price">
                                                 {#                                                <span class="ms-pro-rating">#}
@@ -1070,7 +1070,7 @@
             <div class="section-title">
                 <h2>خواندن <span>مقاله ها</span></h2>
                 <span class="title-link">
-                        <a href="blog-left-sidebar.html">همه مقالات<i class="fa-solid fa-angles-left"></i></a>
+                        <a href="/articles">همه مقالات<i class="fa-solid fa-angles-left"></i></a>
                     </span>
             </div>
             <div class="ms-blog-carousel owl-carousel" dir="ltr">

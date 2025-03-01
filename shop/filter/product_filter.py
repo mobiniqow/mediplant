@@ -1,8 +1,8 @@
 import django_filters
 
 from product.models import Product
-from sale.models import ShopProduct
-from shop.models import Shop
+
+from shop.models import Shop, ShopProduct
 
 TYPE_CHOICES_DICT = {label: value for value, label in Product.Type.choices}
 class ProductTypeFilter(django_filters.BaseInFilter, django_filters.CharFilter):

@@ -1,3 +1,4 @@
+from feedback.models import FeedbackCart
 from sale.models import SaleBasket
 from .models import Transaction, Payment
 import requests
@@ -8,47 +9,76 @@ from rest_framework.decorators import api_view
 from django.conf import settings
 from rest_framework.views import APIView
 from django.http import JsonResponse, HttpResponseRedirect
-@api_view(['POST', ])
+@api_view(['POST'])
 def start_payment(request, shop_id):
     user = request.user
     cart = get_object_or_404(SaleBasket, user=user, pk=shop_id)
     if not cart:
         return JsonResponse({"error": "سبد خرید یافت نشد"})
+
     amount = cart.price
     address = request.data.get('address')
     lat = request.data.get('lat')
     lng = request.data.get('lng')
     code_posti = request.data.get('code_posti')
-    print(address)
-    print(lat)
-    print(lng)
-    print(code_posti)
-    transaction = Transaction.objects.create(
+    card = request.data.get('card')  # شماره کارت را دریافت کنیم
+
+    # اگر تراکنشی با این کارت قبلاً ایجاد شده باشد، فقط آپدیت می‌شود
+    transaction = Transaction.objects.filter(
         user=user,
         cart=cart,
-        amount=amount,
         transaction_type='deposit',
-        status='pending',
-        message=f"پرداخت برای سبد خرید {user.user_name}",
-        address=address,
-        lat=lat,
-        lng=lng,
-        code_posti=code_posti
-    )
+        card=card
+    ).first()
 
-    # ایجاد پرداخت جدید
-    payment = Payment.objects.create(
+    if transaction:
+        # اگر تراکنش وجود داشت، فقط آپدیت شود
+        transaction.amount = amount
+        transaction.status = 'pending'
+        transaction.message = f"پرداخت برای سبد خرید {user.user_name}"
+        transaction.address = address
+        transaction.lat = lat
+        transaction.lng = lng
+        transaction.code_posti = code_posti
+        transaction.save()
+    else:
+        # اگر تراکنش جدید است، ایجاد شود
+        transaction = Transaction.objects.create(
+            user=user,
+            cart=cart,
+            amount=amount,
+            transaction_type='deposit',
+            status='pending',
+            message=f"پرداخت برای سبد خرید {user.user_name}",
+            address=address,
+            lat=lat,
+            lng=lng,
+            code_posti=code_posti,
+            card=card
+        )
+
+    # بررسی اینکه آیا پرداخت از قبل ثبت شده است
+    payment, created = Payment.objects.get_or_create(
         user=user,
         cart=cart,
         transaction=transaction
     )
 
-    # شروع پرداخت از طریق زرین‌پال
+    # شروع پرداخت
     try:
         payment_url = payment.initiate_payment()
         return JsonResponse({"payment_url": payment_url})
     except Exception as e:
         return JsonResponse({"error": str(e)})
+
+from django.utils.text import slugify
+import uuid
+
+def create_feedback_cart(user, cart):
+    """ ایجاد فیدبک کارت برای کاربر بعد از موفقیت در پرداخت """
+    unique_slug = slugify(f"{user.id}-{uuid.uuid4().hex[:8]}")
+    feedback_cart = FeedbackCart.objects.create(cart=cart, slug=unique_slug)
+    return feedback_cart
 
 
 @api_view(['GET'])
@@ -73,43 +103,34 @@ def verify_payment(request):
         }
         headers = {'Content-Type': 'application/json'}
         response = requests.post(url, data=json.dumps(data), headers=headers)
-        print(response.text)
 
         if response.status_code == 200:
             response_data = response.json()
             if response_data['data']['code'] in [100, 101]:
-                # تایید پرداخت موفق
                 transaction = Transaction.objects.filter(authority=authority).first()
                 if transaction:
                     transaction.status = 'success'
-                    transaction.save()
-                    print(response_data['data']['card_pan'])
-
-                    # بروزرسانی وضعیت پرداخت
-                    payment.status = 'completed'
                     transaction.card = response_data['data']['card_pan']
                     transaction.card_hash = response_data['data']['card_hash']
                     transaction.ref_id = response_data['data']['ref_id']
-
-                    sb = SaleBasket.objects.filter(id=payment.cart.id).first()
-                    sb.state = SaleBasket.State.PAY_SUCCESS
-                    sb.save()
-
                     transaction.save()
+                    payment.status = 'completed'
                     payment.save()
+                    feedback_cart = create_feedback_cart(payment.user, payment.cart)
+                    sb = payment.cart
+                    if sb:
+                        sb.state = SaleBasket.State.PAY_SUCCESS
+                        sb.save()
 
                     # ریدایرکت به /callback/ با پارامترهای Authority و Status
                     return HttpResponseRedirect(f"/callback/?Authority={authority}&Status=OK")
                 else:
                     return JsonResponse({"error": "تراکنش یافت نشد"})
             else:
-                # ریدایرکت به /callback/ با پارامترهای Authority و Status و خطا
                 return HttpResponseRedirect(f"/callback/?Authority={authority}&Status=FAILED")
         else:
-            # ریدایرکت به /callback/ با پارامترهای Authority و Status و خطا در ارتباط
             return HttpResponseRedirect(f"/callback/?Authority={authority}&Status=ERROR")
     else:
-        # ریدایرکت به /callback/ در صورتی که Status برابر با OK نباشد
         return HttpResponseRedirect(f"/callback/?Authority={authority}&Status=FAILED")
 
 @api_view(['POST'])
@@ -179,7 +200,6 @@ def get_transactions(request):
 
 class ListTransactions(APIView):
     def get(self,request,**kwargs):
-        print(request.user.is_authenticated)
         transactions = Transaction.objects.exclude(status='cancel').select_related('cart', 'cart__shop')
         transaction_data = []
         for transaction in transactions:

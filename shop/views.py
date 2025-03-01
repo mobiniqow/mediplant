@@ -2,10 +2,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
-# from django.contrib.gis.geos import Point
-# from django.contrib.gis.db.models import Distance
 import math
-from django.contrib.gis.measure import D
 from .filter.product_filter import ShopProductFilter
 from .models import ShopProduct, Shop
 from .serializers import ShopProductSerializer, ShopSerializers
@@ -24,6 +21,7 @@ class ShopProductPagination(PageNumberPagination):
             'previous': self.get_previous_link(),
             'results': data
         })
+
 
 class ShopProductAPIView(generics.ListAPIView):
     queryset = ShopProduct.objects.all()

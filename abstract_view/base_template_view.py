@@ -24,9 +24,8 @@ class BaseTemplateView(TemplateView):
             basket = SaleBasket.objects.filter( session_key=session_key,state__lte=SaleBasket.State.IN_PAY)
         else:
             basket = SaleBasket.objects.filter( user=self.request.user,state__lte=SaleBasket.State.IN_PAY)
-
         context['basket'] = basket
-        print(f'self.request.user.id {self.request.user.state }')
+        print(f'self.request.user.id {basket }')
         if self.request.user.id is not None :
             from account.urls.v1.views import get_tokens_for_user
             token = get_tokens_for_user(self.request.user)

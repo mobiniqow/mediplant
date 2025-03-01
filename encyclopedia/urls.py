@@ -1,8 +1,11 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import EncyclopediaCombinedDrugsViewSet, ArticleEncyclopediaViewSet, EncyclopediaOfDiseasesViewSet
 
-from encyclopedia.views import BlogsAPIView
-
+router = DefaultRouter()
+router.register(r'combined-drugs', EncyclopediaCombinedDrugsViewSet)
+router.register(r'article-encyclopedia', ArticleEncyclopediaViewSet, basename='article-encyclopedia')
+router.register(r'diseases', EncyclopediaOfDiseasesViewSet, basename='disease')
 urlpatterns = [
-    path('', BlogsAPIView.as_view()),
-    # path('<int:id>', BlogsAPIView.as_view()),
+    path('api/', include(router.urls)),
 ]

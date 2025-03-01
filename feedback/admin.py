@@ -1,29 +1,19 @@
 from django.contrib import admin
+from .models import FeedbackCart, FeedbackObject
 
-from feedback.models import FeedBackShop, FeedBackDoctorVisit
+@admin.register(FeedbackCart)
+class FeedbackCartAdmin(admin.ModelAdmin):
+    list_display = ('cart', 'state', 'created_at', 'is_feedback_sent', 'slug')
+    list_filter = ('state', 'is_feedback_sent', 'created_at')
+    search_fields = ('slug', 'cart__user__username')
+    ordering = ('-created_at',)
+    readonly_fields = ('created_at',)
 
+@admin.register(FeedbackObject)
+class FeedbackObjectAdmin(admin.ModelAdmin):
+    list_display = ('user', 'product', 'rating', 'is_approved', 'created_at')
+    list_filter = ('is_approved', 'rating', 'created_at')
+    search_fields = ('user__username', 'product__name')
+    ordering = ('-created_at',)
+    readonly_fields = ('created_at',)
 
-@admin.register(FeedBackShop)
-class FeedBackShopAdmin(admin.ModelAdmin):
-    list_display = ['id', 'shop', 'state', 'comment', 'rate', 'created_at']
-    list_filter = ['state', 'created_at']
-    search_fields = ['shop__name']
-    list_per_page = 20
-
-    class Meta:
-        model = FeedBackShop
-        verbose_name = 'بازخورد فروشگاه'
-        verbose_name_plural = 'بازخوردهای فروشگاه'
-
-
-@admin.register(FeedBackDoctorVisit)
-class FeedBackDoctorVisitAdmin(admin.ModelAdmin):
-    list_display = ['id', 'visit', 'state', 'comment', 'rate', 'created_at']
-    list_filter = ['state', 'created_at']
-    search_fields = ['visit__doctor__doctor__user__name']
-    list_per_page = 20
-
-    class Meta:
-        model = FeedBackShop
-        verbose_name = 'بازخورد فروشگاه'
-        verbose_name_plural = 'بازخوردهای فروشگاه'

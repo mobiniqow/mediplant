@@ -52,7 +52,7 @@
 <!-- Category sidebar Start -->
 
 <div class="ms-side-cart-overlay"></div>
-{% include '../extentions/basket_products.html' with token=token shop_id=shop.id %}
+{% include '../extentions/basket_products.html' with token=token shop_id=shop_id %}
 <!-- Cart sidebar End -->
 
 <!-- Wishlist sidebar Start -->
@@ -256,7 +256,7 @@
                     <span class="close" onclick="closeDialog()">&times;</span>
                     <img id="product-image" src="" alt="محصول">
                     <h2 id="product-name"></h2>
-                    <p>تعداد : <input type="number" id="quantity" min="0" value="1"
+                    <p>تعداد : <input type="number" id="quantity" min="0" value="{{ quantity }}"
                                       oninput="updateTotalPrice()"></p>
                     <p id="total-price"></p>
                     <button type="button" onclick="addToCart()">اضافه کردن</button>
@@ -636,14 +636,15 @@
             updateTotalPrice();
         }
     }
+function addToCart() {
+    const quantity = parseInt(document.getElementById('quantity').value);
+    addItemToCardApi(quantity).then(() => {
+        location.reload(); // رفرش صفحه بعد از اضافه شدن محصول
+    }).catch(error => {
+        console.error("خطا در اضافه کردن محصول:", error);
+    });
+}
 
-    function addToCart() {
-        const quantity = parseInt(document.getElementById('quantity').value);
-        addItemToCardApi(quantity)
-        alert(`محصول ${document.getElementById('product-name').innerText} با ${quantity} ${document.getElementById('product-name').innerText} به سبد خرید اضافه شد.`);
-
-        {#closeDialog();#}
-    }
 
     async function addItemToCardApi(quantity) {
         let basket_id = await getCart()

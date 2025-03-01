@@ -142,7 +142,6 @@ class DeleteProductFromBasket(APIView):
 
 class ProductToBasket(APIView):
     def post(self, request, basket_id, product_id):
-        print(request.user)
         if request.user != None:
             session_key = request.session.session_key or request.META.get('REMOTE_ADDR')
             basket = SaleBasket.objects.filter(id=basket_id, session_key=session_key)
@@ -167,6 +166,15 @@ class ProductToBasket(APIView):
         product = ShopProduct.objects.get(id=product_id)
         item = SaleBasketProduct.objects.filter(basket=basket, product=product)
         unit = request.data.get('unit', 1)
+        if int(unit) > product.capacity:
+            if item.exists():
+                item = item.first()
+                if item.unit > product.capacity:
+                    tafazol = item.unit - int(product.capacity)
+                    basket.price -= int(product.price) * tafazol
+                    item.unit = int(product.capacity)
+                    item.save()
+            return Response({"error": "Unit capacity exceeds"}, status=status.HTTP_400_BAD_REQUEST)
         if item.exists():
             item = item.first()
             basket.price -= int(product.price) * int(item.unit)
@@ -288,12 +296,11 @@ class UpdateTransactionStatus(APIView):
 
 class MyBasket(APIView):
     def get(self, request):
-        print("omadam to")
         session_key = request.session.session_key or request.META.get('REMOTE_ADDR')
         if request.user.is_authenticated:
-            basket = SaleBasket.objects.filter(user=request.user)
+            basket = SaleBasket.objects.filter(user=request.user, state__lte=SaleBasket.State.PAY_FAILED)
         else:
-            basket = SaleBasket.objects.filter(session_key=session_key)
+            basket = SaleBasket.objects.filter(session_key=session_key, state__lte=SaleBasket.State.PAY_FAILED)
 
         baskets = BasketSerializer(basket, many=True).data
 

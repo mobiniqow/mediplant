@@ -2,7 +2,6 @@ from django.db import models
 
 from account.models import User
 from doctor.models import Doctor
-from shop.models import Shop
 
 
 class ShopReport(models.Model):
@@ -13,7 +12,8 @@ class ShopReport(models.Model):
         FAILED = 3
 
     state = models.IntegerField(choices=State.choices, default=State.SUSPEND)
-    shop = models.ForeignKey(Shop, on_delete=models.SET_NULL, null=True, verbose_name='فروشگاه')
+    shop = models.ForeignKey('shop.Shop', on_delete=models.SET_NULL, null=True, verbose_name='فروشگاه',
+                             related_name='shop_report')
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, verbose_name='کاربر')
     message = models.TextField(verbose_name='پیام')
 

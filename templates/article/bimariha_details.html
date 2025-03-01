@@ -1,0 +1,487 @@
+{% load static %}
+<!--========================================================= 
+Item Name: Masterkart - Multipurpose eCommerce HTML Template.
+Author: Pilarest
+Version: 1.0
+Copyright 2022-2023
+============================================================-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <title>Masterkart - الگوی HTML تجارت الکترونیک چند منظوره</title>
+    <meta name="keywords" content="Bootstrap 5.x, ecommerce, farming, food market, grocery market, grocery shop, grocery store, grocery supper market, multi vendor, organic food, supermarket, supermarket grocery">
+    <meta name="description" content="Multipurpose eCommerce HTML Template">
+    <meta name="author" content="Pilarest">
+
+    <!-- site Favicon -->
+    <link rel="icon" href="{% static 'assets/img/favicon/favicon.png' %}" sizes="32x32">
+
+    <!-- css Icon Font -->
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/msicons.min.css' %}">
+
+    <!-- css All Plugins Files -->
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap-select.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/slick.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/nouislider.css' %}">
+
+    <!-- Main Style -->
+    <link rel="stylesheet" id="main_style" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+    <link rel="stylesheet" class="color-css" href="{% static 'assets/css/color-01.css' %}">
+<style>
+    .ms-blogs-content {
+        display: flex;
+        flex-wrap: wrap; /* برای اینکه آیتم‌ها در خطوط مختلف قرار بگیرند */
+        gap: 30px; /* فاصله بین هر بلوک */
+    }
+
+    .ms-blog-block {
+        flex: 1 1 30%; /* عرض هر بلوک برابر با 30% از عرض صفحه */
+        max-width: 32%; /* حداکثر عرض برای هر بلوک */
+        margin-bottom: 30px;
+    }
+
+    @media (max-width: 768px) {
+        .ms-blog-block {
+            flex: 1 1 45%; /* در سایزهای موبایل دو آیتم در هر ردیف */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .ms-blog-block {
+            flex: 1 1 100%; /* در سایزهای خیلی کوچک (مثل موبایل) هر آیتم به طور کامل در یک ردیف */
+        }
+    }
+</style>
+
+</head>
+
+<body>
+    <!-- Loader -->
+    <div id="ms-overlay">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header start  -->
+   {% include '../extentions/header.html' with categories=categories_map  is_active=is_active medic_notification=medic_notification shop_notification=shop_notification %}
+    <!-- Header End  -->
+
+    <!-- Category sidebar Start -->
+    <div class="ms-side-cat-overlay"></div>
+    <div class="col-lg-3 ms-category-sidebar">
+        <div class="cat-sidebar">
+            <div class="cat-sidebar-box">
+                <div class="ms-cat-sidebar-wrap">
+                    <!-- Sidebar Category Block -->
+                    <div class="ms-sidebar-block">
+                        <div class="ms-sb-title">
+                            <h3 class="ms-sidebar-title">دسته بندی<button class="ms-close">×</button></h3>
+                        </div>
+                        <div class="ms-sb-block-content">
+                            <ul>
+                                <li class="ms-list">
+                                    <div class="ms-sidebar-block-item"><img src="{% static 'assets/img/icons/dress-8.svg' %}" class="svg_img" alt="drink">لباس</div>
+                                    <ul style="display: block;">
+                                        <li>
+                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">پیراهن <span title="Available Stock">- 25</span></a></div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html"> شلوار جین <span title="Available Stock">- 52</span></a></div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">ژاکت<span title="Available Stock">- 500</span></a></div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">لباس و روپوش <span title="Available Stock">- 35</span></a></div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="ms-sb-block-content">
+                            <ul>
+                                <li class="ms-list">
+                                    <div class="ms-sidebar-block-item"><img src="{% static 'assets/img/icons/shoes-8.svg' %}" class="svg_img" alt="drink">کفش</div>
+                                    <ul>
+                                        <li>
+                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">ورزشی <span title="Available Stock">- 25</span></a></div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">مجلسی <span title="Available Stock">- 52</span></a></div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">مختلف <span title="Available Stock">- 40</span></a></div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">کفش ایمن<span title="Available Stock">- 35</span></a></div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="ms-sb-block-content">
+                            <ul>
+                                <li class="ms-list">
+                                    <div class="ms-sidebar-block-item"><img src="{% static 'assets/img/icons/jewelry-8.svg' %}" class="svg_img" alt="drink">جواهرات</div>
+                                    <ul>
+                                        <li>
+                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">گوشواره <span title="Available Stock">- 50</span></a></div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">حلقه ازدواج <span title="Available Stock">- 35</span></a></div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">گردنبند <span title="Available Stock">- 40</span></a></div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="ms-sb-block-content">
+                            <ul>
+                                <li class="ms-list">
+                                    <div class="ms-sidebar-block-item"><img src="{% static 'assets/img/icons/perfume-8.svg' %}" class="svg_img" alt="drink">عطر و ادکلن</div>
+                                    <ul>
+                                        <li>
+                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">عطر لباس<span title="Available Stock">- 4 پاکت</span></a></div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">اسپری <span title="Available Stock">- 52 پاکت</span></a></div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">عطر گل <span title="Available Stock">- 10 پاکت</span></a></div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">خوشبو کننده هوا<span title="Available Stock">- 35 پاکت</span></a></div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="ms-sb-block-content">
+                            <ul>
+                                <li class="ms-list">
+                                    <div class="ms-sidebar-block-item"><img src="{% static 'assets/img/icons/cosmetics-8.svg' %}" class="svg_img" alt="drink">لوازم آرایشی</div>
+                                    <ul>
+                                        <li>
+                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">شامپو<span title="Available Stock"></span></a></div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">ضد آفتاب<span title="Available Stock"></span></a></div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">شامپو بدن<span title="Available Stock"></span></a></div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">کیت آرایش<span title="Available Stock"></span></a></div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="ms-sb-block-content">
+                            <ul>
+                                <li class="ms-list">
+                                    <div class="ms-sidebar-block-item"><img src="{% static 'assets/img/icons/glasses-8.svg' %}" class="svg_img" alt="drink">عینک</div>
+                                    <ul>
+                                        <li>
+                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">عینک آفتابی <span title="Available Stock">- 20</span></a></div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">لنز عینک <span title="Available Stock">- 52</span></a></div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="ms-sb-block-content">
+                            <ul>
+                                <li class="ms-list">
+                                    <div class="ms-sidebar-block-item"><img src="{% static 'assets/img/icons/bag-8.svg' %}" class="svg_img" alt="drink">کیف</div>
+                                    <ul>
+                                        <li>
+                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">کیسه خرید <span title="Available Stock">- 25</span></a></div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">کوله پشتی بدنسازی <span title="Available Stock">- 52</span></a></div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">کیف پول <span title="Available Stock">- 40</span></a></div>
+                                        </li>
+                                        <li>
+                                            <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">کیف جیبی <span title="Available Stock">- 35</span></a></div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Category sidebar End -->
+
+    <!-- Cart sidebar Start -->
+    {% include '../extentions/shops_basket.html' with basket=basket toke=token %}
+    <!-- Wishlist sidebar End -->
+
+    <!-- Breadcrumb start -->
+    <div class="ms-breadcrumb m-b-30">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row ms_breadcrumb_inner">
+                        <div class="col-md-6 col-sm-12">
+                            <h2 class="ms-breadcrumb-title">صفحه بلاگ</h2>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <!-- ms-breadcrumb-list start -->
+                            <ul class="ms-breadcrumb-list">
+                                <li class="ms-breadcrumb-item"><a href="/">خانه</a><i class="fas fa-chevron-left"></i></li>
+                                <li class="ms-breadcrumb-item active">داروهای ترکیبی</li>
+                            </ul>
+                            <!-- ms-breadcrumb-list end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb end -->
+    <!-- Breadcrumb end -->
+
+    <!-- Blog section -->
+ <section class="ms-blog padding-tb-30">
+    <div class="container">
+        <div class="row">
+            <div class="ms-blogs-rightside col-md-12">
+                <div class="ms-blogs-content">
+                    <div class="ms-blogs-inner">
+                        <div class="ms-single-blog-item">
+                            <div class="single-blog-info">
+                                <div class="single-blog-detail">
+                                    <h2 id="disease-title" class="mb-3"></h2>
+                                    <label id="disease-date" class="text-muted mb-4"></label>
+
+                                    <figure class="news-img">
+                                        <img id="disease-image" src="" alt="تصویر بیماری" style="max-width: 100%; display: none;">
+                                    </figure>
+
+                                    <h4>نام لاتین:</h4>
+                                    <p id="disease-latin-name"></p>
+
+                                    <h4>دسته‌بندی:</h4>
+                                    <p id="disease-classification"></p>
+
+                                    <h4>زیست بوم:</h4>
+                                    <p id="disease-native"></p>
+
+                                    <h4>تاریخچه:</h4>
+                                    <p id="disease-history"></p>
+
+                                    <h4>علت بیماری:</h4>
+                                    <p id="disease-cause"></p>
+
+                                    <h4>روش‌های درمان:</h4>
+                                    <p id="disease-treatment-methods"></p>
+
+                                    <h4>مدت درمان:</h4>
+                                    <p id="disease-treatment-duration"></p>
+
+                                    <h4>روش مقابله:</h4>
+                                    <p id="disease-coping-method"></p>
+
+                                    <h4>پیشگیری:</h4>
+                                    <p id="disease-prevention"></p>
+
+                                    <h4>تشدید بیماری:</h4>
+                                    <p id="disease-exacerbation"></p>
+
+                                    <h4>بارداری:</h4>
+                                    <p id="disease-pregnancy"></p>
+
+                                    <h4>سابقه وراثتی:</h4>
+                                    <p id="disease-hereditary"></p>
+
+                                    <h4>ساختار بیماری:</h4>
+                                    <p id="disease-structure"></p>
+
+                                    <h4>نوع بیماری:</h4>
+                                    <p id="disease-type"></p>
+
+                                    <h4>توضیح فازهای بیماری:</h4>
+                                    <p id="disease-phases"></p>
+
+                                    <h4>مقالات:</h4>
+                                    <ul id="disease-articles">
+                                        <!-- مقالات در اینجا نمایش داده می‌شوند -->
+                                    </ul>
+
+                                    <h4>منابع:</h4>
+                                    <ul id="disease-references">
+                                        <!-- منابع در اینجا نمایش داده می‌شوند -->
+                                    </ul>
+
+                                    <h4>تصاویر اضافی:</h4>
+                                    <div id="disease-images">
+                                        <!-- تصاویر اضافی در اینجا نمایش داده می‌شوند -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Blog section End -->
+
+    <!-- Footer Start -->
+   {% include '../extentions/footer.html' %}
+    <!-- Footer Area End -->
+
+    <!-- Back to top  -->
+    <a class="ms-back-to-top"></a>
+
+    <!-- Features sidebar  -->
+    <div class="ms-features-sidebar-overlay"></div>
+    <div class="ms-features-sidebar">
+        <div class="tool-title">
+            <h3>تنظیمات</h3>
+        </div> 
+        <div class="ms-features-block">
+            <div class="ms-features-title">رنگ‌ها</div>
+            <ul class="bg-panel ms-change-color">
+                <li class="active" data-color="01">
+                    <a href="javascript:void(0)" class="colorcode1"></a>
+                </li>
+                <li data-color="02">
+                    <a href="javascript:void(0)" class="colorcode2"></a>
+                </li>
+                <li data-color="03">
+                    <a href="javascript:void(0)" class="colorcode3"></a>
+                </li>
+                <li data-color="04">
+                    <a href="javascript:void(0)" class="colorcode4"></a>
+                </li>
+                <li data-color="05">
+                    <a href="javascript:void(0)" class="colorcode5"></a>
+                </li>
+                <li data-color="06">
+                    <a href="javascript:void(0)" class="colorcode6"></a>
+                </li>
+                <li data-color="07" class="">
+                    <a href="javascript:void(0)" class="colorcode7"></a>
+                </li>
+                <li data-color="08">
+                    <a href="javascript:void(0)" class="colorcode8"></a>
+                </li>
+                <li data-color="09">
+                    <a href="javascript:void(0)" class="colorcode9"></a>
+                </li>
+            </ul>
+        </div>
+        <div class="ms-features-block">
+            <div class="ms-tools-sidebar-content">
+                <div class="ms-features-title">حالت پس رمینه</div>
+                <div class="ms-change-mode active" id="ms-change-mode">
+                    <div class="ms-mode-switch">
+                        <div class="ms-mode-btn">انتخاب</div>
+                        <div class="ms-mode-on">روشن</div>
+                        <div class="ms-mode-off">خاموش</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Plugins JS -->
+    <script src="{% static 'assets/js/plugins/jquery-3.5.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/popper.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/bootstrap-select.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/fontawesome.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/infiniteslidev2.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/jquery.zoom.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/slick.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/nouislider.js' %}"></script>
+<script>
+$(document).ready(function () {  
+    let diseaseId = 1; // مقدار id از URL دریافت شود یا به طور دستی وارد شود
+
+    $.ajax({
+        url: `/article/api/diseases/${diseaseId}/`,
+        method: 'GET',
+        success: function (data) {
+            console.log(`data is`, data);
+
+            // اطلاعات اصلی بیماری
+            $('#disease-title').text(data.name);
+            $('#disease-latin-name').text(data.latin_name);
+            $('#disease-classification').text(data.classification);
+            $('#disease-native').text(data.native);
+            $('#disease-history').text(data.history);
+            $('#disease-cause').text(data.cause_of_illness);
+            $('#disease-treatment-methods').text(data.treatment_methods);
+            $('#disease-treatment-duration').text(data.treatment_duration);
+            $('#disease-coping-method').text(data.coping_method);
+            $('#disease-prevention').text(data.disease_prevention);
+            $('#disease-exacerbation').text(data.cases_of_exacerbation_of_the_disease);
+            $('#disease-pregnancy').text(data.pregnancy);
+            $('#disease-hereditary').text(data.hereditary_history);
+            $('#disease-structure').text(data.the_structure_of_the_disease);
+            $('#disease-type').text(data.type_of_disease);
+            $('#disease-phases').text(data.phase_description_from_start_to_finish);
+
+            // تصاویر بیماری
+            if (data.images && data.images.length > 0) {
+                $('#disease-image').attr('src', data.images[0].image).show();
+                // اضافه کردن تصاویر اضافی
+                data.images.forEach(function(image) {
+                    let imgElement = `<img src="${image.image}" alt="تصویر اضافی بیماری" style="max-width: 100%; margin-top: 10px;">`;
+                    $('#disease-images').append(imgElement);
+                });
+            }
+
+            // مقالات
+            if (data.articles && data.articles.length > 0) {
+                data.articles.forEach(function(article) {
+                    let articleItem = `<li><a href="/article/${article.article.id}">${article.article.name}</a></li>`;
+                    $('#disease-articles').append(articleItem);
+                });
+            }
+
+            // منابع
+            if (data.references && data.references.length > 0) {
+                data.references.forEach(function(reference) {
+                    let referenceItem = `<li>${reference.refrence.name}</li>`;
+                    $('#disease-references').append(referenceItem);
+                });
+            }
+        },
+        error: function () {
+            alert('خطا در دریافت اطلاعات بیماری');
+        }
+    }); 
+});
+
+</script> 
+    <script src="{% static 'assets/js/main.js' %}"></script>
+</body>
+
+</html>
