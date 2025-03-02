@@ -1,7 +1,11 @@
-from django.urls import path
-from .views import DoctorListByBranch, DockterBranchListView
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import DoctorViewSet, DoctorBranchList
+
+router = DefaultRouter()
+router.register(r'doctors', DoctorViewSet, basename='doctor')
 
 urlpatterns = [
-    path('api/doctors/<int:branch_id>/', DoctorListByBranch.as_view(), name='doctor_list_by_branch'),
-    path('dockter-branches/', DockterBranchListView.as_view(), name='dockter-branch-list'),
+    path('api/', include(router.urls)),
+    path('api/branch', DoctorBranchList.as_view(), name='branch-list')
 ]

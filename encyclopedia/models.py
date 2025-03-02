@@ -182,6 +182,7 @@ class HerbalEncyclopedia(models.Model):
     plant_type = models.TextField(verbose_name='گیاه نوع')
     dosage = models.TextField(verbose_name='مقدار مصرف')
     how_to_use = models.TextField(verbose_name='نحوه استفاده')
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name = 'دایره المعارف گیاهی'
@@ -273,3 +274,47 @@ class EncyclopediaOfDiseasesImage(models.Model):
     image = models.FileField(upload_to="encyclopedia-of-diseases",
                              validators=[FileExtensionValidator(['jpg', 'png', 'jpeg', 'svg'])], verbose_name='تصاویر')
     ref = models.ForeignKey('EncyclopediaOfDiseases', on_delete=CASCADE)
+
+
+# news
+from django.db import models
+
+
+class News(models.Model):
+    title = models.CharField(max_length=200)
+    content = RichTextField()
+    excerpt = models.TextField()
+    image = models.ImageField(upload_to='news_images/')
+    hashtags = models.ManyToManyField('Hashtag', related_name='news')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+
+class Hashtag(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Comment(models.Model):
+    COMMENT_STATUS_CHOICES = [
+        ('active', 'Active'),
+        ('inactive', 'Inactive'),
+        ('recomment', 'Recomment'),
+    ]
+
+    news = models.ForeignKey(News, related_name='comments', on_delete=models.CASCADE)
+    user_name = models.CharField(max_length=100)
+    email = models.EmailField()
+    message = models.TextField()
+    status = models.CharField(max_length=10, choices=COMMENT_STATUS_CHOICES, default='active')
+    created_at = models.DateTimeField(auto_now_add=True)
+    parent_comment = models.ForeignKey('self', related_name='recomments', null=True, blank=True,
+                                       on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Comment by {self.user_name} on {self.news.title}"

@@ -1,20 +1,36 @@
+from rest_framework import viewsets, filters, generics
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import generics
-from .models import Doctor
-from .serializers import DoctorSerializer
-from .filters import DoctorFilter
-from rest_framework import generics
-from .models import DockterBranch
-from .serializers import DockterBranchSerializer
+
+from encyclopedia.views import CustomPagination
+from .filters.DoctorFilter import DoctorFilter
+from .models import Doctor, DockterBranch
+from .serializer import DoctorSerializer,DockterBranchSerializer
 
 
-class DoctorListView(generics.ListAPIView):
+class DoctorViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Doctor.objects.all()
     serializer_class = DoctorSerializer
-    filter_backends = [DjangoFilterBackend]
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
+
     filterset_class = DoctorFilter
+    search_fields = ['user__username', 'address', 'description']
+    ordering_fields = ['register_time', 'state']
+    pagination_class = CustomPagination
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        branches = self.request.query_params.getlist('branch')
+
+        if branches:
+            try:
+                branch_ids = [int(branch) for branch in branches]  # تبدیل به عدد
+                queryset = queryset.filter(branch__id__in=branch_ids)
+            except ValueError:
+                pass  # در صورتی که مقدار نامعتبر باشد، هیچ فیلتری اعمال نشود
+
+        return queryset
 
 
-class DockterBranchListView(generics.ListAPIView):
+class DoctorBranchList(generics.ListAPIView):
     queryset = DockterBranch.objects.all()
     serializer_class = DockterBranchSerializer

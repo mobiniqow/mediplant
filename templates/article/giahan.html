@@ -240,7 +240,7 @@
                             <!-- ms-breadcrumb-list start -->
                             <ul class="ms-breadcrumb-list">
                                 <li class="ms-breadcrumb-item"><a href="/">خانه</a><i class="fas fa-chevron-left"></i></li>
-                                <li class="ms-breadcrumb-item active">داروهای ترکیبی</li>
+                                <li class="ms-breadcrumb-item active">دایره المعارف گیاهان</li>
                             </ul>
                             <!-- ms-breadcrumb-list end -->
                         </div>
@@ -341,30 +341,31 @@
     <script src="{% static 'assets/js/plugins/nouislider.js' %}"></script>
 <script>
 let currentPage = 1;
-function loadArticles(page = 1) {
+
+function loadHerbalEncyclopedia(page = 1) {
     $.ajax({
-        url: `/article/api/diseases/?page=${page}`,
+        url: `/article/api/herbal-encyclopedia/?page=${page}`,
         method: 'GET',
         success: function(data) {
             $('#blog-list').empty();
-            data.results.forEach(function(article) {
-                const imageUrl = article.images.length > 0 ? article.images[0].image : '/default-image.jpg'; // تصویر پیش‌فرض در صورت نبودن تصویر
+            data.results.forEach(function(encyclopedia) {
+                const imageUrl = encyclopedia.images.length > 0 ? encyclopedia.images[0].image : '/default-image.jpg'; // تصویر پیش‌فرض در صورت نبودن تصویر
 
                 const articleHTML = `
                     <div class="col-lg-4 col-md-6 col-sm-12 mb-6 ms-blog-block">
                         <div class="ms-blog-item">
                             <div class="news-info">
                                 <figure class="news-img">
-                                    <a href="/blog/encyclopedia-article-diseases/${article.id}">
+                                    <a href="/blog/encyclopedia-article-herbal/${encyclopedia.id}">
                                         <img src="${imageUrl}" alt="news image">
                                     </a>
                                 </figure>
                                 <div class="detail">
-                                    <label>${article.created_at.split('T')[0]} <a href="#">${article.classification}</a></label>
-                                    <h3><a href="/article/details/${article.id}">${article.name}</a></h3>
-                                    <p class="text-length">${article.bomi || ''}</p>
+                                    <label>${encyclopedia.created_at.split('T')[0]} <a href="#">${encyclopedia.classification}</a></label>
+                                    <h3><a href="/article/details/${encyclopedia.id}">${encyclopedia.name}</a></h3>
+                                    <p class="text-length">${encyclopedia.bomi || ''}</p>
                                     <div class="more-info">
-                                        <a href="/article/details/${article.id}">ادامه مطلب<span></span></a>
+                                        <a href="/article/details/${encyclopedia.id}">ادامه مطلب<span></span></a>
                                     </div>
                                 </div>
                             </div>
@@ -376,15 +377,15 @@ function loadArticles(page = 1) {
 
             $('#pagination').empty();
             if (data.previous) {
-                $('#pagination').append(`<li><a href="#" onclick="loadArticles(${page - 1})">قبلی</a></li>`);
+                $('#pagination').append(`<li><a href="#" onclick="loadHerbalEncyclopedia(${page - 1})">قبلی</a></li>`);
             }
             for (let i = 1; i <= Math.ceil(data.count / 9); i++) {
                 $('#pagination').append(`
-                    <li><a href="#" onclick="loadArticles(${i})" ${i === page ? 'class="active"' : ''}>${i}</a></li>
+                    <li><a href="#" onclick="loadHerbalEncyclopedia(${i})" ${i === page ? 'class="active"' : ''}>${i}</a></li>
                 `);
             }
             if (data.next) {
-                $('#pagination').append(`<li><a href="#" onclick="loadArticles(${page + 1})">بعدی</a></li>`);
+                $('#pagination').append(`<li><a href="#" onclick="loadHerbalEncyclopedia(${page + 1})">بعدی</a></li>`);
             }
         },
         error: function() {
@@ -394,7 +395,7 @@ function loadArticles(page = 1) {
 }
 
 $(document).ready(function() {
-    loadArticles(currentPage);
+    loadHerbalEncyclopedia(currentPage);
 });
 
 </script>

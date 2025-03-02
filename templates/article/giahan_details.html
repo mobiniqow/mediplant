@@ -33,7 +33,35 @@
     <link rel="stylesheet" id="main_style" href="{% static 'assets/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
     <link rel="stylesheet" class="color-css" href="{% static 'assets/css/color-01.css' %}">
+    <style>
+        .references-section {
+            margin-top: 30px;
+        }
 
+        .references-section h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        #references-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #references-list li {
+            margin-bottom: 10px;
+        }
+
+        #references-list li a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        #references-list li a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -45,9 +73,7 @@
 <!-- Header start  -->
 {% include '../extentions/header.html' with categories=categories_map is_active=is_active medic_notification=medic_notification shop_notification=shop_notification %}
 
-<!-- Header End  -->
 
-<!-- Category sidebar Start -->
 <div class="ms-side-cat-overlay"></div>
 <div class="col-lg-3 ms-category-sidebar">
     <div class="cat-sidebar">
@@ -350,7 +376,7 @@
 <div class="ms-slider-content">
     <div class="ms-main-slider">
         <div class="ms-slider swiper-container main-slider-nav main-slider-dot">
-            <div class="swiper-wrapper" id="article-slider"> 
+            <div class="swiper-wrapper" id="article-slider">
             </div>
             <div class="swiper-pagination swiper-pagination-white"></div>
             <div class="swiper-buttons">
@@ -361,70 +387,62 @@
     </div>
 </div>
 
-<section class="ms-blog padding-tb-30">
+<section class="section ms-hero m-t-30">
     <div class="container">
-        <div class="row">
-            <div class="ms-blogs-rightside col-md-12">
-                <div class="ms-blogs-content">
-                    <div class="ms-blogs-inner">
-                        <div class="ms-single-blog-item">
-                            <div class="single-blog-info">
-                                <div class="single-blog-detail">
-                                    <h2 id="article-title" class="mb-3"></h2>
-                                    <label id="article-date" class="text-muted mb-4"></label>
-
-                                    <h4>توضیحات:</h4>
-                                    <p id="article-bomi" class="ms-text"></p>
-
-                                    <h4>ترکیبات:</h4>
-                                    <p id="article-compounds" class="ms-text-highlight"></p>
-
-                                    <h4>مقدار ترکیبات:</h4>
-                                    <p id="article-amount-of-compounds"></p>
-
-                                    <h4>موارد مصرف:</h4>
-                                    <p id="article-indications"></p>
-
-                                    <h4>نحوه مصرف:</h4>
-                                    <p id="article-how-to-use"></p>
-
-                                    <h4>موارد منع مصرف:</h4>
-                                    <p id="article-prohibited-usage"></p>
-
-                                    <h4>عوارض جانبی:</h4>
-                                    <p id="article-complications"></p>
-
-                                    <h4>بارداری:</h4>
-                                    <p id="article-pregnancy"></p>
-
-                                    <h4>روش تولید دارو:</h4>
-                                    <p id="article-method-of-production"></p>
-
-                                    <h4>مدت درمان:</h4>
-                                    <p id="article-treatment-duration"></p>
-
-                                    <h4>مکمل‌های دارویی:</h4>
-                                    <p id="article-pharmaceutical-supplements"></p>
-
-                                    <h4>طبیعت دارو:</h4>
-                                    <p id="article-nature"></p>
-
-                                    <h4>شرکت تولیدکننده:</h4>
-                                    <p>
-                                        <a id="article-manufacturer" href="#" target="_blank"></a>
-                                    </p>
-                                </div>
-                            </div>
+        <div class="ms-main-content">
+            <!-- اسلایدر تصاویر -->
+            <div class="ms-slider-content">
+                <div class="ms-main-slider">
+                    <div class="ms-slider swiper-container main-slider-nav main-slider-dot">
+                        <div class="swiper-wrapper" id="article-slider">
+                            <!-- اسلایدها به صورت داینامیک بارگذاری می‌شوند -->
+                        </div>
+                        <div class="swiper-pagination swiper-pagination-white"></div>
+                        <div class="swiper-buttons">
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- نمایش اطلاعات گیاه -->
+            <div class="herbal-info-section">
+                <h3>اطلاعات گیاه</h3>
+                <p><strong>نام گیاه:</strong> <span id="plant-name"></span></p>
+                <p><strong>نام لاتین:</strong> <span id="latin-name"></span></p>
+                <p><strong>نام دیگر:</strong> <span id="another-name"></span></p>
+                <p><strong>زیستگاه:</strong> <span id="habitat"></span></p>
+                <p><strong>تاریخچه:</strong> <span id="history"></span></p>
+                <p><strong>ترکیبات:</strong> <span id="components"></span></p>
+                <p><strong>ترکیبات فعال:</strong> <span id="compounds"></span></p>
+                <p><strong>داروشناسی:</strong> <span id="pharmacology"></span></p>
+                <p><strong>موارد مصرف:</strong> <span id="indications"></span></p>
+                <p><strong>عوارض:</strong> <span id="effects"></span></p>
+                <p><strong>طبیعت گیاه:</strong> <span id="the-nature-of-plant"></span></p>
+                <p><strong>عوارض جانبی:</strong> <span id="complications"></span></p>
+                <p><strong>بارداری:</strong> <span id="pregnancy"></span></p>
+                <p><strong>مدت درمان:</strong> <span id="treatment-duration"></span></p>
+                <p><strong>روش نگهداری:</strong> <span id="maintenance-method"></span></p>
+                <p><strong>نوع گیاه:</strong> <span id="plant-type"></span></p>
+                <p><strong>دستور مصرف:</strong> <span id="how-to-use"></span></p>
+                <p><strong>طول عمر گیاه:</strong> <span id="lifespan-of-plant"></span></p>
+                <p><strong>مقدار مصرف:</strong> <span id="dosage"></span></p>
+                <p><strong>ممنوعیت مصرف:</strong> <span id="prohibited-usage"></span></p>
+                <p><strong>مکمل‌های دارویی:</strong> <span id="supplements"></span></p>
+            </div>
+
+            <!-- نمایش مراجع -->
+            <div class="references-section">
+                <h3>مراجع</h3>
+                <ul id="references-list">
+                    <!-- مراجع به صورت داینامیک بارگذاری می‌شوند -->
+                </ul>
             </div>
         </div>
     </div>
 </section>
 
-
-<!-- Blog section End -->
 
 <!-- Footer Start -->
 {% include '../extentions/footer.html' %}
@@ -502,29 +520,11 @@
 <script src="{% static 'assets/js/main.js' %}"></script>
 <script>
     $(document).ready(function () {
-        // دریافت ID از URL
-
         if ({{ articleId }}) {
             $.ajax({
-                url: `/article/api/combined-drugs/{{ articleId }}/`,
+                url: `/article/api/herbal-encyclopedia/{{ articleId }}/`,
                 method: 'GET',
-                success: function (data) { 
-                    $('#article-title').text(data.name); 
-                    $('#article-date').text(`تاریخ انتشار: ${new Date(data.created_at).toLocaleDateString('fa-IR')}`); 
-                    $('#article-bomi').text(data.bomi);
-                    $('#article-compounds').text(data.compounds);
-                    $('#article-amount-of-compounds').text(data.amount_of_compounds);
-                    $('#article-indications').text(data.indications);
-                    $('#article-how-to-use').text(data.how_to_use);
-                    $('#article-prohibited-usage').text(data.prohibited_usage);
-                    $('#article-complications').text(data.complications);
-                    $('#article-pregnancy').text(data.pregnancy);
-                    $('#article-method-of-production').text(data.method_of_drug_production);
-                    $('#article-treatment-duration').text(data.treatment_duration);
-                    $('#article-pharmaceutical-supplements').text(data.pharmaceutical_supplements);
-                    $('#article-nature').text(data.the_nature_of_the_drug); 
-                    $('#article-manufacturer').attr('href', `https://www.google.com/search?q=${encodeURIComponent(data.drug_manufacturing_company)}`);
-                    $('#article-manufacturer').text(data.drug_manufacturing_company); 
+                success: function (data) {
                     $('#article-slider').empty();
                     data.images.forEach(function (img, index) {
                         $('#article-slider').append(`
@@ -536,7 +536,7 @@
                             </div>
                         </div>
                     `);
-                    }); 
+                    });
                     new Swiper('.swiper-container', {
                         loop: true,
                         autoplay: {
@@ -552,6 +552,35 @@
                             prevEl: '.swiper-button-prev',
                         },
                     });
+                    $('#plant-name').text(data.name);
+                    $('#latin-name').text(data.latin_name);
+                    $('#another-name').text(data.another_name);
+                    $('#habitat').text(data.habitat);
+                    $('#history').text(data.history);
+                    $('#components').text(data.components);
+                    $('#compounds').text(data.compounds);
+                    $('#pharmacology').text(data.pharmacology);
+                    $('#indications').text(data.indications);
+                    $('#effects').text(data.effects);
+                    $('#the-nature-of-plant').text(data.the_nature_of_the_plant);
+                    $('#complications').text(data.complications);
+                    $('#pregnancy').text(data.pregnancy);
+                    $('#treatment-duration').text(data.treatment_duration);
+                    $('#maintenance-method').text(data.maintenance_method);
+                    $('#plant-type').text(data.plant_type);
+                    $('#how-to-use').text(data.how_to_use);
+                    $('#lifespan-of-plant').text(data.lifespan_of_plant);
+                    $('#dosage').text(data.dosage);
+                    $('#prohibited-usage').text(data.prohibited_usage);
+                    $('#supplements').text(data.supplements);
+
+                    // نمایش مراجع
+                    $('#references-list').empty();
+                    data.references.forEach(function (reference) {
+                        $('#references-list').append(`
+                        <li><a href="https://www.google.com/search?q=${encodeURIComponent(reference.refrence.name)}" target="_blank">${reference.refrence.name}</a></li>
+                    `);
+                    });
                 },
                 error: function () {
                     alert('مشکلی در دریافت اطلاعات مقاله پیش آمد.');
@@ -561,7 +590,6 @@
             alert('مقاله‌ای یافت نشد.');
         }
     });
-
 </script>
 </body>
 

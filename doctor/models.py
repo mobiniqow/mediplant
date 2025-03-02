@@ -43,11 +43,12 @@ class Doctor(models.Model):
                                verbose_name='تصویر پرسنلی')
     description = models.TextField(verbose_name='توضیحات')
     id_active = models.BooleanField(verbose_name='وضعیت فعالیت')
-    register_time = models.IntegerField(verbose_name='مهلت ثبت نام')
+    register_time = models.IntegerField(verbose_name='مهلت ثبت نام', default=0)
     responsiveness = models.IntegerField(choices=Responsiveness.choices, default=Responsiveness.WHITE,
                                          verbose_name='نوع عملکرد')
     postal_code = models.CharField(max_length=12, verbose_name='کد پستی')
     shaba = models.CharField(max_length=12, verbose_name='شماره شبا')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='زمان ایجاد')
 
     class Meta:
         verbose_name = "پزشک"
