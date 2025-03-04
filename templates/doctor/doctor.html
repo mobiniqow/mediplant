@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="{% static 'assets/css/plugins/slick.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/plugins/nouislider.css' %}">
 
-    <!-- Main Style -->
+
     <link rel="stylesheet" id="main_style" href="{% static 'assets/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
     <link rel="stylesheet" class="color-css" href="{% static 'assets/css/color-01.css' %}">
@@ -601,9 +601,9 @@
                 console.error("خطا در دریافت شاخه‌های پزشکی!");
             }
         });
-        $(document).on("change", ".branch-filter", function () { 
+        $(document).on("change", ".branch-filter", function () {
             selectedBranches = [];
- 
+
             $(".branch-filter:checked").each(function () {
                 selectedBranches.push($(this).data("id"));
             });
@@ -613,11 +613,10 @@
             // ارسال به تابع fetchDoctors با آرایه selectedBranches
             fetchDoctors(1, selectedBranches);
         });
-        let currentPage = 1; 
+        let currentPage = 1;
 
         fetchDoctors(currentPage, []);
 
-        // کلیک روی دکمه‌های صفحه‌بندی
         $(document).on("click", ".ms-pro-pagination-inner a", function (e) {
             e.preventDefault();
             let page = $(this).attr("data-page");
@@ -627,7 +626,6 @@
             }
         });
 
-
         $("#branchFilter").on("change", function () {
             selectedBranches = $(this).val() || null;
             currentPage = 1;
@@ -635,10 +633,6 @@
         });
 
     });
-
-
-    
-
 
     function fetchDoctors(page = 1, selectedBranches = []) {
         let apiUrl = `/doctor/api/doctors/?page=${page}`;
