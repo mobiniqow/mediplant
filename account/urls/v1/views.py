@@ -114,6 +114,7 @@ class LoginAPIView(GenericAPIView):
         serializer.is_valid(raise_exception=True)
         phone = serializer.validated_data.get("phone")
         user = get_object_or_404(User, phone=phone)
+
         otp = User.objects.make_random_password(length=4, allowed_chars="123456789")
         user.set_password(otp)
         send_otp_message(phone, otp)

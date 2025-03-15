@@ -1,6 +1,6 @@
 from django.core.validators import FileExtensionValidator, MinValueValidator
 from django.db import models
-
+from ckeditor.fields import RichTextField
 from account.models import User
 
 
@@ -41,7 +41,7 @@ class Doctor(models.Model):
     picture = models.FileField(upload_to='doctor/avatar',
                                validators=[FileExtensionValidator(['jpg', 'png', 'jpeg'])], blank=True,
                                verbose_name='تصویر پرسنلی')
-    description = models.TextField(verbose_name='توضیحات')
+    description = RichTextField(verbose_name='توضیحات', default=None)
     id_active = models.BooleanField(verbose_name='وضعیت فعالیت')
     register_time = models.IntegerField(verbose_name='مهلت ثبت نام', default=0)
     responsiveness = models.IntegerField(choices=Responsiveness.choices, default=Responsiveness.WHITE,
@@ -49,6 +49,7 @@ class Doctor(models.Model):
     postal_code = models.CharField(max_length=12, verbose_name='کد پستی')
     shaba = models.CharField(max_length=12, verbose_name='شماره شبا')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='زمان ایجاد')
+    medical_system_code = models.CharField(max_length=10, default="2112032")
 
     class Meta:
         verbose_name = "پزشک"

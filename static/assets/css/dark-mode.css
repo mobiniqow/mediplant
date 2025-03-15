@@ -717,36 +717,36 @@ p {
     border-color: #272930;
 }
 
-.ms-cart-content .table-content table thead > tr {
+.ms-cart-content .table-content table thead>tr {
     background-color: #17181c !important;
     border-color: #272930;
 }
 
-.ms-cart-content .table-content table thead > tr > th {
+.ms-cart-content .table-content table thead>tr>th {
     color: #ccc;
 }
 
-.ms-cart-content .table-content table tbody > tr {
+.ms-cart-content .table-content table tbody>tr {
     border-color: #272930;
 }
 
-.ms-cart-content .table-content table tbody > tr td .cart-qty-plus-minus {
+.ms-cart-content .table-content table tbody>tr td .cart-qty-plus-minus {
     border-color: #272930;
 }
 
-.ms-cart-content .table-content table tbody > tr td .cart-qty-plus-minus input {
+.ms-cart-content .table-content table tbody>tr td .cart-qty-plus-minus input {
     color: #999;
 }
 
-.ms-cart-content .table-content table tbody > tr td.ms-cart-pro-name a {
+.ms-cart-content .table-content table tbody>tr td.ms-cart-pro-name a {
     color: #999;
 }
 
-.ms-cart-content .table-content table tbody > tr td.ms-cart-pro-price {
+.ms-cart-content .table-content table tbody>tr td.ms-cart-pro-price {
     color: #999;
 }
 
-.ms-cart-content .table-content table tbody > tr td.ms-cart-pro-subtotal {
+.ms-cart-content .table-content table tbody>tr td.ms-cart-pro-subtotal {
     color: #999;
 }
 
@@ -826,20 +826,20 @@ p {
     color: #999;
 }
 
-.ms-checkout-section [type=radio]:not(:checked) + label {
+.ms-checkout-section [type=radio]:not(:checked)+label {
     color: #999;
 }
 
-.ms-checkout-section [type=radio]:not(:checked) + label:before {
+.ms-checkout-section [type=radio]:not(:checked)+label:before {
     background-color: #101012 !important;
     border-color: #3e9172;
 }
 
-.ms-checkout-section [type=radio]:checked + label {
+.ms-checkout-section [type=radio]:checked+label {
     color: #999;
 }
 
-.ms-checkout-section [type=radio]:checked + label:before {
+.ms-checkout-section [type=radio]:checked+label:before {
     background-color: #101012 !important;
     border-color: #3e9172;
 }
@@ -850,89 +850,6 @@ p {
 
 .ms-check-login-form label {
     color: #999;
-}
-
-.form-drop-down {
-    --animate-duration: 1s;
-    --animate-delay: 1s;
-    --animate-repeat: 1;
-    --bs-blue: #0d6efd;
-    --bs-indigo: #6610f2;
-    --bs-purple: #6f42c1;
-    --bs-pink: #d63384;
-    --bs-red: #dc3545;
-    --bs-orange: #fd7e14;
-    --bs-yellow: #ffc107;
-    --bs-green: #198754;
-    --bs-teal: #20c997;
-    --bs-cyan: #0dcaf0;
-    --bs-white: #fff;
-    --bs-gray: #6c757d;
-    --bs-gray-dark: #343a40;
-    --bs-gray-100: #f8f9fa;
-    --bs-gray-200: #e9ecef;
-    --bs-gray-300: #dee2e6;
-    --bs-gray-400: #ced4da;
-    --bs-gray-500: #adb5bd;
-    --bs-gray-600: #6c757d;
-    --bs-gray-700: #495057;
-    --bs-gray-800: #343a40;
-    --bs-gray-900: #212529;
-    --bs-primary: #0d6efd;
-    --bs-secondary: #6c757d;
-    --bs-success: #198754;
-    --bs-info: #0dcaf0;
-    --bs-warning: #ffc107;
-    --bs-danger: #dc3545;
-    --bs-light: #f8f9fa;
-    --bs-dark: #212529;
-    --bs-primary-rgb: 13, 110, 253;
-    --bs-secondary-rgb: 108, 117, 125;
-    --bs-success-rgb: 25, 135, 84;
-    --bs-info-rgb: 13, 202, 240;
-    --bs-warning-rgb: 255, 193, 7;
-    --bs-danger-rgb: 220, 53, 69;
-    --bs-light-rgb: 248, 249, 250;
-    --bs-dark-rgb: 33, 37, 41;
-    --bs-white-rgb: 255, 255, 255;
-    --bs-black-rgb: 0, 0, 0;
-    --bs-body-color-rgb: 33, 37, 41;
-    --bs-body-bg-rgb: 255, 255, 255;
-    --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
-    --bs-body-font-family: var(--bs-font-sans-serif);
-    --bs-body-font-size: 1rem;
-    --bs-body-font-weight: 400;
-    --bs-body-line-height: 1.5;
-    --bs-body-color: #212529;
-    --bs-body-bg: #fff;
-    --swiper-theme-color: #007aff;
-    --swiper-navigation-size: 44px;
-    --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
-    --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Free";
-    --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Free";
-    line-height: var(--bs-body-line-height);
-    color: var(--bs-body-color);
-    text-align: var(--bs-body-text-align);
-    -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    direction: rtl;
-    font-family: IRANSans;
-    font-weight: 400;
-    user-select: none;
-    --bs-gutter-x: 1.5rem;
-    --bs-gutter-y: 0;
-    box-sizing: border-box;
-    position: relative;
-    display: flex;
-    width: 100%;
-    height: 50px;
-    border: 1px solid #eee;
-    font-size: 14px;
-    padding: 0;
-    margin-bottom: 27px;
-    border-radius: 3px;
 }
 
 .ms-check-login-form input {
@@ -1135,7 +1052,7 @@ p {
     color: #999;
 }
 
-.ms-single-product .single-pro-content .ms-pro-variation .ms-pro-variation-inner > span {
+.ms-single-product .single-pro-content .ms-pro-variation .ms-pro-variation-inner>span {
     color: #ccc;
 }
 

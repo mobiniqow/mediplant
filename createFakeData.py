@@ -5,7 +5,7 @@ django.setup()
 
 from model_bakery.recipe import Recipe
 from shop.models import Shop, ShopImage
-from mainian import Faker
+from faker import Faker
 
 fake = Faker('fa_IR')
 

@@ -4,7 +4,8 @@ from encyclopedia.views import NewsDetailView
 from .views.articles import EncyclopediaCombinedDrugsView, EncyclopediaCombinedDetailsView, EncyclopediaDetailsView, \
     EncyclopediaView, DiseasesView, DiseasesDetailsView, HerbalView, HerbalDetailsView, NewsView, NewsDetailsView
 from .views.auth import LoginView, VerifyView, ProfileView
-from .views.doctor import DocktorList
+from .views.doctor import DoctorList, DoctorDetailsList, DoctorChatDetails, DoctorprescriptionDetails, \
+    DoctorHistoryDetails
 from .views.others import AboutUsView, ContactUsView
 from .views.product import ShopProductListView, ShopProductView, ProductListView
 from .views.shop import CategoryView, IndexView, ShopView, ShopDetailsView, SearchProduct, CheckoutView, ShopCartView, \
@@ -41,10 +42,12 @@ urlpatterns = [
     path("blog/encyclopedia-article-diseases/<int:articleId>/", DiseasesDetailsView.as_view(), ),
     path("blog/encyclopedia-article-herbal/", HerbalView.as_view(), ),
     path("blog/encyclopedia-article-herbal/<int:articleId>/", HerbalDetailsView.as_view(), ),
-    path("blog/news/", NewsView.as_view(), ),
-    path("blog/news/<int:articleId>/", NewsDetailsView.as_view(), ),
-
-    # doctors
-    path("medicine/", DocktorList.as_view(),),
+    path("blog/news/", NewsView.as_view(),),
+    path("blog/news/<int:articleId>/", NewsDetailsView.as_view(),),
+    path("medicine/", DoctorList.as_view(),),
+    path("medicine/<int:doctor>", DoctorDetailsList.as_view(),),
+    path("medicine/<int:doctor>/chats/", DoctorChatDetails.as_view(),),
+    path("medicine/<int:doctor>/prescription/", DoctorprescriptionDetails.as_view(),),
+    path("medicine/<int:doctor>/history/", DoctorHistoryDetails.as_view(),),
 
 ]

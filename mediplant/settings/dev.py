@@ -7,20 +7,22 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 DEBUG = True
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR,"static")
+
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-# print([os.path.join(BASE_DIR, "static")])
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'mediplant',
-#         'USER': 'postgres',
-#         'PASSWORD': '1423joh89ydfas!@#$djkafsk',
-#         'HOST': 'localhost',
-#         'PORT': '5433',
-#     }
-# }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'mydatabase',
+        'USER': 'user',
+        'PASSWORD': 'password',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    }
+}
+
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 20003
+
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 16,
@@ -37,6 +39,7 @@ MERCHANT_ID = "5ed2e796-0448-40db-920c-1df64ddb0551"
 CALLBACK_URL = "http://localhost:8000/transaction/payment/verify/"
 
 TAILWIND_APP_NAME = 'theme'
+
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(days=14),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=45),
@@ -60,6 +63,15 @@ SIMPLE_JWT = {
 }
 
 APPEND_SLASH=True
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [('redis', 6379)],  # نام سرویس Redis از docker-compose.yml
+        },
+    },
+}
+
 #
 # import os
 #

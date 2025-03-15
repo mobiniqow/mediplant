@@ -46,7 +46,7 @@
     font-weight: normal;
     src: url('../fonts/iranSans/IRANSansWeb(FaNum).eot');
     src: url('../fonts/iranSans/IRANSansWeb(FaNum).eot?#iefix') format('embedded-opentype'), /* IE6-8 */
-    /*url('../fonts/iranSans/IRANSansWeb(FaNum).woff2') format('woff2'), !* FF39+,Chrome36+, Opera24+*!*/
+    url('../fonts/iranSans/IRANSansWeb(FaNum).woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
     url('../fonts/iranSans/IRANSansWeb(FaNum).woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
     url('../fonts/iranSans/IRANSansWeb(FaNum).ttf') format('truetype');
 }
@@ -57,7 +57,7 @@
     font-weight: bold;
     src: url('../fonts/iranSans/IRANSansWeb(FaNum)_Bold.eot');
     src: url('../fonts/iranSans/IRANSansWeb(FaNum)_Bold.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
-    /*url('../fonts/iranSans/IRANSansWeb(FaNum)_Bold.woff2') format('woff2'), !* FF39+,Chrome36+, Opera24+*!*/
+    url('../fonts/iranSans/IRANSansWeb(FaNum)_Bold.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
     url('../fonts/iranSans/IRANSansWeb(FaNum)_Bold.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
     url('../fonts/iranSans/IRANSansWeb(FaNum)_Bold.ttf') format('truetype');
 }
@@ -68,7 +68,7 @@
     font-weight: 500;
     src: url('../fonts/iranSans/IRANSansWeb(FaNum)_Medium.eot');
     src: url('../fonts/iranSans/IRANSansWeb(FaNum)_Medium.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
-    /*url('../fonts/iranSans/IRANSansWeb(FaNum)_Medium.woff2') format('woff2'), !* FF39+,Chrome36+, Opera24+*!*/
+    url('../fonts/iranSans/IRANSansWeb(FaNum)_Medium.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
     url('../fonts/iranSans/IRANSansWeb(FaNum)_Medium.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
     url('../fonts/iranSans/IRANSansWeb(FaNum)_Medium.ttf') format('truetype');
 }
@@ -79,7 +79,7 @@
     font-weight: 300;
     src: url('../fonts/iranSans/IRANSansWeb(FaNum)_Light.eot');
     src: url('../fonts/iranSans/IRANSansWeb(FaNum)_Light.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
-    /*url('../fonts/iranSans/IRANSansWeb(FaNum)_Light.woff2') format('woff2'), !* FF39+,Chrome36+, Opera24+*!*/
+    url('../fonts/iranSans/IRANSansWeb(FaNum)_Light.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
     url('../fonts/iranSans/IRANSansWeb(FaNum)_Light.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
     url('../fonts/iranSans/IRANSansWeb(FaNum)_Light.ttf') format('truetype');
 }
@@ -90,7 +90,7 @@
     font-weight: 200;
     src: url('../fonts/iranSans/IRANSansWeb(FaNum)_UltraLight.eot');
     src: url('../fonts/iranSans/IRANSansWeb(FaNum)_UltraLight.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
-    /*url('../fonts/iranSans/IRANSansWeb(FaNum)_UltraLight.woff2') format('woff2'), !* FF39+,Chrome36+, Opera24+*!*/
+    url('../fonts/iranSans/IRANSansWeb(FaNum)_UltraLight.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
     url('../fonts/iranSans/IRANSansWeb(FaNum)_UltraLight.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
     url('../fonts/iranSans/IRANSansWeb(FaNum)_UltraLight.ttf') format('truetype');
 }
@@ -7343,7 +7343,7 @@ section.ms-instagram-section {
         width: 100% !important;
         display: block !important;
         grid-gap: 8px !important;
-
+        
     }
     .div-info-dr{
         display: flex;
@@ -7372,7 +7372,7 @@ section.ms-instagram-section {
         display: block;
     }
 
-
+    
 }
 .name-dr, .info-dr{
     /* border: 1px solid black; */
@@ -7453,29 +7453,48 @@ section.ms-instagram-section {
 }
 .box-chat{
     height: 600px;
+    padding: 8px;
+    border-radius: 8px;
     overflow-y: scroll;
+    background-color: #F3F3F3;
 }
 .box-chat::-webkit-scrollbar{
     display: none;
 }
 .box-sent-message{
-    padding-top: 10px;
+    /* border: 1px solid black; */
+    background-color: #ddd;
+    padding: 4px;
+    border-radius: 8px;
+    /* display: flex;
+    grid-gap: 5px; */
+}
+.inset-box-sent-message{
+    padding: 4px;
+    border-radius: 8px;
     display: flex;
     grid-gap: 5px;
+}
+.detail-file-uploader{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 16px;
 }
 .btn-sent-message{
     /* border: 1px solid black; */
     padding: 0 10px;
-    height: 100%;
+    /* height: 100%; */
     background-color: #ddd;
     border-radius: 4px;
 }
 .input-text{
     width: 100%;
-    height: 40px;
+    /* height: 40px; */
     border: 2px solid #ddd;
+    padding: 0 8px;
     background-color: none;
-    border-radius: 4px;
+    border-radius: 16px;
     font-family: sans;
     font-size: 18px;
 }
@@ -7499,7 +7518,7 @@ section.ms-instagram-section {
 }
 .chat-admin{
     /* border: 1px solid #888888; */
-    background-color: #ddd;
+    background-color: #ffffff;
     border-radius: 4px;
     width: max-content;
     padding: 8px;
@@ -7513,16 +7532,151 @@ section.ms-instagram-section {
 }
 .chat-user{
     /* border: 1px solid #888888; */
-    background-color: #ddd;
+    background-color: #eeffde;
     width: max-content;
     border-radius: 4px;
     padding: 8px;
     max-width: 400px;
+    margin-top: 8px;
+}
+.time{
+    margin: 0;
+    text-align: left;
+}
+.time-admin{
+    margin: 0;
 }
 .img-admin{
     width: 35px;
     height: 35px;
     border-radius: 50px;
+}
+
+.tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+.tab-button {
+    background-color: white;
+    color: gray;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.tab-button.active {
+    background-color: #F0F0F0;
+    color: black;
+}
+.tab-content {
+    display: none;
+    padding: 16px 0;
+    /* background-color: #1a1a1a; */
+    border-radius: 8px;
+    margin-top: 10px;
+}
+.tab-content.active {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+.file-label {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: transparent;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.file-name {
+    /* margin-left: 10px; */
+    color: gray;
+    font-size: 12px;
+}
+.file-label-img{
+    width: 20px;
+    height: 20px;
+}
+.time-watch-img{
+    width: 20px;
+    height: 20px;
+}
+.tab-content-two{
+    padding: 0;
+    /* border: 1px solid black; */
+}
+.tab-content-two > ul{
+    margin: 8px 0 0;
+    padding: 0;
+}
+.list-prescription{
+    border: 1px solid #ccc;
+    padding: 4px 24px 4px 0;
+    border-radius: 8px;
+    background-color: #ffffff;
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+}
+.list-prescription > div > button{
+    font-size: 14px;
+}
+.list-prescription > div > p{
+    margin: 0;
+}
+.titr-list-prescription{
+    padding: 4px 24px 4px 0;
+    border-radius: 8px;
+    background-color: #F0F0F0;
+    /* border: 1px solid black; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+}
+.titr-list-prescription > div > p{
+    margin: 0;
+    padding: 0;
+}
+.modal {
+    display: none; /* مخفی به صورت پیش‌فرض */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+.img-visit{
+    width: 100%;
+    border-radius: 8px;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 400px;
+    position: relative;
+}
+.btn-close-modal{
+    /* border: 1px solid black; */
+    background-color: green;
+    color: white;
+    padding: 8px ;
+    border-radius: 8px;
+}
+
+/* دکمه بستن */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
 }
 /*  */
 
@@ -7951,7 +8105,7 @@ section.ms-instagram-section {
         grid-gap: 8px;
         border-radius: 20px;
         -webkit-box-shadow: 0 10px 20px 0 rgba(0,0,0,.09);
-
+    
     }
     .visit-res > div{
         display: flex;

@@ -14,12 +14,12 @@ function updateTimera() {
     m = mins - hours * 60;
     s = secs - mins * 60;
 
-    // document.getElementById("dealend")
-    //     .innerHTML =
-    //     '<div class="dealend-timer"><div class="time-block"><div class="time">' + d + '</div><span class="day">روز:</span></div>' +
-    //     '<div class="time-block"><div class="time">' + h + '</div><span class="dots">ساعت:</span></div>' +
-    //     '<div class="time-block"><div class="time">' + m + '</div><span class="dots">دقیقه:</span></div>' +
-    //     '<div class="time-block"><div class="time">' + s + '</div><span class="dots">ثانیه</span></div></div>';
+    document.getElementById("dealend")
+        .innerHTML =
+        '<div class="dealend-timer"><div class="time-block"><div class="time">' + d + '</div><span class="day">روز:</span></div>' +
+        '<div class="time-block"><div class="time">' + h + '</div><span class="dots">ساعت:</span></div>' +
+        '<div class="time-block"><div class="time">' + m + '</div><span class="dots">دقیقه:</span></div>' +
+        '<div class="time-block"><div class="time">' + s + '</div><span class="dots">ثانیه</span></div></div>';
 }
 
 setInterval('updateTimera()', 1000);

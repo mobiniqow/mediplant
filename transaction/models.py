@@ -1,15 +1,36 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
-import requests 
+import requests
 
 import json
 
 from sale.models import SaleBasket
 import jdatetime
 
-class Transaction(models.Model):
 
+class DoctorTransaction(models.Model):
+    class TransactionState(models.IntegerChoices):
+        SUSPEND = 0
+        REQUESTED = 1
+        ACCEPT = 2
+        FAILED = 3
+        TIMEOUT = 4
+
+    user = models.ForeignKey("account.User", on_delete=models.CASCADE)
+    amount = models.IntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    transaction_type = models.IntegerField( choices=TransactionState.choices,
+                                        default=TransactionState.SUSPEND)
+
+    card = models.CharField(max_length=33, null=True, blank=True)
+    card_hash = models.CharField(max_length=128, null=True, blank=True)
+    ref_id = models.CharField(max_length=32, null=True, blank=True)
+    authority = models.CharField(max_length=100, null=True, blank=True)
+
+
+
+class Transaction(models.Model):
     TRANSACTION_TYPES = [
         ('deposit', 'Deposit'),
         ('withdrawal', 'Withdrawal'),
@@ -31,12 +52,13 @@ class Transaction(models.Model):
     message = models.TextField(null=True, blank=True)
     address = models.TextField(null=True, blank=True)
     lat = models.TextField(null=True, blank=True)
-    lng =models.TextField(null=True, blank=True)
-    code_posti = models.CharField(max_length=40,default="")
-    cart = models.ForeignKey(SaleBasket, on_delete=models.CASCADE,null=True,blank=True,related_name='cart_transaction')
-    card = models.CharField(max_length=33,null=True,blank=True)
-    card_hash = models.CharField(max_length=128,null=True,blank=True)
-    ref_id = models.CharField(max_length=32,null=True,blank=True)
+    lng = models.TextField(null=True, blank=True)
+    code_posti = models.CharField(max_length=40, default="")
+    cart = models.ForeignKey(SaleBasket, on_delete=models.CASCADE, null=True, blank=True,
+                             related_name='cart_transaction')
+    card = models.CharField(max_length=33, null=True, blank=True)
+    card_hash = models.CharField(max_length=128, null=True, blank=True)
+    ref_id = models.CharField(max_length=32, null=True, blank=True)
 
     def __str__(self):
         return f"Transaction {self.transaction_type} - {self.amount} - {self.status}"
@@ -67,7 +89,9 @@ class Payment(models.Model):
     cart = models.ForeignKey(SaleBasket, on_delete=models.CASCADE)
     transaction = models.OneToOneField(Transaction, on_delete=models.CASCADE)
     payment_url = models.URLField(null=True, blank=True)
-    status = models.CharField(max_length=10, choices=[('pending', 'Pending'), ('completed', 'Completed'), ('failed', 'Failed')], default='pending')
+    status = models.CharField(max_length=10,
+                              choices=[('pending', 'Pending'), ('completed', 'Completed'), ('failed', 'Failed')],
+                              default='pending')
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -94,7 +118,7 @@ class Payment(models.Model):
             if response_data['data']['code'] == 100:
                 self.payment_url = response_data['data']
                 transaction = self.transaction
-                transaction.authority =  response_data  ['data']['authority']
+                transaction.authority = response_data['data']['authority']
                 transaction.save()
                 self.status = 'pending'
                 self.save()
@@ -107,4 +131,3 @@ class Payment(models.Model):
             self.status = 'failed'
             self.save()
             raise Exception("خطا در ارتباط با زرین‌پال")
-

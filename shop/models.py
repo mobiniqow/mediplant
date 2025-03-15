@@ -33,18 +33,19 @@ class Shop(models.Model):
                              verbose_name='تصویر')
     national_code = models.CharField(max_length=10, unique=True, verbose_name='کدملی', blank=True)
     description = models.TextField(verbose_name='توضیحات')
-    catalog = RichTextField(blank=True,null=True, verbose_name='کاتالوگ')
+    catalog = RichTextField(blank=True, null=True, verbose_name='کاتالوگ')
     rate_state = models.IntegerField(choices=ShopRate.choices, default=ShopRate.WHITE, verbose_name='وضعیت امتیاز')
     price = models.IntegerField(verbose_name='واحد قیمت بر حسب واحد', default=0)
     location_lat = models.CharField(max_length=12, default="35.7475")
     location_lng = models.CharField(max_length=12, default="51.2358")
+
     # location = gis_models.PointField(null=True, blank=True, verbose_name='موقعیت مکانی',)
 
     # def save(self, *args, **kwargs):
     #     from django.contrib.gis.geos import Point
-        # تبدیل عرض و طول جغرافیایی به یک نقطه
-        # self.location = Point(float(self.location_lat), float(self.location_lng))
-        # super().save(*args, **kwargs)
+    # تبدیل عرض و طول جغرافیایی به یک نقطه
+    # self.location = Point(float(self.location_lat), float(self.location_lng))
+    # super().save(*args, **kwargs)
     class Meta:
         verbose_name = 'فروشگاه'
         verbose_name_plural = 'فروشگاه‌ها'
@@ -110,7 +111,7 @@ class ShopProduct(models.Model):
 
     material = models.IntegerField(choices=Material.choices, verbose_name='جنس کالا', default=Material.BASTE_BANDI)
 
-    how_to_use = models.CharField( max_length=255,default="نحوه مصرف")
+    how_to_use = models.CharField(max_length=255, default="نحوه مصرف")
 
     class Meta:
         verbose_name = 'محصول فروشگاه'
@@ -120,3 +121,17 @@ class ShopProduct(models.Model):
         return self.shop.name
 
 
+class ProductNeedToAdded(models.Model):
+    class State(models.IntegerChoices):
+        SUSPEND = 1
+        REPORT = 2
+        ACCEPT = 3
+        IN_PROGRES = 4
+
+    state = models.IntegerField(choices=State.choices, default=State.SUSPEND)
+    shop = models.ForeignKey(Shop, on_delete=models.SET_NULL, null=True, verbose_name='فروشگاه')
+    name = models.CharField(max_length=33, verbose_name="نام کالا", unique=True)
+    image = models.FileField(upload_to='shop/image/need_product/',
+                             validators=[FileExtensionValidator(['jpg', 'png', 'jpeg']), ], blank=True,
+                             verbose_name='تصویر')
+    description = RichTextField(blank=True, null=True, verbose_name='معرفی محصول')

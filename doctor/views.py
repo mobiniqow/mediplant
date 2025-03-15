@@ -23,10 +23,10 @@ class DoctorViewSet(viewsets.ReadOnlyModelViewSet):
 
         if branches:
             try:
-                branch_ids = [int(branch) for branch in branches]  # تبدیل به عدد
+                branch_ids = [int(branch) for branch in branches]
                 queryset = queryset.filter(branch__id__in=branch_ids)
             except ValueError:
-                pass  # در صورتی که مقدار نامعتبر باشد، هیچ فیلتری اعمال نشود
+                pass
 
         return queryset
 

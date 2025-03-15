@@ -1,6 +1,6 @@
 from feedback.models import FeedbackCart
 from sale.models import SaleBasket
-from .models import Transaction, Payment
+from .models import Transaction, Payment, DoctorTransaction
 import requests
 import json
 from rest_framework.response import Response
@@ -83,55 +83,60 @@ def create_feedback_cart(user, cart):
 
 @api_view(['GET'])
 def verify_payment(request):
-    # دریافت پارامترهای Authority و Status از URL
     status = request.GET.get("Status")
     authority = request.GET.get("Authority")
 
-    # دریافت اطلاعات پرداخت
-    try:
-        payment = Payment.objects.get(transaction__authority=authority)
-    except Payment.DoesNotExist:
-        return JsonResponse({"error": "پرداخت یافت نشد"})
+    transaction = Transaction.objects.filter(authority=authority).first()
+    doctor_transaction = DoctorTransaction.objects.filter(ref_id=authority).first()
 
-    if status == "OK":
-        # ارسال درخواست تایید پرداخت از زرین‌پال
-        url = "https://payment.zarinpal.com/pg/v4/payment/verify.json"
-        data = {
-            'merchant_id': settings.MERCHANT_ID,
-            'amount': payment.cart.price,
-            'authority': authority
-        }
-        headers = {'Content-Type': 'application/json'}
-        response = requests.post(url, data=json.dumps(data), headers=headers)
+    if not transaction and not doctor_transaction:
+        return JsonResponse({"error": "تراکنش یافت نشد"}, status=404)
 
-        if response.status_code == 200:
-            response_data = response.json()
-            if response_data['data']['code'] in [100, 101]:
-                transaction = Transaction.objects.filter(authority=authority).first()
-                if transaction:
-                    transaction.status = 'success'
-                    transaction.card = response_data['data']['card_pan']
-                    transaction.card_hash = response_data['data']['card_hash']
-                    transaction.ref_id = response_data['data']['ref_id']
-                    transaction.save()
-                    payment.status = 'completed'
-                    payment.save()
-                    feedback_cart = create_feedback_cart(payment.user, payment.cart)
-                    sb = payment.cart
-                    if sb:
-                        sb.state = SaleBasket.State.PAY_SUCCESS
-                        sb.save()
+    amount = transaction.amount if transaction else doctor_transaction.amount
+    url = "https://payment.zarinpal.com/pg/v4/payment/verify.json"
+    data = {
+        'merchant_id': settings.MERCHANT_ID,
+        'amount': amount,
+        'authority': authority
+    }
+    headers = {'Content-Type': 'application/json'}
+    response = requests.post(url, data=json.dumps(data), headers=headers)
 
-                    # ریدایرکت به /callback/ با پارامترهای Authority و Status
-                    return HttpResponseRedirect(f"/callback/?Authority={authority}&Status=OK")
-                else:
-                    return JsonResponse({"error": "تراکنش یافت نشد"})
-            else:
-                return HttpResponseRedirect(f"/callback/?Authority={authority}&Status=FAILED")
+    if response.status_code == 200:
+        response_data = response.json()
+        if response_data['data']['code'] in [100, 101]:
+            if transaction:
+                transaction.status = 'success'
+                transaction.card = response_data['data']['card_pan']
+                transaction.card_hash = response_data['data']['card_hash']
+                transaction.ref_id = response_data['data']['ref_id']
+                transaction.save()
+                payment = Payment.objects.get(transaction=transaction)
+                payment.status = 'completed'
+                payment.save()
+
+            if doctor_transaction:
+                doctor_transaction.transaction_type = DoctorTransaction.TransactionState.ACCEPT
+                doctor_transaction.card_hash = response_data['data']['card_hash']
+                doctor_transaction.save()
+
+            return HttpResponseRedirect(f"/callback/?Authority={authority}&Status=OK")
         else:
-            return HttpResponseRedirect(f"/callback/?Authority={authority}&Status=ERROR")
+            if transaction:
+                transaction.status = 'failed'
+                transaction.save()
+            if doctor_transaction:
+                doctor_transaction.transaction_type = DoctorTransaction.TransactionState.FAILED
+                doctor_transaction.save()
+            return HttpResponseRedirect(f"/callback/?Authority={authority}&Status=FAILED")
     else:
-        return HttpResponseRedirect(f"/callback/?Authority={authority}&Status=FAILED")
+        if transaction:
+            transaction.status = 'failed'
+            transaction.save()
+        if doctor_transaction:
+            doctor_transaction.transaction_type = DoctorTransaction.TransactionState.FAILED
+            doctor_transaction.save()
+        return HttpResponseRedirect(f"/callback/?Authority={authority}&Status=ERROR")
 
 @api_view(['POST'])
 def get_payment_url(request):

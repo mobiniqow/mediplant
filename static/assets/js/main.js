@@ -124,47 +124,47 @@
 
     /*--------------------- Get live location on menubar ---------------------- */
 
-    // $.getJSON('https://ipapi.co/json/', function(data) {
-    //     // $.getJSON('', function(data){
-    //     // console.log(data)
-    // })
-    //
-    // .then(function(data) {
-    //
-    //     var el = document.getElementById('ms_location');
-    //
-    //     el.style.display = 'block';
-    //
-    //     if (data == 0) {
-    //         // console.log("NO DATA!");
-    //         el.innerText = "Select Location";
-    //     } else {
-    //
-    //         // alert(data.city +", "+ data.region +", "+ data.country);
-    //         var is_all_empty = "NO";
-    //
-    //         if (data.city == 0 && data.country == 0) {
-    //             data.city = "";
-    //             data.country = "";
-    //
-    //             el.innerText = "Enter Your Location";
-    //
-    //         } else {
-    //             el.innerText = data.city + ", " + data.country;
-    //         }
-    //
-    //         $("#ms_location").parent().attr("title", data.city + ", " + data.country);
-    //
-    //         // el.innerText = data.city +", "+ data.region +", "+ data.country; // If You want to add state remove comment
-    //
-    //         // Optionally redirect to country specific subdomain
-    //         // window.location.href = "http://country2.example.com";
-    //         $('.ms-detail-current').on('click', function() {
-    //             el.innerText = data.city + ", " + data.country;
-    //             $("#ms_location").parent().attr("title", data.city + ", " + data.country);
-    //         });
-    //     }
-    // })
+    $.getJSON('https://ipapi.co/json/', function(data) {
+        // $.getJSON('', function(data){
+        // console.log(data)
+    })
+
+    .then(function(data) {
+
+        var el = document.getElementById('ms_location');
+
+        el.style.display = 'block';
+
+        if (data == 0) {
+            // console.log("NO DATA!");
+            el.innerText = "Select Location";
+        } else {
+
+            // alert(data.city +", "+ data.region +", "+ data.country);
+            var is_all_empty = "NO";
+
+            if (data.city == 0 && data.country == 0) {
+                data.city = "";
+                data.country = "";
+
+                el.innerText = "Enter Your Location";
+
+            } else {
+                el.innerText = data.city + ", " + data.country;
+            }
+
+            $("#ms_location").parent().attr("title", data.city + ", " + data.country);
+
+            // el.innerText = data.city +", "+ data.region +", "+ data.country; // If You want to add state remove comment
+
+            // Optionally redirect to country specific subdomain
+            // window.location.href = "http://country2.example.com";
+            $('.ms-detail-current').on('click', function() {
+                el.innerText = data.city + ", " + data.country;
+                $("#ms_location").parent().attr("title", data.city + ", " + data.country);
+            });
+        }
+    })
 
     /*--------------------- location Toggle MenuBar ---------------------- */
     jQuery(".ms-location-toggle").on("click", function() {

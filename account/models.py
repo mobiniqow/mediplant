@@ -48,7 +48,7 @@ class BasicUserManager(BaseUserManager):
         user.save()
         return user
 
-    def generate_17_digit_number(self,input_number):
+    def generate_17_digit_number(self, input_number):
         # تبدیل عدد ورودی به رشته
         input_str = str(input_number)
 
@@ -82,6 +82,12 @@ class User(AbstractBaseUser, PermissionsMixin):
         MAN = 1, 'مرد'
         WOMAN = 0, 'زن'
 
+    class Role(models.IntegerChoices):
+        USER = 1, 'کاربر'
+        DOCTOR = 2, 'پزشک'
+        SHOPPER = 3, 'فروشنده'
+
+    role = models.IntegerField(choices=Role.choices, default=Role.USER)
     avatar = models.FileField(upload_to='paccount/user/avatar',
                               validators=[FileExtensionValidator(['jpg', 'png', 'jpeg']), ], blank=True,
                               verbose_name='تصویر')

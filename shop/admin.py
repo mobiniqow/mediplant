@@ -1,7 +1,7 @@
 from itertools import product
 
 from django.contrib import admin
-from .models import Shop, ShopImage, ShopPhone, ShopProduct, CertificateImage
+from .models import Shop, ShopImage, ShopPhone, ShopProduct, CertificateImage, ProductNeedToAdded
 
 
 class ShopPhoneInline(admin.TabularInline):
@@ -56,6 +56,16 @@ class ShopProductAdmin(admin.ModelAdmin):
     list_display = ['shop', 'product', 'created_at', 'updated_at', 'capacity', 'inventory_state', 'price']
     search_fields = ['shop__name', 'product__name','id']
     list_filter = ['inventory_state','shop']
+    list_per_page = 20
+
+    class Meta:
+        model = ShopProduct
+
+@admin.register(ProductNeedToAdded)
+class ProductNeedToAddedAdmin(admin.ModelAdmin):
+    list_display = [ 'name','description','shop',]
+    search_fields = ['shop__name', 'id']
+    list_filter = [ 'shop']
     list_per_page = 20
 
     class Meta:

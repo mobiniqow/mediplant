@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'rest_framework',
     'django_filters',
-
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -70,6 +70,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'mediplant.wsgi.application'
+ASGI_APPLICATION = "mediplant.asgi.application"  # آدرس برنامه ASGI
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases

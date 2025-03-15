@@ -22,9 +22,6 @@
     touch-action: manipulation;
     -moz-backface-visibility: hidden
 }
-.ms-cat-title-category{
-    color: #000;
-}
 
 .owl-carousel .owl-stage:after {
     content: ".";

@@ -12,8 +12,6 @@
     touch-action: pan-y;
     -webkit-tap-highlight-color: transparent
 }
-/* بزرگتر کردن اندازه ورودی‌ها */
-
 
 .slick-list {
     position: relative;

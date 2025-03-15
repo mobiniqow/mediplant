@@ -37,6 +37,10 @@ class LoginView(BaseTemplateView):
         user = User.objects.filter(phone=form.cleaned_data['phone'])
         if user.exists():
             user = user.first()
+            if user.role is not User.Role.USER:
+                from django.http import Http404
+                raise Http404("صفحه مورد نظر یافت نشد")
+
         else:
             serializer = UserRegisterSerializer(data=form.cleaned_data)
             if not serializer.is_valid():

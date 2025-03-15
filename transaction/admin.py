@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Transaction, Payment
+from .models import Transaction, Payment, DoctorTransaction
 from sale.models import SaleBasket
 
 # Custom admin for the Transaction model
@@ -26,6 +26,16 @@ class PaymentAdmin(admin.ModelAdmin):
         # Optional: Add custom save logic if needed
         super().save_model(request, obj, form, change)
 
-# Register your models with custom admins
+
+
+
+class DoctorTransactionAdmin(admin.ModelAdmin):
+    list_display = ('user', 'amount', 'transaction_type', 'created_at', 'card', 'ref_id')
+    list_filter = ('transaction_type', 'created_at')
+    search_fields = ('user__username', 'card', 'ref_id')
+    ordering = ('-created_at',)
+
+
+admin.site.register(DoctorTransaction, DoctorTransactionAdmin)
 admin.site.register(Transaction, TransactionAdmin)
 admin.site.register(Payment, PaymentAdmin)
