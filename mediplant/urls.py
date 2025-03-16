@@ -20,6 +20,7 @@ from django.conf import settings
 from django.views.static import serve
 
 urlpatterns = [
+
     path('', include('web.urls')),
     path('admin/', admin.site.urls),
     path('account/', include('account.urls')),

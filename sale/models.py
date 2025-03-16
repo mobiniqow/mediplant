@@ -4,6 +4,7 @@ from account.models import User
 from shop.models import Shop, ShopProduct
 import jdatetime
 
+
 class SaleBasket(models.Model):
     class State(models.IntegerChoices):
         SUSPEND = 0
@@ -16,16 +17,18 @@ class SaleBasket(models.Model):
         IN_POST_OFFICE = 7
         DONE_AND_FINISH = 8
         CANCELLED = 9
+        SHOP_CANCEL = 10
 
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, verbose_name='کاربر')
     session_key = models.CharField(max_length=200, null=True, verbose_name='کلید جلسه')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='تاریخ ایجاد')
-    price = models.IntegerField(validators=[MinValueValidator(0)], verbose_name='قیمت',  )
+    price = models.IntegerField(validators=[MinValueValidator(0)], verbose_name='قیمت', )
     address = models.TextField(verbose_name='آدرس')
     state = models.IntegerField(choices=State.choices, default=0, verbose_name='وضعیت')
     discount = models.IntegerField(validators=[MinValueValidator(0)], verbose_name='تخفیف')
     shop = models.ForeignKey(Shop, on_delete=models.SET_NULL, null=True, verbose_name='فروشگاه')
-    transaction = models.ForeignKey('transaction.Transaction', on_delete=models.SET_NULL, null=True, verbose_name='تراکنش')
+    transaction = models.ForeignKey('transaction.Transaction', on_delete=models.SET_NULL, null=True,
+                                    verbose_name='تراکنش', blank=True)
     delivery_date = models.DateField(null=True, blank=True, verbose_name='زمان تحویل')
 
     class Meta:
@@ -39,6 +42,7 @@ class SaleBasket(models.Model):
     def __str__(self):
         state_display = self.get_state_display()
         return f"سبد خرید برای {self.user} - وضعیت: {state_display} - قیمت: {self.price} تومان"
+
 
 class SaleBasketProduct(models.Model):
     basket = models.ForeignKey('SaleBasket', on_delete=models.SET_NULL, null=True, verbose_name='سبد خرید')

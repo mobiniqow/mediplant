@@ -135,3 +135,24 @@ class ProductNeedToAdded(models.Model):
                              validators=[FileExtensionValidator(['jpg', 'png', 'jpeg']), ], blank=True,
                              verbose_name='تصویر')
     description = RichTextField(blank=True, null=True, verbose_name='معرفی محصول')
+
+
+class ShopSettlement(models.Model):
+    class STATUS(models.IntegerChoices):
+        PENDING = 0, "در انتظار بررسی"
+        APPROVED = 1, "تایید شده"
+        REJECTED = 2, "رد شده"
+        PAID = 3, "پرداخت شده"
+
+    shop = models.ForeignKey(Shop, on_delete=models.CASCADE, verbose_name="فروشگاه")
+    amount = models.PositiveIntegerField(validators=[MinValueValidator(1)], verbose_name="مبلغ درخواستی")
+    status = models.IntegerField(choices=STATUS.choices, default=STATUS.PENDING,
+                                 verbose_name="وضعیت")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ درخواست")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="آخرین تغییر وضعیت")
+    receipt_image = models.ImageField(upload_to="settlements/receipts/", null=True, blank=True,
+                                      verbose_name="تصویر فیش پرداختی")
+    transaction_id = models.CharField(max_length=50, null=True, blank=True, verbose_name="شناسه تراکنش")
+
+    def __str__(self):
+        return f"تسویه حساب {self.shop.name} - {self.amount} تومان - {self.get_status_display()}"

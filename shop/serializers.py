@@ -1,9 +1,11 @@
 from django.contrib.auth.password_validation import validate_password
 from rest_framework import serializers
+from rest_framework.generics import get_object_or_404
 
 from product.models import ProductImage, Product
 from product.serializers import ProductImageSerializer
-from .models import ShopProduct, Shop, ProductNeedToAdded
+from sale.models import SaleBasket
+from .models import ShopProduct, Shop, ProductNeedToAdded, ShopSettlement
 from django.contrib.auth import authenticate
 from account.models import User
 
@@ -45,6 +47,7 @@ class ShopSerializers(serializers.ModelSerializer):
         model = Shop
         fields = "__all__"
 
+
 class ShopLoginSerializer(serializers.Serializer):
     phone = serializers.CharField(max_length=17)
     password = serializers.CharField(write_only=True)
@@ -81,6 +84,7 @@ class ShopProductCreateSerializer(serializers.ModelSerializer):
         validated_data['shop'] = shop  # تنظیم فروشگاه
         return super().create(validated_data)
 
+
 class ShopProductUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShopProduct
@@ -92,6 +96,7 @@ class ShopProductUpdateSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({"error": "شما مجاز به ویرایش این محصول نیستید."})
 
         return super().update(instance, validated_data)
+
 
 class ProductNeedToAddedSerializer(serializers.ModelSerializer):
     class Meta:
@@ -111,12 +116,18 @@ class ProductNeedToAddedSerializer(serializers.ModelSerializer):
         return super().create(validated_data)
 
 
-from rest_framework import serializers
-from account.models import User
+class ShopSettlementSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ShopSettlement
+        fields = '__all__'
+        read_only_fields   = ['status', 'shop', 'created_at', 'receipt_image', 'updated_at']
 
+    def create(self, validated_data):
+        user = self.context['request'].user
+        shop = get_object_or_404(Shop, user=user)
+        validated_data['shop'] = shop
+        return super().create(validated_data)
 
-from rest_framework import serializers
-from .models import User, Shop
 
 class UserShopProfileUpdateSerializer(serializers.Serializer):
     # فیلدهای مربوط به User
@@ -146,7 +157,8 @@ class UserShopProfileUpdateSerializer(serializers.Serializer):
                 setattr(instance, field, validated_data[field])
 
         # بروزرسانی اطلاعات Shop (در صورتی که فروشگاه وجود داشته باشد)
-        shop_data = {key.replace('shop_', ''): value for key, value in validated_data.items() if key.startswith('shop_')}
+        shop_data = {key.replace('shop_', ''): value for key, value in validated_data.items() if
+                     key.startswith('shop_')}
         if shop_data:
             shop = instance.shop  # فرض بر این است که کاربر دارای فروشگاه است
             for field, value in shop_data.items():
@@ -155,6 +167,7 @@ class UserShopProfileUpdateSerializer(serializers.Serializer):
 
         instance.save()
         return instance
+
 
 class ChangePasswordSerializer(serializers.Serializer):
     old_password = serializers.CharField(write_only=True)
@@ -184,3 +197,24 @@ class ChangePasswordSerializer(serializers.Serializer):
         instance.set_password(new_password)  # تغییر پسورد
         instance.save()  # ذخیره تغییرات
         return instance
+class SaleBasketSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SaleBasket
+        fields = ['id', 'user', 'price', 'state', 'created_at', 'delivery_date']
+
+
+class SaleBasketStateUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SaleBasket
+        fields = ['state']
+
+    def validate_state(self, value):
+        basket = self.instance
+        if basket.state == SaleBasket.State.SHOP_CANCEL:
+            raise serializers.ValidationError("این سبد قبلاً لغو شده و دیگر قابل تغییر نیست.")
+
+        if value not in [SaleBasket.State.IN_SHOP_COMPILATION, SaleBasket.State.SENDING, SaleBasket.State.SHOP_CANCEL]:
+            raise serializers.ValidationError(
+                "فقط می‌توانید وضعیت را به IN_SHOP_COMPILATION، SENDING یا SHOP_CANCEL تغییر دهید.")
+
+        return value

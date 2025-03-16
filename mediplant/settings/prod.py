@@ -2,21 +2,22 @@ from datetime import timedelta
 
 from .base import *
 
-ALLOWED_HOSTS = ["*"]
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'mediplant_db',
-        'USER': 'mediplant_user',
-        'PASSWORD': '1423joh89ydfas!@#$djkafsk',
-        'HOST': 'db',
-        'PORT': '5432',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "USER": "iot_user",
+        "PASSWORD": "ewrasdfwqe",
+        "NAME": "mediplant",
+        "HOST": "localhost",
+        "PORT": "5432",
     }
 }
 
+
 MEDIA_URL = "/media/"
 MEDIA_ROOT = '/var/html/www/mediplant/media'
-
+CSRF_TRUSTED_ORIGINS = ['https://mediplant.ir', 'https://www.mediplant.ir','http://mediplant.ir']
+ALLOWED_HOSTS = ['https://mediplant.ir', 'https://www.mediplant.ir','http://mediplant.ir']
 STATIC_URL = '/static/'
 STATIC_ROOT = '/var/html/www/mediplant/static'
 

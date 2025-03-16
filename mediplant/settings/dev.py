@@ -65,10 +65,10 @@ SIMPLE_JWT = {
 APPEND_SLASH=True
 CHANNEL_LAYERS = {
     "default": {
-        "BACKEND": "channels_redis.core.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": [('redis', 6379)],  # نام سرویس Redis از docker-compose.yml
-        },
+        "BACKEND":  "channels.layers.InMemoryChannelLayer",
+        # "CONFIG": {
+        #     "hosts": [('redis', 6379)],  # نام سرویس Redis از docker-compose.yml
+        # },
     },
 }
 

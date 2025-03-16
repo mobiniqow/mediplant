@@ -1,7 +1,9 @@
 from itertools import product
 
 from django.contrib import admin
-from .models import Shop, ShopImage, ShopPhone, ShopProduct, CertificateImage, ProductNeedToAdded
+from django.db.models import Sum
+
+from .models import Shop, ShopImage, ShopPhone, ShopProduct, CertificateImage, ProductNeedToAdded, ShopSettlement
 
 
 class ShopPhoneInline(admin.TabularInline):
@@ -70,3 +72,23 @@ class ProductNeedToAddedAdmin(admin.ModelAdmin):
 
     class Meta:
         model = ShopProduct
+
+class ShopSettlementAdmin(admin.ModelAdmin):
+    list_display = ('shop', 'total_sales',  'status', 'transaction_id', 'created_at')
+    list_filter = ('status', 'created_at')
+    search_fields = ('shop__name', 'transaction_id')
+    readonly_fields = ('total_sales',)
+
+    def get_queryset(self, request):
+        queryset = super().get_queryset(request)
+        queryset = queryset.annotate(
+            total_sales=Sum('shop__shopproduct__price')
+        )
+        return queryset
+
+    def total_sales(self, obj):
+        return obj.total_sales if hasattr(obj, 'total_sales') else 0
+    total_sales.short_description = "مجموع فروش"
+
+
+admin.site.register(ShopSettlement, ShopSettlementAdmin)

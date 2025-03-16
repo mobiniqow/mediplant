@@ -1,19 +1,19 @@
 [Unit]
-Description=gunicorn daemon
+Description=gunicorn daemon for ASGI
 Requires=mediplant.socket
 After=network.target
-
 
 [Service]
 User=ubuntu
 Group=www-data
 WorkingDirectory=/home/ubuntu/mediplant
 ExecStart=/home/ubuntu/mediplant/venv/bin/gunicorn \
-    --env DJANGO_SETTINGS_MODULE=mediplant.settings.prod
+    --env DJANGO_SETTINGS_MODULE=mediplant.settings.prod \
     --access-logfile - \
     --workers 3 \
     --bind unix:/run/mediplant.sock \
-    mediplant.wsgi:application
+    -k uvicorn.workers.UvicornWorker \
+    mediplant.asgi:application
 
 [Install]
 WantedBy=multi-user.target

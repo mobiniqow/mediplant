@@ -9,11 +9,13 @@ ALLOWED_HOSTS = ["*"]
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'daphne',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 'django.contrib.gis',
+    'channels',
     "corsheaders",
     'ckeditor',
     'ckeditor_uploader',
@@ -37,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'rest_framework',
     'django_filters',
-    'channels',
 ]
 
 MIDDLEWARE = [

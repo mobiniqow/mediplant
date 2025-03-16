@@ -512,6 +512,32 @@ Copyright 2022-2023
 <!--  -->
 
 <script>
+    let socket;
+    
+    function initializeSocket() {
+    socket = new WebSocket("ws://localhost:8000/ws/chat/");
+    
+        // وقتی اتصال برقرار می‌شود
+        socket.onopen = function() {
+            console.log("WebSocket is open");
+        };
+    
+        // وقتی پیامی از سرور دریافت می‌شود
+        socket.onmessage = function(event) {
+            console.log("Message from server:", event.data);
+            
+            // به روز رسانی صفحه با پیام جدید
+            const data = JSON.parse(event.data); // فرض کنید داده‌ها به صورت JSON ارسال می‌شوند
+            const is_user = data.is_doctor;
+            const displayText = data.content ? data.content : "";
+            const mediaUrl = data.media ? data.media : "";
+            const timestamp = new Date().toLocaleTimeString("fa-IR", {hour: "2-digit", minute: "2-digit"});
+            
+            // نمایش پیام در صفحه
+            displayMessage(is_user, displayText, timestamp, data.is_read, data.caption, mediaUrl);
+        };
+    }
+    initializeSocket()
     document.addEventListener("DOMContentLoaded", function () {
         const buttons = document.querySelectorAll(".tab-button");
         const contents = document.querySelectorAll(".tab-content");
@@ -645,45 +671,20 @@ Copyright 2022-2023
         textInput.value = "";
         sendMessageApi(file, messageText) 
     }
+function sendMessageApi(file, message) {
+    // پیامی که قرار است ارسال شود
+    const messageData = {
+        content: message,
+        media: file ? URL.createObjectURL(file) : null, // آدرس فایل رسانه
+        is_doctor: false, // فرض می‌کنیم که پیام از سمت کاربر ارسال می‌شود
+        timestamp: new Date().toLocaleTimeString("fa-IR", {hour: "2-digit", minute: "2-digit"})
+    };
 
-    function sendMessageApi(file, message) {
-        var url = "/doctor-request/doctor-visit/{{ doctor.id }}/send-message/";
-        var formData = new FormData();
+    // ارسال پیام به WebSocket
+    socket.send(JSON.stringify(messageData));
 
-        if (message) {
-            formData.append("content", message);
-        }
-
-        if (file) {
-            formData.append("media", file);
-        }
-
-        $.ajax({
-            url: url,
-            type: "POST",
-            data: formData,
-            processData: false,
-            contentType: false,
-            headers: {
-                "Authorization": "Bearer " + '{{token}}'
-            },
-            success: function (response) {
-                console.log("پیام با موفقیت ارسال شد:", response);
-
-                var is_user = false; // پیام از سمت پزشک ارسال شده
-                var displayText = response.content ? response.content : "";
-                var mediaUrl = response.media ? response.media : ""; // اگر رسانه وجود داشته باشد
-
-                var timestamp = new Date().toLocaleTimeString("fa-IR", {hour: "2-digit", minute: "2-digit"});
-
-                // نمایش پیام و رسانه همزمان
-                displayMessage(is_user, displayText, timestamp, false, "", mediaUrl);
-            },
-            error: function (xhr, status, error) {
-                console.error("خطا در ارسال پیام:", xhr.responseText || error);
-            }
-        });
-    }
+    console.log("پیام با موفقیت ارسال شد:", messageData);
+}
 
 
     // تابع برای حذف فایل انتخاب‌شده
@@ -751,52 +752,7 @@ Copyright 2022-2023
         }
     };
 
-</script>
-<script>
-    let socket;
-
-    function initializeSocket() {
-        socket = new WebSocket(
-            'ws://' + window.location.host + '/ws/chat/' + doctorVisitId + '/'
-        socket.onopen = function () {
-            console.log("Socket is open");
-        };
-        socket.onmessage = function (event) {
-            console.log("Message from server:", event.data);
-        };
-    }
-
-    initializeSocket();  
-
-    socket.onopen = function (e) {
-        console.log("WebSocket Connected");
-    };
-
-    socket.onmessage = function (e) {
-        const data = JSON.parse(e.data);
-        const message = data.message;
-        const is_doctor = data.is_doctor;
-        const created_at = data.created_at;
-        const media_url = data.media_url;
-
-        // نمایش پیام در UI
-        displayMessage(is_doctor, message, created_at, false, "", media_url);
-    };
-
-    socket.onerror = function (e) {
-        console.error("WebSocket error:", e);
-    };
-
-    function sendMessageApi(file, message) {
-        const messageData = {
-            message: message,
-            user_id: 1, // مثلا userId از سشن گرفته می‌شود
-        };
-
-        socket.send(JSON.stringify(messageData));
-    }
-
-</script>
+</script> 
 </body>
 
 </html>
