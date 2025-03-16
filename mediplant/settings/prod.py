@@ -16,8 +16,8 @@ DATABASES = {
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = '/var/html/www/mediplant/media'
-CSRF_TRUSTED_ORIGINS = ['https://mediplant.ir', 'https://www.mediplant.ir','http://mediplant.ir']
-ALLOWED_HOSTS = ['https://mediplant.ir', 'https://www.mediplant.ir','http://mediplant.ir']
+CSRF_TRUSTED_ORIGINS = ['https://mediplant.ir', 'https://www.mediplant.ir','http://mediplant.ir','www.mediplant.ir']
+ALLOWED_HOSTS = ['*']
 STATIC_URL = '/static/'
 STATIC_ROOT = '/var/html/www/mediplant/static'
 
@@ -43,7 +43,13 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_LIFETIME": timedelta(days=99),
     "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=99),
 }
-
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 16,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
 import os
 
 GDAL_LIBRARY_PATH = os.getenv('GDAL_LIBRARY_PATH', '/usr/lib/libgdal.so')
