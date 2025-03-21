@@ -1,7 +1,7 @@
 from django.utils.timezone import now
 from django_filters.rest_framework import DjangoFilterBackend
 from jdatetime import timedelta
-from rest_framework import generics, status
+from rest_framework import generics, status, viewsets, permissions
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -9,7 +9,6 @@ import math
 from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView, get_object_or_404
 
 from rest_framework.views import APIView
-from rest_framework.authtoken.models import Token
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from account.models import User
@@ -78,6 +77,7 @@ class ShopLoginView(APIView):
             })
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 class MyShopProductsView(ListAPIView):
     serializer_class = ShopProductSerializer
 
@@ -86,12 +86,14 @@ class MyShopProductsView(ListAPIView):
         my_shops = Shop.objects.filter(user=user)
         return ShopProduct.objects.filter(shop__in=my_shops)
 
+
 class ShopProductCreateView(CreateAPIView):
     serializer_class = ShopProductCreateSerializer
     permission_classes = [IsAuthenticated]  # فقط کاربران لاگین‌شده مجاز هستند
 
     def perform_create(self, serializer):
         serializer.save()  # ذخیره محصول جدید
+
 
 class ShopProductUpdateView(UpdateAPIView):
     queryset = ShopProduct.objects.all()
@@ -117,20 +119,11 @@ class ShopProductDeleteView(DestroyAPIView):
         product.delete()
         return Response({"message": "محصول با موفقیت حذف شد."}, status=status.HTTP_204_NO_CONTENT)
 
+
 class ProductNeedToAddedCreateView(CreateAPIView):
     queryset = ProductNeedToAdded.objects.all()
     serializer_class = ProductNeedToAddedSerializer
     permission_classes = [IsAuthenticated]
-
-
-
-class UserShopProfileUpdateView(UpdateAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserShopProfileUpdateSerializer
-    permission_classes = [IsAuthenticated]
-
-    def get_object(self):
-        return self.request.user  # برمی‌گرداند به کاربر احراز هویت شده
 
 
 class ChangePasswordView(APIView):
@@ -147,20 +140,24 @@ class ChangePasswordView(APIView):
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 class ShopTransactionsAPIView(generics.ListAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = TransactionSerializer
+
     def get_queryset(self):
         shop = get_object_or_404(Shop, user=self.request.user)
         return Transaction.objects.filter(cart__shop=shop)
 
 
-class ShopSettlementRequestAPIView(generics.CreateAPIView,generics.ListAPIView):
-    permission_classes = [ IsAuthenticated]
+class ShopSettlementRequestAPIView(generics.CreateAPIView, generics.ListAPIView):
+    permission_classes = [IsAuthenticated]
     serializer_class = ShopSettlementSerializer
+
     def get_queryset(self):
         shop = get_object_or_404(Shop, user=self.request.user)
         return ShopSettlement.objects.filter(shop=shop)
+
 
 class ShopSaleBasketListAPIView(generics.ListAPIView):
     serializer_class = SaleBasketSerializer
@@ -170,6 +167,7 @@ class ShopSaleBasketListAPIView(generics.ListAPIView):
         shop = get_object_or_404(Shop, user=self.request.user)
         return SaleBasket.objects.filter(shop=shop).order_by('-created_at')
 
+
 class ShopSaleBasketStateUpdateAPIView(generics.UpdateAPIView):
     serializer_class = SaleBasketStateUpdateSerializer
     permission_classes = [IsAuthenticated]
@@ -178,6 +176,7 @@ class ShopSaleBasketStateUpdateAPIView(generics.UpdateAPIView):
         shop = get_object_or_404(Shop, user=self.request.user)
         basket = get_object_or_404(SaleBasket, id=self.kwargs['pk'], shop=shop)
         return basket
+
 
 class ShopSalesStatisticsAPIView(APIView):
     permission_classes = [IsAuthenticated]
@@ -210,3 +209,28 @@ class ShopSalesStatisticsAPIView(APIView):
             "total_income": total_income,
             "filter": filter_type
         })
+
+
+class IsShopper(permissions.BasePermission):
+    def has_permission(self, request, view):
+        return request.user.is_authenticated and request.user.role == User.Role.SHOPPER
+
+
+class ShopDetailView(APIView):
+    """API برای دریافت و به‌روزرسانی اطلاعات فروشگاه"""
+    permission_classes = [permissions.IsAuthenticated, IsShopper]
+
+    def get(self, request):
+        """دریافت اطلاعات فروشگاه کاربر"""
+        shop = get_object_or_404(Shop, user=request.user)
+        serializer = UserShopProfileUpdateSerializer(shop)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def patch(self, request):
+        """به‌روزرسانی اطلاعات فروشگاه"""
+        shop = get_object_or_404(Shop, user=request.user)
+        serializer = UserShopProfileUpdateSerializer(shop, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

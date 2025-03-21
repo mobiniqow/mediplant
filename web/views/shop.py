@@ -6,7 +6,7 @@ from banner.models import Banner
 from encyclopedia.models import ArticleEncyclopedia
 from product.models import Category, Product, ProductImage
 from sale.models import SaleBasket, SaleBasketProduct
-from shop.models import ShopProduct, Shop, ShopImage
+from shop.models import ShopProduct, Shop
 import math
 
 from transaction.models import Transaction, Payment
@@ -127,8 +127,8 @@ class ShopDetailsView(BaseTemplateView):
         context = super().get_context_data(**kwargs)
         shop_id = kwargs['id']
         shop = get_object_or_404(Shop, pk=shop_id)
-        banners = ShopImage.objects.filter(shop=shop)
-        shop.banners = ShopImage.objects.filter(shop=shop)
+        banners = [shop.banner_1,shop.banner_2,shop.banner_3]
+        shop.banners = banners
         product = ShopProduct.objects.filter(shop=shop)
         page_number = math.ceil(product.count() / page_size)
 

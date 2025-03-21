@@ -33,7 +33,7 @@ class DoctorDetailsList(BaseTemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         doctor = get_object_or_404(Doctor, pk=kwargs['doctor'])
-        visits = DoctorVisit.objects.filter(doctor_id=doctor, state=DoctorVisit.State.END).count()
+        visits = DoctorVisit.objects.filter(doctor_id=doctor, state=DoctorVisit.State.DoctorEnd).count()
 
         context['doctor'] = doctor
         context['visits'] = visits

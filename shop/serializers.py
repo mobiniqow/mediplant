@@ -120,53 +120,13 @@ class ShopSettlementSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShopSettlement
         fields = '__all__'
-        read_only_fields   = ['status', 'shop', 'created_at', 'receipt_image', 'updated_at']
+        read_only_fields = ['status', 'shop', 'created_at', 'receipt_image', 'updated_at']
 
     def create(self, validated_data):
         user = self.context['request'].user
         shop = get_object_or_404(Shop, user=user)
         validated_data['shop'] = shop
         return super().create(validated_data)
-
-
-class UserShopProfileUpdateSerializer(serializers.Serializer):
-    # فیلدهای مربوط به User
-    user_name = serializers.CharField(max_length=83, required=False)
-    phone = serializers.CharField(max_length=17, required=False)
-    email = serializers.EmailField(required=False)
-    city = serializers.CharField(max_length=100, required=False)
-    location = serializers.CharField(max_length=100, required=False)
-    address = serializers.CharField(required=False)
-    postal_code = serializers.CharField(max_length=20, required=False)
-    avatar = serializers.FileField(required=False)
-    shop_name = serializers.CharField(max_length=40, required=False)
-    shop_home = serializers.CharField(required=False)
-    shop_image = serializers.FileField(required=False)
-    national_code = serializers.CharField(max_length=10, required=False)
-    description = serializers.CharField(required=False)
-    rate_state = serializers.IntegerField(required=False)
-    price = serializers.IntegerField(required=False)
-    location_lat = serializers.CharField(max_length=12, required=False)
-    location_lng = serializers.CharField(max_length=12, required=False)
-
-    def update(self, instance, validated_data):
-        # بروزرسانی اطلاعات User
-        user_fields = ['user_name', 'phone', 'email', 'city', 'location', 'address', 'postal_code', 'avatar']
-        for field in user_fields:
-            if field in validated_data:
-                setattr(instance, field, validated_data[field])
-
-        # بروزرسانی اطلاعات Shop (در صورتی که فروشگاه وجود داشته باشد)
-        shop_data = {key.replace('shop_', ''): value for key, value in validated_data.items() if
-                     key.startswith('shop_')}
-        if shop_data:
-            shop = instance.shop  # فرض بر این است که کاربر دارای فروشگاه است
-            for field, value in shop_data.items():
-                setattr(shop, field, value)
-            shop.save()
-
-        instance.save()
-        return instance
 
 
 class ChangePasswordSerializer(serializers.Serializer):
@@ -197,6 +157,8 @@ class ChangePasswordSerializer(serializers.Serializer):
         instance.set_password(new_password)  # تغییر پسورد
         instance.save()  # ذخیره تغییرات
         return instance
+
+
 class SaleBasketSerializer(serializers.ModelSerializer):
     class Meta:
         model = SaleBasket
@@ -218,3 +180,12 @@ class SaleBasketStateUpdateSerializer(serializers.ModelSerializer):
                 "فقط می‌توانید وضعیت را به IN_SHOP_COMPILATION، SENDING یا SHOP_CANCEL تغییر دهید.")
 
         return value
+
+
+
+
+class UserShopProfileUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Shop
+        fields = "__all__"
+        read_only_fields = ['user']  # کاربر را نمی‌توان از اینجا تغییر داد

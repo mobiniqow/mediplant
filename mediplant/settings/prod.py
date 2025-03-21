@@ -16,7 +16,7 @@ DATABASES = {
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = '/var/html/www/mediplant/media'
-CSRF_TRUSTED_ORIGINS = ['https://mediplant.ir', 'https://www.mediplant.ir','http://mediplant.ir','www.mediplant.ir']
+CSRF_TRUSTED_ORIGINS = ['https://mediplant.ir', 'https://www.mediplant.ir','http://mediplant.ir','http://www.mediplant.ir']
 ALLOWED_HOSTS = ['*']
 STATIC_URL = '/static/'
 STATIC_ROOT = '/var/html/www/mediplant/static'
@@ -50,6 +50,8 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
 import os
 
 GDAL_LIBRARY_PATH = os.getenv('GDAL_LIBRARY_PATH', '/usr/lib/libgdal.so')

@@ -1,4 +1,4 @@
-from django.core.validators import FileExtensionValidator, MinValueValidator
+from django.core.validators import FileExtensionValidator, MinValueValidator, MaxValueValidator
 from django.db import models
 from django.db.models import SET_NULL
 from ckeditor.fields import RichTextField
@@ -28,9 +28,6 @@ class Shop(models.Model):
     state = models.IntegerField(choices=ShopStatus.choices, default=ShopStatus.PENDING, verbose_name='وضعیت')
     user = models.ForeignKey(User, on_delete=SET_NULL, null=True, verbose_name='کاربر')
     shop_home = models.TextField(verbose_name='آدرس فروشگاه')
-    image = models.FileField(upload_to="shop/image/",
-                             validators=[FileExtensionValidator(['jpg', 'png', 'jpeg']), ],
-                             verbose_name='تصویر')
     national_code = models.CharField(max_length=10, unique=True, verbose_name='کدملی', blank=True)
     description = models.TextField(verbose_name='توضیحات')
     catalog = RichTextField(blank=True, null=True, verbose_name='کاتالوگ')
@@ -38,48 +35,29 @@ class Shop(models.Model):
     price = models.IntegerField(verbose_name='واحد قیمت بر حسب واحد', default=0)
     location_lat = models.CharField(max_length=12, default="35.7475")
     location_lng = models.CharField(max_length=12, default="51.2358")
+    image = models.FileField(upload_to="shop/image/",
+                             validators=[FileExtensionValidator(['jpg', 'png', 'jpeg']), ],
+                             verbose_name='تصویر', null=True, blank=True)
+    banner_1 = models.FileField(upload_to="shop/banner/",
+                                validators=[FileExtensionValidator(['jpg', 'png', 'jpeg']), ], null=True, blank=True)
+    banner_2 = models.FileField(upload_to="shop/banner/",
+                                validators=[FileExtensionValidator(['jpg', 'png', 'jpeg']), ], null=True, blank=True)
+    banner_3 = models.FileField(upload_to="shop/banner/",
+                                validators=[FileExtensionValidator(['jpg', 'png', 'jpeg']), ], null=True, blank=True)
+    cert_1 = models.FileField(upload_to="shop/cert/",
+                              validators=[FileExtensionValidator(['jpg', 'png', 'jpeg']), ], null=True, blank=True)
+    cert_2 = models.FileField(upload_to="shop/cert/",
+                              validators=[FileExtensionValidator(['jpg', 'png', 'jpeg']), ], null=True, blank=True)
+    shop_phones = models.CharField(max_length=30, null=True, blank=True)
+    start_time = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(24)], null=True, blank=True)
+    end_time = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(24)], null=True, blank=True)
+    instagram = models.CharField(max_length=100, null=True, blank=True)
+    whats_app = models.CharField(max_length=100, null=True, blank=True)
+    telegram = models.CharField(max_length=100, null=True, blank=True)
 
-    # location = gis_models.PointField(null=True, blank=True, verbose_name='موقعیت مکانی',)
-
-    # def save(self, *args, **kwargs):
-    #     from django.contrib.gis.geos import Point
-    # تبدیل عرض و طول جغرافیایی به یک نقطه
-    # self.location = Point(float(self.location_lat), float(self.location_lng))
-    # super().save(*args, **kwargs)
     class Meta:
         verbose_name = 'فروشگاه'
         verbose_name_plural = 'فروشگاه‌ها'
-
-
-class ShopImage(models.Model):
-    shop = models.ForeignKey(Shop, on_delete=SET_NULL, null=True, verbose_name='فروشگاه')
-    image = models.FileField(upload_to="shop/images/",
-                             validators=[FileExtensionValidator(['jpg', 'png', 'jpeg']), ],
-                             verbose_name='تصویر  ')
-
-    class Meta:
-        verbose_name = 'تصویر فروشگاه'
-        verbose_name_plural = 'تصاویر فروشگاه'
-
-
-class CertificateImage(models.Model):
-    shop = models.ForeignKey(Shop, on_delete=SET_NULL, null=True, verbose_name='فروشگاه')
-    certificate_image = models.FileField(upload_to="shop/certificate/",
-                                         validators=[FileExtensionValidator(['jpg', 'png', 'jpeg']), ],
-                                         verbose_name='تصویر مجوز')
-
-    class Meta:
-        verbose_name = 'تصویر فروشگاه'
-        verbose_name_plural = 'تصاویر فروشگاه'
-
-
-class ShopPhone(models.Model):
-    shop = models.ForeignKey(Shop, on_delete=SET_NULL, null=True, verbose_name='فروشگاه')
-    phone = models.CharField(max_length=13, verbose_name='تلفن', unique=True)
-
-    class Meta:
-        verbose_name = 'تلفن فروشگاه'
-        verbose_name_plural = 'تلفن‌های فروشگاه'
 
 
 class ShopProduct(models.Model):
