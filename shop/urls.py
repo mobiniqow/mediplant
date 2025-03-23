@@ -4,7 +4,7 @@ from rest_framework.routers import DefaultRouter
 from .views import ShopProductAPIView, ShopLoginView, MyShopProductsView, ShopProductCreateView, ShopProductUpdateView, \
     ShopProductDeleteView, ProductNeedToAddedCreateView, ChangePasswordView, \
     ShopTransactionsAPIView, ShopSettlementRequestAPIView, ShopSaleBasketListAPIView, ShopSaleBasketStateUpdateAPIView, \
-    ShopSalesStatisticsAPIView,  ShopDetailView
+    ShopSalesStatisticsAPIView, ShopDetailView, MaterialListView
 
 urlpatterns = [
     path('profile/', ShopDetailView.as_view(), name='shop_detail'),
@@ -23,5 +23,5 @@ urlpatterns = [
     path('baskets/<int:pk>/update-state/', ShopSaleBasketStateUpdateAPIView.as_view(),
          name='shop-basket-update-state'),
     path('sales-stats/', ShopSalesStatisticsAPIView.as_view(), name='shop-sales-stats'),
-
+    path('materials',MaterialListView.as_view(),name='materials')
 ]

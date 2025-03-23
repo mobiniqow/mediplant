@@ -1,4 +1,5 @@
 from pathlib import Path
+
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 SECRET_KEY = 'django-insecure-66m-$ghl%c523szciay*#l3a6vy(q^m8yh$oids82ikcriig95'
 
@@ -29,6 +30,7 @@ INSTALLED_APPS = [
     'shop.apps.ShopConfig',
     'sickness.apps.SicknessConfig',
     'web.apps.WebConfig',
+    'ticket.apps.TicketConfig',
     'doctor_visit.apps.DoctorVisitConfig',
     'transaction.apps.TransactionConfig',
     'sale.apps.SaleConfig',

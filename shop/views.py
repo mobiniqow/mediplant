@@ -3,7 +3,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from jdatetime import timedelta
 from rest_framework import generics, status, viewsets, permissions
 from rest_framework.pagination import PageNumberPagination
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 import math
 from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView, get_object_or_404
@@ -186,30 +186,42 @@ class ShopSalesStatisticsAPIView(APIView):
         filter_type = request.query_params.get("filter", "daily")  # مقدار پیش‌فرض: روزانه
 
         today = now().date()
-        if filter_type == "daily":
-            start_date = today
-        elif filter_type == "weekly":
-            start_date = today - timedelta(days=7)
-        elif filter_type == "monthly":
-            start_date = today - timedelta(days=30)
-        else:
-            return Response({"error": "نوع فیلتر معتبر نیست. از daily, weekly یا monthly استفاده کنید."}, status=400)
+        periods = []
 
-        sales = SaleBasket.objects.filter(
-            shop=shop,
-            created_at__date__gte=start_date,
-            state=SaleBasket.State.DONE_AND_FINISH  # فقط سبدهای تکمیل‌شده محاسبه شوند
-        )
+        for i in range(7):  # برای ۷ دوره‌ی قبلی
+            if filter_type == "daily":
+                start_date = today - timedelta(days=(i + 1))
+                end_date = today - timedelta(days=i)
+            elif filter_type == "weekly":
+                start_date = today - timedelta(weeks=(i + 1))
+                end_date = today - timedelta(weeks=i)
+            elif filter_type == "monthly":
+                start_date = today - timedelta(weeks=(i + 1) * 4)  # ۴ هفته تقریباً برابر با یک ماه
+                end_date = today - timedelta(weeks=i * 4)
+            else:
+                return Response({"error": "نوع فیلتر معتبر نیست. از daily, weekly یا monthly استفاده کنید."}, status=400)
 
-        total_sales = sales.count()
-        total_income = sum(sale.price - sale.discount for sale in sales)
+            sales = SaleBasket.objects.filter(
+                shop=shop,
+                created_at__date__gte=start_date,
+                created_at__date__lt=end_date,
+                state=SaleBasket.State.DONE_AND_FINISH
+            )
+
+            total_sales = sales.count()
+            total_income = sum(sale.price - sale.discount for sale in sales)
+
+            periods.append({
+                "start_date": start_date,
+                "end_date": end_date - timedelta(days=1),  # نمایش تا روز قبل از `end_date`
+                "total_sales": total_sales,
+                "total_income": total_income,
+            })
 
         return Response({
-            "total_sales": total_sales,
-            "total_income": total_income,
-            "filter": filter_type
+            "filter": filter_type,
+            "data": periods
         })
-
 
 class IsShopper(permissions.BasePermission):
     def has_permission(self, request, view):
@@ -234,3 +246,13 @@ class ShopDetailView(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class MaterialListView(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request, *args, **kwargs):
+        material_choices = [
+            {"id": choice[0], "name": choice[1]} for choice in ShopProduct.Material.choices
+        ]
+        return Response(material_choices)

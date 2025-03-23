@@ -4,7 +4,8 @@ from rest_framework.generics import get_object_or_404
 
 from product.models import ProductImage, Product
 from product.serializers import ProductImageSerializer
-from sale.models import SaleBasket
+from sale.models import SaleBasket, SaleBasketProduct
+from sale.serializers import BaseProductSerializer
 from .models import ShopProduct, Shop, ProductNeedToAdded, ShopSettlement
 from django.contrib.auth import authenticate
 from account.models import User
@@ -160,9 +161,16 @@ class ChangePasswordSerializer(serializers.Serializer):
 
 
 class SaleBasketSerializer(serializers.ModelSerializer):
+    items = serializers.SerializerMethodField(read_only=True)
+
     class Meta:
         model = SaleBasket
-        fields = ['id', 'user', 'price', 'state', 'created_at', 'delivery_date']
+        fields = ['id', 'user', 'price', 'state', 'created_at', 'delivery_date', 'items', ]
+
+    def get_items(self, obj):
+        basket = obj
+        items = SaleBasketProduct.objects.filter(basket=basket)
+        return BaseProductSerializer(items, many=True).data
 
 
 class SaleBasketStateUpdateSerializer(serializers.ModelSerializer):
@@ -180,8 +188,6 @@ class SaleBasketStateUpdateSerializer(serializers.ModelSerializer):
                 "فقط می‌توانید وضعیت را به IN_SHOP_COMPILATION، SENDING یا SHOP_CANCEL تغییر دهید.")
 
         return value
-
-
 
 
 class UserShopProfileUpdateSerializer(serializers.ModelSerializer):

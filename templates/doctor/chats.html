@@ -1,10 +1,4 @@
 {% load static %}
-<!--=========================================================
-Item Name: Masterkart - Multipurpose eCommerce HTML Template.
-Author: Pilarest
-Version: 1.0
-Copyright 2022-2023
-============================================================-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,14 +47,10 @@ Copyright 2022-2023
     <div class="loader"></div>
 </div>
 
-<!-- Header start  -->
 {% include '../extentions/header.html' with categories=categories_map is_active=is_active medic_notification=medic_notification shop_notification=shop_notification %}
 
 <div class="ms-side-cat-overlay"></div>
 {% include '../extentions/shops_basket.html' with basket=basket toke=token %}
-<!-- Category sidebar End -->
-
-<!-- Cart sidebar Start -->
 <div class="ms-side-cart-overlay"></div>
 <div id="ms-side-cart" class="ms-side-cart">
     <div class="ms-cart-inner">
@@ -207,7 +197,6 @@ Copyright 2022-2023
         </div>
     </div>
 </div>
-<!-- Wishlist sidebar End -->
 
 <div class="page-chat">
 
@@ -513,30 +502,27 @@ Copyright 2022-2023
 
 <script>
     let socket;
-    
+
     function initializeSocket() {
-    socket = new WebSocket("ws://localhost:8000/ws/chat/");
-    
-        // وقتی اتصال برقرار می‌شود
-        socket.onopen = function() {
+        socket = new WebSocket("ws://localhost:8000/ws/chat/");
+ 
+        socket.onopen = function () {
             console.log("WebSocket is open");
         };
-    
-        // وقتی پیامی از سرور دریافت می‌شود
-        socket.onmessage = function(event) {
+ 
+        socket.onmessage = function (event) {
             console.log("Message from server:", event.data);
-            
-            // به روز رسانی صفحه با پیام جدید
-            const data = JSON.parse(event.data); // فرض کنید داده‌ها به صورت JSON ارسال می‌شوند
+ 
+            const data = JSON.parse(event.data);  
             const is_user = data.is_doctor;
             const displayText = data.content ? data.content : "";
             const mediaUrl = data.media ? data.media : "";
             const timestamp = new Date().toLocaleTimeString("fa-IR", {hour: "2-digit", minute: "2-digit"});
-            
-            // نمایش پیام در صفحه
+ 
             displayMessage(is_user, displayText, timestamp, data.is_read, data.caption, mediaUrl);
         };
     }
+
     initializeSocket()
     document.addEventListener("DOMContentLoaded", function () {
         const buttons = document.querySelectorAll(".tab-button");
@@ -658,33 +644,30 @@ Copyright 2022-2023
         const fileInput = document.getElementById("fileInput");
         const textInput = document.querySelector(".input-text");
         const file = fileInput.files[0];
-        const messageText = textInput.value.trim(); 
+        const messageText = textInput.value.trim();
         if (!messageText && !file) {
             alert("لطفاً یک پیام یا فایل ارسال کنید.");
             return;
-        } 
+        }
         const formData = new FormData();
         if (messageText) formData.append("message", messageText);
         if (file) formData.append("file", file);
         console.log(messageText, file)
         clearFileSelection()
         textInput.value = "";
-        sendMessageApi(file, messageText) 
+        sendMessageApi(file, messageText)
     }
-function sendMessageApi(file, message) {
-    // پیامی که قرار است ارسال شود
-    const messageData = {
-        content: message,
-        media: file ? URL.createObjectURL(file) : null, // آدرس فایل رسانه
-        is_doctor: false, // فرض می‌کنیم که پیام از سمت کاربر ارسال می‌شود
-        timestamp: new Date().toLocaleTimeString("fa-IR", {hour: "2-digit", minute: "2-digit"})
-    };
 
-    // ارسال پیام به WebSocket
-    socket.send(JSON.stringify(messageData));
-
-    console.log("پیام با موفقیت ارسال شد:", messageData);
-}
+    function sendMessageApi(file, message) { 
+        const messageData = {
+            content: message,
+            media: file ? URL.createObjectURL(file) : null, // آدرس فایل رسانه
+            is_doctor: false, // فرض می‌کنیم که پیام از سمت کاربر ارسال می‌شود
+            timestamp: new Date().toLocaleTimeString("fa-IR", {hour: "2-digit", minute: "2-digit"})
+        }; 
+        socket.send(JSON.stringify(messageData)); 
+        console.log("پیام با موفقیت ارسال شد:", messageData);
+    }
 
 
     // تابع برای حذف فایل انتخاب‌شده
@@ -752,7 +735,7 @@ function sendMessageApi(file, message) {
         }
     };
 
-</script> 
+</script>
 </body>
 
 </html>

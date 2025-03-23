@@ -1,4 +1,4 @@
-from django.core.validators import MinValueValidator
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from account.models import User
 from shop.models import Shop, ShopProduct
@@ -49,6 +49,9 @@ class SaleBasketProduct(models.Model):
     product = models.ForeignKey(ShopProduct, on_delete=models.SET_NULL, null=True, verbose_name='محصول')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='تاریخ ایجاد')
     unit = models.IntegerField(default=0, validators=[MinValueValidator(0)], verbose_name='تعداد')
+    rate = models.IntegerField(default=1, validators=[MinValueValidator(1), MaxValueValidator(5)], verbose_name='ریت')
+    description = models.CharField(max_length=100, null=True, blank=True, verbose_name='نظر')
+    user_name = models.CharField(max_length=100, blank=True, null=True)
 
     class Meta:
         verbose_name = 'محصول سبد خرید'
