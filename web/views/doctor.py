@@ -85,9 +85,18 @@ class DoctorHistoryDetails(BaseTemplateView):
         context = super().get_context_data(**kwargs)
         doctor = kwargs['doctor']
         doctor = get_object_or_404(Doctor, pk=doctor)
-        visits = DoctorVisit.objects.filter(doctor_id=doctor, state=DoctorVisit.State.END).count()
+        visits = DoctorVisit.objects.filter(doctor_id=doctor, state=DoctorVisit.State.DoctorEnd).count()
         context['doctor'] = doctor
-
         context['visits'] = visits
 
+        return context
+
+
+class DoctorListDetails(BaseTemplateView):
+    template_name = "doctor/list-dr.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        visits = DoctorVisit.objects.filter(user=self.request.user)
+        context['visits'] = visits
         return context

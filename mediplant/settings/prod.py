@@ -50,12 +50,19 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
-CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOW_CREDENTIALS = True
-import os
+# CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_CREDENTIALS = True
+# import os
+#
+# GDAL_LIBRARY_PATH = os.getenv('GDAL_LIBRARY_PATH', '/usr/lib/libgdal.so')
+#
+# if GDAL_LIBRARY_PATH:
+#     os.environ['GDAL_LIBRARY_PATH'] = GDAL_LIBRARY_PATH
 
-GDAL_LIBRARY_PATH = os.getenv('GDAL_LIBRARY_PATH', '/usr/lib/libgdal.so')
-
-if GDAL_LIBRARY_PATH:
-    os.environ['GDAL_LIBRARY_PATH'] = GDAL_LIBRARY_PATH
-
+CORS_ALLOWED_ORIGINS = [
+    "https://mediplant.ir",
+    "https://wwww.mediplant.ir",
+    "http://mediplant.ir",
+    "http://wwww.mediplant.ir",
+    "http://localhost:3000",
+]

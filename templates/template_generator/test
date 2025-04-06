@@ -40,9 +40,6 @@ Copyright 2022-2023
     <link rel="stylesheet" href="assets/css/responsive.css">
     <link rel="stylesheet" class="color-css" href="assets/css/color-01.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-
-
 </head>
 
 <body>
@@ -825,94 +822,40 @@ Copyright 2022-2023
     </div>
     <!-- Wishlist sidebar End -->
 
-    <div class="page-chat">
-        
 
-        <div class="tabs" id="tab-buttons">
-            <button class="tab-button active" data-tab="0">گفتگو</button>
-            <button class="tab-button" data-tab="1">نسخه</button>
-        </div>
-        
-        <div id="tab-contents">
-            <div class="tab-content active" id="tab-0">
-                <div class="box-chat" id="chatContainer">
-                    <!-- <div class="user">
-                        <img class="img-admin" src="./assets/img/bg/news.jpg">
-                        <div class="chat-user">
-                            sdasddadsdad
-                            <p class="time">
-                                12345
-                                <img src="./assets/img/icons/watch.png" class="time-watch-img" alt="">
-                            </p>
-                        </div>
-                    </div>
-                    <div class="admin">
-                        <div class="chat-admin">
-                            ascascdasdcac
-                            <p class="time-admin">
-                                12345
-                                <img src="./assets/img/icons/watch.png" class="time-watch-img" alt="">
-                            </p>
-                        </div>
-                        <img class="img-admin" src="./assets/img/bg/news.jpg">
-                    </div> -->
-                </div>
-                <div class="box-sent-message">
-                    <div class="detail-file-uploader" style="display: flex; align-items: center; gap: 10px;">
-                        <button id="deleteFileBtn" style="display: none; background: none; border: none; cursor: pointer; font-size: 18px; margin-top: 8px;" onclick="clearFileSelection()">🗑️</button>
-                        <img id="filePreview" style="display: none; max-width: 200px; margin-top: 10px; width: 30px;">
-                        <span id="fileName" class="file-name"></span>
-                    </div>
-
-                    <div class="inset-box-sent-message">
-                        <button class="btn-sent-message">
-                            <img class="img-sent" src="./assets/img/icons/send_3608124.png">
-                        </button>
-                        <input class="input-text" placeholder="متن خود را بنویسید" type="text">
-                        <label class="file-label" for="fileInput">
-                            <img src="./assets//img//icons/folder_3628828.png" class="file-label-img" alt="">
-                        </label>
-                        <input type="file" id="fileInput" class="hidden" onchange="updateFilePreview()">
-                    </div>
-                </div>
+    <div class="dr-list">
+        <div class="contact-list">
+            <div class="image-profile">
+                <img class="img-profile" src="./assets/img/bg/news.jpg">
             </div>
-
-            <div class="tab-content tab-content-two" id="tab-1">
-                <div class="titr-list-prescription">
-                    <div>
-                        <p>موضوع</p>
+            <div class="info-profile">
+                <div class="name-dr">
+                    <h2 class="name"> دکتر آزاده حشمت</h2>
+                    <p class="expertise">متخصص پوست</p>
+                </div>
+                <div class="info-dr">
+                    <div class="div-info-dr">
+                        <p>شماره نظام پزشکی</p>
+                        <span>123</span>
                     </div>
-                    <div>
-                        <p>تاریخ</p>
+                    <div class="div-info-dr">
+                        <p>تجربه</p>
+                        <span>۱۰ سال</span>
                     </div>
-                    <div style="text-align: left; padding-left: 45px;">
-                        <p>مشاهده</p>
+                    <div class="div-info-dr">
+                        <p>مشاوره موفق</p>
+                        <span>۱۰</span>
                     </div>
                 </div>
-                <ul>
-                    <li class="list-prescription">
-                        <div>
-                            <p>لورم ایپسوم</p>
-                        </div>
-                        <div>
-                            <p>۱۱۱۱</p>
-                        </div>
-                        <div style="text-align: left; padding-left: 24px;">
-                            <button onclick="openModal('این یک متن همراه با تصویر است', 'https://example.com/image.jpg')">دریافت نسخه</button>
-                        </div>
-                    </li>
-                </ul>
+                <p class="go-to-detail">
+                    <a href="#">&zwnj;دریافت مشاوره <i class="fa-solid fa-angle-left"> </i></a>
+                </p>
+                <button class="btn-res-detail">دریافت مشاوره <i class="fa-solid fa-angle-left"> </i></button>
             </div>
         </div>
+        
     </div>
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <!-- <span class="close-btn" onclick="closeModal()">&times;</span> -->
-            <div id="modal-body">
-            </div> 
-            <button class="btn-close-modal" onclick="closeModal()">بستن</button>
-        </div>
-    </div>
+
    
     <!-- Footer Start -->
     <footer class="ms-footer m-t-30">
@@ -1206,7 +1149,6 @@ Copyright 2022-2023
                     </div>
                 </div>
             </div>
-            
         </div>
     </div>
 
@@ -1227,247 +1169,6 @@ Copyright 2022-2023
     <!-- Main Js -->
     <script src="assets/js/main.js"></script>
     <script src="assets/js/demo-1.js"></script>
-
-    <!--  -->
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const buttons = document.querySelectorAll(".tab-button");
-            const contents = document.querySelectorAll(".tab-content");
-
-            buttons.forEach(button => {
-                button.addEventListener("click", function () {
-                    const tabIndex = this.getAttribute("data-tab");
-                    
-                    buttons.forEach(btn => btn.classList.remove("active"));
-                    contents.forEach(content => content.classList.remove("active"));
-                    
-                    this.classList.add("active");
-                    document.getElementById(`tab-${tabIndex}`).classList.add("active");
-                });
-            });
-        });
-
-        function updateFilePreview() {
-            const fileInput = document.getElementById("fileInput");
-            const fileNameSpan = document.getElementById("fileName");
-            const filePreview = document.getElementById("filePreview");
-            const deleteFileBtn = document.getElementById("deleteFileBtn");
-
-            if (fileInput.files.length > 0) {
-                const file = fileInput.files[0];
-                fileNameSpan.textContent = file.name;
-                deleteFileBtn.style.display = "inline-block"; // نمایش دکمه حذف
-
-                // بررسی نوع فایل
-                if (file.type.startsWith("image/")) {
-                    const reader = new FileReader();
-                    reader.onload = function (e) {
-                        filePreview.src = e.target.result;
-                        filePreview.style.display = "block";
-                    };
-                    reader.readAsDataURL(file);
-                } else {
-                    filePreview.style.display = "none";
-                }
-            } else {
-                clearFileSelection();
-            }
-        }
-
-        // تابع حذف فایل انتخاب‌شده
-        function clearFileSelection() {
-            const fileInput = document.getElementById("fileInput");
-            const fileNameSpan = document.getElementById("fileName");
-            const filePreview = document.getElementById("filePreview");
-            const deleteFileBtn = document.getElementById("deleteFileBtn");
-
-            fileInput.value = ""; // پاک کردن انتخاب فایل
-            fileNameSpan.textContent = "";
-            filePreview.style.display = "none";
-            deleteFileBtn.style.display = "none"; // مخفی کردن دکمه حذف
-        }
-
-        function displayMessage(is_user, message, time, is_read, caption = "") {
-            const chatContainer = document.getElementById("chatContainer");
-
-            const readIcon = is_read 
-                ? '<img src="./assets/img/icons/double-tick.png" style="width: 20px; height: 20px;" alt="Read">' 
-                : '<img src="./assets/img/icons/tick-vector.png" style="width: 20px; height: 20px;" alt="Unread">';
-
-            let modifiedMessage = message;
-
-            // اگر پیام شامل لینک تصویر باشد، تصویر را نمایش دهد
-            if (message.match(/\.(jpeg|jpg|png|gif|svg)$/i)) {
-                modifiedMessage = `
-                    <img src="${message}" alt="تصویر ارسال‌شده" style="max-width: 200px; border-radius: 8px; margin-top: 5px;">
-                    <p style="font-size: 14px; color: black; margin-top: 3px; font-weight: bold;">${caption}</p>
-                `;
-            }
-            
-            // اگر پیام شامل لینک صوتی باشد، پلیر صوتی را نمایش دهد
-            else if (message.match(/\.(mp3|wav|ogg)$/i)) {
-                modifiedMessage = `
-                    <audio controls style="margin-top: 5px; width: 200px;">
-                        <source src="${message}" type="audio/${message.split('.').pop()}">
-                        مرورگر شما از پخش صوت پشتیبانی نمی‌کند.
-                    </audio>
-                    <p style="font-size: 14px; color: black; margin-top: 3px; font-weight: bold;">${caption}</p>
-                `;
-            }
-
-            const messageHTML = is_user ?
-                `<div class="user">
-                    <img class="img-admin" src="./assets/img/bg/news.jpg">
-                    <div class="chat-user">
-                        ${modifiedMessage}
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            ${readIcon}
-                            <p class="time">
-                                ${time}
-                                <img src="./assets/img/icons/watch.png" class="time-watch-img" alt="">
-                            </p>
-                        </div>
-                    </div>
-                </div>`
-                :
-                `<div class="admin">
-                    <div class="chat-admin">
-                        ${modifiedMessage}
-                        <p class="time-admin">
-                            ${time}
-                            <img src="./assets/img/icons/watch.png" class="time-watch-img" alt="">
-                        </p>
-                    </div>
-                    <img class="img-admin" src="./assets/img/bg/news.jpg">
-                </div>`;
-
-            chatContainer.innerHTML += messageHTML;
-        }
-
-        // تست ارسال پیام‌های مختلف
-        displayMessage(true, "سلام! چطور می‌توانم کمک کنم؟", "12:30", true);
-        displayMessage(false, "لطفاً اطلاعات بیشتری بدهید.", "12:32", false);
-        displayMessage(true, "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Sunflower_from_Silesia2.jpg/1280px-Sunflower_from_Silesia2.jpg", "12:35", false, "🌻 این یک تصویر نمونه است."); 
-        displayMessage(false, "https://example.com/voice.mp3", "12:40", true, "🎵 این یک فایل صوتی آزمایشی است.");
-
-
-        async function sendMessage() {
-            const fileInput = document.getElementById("fileInput");
-            const textInput = document.querySelector(".input-text");
-            const file = fileInput.files[0];
-            const messageText = textInput.value.trim();
-
-            if (!messageText && !file) {
-                alert("لطفاً یک پیام یا فایل ارسال کنید.");
-                return;
-            }
-
-            const formData = new FormData();
-            if (messageText) formData.append("message", messageText);
-            if (file) formData.append("file", file);
-            console.log(messageText, file)
-            clearFileSelection()
-            textInput.value = "";
-
-            // try {
-            //     const response = await fetch("https://your-api.com/send-message", {
-            //         method: "POST",
-            //         body: formData,
-            //     });
-
-            //     const result = await response.json();
-
-            //     if (response.ok) {
-            //         if (file) {
-            //             displayMessage(true, result.fileUrl || file.name, new Date().toLocaleTimeString(), false);
-            //         }
-            //         if (messageText) {
-            //             displayMessage(true, messageText, new Date().toLocaleTimeString(), false);
-            //         }
-            //         textInput.value = "";
-            //         clearFileSelection(); // حذف فایل بعد از ارسال موفق
-            //     } else {
-            //         alert("ارسال پیام ناموفق بود.");
-            //     }
-            // } catch (error) {
-            //     console.error("خطا در ارسال پیام:", error);
-            //     alert("خطای ارتباط با سرور.");
-            // }
-        }
-
-        // تابع برای حذف فایل انتخاب‌شده
-        function clearFileSelection() {
-            const fileInput = document.getElementById("fileInput");
-            const fileNameSpan = document.getElementById("fileName");
-            const filePreview = document.getElementById("filePreview");
-            const deleteFileBtn = document.getElementById("deleteFileBtn");
-
-            fileInput.value = "";
-            fileNameSpan.textContent = "";
-            filePreview.style.display = "none";
-            deleteFileBtn.style.display = "none";
-        }
-
-        // اضافه کردن رویداد به دکمه ارسال
-        document.querySelector(".btn-sent-message").addEventListener("click", sendMessage);
-
-        // function openModal() {
-        //     document.getElementById("myModal").style.display = "flex";
-        // }
-
-        // function closeModal() {
-        //     document.getElementById("myModal").style.display = "none";
-        // }
-
-        function openModal(text, mediaUrl) {
-            const modal = document.getElementById("myModal");
-            const modalBody = document.getElementById("modal-body");
-
-            let content = "";
-
-            // بررسی اینکه آیا mediaUrl یک تصویر است
-            if (mediaUrl.match(/\.(jpeg|jpg|png|gif|svg)$/i)) {
-                content += `<img download class="img-visit" src="${mediaUrl}" alt="تصویر" style="max-width: 100%; border-radius: 8px;">`;
-            }
-            // بررسی اینکه آیا mediaUrl یک فایل صوتی mp3 است
-            else if (mediaUrl.match(/\.(mp3)$/i)) {
-                content += `
-                    <audio controls style="margin-top: 5px; width: 100%;">
-                        <source src="${mediaUrl}" type="audio/mpeg">
-                        مرورگر شما از پخش صوت پشتیبانی نمی‌کند.
-                    </audio>
-                `;
-            }
-
-            // اضافه کردن متن در صورت وجود
-            if (text) {
-                content += `<p style="margin-top: 16px;">${text}</p>`;
-            }
-
-            // قرار دادن محتوا در مودال
-            modalBody.innerHTML = content;
-            modal.style.display = "flex";
-            openModal(
-                'این یک متن تستی است.',
-                'https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Sunflower_from_Silesia2.jpg/1280px-Sunflower_from_Silesia2.jpg',
-            );
-        }
-
-        // نمونه فراخوانی تابع با یک تصویر و یک فایل صوتی
-
-
-        function closeModal() {
-            document.getElementById("myModal").style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            const modal = document.getElementById("myModal");
-            if (event.target === modal) {
-                closeModal();
-            }
-        };
-    </script>
 </body>
 
 </html>

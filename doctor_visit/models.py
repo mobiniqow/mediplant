@@ -48,6 +48,7 @@ class Prescription(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='تاریخ ایجاد')
     description = models.TextField(verbose_name='توضیحات')
     therapy = models.TextField(verbose_name='دارو و درمان')
+    image = models.ImageField(upload_to="prescriptions/images/", null=True, blank=True, )
 
     class Meta:
         verbose_name = "نسخه بیمار"

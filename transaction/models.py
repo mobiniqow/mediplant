@@ -20,14 +20,13 @@ class DoctorTransaction(models.Model):
     user = models.ForeignKey("account.User", on_delete=models.CASCADE)
     amount = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
-    transaction_type = models.IntegerField( choices=TransactionState.choices,
-                                        default=TransactionState.SUSPEND)
+    transaction_type = models.IntegerField(choices=TransactionState.choices,
+                                           default=TransactionState.SUSPEND)
 
     card = models.CharField(max_length=33, null=True, blank=True)
     card_hash = models.CharField(max_length=128, null=True, blank=True)
     ref_id = models.CharField(max_length=32, null=True, blank=True)
     authority = models.CharField(max_length=100, null=True, blank=True)
-
 
 
 class Transaction(models.Model):
@@ -56,6 +55,7 @@ class Transaction(models.Model):
     code_posti = models.CharField(max_length=40, default="")
     cart = models.ForeignKey(SaleBasket, on_delete=models.CASCADE, null=True, blank=True,
                              related_name='cart_transaction')
+    doctor_visit = models.ForeignKey('doctor_visit.DoctorVisit', on_delete=models.SET_NULL, null=True, blank=True,related_name="visit" )
     card = models.CharField(max_length=33, null=True, blank=True)
     card_hash = models.CharField(max_length=128, null=True, blank=True)
     ref_id = models.CharField(max_length=32, null=True, blank=True)

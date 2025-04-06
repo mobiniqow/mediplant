@@ -61,10 +61,9 @@ class UserSendToDoctorMessage(APIView):
         chat = UserChatRequest(data=data, context={'doctor_id': doctor_visit_id, 'is_doctor': False})
 
         if chat.is_valid(raise_exception=True):
-            chat_instance = chat.save()
             chat_message = DoctorVisitChat.objects.create(
                 doctor_id=doctor_visit_id,
-                content=data['content'],
+                content=data['content'] if 'content' in data else "",
                 is_doctor=False,
                 media=data.get('media'),
             )

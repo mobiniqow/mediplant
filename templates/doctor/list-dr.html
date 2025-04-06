@@ -1,4 +1,10 @@
 {% load static %}
+<!--========================================================= 
+Item Name: Masterkart - Multipurpose eCommerce HTML Template.
+Author: Pilarest
+Version: 1.0
+Copyright 2022-2023
+============================================================-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,9 +42,6 @@
     <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
     <link rel="stylesheet" class="color-css" href="{% static 'assets/css/color-01.css' %}">
 
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-
-
 </head>
 
 <body>
@@ -47,10 +50,14 @@
     <div class="loader"></div>
 </div>
 
+<!-- Header start  -->
 {% include '../extentions/header.html' with categories=categories_map is_active=is_active medic_notification=medic_notification shop_notification=shop_notification %}
-
 <div class="ms-side-cat-overlay"></div>
+
 {% include '../extentions/shops_basket.html' with basket=basket toke=token %}
+<!-- Category sidebar End -->
+
+<!-- Cart sidebar Start -->
 <div class="ms-side-cart-overlay"></div>
 <div id="ms-side-cart" class="ms-side-cart">
     <div class="ms-cart-inner">
@@ -197,106 +204,48 @@
         </div>
     </div>
 </div>
+<!-- Wishlist sidebar End -->
 
-<div class="page-chat">
 
-
-    <div class="tabs" id="tab-buttons">
-        <button class="tab-button active" data-tab="0">گفتگو</button>
-        <button class="tab-button" data-tab="1">نسخه</button>
-    </div>
-
-    <div id="tab-contents">
-        <div class="tab-content active" id="tab-0">
-            <div class="box-chat" id="chatContainer">
-                <!-- <div class="user">
-                    <img class="img-admin" src="./assets/img/bg/news.jpg">
-                    <div class="chat-user">
-                        sdasddadsdad
-                        <p class="time">
-                            12345
-                            <img src="./assets/img/icons/watch.png" class="time-watch-img" alt="">
-                        </p>
-                    </div>
-                </div>
-                <div class="admin">
-                    <div class="chat-admin">
-                        ascascdasdcac
-                        <p class="time-admin">
-                            12345
-                            <img src="./assets/img/icons/watch.png" class="time-watch-img" alt="">
-                        </p>
-                    </div>
-                    <img class="img-admin" src="./assets/img/bg/news.jpg">
-                </div> -->
+<div class="dr-list">
+    {% for i in visits %}
+        <div class="contact-list">
+            <div class="image-profile">
+                <img class="img-profile" src="{{ i.doctor.picture.url }}">
             </div>
-            <div class="box-sent-message mt-2">
-                <div class="detail-file-uploader" style="display: flex; align-items: center; gap: 10px;">
-                    <button id="deleteFileBtn"
-                            style="display: none; background: none; border: none; cursor: pointer; font-size: 18px; margin-top: 8px;"
-                            onclick="clearFileSelection()">🗑️
-                    </button>
-                    <img id="filePreview" style="display: none; max-width: 200px; margin-top: 10px; width: 30px;">
-                    <span id="fileName" class="file-name"></span>
+            <div class="info-profile">
+                <div class="name-dr">
+                    <h2 class="name"> دکتر {{ i.doctor.user.user_name }}</h2>
+                    <p class="expertise">{{ i.doctor.branch.name }}</p>
                 </div>
-
-                <div class="inset-box-sent-message">
-                    <button class="btn-sent-message">
-                        <img class="img-sent" src="{% static 'assets/img/icons/send_3608124.png' %}">
-                    </button>
-                    <input class="input-text" placeholder="متن خود را بنویسید" type="text">
-                    <label class="file-label" for="fileInput">
-                        <img src="{% static 'assets/img/icons/folder_3628828.png' %}" class="file-label-img" alt="">
-                    </label>
-                    <input type="file" id="fileInput" class="hidden" onchange="updateFilePreview()">
+                <div class="info-dr">
+                    <div class="div-info-dr">
+                        <p>شماره نظام پزشکی</p>
+                        <span>{{ i.doctor.medical_system_code }}</span>
+                    </div>
+                    {#                    <div class="div-info-dr">#}
+                    {#                        <p>تجربه</p>#}
+                    {#                        <span>۱۰ سال</span>#}
+                    {#                    </div>#}
+                    {#                    <div class="div-info-dr">#}
+                    {#                        <p>مشاوره موفق</p>#}
+                    {#                        <span>۱۰</span>#}
+                    {#                    </div>#}
                 </div>
+                <p class="go-to-detail">
+                    <a href="/medicine/{{ i.doctor.id }}/chats/">&zwnj;دریافت مشاوره <i
+                            class="fa-solid fa-angle-left"> </i></a>
+                </p>
+                <a href="/medicine/{{ i.doctor.id }}/chats/" class="btn-res-detail">دریافت مشاوره <i
+                        class="fa-solid fa-angle-left"> </i></a>
             </div>
         </div>
-
-        <div class="tab-content tab-content-two" id="tab-1">
-            <div class="titr-list-prescription">
-                <div>
-                    <p>موضوع</p>
-                </div>
-                <div>
-                    <p>تاریخ</p>
-                </div>
-                <div style="text-align: left; padding-left: 45px;">
-                    <p>مشاهده</p>
-                </div>
-            </div>
-            <ul>
-                <li class="list-prescription">
-                    <div>
-                        <p>لورم ایپسوم</p>
-                    </div>
-                    <div>
-                        <p>۱۱۱۱</p>
-                    </div>
-                    <div style="text-align: left; padding-left: 24px;">
-                        <button onclick="openModal('این یک متن همراه با تصویر است', 'https://example.com/image.jpg')">
-                            دریافت نسخه
-                        </button>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <!-- <span class="close-btn" onclick="closeModal()">&times;</span> -->
-        <div id="modal-body">
-        </div>
-        <button class="btn-close-modal" onclick="closeModal()">بستن</button>
-    </div>
+    {% endfor %}
 </div>
 
-<!-- Footer Start -->
+
 {% include '../extentions/footer.html' %}
-<!-- Footer Area End -->
 
-<!-- Quickview Modal -->
 <div class="modal fade quickview-modal" id="ms_quickview_modal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -477,7 +426,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -489,6 +437,7 @@
 <script src="{% static 'assets/js/plugins/swiper-bundle.min.js' %}"></script>
 <script src="{% static 'assets/js/plugins/fontawesome.js' %}"></script>
 <script src="{% static 'assets/js/plugins/owl.carousel.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/countdownTimer.js' %}"></script>
 <script src="{% static 'assets/js/plugins/infiniteslidev2.js' %}"></script>
 <script src="{% static 'assets/js/plugins/jquery.zoom.min.js' %}"></script>
 <script src="{% static 'assets/js/plugins/slick.min.js' %}"></script>
@@ -497,278 +446,6 @@
 <!-- Main Js -->
 <script src="{% static 'assets/js/main.js' %}"></script>
 <script src="{% static 'assets/js/demo-1.js' %}"></script>
-
-<!--  -->
-
-<script>
-    let socket;
-
-    function initializeSocket() {
-        socket = new WebSocket("ws://localhost:8000/ws/chat/");
-
-        socket.onopen = function () {
-            console.log("WebSocket is open");
-        };
-
-        socket.onmessage = function (event) {
-            console.log("Message from server:", event.data);
- 
-            window.location.reload();
- 
-        };
-    }
-
-    initializeSocket()
-    document.addEventListener("DOMContentLoaded", function () {
-        const buttons = document.querySelectorAll(".tab-button");
-        const contents = document.querySelectorAll(".tab-content");
-
-        buttons.forEach(button => {
-            button.addEventListener("click", function () {
-                const tabIndex = this.getAttribute("data-tab");
-
-                buttons.forEach(btn => btn.classList.remove("active"));
-                contents.forEach(content => content.classList.remove("active"));
-
-                this.classList.add("active");
-                document.getElementById(`tab-${tabIndex}`).classList.add("active");
-            });
-        });
-    });
-
-    function updateFilePreview() {
-        const fileInput = document.getElementById("fileInput");
-        const fileNameSpan = document.getElementById("fileName");
-        const filePreview = document.getElementById("filePreview");
-        const deleteFileBtn = document.getElementById("deleteFileBtn");
-
-        if (fileInput.files.length > 0) {
-            const file = fileInput.files[0];
-            fileNameSpan.textContent = file.name;
-            deleteFileBtn.style.display = "inline-block"; // نمایش دکمه حذف
-
-            // بررسی نوع فایل
-            if (file.type.startsWith("image/")) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    filePreview.src = e.target.result;
-                    filePreview.style.display = "block";
-                };
-                reader.readAsDataURL(file);
-            } else {
-                filePreview.style.display = "none";
-            }
-        } else {
-            clearFileSelection();
-        }
-    }
- 
-    function clearFileSelection() {
-        const fileInput = document.getElementById("fileInput");
-        const fileNameSpan = document.getElementById("fileName");
-        const filePreview = document.getElementById("filePreview");
-        const deleteFileBtn = document.getElementById("deleteFileBtn");
-
-        fileInput.value = ""; // پاک کردن انتخاب فایل
-        fileNameSpan.textContent = "";
-        filePreview.style.display = "none";
-        deleteFileBtn.style.display = "none"; // مخفی کردن دکمه حذف
-    }
-function scrollToBottom() {
-    const chatContainer = document.getElementById("chatContainer");
-    chatContainer.scrollTop = chatContainer.scrollHeight;
-}
-
-// بعد از اضافه شدن پیام، این تابع را صدا بزنید: 
-
-    function displayMessage(is_user, message, time, is_read, caption = "", url = "") {
-        const chatContainer = document.getElementById("chatContainer");
-        const readIcon = is_read
-            ? '<img src="{% static 'assets/img/icons/double-tick.png' %}" style="width: 20px; height: 20px;" alt="Read">'
-            : '<img src="{% static 'assets/img/icons/tick-vector.png' %}" style="width: 20px; height: 20px;" alt="Unread">';
-        let modifiedMessage = `<p style="font-size: 14px; color: black;">${message}</p>`;
-        if (url) {
-            if (url.match(/\.(jpeg|jpg|png|gif|svg)$/i)) {
-                // نمایش تصویر
-                modifiedMessage += `
-                <img src="${url}" alt="تصویر ارسال‌شده" style="max-width: 200px; border-radius: 8px; margin-top: 5px;">
-                <p style="font-size: 14px; color: black; margin-top: 3px; font-weight: bold;">${caption}</p>
-            `;
-            } else if (url.match(/\.(mp3|wav|ogg|aac|flac|m4a|wma)$/i)) {
-                // نمایش پلیر صوتی
-                modifiedMessage += `
-                <audio controls style="margin-top: 5px; width: 200px;">
-                    <source src="${url}" type="audio/${url.split('.').pop()}">
-                    مرورگر شما از پخش این فرمت صوتی پشتیبانی نمی‌کند.
-                </audio>
-                <p style="font-size: 14px; color: black; margin-top: 3px; font-weight: bold;">${caption}</p>
-            `;
-            }
-        }
-
-        const messageHTML = is_user ?
-            `<div class="user">
-                <img class="img-admin" src="{% static 'assets/img/bg/news.jpg' %}">
-                <div class="chat-user">
-                    ${modifiedMessage}
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        ${readIcon}
-                        <p class="time">
-                            ${time}
-                            <img src="{% static 'assets/img/icons/watch.png' %}" class="time-watch-img" alt="">
-                        </p>
-                    </div>
-                </div>
-            </div>`
-            :
-            `<div class="admin">
-                <div class="chat-admin">
-                    ${modifiedMessage}
-                    <p class="time-admin">
-                        ${time}
-                        <img src="{% static 'assets/img/icons/watch.png' %}" class="time-watch-img" alt="">
-                    </p>
-                </div>
-                <img class="img-admin" src="{% static 'assets/img/bg/news.jpg' %}">
-            </div>`;
-
-        chatContainer.innerHTML += messageHTML;
-                    scrollToBottom();
-
-    }
-     
-
-    {% for i in chats %}
-        displayMessage({{i.is_doctor}}, "{{ i.content }}", '{{ i.created_at }}', {{ i.is_read }}, caption = '', url = "{{ i.media_url }}");
-        
-    {% endfor %}
-
-    async function sendMessage() {
-        const fileInput = document.getElementById("fileInput");
-        const textInput = document.querySelector(".input-text");
-        const file = fileInput.files[0];
-        const messageText = textInput.value.trim();
-        if (!messageText && !file) {
-            alert("لطفاً یک پیام یا فایل ارسال کنید.");
-            return;
-        }
-        const formData = new FormData();
-        if (messageText) formData.append("message", messageText);
-        if (file) formData.append("file", file);
-        console.log(messageText, file)
-        clearFileSelection()
-        textInput.value = "";
-        sendMessageApi(file, messageText)
-    }
-    
-    function notifToUser(docktor_id){
-        const messageData = {
-            content: docktor_id,
-        };
-        socket.send(JSON.stringify(messageData));
-        console.log("پیام با موفقیت ارسال شد:", messageData);
-    }
-    
-    function sendMessageApi(file, message) {
-        var url = "/doctor-request/doctor-visit/{{ doctor.id }}/send-message/";
-        var formData = new FormData(); 
-        if (message) {
-            formData.append("content", message);
-        } 
-        if (file) {
-            formData.append("media", file);
-        } 
-        $.ajax({
-            url: url,
-            type: "POST",
-            data: formData,
-            processData: false,
-            contentType: false,
-            headers: {
-                "Authorization": "Bearer " + '{{token}}'
-            },
-            success: function (response) {
-                console.log("پیام با موفقیت ارسال شد:", response); 
-                var is_user = false;  
-                var displayText = response.content ? response.content : "";
-                var mediaUrl = response.media ? response.media : ""; 
-                var timestamp = new Date().toLocaleTimeString("fa-IR", {hour: "2-digit", minute: "2-digit"}); 
-                displayMessage(is_user, displayText, timestamp, false, "", mediaUrl);
-                notifToUser({{ doctor.id }});
-            },
-            error: function (xhr, status, error) {
-                console.error("خطا در ارسال پیام:", xhr.responseText || error);
-            }
-        });
-    }
-
-
-
-    function clearFileSelection() {
-        const fileInput = document.getElementById("fileInput");
-        const fileNameSpan = document.getElementById("fileName");
-        const filePreview = document.getElementById("filePreview");
-        const deleteFileBtn = document.getElementById("deleteFileBtn");
-
-        fileInput.value = "";
-        fileNameSpan.textContent = "";
-        filePreview.style.display = "none";
-        deleteFileBtn.style.display = "none";
-    }
-
-    // اضافه کردن رویداد به دکمه ارسال
-    document.querySelector(".btn-sent-message").addEventListener("click", sendMessage);
-
-    // function openModal() {
-    //     document.getElementById("myModal").style.display = "flex";
-    // }
-
-    // function closeModal() {
-    //     document.getElementById("myModal").style.display = "none";
-    // }
-
-    function openModal(text, mediaUrl) {
-        const modal = document.getElementById("myModal");
-        const modalBody = document.getElementById("modal-body");
-
-        let content = "";
-
-        // بررسی اینکه آیا mediaUrl یک تصویر است
-        if (mediaUrl.match(/\.(jpeg|jpg|png|gif|svg)$/i)) {
-            content += `<img download class="img-visit" src="${mediaUrl}" alt="تصویر" style="max-width: 100%; border-radius: 8px;">`;
-        }
-        // بررسی اینکه آیا mediaUrl یک فایل صوتی mp3 است
-        else if (mediaUrl.match(/\.(mp3)$/i)) {
-            content += `
-                    <audio controls style="margin-top: 5px; width: 100%;">
-                        <source src="${mediaUrl}" type="audio/mpeg">
-                        مرورگر شما از پخش صوت پشتیبانی نمی‌کند.
-                    </audio>
-                `;
-        }
-        if (text) {
-            content += `<p style="margin-top: 16px;">${text}</p>`;
-        }
-        modalBody.innerHTML = content;
-        modal.style.display = "flex";
-        openModal(
-            'این یک متن تستی است.',
-            'https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Sunflower_from_Silesia2.jpg/1280px-Sunflower_from_Silesia2.jpg',
-        );
-    }
-
-    function closeModal() {
-        document.getElementById("myModal").style.display = "none";
-    }
-
-    window.onclick = function (event) {
-        const modal = document.getElementById("myModal");
-        if (event.target === modal) {
-            closeModal();
-        }
-    };
-
-</script>
 </body>
 
 </html>

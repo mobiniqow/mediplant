@@ -5,7 +5,7 @@ from .views.articles import EncyclopediaCombinedDrugsView, EncyclopediaCombinedD
     EncyclopediaView, DiseasesView, DiseasesDetailsView, HerbalView, HerbalDetailsView, NewsView, NewsDetailsView
 from .views.auth import LoginView, VerifyView, ProfileView
 from .views.doctor import DoctorList, DoctorDetailsList, DoctorChatDetails, DoctorprescriptionDetails, \
-    DoctorHistoryDetails
+    DoctorHistoryDetails, DoctorListDetails
 from .views.others import AboutUsView, ContactUsView
 from .views.product import ShopProductListView, ShopProductView, ProductListView
 from .views.shop import CategoryView, IndexView, ShopView, ShopDetailsView, SearchProduct, CheckoutView, ShopCartView, \
@@ -49,5 +49,6 @@ urlpatterns = [
     path("medicine/<int:doctor>/chats/", DoctorChatDetails.as_view(),),
     path("medicine/<int:doctor>/prescription/", DoctorprescriptionDetails.as_view(),),
     path("medicine/<int:doctor>/history/", DoctorHistoryDetails.as_view(),),
+    path("medicine/docktor-list/", DoctorListDetails.as_view(),),
 
 ]
