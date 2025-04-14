@@ -85,10 +85,10 @@ class DoctorHistoryDetails(BaseTemplateView):
         context = super().get_context_data(**kwargs)
         doctor = kwargs['doctor']
         doctor = get_object_or_404(Doctor, pk=doctor)
-        visits = DoctorVisit.objects.filter(doctor_id=doctor, state=DoctorVisit.State.DoctorEnd).count()
+        visits = DoctorVisit.objects.filter(doctor_id=doctor )
         context['doctor'] = doctor
         context['visits'] = visits
-
+        print(visits)
         return context
 
 

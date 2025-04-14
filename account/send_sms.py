@@ -1,24 +1,29 @@
 from threading import Thread
-
+import requests
 
 def send_otp_message(phone, code):
     print(f"phone::{phone}=> code::{code}")
-    # Thread(target=sms, args=(phone, code)).start()
+    Thread(target=send_otp, args=(phone, code)).start()
 
 
-def sms(_phone, _message):
-    from ippanel import Client
 
-    api_key = "zOpl9jdnKmSkYIL90GEWSYgLdfSs4S_C8WUf1XgLukE="
+def send_otp(phone, otp):
+    # 2O31E ramze vorod
+    # url = "https://rest.payamak-panel.com/api/SendSMS/BaseServiceNumber"
+    # payload = f'username=09127253345&password=2O31E&text={otp}&to={phone}&bodyId=224836'
+    # headers = {
+    #     'Content-Type': 'application/x-www-form-urlencoded'
+    # }
+    # response = requests.request("POST", url, headers=headers, data=payload)
+    # print(f'sending otp code to {phone} with status {response.status_code}')
+    url = "https://api.kavenegar.com/v1/59367966624C365A7277546C44723542565670417066556C514D68644D68697764342B726E374766462B773D/verify/lookup.json"
 
-    sms = Client(api_key)
-    pattern_values = {
-        "verification-code": _message,
+    payload = f'token={otp}&template=login&receptor={phone}'
+    headers = {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Cookie': 'cookiesession1=678A8C4087367227C1B693FF947D5992'
     }
 
-    message_id = sms.send_pattern(
-        "wjam509dz9v4tb0",  # pattern code
-        "+3000505",  # originator
-        _phone,  # recipient
-        pattern_values,  # pattern values
-    )
+    response = requests.request("POST", url, headers=headers, data=payload)
+
+    print(response.text)

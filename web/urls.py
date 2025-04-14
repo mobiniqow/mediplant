@@ -45,7 +45,7 @@ urlpatterns = [
     path("blog/news/", NewsView.as_view(),),
     path("blog/news/<int:articleId>/", NewsDetailsView.as_view(),),
     path("medicine/", DoctorList.as_view(),),
-    path("medicine/<int:doctor>", DoctorDetailsList.as_view(),),
+    path("medicine/<int:doctor>", DoctorDetailsList.as_view(),name="doctor-page"),
     path("medicine/<int:doctor>/chats/", DoctorChatDetails.as_view(),),
     path("medicine/<int:doctor>/prescription/", DoctorprescriptionDetails.as_view(),),
     path("medicine/<int:doctor>/history/", DoctorHistoryDetails.as_view(),),

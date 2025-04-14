@@ -12,12 +12,12 @@ from transaction.models import Transaction, DoctorTransaction
 
 class DoctorVisit(models.Model):
     class State(models.IntegerChoices):
-        REQUEST = 0
-        ACCEPT = 1
-        FAILED = 2
-        UserEND = 3
-        DoctorEnd = 4
-        REPORT = 5
+        REQUEST = 0, "درخواست داده شده"
+        ACCEPT = 1, "قبول شده"
+        FAILED = 2, "رد شده"
+        UserEND = 3, "پایان یافته"
+        DoctorEnd = 4, "پایان یافته از سمت پزشک"
+        REPORT = 5, "گزارش شده"
 
     # doctor = models.ForeignKey(DoctorVisitPrice, on_delete=models.CASCADE, null=True, verbose_name='پزشک')
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE, null=True, verbose_name='پزشک')
