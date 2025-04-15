@@ -95,10 +95,9 @@
 }
 
 .product-info {
-    text-align: right;
+    text-align: left;
     flex-basis: 250px;
     margin-left: auto;
-    padding-left: 20px; /* افزایش فاصله سمت چپ */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -112,14 +111,14 @@
 
 .product-info .product-price {
     font-size: 1.2em;
-    color: #333;
+    color: #e23131;
     margin: 10px 0;
 }
 
 
 .product-info .btn-buy {
     display: inline-block;
-    background-color: #007bff;
+    background: linear-gradient(180deg, #f04151, #d73948);
     color: #fff;
     padding: 10px 20px;
     text-align: center;
@@ -303,34 +302,38 @@
             <!-- -->
 
             {% for i in product_shops|slice:"1:" %}
-<div class="item-shop">
-    <div class="shop-info">
-        <div class="shop-image">
-{#            <img src="{{ i.shop.image.url }}" alt="{{ i.shop.name }}"/>#}
-        </div>
-        <div class="shop-details">
-            <h2>{{ i.shop.name | truncatechars:17 }}</h2>
-            <p>{{ i.shop.user.city | truncatechars:17 }}</p>
-            <p class="shop-rating">امتیاز: {{ i.shop.get_rate_state_display }}</p>
-        </div>
-    </div>
+            <div class="item-shop">
+                <div class="shop-info">
+                    <div class="shop-image">
+                        <!-- toro  -->
+                        <!-- <img src="{ i.shop.image.url }" alt="{ i.shop.name }"/> -->
+                    </div>
+                    <div class="shop-details">
+                        <p class="product-name">{{ i.product.name | truncatechars:20 }}</p>
+                        <h2>{{ i.shop.name | truncatechars:17 }}</h2>
+                        <p>{{ i.shop.user.city | truncatechars:17 }}</p>
+                        <p class="shop-rating">امتیاز: {{ i.shop.get_rate_state_display }}</p>
+                    </div>
+                </div>
 
-    <div class="product-info">
-        <p class="product-name">{{ i.product.name | truncatechars:20 }}</p>
-        <p class="product-price">
-            <span>{{ i.price | intcomma:False }}</span> تومان
-        </p>
-        <a class="btn-buy" href="/shop/{{ i.shop.id }}/product/{{ i.id }}">خرید اینترنتی</a>
-    </div>
-</div>
+                <div class="product-info">
+                    <p class="product-price">
+                        <span>{{ i.price | intcomma:False }}</span> تومان
+                    </p>
+                    <a class="btn-buy" href="/shop/{{ i.shop.id }}/product/{{ i.id }}">خرید اینترنتی</a>
+                </div>
+            </div>
             {% endfor %}
 
         </div>
     </div>
     <div class="product-details">
         <h2>مشخصات محصول</h2>
+
+        <hr>
+
         <div class="product-details-scroll">
-            <div class="detail-item">
+            <div class="detail-item" style="display: flex; justify-content: space-between;">
                 <div class="detail-label">
                     <p>نوع کالا:</p>
                 </div>
@@ -339,7 +342,7 @@
                 </div>
             </div>
 
-            <div class="detail-item">
+            <div class="detail-item" style="display: flex; justify-content: space-between;">
                 <div class="detail-label">
                     <p>دسته بندی:</p>
                 </div>
@@ -348,7 +351,7 @@
                 </div>
             </div>
 
-            <div class="detail-item">
+            <div class="detail-item" >
                 <div class="detail-label">
                     <p>معرفی محصول:</p>
                 </div>
@@ -357,7 +360,7 @@
                 </div>
             </div>
 
-            <div class="detail-item">
+            <div class="detail-item" style="display: flex; justify-content: space-between;">
                 <div class="detail-label">
                     <p>قیمت:</p>
                 </div>
@@ -366,7 +369,7 @@
                 </div>
             </div>
 
-            <div class="detail-item">
+            <div class="detail-item" style="display: flex; justify-content: space-between;">
                 <div class="detail-label">
                     <p>وضعیت موجودی:</p>
                 </div>
@@ -375,7 +378,7 @@
                 </div>
             </div>
 
-            <div class="detail-item">
+            <div class="detail-item" style="display: flex; justify-content: space-between;">
                 <div class="detail-label">
                     <p>ظرفیت:</p>
                 </div>
@@ -384,7 +387,7 @@
                 </div>
             </div>
 
-            <div class="detail-item">
+            <div class="detail-item" style="display: flex; justify-content: space-between;">
                 <div class="detail-label">
                     <p>امتیاز محصول:</p>
                 </div>
@@ -401,7 +404,9 @@
         {% for i in products %}
 
             <div class="it-table">
-                <a href="/search/product/{{ i.id }}/"><img class="img-table" src="{{ i.image_list.0.image.url }}"></a>
+                <a href="/search/product/{{ i.id }}/" style="margin: auto;">
+                    <img class="img-table" src="{{ i.image_list.0.image.url }}">
+                </a>
                 <div style="display: flex; justify-content: space-between; margin: 0 16px;" class="name-ittt-table">
                     <a class="name">نام محصول :</a>
                     <a class="name-it">{{ i.name|truncatechars:12 }}</a>
