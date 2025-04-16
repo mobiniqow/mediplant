@@ -26,7 +26,8 @@
                 <div class="ms-flex">
                     <div class="align-self-center ms-header-logo">
                         <div class="header-logo">
-                            <a href="/"><img src="{% static 'assets/img/logo/logo.png' %}" alt="Site Logo"></a>
+                            <a href="/">  <img src="{% static 'assets/img/logo/logo.png' %}" alt="Site Logo"
+                                     style="width: 70px; height: auto !important;"></a>
                         </div>
                     </div>
                     <div class="align-self-center ms-header-search">
@@ -94,7 +95,7 @@
                                 </a>
                                 <!-- Header Cart End -->
                             </div>
-                        </div> 
+                        </div>
                     {% else %}
                         <div class="align-self-center">
                             <div class="ms-header-bottons">
@@ -175,13 +176,18 @@
                                             <a href="/medicine" class="dropdown-arrow">پزشکان</a>
                                         </li>
                                         <li class="dropdown drop-list">
-                                            <a href="javascript:void(0)" class="dropdown-arrow">مقالات<i class="fas fa-chevron-right"></i></a>
+                                            <a href="javascript:void(0)" class="dropdown-arrow">مقالات<i
+                                                    class="fas fa-chevron-right"></i></a>
                                             <ul class="sub-menu">
-                                                <li><a href="/blog/encyclopedia-combined-drugs">دانشنامه داروهای ترکیبی</a></li>
-                                                <li><a href="/blog/encyclopedia-article-encyclopedia">دانشنامه مقالات</a></li>
-                                                <li><a href="/blog/encyclopedia-article-diseases">دایره المعارف بیماری ها</a></li>
-                                                <li><a href="/blog/encyclopedia-article-herbal">دایره المعارف گیاهی</a></li> 
-                                                <li><a href="/blog/news">اخبار</a></li> 
+                                                <li><a href="/blog/encyclopedia-combined-drugs">دانشنامه داروهای
+                                                    ترکیبی</a></li>
+                                                <li><a href="/blog/encyclopedia-article-encyclopedia">دانشنامه
+                                                    مقالات</a></li>
+                                                <li><a href="/blog/encyclopedia-article-diseases">دایره المعارف بیماری
+                                                    ها</a></li>
+                                                <li><a href="/blog/encyclopedia-article-herbal">دایره المعارف گیاهی</a>
+                                                </li>
+                                                <li><a href="/blog/news">اخبار</a></li>
                                             </ul>
                                         </li>
                                         <li class="dropdown drop-list">
@@ -245,13 +251,16 @@
             <div class="row ">
                 <div class="ms-flex">
                     <!-- Header Logo Start -->
-                    <div class="col ms-header-logo">
-                        <div class="header-logo">
+                    <div class="col ms-header-logo" style="max-width: none;">
+                        <div class="header-logo" style="max-width: none;">
                             <a href="/">
-                                <img src="{% static 'assets/img/logo/logo.png' %}" alt="Site Logo">
+                                <img src="{% static 'assets/img/logo/logo.png' %}" alt="Site Logo"
+                                     style="width: 70px; height: auto !important;">
                             </a>
                         </div>
                     </div>
+
+
                     <a href="javascript:void(0)" class="ms-header-btn ms-site-menu-icon d-lg-none">
                         <img src="{% static 'assets/img/icons/menu.svg' %}" class="svg_img" alt="menu">
                     </a>

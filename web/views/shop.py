@@ -34,11 +34,11 @@ class IndexView(BaseTemplateView):
         product_ids = [shop_product.product_id for shop_product in shop_products]
         products = Product.objects.select_related('class_id', 'category', 'unit').prefetch_related('images').filter(
             id__in=product_ids)[:10]
-
         for i in products:
             i.image_list = i.images.all()
         new_product = Product.objects.select_related('class_id', 'category', 'unit').prefetch_related(
             'images').order_by('id').filter(is_active=True)[:12]
+
         for i in new_product:
             i.image_list = i.images.all()
 
@@ -54,6 +54,7 @@ class IndexView(BaseTemplateView):
             for j in ShopProduct.objects.filter(shop=i)[:4]:
                 i.images_list.append(
                     {"image": ProductImage.objects.filter(product=j.product).first(), "product_id": j.id})
+
         articles = ArticleEncyclopedia.objects.all()[:7]
         context['title'] = 'صفحه اصلی'
         context['top_banners'] = top_banners
