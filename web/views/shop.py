@@ -3,7 +3,7 @@ from django.views.generic import TemplateView
 
 from abstract_view.base_template_view import BaseTemplateView
 from banner.models import Banner
-from encyclopedia.models import ArticleEncyclopedia
+from encyclopedia.models import ArticleEncyclopedia, News
 from product.models import Category, Product, ProductImage
 from sale.models import SaleBasket, SaleBasketProduct
 from shop.models import ShopProduct, Shop
@@ -37,13 +37,22 @@ class IndexView(BaseTemplateView):
         for i in products:
             i.image_list = i.images.all()
         new_product = Product.objects.select_related('class_id', 'category', 'unit').prefetch_related(
-            'images').order_by('id').filter(is_active=True)[:12]
+            'images').filter(is_active=True).order_by('name')[:12]
 
         for i in new_product:
             i.image_list = i.images.all()
+        most_views = Product.objects.select_related('class_id', 'category', 'unit').prefetch_related(
+            'images').filter(is_active=True).order_by('-id')[:12]
 
+        for i in most_views:
+            i.image_list = i.images.all()
+
+        best_seller = Product.objects.select_related('class_id', 'category', 'unit').prefetch_related(
+            'images').filter(is_active=True).order_by('-name')[:12]
+        for i in best_seller:
+            i.image_list = i.images.all()
         day_product = Product.objects.select_related('class_id', 'category', 'unit').prefetch_related(
-            'images').order_by('id').filter(is_active=True)[:12]
+            'images').filter(is_active=True)[:12]
         for i in day_product:
             i.image_list = i.images.all()
 
@@ -55,7 +64,7 @@ class IndexView(BaseTemplateView):
                 i.images_list.append(
                     {"image": ProductImage.objects.filter(product=j.product).first(), "product_id": j.id})
 
-        articles = ArticleEncyclopedia.objects.all()[:7]
+        articles = News.objects.all()[:7]
         context['title'] = 'صفحه اصلی'
         context['top_banners'] = top_banners
         context['two_banners'] = two_banners
@@ -67,9 +76,9 @@ class IndexView(BaseTemplateView):
         context['best_shops'] = best_shops
         context['products'] = products
         # todo after works in item ha query dorost mikhorands
-        context['best_seller'] = products
-        context['new_product'] = products
-        context['most_views'] = products
+        context['best_seller'] = best_seller
+        # context['new_product'] = products
+        context['most_views'] = most_views
         # todo after works in item ha query dorost mikhorands
         context['bot_3_new_product'] = products[:3]
         context['bot_3_most_sell'] = products[:3]
@@ -128,7 +137,7 @@ class ShopDetailsView(BaseTemplateView):
         context = super().get_context_data(**kwargs)
         shop_id = kwargs['id']
         shop = get_object_or_404(Shop, pk=shop_id)
-        banners = [shop.banner_1,shop.banner_2,shop.banner_3]
+        banners = [shop.banner_1, shop.banner_2, shop.banner_3]
         shop.banners = banners
         product = ShopProduct.objects.filter(shop=shop)
         page_number = math.ceil(product.count() / page_size)
