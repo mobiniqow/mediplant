@@ -4,12 +4,13 @@ from rest_framework.routers import DefaultRouter
 from .views import ShopProductAPIView, ShopLoginView, MyShopProductsView, ShopProductCreateView, ShopProductUpdateView, \
     ShopProductDeleteView, ProductNeedToAddedCreateView, ChangePasswordView, \
     ShopTransactionsAPIView, ShopSettlementRequestAPIView, ShopSaleBasketListAPIView, ShopSaleBasketStateUpdateAPIView, \
-    ShopSalesStatisticsAPIView, ShopDetailView, MaterialListView
+    ShopSalesStatisticsAPIView, ShopDetailView, MaterialListView, ShopListView
 
 urlpatterns = [
     path('profile/', ShopDetailView.as_view(), name='shop_detail'),
     path('api/v1/shop-product/', ShopProductAPIView.as_view(), name='shop_product'),
     path('api/v1/shops/', ShopProductAPIView.as_view(), name='shops'),
+    path('api/v1/shop-list/', ShopListView.as_view(), name='shops'),
     path('login/', ShopLoginView.as_view(), name='shop-login'),
     path('products/', MyShopProductsView.as_view(), name='my-shop-products'),
     path('products/create/', ShopProductCreateView.as_view(), name='shop-product-create'),

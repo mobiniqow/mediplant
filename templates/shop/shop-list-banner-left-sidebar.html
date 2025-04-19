@@ -12,13 +12,13 @@
           content="Bootstrap 5.x, ecommerce, farming, food market, grocery market, grocery shop, grocery store, grocery supper market, multi vendor, organic food, supermarket, supermarket grocery">
     <meta name="description" content="Multipurpose eCommerce HTML Template">
     <meta name="author" content="Pilarest">
-    
-    <link rel="icon" href="{% static 'assets/img/favicon/favicon.png' %}" sizes="32x32"> 
-    
+
+    <link rel="icon" href="{% static 'assets/img/favicon/favicon.png' %}" sizes="32x32">
+
     <link rel="stylesheet" href="{% static 'assets/css/vendor/msicons.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/all.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}"> 
-    
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
+
     <link rel="stylesheet" href="{% static 'assets/css/plugins/animate.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap-select.min.css' %}">
@@ -26,8 +26,8 @@
     <link rel="stylesheet" href="{% static 'assets/css/plugins/owl.theme.default.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/plugins/swiper-bundle.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/plugins/slick.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/plugins/nouislider.css' %}"> 
-    
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/nouislider.css' %}">
+
     <link rel="stylesheet" id="main_style" href="{% static 'assets/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
     <link rel="stylesheet" class="color-css" href="{% static 'assets/css/color-01.css' %}">
@@ -44,7 +44,7 @@
 {% include '../extentions/header.html' with categories=categories_map is_active=is_active medic_notification=medic_notification shop_notification=shop_notification %}
 <!-- Header End  -->
 
-<!-- Category sidebar Start --> 
+<!-- Category sidebar Start -->
 <!-- Category sidebar End -->
 
 <!-- Cart sidebar Start -->
@@ -155,7 +155,7 @@
         <div class="row">
             <div class="col-xl-12 border-content-color">
                 <div class="ms-category-block owl-carousel" dir="ltr">
-                
+
                     {% for model in categories %}
                         <div class="ms-cat-box ms-cat-box-9">
                             <a href="/product?category={{ model.id }}" class="ms-cat-icon">
@@ -164,7 +164,7 @@
                             </a>
                         </div>
                     {% endfor %}
-                
+
                 </div>
             </div>
         </div>
@@ -228,18 +228,18 @@
                 <div id="shop_sidebar">
                     <div class="ms-sidebar-wrap">
                         <!-- Sidebar Category Block -->
-                        <div class="ms-sidebar-block">
-                            <div class="ms-sb-title">
-                                <h3 class="ms-sidebar-title">جنس محصول
-                                    <div class="ms-sidebar-res"><i class="fas fa-chevron-down"></i></div>
-                                </h3>
-                            </div>
-                            <div class="ms-sb-block-content" id="category-list">
-                                <ul>
-                                    <!-- Categories will be populated dynamically from API -->
-                                </ul>
-                            </div>
-                        </div>
+{#                        <div class="ms-sidebar-block">#}
+{#                            <div class="ms-sb-title">#}
+{#                                <h3 class="ms-sidebar-title">جنس محصول#}
+{#                                    <div class="ms-sidebar-res"><i class="fas fa-chevron-down"></i></div>#}
+{#                                </h3>#}
+{#                            </div>#}
+{#                            <div class="ms-sb-block-content" id="category-list">#}
+{#                                <ul>#}
+{#                                    <!-- Categories will be populated dynamically from API -->#}
+{#                                </ul>#}
+{#                            </div>#}
+{#                        </div>#}
                         <!-- Sidebar Weight Block -->
                         <div class="ms-sidebar-block">
                             <div class="ms-sb-title">
@@ -253,27 +253,27 @@
                         </div>
                         <!-- Sidebar Price Block -->
                         <div class="ms-sidebar-block">
-{#    <div class="ms-sb-title">#}
-{#        <h3 class="ms-sidebar-title">قیمت#}
-{#            <div class="ms-sidebar-res"><i class="fas fa-chevron-down"></i></div>#}
-{#        </h3>#}
-{#    </div>#}
-{#    <div class="ms-sb-block-content ms-price-range-slider es-price-slider" dir="ltr">#}
-{#        <div class="ms-price-filter">#}
-{#            <div class="ms-price-input">#}
-{#                <label class="filter__label">#}
-{#                    از<input type="text" class="filter__input" id="min-price-input">#}
-{#                </label>#}
-{#                <span class="ms-price-divider"></span>#}
-{#                <label class="filter__label">#}
-{#                    به<input type="text" class="filter__input" id="max-price-input">#}
-{#                </label>#}
-{#            </div>#}
-{#            <div id="ms-sliderPrice" class="filter__slider-price" data-min="0" data-max="1000000" data-step="10"></div>#}
-{#        </div>#}
-{##}
-{#    </div>#}
-</div>
+                            {#    <div class="ms-sb-title">#}
+                            {#        <h3 class="ms-sidebar-title">قیمت#}
+                            {#            <div class="ms-sidebar-res"><i class="fas fa-chevron-down"></i></div>#}
+                            {#        </h3>#}
+                            {#    </div>#}
+                            {#    <div class="ms-sb-block-content ms-price-range-slider es-price-slider" dir="ltr">#}
+                            {#        <div class="ms-price-filter">#}
+                            {#            <div class="ms-price-input">#}
+                            {#                <label class="filter__label">#}
+                            {#                    از<input type="text" class="filter__input" id="min-price-input">#}
+                            {#                </label>#}
+                            {#                <span class="ms-price-divider"></span>#}
+                            {#                <label class="filter__label">#}
+                            {#                    به<input type="text" class="filter__input" id="max-price-input">#}
+                            {#                </label>#}
+                            {#            </div>#}
+                            {#            <div id="ms-sliderPrice" class="filter__slider-price" data-min="0" data-max="1000000" data-step="10"></div>#}
+                            {#        </div>#}
+                            {##}
+                            {#    </div>#}
+                        </div>
 
                         <!-- Sidebar tags -->
                     </div>
@@ -285,150 +285,7 @@
 <!-- Shop section End -->
 
 <!-- Footer Start -->
-<footer class="ms-footer m-t-30">
-    <div class="footer-container">
-        <div class="footer-top padding-tb-60">
-            <div class="container">
-                <div class="row m-minus-991">
-                    <div class="col-sm-12 col-lg-3 ms-footer-cat">
-                        <div class="ms-footer-widget ms-footer-company">
-                            <img src="{% static 'assets/img/logo/footer-logo.png' %}" class="ms-footer-logo"
-                                 alt="footer logo">
-                            <p class="ms-footer-detail">مسترکارت بزرگترین بازار محصولات خواربار فروشی است. نیازهای
-                                روزانه خود را از فروشگاه ما دریافت کنید.</p>
-                            <div class="ms-app-store">
-                                <a href="#" class="app-img"><img src="{% static 'assets/img/app/android.png' %}"
-                                                                 class="adroid" alt="apple"></a>
-                                <a href="#" class="app-img"><img src="{% static 'assets/img/app/apple.png' %}"
-                                                                 class="apple" alt="apple"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-lg-2 ms-footer-info">
-                        <div class="ms-footer-widget">
-                            <h4 class="ms-footer-heading">دسته بندی</h4>
-                            <div class="ms-footer-links ms-footer-dropdown">
-                                <ul class="align-items-center">
-                                    <li class="ms-footer-link"><a href="product_list.html"> شیر و لبنیات </a></li>
-                                    <li class="ms-footer-link"><a href="shop-banner-left-sidebar-col-3.html">میان وعده و
-                                        ادویه</a></li>
-                                    <li class="ms-footer-link"><a href="shop-full-width-col-5.html">فست فود</a></li>
-                                    <li class="ms-footer-link"><a href="shop-list-left-sidebar.html">آبمیوه و
-                                        نوشیدنی</a></li>
-                                    <li class="ms-footer-link"><a href="shop-list-full-col-2.html">نانوایی</a></li>
-                                    <li class="ms-footer-link"><a href="shop-banner-right-sidebar-col-4.html">غذای
-                                        دریایی</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-lg-2 ms-footer-account">
-                        <div class="ms-footer-widget">
-                            <h4 class="ms-footer-heading">شرکت</h4>
-                            <div class="ms-footer-links ms-footer-dropdown">
-                                <ul class="align-items-center">
-                                    <li class="ms-footer-link"><a href="about-us.html">درباره ما</a></li>
-                                    <li class="ms-footer-link"><a href="track-order.html">تحویل</a></li>
-                                    <li class="ms-footer-link"><a href="privacy-policy.html">اطلاع قانونی</a></li>
-                                    <li class="ms-footer-link"><a href="terms-condition.html">شرایط و ضوابط</a></li>
-                                    <li class="ms-footer-link"><a href="checkout.html">پرداخت امن</a></li>
-                                    <li class="ms-footer-link"><a href="contact-us.html">تماس با ما</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-lg-2 ms-footer-service">
-                        <div class="ms-footer-widget">
-                            <h4 class="ms-footer-heading">حساب کاربری</h4>
-                            <div class="ms-footer-links ms-footer-dropdown">
-                                <ul class="align-items-center">
-                                    <li class="ms-footer-link"><a href="register.html">ثبت نام</a></li>
-                                    <li class="ms-footer-link"><a href="cart.html">مشاهده سبد خرید</a></li>
-                                    <li class="ms-footer-link"><a href="privacy-policy.html">سیاست بازگشت</a></li>
-                                    <li class="ms-footer-link"><a href="#">فروشنده شوید</a></li>
-                                    <li class="ms-footer-link"><a href="#">برنامه های وابسته</a></li>
-                                    <li class="ms-footer-link"><a href="checkout.html">مبلغ پرداختی</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-lg-3 ms-footer-cont-social">
-                        <div class="ms-footer-contact">
-                            <div class="ms-footer-widget">
-                                <h4 class="ms-footer-heading">مخاطب</h4>
-                                <div class="ms-footer-links ms-footer-dropdown">
-                                    <ul class="align-items-center">
-                                        <li class="ms-footer-link ms-foo-location"><span><img
-                                                src="{% static 'assets/img/icons/foo-location.svg' %}"
-                                                class="svg_img foo_svg" alt=""></span>
-                                            <p>ایران - تهران </p>
-                                        </li>
-                                        <li class="ms-footer-link ms-foo-call">
-                                                <span>
-                                                    <img src="{% static 'assets/img/icons/foo-wp.svg' %}"
-                                                         class="svg_img foo_svg" alt="">
-                                                </span>
-                                            <a href="tel:+009876543210">6789 345 0912</a>
-                                        </li>
-                                        <li class="ms-footer-link ms-foo-mail">
-                                                <span>
-                                                    <img src="{% static 'assets/img/icons/foo-mail.svg' %}"
-                                                         class="svg_img foo_svg" alt="">
-                                                </span>
-                                            <a href="mailto:example@email.com">example@email.com</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ms-footer-social">
-                            <div class="ms-footer-widget">
-                                <div class="ms-footer-links ms-footer-dropdown">
-                                    <ul class="align-items-center">
-                                        <li class="ms-footer-link"><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                        <li class="ms-footer-link"><a href="#"><i class="fa fa-twitter-square"></i></a>
-                                        </li>
-                                        <li class="ms-footer-link"><a href="#"><i class="fa fa-facebook-square"></i>
-                                        </li>
-                                        <li class="ms-footer-link"><a href="#"><i class="fa fa-linkedin-square"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <div class="container">
-                <div class="row">
-                    <div class="ms-bottom-info">
-                        <!-- Footer Copyright Start -->
-                        <div class="footer-copy">
-                            <div class="footer-bottom-copy ">
-                                <div class="ms-copy">کپی رایت © <a class="site-name" href="index.html">پیلارست</a> تمامی
-                                    حقوق محفوظ است. پشتیبانی شده توسط Pilarest
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Footer Copyright End -->
-                        <!-- Footer payment -->
-                        <div class="footer-bottom-right">
-                            <div class="footer-bottom-payment d-flex justify-content-center">
-                                <div class="payment-link">
-                                    <img src="{% static 'assets/img/hero-bg/payment.png' %}" alt="payment">
-                                </div>
-
-                            </div>
-                        </div>
-                        <!-- Footer payment -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
+{% include '../extentions/footer.html' %}
 <!-- Footer Area End -->
 
 <!-- Quickview Modal -->
@@ -633,7 +490,7 @@
     var orderType = "";
 
     function fetchProducts(page = 1, filters = {}) {
-        const apiEndpoint = '/shop/api/v1/';
+        const apiEndpoint = '/shop/api/v1/shop-list/';
         let queryString = `?page=${page}`;
         productType.forEach((value, index) => {
             queryString += `&type=${value}`;
@@ -657,94 +514,87 @@
 
     function renderProducts(products) {
         const itemsContainer = $('#items');
-        itemsContainer.empty();  // پاک‌کردن محصولات قبلی
+        itemsContainer.empty(); // پاک‌کردن محصولات قبلی
 
-        products.forEach(function (product) {
-            // گرفتن تصاویر اول و دوم از آرایه تصاویر
-            const image1 = product.image[0]?.image || ''; // تصویر اول
-            const image2 = product.image[1]?.image || ''; // تصویر دوم
+        const results = products || [];
+        results.forEach(function (product) {
+            const image1 = product.image || '';
+            const image2 = product.image || '';
 
-            // نمایش 12 کاراکتر اول از نام فروشگاه و سپس نقطه چین
-            const shopName = product.name.length > 12 ? product.name.slice(0, 12) + '...' : product.name;
+            const productName = product.name.length > 12 ? product.name.slice(0, 12) + '...' : product.name;
+            const formattedPrice = product.description
 
             const productHtml = `
-        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content ms-product-content" data-id="${product.id}">
-            <div class="ms-product-inner">
-                <div class="ms-pro-image-outer">
-                    <div class="ms-pro-image">
-                        <a href="javascript:void(0);" class="image">
-                            <img class="main-image" src="${image1}" alt="Product">
-                            <img class="hover-image" src="${image2}" alt="Product">
-                        </a>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content ms-product-content" data-id="${product.id}" onclick="openShop(${product.id})">
+                <div class="ms-product-inner">
+                    <div class="ms-pro-image-outer">
+                        <div class="ms-pro-image" style="height: 150px;width: auto !important;" >
+                            <a href="javascript:void(0);" class="image">
+                                <img class="main-image" src="${image1}" alt="Product">
+                                <img class="hover-image" src="${image2}" alt="Product">
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="ms-pro-content">
-                    <h6 class="ms-pro-stitle">${shopName}</h6> <!-- نام فروشگاه -->
-                    <h5 class="ms-pro-title"><a href="/shop/${product.shop}/product/${product.id}">  ${shopName}</a></h5>
-                    <div class="ms-pro-rat-price">
-                        <span class="ms-price">
-                            <span class="new-price">${product.formatted_price} تومان</span>
-                        </span>
+                    <div class="ms-pro-content">
+                        <h6 class="product-title">${productName}</h6>
+                        <span class="price">${formattedPrice}</span>
                     </div>
                 </div>
             </div>
-        </div>
         `;
+
             itemsContainer.append(productHtml);
         });
-
-        // اضافه کردن رویداد کلیک به هر div محصول
-        $('.pro-gl-content').on('click', function () {
-            const productId = $(this).data('id'); // دریافت id محصول
-            window.location.href = `/search/product/${productId}/`; // هدایت به صفحه محصول
-        });
     }
-
-function renderPagination(currentPage, totalPages) {
-    const paginationContainer = $('#pagination');
-    paginationContainer.empty();
-
-    // نمایش لینک "قبلی" اگر صفحه فعلی بزرگتر از 1 باشد
-    if (currentPage > 1) {
-        paginationContainer.append(`<li><a href="#" class="prev" data-page="${currentPage - 1}">قبلی</a></li>`);
+    function openShop(product_id) {
+        window.location.href = `/shop/${product_id}/`;
     }
+    function renderPagination(currentPage, totalPages) {
+        const paginationContainer = $('#pagination');
+        paginationContainer.empty();
 
-    // همیشه صفحه اول را نشان می‌دهیم
-    paginationContainer.append(`<li><a href="#" data-page="1" class="${currentPage === 1 ? 'active' : ''}">1</a></li>`);
+        // نمایش لینک "قبلی" اگر صفحه فعلی بزرگتر از 1 باشد
+        if (currentPage > 1) {
+            paginationContainer.append(`<li><a href="#" class="prev" data-page="${currentPage - 1}">قبلی</a></li>`);
+        }
 
-    // اگر صفحه فعلی بیشتر از 3 باشد، نمایش "..."
-    if (currentPage > 3) {
-        paginationContainer.append(`<li><span>...</span></li>`);
+        // همیشه صفحه اول را نشان می‌دهیم
+        paginationContainer.append(`<li><a href="#" data-page="1" class="${currentPage === 1 ? 'active' : ''}">1</a></li>`);
+
+        // اگر صفحه فعلی بیشتر از 3 باشد، نمایش "..."
+        if (currentPage > 3) {
+            paginationContainer.append(`<li><span>...</span></li>`);
+        }
+
+        // نمایش صفحات میانه
+        const pageRange = 2;
+        const startPage = Math.max(2, currentPage - pageRange);
+        const endPage = Math.min(totalPages - 1, currentPage + pageRange);
+
+        for (let i = startPage; i <= endPage; i++) {
+            const activeClass = i === currentPage ? 'active' : '';
+            paginationContainer.append(`<li><a href="#" class="${activeClass}" data-page="${i}">${i}</a></li>`);
+        }
+
+        // اگر صفحه فعلی خیلی دور از آخرین صفحه باشد، نمایش "..."
+        if (currentPage < totalPages - 2) {
+            paginationContainer.append(`<li><span>...</span></li>`);
+        }
+
+        // همیشه صفحه آخر را نشان می‌دهیم، مگر اینکه تعداد صفحات 1 باشد
+        if (totalPages > 1) {
+            paginationContainer.append(`<li><a href="#" data-page="${totalPages}" class="${currentPage === totalPages ? 'active' : ''}">${totalPages}</a></li>`);
+        }
+
+        // نمایش لینک "بعدی" اگر صفحه فعلی کوچکتر از صفحه آخر باشد
+        if (currentPage < totalPages) {
+            paginationContainer.append(`<li><a href="#" class="next" data-page="${currentPage + 1}">بعدی</a></li>`);
+        }
     }
-
-    // نمایش صفحات میانه
-    const pageRange = 2;
-    const startPage = Math.max(2, currentPage - pageRange);
-    const endPage = Math.min(totalPages - 1, currentPage + pageRange);
-
-    for (let i = startPage; i <= endPage; i++) {
-        const activeClass = i === currentPage ? 'active' : '';
-        paginationContainer.append(`<li><a href="#" class="${activeClass}" data-page="${i}">${i}</a></li>`);
-    }
-
-    // اگر صفحه فعلی خیلی دور از آخرین صفحه باشد، نمایش "..."
-    if (currentPage < totalPages - 2) {
-        paginationContainer.append(`<li><span>...</span></li>`);
-    }
-
-    // همیشه صفحه آخر را نشان می‌دهیم، مگر اینکه تعداد صفحات 1 باشد
-    if (totalPages > 1) {
-        paginationContainer.append(`<li><a href="#" data-page="${totalPages}" class="${currentPage === totalPages ? 'active' : ''}">${totalPages}</a></li>`);
-    }
-
-    // نمایش لینک "بعدی" اگر صفحه فعلی کوچکتر از صفحه آخر باشد
-    if (currentPage < totalPages) {
-        paginationContainer.append(`<li><a href="#" class="next" data-page="${currentPage + 1}">بعدی</a></li>`);
-    }
-}
 
     function loadProducts(page = 1, filters = {}) {
         fetchProducts(page, filters).done(function (response) {
+            console.log(response.result)
             renderProducts(response.results);
             renderPagination(page, response.total_pages);
             $('#pagination-info').text(`نمایش ${(page - 1) * 9 + 1}-${Math.min(page * 9, response.count)} از ${response.count} مورد`);
@@ -911,42 +761,42 @@ function renderPagination(currentPage, totalPages) {
     });
 </script>
 <script>
-$(document).ready(function() {
-    // فرمت کردن قیمت به صورت هزارگان
-    function formatPrice(value) {
-        // اطمینان از این که عدد وارد شده درست است
-        value = value.replace(/[^0-9]/g, ''); // حذف هر چیزی که عدد نیست
-        return value ? Number(value).toLocaleString() : '';
-    }
-
-    // هنگام وارد کردن داده در فیلد "از"
-    $("#min-price-input").on("input", function() {
-        var formattedValue = formatPrice($(this).val());
-        $(this).val(formattedValue); // نمایش مقدار فرمت شده در فیلد
-    });
-
-    // هنگام وارد کردن داده در فیلد "به"
-    $("#max-price-input").on("input", function() {
-        var formattedValue = formatPrice($(this).val());
-        $(this).val(formattedValue); // نمایش مقدار فرمت شده در فیلد
-    });
-
-    // اسلایدر برای تنظیم مقادیر
-    var slider = $("#ms-sliderPrice");
-    slider.slider({
-        min: slider.data("min"),
-        max: slider.data("max"),
-        step: slider.data("step"),
-        slide: function(event, ui) {
-            // مقادیر اسلایدر را به فرمت هزارگان تبدیل کن
-            var minPrice = formatPrice(ui.values[0].toString());
-            var maxPrice = formatPrice(ui.values[1].toString());
-
-            $("#min-price-input").val(minPrice);
-            $("#max-price-input").val(maxPrice);
+    $(document).ready(function () {
+        // فرمت کردن قیمت به صورت هزارگان
+        function formatPrice(value) {
+            // اطمینان از این که عدد وارد شده درست است
+            value = value.replace(/[^0-9]/g, ''); // حذف هر چیزی که عدد نیست
+            return value ? Number(value).toLocaleString() : '';
         }
+
+        // هنگام وارد کردن داده در فیلد "از"
+        $("#min-price-input").on("input", function () {
+            var formattedValue = formatPrice($(this).val());
+            $(this).val(formattedValue); // نمایش مقدار فرمت شده در فیلد
+        });
+
+        // هنگام وارد کردن داده در فیلد "به"
+        $("#max-price-input").on("input", function () {
+            var formattedValue = formatPrice($(this).val());
+            $(this).val(formattedValue); // نمایش مقدار فرمت شده در فیلد
+        });
+
+        // اسلایدر برای تنظیم مقادیر
+        var slider = $("#ms-sliderPrice");
+        slider.slider({
+            min: slider.data("min"),
+            max: slider.data("max"),
+            step: slider.data("step"),
+            slide: function (event, ui) {
+                // مقادیر اسلایدر را به فرمت هزارگان تبدیل کن
+                var minPrice = formatPrice(ui.values[0].toString());
+                var maxPrice = formatPrice(ui.values[1].toString());
+
+                $("#min-price-input").val(minPrice);
+                $("#max-price-input").val(maxPrice);
+            }
+        });
     });
-});
 
 </script>
 </body>

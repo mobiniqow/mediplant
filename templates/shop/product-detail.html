@@ -247,7 +247,8 @@
         <div class="btns">
             {#            <button class="alert" type="button">موجود شد به من خبر بده !</button>#}
             <button class="add-to-cart" type="button"
-                    onclick="showDialog('{{ product_shops.product.name|truncatechars:12 }}', '{{ images.0.image.url }}', '{{ product_shops.material.label }}', {{ product_shops.price }})">
+                    onclick="showDialog('
+                            {{ product_shops.product.name|truncatechars:12 }}', '{{ images.0.image.url }}', '{{ product_shops.material.label }}', {{ product_shops.price }})">
                 افزودن به سبد
             </button>
 
@@ -403,7 +404,7 @@
     <div class="tool-title">
         <h3>تنظیمات</h3>
     </div>
- 
+
     <div class="ms-features-block">
         <div class="ms-features-title">رنگ‌ها</div>
         <ul class="bg-panel ms-change-color">
@@ -636,14 +637,15 @@
             updateTotalPrice();
         }
     }
-function addToCart() {
-    const quantity = parseInt(document.getElementById('quantity').value);
-    addItemToCardApi(quantity).then(() => {
-        location.reload(); // رفرش صفحه بعد از اضافه شدن محصول
-    }).catch(error => {
-        console.error("خطا در اضافه کردن محصول:", error);
-    });
-}
+
+    function addToCart() {
+        const quantity = parseInt(document.getElementById('quantity').value);
+        addItemToCardApi(quantity).then(() => {
+            location.reload(); // رفرش صفحه بعد از اضافه شدن محصول
+        }).catch(error => {
+            console.error("خطا در اضافه کردن محصول:", error);
+        });
+    }
 
 
     async function addItemToCardApi(quantity) {
