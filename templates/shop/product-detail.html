@@ -247,21 +247,33 @@
         <div class="btns">
             {#            <button class="alert" type="button">موجود شد به من خبر بده !</button>#}
             <button class="add-to-cart" type="button"
-                    onclick="showDialog('
-                            {{ product_shops.product.name|truncatechars:12 }}', '{{ images.0.image.url }}', '{{ product_shops.material.label }}', {{ product_shops.price }})">
+                    onclick="showDialog('{{ product_shops.product.name|truncatechars:12 }}', '{{ images.0.image.url }}', '{{ product_shops.material.label }}', {{ product_shops.price }})">
                 افزودن به سبد
             </button>
 
             <div id="dialog" class="dialog">
                 <div class="dialog-content">
-                    <span class="close" onclick="closeDialog()">&times;</span>
-                    <img id="product-image" src="" alt="محصول">
-                    <h2 id="product-name"></h2>
-                    <p>تعداد : <input type="number" id="quantity" min="0" value="{{ quantity }}"
-                                      oninput="updateTotalPrice()"></p>
-                    <p id="total-price"></p>
-                    <button type="button" onclick="addToCart()">اضافه کردن</button>
-                    <button type="button" onclick="closeDialog()">لغو</button>
+{#                    <div>#}
+{#                        <span class="close" onclick="closeDialog()">&times;</span>#}
+{#                    </div>#}
+                    <div>
+                        <img id="product-image" class="product-image" src="" alt="محصول">
+                        <h2 id="product-name" class="product-name"></h2>
+                        <p style="margin: 0;">تعداد :  </p>
+                        <input 
+                                style="height: 32px; border-radius: 4px ; outline: none; background: #fcfcfc; border: 1px solid #ccc"
+                                type="number" 
+                                id="quantity" 
+                                min="0" 
+                                value="{{ quantity }}"
+                                oninput="updateTotalPrice()"
+                        >
+                        <p id="total-price" class="total-price"></p>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px">
+                        <button type="button" style="background: #4CAF50; padding: 4px; border-radius: 4px; color: white" onclick="addToCart()">اضافه کردن</button>
+                        <button type="button" style="background: #2b2b2b; padding: 4px; border-radius: 4px; color: white" onclick="closeDialog()">لغو</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -620,7 +632,7 @@
         document.getElementById('product-image').src = image;
         pricePerUnit = price;
         updateTotalPrice();
-        document.getElementById('dialog').style.display = 'block';
+        document.getElementById('dialog').style.display = 'flex';
     }
 
     function closeDialog() {
