@@ -16,9 +16,9 @@ def send_otp(phone, otp):
     # }
     # response = requests.request("POST", url, headers=headers, data=payload)
     # print(f'sending otp code to {phone} with status {response.status_code}')
-    url = "https://api.kavenegar.com/v1/59367966624C365A7277546C44723542565670417066556C514D68644D68697764342B726E374766462B773D/verify/lookup.json"
+    url = "https://api.kavenegar.com/v1/646B3963434E773954774E7974397365686844776739584E704A685A6262597A5632615A574A4174626F673D/verify/lookup.json"
 
-    payload = f'token={otp}&template=login&receptor={phone}'
+    payload = f'token={otp}&template=octavaz&receptor={phone}'
     headers = {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Cookie': 'cookiesession1=678A8C4087367227C1B693FF947D5992'

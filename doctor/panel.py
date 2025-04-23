@@ -175,7 +175,7 @@ class PrescriptionAPIView(APIView):
 
     def get(self, request, visit_id):
         """لیست نسخه‌های پزشک برای یک ویزیت خاص"""
-        visit = get_object_or_404(DoctorVisit, id=visit_id, doctor=request.user)
+        visit = get_object_or_404(DoctorVisit, id=visit_id, doctor__user=request.user)
         prescriptions = Prescription.objects.filter(doctor_visit=visit)
 
         serializer = PrescriptionSerializer(prescriptions, many=True)
@@ -183,7 +183,7 @@ class PrescriptionAPIView(APIView):
 
     def post(self, request, visit_id):
         """ایجاد یک نسخه برای ویزیت خاص"""
-        visit = get_object_or_404(DoctorVisit, id=visit_id, doctor=request.user)
+        visit = get_object_or_404(DoctorVisit, id=visit_id, doctor__user=request.user)
 
         serializer = PrescriptionSerializer(data=request.data)
         if serializer.is_valid():

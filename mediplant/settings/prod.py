@@ -12,7 +12,8 @@ DATABASES = {
         "PORT": "5432",
     }
 }
-
+DATA_UPLOAD_MAX_MEMORY_SIZE = 524288000  # 50 MB
+FILE_UPLOAD_MAX_MEMORY_SIZE = 524288000
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = '/var/html/www/mediplant/media'
@@ -66,3 +67,12 @@ CORS_ALLOWED_ORIGINS = [
     "http://wwww.mediplant.ir",
     "http://localhost:3000",
 ]
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
+}

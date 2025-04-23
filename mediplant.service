@@ -1,19 +1,22 @@
 [Unit]
-Description=gunicorn daemon for ASGI
-Requires=mediplant.socket
+Description=Daphne ASGI Server for Django + Channels
 After=network.target
 
 [Service]
 User=ubuntu
 Group=www-data
 WorkingDirectory=/home/ubuntu/mediplant
-ExecStart=/home/ubuntu/mediplant/venv/bin/gunicorn \
-    --env DJANGO_SETTINGS_MODULE=mediplant.settings.prod \
-    --access-logfile - \
-    --workers 3 \
-    --bind unix:/run/mediplant.sock \
-    -k uvicorn.workers.UvicornWorker \
-    mediplant.asgi:application
+
+# متغیر محیطی برای تنظیمات Django
+Environment=DJANGO_SETTINGS_MODULE=mediplant.settings.prod
+
+# اجرای daphne
+ExecStart=/home/ubuntu/mediplant/venv/bin/daphne \
+#           -u /run/mediplant.sock \
+           --access-log - \
+           mediplant.asgi:application
+Restart=always
+RestartSec=3
 
 [Install]
 WantedBy=multi-user.target

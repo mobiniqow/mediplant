@@ -17,13 +17,13 @@ class PrescriptionSerializer(serializers.ModelSerializer):
 class DoctorVisitChatSerializer(serializers.ModelSerializer):
     class Meta:
         model = DoctorVisitChat
-        fields = ['id', 'doctor_id', 'is_doctor', 'content', 'media']
+        fields = '__all__'
 
 
 class UserChatRequest(serializers.ModelSerializer):
     class Meta:
         model = DoctorVisitChat
-        fields = ['is_doctor', 'content', 'media', 'doctor_id']
+        fields = '__all__'
 
     def create(self, validated_data):
         validated_data['is_doctor'] = self.context.get('is_doctor')

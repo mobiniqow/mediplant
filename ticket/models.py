@@ -24,7 +24,7 @@ class Ticket(models.Model):
                                           related_name="store_tickets")
     assigned_to_doctor = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL,
                                            related_name="doctor_tickets")
-    state = models.IntegerField(choices=TicketState.choices, default=TicketState.OPEN)
+    status = models.IntegerField(choices=TicketState.choices, default=TicketState.OPEN)
     title = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
 

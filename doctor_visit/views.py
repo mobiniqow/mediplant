@@ -78,3 +78,29 @@ class UserFinishChat(APIView):
         visit.state = DoctorVisit.State.UserEND
         visit.save()
         return Response(status=204)
+
+
+class DoctorSendToUserMessage(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, doctor_visit_id, **kwargs):
+
+        visit = get_object_or_404(
+            DoctorVisit,
+            pk=doctor_visit_id,
+            state=DoctorVisit.State.ACCEPT,
+            doctor__user=request.user
+        )
+
+        data = request.data.copy()
+        chat = UserChatRequest(data=data, context={'doctor_id': doctor_visit_id, 'is_doctor': True})
+        if chat.is_valid(raise_exception=True):
+            chat_message = DoctorVisitChat.objects.create(
+                doctor=visit,
+                content=data.get('content', ""),
+                is_doctor=True,
+                media=data.get('media'),
+            )
+
+            result = DoctorVisitChatSerializer(chat_message)
+            return Response(result.data, status=201)

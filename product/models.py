@@ -3,6 +3,7 @@ from django.db import models
 from django.db.models import SET_NULL
 from ckeditor.fields import RichTextField
 
+
 class ClassId(models.Model):
     name = models.CharField(max_length=22)
 
@@ -46,17 +47,18 @@ class Product(models.Model):
         ACTIVE = 1, 'فعال'
         DE_ACTIVE = 2, 'غیر فعال'
 
-    trade_id = models.CharField(max_length=19, verbose_name='شناسه بازرگانی')
-    class_id = models.ForeignKey(ClassId, on_delete=SET_NULL, null=True, verbose_name='شناسه صنف')
+    trade_id = models.CharField(max_length=19, verbose_name='شناسه بازرگانی', null=True, blank=True)
+    class_id = models.ForeignKey(ClassId, on_delete=SET_NULL, null=True, verbose_name='شناسه صنف', blank=True)
     category = models.ForeignKey('Category', on_delete=SET_NULL, null=True, verbose_name='کتگوری', blank=True)
     name = models.CharField(max_length=33, verbose_name="نام کالا", unique=True)
-    type = models.IntegerField(choices=Type.choices, verbose_name='نوع کالا')
-    description = RichTextField(blank=True,null=True, verbose_name='معرفی محصول')
-    views = models.IntegerField(default=0,validators=[MinValueValidator(0)])
-    price = models.IntegerField(verbose_name='واحد قیمت بر حسب واحد')
-    state = models.IntegerField(choices=State.choices, default=State.SUSPEND, verbose_name='وضعیت کالا')
+    key_name = models.CharField(max_length=158, verbose_name="کلمه ی کلیدی", null=True,blank=True)
+    type = models.IntegerField(choices=Type.choices, verbose_name='نوع کالا', default=Type.GIAH, blank=True)
+    description = RichTextField(blank=True, null=True, verbose_name='معرفی محصول')
+    views = models.IntegerField(default=0, validators=[MinValueValidator(0)])
+    # price = models.IntegerField(verbose_name='واحد قیمت بر حسب واحد')
+    state = models.IntegerField(choices=State.choices, default=State.SUSPEND, verbose_name='وضعیت کالا', blank=True)
     is_active = models.BooleanField(default=False, verbose_name='فعال بودن')
-    unit = models.ForeignKey('ProductUnit', on_delete=SET_NULL, null=True, verbose_name='شناسه واحد')
+    unit = models.ForeignKey('ProductUnit', on_delete=SET_NULL, null=True, verbose_name='شناسه واحد', blank=True)
 
     class Meta:
         verbose_name = "محصول"
