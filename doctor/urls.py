@@ -21,4 +21,5 @@ urlpatterns = [
     path('profile/', DoctorDetailView.as_view(), name='doctor_detail'),
     path('sales-stats/', DoctorEarningsStatisticsAPIView.as_view(), name='doctor-sales-stats'),
     path('prescriptions/<int:visit_id>/', PrescriptionAPIView.as_view(), name='prescription-detail'),
+
 ]

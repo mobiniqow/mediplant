@@ -68,7 +68,6 @@ class CreateDeleteBasket(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
     def get(self, request, shopid):
-        print(1)
         session_key = request.session.session_key or request.META.get('REMOTE_ADDR')
         shop = get_object_or_404(Shop, pk=shopid)
         user = request.user

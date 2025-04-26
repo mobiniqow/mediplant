@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="{% static 'assets/css/plugins/owl.theme.default.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/plugins/swiper-bundle.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/plugins/slick.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/plugins/nouislider.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/nouislider.css' %}"> 
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="{% static 'assets/css/slider/uikit-rtl.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/slider/uikit-rtl.min.css' %}">
@@ -53,6 +53,7 @@
             overflow: auto;
             background-color: rgba(0, 0, 0, 0.4);
             padding-top: 60px;
+            z-index: 1000;
         }
 
         .clear-btn {
@@ -383,9 +384,9 @@
             <div class="search-container">
                 <input type="search" id="search-input" class="search-menu" placeholder="جستجو فروشگاه"
                        oninput="toggleClearButton()">
-                {#                <button type="button" id="clear-btn" class="clear-btn" onclick="clearSearch()" style="display: none;">#}
-                {#                    ❌#}
-                {#                </button>#}
+{#                <button type="button" id="clear-btn" class="clear-btn" onclick="clearSearch()" style="display: none;">#}
+{#                    ❌#}
+{#                </button>#}
                 <button type="button" class="search-btn" onclick="searchProduct()">
                     <i class="fa fa-search" style="color: white; font-size: 14px" aria-hidden="true"></i>
                 </button>
@@ -403,10 +404,7 @@
                     <div id="modal-body">
                         <!-- محتوای داینامیک اینجا نمایش داده می‌شود -->
                     </div>
-                    <button onclick="closeModal()"
-                            style="width: 100%; padding: 8px 0; background-color: #45a049; color: white; border-radius: 8px; margin-top: 8px;">
-                        بازگشت
-                    </button>
+                    <button onclick="closeModal()" style="width: 100%; padding: 8px 0; background-color: #45a049; color: white; border-radius: 8px; margin-top: 8px;">بازگشت</button>
                 </div>
             </div>
         </div>
@@ -421,8 +419,9 @@
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 {% for i in banners %}
-                    <div class="swiper-slide" style="background-image:url({{ i }})"></div>
+                    <div class="swiper-slide" style="background-image:url({{ i.image.url }})"></div>
                 {% endfor %}
+
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
@@ -699,7 +698,7 @@
 <script>
     function fetchProducts(page = 1, search = "") {
         const shopId = {{ shop.id }};
-        const url = `/shop/api/v1/shop-product/?shop=${shopId}&page=${page}&product_name=${search}`;
+        const url = `/shop/api/v1/?shop=${shopId}&page=${page}&product_name=${search}`;
         $.ajax({
             url: url,
             method: 'GET',
@@ -859,17 +858,17 @@
         if (type === 'catalog') {
             modalBody.innerHTML = `
             <div style='width: 100% ; display: flex; justify-content: center;'>
-                <p>{{ shop.catalog|safe }}</p>
+                <p>{{ shop.catalog }}</p>
             </div>
             `;
         } else if (type === 'about') {
             modalBody.innerHTML = `
             <div style='width: 100% ; display: flex; justify-content: center;'>
-                <p>{{ shop.description|safe }}</p>
+                <p>{{ shop.description }}</p>
             </div>
             `;
         }
-
+ 
         document.getElementById("myModal").style.display = "block";
     }
 

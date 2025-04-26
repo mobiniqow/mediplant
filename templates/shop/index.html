@@ -452,7 +452,7 @@
                                             </h5>
                                             <div class="ms-pro-rat-price">
                                                 <span class="ms-price">
-{#                                                    <span class="new-price">{{ product.price |intcomma:False }}  تومان </span> #}
+                                                    <span class="new-price">{{ product.price |intcomma:False }}  تومان </span> 
                                                 </span>
                                             </div>
                                         </div>
@@ -497,7 +497,7 @@
                                             </h5>
                                             <div class="ms-pro-rat-price">
                                                 <span class="ms-price">
-{#                                                    <span class="new-price">{{ product.price |intcomma:False }}  تومان </span>#}
+                                                    <span class="new-price">{{ product.price |intcomma:False }}  تومان </span>
 {#                                                <span class="old-price">65 هزار</span>#}
                                                 </span>
                                             </div>
@@ -542,7 +542,7 @@
                                             </h5>
                                             <div class="ms-pro-rat-price">
                                                 <span class="ms-price">
-{#                                                    <span class="new-price">{{ product.price |intcomma:False }}  تومان </span>#}
+                                                    <span class="new-price">{{ product.price |intcomma:False }}  تومان </span>
 {#                                                <span class="old-price">65 هزار</span>#}
                                                 </span>
                                             </div>
@@ -587,7 +587,7 @@
                                             </h5>
                                             <div class="ms-pro-rat-price">
                                                 <span class="ms-price">
-{#                                                    <span class="new-price">{{ product.price |intcomma:False }}  تومان </span>#}
+                                                    <span class="new-price">{{ product.price |intcomma:False }}  تومان </span>
 {#                                                <span class="old-price">65 هزار</span>#}
                                                 </span>
                                             </div>
@@ -660,9 +660,9 @@
                                     <div class="ms-pro-rat-price">
                                         <div class="ms-pro-rat-pri-inner">
                                             <span class="ms-price">
-{#                                                <span class="new-price">{{ product.price | intcomma:False }}  تومان</span>#}
+                                                <span class="new-price">{{ product.price | intcomma:False }}  تومان</span>
 {#                                            <span class="old-price">55 هزار</span>#}
-                                            <span class="qty">{{ product.get_type_display }}   </span>
+                                            <span class="qty">- {{ product.get_type_display }}   </span>
                                             </span>
                                         </div>
                                     </div>
@@ -707,9 +707,9 @@
                                     <div class="ms-pro-rat-price">
                                         <div class="ms-pro-rat-pri-inner">
                                             <span class="ms-price">
-{#                                                <span class="new-price">{{ product.price | intcomma:False }}  تومان</span>#}
+                                                <span class="new-price">{{ product.price | intcomma:False }}  تومان</span>
 {#                                            <span class="old-price">55 هزار</span>#}
-                                            <span class="qty">{{ product.get_type_display }}   </span>
+                                            <span class="qty">- {{ product.get_type_display }}   </span>
                                             </span>
                                         </div>
                                     </div>
@@ -754,9 +754,9 @@
                                     <div class="ms-pro-rat-price">
                                         <div class="ms-pro-rat-pri-inner">
                                             <span class="ms-price">
-{#                                                <span class="new-price">{{ product.price | intcomma:False }}  تومان</span>#}
+                                                <span class="new-price">{{ product.price | intcomma:False }}  تومان</span>
 {#                                            <span class="old-price">55 هزار</span>#}
-                                            <span class="qty">{{ product.get_type_display }}   </span>
+                                            <span class="qty">- {{ product.get_type_display }}   </span>
                                             </span>
                                         </div>
                                     </div>
@@ -801,9 +801,9 @@
                                     <div class="ms-pro-rat-price">
                                         <div class="ms-pro-rat-pri-inner">
                                             <span class="ms-price">
-{#                                                <span class="new-price">{{ product.price | intcomma:False }}  تومان</span>#}
+                                                <span class="new-price">{{ product.price | intcomma:False }}  تومان</span>
 {#                                            <span class="old-price">55 هزار</span>#}
-                                            <span class="qty">{{ product.get_type_display }}   </span>
+                                            <span class="qty">- {{ product.get_type_display }}   </span>
                                             </span>
                                         </div>
                                     </div>
@@ -944,7 +944,7 @@
                                                 {#                                                </span>#}
                                                 <span class="ms-price">
 {#                                                <span class="old-price">50 هزار</span>#}
-{#                                                <span class="new-price">{{ product.price|intcomma:False }} هزار</span>#}
+                                                <span class="new-price">{{ product.price|intcomma:False }} هزار</span>
                                                 </span>
                                             </div>
                                         </div>
@@ -1325,7 +1325,7 @@
     }
 
     function openArticles(product_id) {
-        window.location.href = `/blog/news/${product_id}/`;
+        window.location.href = `/blog/${product_id}/`;
     }
 
     function openShopProduct(shop, product) {

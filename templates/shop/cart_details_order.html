@@ -913,8 +913,7 @@
             "method": "POST",
             "timeout": 0,
             "headers": {
-                "X-CSRFToken": getCookie('csrftoken'), 
-                "Authorization": "Bearer {{ token }}",   
+                "X-CSRFToken": getCookie('csrftoken')  // توکن CSRF را به هدر اضافه می‌کنیم
             }
         };
         return $.ajax(settings)

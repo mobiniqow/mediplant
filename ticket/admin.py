@@ -5,9 +5,9 @@ from ticket.models import Ticket, Message, TicketSection
 
 @admin.register(Ticket)
 class TicketAdmin(admin.ModelAdmin):
-    list_display = ("id", "user", "section", "status", "created_at")
+    list_display = ("id", "user", "section", "state", "created_at")
     search_fields = ("user__username", "section")
-    list_filter = ("status",)
+    list_filter = ("state",)
 
 
 @admin.register(Message)
