@@ -335,15 +335,17 @@
     </div>
 </div>
 
-<div class="ms-slider-content">
-    <div class="ms-main-slider">
-        <div class="ms-slider swiper-container main-slider-nav main-slider-dot">
-            <div class="swiper-wrapper" id="article-slider"> 
-            </div>
-            <div class="swiper-pagination swiper-pagination-white"></div>
-            <div class="swiper-buttons">
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
+<div class="container">
+    <div class="ms-slider-content">
+        <div class="ms-main-slider">
+            <div class="ms-slider swiper-container main-slider-nav main-slider-dot">
+                <div class="swiper-wrapper" id="article-slider"> 
+                </div>
+                <div class="swiper-pagination swiper-pagination-white"></div>
+                <div class="swiper-buttons">
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -358,23 +360,25 @@
                     <div class="ms-blogs-inner">
                         <div class="ms-single-blog-item">
                             <div class="single-blog-info">
-                                <figure class="news-img">
-                                    <a href="#" id="article-image-link">
+                                <figure class="news-img" style="width: 70%; margin: auto; border-radius: 8px;">
+                                    <a  href="#" id="article-image-link">
                                         <img id="article-image" src="" alt="تصویر مقاله" style="display: none;">
                                     </a>
                                 </figure>
                                 <div class="single-blog-detail">
-                                    <h2 id="article-title" class="mb-3"></h2>
+                                    <h2 id="article-title" style="font-size: 18px;" class="my-3"></h2>
                                     <label id="article-date" class="text-muted mb-4"></label>
 
 {#                                    <h4>چکیده:</h4>#}
-                                    <div id="article-abstract" class="ms-text"></div>
+                                    <p class="m-0" style="font-size: 18px; color: #2b2b2b;">چکیده :</p>
+                                    <div id="article-abstract" style="margin-top: 8px;" class="ms-text"></div>
 
 {#                                    <h4>محتوا:</h4>#}
-                                    <div id="article-content" class="ms-text-highlight"></div>
+                                    <p class="m-0" style="font-size: 18px; color: #2b2b2b;">محتوا :</p>
+                                    <div id="article-content" style="margin-top: 8px;" class="ms-text-highlight"></div>
 
-                                    <h4>منبع مقاله:</h4>
-                                    <p id="article-registered"></p>
+                                    <p class="m-0" style="font-size: 18px; color: #2b2b2b;">منبع مقاله :</p>
+                                    <p id="article-registered" style="margin-top: 8px;"></p>
                                 </div>
                             </div>
                         </div>

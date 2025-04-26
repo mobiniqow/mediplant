@@ -437,6 +437,31 @@ input {
     background: #3e9172;
 }
 
+.main-image{
+    width: 100%;
+    max-height: 116px;
+}
+
+@media (max-width: 1187px) {
+    .main-image{
+        width: 100%;
+        max-height: 165px;
+    }
+}
+@media (max-width: 990px) {
+    .main-image{
+        width: 100%;
+        max-height: 120px;
+    }
+}
+@media (max-width: 420px) {
+    .main-image{
+        width: 100%;
+        max-height: max-content;
+    }
+}
+
+
 .ms-row {
     width: 100%;
     height: 100%;

@@ -400,7 +400,10 @@ function loadNews(page = 1) {
                                     </a>
                                 </figure>
                                 <div class="detail">
-                                    <label>${news.created_at.split('T')[0]} <a href="#">#${news.hashtags.join(' #')}</a></label>
+                                    <div class="d-flex justify-content-between mt-4">
+                                        <label>${news.created_at.split('T')[0]} </label>
+                                        <a href="#" class="detail-a">#${news.hashtags.join(' #')}</a>
+                                    </div>
                                     <h3><a href="#">${news.title}</a></h3>
                                     <p class="text-length">${news.excerpt}</p>
                                     <div class="more-info">

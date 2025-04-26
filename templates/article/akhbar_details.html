@@ -228,15 +228,15 @@
             <div class="ms-blogs-rightside col-md-12">
 
                 <!-- Blog content Start -->
-                <div class="ms-blogs-content">
+                <div class="ms-blogs-content" style="width: 70%; margin: auto;">
                     <div class="ms-blogs-inner">
                         <div class="ms-single-blog-item">
                             <div class="single-blog-info">
                                 <figure class="news-img">
                                     <a href="#"><img src="{{ news.image.url }}" alt="news imag"></a>
                                 </figure>
-                                <div class="single-blog-detail">
-                                    <label>{{ news.created_at }}</label>
+                                <div class="single-blog-detaill">
+                                    <p style="font-size: 14px; color: #aaaaaa;">{{ news.created_at }}</p>
                                     {{ news.content|safe }}
                                 </div>
                             </div>
@@ -244,7 +244,7 @@
                     </div>
                     <div class="ms-tag-block ms-sb-block-content ms-sidebar-dropdown">
                         {% for i in hashtags %}
-                            <a href="/blog/news/search=1" class="ms-btn-2">weqew</a>
+                            <a href="/blog/news/search=1" style="background-color: #439878;" class="ms-btn-2">weqew</a>
                         {% endfor %}
 
 
@@ -252,10 +252,10 @@
                     <!-- Pagination Start -->
                     <!-- Pagination End -->
                     <!-- Comments Start -->
-                    <div class="ms-blog-comments m-t-60">
+                    <div class="ms-blog-comments" style="margin-top: 24px;">
                         <div class="ms-blog-cmt-preview">
                             <div class="ms-blog-comment-wrapper">
-                                <h4 class="ms-blog-dms-title">نظرات : 05</h4>
+                                <h4 class="ms-blog-dms-title" style="font-size: 14px;">نظرات : 05</h4>
                                 {% for i in comments %}
                                     <div class="ms-single-comment-wrapper mt-35">
                                         <div class="ms-blog-user-img">
@@ -267,9 +267,9 @@
                                             <p>
                                                 {{ i.message }}
                                             </p>
-                                            {#                                            <div class="ms-blog-details-btn">#}
-                                            {#                                                <a href="javascript:void(0)">پاسخ</a>#}
-                                            {#                                            </div>#}
+                                            {#<div class="ms-blog-details-btn">#}
+                                            {#<a href="javascript:void(0)">پاسخ</a>#}
+                                            {#</div>#}
                                         </div>
                                     </div>
                                 {% endfor %}
@@ -277,27 +277,24 @@
                             </div>
                         </div>
                         <div class="ms-blog-cmt-form">
-                            <div class="ms-blog-reply-wrapper mt-50">
-                                <h4 class="ms-blog-dms-title">پاسخ دهید</h4>
+                            <div class="ms-blog-reply-wrapper">
+                                <!-- <h4 class="ms-blog-dms-title">پاسخ دهید</h4> -->
                                 <form class="ms-blog-form" id="commentForm">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="ms-leave-form">
-                                                <input type="text" id="user_name" name="user_name" placeholder="نام"
-                                                       required>
+                                                <input type="text" id="user_name" name="user_name" placeholder="نام" >
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="ms-leave-form">
-                                                <input type="email" id="email" name="email" placeholder="ایمیل"
-                                                       required>
+                                                <input type="text" id="title" placeholder="عنوان" >
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="ms-text-leave">
-                                                <textarea id="message" name="message" placeholder="پیغام"
-                                                          required></textarea>
-                                                <button type="submit" class="ms-btn-2">ارسال</button>
+                                                <textarea id="message" style="resize: none;" name="message" placeholder="پیغام" ></textarea>
+                                                <button type="submit" id="submitBtn" style="background-color: #439878;" class="ms-btn-2">ارسال</button>
                                             </div>
                                         </div>
                                     </div>
@@ -413,6 +410,17 @@
                 }
             });
         });
+    });
+
+    document.getElementById('submitBtn').addEventListener('click', function (e) {
+        e.preventDefault();
+        const title = document.getElementById('title').value.trim();
+        const fname = document.getElementById('user_name').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        console.log("نام:", fname);
+        console.log("پیغام:", message);
+        console.log("عنوان:", title);
     });
 </script>
 </body>

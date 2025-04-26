@@ -11,6 +11,8 @@ from account.models import User
 from account.send_sms import send_otp_message
 from account.urls.v1.serializers import UserRegisterSerializer
 from sale.models import SaleBasket
+from product.models import Category
+from encyclopedia.models import ArticleEncyclopedia, News, Hashtag
 
 
 class LoginView(BaseTemplateView):
@@ -117,3 +119,48 @@ class ProfileView(BaseTemplateView):
             context['form'] = profile
 
         return self.render_to_response(context)
+class Tickets(BaseTemplateView):
+    template_name = "account/ticket.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        category_and_sub_category = {}
+        category_and_sub_category['base'] = Category.objects.filter(parent=None)
+        for i in category_and_sub_category['base']:
+            i.children = Category.objects.filter(parent=i.id)
+        news = News.objects.all().order_by('-id')[:5]
+        hashtags = Hashtag.objects.all()
+        context['categories_map'] = category_and_sub_category
+        context['news'] = news
+        context['hashtags'] = hashtags
+        return context
+class NewTicket(BaseTemplateView):
+    template_name = "account/new_ticket.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        category_and_sub_category = {}
+        category_and_sub_category['base'] = Category.objects.filter(parent=None)
+        for i in category_and_sub_category['base']:
+            i.children = Category.objects.filter(parent=i.id)
+        news = News.objects.all().order_by('-id')[:5]
+        hashtags = Hashtag.objects.all()
+        context['categories_map'] = category_and_sub_category
+        context['news'] = news
+        context['hashtags'] = hashtags
+        return context
+class TicketHistory(BaseTemplateView):
+    template_name = "account/ticket_history.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        category_and_sub_category = {}
+        category_and_sub_category['base'] = Category.objects.filter(parent=None)
+        for i in category_and_sub_category['base']:
+            i.children = Category.objects.filter(parent=i.id)
+        news = News.objects.all().order_by('-id')[:5]
+        hashtags = Hashtag.objects.all()
+        context['categories_map'] = category_and_sub_category
+        context['news'] = news
+        context['hashtags'] = hashtags
+        return context

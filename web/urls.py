@@ -3,7 +3,7 @@ from django.urls import path
 from encyclopedia.views import NewsDetailView
 from .views.articles import EncyclopediaCombinedDrugsView, EncyclopediaCombinedDetailsView, EncyclopediaDetailsView, \
     EncyclopediaView, DiseasesView, DiseasesDetailsView, HerbalView, HerbalDetailsView, NewsView, NewsDetailsView
-from .views.auth import LoginView, VerifyView, ProfileView
+from .views.auth import LoginView, VerifyView, ProfileView,Tickets,NewTicket,TicketHistory
 from .views.doctor import DoctorList, DoctorDetailsList, DoctorChatDetails, DoctorprescriptionDetails, \
     DoctorHistoryDetails, DoctorListDetails
 from .views.others import AboutUsView, ContactUsView
@@ -20,6 +20,9 @@ urlpatterns = [
     path("contact-us", ContactUsView.as_view(), ),
     path('shop-transactions/', ShopTransactions.as_view()),
     path('callback/', CallbackView.as_view()),
+    path("ticket/", Tickets.as_view(),),
+    path("ticket/new", NewTicket.as_view(),),
+    path("ticket/history", TicketHistory.as_view(),),
     # path('shop/orders', OrderListView.as_view()),
     path('shops/', ShopView.as_view()),
     path('shop/<int:id>/', ShopDetailsView.as_view()),

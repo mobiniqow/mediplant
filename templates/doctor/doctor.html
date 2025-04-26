@@ -344,8 +344,9 @@
             <div class="ms-shop-rightside col-lg-9 col-md-12 margin-b-30">
                 <div class="shop-pro-content">
                     <div class="shop-pro-inner list-view">
-                        <div class="row">
+                        <div class="row " >
                             <!-- محصولات اینجا قرار می‌گیرند -->
+                            
                         </div>
                     </div>
                     <div class="ms-pro-pagination"></div>
@@ -655,6 +656,18 @@
         });
     }
 
+    function openModal(doctorData) {
+        const doctor = JSON.parse(decodeURIComponent(doctorData));
+        document.getElementById("modalImage").src = doctor.picture;
+        document.getElementById("modalBranch").textContent = doctor.branch_name;
+        document.getElementById("modalId").textContent = "ID: " + doctor.id;
+        document.getElementById("doctorModal").style.display = "flex";
+    }
+
+    function closeModal() {
+        document.getElementById("doctorModal").style.display = "none";
+    }
+
     function renderDoctors(doctors) {
         let doctorList = "";
 
@@ -677,7 +690,9 @@
                         </div>
                         <div class="ms-pro-content">
                             <h5 class="ms-pro-title"><a href="doctor-profile.html?id=${doctor.id}">دکتر ${doctor.user}</a></h5>
-                            <p class="ms-info">${doctor.description}</p>
+                            <div style='margin-right: 18px'>
+                                <p class="ms-info detail-doctor">${doctor.description}</p>
+                            </div>
                             <div class="ms-pro-rat-price">
                                 <span class="ms-pro-rating">
                                     ${getStars(doctor.responsiveness)}

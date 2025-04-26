@@ -304,11 +304,11 @@
 
             {% for i in product_shops|slice:"1:" %}
                 <div class="item-shop">
-                    <div class="shop-info">
+                    <div class="shop-info" style="padding-right: 0;">
                         <div class="shop-image">
                             <!-- تصویر فروشگاه با فاصله داخلی -->
                             <img src="{{ i.shop.image.url }}" alt="{{ i.shop.name }}"
-                                 style="padding: 10px; border-radius: 8px;"/>
+                                 style="margin-left: 32px; border-radius: 8px;"/>
                         </div>
                         <div class="shop-details">
                             <p class="product-name">{{ i.product.name | truncatechars:20 }}</p>

@@ -361,7 +361,10 @@ function loadHerbalEncyclopedia(page = 1) {
                                     </a>
                                 </figure>
                                 <div class="detail">
-                                    <label>${encyclopedia.created_at.split('T')[0]} <a href="#">${encyclopedia.classification}</a></label>
+                                    <div class="d-flex justify-content-between mt-4">
+                                        <label>${encyclopedia.created_at.split('T')[0]} </label>
+                                        <a href="#" class="detail-a">${encyclopedia.classification}</a>
+                                    </div>
                                     <h3><a href="/article/details/${encyclopedia.id}">${encyclopedia.name}</a></h3>
                                     <p class="text-length">${encyclopedia.bomi || ''}</p>
                                     <div class="more-info">

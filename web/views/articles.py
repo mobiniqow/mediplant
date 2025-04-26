@@ -125,6 +125,7 @@ class NewsView(TemplateView):
         return context
 
 
+
 class NewsDetailsView(TemplateView):
     template_name = "article/akhbar_details.html"
 

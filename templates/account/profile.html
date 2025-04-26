@@ -34,6 +34,8 @@
     <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
     <link rel="stylesheet" class="color-css" href="{% static 'assets/css/color-01.css' %}">
     <link rel="stylesheet" href="https://static.neshan.org/sdk/leaflet/v1.9.4/neshan-sdk/v1.0.8/index.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
     <style>
         /* استایل برای دکمه‌ها */
         button {
@@ -194,53 +196,55 @@
             <div class="ms-register-container">
                 <div class="ms-register-form">
                     <form action="#" method="post">
-                                <span class="ms-register-wrap ms-register-half">
-                                    <label>نام و نام خانوادگی *</label>
-                                    <input id="edit-firstname" type="text" name="user_name"
-                                           value="{{ user.user_name }}" readonly
-                                           onclick="openEditDialog('نام و نام خانوادگی','edit-firstname')">
-                                </span>
+                        <span class="ms-register-wrap ms-register-half">
+                            <label>نام و نام خانوادگی *</label>
+                            <input id="edit-firstname" type="text" name="user_name"
+                                value="{{ user.user_name }}" readonly
+                                onclick="openEditDialog('نام و نام خانوادگی','edit-firstname')">
+                        </span>
 
                         <span class="ms-register-wrap ms-register-half">
-                                    <label>شهر</label>
-                                    <input id="edit-city" type="text" name="city" value="{{ user.city }}"
-                                           readonly
-                                           onclick="openEditDialog('شهر','edit-city')">
-                                </span>
+                            <label>شهر</label>
+                            <input id="edit-city" type="text" name="city" value="{{ user.city }}"
+                                readonly
+                                onclick="openEditDialog('شهر','edit-city')">
+                        </span>
                         <span class="ms-register-wrap ms-register-half">
-                                    <label>ایمیل *</label>
-                                    <input type="email" name="email" onclick="openVerificationDialog()"
-                                           placeholder="{{ user.email }}" readonly required>
-                                </span>
+                            <label>ایمیل *</label>
+                            <input type="email" name="email" onclick="openVerificationDialog()"
+                                placeholder="{{ user.email }}" readonly required>
+                        </span>
                         <span class="ms-register-wrap ms-register-half">
-                                    <label>تلفن *</label>
-                                    <input type="text" name="phonenumber" onclick="openMobileVerificationDialog()"
-                                           readonly placeholder="{{ user.phone }}" required>
-                                </span>
+                            <label>تلفن *</label>
+                            <input type="text" name="phonenumber" onclick="openMobileVerificationDialog()"
+                                readonly placeholder="{{ user.phone }}" required>
+                        </span>
                         <span class="ms-register-wrap ms-register-half">
-                                    <label>لوکیشن</label>
-                                            <input type="text" name="postalcode" id="postalcode"
-                                                   placeholder="{{ user.location }}" onclick="openMapDialog()">                                </span>
+                            <label>لوکیشن</label>
+                            <input type="text" name="postalcode" id="postalcode"
+                                placeholder="{{ user.location }}" onclick="openMapDialog()">                                
+                        </span>
                         <span class="ms-register-wrap ms-register-half">
-                                    <label>کدپستی</label>
-                                    <input type="text" id="edit-post-code" name="postal_code"
-                                           value="{{ user.postal_code }}"
-                                           readonly onclick="openEditDialog('کدپستی','edit-post-code')">
-                                </span>
+                            <label>کدپستی</label>
+                            <input type="text" id="edit-post-code" name="postal_code"
+                                value="{{ user.postal_code }}"
+                                readonly onclick="openEditDialog('کدپستی','edit-post-code')">
+                        </span>
                         <span class="ms-register-wrap">
-                                    <label>آدرس</label>
-                                    <input type="text" id="edit-address" name="address" value="{{ user.address }}"
-                                           readonly
-                                           onclick="openEditDialog('آدرس','edit-address',true)">
-                                </span>
+                            <label>آدرس</label>
+                            <input type="text" id="edit-address" name="address" value="{{ user.address }}"
+                                readonly
+                                onclick="openEditDialog('آدرس','edit-address',true)">
+                        </span>
                         <span class="ms-register-wrap ms-recaptcha">
-                                    <span class="g-recaptcha" data-sitekey="6LfKURIUAAAAAO50vlwWZkyK_G2ywqE52NU7YO0S"
-                                          data-callback="verifyRecaptchaCallback"
-                                          data-expired-callback="expiredRecaptchaCallback"></span>
-                                <input class="form-control d-none" data-recaptcha="true" required
-                                       data-error="Please complete the Captcha">
-                                <span class="help-block with-errors"></span>
-                                </span>
+                            <span class="g-recaptcha" data-sitekey="6LfKURIUAAAAAO50vlwWZkyK_G2ywqE52NU7YO0S"
+                                data-callback="verifyRecaptchaCallback"
+                                data-expired-callback="expiredRecaptchaCallback">
+                            </span>
+                            <input class="form-control d-none" data-recaptcha="true" required
+                                    data-error="Please complete the Captcha">
+                            <span class="help-block with-errors"></span>
+                        </span>
                         {#                                <span class="ms-register-wrap ms-register-btn">#}
                         {#                                    <span>از قبل حساب کاربری دارید؟<a href="login.html">ورود</a></span>#}
                         {#                                <button class="ms-btn-2" type="submit">ثبت نام</button>#}
@@ -258,14 +262,16 @@
 <div id="editDialog" class="dialog">
     <div class="dialog-content">
         <span id="closeDialog" class="close-btn">&times;</span>
-        <label for="edit-input" id="dialog-title">نام</label> <!-- تغییر به ID برای تغییر عنوان -->
+        <label for="edit-input" id="dialog-title" class="text-right w-full text-sm"> نام</label> <!-- تغییر به ID برای تغییر عنوان -->
 
         <!-- Input/textarea will be dynamically added here -->
-        <div id="input-container"></div> <!-- جایی که input یا textarea در آن قرار می‌گیرد -->
+        <div id="input-container" class="border my-2 rounded"></div> <!-- جایی که input یا textarea در آن قرار می‌گیرد -->
 
         <!-- دکمه‌های ذخیره و کنسل -->
-        <button id="save-btn" class="save-btn">ذخیره</button>
-        <button id="cancel-btn" class="cancel-btn">کنسل</button>
+        <div class=" grid grid-cols-2 gap-2">
+            <button id="save-btn" class="save-btn m-0">ذخیره</button>
+            <button id="cancel-btn" class="cancel-btn m-0">بستن</button>
+        </div>
     </div>
 </div>
 {#verify dialog#}
@@ -273,16 +279,18 @@
 <div id="verificationDialog" class="dialog">
     <div class="dialog-content">
         <span id="closeVerificationDialog" class="close-btn">&times;</span>
-        <label for="verification-input" id="verification-title">ایمیل خود را وارد کنید</label>
+        <label for="verification-input" id="verification-title" class="w-full text-right text-xs"> ایمیل خود را وارد کنید :</label>
 
         <!-- Input field for email -->
-        <div id="input-container">
-            <input type="email" id="verification-input"  >
+        <div id="input-container" class="my-2">
+            <input type="email" id="verification-input" class="border w-full rounded !h-9 !text-xs px-2" >
         </div>
 
         <!-- دکمه‌های تایید و لغو -->
-        <button id="verify-email-btn" class="verify-btn">تایید</button>
-        <button id="cancel-email-btn" class="cancel-btn">لغو</button>
+        <div class="grid grid-cols-2 gap-2">
+            <button id="verify-email-btn" class="verify-btn m-0">تایید</button>
+            <button id="cancel-email-btn" class="cancel-btn m-0">لغو</button>
+        </div>
     </div>
 </div>
 
@@ -298,8 +306,10 @@
         </div>
 
         <!-- دکمه‌های تایید و لغو -->
-        <button id="confirm-code-btn" class="confirm-code-btn">تایید کد</button>
-        <button id="cancel-code-btn" class="cancel-code-btn">لغو</button>
+        <div class="">
+            <button id="confirm-code-btn" class="confirm-code-btn">تایید کد</button>
+            <button id="cancel-code-btn" class="cancel-code-btn">لغو</button>
+        </div>
     </div>
 </div>
 {#mobile verify#}
@@ -307,17 +317,19 @@
 <div id="mobileVerificationDialog" class="dialog">
     <div class="dialog-content">
         <span id="closeMobileVerificationDialog" class="close-btn">&times;</span>
-        <label for="mobile-verification-input" id="mobile-verification-title">شماره موبایل خود را وارد کنید</label>
+        <label for="mobile-verification-input" id="mobile-verification-title" class="text-sm w-full text-right">شماره موبایل خود را وارد کنید</label>
 
         <!-- Input field for mobile -->
-        <div id="mobile-input-container">
-            <input type="text" id="mobile-verification-input" placeholder="شماره موبایل خود را وارد کنید"
+        <div id="mobile-input-container" class="my-2">
+            <input type="text" class="border !h-8 rounded !text-xs" id="mobile-verification-input" placeholder="شماره موبایل خود را وارد کنید"
                    maxlength="11">
         </div>
 
         <!-- دکمه‌های تایید و لغو -->
-        <button id="verify-mobile-btn" class="verify-btn">تایید</button>
-        <button id="cancel-mobile-btn" class="cancel-btn">لغو</button>
+        <div class="grid grid-cols-2 gap-2">
+            <button id="verify-mobile-btn" class="verify-btn m-0">تایید</button>
+            <button id="cancel-mobile-btn" class="cancel-btn m-0">لغو</button>
+        </div>
     </div>
 </div>
 
@@ -341,10 +353,10 @@
 
 <!-- دیالوگ نقشه -->
 <div id="mapDialog" class="dialog">
-    <div class="dialog-content">
+    <div class="dialog-content !w-[400px] !text-right">
         <span id="closeMapDialog" class="close-btn">&times;</span>
         <div id="map" style="width: 100%; height: 400px;"></div> <!-- مکان نمایش نقشه -->
-        <button id="saveLocation" class="save-btn">ذخیره مکان</button>
+        <button id="saveLocation" class="save-btn mb-0 text-right">ذخیره مکان</button>
     </div>
 </div>
 
@@ -376,7 +388,7 @@
 <script>
     function openEditDialog(title, filedId, isTextarea) {
         var inputField = document.getElementById(filedId);
-        console.log(`inputField.value ${filedId}`)
+        // console.log(`inputField.value ${filedId}`)
         inputField.disabled = false;
         document.getElementById('dialog-title').innerText = title;
         var inputContainer = document.getElementById('input-container');
@@ -553,15 +565,17 @@
         }
 
         // بستن دیالوگ
-        document.getElementById('closeMapDialog').addEventListener('click', function () {
+        document.getElementById('closeMapDialog').addEventListener('click', function (e) {
             document.getElementById('mapDialog').style.display = 'none';
+            e.preventDefault();
         });
 
         // ذخیره مکان انتخابی
-        document.getElementById('saveLocation').addEventListener('click', function () {
+        document.getElementById('saveLocation').addEventListener('click', function (e) {
             document.getElementById('postalcode').value = `${selectedLocation.lat},${selectedLocation.lng}`;
             document.getElementById('mapDialog').style.display = 'none';
             updateProfile('location', `${selectedLocation.lat},${selectedLocation.lng}`)
+            e.preventDefault();
         });
     }
 

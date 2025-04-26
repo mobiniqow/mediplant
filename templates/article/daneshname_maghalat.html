@@ -363,15 +363,18 @@ function loadArticles(page = 1) {
                     <div class="col-lg-4 col-md-6 col-sm-12 mb-6 ms-blog-block">
                         <div class="ms-blog-item">
                             <div class="news-info">
-                                <figure class="news-img">
+                                <figure class="news-img" style='width: 100%'>
                                     <a href="/blog/encyclopedia-article-encyclopedia/${article.id}">
                                         <img src="${article.image}" alt="news image">
                                     </a>
                                 </figure>
                                 <div class="detail">
-                                    <label>${article.created_at} <a href="#">${article.registered}</a></label>
+                                    <div class="d-flex justify-content-between mt-4">
+                                        <label>${article.created_at} </label>
+                                        <a href="#" class="detail-a">${article.registered}</a>
+                                    </div>
                                     <h3><a href="/blog/encyclopedia-article-encyclopedia/${article.id}">${article.name}</a></h3>
-                                    <p class="text-length">${article.abstract.replace(/<[^>]+>/g, '')}</p>
+                                    <p style='overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 244px' class="text-length">${article.abstract.replace(/<[^>]+>/g, '')}</p>
                                     <div class="more-info">
                                         <a href="/blog/encyclopedia-article-encyclopedia/${article.id}">ادامه مطلب<span></span></a>
                                     </div>

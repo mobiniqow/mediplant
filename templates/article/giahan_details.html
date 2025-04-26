@@ -33,6 +33,8 @@
     <link rel="stylesheet" id="main_style" href="{% static 'assets/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
     <link rel="stylesheet" class="color-css" href="{% static 'assets/css/color-01.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
     <style>
         .references-section {
             margin-top: 30px;
@@ -51,9 +53,9 @@
         #references-list li {
             margin-bottom: 10px;
         }
-
+        
         #references-list li a {
-            color: #007bff;
+            color: #2b2b2b !important;
             text-decoration: none;
         }
 
@@ -373,15 +375,17 @@
     </div>
 </div>
 
-<div class="ms-slider-content">
-    <div class="ms-main-slider">
-        <div class="ms-slider swiper-container main-slider-nav main-slider-dot">
-            <div class="swiper-wrapper" id="article-slider">
-            </div>
-            <div class="swiper-pagination swiper-pagination-white"></div>
-            <div class="swiper-buttons">
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
+<div class="container">
+    <div class="ms-slider-content">
+        <div class="ms-main-slider">
+            <div class="ms-slider swiper-container main-slider-nav main-slider-dot">
+                <div class="swiper-wrapper" id="article-slider">
+                </div>
+                <div class="swiper-pagination swiper-pagination-white"></div>
+                <div class="swiper-buttons">
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -408,33 +412,94 @@
 
             <!-- نمایش اطلاعات گیاه -->
             <div class="herbal-info-section">
-                <h3>اطلاعات گیاه</h3>
-                <p><strong>نام گیاه:</strong> <span id="plant-name"></span></p>
-                <p><strong>نام لاتین:</strong> <span id="latin-name"></span></p>
-                <p><strong>نام دیگر:</strong> <span id="another-name"></span></p>
-                <p><strong>زیستگاه:</strong> <span id="habitat"></span></p>
-                <p><strong>تاریخچه:</strong> <span id="history"></span></p>
-                <p><strong>ترکیبات:</strong> <span id="components"></span></p>
-                <p><strong>ترکیبات فعال:</strong> <span id="compounds"></span></p>
-                <p><strong>داروشناسی:</strong> <span id="pharmacology"></span></p>
-                <p><strong>موارد مصرف:</strong> <span id="indications"></span></p>
-                <p><strong>عوارض:</strong> <span id="effects"></span></p>
-                <p><strong>طبیعت گیاه:</strong> <span id="the-nature-of-plant"></span></p>
-                <p><strong>عوارض جانبی:</strong> <span id="complications"></span></p>
-                <p><strong>بارداری:</strong> <span id="pregnancy"></span></p>
-                <p><strong>مدت درمان:</strong> <span id="treatment-duration"></span></p>
-                <p><strong>روش نگهداری:</strong> <span id="maintenance-method"></span></p>
-                <p><strong>نوع گیاه:</strong> <span id="plant-type"></span></p>
-                <p><strong>دستور مصرف:</strong> <span id="how-to-use"></span></p>
-                <p><strong>طول عمر گیاه:</strong> <span id="lifespan-of-plant"></span></p>
-                <p><strong>مقدار مصرف:</strong> <span id="dosage"></span></p>
-                <p><strong>ممنوعیت مصرف:</strong> <span id="prohibited-usage"></span></p>
-                <p><strong>مکمل‌های دارویی:</strong> <span id="supplements"></span></p>
+                <h3 style="font-size: 18px; margin-bottom: 16px;">اطلاعات گیاه</h3>
+                <div class="detail-blog">
+                    <div style="display: flex; gap: 8px; align-content: center;">
+                        <h4 class="title-blog-single t-top">نام گیاه:</h4>
+                        <span id="plant-name" class="disease-images"></span>
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <h4 class="title-blog-single t-top">نام لاتین:</h4>
+                        <span id="latin-name" class="disease-images"></span>
+                    </div>
+                </div>
+                
+
+                <div class="detail-blog" style="margin-top: 16px;">
+                    <div style="display: flex; gap: 8px; align-content: center;">
+                        <h4 class="title-blog-single t-top">نام دیگر:</h4>
+                        <span id="another-name" class="disease-images"></span>
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <h4 class="title-blog-single t-top">زیستگاه :</h4>
+                        <span id="habitat" class="disease-images"></span>
+                    </div>
+                </div>
+                
+
+                <div class="detail-blog" style="margin-top: 16px;">
+                    <div style="display: flex; gap: 8px; align-content: center;">
+                        <h4 class="title-blog-single t-top">تاریخچه</h4>
+                        <span id="history" class="disease-images"></span>
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <h4 class="title-blog-single t-top">ترکیبات :</h4>
+                        <span id="components" class="disease-images"></span>
+                    </div>
+                </div>
+                
+
+                <div class="detail-blog" style="margin-top: 16px;">
+                    <div style="display: flex; gap: 8px; align-content: center;">
+                        <h4 class="title-blog-single t-top">ترکیبات فعال:</h4>
+                        <span id="compounds" class="disease-images"></span>
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <h4 class="title-blog-single t-top">داروشناسی :</h4>
+                        <span id="pharmacology" class="disease-images"></span>
+                    </div>
+                </div>
+                
+
+                <div class="detail-blog" style="margin-top: 16px;">
+                    <div style="display: flex; gap: 8px; align-content: center;">
+                        <h4 class="title-blog-single t-top"> مدت درمان :</h4>
+                        <span id="treatment-duration" class="disease-images"></span>
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <h4 class="title-blog-single t-top">نوع گیاه :</h4>
+                        <span id="plant-type" class="disease-images"></span>
+                    </div>
+                </div>
+                
+
+                <p style="margin-top: 16px; margin-bottom: 8px;">موارد مصرف: </p>
+                <p id="indications"></p>
+                <p style="margin-top: 16px; margin-bottom: 8px;">عوارض: </p>
+                <p id="effects"></p>
+                <p style="margin-top: 16px; margin-bottom: 8px;">طبیعت گیاه: </p>
+                <p id="the-nature-of-plant"></p>
+                <p style="margin-top: 16px; margin-bottom: 8px;">عوارض جانبی:</p>
+                <p id="complications"></p>
+                <p style="margin-top: 16px; margin-bottom: 8px;">بارداری:</p>
+                <p id="pregnancy"></p>
+                <p style="margin-top: 16px; margin-bottom: 8px;">روش نگهداری:</p>
+                <p id="maintenance-method"></p>
+                <p style="margin-top: 16px; margin-bottom: 8px;">دستور مصرف: </p>
+                <p id="how-to-use"></p>
+                <p style="margin-top: 16px; margin-bottom: 8px;">طول عمر گیاه: </p>
+                <p id="lifespan-of-plant"></p>
+                <p style="margin-top: 16px; margin-bottom: 8px;">مقدار مصرف:</p>
+                <p id="dosage"></p>
+                <p>ممنوعیت مصرف: </p>
+                <p id="prohibited-usage"></p>
+                <p style="margin-top: 16px; margin-bottom: 8px;">مکمل‌های دارویی: </p>
+                <p id="supplements"></p>
             </div>
 
             <!-- نمایش مراجع -->
-            <div class="references-section">
-                <h3>مراجع</h3>
+            <div class="references-section" style="width: 70%; margin: auto;">
+                <h3 style="font-size: 18px;">مراجع</h3>
                 <ul id="references-list">
                     <!-- مراجع به صورت داینامیک بارگذاری می‌شوند -->
                 </ul>

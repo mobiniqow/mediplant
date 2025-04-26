@@ -2702,6 +2702,7 @@ i.msicon.msi-star.fill {
 .ms-product-inner .ms-pro-image .image img {
     z-index: 1;
     max-width: 100%;
+    height: 165px;
     -webkit-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
 }
@@ -5382,7 +5383,7 @@ body.ms-menu-open:before {
 .ms-news-section .news-info .news-img {
     width: 100%;
     height: auto;
-    margin: 0;
+    margin:auto;
     border-radius: 0px;
     position: relative;
     overflow: hidden;
@@ -5406,11 +5407,17 @@ body.ms-menu-open:before {
 
 .ms-blog .news-info .detail label,
 .ms-news-section .news-info .detail label {
-    margin-top: 20px;
+    /* margin-top: 20px; */
     display: inline-block;
     font-size: 13px;
     color: #999;
     border-radius: 5px;
+}
+.detail-a{
+    color: #2b2b2b !important;
+}
+.h2{
+    font-size: 24px !important;
 }
 
 .ms-blog .news-info .detail label a,
@@ -5684,7 +5691,71 @@ body.ms-menu-open:before {
 
 .ms-single-blog-item .single-blog-info .news-img img {
     width: 100%;
+    margin: auto;
     border-radius: 3px;
+}
+
+.ms-single-blog-item .single-blog-info .single-blog-detail{
+    max-width: 70%;
+    margin: auto;
+}
+.disease-images{
+    display: grid;
+    gap: 10px;
+}
+.detail-blog{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.title-blog-single{
+    border-right: 2px solid #ccc;
+    margin: 0;
+}
+.t-top{
+    padding-right: 8px;
+}
+.disease-latin-name{
+    margin: 0;
+}
+.title-blog-single-b{
+    border-right: none;
+}
+@media only screen and (max-width: 1200px) {
+    .ms-single-blog-item .single-blog-info .single-blog-detail{
+        max-width: 99%;
+    }
+    .img-banner-news{
+        display: grid !important;
+    }
+    .disease-images{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+    }
+    .ms-slider-content,
+    .herbal-info-section {
+        width: 100% !important;
+        margin: auto;
+    }
+
+}
+@media only screen and (max-width: 480px) {
+    .detail-blog{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .title-blog-single{
+        border-right: none;
+        padding-right: 0px;
+    }
+    .responsive{
+        margin-top: 12px;
+    }
+}
+.title-blog-single{
+    font-size: 20px;
+    margin-bottom: 0;
+    font-size: 16px;
 }
 
 .ms-single-blog-item .single-blog-info .single-blog-detail label {
@@ -5731,6 +5802,7 @@ body.ms-menu-open:before {
     padding: 10px 15px;
     font-size: 18px;
     font-weight: 400;
+    width: max-content;
     background-color: #f5f4f9;
     border-radius: 3px;
 }
@@ -5890,6 +5962,57 @@ body.ms-menu-open:before {
 .ms-ofr-banners .ms-bnr-body .ms-bnr-detail a {
     padding: 5px 15px;
 }
+
+/* uploader */
+
+.upload-container {
+    border: 2px dashed #eeeeee;
+    border-radius: 4px;
+    padding: 16px 32px;
+    text-align: center;
+    background-color: white;
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+    cursor: pointer;
+    transition: border-color 0.3s;
+  }
+
+  .upload-icon {
+    width: 40px;
+    opacity: 0.4;
+  }
+
+  .upload-title {
+    font-size: 16px;
+    margin-top: 16px;
+    color: #666;
+  }
+
+  .upload-subtitle {
+    font-size: 14px;
+    color: #aaa;
+  }
+
+  .upload-input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  .file-name {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #ff3333;
+  }
+
+  .file-name.valid {
+    color: #28a745;
+  }
 
 
 /*===== Category section css =====*/
@@ -6588,7 +6711,7 @@ body.ms-menu-open:before {
 }
 
 .ms-contact form .form-group {
-    margin-bottom: 30px;
+    margin-bottom: 16px;
 }
 
 .ms-contact form .form-group input,
@@ -9911,6 +10034,59 @@ body.ms-menu-open:before {
     border-radius: 3px;
 }
 
+.dropdown-us {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      /* user-select: none; */
+    }
+
+    .dropdown-toggle-us {
+      background-color: #ffffff;
+      padding: 12px 16px;
+      border: 1px solid #eeeeee;
+      color: #aaaaaa;
+      font-size: 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      text-align: right;
+      position: relative;
+    }
+
+    /* .dropdown-toggle-us::after {
+      content: "▾";
+      position: absolute;
+      left: 16px;
+    } */
+
+    .dropdown-menu-us {
+      display: none;
+      position: absolute;
+      top: 110%;
+      right: 0;
+      width: 100%;
+      background-color: #ffffff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      z-index: 10;
+    }
+
+    .dropdown-menu-us.active {
+      display: block;
+    }
+
+    .dropdown-item-us {
+      padding: 10px 16px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .dropdown-item-us:hover {
+      background-color: #f0f0f0;
+    }
+
 .ms-category .ms-category-block .ms-cat-box {
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
@@ -10031,4 +10207,19 @@ body.ms-menu-open:before {
     border-radius: 3px;
 }
 
+.ms-slider-content{
+    width: 70%;
+    margin: auto;
+}
+.single-blog-detail > h4{
+    font-size: 18px;
+}
+
+.herbal-info-section{
+    width: 70%;
+    margin: auto;
+}
+.detail-doctor{
+    margin-right: 18px !important;
+}
 

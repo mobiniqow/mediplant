@@ -53,6 +53,7 @@
             overflow: auto;
             background-color: rgba(0, 0, 0, 0.4);
             padding-top: 60px;
+            z-index: 1000;
         }
 
         .clear-btn {
@@ -400,10 +401,10 @@
             <button type="button" class="btn-about" onclick="openModal('about')">درباره فروشگاه</button>
             <div id="myModal" class="modal">
                 <div class="modal-content">
-                    <span class="close-btn" onclick="closeModal()">&times;</span>
                     <div id="modal-body">
                         <!-- محتوای داینامیک اینجا نمایش داده می‌شود -->
                     </div>
+                    <button onclick="closeModal()" style="width: 100%; padding: 8px 0; background-color: #45a049; color: white; border-radius: 8px; margin-top: 8px;">بازگشت</button>
                 </div>
             </div>
         </div>
@@ -855,9 +856,17 @@
         // تنظیم محتوای مودال بر اساس نوع
         const modalBody = document.getElementById('modal-body');
         if (type === 'catalog') {
-            modalBody.innerHTML = '<p>{{ shop.catalog }}</p>';
+            modalBody.innerHTML = `
+            <div style='width: 100% ; display: flex; justify-content: center;'>
+                <p>{{ shop.catalog }}</p>
+            </div>
+            `;
         } else if (type === 'about') {
-            modalBody.innerHTML = '<p>{{ shop.description }}</p>';
+            modalBody.innerHTML = `
+            <div style='width: 100% ; display: flex; justify-content: center;'>
+                <p>{{ shop.description }}</p>
+            </div>
+            `;
         }
  
         document.getElementById("myModal").style.display = "block";

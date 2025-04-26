@@ -271,72 +271,98 @@ Copyright 2022-2023
                         <div class="ms-single-blog-item">
                             <div class="single-blog-info">
                                 <div class="single-blog-detail">
-                                    <h2 id="disease-title" class="mb-3"></h2>
+                                    <h2 id="disease-title" class="mb-3 h2"></h2>
                                     <label id="disease-date" class="text-muted mb-4"></label>
 
-                                    <figure class="news-img">
-                                        <img id="disease-image" src="" alt="تصویر بیماری" style="max-width: 100%; display: none;">
-                                    </figure>
-
-                                    <h4>نام لاتین:</h4>
-                                    <p id="disease-latin-name"></p>
-
-                                    <h4>دسته‌بندی:</h4>
-                                    <p id="disease-classification"></p>
-
-                                    <h4>زیست بوم:</h4>
-                                    <p id="disease-native"></p>
-
-                                    <h4>تاریخچه:</h4>
-                                    <p id="disease-history"></p>
-
-                                    <h4>علت بیماری:</h4>
-                                    <p id="disease-cause"></p>
-
-                                    <h4>روش‌های درمان:</h4>
-                                    <p id="disease-treatment-methods"></p>
-
-                                    <h4>مدت درمان:</h4>
-                                    <p id="disease-treatment-duration"></p>
-
-                                    <h4>روش مقابله:</h4>
-                                    <p id="disease-coping-method"></p>
-
-                                    <h4>پیشگیری:</h4>
-                                    <p id="disease-prevention"></p>
-
-                                    <h4>تشدید بیماری:</h4>
-                                    <p id="disease-exacerbation"></p>
-
-                                    <h4>بارداری:</h4>
-                                    <p id="disease-pregnancy"></p>
-
-                                    <h4>سابقه وراثتی:</h4>
-                                    <p id="disease-hereditary"></p>
-
-                                    <h4>ساختار بیماری:</h4>
-                                    <p id="disease-structure"></p>
-
-                                    <h4>نوع بیماری:</h4>
-                                    <p id="disease-type"></p>
-
-                                    <h4>توضیح فازهای بیماری:</h4>
-                                    <p id="disease-phases"></p>
-
-                                    <h4>مقالات:</h4>
-                                    <ul id="disease-articles">
-                                        <!-- مقالات در اینجا نمایش داده می‌شوند -->
-                                    </ul>
-
-                                    <h4>منابع:</h4>
-                                    <ul id="disease-references">
-                                        <!-- منابع در اینجا نمایش داده می‌شوند -->
-                                    </ul>
-
-                                    <h4>تصاویر اضافی:</h4>
-                                    <div id="disease-images">
+                                    <figure class="news-img d-flex gap-2 img-banner-news">
+                                        <img id="disease-image" src="" alt="تصویر بیماری" style="max-width: 100%; height: max-content; margin: auto;  display: none;">
                                         <!-- تصاویر اضافی در اینجا نمایش داده می‌شوند -->
+                                        <div id="disease-images" class="disease-images"></div>
+                                    </figure>
+                                    
+
+                                    <div class="detail-blog">
+                                        <div style="display: flex; gap: 8px;">
+                                            <h4 class="title-blog-single t-top">نام لاتین:</h4>
+                                            <p id="disease-latin-name" class="disease-latin-name"></p>
+                                        </div>
+                                        <div class="responsive" style="display: flex; gap: 8px;">
+                                            <h4 class="title-blog-single t-top">دسته‌بندی:</h4>
+                                            <p id="disease-classification" class="disease-latin-name"></p>
+                                        </div>
                                     </div>
+
+                                    <div class="detail-blog" style=" margin-top: 18px;">
+                                        <div style="display: flex; gap: 8px;">
+                                            <h4 class="title-blog-single t-top">زیست بوم:</h4>
+                                            <p id="disease-native" class="disease-latin-name"></p>
+                                        </div>
+                                        <div class="responsive" style="display: flex; gap: 8px;">
+                                            <h4 class="title-blog-single t-top">تاریخچه:</h4>
+                                            <p id="disease-history" class="disease-latin-name"></p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="detail-blog" style=" margin-top: 18px;">
+                                        <div style="display: flex; gap: 8px;">
+                                            <h4 class="title-blog-single t-top">مدت درمان:</h4>
+                                            <p id="disease-treatment-duration" class="disease-latin-name"></p>
+                                        </div>
+                                        <div class="responsive" style="display: flex; gap: 8px;">
+                                            <h4 class="title-blog-single t-top">علت بیماری:</h4>
+                                            <p id="disease-cause" class="disease-latin-name"></p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="detail-blog" style=" margin-top: 18px;">
+                                        <div style="display: flex; gap: 8px;">
+                                            <h4 class="title-blog-single t-top">سابقه وراثتی:</h4>
+                                            <p id="disease-hereditary" class="disease-latin-name"></p>
+                                        </div>
+                                        <div class="responsive" style="display: flex; gap: 8px;">
+                                            <h4 class="title-blog-single t-top">نوع بیماری:</h4>
+                                            <p id="disease-type" class="disease-latin-name"></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="detail-blog" style=" margin-top: 18px;">
+                                        <div style="display: flex; gap: 8px;">
+                                            <h4 class="title-blog-single t-top">مقالات:</h4>
+                                            <!-- مقالات در اینجا نمایش داده می‌شوند -->
+                                            <ul id="disease-articles" class="disease-latin-name"></ul>
+                                        </div>
+                                        <div class="responsive" style="display: flex; gap: 8px;">
+                                            <h4 class="title-blog-single t-top">منابع:</h4>
+                                            <!-- منابع در اینجا نمایش داده می‌شوند -->
+                                            <ul id="disease-references" class="disease-latin-name"></ul>
+                                        </div>
+                                    </div>
+
+                                    
+                                    
+                                    <h4 class="title-blog-single title-blog-single-b" style="margin-top: 18px;">روش‌های درمان:</h4>
+                                    <p id="disease-treatment-methods" style="margin-top: 8px;"></p>
+                                    
+                                    <h4 class="title-blog-single title-blog-single-b" style="margin-top: 18px;">روش مقابله:</h4>
+                                    <p id="disease-coping-method" style="margin-top: 8px;"></p>
+
+                                    <h4 class="title-blog-single title-blog-single-b" style="margin-top: 18px;">پیشگیری:</h4>
+                                    <p id="disease-prevention" style="margin-top: 8px;"></p>
+
+                                    <h4 class="title-blog-single title-blog-single-b" style="margin-top: 18px;">تشدید بیماری:</h4>
+                                    <p id="disease-exacerbation" style="margin-top: 8px;"></p>
+
+                                    <h4 class="title-blog-single title-blog-single-b" style="margin-top: 18px;">بارداری:</h4>
+                                    <p id="disease-pregnancy" style="margin-top: 8px;"></p>
+
+
+                                    <h4 class="title-blog-single title-blog-single-b" style="margin-top: 18px;">ساختار بیماری:</h4>
+                                    <p id="disease-structure" style="margin-top: 8px;"></p>
+
+
+                                    <h4 class="title-blog-single title-blog-single-b" style="margin-top: 18px;">توضیح فازهای بیماری:</h4>
+                                    <p id="disease-phases" style="margin-top: 8px;"></p>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -453,7 +479,7 @@ $(document).ready(function () {
                 $('#disease-image').attr('src', data.images[0].image).show();
                 // اضافه کردن تصاویر اضافی
                 data.images.forEach(function(image) {
-                    let imgElement = `<img src="${image.image}" alt="تصویر اضافی بیماری" style="max-width: 100%; margin-top: 10px;">`;
+                    let imgElement = `<img class="col" src="${image.image}" alt="تصویر اضافی بیماری" style="max-width: 100%; height:100%; border-radius: 4px;">`;
                     $('#disease-images').append(imgElement);
                 });
             }
@@ -461,7 +487,7 @@ $(document).ready(function () {
             // مقالات
             if (data.articles && data.articles.length > 0) {
                 data.articles.forEach(function(article) {
-                    let articleItem = `<li><a href="/article/${article.article.id}">${article.article.name}</a></li>`;
+                    let articleItem = `<li><a style="color: #777777 ; font-size: 14px" href="/article/${article.article.id}">${article.article.name}</a></li>`;
                     $('#disease-articles').append(articleItem);
                 });
             }
@@ -469,7 +495,7 @@ $(document).ready(function () {
             // منابع
             if (data.references && data.references.length > 0) {
                 data.references.forEach(function(reference) {
-                    let referenceItem = `<li>${reference.refrence.name}</li>`;
+                    let referenceItem = `<li style="color: #777777 ; font-size: 14px">${reference.refrence.name}</li>`;
                     $('#disease-references').append(referenceItem);
                 });
             }

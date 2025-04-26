@@ -360,7 +360,10 @@ function loadArticles(page = 1) {
                                     </a>
                                 </figure>
                                 <div class="detail">
-                                    <label>${article.created_at.split('T')[0]} <a href="#">${article.classification}</a></label>
+                                    <div class="d-flex justify-content-between mt-4">
+                                        <label>${article.created_at.split('T')[0]} </label>
+                                        <a href="#" class="detail-a">${article.classification}</a>
+                                    </div>
                                     <h3><a href="/article/details/${article.id}">${article.name}</a></h3>
                                     <p class="text-length">${article.bomi || ''}</p>
                                     <div class="more-info">
