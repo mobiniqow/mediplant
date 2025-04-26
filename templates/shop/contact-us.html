@@ -1,0 +1,390 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <title>Masterkart - الگوی HTML تجارت الکترونیک چند منظوره</title>
+    <meta name="keywords" content="Bootstrap 5.x, ecommerce, farming, food market, grocery market, grocery shop, grocery store, grocery supper market, multi vendor, organic food, supermarket, supermarket grocery">
+    <meta name="description" content="Multipurpose eCommerce HTML Template">
+    <meta name="author" content="Pilarest">
+
+    <!-- site Favicon -->
+    <link rel="icon" href="{% static 'assets/img/favicon/favicon.png'  %}" sizes="32x32">
+
+    <!-- css Icon Font -->
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/msicons.min.css'  %}">
+
+    <!-- css All Plugins Files -->
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/animate.css'  %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap.css'  %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap-select.min.css'  %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/owl.carousel.min.css'  %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/owl.theme.default.min.css'  %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/swiper-bundle.min.css'  %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/slick.min.css'  %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/nouislider.css'  %}">
+
+    <!-- Main Style -->
+    <link rel="stylesheet" id="main_style" href="{% static 'assets/css/style.css'  %}">
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css'  %}">
+    <link rel="stylesheet" class="color-css" href="{% static 'assets/css/color-01.css'  %}">
+
+</head>
+
+<body>
+    <!-- Loader -->
+    <div id="ms-overlay">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header start  -->
+   {% include '../extentions/header.html' with categories=categories_map %}
+    <!-- Header End  -->
+
+    <!-- Category sidebar Start -->
+
+    <div class="ms-side-cart-overlay"></div>
+    {% include '../extentions/shops_basket.html' with basket=basket toke=token %}
+    <!-- Cart sidebar End -->
+
+    <!-- Wishlist sidebar Start -->
+    <div class="ms-side-wish-overlay"></div>
+    <div id="ms-side-wish" class="ms-side-wish">
+        <div class="ms-wish-inner">
+            <div class="ms-wish-top">
+                <div class="ms-wish-title">
+                    <span class="wish_title">لیست علاقه مندی‌ها</span>
+                    <a href="javascript:void(0)" class="ms-wish-close"><img src="{% static 'assets/img/icons/close.svg'  %}" class="svg_img pro_svg" alt="close"></a>
+                </div>
+                <ul class="ms-wish-pro-items">
+                    <li>
+                        <a href="product-left-sidebar.html" class="ms-pro-img"><img src="{% static 'assets/img/product-images/18_1.jpg'  %}" alt="product"></a>
+                        <div class="ms-pro-content">
+                            <a href="product-left-sidebar.html" class="wish-pro-title">لیمو</a>
+                            <span class="wish-price"><span>25 هزار x </span> کیلوگرم </span>
+                            <div class="ms-availability">
+                                <p class="stock avail">موجود در انبار</p>
+                                <a href="" class="ms-btn-2">خرید</a>
+                            </div>
+                            <a href="javascript:void(0)" class="remove">×</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="product-left-sidebar.html" class="ms-pro-img"><img src="{% static 'assets/img/product-images/20_1.jpg'  %}" alt="product"></a>
+                        <div class="ms-pro-content">
+                            <a href="product-left-sidebar.html" class="wish-pro-title">مارچوبه</a>
+                            <span class="wish-price"><span>5 هزار x</span> گرم</span>
+                            <div class="ms-availability">
+                                <p class="stock not-avail">موجودی</p>
+                                <div class="ms-wish-contact-btns">
+                                    <a href="" class="ms-btn-2 btn-disabled">خرید</a>
+                                    <a href="" class="ms-btn-1">مخاطب</a>
+                                </div>
+                            </div>
+                            <a href="javascript:void(0)" class="remove">×</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="product-left-sidebar.html" class="ms-pro-img"><img src="{% static 'assets/img/product-images/31_1.jpg'  %}" alt="product"></a>
+                        <div class="ms-pro-content">
+                            <a href="product-left-sidebar.html" class="wish-pro-title">انبه</a>
+                            <span class="wish-price"><span>59 هزار x</span> بسته</span>
+                            <div class="ms-availability">
+                                <p class="stock avail">موجود در انبار</p>
+                                <a href="" class="ms-btn-2">خرید</a>
+                            </div>
+                            <a href="javascript:void(0)" class="remove">×</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="product-left-sidebar.html" class="ms-pro-img"><img src="{% static 'assets/img/product-images/23_1.jpg'  %}" alt="product"></a>
+                        <div class="ms-pro-content">
+                            <a href="product-left-sidebar.html" class="wish-pro-title">توت فرنگی</a>
+                            <span class="wish-price"><span>59 هزار x</span> کیلوگرم</span>
+                            <div class="ms-availability">
+                                <p class="stock avail">موجود در انبار</p>
+                                <a href="" class="ms-btn-2">خرید</a>
+                            </div>
+                            <a href="javascript:void(0)" class="remove">×</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Wishlist sidebar End -->
+
+    <!-- Breadcrumb start -->
+    <div class="ms-breadcrumb m-b-30">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row ms_breadcrumb_inner">
+                        <div class="col-md-6 col-sm-12">
+                            <h2 class="ms-breadcrumb-title">تماس با ما</h2>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <!-- ms-breadcrumb-list start -->
+{#                            <ul class="ms-breadcrumb-list">#}
+{#                                <li class="ms-breadcrumb-item"><a href="index.html">خانه</a><i class="fas fa-chevron-right"></i></li>#}
+{#                                <li class="ms-breadcrumb-item active">تماس با ما</li>#}
+{#                            </ul>#}
+                            <!-- ms-breadcrumb-list end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb end -->
+
+    <!-- Contact us section -->
+    <section class="ms-contact padding-tb-30">
+        <div class="container">
+            <div class="section-title-2">
+                <h2 class="ms-title">با ما در <span>تماس باشید </span></h2>
+                <p>لطفاً موضوعی را در زیر مرتبط با درخواست خود انتخاب کنید. اگر آنچه را که نیاز دارید پیدا نکردید، فرم تماس ما را پر کنید</p>
+            </div>
+            <div class="row p-t-15">
+                <div class="col-md-6">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d207343.99435432113!2d51.207569760017414!3d35.70777138859049!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e00491ff3dcd9%3A0xf0b3697c567024bc!2sTehran%2C%20Tehran%20Province%2C%20Iran!5e0!3m2!1sen!2s!4v1672837682836!5m2!1sen!2s"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="col-md-6">
+                    <form>
+                        <div class="form-group">
+                            <!-- <div class="dropdown-us" id="dropdown">
+                                <div class="dropdown-toggle-us" id="dropdownToggle">موضوع را انتخاب کنید</div>
+                                <div class="dropdown-menu-us" id="dropdownMenu">
+                                  <div class="dropdown-item-us">گزینه اول</div>
+                                  <div class="dropdown-item-us">گزینه دوم</div>
+                                  <div class="dropdown-item-us">گزینه سوم</div>
+                                </div>
+                            </div> -->
+                            <input type="text" class="form-control" id="fname" placeholder="موضوع">
+
+                        </div>
+                        <div class="form-group">   
+                            <!-- <div class="upload-container" onclick="document.getElementById('fileInput').click()">
+                                <img src="https://img.icons8.com/ios-filled/50/image--v1.png" class="upload-icon" alt="upload">
+                                <div class="upload-title">تصویر جواز پزشک</div>
+                                <div class="upload-subtitle">فایل خود را آپلود کنید</div>
+                                <input type="file" id="fileInput" class="upload-input" accept="image/*">
+                                <p class="file-name" id="fileName"></p>
+                            </div>                     -->
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="fname" placeholder="نام">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" style="resize: none;" id="exampleFormControlTextarea1" rows="3" placeholder="پیغام"></textarea>
+                        </div>
+                        <button type="submit" id="submitBtn" class="ms-btn-2">ارسال</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row p-t-60 ms-contact-detail m-tb-minus-12">
+                <div class="col-xs-12 col-sm-6 col-lg-4 p-tp-12">
+                    <div class="ms-box">
+                        <div class="detail">
+                            <div class="icon"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+                            <div class="info">
+                                <h3 class="title">ایمیل و وب سایت</h3>
+                                <p>
+                                    <i class="fa fa-envelope" aria-hidden="true"></i> &nbsp; mail.example@gmail.com
+                                </p>
+                                <p>
+                                    <i class="fa fa-globe" aria-hidden="true"></i> &nbsp; www.yourdomain.com
+                                </p>
+                            </div>
+                        </div>
+                        <div class="space"></div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-lg-4 p-tp-12">
+                    <div class="ms-box">
+                        <div class="detail">
+                            <div class="icon"><i class="fa fa-mobile" aria-hidden="true"></i></div>
+                            <div class="info">
+                                <h3 class="title">مخاطب</h3>
+                                <p>
+                                    <i class="fa fa-mobile" aria-hidden="true"></i> &nbsp; (+98)-9876XXXXX
+                                </p>
+                                <p>
+                                    <i class="fa fa-mobile" aria-hidden="true"></i> &nbsp; (+98)-987654XXXX
+                                </p>
+                            </div>
+                        </div>
+                        <div class="space"></div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-lg-4 p-tp-12 m-auto">
+                    <div class="ms-box">
+                        <div class="detail">
+                            <div class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+                            <div class="info">
+                                <h3 class="title">آدرس</h3>
+                                <p>
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp; ایران - تهران
+                                </p>
+                            </div>
+                        </div>
+                        <div class="space"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Start -->
+   {% include '../extentions/footer.html' %}
+    <!-- Footer Area End -->
+
+    <!-- Features sidebar  -->
+    <div class="ms-features-sidebar-overlay"></div>
+    <div class="ms-features-sidebar">
+        <div class="tool-title">
+            <h3>تنظیمات</h3>
+        </div>
+
+        <div class="ms-features-block">
+            <div class="ms-features-title">رنگ‌ها</div>
+            <ul class="bg-panel ms-change-color">
+                <li class="active" data-color="01">
+                    <a href="javascript:void(0)" class="colorcode1"></a>
+                </li>
+                <li data-color="02">
+                    <a href="javascript:void(0)" class="colorcode2"></a>
+                </li>
+                <li data-color="03">
+                    <a href="javascript:void(0)" class="colorcode3"></a>
+                </li>
+                <li data-color="04">
+                    <a href="javascript:void(0)" class="colorcode4"></a>
+                </li>
+                <li data-color="05">
+                    <a href="javascript:void(0)" class="colorcode5"></a>
+                </li>
+                <li data-color="06">
+                    <a href="javascript:void(0)" class="colorcode6"></a>
+                </li>
+                <li data-color="07" class="">
+                    <a href="javascript:void(0)" class="colorcode7"></a>
+                </li>
+                <li data-color="08">
+                    <a href="javascript:void(0)" class="colorcode8"></a>
+                </li>
+                <li data-color="09">
+                    <a href="javascript:void(0)" class="colorcode9"></a>
+                </li>
+            </ul>
+        </div>
+        <div class="ms-features-block">
+            <div class="ms-tools-sidebar-content">
+                <div class="ms-features-title">حالت پس رمینه</div>
+                <div class="ms-change-mode active" id="ms-change-mode">
+                    <div class="ms-mode-switch">
+                        <div class="ms-mode-btn">انتخاب</div>
+                        <div class="ms-mode-on">روشن</div>
+                        <div class="ms-mode-off">خاموش</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Plugins JS -->
+    <script src="{% static 'assets/js/plugins/jquery-3.5.1.min.js'  %}"></script>
+    <script src="{% static 'assets/js/plugins/popper.min.js'  %}"></script>
+    <script src="{% static 'assets/js/plugins/bootstrap.bundle.min.js'  %}"></script>
+    <script src="{% static 'assets/js/plugins/bootstrap-select.min.js'  %}"></script>
+    <script src="{% static 'assets/js/plugins/fontawesome.js'  %}"></script>
+    <script src="{% static 'assets/js/plugins/owl.carousel.min.js'  %}"></script>
+    <script src="{% static 'assets/js/plugins/swiper-bundle.min.js'  %}"></script>
+    <script src="{% static 'assets/js/plugins/infiniteslidev2.js'  %}"></script>
+    <script src="{% static 'assets/js/plugins/jquery.zoom.min.js'  %}"></script>
+    <script src="{% static 'assets/js/plugins/slick.min.js'  %}"></script>
+    <script src="{% static 'assets/js/plugins/nouislider.js'  %}"></script>
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const fileNameDisplay = document.getElementById('fileName');
+
+        fileInput.addEventListener('change', function () {
+            const file = this.files[0];
+            if (file) {
+            // const fileSizeKB = file.size / 2048;
+            // if (fileSizeKB > 2000) {
+            //     fileNameDisplay.textContent = "حجم فایل بیشتر از ۲۰۰ کیلوبایت است!";
+            //     fileNameDisplay.classList.remove("valid");
+            // } else {
+                fileNameDisplay.textContent = "فایل انتخاب شده: " + file.name;
+                fileNameDisplay.classList.add("valid");
+            // }
+            } else {
+            fileNameDisplay.textContent = "فایلی انتخاب نشده";
+            fileNameDisplay.classList.remove("valid");
+            }
+        });    
+        
+        const toggle = document.getElementById('dropdownToggle');
+        const menu = document.getElementById('dropdownMenu');
+        const items = document.querySelectorAll('.dropdown-item-us');
+
+        toggle.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+
+        items.forEach(item => {
+            item.addEventListener('click', () => {
+            toggle.textContent = item.textContent;
+            menu.classList.remove('active');
+            });
+        });
+
+        // بستن منو با کلیک بیرون از منو
+        document.addEventListener('click', (event) => {
+            if (!document.getElementById('dropdown').contains(event.target)) {
+            menu.classList.remove('active');
+            }
+        });
+
+        document.querySelectorAll('.dropdown-item-us').forEach(item => {
+            item.addEventListener('click', function () {
+            const dropdownToggle = document.querySelector('.dropdown-toggle-us');
+            dropdownToggle.textContent = this.textContent.trim();
+            });
+        });
+        
+        document.getElementById('submitBtn').addEventListener('click', function (e) {
+            e.preventDefault();
+            const selectedDropdown = document.querySelector('.dropdown-toggle-us').textContent.trim();
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            const fname = document.getElementById('fname').value.trim();
+            const message = document.getElementById('exampleFormControlTextarea1').value.trim();
+
+            console.log("گزینه انتخاب‌شده:", selectedDropdown);
+            console.log("نام:", fname);
+            console.log("پیغام:", message);
+            console.log("نام فایل:", file);
+        });
+
+
+
+
+    </script>
+    
+    <!-- Back to top  -->
+    <a class="ms-back-to-top"></a>
+
+    <!-- Main Js -->
+    <script src="{% static 'assets/js/main.js'  %}"></script>
+</body>
+
+</html>

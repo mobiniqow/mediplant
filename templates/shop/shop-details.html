@@ -1,0 +1,886 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <title>Masterkart - الگوی HTML تجارت الکترونیک چند منظوره</title>
+    <meta name="keywords"
+          content="Bootstrap 5.x, ecommerce, farming, food market, grocery market, grocery shop, grocery store, grocery supper market, multi vendor, organic food, supermarket, supermarket grocery">
+    <meta name="description" content="Multipurpose eCommerce HTML Template">
+    <meta name="author" content="Pilarest">
+
+    <!-- site Favicon -->
+    <link rel="icon" href="{% static 'assets/img/favicon/favicon.png' %}" sizes="32x32">
+
+    <!-- css Icon Font -->
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/msicons.min.css' %}">
+
+    <!-- css All Plugins Files -->
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap-select.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/slick.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/nouislider.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="{% static 'assets/css/slider/uikit-rtl.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/slider/uikit-rtl.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/slider/uikit.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/slider/uikit.min.css' %}">
+
+    <!-- Main Style -->
+    <link rel="stylesheet" id="main_style" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+    <link rel="stylesheet" class="color-css" href="{% static 'assets/css/color-01.css' %}">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+    <style>
+        /* استایل مدال */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .clear-btn {
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+        }
+
+        .close-btn {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            float: right;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* استایل منو */
+        .items-menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-menu {
+            padding: 10px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .search-menu:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        .search-btn {
+            padding: 6px 10px;
+            margin: 0 10px 0 10px;
+            background-color: #4CAF50;
+            color: white !important;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-btn:hover {
+            background-color: #45a049;
+        }
+
+        .btn-location,
+        .btn-catalog,
+        .btn-about {
+            padding: 8px 20px;
+            margin: 0 10px;
+            background-color: #4CAF50;
+            font-size: 12px;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-location:hover,
+        .btn-catalog:hover,
+        .btn-about:hover {
+            background-color: #45a049;
+        }
+
+        @media screen and (max-width: 768px) {
+            .items-menu {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .search-container {
+                margin-bottom: 10px;
+            }
+
+            .search-menu {
+                width: 100%;
+            }
+        }
+
+        /* کانتینر محصولات */
+        #items-result {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: space-between;
+            padding: 16px;
+        }
+
+        /* استایل برای هر محصول */
+        .it-table {
+            width: 100%;
+            max-width: 240px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            padding: 12px;
+            border-radius: 8px;
+            background-color: #fff;
+            cursor: pointer;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            position: relative; /* برای قرار دادن تصاویر در داخل هم */
+        }
+
+        /* هنگام هاور کردن محصول */
+        .it-table:hover {
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        /* تصویر محصول */
+        .it-table img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        /* استایل برای اطلاعات محصول */
+        .name-ittt-table {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+        }
+
+        /* متن‌ها */
+        .name-it {
+            font-weight: bold;
+            color: #333;
+            text-align: right;
+            font-size: 14px;
+        }
+
+        /* عنوان‌ها */
+        .name {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            height: auto;
+        }
+
+        .product-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .product-image-hover {
+            display: none; /* پنهان کردن تصویر دوم به صورت پیش‌فرض */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .it-table:hover .product-image {
+            display: none; /* پنهان کردن تصویر اول در هنگام هاور */
+        }
+
+        .it-table:hover .product-image-hover {
+            display: block; /* نمایش تصویر دوم در هنگام هاور */
+        }
+    </style>
+
+</head>
+
+<body>
+
+<!-- Loader -->
+<div id="ms-overlay">
+    <div class="loader"></div>
+</div>
+
+<!-- Header start  -->
+{% include '../extentions/header.html' with categories=categories_map is_active=is_active medic_notification=medic_notification shop_notification=shop_notification %}
+
+<div class="ms-side-cart-overlay"></div>
+{% include '../extentions/basket_products.html' with token=token shop_id=shop.id %}
+
+<div class="ms-side-wish-overlay"></div>
+<div id="ms-side-wish" class="ms-side-wish">
+    <div class="ms-wish-inner">
+        <div class="ms-wish-top">
+            <div class="ms-wish-title">
+                <span class="wish_title">لیست علاقه مندی‌ها</span>
+                <a href="javascript:void(0)" class="ms-wish-close"><img src="{% static 'assets/img/icons/close.svg' %}"
+                                                                        class="svg_img pro_svg" alt="close"></a>
+            </div>
+            <ul class="ms-wish-pro-items">
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/18_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="wish-pro-title">لیمو</a>
+                        <span class="wish-price"><span>25 هزار x </span> کیلوگرم </span>
+                        <div class="ms-availability">
+                            <p class="stock avail">موجود در انبار</p>
+                            <a href="" class="ms-btn-2">خرید</a>
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/20_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="wish-pro-title">مارچوبه</a>
+                        <span class="wish-price"><span>5 هزار x</span> گرم</span>
+                        <div class="ms-availability">
+                            <p class="stock not-avail">موجودی</p>
+                            <div class="ms-wish-contact-btns">
+                                <a href="" class="ms-btn-2 btn-disabled">خرید</a>
+                                <a href="" class="ms-btn-1">مخاطب</a>
+                            </div>
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/31_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="wish-pro-title">انبه</a>
+                        <span class="wish-price"><span>59 هزار x</span> بسته</span>
+                        <div class="ms-availability">
+                            <p class="stock avail">موجود در انبار</p>
+                            <a href="" class="ms-btn-2">خرید</a>
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/23_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="wish-pro-title">توت فرنگی</a>
+                        <span class="wish-price"><span>59 هزار x</span> کیلوگرم</span>
+                        <div class="ms-availability">
+                            <p class="stock avail">موجود در انبار</p>
+                            <a href="" class="ms-btn-2">خرید</a>
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Wishlist sidebar End -->
+
+<!-- Breadcrumb start -->
+<div class="ms-breadcrumb m-b-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="row ms_breadcrumb_inner">
+                    <div class="col-md-6 col-sm-12">
+                        <h2 class="ms-breadcrumb-title">صفحه فروشگاه</h2>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <ul class="ms-breadcrumb-list">
+                            <li class="ms-breadcrumb-item"><a href="/">خانه</a><i class="fas fa-chevron-left"></i></li>
+                            <li class="ms-breadcrumb-item"><a href="/shops/">فروشگاه</a><i
+                                    class="fas fa-chevron-left"></i></li>
+                            <li class="ms-breadcrumb-item active" aria-current="page">صفحه فروشگاه</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb end -->
+
+<div class="store-page">
+    <h2> فروشگاه {{ shop.name }} </h2>
+    <div class="baner-store">
+        <div class="box-baner-store">
+            <div class="logo-baner-store">
+                <img src="{{ shop.image.url }}" style="width: 100%; height: 100%" alt="Logo"/>
+            </div>
+            <div class="name-orgin">{{ shop.user.user_name }}</div>
+        </div>
+    </div>
+    <div class="box-menu-store">
+        <p class="p-menu">منو فروشگاه</p>
+        <div class="items-menu">
+            <div class="search-container">
+                <input type="search" id="search-input" class="search-menu" placeholder="جستجو فروشگاه"
+                       oninput="toggleClearButton()">
+                {#                <button type="button" id="clear-btn" class="clear-btn" onclick="clearSearch()" style="display: none;">#}
+                {#                    ❌#}
+                {#                </button>#}
+                <button type="button" class="search-btn" onclick="searchProduct()">
+                    <i class="fa fa-search" style="color: white; font-size: 14px" aria-hidden="true"></i>
+                </button>
+            </div>
+
+
+            <button type="button" class="btn-location"
+                    onclick="openMap({{ shop.location_lat }},{{ shop.location_lng }})">موقعیت فروشگاه
+            </button>
+            <div id="map-container con" style="height: 400px; width: 100%; display: none;"></div>
+            <button type="button" class="btn-catalog" onclick="openModal('catalog')">کاتالوگ فروشگاه</button>
+            <button type="button" class="btn-about" onclick="openModal('about')">درباره فروشگاه</button>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <div id="modal-body">
+                        <!-- محتوای داینامیک اینجا نمایش داده می‌شود -->
+                    </div>
+                    <button onclick="closeModal()"
+                            style="width: 100%; padding: 8px 0; background-color: #45a049; color: white; border-radius: 8px; margin-top: 8px;">
+                        بازگشت
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        {#            <div class="share-menu">#}
+        {#                <a href="#" class="fa fa-instagram"></a>#}
+        {#                <a href="#" class="fa fa-telegram"></a>#}
+        {#                <a href="#" class="fa fa-facebook"></a>#}
+        {#            </div>#}
+    </div>
+    <div class="new-item">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                {% for i in banners %}
+                    <div class="swiper-slide" style="background-image:url({{ i }})"></div>
+                {% endfor %}
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+    <div class="items-result" id="items-result">
+        <!-- نتایج محصولات اینجا نمایش داده می‌شوند -->
+    </div>
+
+    <div class="ms-pro-pagination">
+        <span id="pagination-info">نمایش 1-12 از 21 مورد</span>
+        <ul class="ms-pro-pagination-inner" id="pagination">
+            <!-- لینک‌های پیجینیشن به صورت داینامیک اضافه می‌شوند -->
+        </ul>
+    </div>
+    <!-- پیجینیشن اینجا نمایش داده می‌شود -->
+    </ul>
+</div>
+</div>
+
+<!-- Footer Start -->
+{% include '../extentions/footer.html' %}
+<!-- Footer Area End -->
+
+<!-- Quickview Modal -->
+<div class="modal fade quickview-modal" id="ms_quickview_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <button type="button" class="btn-close qty_close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-5 col-sm-12 col-xs-12" dir="ltr">
+                        <div class="qty-product-cover">
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/1_1.jpg' %}"
+                                     alt="">
+                            </div>
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/2_1.jpg' %}"
+                                     alt="">
+                            </div>
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/3_1.jpg' %}"
+                                     alt="">
+                            </div>
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/4_1.jpg' %}"
+                                     alt="">
+                            </div>
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/5_1.jpg' %}"
+                                     alt="">
+                            </div>
+                        </div>
+                        <div class="qty-nav-thumb">
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/1_1.jpg' %}"
+                                     alt="">
+                            </div>
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/2_1.jpg' %}"
+                                     alt="">
+                            </div>
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/3_1.jpg' %}"
+                                     alt="">
+                            </div>
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/4_1.jpg' %}"
+                                     alt="">
+                            </div>
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/5_1.jpg' %}"
+                                     alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-sm-12 col-xs-12">
+                        <div class="quickview-pro-content">
+                            <h5 class="ms-quick-title"><a href="product-left-sidebar.html">پاکت میوه خشک مخلوط تریل
+                                ارگانیک مرغوب</a></h5>
+                            <div class="ms-quickview-rating">
+                                <i class="fa-solid fa-star fill"></i>
+                                <i class="fa-solid fa-star fill"></i>
+                                <i class="fa-solid fa-star fill"></i>
+                                <i class="fa-solid fa-star fill"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+
+                            <div class="ms-quickview-desc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                                با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان
+                                که لازم است
+                            </div>
+                            <div class="ms-quickview-price">
+                                <span class="new-price">150 هزار تومان</span>
+                                <span class="old-price">130 هزار تومان</span>
+                            </div>
+
+                            <div class="ms-pro-variation">
+                                <div class="ms-pro-variation-inner ms-pro-variation-size ms-pro-size">
+                                    <span>اندازه</span>
+                                    <div class="ms-pro-variation-content">
+                                        <ul class="ms-opt-size">
+                                            <li class="active"><a href="javascript:void(0)" class="ms-opt-sz"
+                                                                  data-tooltip="Small">250 گرم</a></li>
+                                            <li><a href="javascript:void(0)" class="ms-opt-sz" data-tooltip="Medium">500
+                                                گرم</a></li>
+                                            <li><a href="javascript:void(0)" class="ms-opt-sz" data-tooltip="Large">1
+                                                کیلوگرم</a></li>
+                                            <li><a href="javascript:void(0)" class="ms-opt-sz"
+                                                   data-tooltip="Extra Large">2 کیلوگرم</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ms-quickview-qty">
+                                <div class="qty-plus-minus">
+                                    <input class="qty-input" type="text" name="ms_qtybtn" value="1">
+                                </div>
+                                <div class="ms-quickview-cart ">
+                                    <button class="ms-btn-3"><img src="{% static 'assets/img/icons/pro_cart.svg' %}"
+                                                                  class="svg_img pro_svg" alt=""> خرید
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Quickview Modal end -->
+
+<!-- Add to Cart Notify -->
+<div class="ms-cart-notify">
+    <a href="javascript:void(0)" class="ms-cart-toggle"><img src="{% static 'assets/img/icons/pro_cart.svg' %}"
+                                                             class="svg_img" alt="cart"><span>3</span></a>
+</div>
+
+<!-- Add to Wishlist Notify  -->
+<div class="ms-wish-notify"></div>
+
+<!-- Add to Compare list Notify  -->
+<div class="ms-compare-notify"></div>
+
+<!-- Back to top  -->
+<a class="ms-back-to-top"></a>
+
+<!-- Features sidebar  -->
+
+<!-- Plugins JS -->
+
+<script src="{% static 'assets/js/plugins/jquery-3.5.1.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/popper.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/bootstrap-select.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/fontawesome.js' %}"></script>
+<script src="{% static 'assets/js/plugins/owl.carousel.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/infiniteslidev2.js' %}"></script>
+<script src="{% static 'assets/js/plugins/jquery.zoom.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/slick.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/nouislider.js' %}"></script>
+<!--  -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<!--  -->
+<script src="{% static 'assets/js/js/uikit-icons.js' %}"></script>
+<script src="{% static 'assets/js/js/uikit-icons.min.js' %}"></script>
+<script src="{% static 'assets/js/js/uikit.js' %}"></script>
+<script src="{% static 'assets/js/js/uikit.min.js' %}"></script>
+
+
+<script>
+    var mySwiper = new Swiper('.swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+
+    $(document).ready(function () {
+        $("#table1").show();
+        $(".page-item:first").addClass("active");
+
+        $(".page-link").click(function (e) {
+            e.preventDefault();
+            var targetTable = $(this).attr("href");
+            $(".pagination-table").hide();
+            $(targetTable).show();
+
+            $(".page-item").removeClass("active");
+            $(this).parent(".page-item").addClass("active");
+        });
+    });
+</script>
+
+<!-- Main Js -->
+<script src="{% static 'assets/js/main.js' %}"></script>
+
+<script>
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    async function loadCart() {
+        const csrftoken = getCookie('csrftoken');
+
+        try {
+            const response = await fetch('/basket/19', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken
+                },
+                body: JSON.stringify({basket_id: 19})
+            });
+
+            const data = await response.json();
+            console.log(data)
+            const items = data.items;
+            const itemsContainer = document.getElementById('ms-cart-pro-items');
+            itemsContainer.innerHTML = '';
+            let subtotal = 0;
+            items.forEach(item => {
+                const itemHTML = `
+                    <li>
+                        <a href="product-left-sidebar.html" class="ms-pro-img">
+                            <img src="${item.image}" alt="${item.name}">
+                        </a>
+                        <div class="ms-pro-content">
+                            <a href="product-left-sidebar.html" class="cart-pro-title">${item.name}</a>
+                            <span class="cart-price"><span>${item.unit} تومان x</span> ${item.type}</span>
+                            <div class="qty-plus-minus">
+                                <input class="qty-input" type="text" name="ms-qtybtn" value="${item.unit}">
+                            </div>
+                            <a href="javascript:void(0)" class="remove">×</a>
+                        </div>
+                    </li>
+                `;
+                itemsContainer.insertAdjacentHTML('beforeend', itemHTML);
+            });
+
+            // محاسبه مالیات و جمع کل
+            const tax = subtotal * 0.2;
+            const total = subtotal + tax;
+
+            // نمایش جمع‌های محاسبه‌شده در HTML
+            document.getElementById('subtotal').innerText = `${subtotal} تومان`;
+            document.getElementById('tax').innerText = `${tax} تومان`;
+            document.getElementById('total').innerText = `${total} تومان`;
+        } catch (error) {
+            console.error('خطا در بارگذاری سبد خرید:', error);
+        }
+    }
+
+    // فراخوانی تابع loadCart در هنگام بارگذاری صفحه
+    {#document.addEventListener('DOMContentLoaded', loadCart);#}
+</script>
+<script>
+    function fetchProducts(page = 1, search = "") {
+        const shopId = {{ shop.id }};
+        const url = `/shop/api/v1/shop-product/?shop=${shopId}&page=${page}&product_name=${search}`;
+        $.ajax({
+            url: url,
+            method: 'GET',
+            success: function (data) {
+                renderProducts(data.results);
+                renderPagination(page, data.total_pages);
+                $('#pagination-info').text(`نمایش ${(page - 1) * 9 + 1}-${Math.min(page * 9, data.count)} از ${data.count} مورد`);
+            },
+            error: function (error) {
+                console.error('Error fetching products:', error);
+            }
+        });
+    }
+
+    function renderProducts(products) {
+        const itemsResult = $('#items-result');
+        itemsResult.empty();
+
+        // بررسی وجود محصولات و رندر کردن آن‌ها
+        if (products && products.length > 0) {
+            products.forEach(product => {
+                const images = product.images || []; // فرض بر این است که اطلاعات عکس‌ها در اینجا به دست می‌آید
+                const firstImage = images.length > 0 ? images[0].image : '/static/assets/img/bg/newsletter.png';
+                const secondImage = images.length > 1 ? images[1].image : firstImage;
+
+                const productHTML = `
+                <div class="it-table" onclick="location.href='product/${product.id}'">
+                    <div class="image-container">
+                        <img class="product-image" src="${firstImage}" alt="Product Image">
+                        <img class="product-image-hover" src="${secondImage}" alt="Product Image Hover">
+                    </div>
+                    <div class="name-ittt-table">
+                        <span class="name">نام محصول :</span>
+                        <span class="name-it">${truncateChars(product.name, 12)}</span>
+                    </div>
+                    <div class="name-ittt-table">
+                        <span class="name">قیمت محصول :</span>
+                        <span class="name-it">${product.price} تومان</span>
+                    </div>
+                </div>
+            `;
+                itemsResult.append(productHTML);
+            });
+        } else {
+            itemsResult.append('<p>محصولی یافت نشد.</p>');
+        }
+    }
+
+
+    // رندر کردن پیجینیشن و اطلاعات تعداد نمایش
+    function renderPagination(currentPage, totalPages) {
+        const paginationContainer = $('#pagination');
+        paginationContainer.empty();
+
+        // نمایش لینک "قبلی" اگر صفحه فعلی بزرگتر از 1 باشد
+        if (currentPage > 1) {
+            paginationContainer.append(`<li><a href="#" class="prev" data-page="${currentPage - 1}">قبلی</a></li>`);
+        }
+
+        // همیشه صفحه اول را نشان می‌دهیم
+        paginationContainer.append(`<li><a href="#" data-page="1" class="${currentPage === 1 ? 'active' : ''}">1</a></li>`);
+
+        // اگر صفحه فعلی بیشتر از 3 باشد، نمایش "..."
+        if (currentPage > 3) {
+            paginationContainer.append(`<li><span>...</span></li>`);
+        }
+
+        // نمایش صفحات میانه
+        const pageRange = 2;
+        const startPage = Math.max(2, currentPage - pageRange);
+        const endPage = Math.min(totalPages - 1, currentPage + pageRange);
+
+        for (let i = startPage; i <= endPage; i++) {
+            const activeClass = i === currentPage ? 'active' : '';
+            paginationContainer.append(`<li><a href="#" class="${activeClass}" data-page="${i}">${i}</a></li>`);
+        }
+
+        // اگر صفحه فعلی خیلی دور از آخرین صفحه باشد، نمایش "..."
+        if (currentPage < totalPages - 2) {
+            paginationContainer.append(`<li><span>...</span></li>`);
+        }
+
+        // همیشه صفحه آخر را نشان می‌دهیم، مگر اینکه تعداد صفحات 1 باشد
+        if (totalPages > 1) {
+            paginationContainer.append(`<li><a href="#" data-page="${totalPages}" class="${currentPage === totalPages ? 'active' : ''}">${totalPages}</a></li>`);
+        }
+
+        // نمایش لینک "بعدی" اگر صفحه فعلی کوچکتر از صفحه آخر باشد
+        if (currentPage < totalPages) {
+            paginationContainer.append(`<li><a href="#" class="next" data-page="${currentPage + 1}">بعدی</a></li>`);
+        }
+    }
+
+    // تنظیم رویداد برای کلیک روی صفحات
+    $(document).on('click', '#pagination a', function (event) {
+        event.preventDefault();
+        const page = $(this).data('page');
+        fetchProducts(page);  // فراخوانی تابع برای دریافت داده‌های صفحه جدید
+    });
+
+    // بارگذاری محصولات صفحه اول
+    $(document).ready(function () {
+        fetchProducts(1);  // نمایش محصولات صفحه اول
+    });
+
+    // تابع برای کوتاه کردن متن به طول معین (تعداد کاراکترها)
+    function truncateChars(text, length) {
+        if (text.length > length) {
+            return text.substring(0, length) + '...';
+        }
+        return text;
+    }
+
+    {#    #}
+
+    function searchProduct() {
+        const searchQuery = document.getElementById('search-input').value;
+        fetchProducts(1, searchQuery);
+        console.log(searchQuery); // چاپ در کنسول
+    }
+
+    // تابع برای نمایش یا مخفی کردن دکمه ضربدر
+    function toggleClearButton() {
+        var searchInput = document.getElementById('search-input');
+        var clearBtn = document.getElementById('clear-btn');
+
+        // اگر فیلد جستجو خالی نیست، دکمه ضربدر را نشان بده
+        if (searchInput.value !== "") {
+            clearBtn.style.display = "inline-block";
+        } else {
+            clearBtn.style.display = "none";
+        }
+    }
+
+    // تابع برای پاک کردن داده‌ها در فیلد جستجو
+    function clearSearch() {
+        var searchInput = document.getElementById('search-input');
+        searchInput.value = "";  // پاک کردن مقدار فیلد
+        fetchProducts(1, "");
+        toggleClearButton();     // بروزرسانی وضعیت دکمه ضربدر
+    }
+</script>
+
+<script>
+    function openMap(latitude, longitude) {
+        const zoomLevel = 14;  // میزان زوم نقشه
+        const mapUrl = `https://www.google.com/maps?q=${latitude},${longitude}&z=${zoomLevel}`;
+        window.open(mapUrl, '_blank');
+
+    }
+</script>
+
+<script>
+    function openModal(type) {
+        // تنظیم محتوای مودال بر اساس نوع
+        const modalBody = document.getElementById('modal-body');
+        if (type === 'catalog') {
+            modalBody.innerHTML = `
+            <div style='width: 100% ; display: flex; justify-content: center;'>
+                <p>{{ shop.catalog|safe }}</p>
+            </div>
+            `;
+        } else if (type === 'about') {
+            modalBody.innerHTML = `
+            <div style='width: 100% ; display: flex; justify-content: center;'>
+                <p>{{ shop.description|safe }}</p>
+            </div>
+            `;
+        }
+
+        document.getElementById("myModal").style.display = "block";
+    }
+
+    function closeModal() {
+        document.getElementById("myModal").style.display = "none";
+    }
+
+</script>
+<script>
+
+</script>
+</body>
+
+</html>

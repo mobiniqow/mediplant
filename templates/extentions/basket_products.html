@@ -1,0 +1,145 @@
+{% load static %}
+<div id="ms-side-cart" class="ms-side-cart">
+    <div class="ms-cart-inner">
+        <div class="ms-cart-top">
+            <div class="ms-cart-title">
+                <span class="cart_title">سبد خرید من</span>
+                <a href="javascript:void(0)" class="ms-cart-close"><img src="{% static 'assets/img/icons/close.svg' %}"
+                                                                        class="svg_img pro_svg" alt="close"></a>
+            </div>
+            <ul class="ms-cart-pro-items">
+
+            </ul>
+        </div>
+        <div class="ms-cart-bottom">
+            <div class="cart-sub-total">
+                <table class="table cart-table">
+                    <tbody>
+
+                    <tr>
+                        <td class="text-left">جمع :</td>
+                        <td class="text-right primary-color"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="cart_btn">
+                <a href="/shop/{{ shop_id }}/cart" class="ms-btn-1">مشاهده سبد خرید</a>
+                {#                    <a href="checkout.html" class="ms-btn-2">بررسی خرید</a>#}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'assets/js/plugins/jquery-3.5.1.min.js' %}"></script>
+<script> 
+    function getBasket(basket_id) {
+        var settings = {
+            "url": `/basket/${basket_id}`,  // آدرس صحیح API خود را وارد کنید
+            "method": "GET",
+            "timeout": 0,
+            "headers": {
+                "Authorization": "Bearer {{ token }}",
+            },
+        };
+        
+        $.ajax(settings).done(function (response) { 
+            var totalPrice = response.price;
+            const formattedPrice = `${totalPrice.toLocaleString()} تومان`;
+            document.querySelector('.text-right.primary-color').textContent = formattedPrice;
+            updateCart(response.items);
+        });
+    }
+
+    function updateCart(items) {
+        var cartContainer = $('.ms-cart-pro-items');   
+        cartContainer.empty();  
+        if (items.length > 0) {
+            items.forEach(function (item) {
+                var cartItemHTML = `
+                    <li data-item-id="${item.id}">
+                        <a href="product/${item.product}" class="ms-pro-img">
+                            <img src="${item.image}" alt="product">
+                        </a>
+                        <div class="ms-pro-content">
+                            <a href="product/${item.product}" class="cart-pro-title">${item.name}</a>
+                            <span class="cart-price"><span>${item.price} تومان</span> ${item.type}</span>
+                            <div class="qty-plus-minus">
+                                <!-- اضافه کردن دکمه‌های + و - برای تغییر مقدار -->
+                                <button class="qty-minus">-</button>
+                                <input  class="qty-input" type="text" name="ms-qtybtn" value="${item.unit}" readonly>
+                                <button class="qty-plus">+</button>
+                            </div>
+                            <a href="javascript:void(0)" onclick="removeFromCart(${item.id})" class="remove">×</a>
+                        </div>
+                    </li>
+                `;
+                cartContainer.append(cartItemHTML);  // اضافه کردن آیتم به سبد خرید
+            });
+        } else {
+            cartContainer.append("<li>سبد خرید شما خالی است</li>");  // نمایش پیام در صورت خالی بودن سبد خرید
+        }
+    }
+
+    // به‌روزرسانی تعداد در سبد خرید
+    function updateQuantity(itemId, newQuantity) {
+        console.log(newQuantity)
+        var settings = {
+            "url": `/basket/{{ shop_id }}/remove/${itemId}`,  // مسیر به‌روزرسانی تعداد آیتم
+            "method": "PUT",  // درخواست POST برای به‌روزرسانی
+            "timeout": 0,
+            "data": {"unit": newQuantity},  // ارسال مقدار جدید
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer {{ token }}"  // توکن
+            },
+        };
+
+        $.ajax(settings).done(function (response) {
+            getBasket({{ shop_id }});
+        });
+    }
+    
+    $(document).on('click', '.qty-minus, .qty-plus', function () {
+        var inputField = $(this).siblings('.qty-input');  // پیدا کردن ورودی مربوط به تعداد
+        var currentValue = parseInt(inputField.val(), 10);  // مقدار فعلی
+        var itemId = $(this).closest('li').data('item-id');  // پیدا کردن شناسه آیتم
+
+        if (isNaN(currentValue)) {
+            currentValue = 1;  // اگر مقدار فعلی نادرست باشد، آن را به 1 تنظیم می‌کنیم
+        }
+
+        // کم کردن یا زیاد کردن مقدار
+        var newQuantity = $(this).hasClass('qty-plus') ? currentValue + 1 : currentValue - 1;
+
+        // اطمینان از اینکه مقدار جدید کمتر از 1 نشود
+        if (newQuantity < 1) return;
+
+        inputField.val(newQuantity);  // بروزرسانی مقدار ورودی
+        console.log(itemId)
+        console.log(itemId)
+        console.log(itemId)
+        // به‌روزرسانی تعداد در سرور
+        updateQuantity(itemId, newQuantity);
+    });
+
+
+    function removeFromCart(itemId) {
+        var settings = {
+            "url": `/basket/{{ shop_id }}/remove/${itemId}`,  // URL حذف آیتم
+            "method": "DELETE",  // درخواست POST برای حذف
+            "timeout": 0,
+            "headers": {
+                "Authorization": "Bearer {{ token }}"  // توکن صحیح را وارد کنید
+            },
+        };
+
+        $.ajax(settings).done(function (response) {
+            getBasket({{ shop_id }});  // به‌روزرسانی سبد خرید پس از حذف آیتم
+        });
+    }
+
+    $(document).ready(function () {
+        getBasket({{ shop_id }});
+    });
+</script>

@@ -1,0 +1,662 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <title>Masterkart - الگوی HTML تجارت الکترونیک چند منظوره</title>
+    <meta name="keywords"
+          content="Bootstrap 5.x, ecommerce, farming, food market, grocery market, grocery shop, grocery store, grocery supper market, multi vendor, organic food, supermarket, supermarket grocery">
+    <meta name="description" content="Multipurpose eCommerce HTML Template">
+    <meta name="author" content="Pilarest">
+
+    <!-- site Favicon -->
+    <link rel="icon" href="{% static 'assets/img/favicon/favicon.png' %}" sizes="32x32">
+
+    <!-- css Icon Font -->
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/msicons.min.css' %}">
+
+    <!-- css All Plugins Files -->
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap-select.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/slick.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/nouislider.css' %}">
+
+    <!-- Main Style -->
+    <link rel="stylesheet" id="main_style" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+    <link rel="stylesheet" class="color-css" href="{% static 'assets/css/color-01.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <style>
+        .references-section {
+            margin-top: 30px;
+        }
+
+        .references-section h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        #references-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #references-list li {
+            margin-bottom: 10px;
+        }
+        
+        #references-list li a {
+            color: #2b2b2b !important;
+            text-decoration: none;
+        }
+
+        #references-list li a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+
+<body>
+<!-- Loader -->
+<div id="ms-overlay">
+    <div class="loader"></div>
+</div>
+
+<!-- Header start  -->
+{% include '../extentions/header.html' with categories=categories_map is_active=is_active medic_notification=medic_notification shop_notification=shop_notification %}
+
+
+<div class="ms-side-cat-overlay"></div>
+<div class="col-lg-3 ms-category-sidebar">
+    <div class="cat-sidebar">
+        <div class="cat-sidebar-box">
+            <div class="ms-cat-sidebar-wrap">
+                <!-- Sidebar Category Block -->
+                <div class="ms-sidebar-block">
+                    <div class="ms-sb-title">
+                        <h3 class="ms-sidebar-title">دسته بندی
+                            <button class="ms-close">×</button>
+                        </h3>
+                    </div>
+                    <div class="ms-sb-block-content">
+                        <ul>
+                            <li class="ms-list">
+                                <div class="ms-sidebar-block-item"><img
+                                        src="{% static 'assets/img/icons/dress-8.svg' %}" class="svg_img" alt="drink">لباس
+                                </div>
+                                <ul style="display: block;">
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">پیراهن
+                                            <span title="Available Stock">- 25</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html"> شلوار
+                                            جین <span title="Available Stock">- 52</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a
+                                                href="shop-left-sidebar-col-3.html">ژاکت<span title="Available Stock">- 500</span></a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">لباس و
+                                            روپوش <span title="Available Stock">- 35</span></a></div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ms-sb-block-content">
+                        <ul>
+                            <li class="ms-list">
+                                <div class="ms-sidebar-block-item"><img
+                                        src="{% static 'assets/img/icons/shoes-8.svg' %}" class="svg_img" alt="drink">کفش
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">ورزشی
+                                            <span title="Available Stock">- 25</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">مجلسی
+                                            <span title="Available Stock">- 52</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">مختلف
+                                            <span title="Available Stock">- 40</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">کفش ایمن<span
+                                                title="Available Stock">- 35</span></a></div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ms-sb-block-content">
+                        <ul>
+                            <li class="ms-list">
+                                <div class="ms-sidebar-block-item"><img
+                                        src="{% static 'assets/img/icons/jewelry-8.svg' %}" class="svg_img" alt="drink">جواهرات
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">گوشواره
+                                            <span title="Available Stock">- 50</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">حلقه
+                                            ازدواج <span title="Available Stock">- 35</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">گردنبند
+                                            <span title="Available Stock">- 40</span></a></div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ms-sb-block-content">
+                        <ul>
+                            <li class="ms-list">
+                                <div class="ms-sidebar-block-item"><img
+                                        src="{% static 'assets/img/icons/perfume-8.svg' %}" class="svg_img" alt="drink">عطر
+                                    و ادکلن
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">عطر لباس<span
+                                                title="Available Stock">- 4 پاکت</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">اسپری
+                                            <span title="Available Stock">- 52 پاکت</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">عطر گل
+                                            <span title="Available Stock">- 10 پاکت</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">خوشبو
+                                            کننده هوا<span title="Available Stock">- 35 پاکت</span></a></div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ms-sb-block-content">
+                        <ul>
+                            <li class="ms-list">
+                                <div class="ms-sidebar-block-item"><img
+                                        src="{% static 'assets/img/icons/cosmetics-8.svg' %}" class="svg_img"
+                                        alt="drink">لوازم آرایشی
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a
+                                                href="shop-left-sidebar-col-3.html">شامپو<span
+                                                title="Available Stock"></span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">ضد آفتاب<span
+                                                title="Available Stock"></span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">شامپو
+                                            بدن<span title="Available Stock"></span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">کیت
+                                            آرایش<span title="Available Stock"></span></a></div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ms-sb-block-content">
+                        <ul>
+                            <li class="ms-list">
+                                <div class="ms-sidebar-block-item"><img
+                                        src="{% static 'assets/img/icons/glasses-8.svg' %}" class="svg_img" alt="drink">عینک
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">عینک
+                                            آفتابی <span title="Available Stock">- 20</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">لنز عینک
+                                            <span title="Available Stock">- 52</span></a></div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ms-sb-block-content">
+                        <ul>
+                            <li class="ms-list">
+                                <div class="ms-sidebar-block-item"><img src="{% static 'assets/img/icons/bag-8.svg' %}"
+                                                                        class="svg_img" alt="drink">کیف
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">کیسه
+                                            خرید <span title="Available Stock">- 25</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">کوله
+                                            پشتی بدنسازی <span title="Available Stock">- 52</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">کیف پول
+                                            <span title="Available Stock">- 40</span></a></div>
+                                    </li>
+                                    <li>
+                                        <div class="ms-sidebar-sub-item"><a href="shop-left-sidebar-col-3.html">کیف جیبی
+                                            <span title="Available Stock">- 35</span></a></div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Category sidebar End -->
+
+<!-- Cart sidebar Start -->
+<div class="ms-side-cart-overlay"></div>
+
+{% include '../extentions/shops_basket.html' with basket=basket toke=token %}
+<div id="ms-side-wish" class="ms-side-wish">
+    <div class="ms-wish-inner">
+        <div class="ms-wish-top">
+            <div class="ms-wish-title">
+                <span class="wish_title">لیست علاقه مندی‌ها</span>
+                <a href="javascript:void(0)" class="ms-wish-close"><img src="{% static 'assets/img/icons/close.svg' %}"
+                                                                        class="svg_img pro_svg" alt="close"></a>
+            </div>
+            <ul class="ms-wish-pro-items">
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/18_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="wish-pro-title">لیمو</a>
+                        <span class="wish-price"><span>25 هزار x </span> کیلوگرم </span>
+                        <div class="ms-availability">
+                            <p class="stock avail">موجود در انبار</p>
+                            <a href="" class="ms-btn-2">خرید</a>
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/20_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="wish-pro-title">مارچوبه</a>
+                        <span class="wish-price"><span>5 هزار x</span> گرم</span>
+                        <div class="ms-availability">
+                            <p class="stock not-avail">موجودی</p>
+                            <div class="ms-wish-contact-btns">
+                                <a href="" class="ms-btn-2 btn-disabled">خرید</a>
+                                <a href="" class="ms-btn-1">مخاطب</a>
+                            </div>
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/31_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="wish-pro-title">انبه</a>
+                        <span class="wish-price"><span>59 هزار x</span> بسته</span>
+                        <div class="ms-availability">
+                            <p class="stock avail">موجود در انبار</p>
+                            <a href="" class="ms-btn-2">خرید</a>
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/23_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="wish-pro-title">توت فرنگی</a>
+                        <span class="wish-price"><span>59 هزار x</span> کیلوگرم</span>
+                        <div class="ms-availability">
+                            <p class="stock avail">موجود در انبار</p>
+                            <a href="" class="ms-btn-2">خرید</a>
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Wishlist sidebar End -->
+
+<!-- Breadcrumb start -->
+<div class="ms-breadcrumb m-b-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="row ms_breadcrumb_inner">
+                    <div class="col-md-6 col-sm-12">
+                        <h2 class="ms-breadcrumb-title">صفحه بلاگ</h2>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <!-- ms-breadcrumb-list start -->
+                        <ul class="ms-breadcrumb-list">
+                            <li class="ms-breadcrumb-item"><a href="/">خانه</a><i class="fas fa-chevron-left"></i></li>
+                            <li class="ms-breadcrumb-item"><a href="/blog/encyclopedia-combined-drugs">داروهای
+                                ترکیبی</a><i class="fas fa-chevron-left"></i></li>
+                            <li class="ms-breadcrumb-item active">مقاله</li>
+                        </ul>
+                        <!-- ms-breadcrumb-list end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="ms-slider-content">
+        <div class="ms-main-slider">
+            <div class="ms-slider swiper-container main-slider-nav main-slider-dot">
+                <div class="swiper-wrapper" id="article-slider">
+                </div>
+                <div class="swiper-pagination swiper-pagination-white"></div>
+                <div class="swiper-buttons">
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="section ms-hero m-t-30">
+    <div class="container">
+        <div class="ms-main-content">
+            <!-- اسلایدر تصاویر -->
+            <div class="ms-slider-content">
+                <div class="ms-main-slider">
+                    <div class="ms-slider swiper-container main-slider-nav main-slider-dot">
+                        <div class="swiper-wrapper" id="article-slider">
+                            <!-- اسلایدها به صورت داینامیک بارگذاری می‌شوند -->
+                        </div>
+                        <div class="swiper-pagination swiper-pagination-white"></div>
+                        <div class="swiper-buttons">
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- نمایش اطلاعات گیاه -->
+            <div class="herbal-info-section">
+                <h3 style="font-size: 18px; margin-bottom: 16px;">اطلاعات گیاه</h3>
+                  <div class="detail-blog">
+                    <div style="display: flex; gap: 8px; align-content: center;">
+                        <h4 class="title-blog-single t-top">نام گیاه:</h4>
+                        <span id="plant-name" class="disease-images"></span>
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <h4 class="title-blog-single t-top">نام لاتین:</h4>
+                        <span id="latin-name" class="disease-images"></span>
+                    </div>
+                </div>
+                
+
+                <div class="detail-blog" style="margin-top: 16px;">
+                    <div style="display: flex; gap: 8px; align-content: center;">
+                        <h4 class="title-blog-single t-top">نام دیگر:</h4>
+                        <span id="another-name" class="disease-images"></span>
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <h4 class="title-blog-single t-top">زیستگاه :</h4>
+                        <span id="habitat" class="disease-images"></span>
+                    </div>
+                </div>
+                
+
+                <div class="detail-blog" style="margin-top: 16px;">
+                    <div style="display: flex; gap: 8px; align-content: center;">
+                        <h4 class="title-blog-single t-top">تاریخچه</h4>
+                        <span id="history" class="disease-images"></span>
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <h4 class="title-blog-single t-top">ترکیبات :</h4>
+                        <span id="components" class="disease-images"></span>
+                    </div>
+                </div>
+                
+
+                <div class="detail-blog" style="margin-top: 16px;">
+                    <div style="display: flex; gap: 8px; align-content: center;">
+                        <h4 class="title-blog-single t-top">ترکیبات فعال:</h4>
+                        <span id="compounds" class="disease-images"></span>
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <h4 class="title-blog-single t-top">داروشناسی :</h4>
+                        <span id="pharmacology" class="disease-images"></span>
+                    </div>
+                </div>
+                
+
+                <div class="detail-blog" style="margin-top: 16px;">
+                    <div style="display: flex; gap: 8px; align-content: center;">
+                        <h4 class="title-blog-single t-top"> مدت درمان :</h4>
+                        <span id="treatment-duration" class="disease-images"></span>
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <h4 class="title-blog-single t-top">نوع گیاه :</h4>
+                        <span id="plant-type" class="disease-images"></span>
+                    </div>
+                </div>
+                </div>
+                <!-- <p><strong>مدت درمان:</strong> <span id="treatment-duration"></span></p> -->
+                <!-- <p><strong>نوع گیاه:</strong> <span id="plant-type"></span></p> -->
+                <p style="margin-top: 16px; margin-bottom: 8px;">موارد مصرف: </p>
+                <p id="indications"></p>
+                <p style="margin-top: 16px; margin-bottom: 8px;">عوارض: </p>
+                <p id="effects"></p>
+                <p style="margin-top: 16px; margin-bottom: 8px;">طبیعت گیاه: </p>
+                <p id="the-nature-of-plant"></p>
+                <p style="margin-top: 16px; margin-bottom: 8px;">عوارض جانبی:</p>
+                <p id="complications"></p>
+                <p style="margin-top: 16px; margin-bottom: 8px;">بارداری:</p>
+                <p id="pregnancy"></p>
+                <p style="margin-top: 16px; margin-bottom: 8px;">روش نگهداری:</p>
+                <p id="maintenance-method"></p>
+                <p style="margin-top: 16px; margin-bottom: 8px;">دستور مصرف: </p>
+                <p id="how-to-use"></p>
+                <p style="margin-top: 16px; margin-bottom: 8px;">طول عمر گیاه: </p>
+                <p id="lifespan-of-plant"></p>
+                <p style="margin-top: 16px; margin-bottom: 8px;">مقدار مصرف:</p>
+                <p id="dosage"></p>
+                <p>ممنوعیت مصرف: </p>
+                <p id="prohibited-usage"></p>
+                <p style="margin-top: 16px; margin-bottom: 8px;">مکمل‌های دارویی: </p>
+                <p id="supplements"></p>
+            </div>
+
+            <!-- نمایش مراجع -->
+            <div class="references-section" style="width: 70%; margin: auto;">
+                <h3 style="font-size: 18px;">مراجع</h3>
+                <ul id="references-list">
+                    <!-- مراجع به صورت داینامیک بارگذاری می‌شوند -->
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Footer Start -->
+{% include '../extentions/footer.html' %}
+<!-- Footer Area End -->
+
+<!-- Back to top  -->
+<a class="ms-back-to-top"></a>
+
+<!-- Features sidebar  -->
+<div class="ms-features-sidebar-overlay"></div>
+<div class="ms-features-sidebar">
+    <div class="tool-title">
+        <h3>تنظیمات</h3>
+    </div>
+    <div class="ms-features-block">
+        <div class="ms-features-title">رنگ‌ها</div>
+        <ul class="bg-panel ms-change-color">
+            <li class="active" data-color="01">
+                <a href="javascript:void(0)" class="colorcode1"></a>
+            </li>
+            <li data-color="02">
+                <a href="javascript:void(0)" class="colorcode2"></a>
+            </li>
+            <li data-color="03">
+                <a href="javascript:void(0)" class="colorcode3"></a>
+            </li>
+            <li data-color="04">
+                <a href="javascript:void(0)" class="colorcode4"></a>
+            </li>
+            <li data-color="05">
+                <a href="javascript:void(0)" class="colorcode5"></a>
+            </li>
+            <li data-color="06">
+                <a href="javascript:void(0)" class="colorcode6"></a>
+            </li>
+            <li data-color="07" class="">
+                <a href="javascript:void(0)" class="colorcode7"></a>
+            </li>
+            <li data-color="08">
+                <a href="javascript:void(0)" class="colorcode8"></a>
+            </li>
+            <li data-color="09">
+                <a href="javascript:void(0)" class="colorcode9"></a>
+            </li>
+        </ul>
+    </div>
+    <div class="ms-features-block">
+        <div class="ms-tools-sidebar-content">
+            <div class="ms-features-title">حالت پس رمینه</div>
+            <div class="ms-change-mode active" id="ms-change-mode">
+                <div class="ms-mode-switch">
+                    <div class="ms-mode-btn">انتخاب</div>
+                    <div class="ms-mode-on">روشن</div>
+                    <div class="ms-mode-off">خاموش</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Plugins JS -->
+<script src="{% static 'assets/js/plugins/jquery-3.5.1.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/popper.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/bootstrap-select.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/fontawesome.js' %}"></script>
+<script src="{% static 'assets/js/plugins/owl.carousel.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/infiniteslidev2.js' %}"></script>
+<script src="{% static 'assets/js/plugins/jquery.zoom.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/slick.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/nouislider.js' %}"></script>
+
+<!-- Main Js -->
+<script src="{% static 'assets/js/main.js' %}"></script>
+<script>
+    $(document).ready(function () {
+        if ({{ articleId }}) {
+            $.ajax({
+                url: `/article/api/herbal-encyclopedia/{{ articleId }}/`,
+                method: 'GET',
+                success: function (data) {
+                    $('#article-slider').empty();
+                    data.images.forEach(function (img, index) {
+                        $('#article-slider').append(`
+                        <div class="ms-slide-item swiper-slide d-flex slide-${index + 1}">
+                            <img src="${img.image}" style="position: absolute; width: 100%; height: 100%;">
+                            <div class="ms-slide-content slider-animation">
+                                <h2 class="ms-slide-stitle">${data.name}</h2>
+                                <h1 class="ms-slide-title">${data.latin_name}</h1>
+                            </div>
+                        </div>
+                    `);
+                    });
+                    new Swiper('.swiper-container', {
+                        loop: true,
+                        autoplay: {
+                            delay: 5000,
+                            disableOnInteraction: false,
+                        },
+                        pagination: {
+                            el: '.swiper-pagination',
+                            clickable: true,
+                        },
+                        navigation: {
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
+                        },
+                    });
+                    $('#plant-name').text(data.name);
+                    $('#latin-name').text(data.latin_name);
+                    $('#another-name').text(data.another_name);
+                    $('#habitat').text(data.habitat);
+                    $('#history').text(data.history);
+                    $('#components').text(data.components);
+                    $('#compounds').text(data.compounds);
+                    $('#pharmacology').text(data.pharmacology);
+                    $('#indications').text(data.indications);
+                    $('#effects').text(data.effects);
+                    $('#the-nature-of-plant').text(data.the_nature_of_the_plant);
+                    $('#complications').text(data.complications);
+                    $('#pregnancy').text(data.pregnancy);
+                    $('#treatment-duration').text(data.treatment_duration);
+                    $('#maintenance-method').text(data.maintenance_method);
+                    $('#plant-type').text(data.plant_type);
+                    $('#how-to-use').text(data.how_to_use);
+                    $('#lifespan-of-plant').text(data.lifespan_of_plant);
+                    $('#dosage').text(data.dosage);
+                    $('#prohibited-usage').text(data.prohibited_usage);
+                    $('#supplements').text(data.supplements);
+
+                    // نمایش مراجع
+                    $('#references-list').empty();
+                    data.references.forEach(function (reference) {
+                        $('#references-list').append(`
+                        <li><a href="https://www.google.com/search?q=${encodeURIComponent(reference.refrence.name)}" target="_blank">${reference.refrence.name}</a></li>
+                    `);
+                    });
+                },
+                error: function () {
+                    alert('مشکلی در دریافت اطلاعات مقاله پیش آمد.');
+                }
+            });
+        } else {
+            alert('مقاله‌ای یافت نشد.');
+        }
+    });
+</script>
+</body>
+
+</html>

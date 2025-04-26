@@ -1,0 +1,52 @@
+
+services:
+  backend:
+    build: .
+    volumes:
+      - backend_volume_static:/var/html/www/mediplant/static
+      - backend_volume_media:/var/html/www/mediplant/media
+    ports:
+      - "8001:8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=mediplant.settings.prod
+
+    command: >
+      bash -c "
+      python manage.py makemigrations &&
+      python manage.py migrate &&
+      python manage.py collectstatic --noinput &&
+      mkdir -p /var/log/django && chmod -R 777 /var/log/django &&
+      gunicorn mediplant.wsgi:application --bind 0.0.0.0:8000 --workers 3 --log-file=/var/log/django/gunicorn.log --access-logfile=/var/log/django/access.log"
+
+    networks:
+      - backend
+      - data_base
+  nginx:
+    container_name: mediplant_nginx
+    build: docker/nginx/.
+    ports:
+      - "80:80"
+    networks:
+      - backend
+  db:
+    container_name: mediplang_db_postgres
+    image: postgres:15
+    volumes:
+      - mediplant_db_volume:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=mediplant_user
+      - POSTGRES_PASSWORD=4oi2asdf9042idafs@#asdivo@!@)ads
+      - POSTGRES_DB=mediplant_db
+    networks:
+      - data_base
+
+volumes:
+  backend_volume_static:
+  backend_volume_media:
+  mediplant_db_volume:
+
+networks:
+  backend:
+    driver: bridge
+  data_base:
+    driver: bridge

@@ -1,0 +1,428 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <title>Masterkart - الگوی HTML تجارت الکترونیک چند منظوره</title>
+    <meta name="keywords"
+          content="Bootstrap 5.x, ecommerce, farming, food market, grocery market, grocery shop, grocery store, grocery supper market, multi vendor, organic food, supermarket, supermarket grocery">
+    <meta name="description" content="Multipurpose eCommerce HTML Template">
+    <meta name="author" content="Pilarest">
+    <link rel="icon" href="{% static 'assets/img/favicon/favicon.png' %}" sizes="32x32">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/msicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap-select.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/slick.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/nouislider.css' %}">
+
+    <!-- Main Style -->
+    <link rel="stylesheet" id="main_style" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+    <link rel="stylesheet" class="color-css" href="{% static 'assets/css/color-01.css' %}">
+
+</head>
+
+<body>
+<!-- Loader -->
+<div id="ms-overlay">
+    <div class="loader"></div>
+</div>
+
+<!-- Header start  -->
+{% include '../extentions/header.html' with categories=categories_map is_active=is_active medic_notification=medic_notification shop_notification=shop_notification %}
+
+<!-- Header End  -->
+
+<!-- Category sidebar Start -->
+<div class="ms-side-cat-overlay"></div>
+{% include '../extentions/shops_basket.html' with basket=basket toke=token %}
+<!-- Category sidebar End -->
+
+<!-- Cart sidebar Start -->
+<div class="ms-side-cart-overlay"></div>
+<div id="ms-side-cart" class="ms-side-cart">
+    <div class="ms-cart-inner">
+        <div class="ms-cart-top">
+            <div class="ms-cart-title">
+                <span class="cart_title">سبد خرید من</span>
+                <a href="javascript:void(0)" class="ms-cart-close"><img src="{% static 'assets/img/icons/close.svg' %}"
+                                                                        class="svg_img pro_svg" alt="close"></a>
+            </div>
+            <ul class="ms-cart-pro-items">
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/25_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="cart-pro-title">لیمو تازه</a>
+                        <span class="cart-price"><span>2500 تومان x</span> کیلوگرم</span>
+                        <div class="qty-plus-minus">
+                            <input class="qty-input" type="text" name="ms-qtybtn" value="1">
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/17_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="cart-pro-title">زنجبیل - ارگانیک</a>
+                        <span class="cart-price"><span>5000 تومان x</span> گرم</span>
+                        <div class="qty-plus-minus">
+                            <input class="qty-input" type="text" name="ms-qtybtn" value="1">
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/2_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="cart-pro-title"> بسته خرما</a>
+                        <span class="cart-price"><span>6000 تومان x</span> بسته</span>
+                        <div class="qty-plus-minus">
+                            <input class="qty-input" type="text" name="ms-qtybtn" value="1">
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="ms-cart-bottom">
+            <div class="cart-sub-total">
+                <table class="table cart-table">
+                    <tbody>
+                    <tr>
+                        <td class="text-left">جمع فرعی:</td>
+                        <td class="text-right">300 هزار</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">مالیات بر ارزش افزوده (20%):</td>
+                        <td class="text-right">60 هزار</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">جمع :</td>
+                        <td class="text-right primary-color">360 هزار</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="cart_btn">
+                <a href="cart.html" class="ms-btn-1">مشاهده سبد خرید</a>
+                <a href="checkout.html" class="ms-btn-2">بررسی خرید</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Cart sidebar End -->
+
+<!-- Wishlist sidebar Start -->
+<div class="ms-side-wish-overlay"></div>
+<div id="ms-side-wish" class="ms-side-wish">
+    <div class="ms-wish-inner">
+        <div class="ms-wish-top">
+            <div class="ms-wish-title">
+                <span class="wish_title">لیست علاقه مندی‌ها</span>
+                <a href="javascript:void(0)" class="ms-wish-close"><img src="{% static 'assets/img/icons/close.svg' %}"
+                                                                        class="svg_img pro_svg" alt="close"></a>
+            </div>
+            <ul class="ms-wish-pro-items">
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/18_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="wish-pro-title">لیمو</a>
+                        <span class="wish-price"><span>25 هزار x </span> کیلوگرم </span>
+                        <div class="ms-availability">
+                            <p class="stock avail">موجود در انبار</p>
+                            <a href="" class="ms-btn-2">خرید</a>
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/20_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="wish-pro-title">مارچوبه</a>
+                        <span class="wish-price"><span>5 هزار x</span> گرم</span>
+                        <div class="ms-availability">
+                            <p class="stock not-avail">موجودی</p>
+                            <div class="ms-wish-contact-btns">
+                                <a href="" class="ms-btn-2 btn-disabled">خرید</a>
+                                <a href="" class="ms-btn-1">مخاطب</a>
+                            </div>
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/31_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="wish-pro-title">انبه</a>
+                        <span class="wish-price"><span>59 هزار x</span> بسته</span>
+                        <div class="ms-availability">
+                            <p class="stock avail">موجود در انبار</p>
+                            <a href="" class="ms-btn-2">خرید</a>
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/23_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="wish-pro-title">توت فرنگی</a>
+                        <span class="wish-price"><span>59 هزار x</span> کیلوگرم</span>
+                        <div class="ms-availability">
+                            <p class="stock avail">موجود در انبار</p>
+                            <a href="" class="ms-btn-2">خرید</a>
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Wishlist sidebar End -->
+
+<!-- Breadcrumb start -->
+<div class="ms-breadcrumb m-b-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="row ms_breadcrumb_inner">
+                    <div class="col-md-6 col-sm-12">
+                        <h2 class="ms-breadcrumb-title">صفحه بلاگ</h2>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <!-- ms-breadcrumb-list start -->
+                        <ul class="ms-breadcrumb-list">
+                            <li class="ms-breadcrumb-item"><a href="/">خانه</a><i class="fas fa-chevron-left"></i></li>
+                            <li class="ms-breadcrumb-item"><a href="/blog/news/">اخبار</a><i
+                                    class="fas fa-chevron-left"></i></li>
+                            <li class="ms-breadcrumb-item active">مشاهده</li>
+                        </ul>
+                        <!-- ms-breadcrumb-list end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb end -->
+
+<!-- Blog section -->
+<section class="ms-blog padding-tb-30">
+    <div class="container">
+        <div class="row">
+            <div class="ms-blogs-rightside col-md-12">
+
+                <!-- Blog content Start -->
+                <div class="ms-blogs-content" style="width: 70%; margin: auto;">
+                    <div class="ms-blogs-inner">
+                        <div class="ms-single-blog-item">
+                            <div class="single-blog-info">
+                                <figure class="news-img">
+                                    <a href="#"><img src="{{ news.image.url }}" alt="news imag"></a>
+                                </figure>
+                                <div class="single-blog-detaill">
+                                    <p style="font-size: 14px; color: #aaaaaa;">{{ news.created_at }}</p>
+                                    {{ news.content|safe }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ms-tag-block ms-sb-block-content ms-sidebar-dropdown">
+                        {% for i in hashtags %}
+                            <a href="/blog/news/search=1" style="background-color: #439878;" class="ms-btn-2">weqew</a>
+                        {% endfor %}
+
+
+                    </div>
+                    <!-- Pagination Start -->
+                    <!-- Pagination End -->
+                    <!-- Comments Start -->
+                    <div class="ms-blog-comments" style="margin-top: 24px;">
+                        <div class="ms-blog-cmt-preview">
+                            <div class="ms-blog-comment-wrapper">
+                                <h4 class="ms-blog-dms-title" style="font-size: 14px;">نظرات : 05</h4>
+                                {% for i in comments %}
+                                    <div class="ms-single-comment-wrapper mt-35">
+                                        <div class="ms-blog-user-img">
+                                            <img src="{% static 'assets/img/user/1.jpg' %}" alt="blog image">
+                                        </div>
+                                        <div class="ms-blog-comment-content">
+                                            <h5>{{ i.user_name }}</h5>
+                                            <span>{{ i.created_at }}</span>
+                                            <p>
+                                                {{ i.message }}
+                                            </p>
+                                            {#<div class="ms-blog-details-btn">#}
+                                            {#<a href="javascript:void(0)">پاسخ</a>#}
+                                            {#</div>#}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                        <div class="ms-blog-cmt-form">
+                            <div class="ms-blog-reply-wrapper">
+                                <!-- <h4 class="ms-blog-dms-title">پاسخ دهید</h4> -->
+                                <form class="ms-blog-form" id="commentForm">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="ms-leave-form">
+                                                <input type="text" id="user_name" name="user_name" placeholder="نام" >
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="ms-leave-form">
+                                                <input type="text" id="title" placeholder="عنوان" >
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="ms-text-leave">
+                                                <textarea id="message" style="resize: none;" name="message" placeholder="پیغام" ></textarea>
+                                                <button type="submit" id="submitBtn" style="background-color: #439878;" class="ms-btn-2">ارسال</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Comments End -->
+                </div>
+                <!--Blog content End -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Blog section End -->
+
+<!-- Footer Start -->
+{% include '../extentions/footer.html' %}
+<!-- Footer Area End -->
+
+<!-- Back to top  -->
+<a class="ms-back-to-top"></a>
+
+<!-- Features sidebar  -->
+<div class="ms-features-sidebar-overlay"></div>
+<div class="ms-features-sidebar">
+    <div class="tool-title">
+        <h3>تنظیمات</h3>
+    </div>
+    <div class="ms-features-block">
+        <div class="ms-features-title">رنگ‌ها</div>
+        <ul class="bg-panel ms-change-color">
+            <li class="active" data-color="01">
+                <a href="javascript:void(0)" class="colorcode1"></a>
+            </li>
+            <li data-color="02">
+                <a href="javascript:void(0)" class="colorcode2"></a>
+            </li>
+            <li data-color="03">
+                <a href="javascript:void(0)" class="colorcode3"></a>
+            </li>
+            <li data-color="04">
+                <a href="javascript:void(0)" class="colorcode4"></a>
+            </li>
+            <li data-color="05">
+                <a href="javascript:void(0)" class="colorcode5"></a>
+            </li>
+            <li data-color="06">
+                <a href="javascript:void(0)" class="colorcode6"></a>
+            </li>
+            <li data-color="07" class="">
+                <a href="javascript:void(0)" class="colorcode7"></a>
+            </li>
+            <li data-color="08">
+                <a href="javascript:void(0)" class="colorcode8"></a>
+            </li>
+            <li data-color="09">
+                <a href="javascript:void(0)" class="colorcode9"></a>
+            </li>
+        </ul>
+    </div>
+    <div class="ms-features-block">
+        <div class="ms-tools-sidebar-content">
+            <div class="ms-features-title">حالت پس رمینه</div>
+            <div class="ms-change-mode active" id="ms-change-mode">
+                <div class="ms-mode-switch">
+                    <div class="ms-mode-btn">انتخاب</div>
+                    <div class="ms-mode-on">روشن</div>
+                    <div class="ms-mode-off">خاموش</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Plugins JS -->
+<script src="{% static 'assets/js/plugins/jquery-3.5.1.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/popper.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/bootstrap-select.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/fontawesome.js' %}"></script>
+<script src="{% static 'assets/js/plugins/owl.carousel.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/infiniteslidev2.js' %}"></script>
+<script src="{% static 'assets/js/plugins/jquery.zoom.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/slick.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/nouislider.js' %}"></script>
+
+<!-- Main Js -->
+<script src="{% static 'assets/js/main.js' %}"></script>
+<script>
+    $(document).ready(function () {
+        $("#commentForm").submit(function (event) {
+            event.preventDefault(); // جلوگیری از ارسال فرم به روش سنتی
+
+            let formData = {
+                user_name: $("#user_name").val(),
+                email: $("#email").val(),
+                message: $("#message").val()
+            };
+
+            $.ajax({
+                url: "/article/api/news/{{ article_id }}/comments/",  // آدرس API
+                method: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(formData),
+                success: function (response) {
+                    alert("کامنت با موفقیت ارسال شد!");
+                    $("#commentForm")[0].reset(); // پاک کردن فرم بعد از ارسال
+                },
+                error: function (xhr) {
+                    alert("مشکلی در ارسال کامنت وجود دارد: " + xhr.responseText);
+                }
+            });
+        });
+    });
+
+    document.getElementById('submitBtn').addEventListener('click', function (e) {
+        e.preventDefault();
+        const title = document.getElementById('title').value.trim();
+        const fname = document.getElementById('user_name').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        console.log("نام:", fname);
+        console.log("پیغام:", message);
+        console.log("عنوان:", title);
+    });
+</script>
+</body>
+
+</html>

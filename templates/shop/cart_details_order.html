@@ -1,0 +1,1038 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <title>Masterkart - الگوی HTML تجارت الکترونیک چند منظوره</title>
+    <meta name="keywords"
+          content="Bootstrap 5.x, ecommerce, farming, food market, grocery market, grocery shop, grocery store, grocery supper market, multi vendor, organic food, supermarket, supermarket grocery">
+    <meta name="description" content="Multipurpose eCommerce HTML Template">
+    <meta name="author" content="Pilarest">
+
+    <!-- site Favicon -->
+    <link rel="icon" href="{% static 'assets/img/favicon/favicon.png' %}" sizes="32x32">
+
+    <!-- css Icon Font -->
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/msicons.min.css' %}">
+
+    <!-- css All Plugins Files -->
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap-select.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/slick.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/nouislider.css' %}">
+
+    <!-- Main Style -->
+    <link rel="stylesheet" id="main_style" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+    <link rel="stylesheet" class="color-css" href="{% static 'assets/css/color-01.css' %}">
+    <link rel="stylesheet" href="https://static.neshan.org/sdk/leaflet/v1.9.4/neshan-sdk/v1.0.8/index.css"/>
+
+</head>
+
+<body>
+<!-- Loader -->
+<div id="ms-overlay">
+    <div class="loader"></div>
+</div>
+
+<!-- Header start  -->
+{% include '../extentions/header.html' with categories=categories_map is_active=is_active medic_notification=medic_notification shop_notification=shop_notification %}
+
+<div class="ms-side-cart-overlay"></div>
+{% include '../extentions/shops_basket.html' with basket=basket toke=token %}
+<div id="ms-side-wish" class="ms-side-wish">
+    <div class="ms-wish-inner">
+        <div class="ms-wish-top">
+            <div class="ms-wish-title">
+                <span class="wish_title">لیست علاقه مندی‌ها</span>
+                <a href="javascript:void(0)" class="ms-wish-close"><img src="{% static 'assets/img/icons/close.svg' %}"
+                                                                        class="svg_img pro_svg" alt="close"></a>
+            </div>
+            <ul class="ms-wish-pro-items">
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/18_1.jpg' %}" alt="محصولات"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="wish-pro-title">لیمو</a>
+                        <span class="wish-price"><span>25 هزار x </span> کیلوگرم </span>
+                        <div class="ms-availability">
+                            <p class="stock avail">موجود در انبار</p>
+                            <a href="" class="ms-btn-2">خرید</a>
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/20_1.jpg' %}" alt="محصولات"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="wish-pro-title">مارچوبه</a>
+                        <span class="wish-price"><span>5 هزار x</span> گرم</span>
+                        <div class="ms-availability">
+                            <p class="stock not-avail">موجودی</p>
+                            <div class="ms-wish-contact-btns">
+                                <a href="" class="ms-btn-2 btn-disabled">خرید</a>
+                                <a href="" class="ms-btn-1">مخاطب</a>
+                            </div>
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/31_1.jpg' %}" alt="محصولات"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="wish-pro-title">انبه</a>
+                        <span class="wish-price"><span>59 هزار x</span> بسته</span>
+                        <div class="ms-availability">
+                            <p class="stock avail">موجود در انبار</p>
+                            <a href="" class="ms-btn-2">خرید</a>
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/23_1.jpg' %}" alt="محصولات"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="wish-pro-title">توت فرنگی</a>
+                        <span class="wish-price"><span>59 هزار x</span> کیلوگرم</span>
+                        <div class="ms-availability">
+                            <p class="stock avail">موجود در انبار</p>
+                            <a href="" class="ms-btn-2">خرید</a>
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Wishlist sidebar End -->
+
+<!-- Breadcrumb start -->
+<div class="ms-breadcrumb m-b-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="row ms_breadcrumb_inner">
+                    <div class="col-md-6 col-sm-12">
+                        <h2 class="ms-breadcrumb-title">پرداخت</h2>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <!-- ms-breadcrumb-list start -->
+                        <ul class="ms-breadcrumb-list">
+                            <li class="ms-breadcrumb-item"><a href="index.html">خانه</a><i
+                                    class="fas fa-chevron-left"></i></li>
+                            <li class="ms-breadcrumb-item active">پرداخت</li>
+                        </ul>
+                        <!-- ms-breadcrumb-list end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb end -->
+
+
+<!-- Cart section -->
+<section class="ms-cart-section padding-tb-30">
+    <h2 class="d-none">صفحه پرداخت</h2>
+    <div class="container">
+        <div class="row">
+            <div class="ms-cart-leftside col-lg-8 col-md-12 ">
+                <!-- cart content Start -->
+                <div class="ms-cart-content">
+                    <div class="ms-cart-inner">
+                        <div class="row">
+                            <form action="#">
+                                <div class="table-content cart-table-content">
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th> محصول</th>
+                                            <th>قیمت</th>
+                                            <th style="text-align: center;">تعداد</th>
+                                            <th>جمع</th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for i in products %}
+                                            <tr>
+                                                <td data-label="محصولات" class="ms-cart-pro-name">
+                                                    <a href="/shop/{{ shop.id }}/product/{{ i.product.id }}">
+                                                        <img class="ms-cart-pro-img mr-4" src="{{ i.image.image.url }}"
+                                                             alt=""> {{ i.product.product.name | truncatechars:23 }}
+                                                    </a>
+                                                </td>
+                                                <td data-label="قیمت" class="ms-cart-pro-price">
+                                                    <span class="amount">{{ i.price }} تومان</span>
+                                                </td>
+                                                   <td data-label="تعداد" class="ms-cart-pro-qty"
+                                                    style="text-align: center;">
+                                                    <span class="amount">{{ i.unit }}</span>
+                                                </td>
+                                                <td data-label="مجموع" class="ms-cart-pro-subtotal">{{ i.price_all }}
+                                                    تومان
+                                                </td>
+                                            
+                                            </tr>
+                                        {% endfor %}
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                       
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+            <!-- Sidebar Area Start -->
+            <div class="ms-cart-rightside col-lg-4 col-md-12 m-t-991">
+                <div class="ms-sidebar-wrap">
+                    <!-- Sidebar Summary Block -->
+                    <div class="ms-sidebar-block">
+                        <div class="ms-sb-title">
+                            <h3 class="ms-sidebar-title">خلاصه
+                                <div class="ms-sidebar-res"><i class="fas fa-chevron-down" aria-hidden="true"></i></div>
+                            </h3>
+                        </div>
+                        <div class="ms-sb-block-content">
+                            <h4 class="ms-ship-title">تخمین حمل و نقل</h4>
+                            <div class="ms-cart-form">
+{#                                <p>مقصد خود را برای دریافت تخمین حمل و نقل وارد کنید</p>#}
+                                <form action="#" method="post">
+                                    <span class="ms-cart-wrap">
+                                            <label>کد پستی</label>
+                                            <input id="code_posti" type="text" name="postalcode" value="{{ transaction.code_posti }}"
+                                                   readonly >
+                                        </span>
+                                    <span class="ms-cart-wrap">
+                                            <label>آدرس</label>
+                                            <input id="address_details" type="text" name="postalcode" value="{{ transaction.address }}"
+                                                    readonly >
+                                        </span>
+                                    <span class="ms-cart-wrap">
+                                            <label>لوکیشن</label>
+                                           <div id="mapDialog">
+                                            <div class="dialog-content">
+                                                <div id="map" style="width: 100%; height: 400px;"></div>
+                                             </div>
+                                        </div>
+                                        </span>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="ms-sb-block-content">
+                            <div class="ms-cart-summary-bottom">
+                                <div class="ms-cart-summary">
+{#                                    <div>#}
+{#                                        <span class="text-left">هزینه های تحویل</span>#}
+{#                                        <span class="text-right">درمحل تحویل با مشتری</span>#}
+{#                                    </div>#}
+{#                                    <div>#}
+{#                                        <span class="text-left">تخفیف کوپن</span>#}
+{#                                        <span class="text-right"><a class="ms-cart-coupan">درخواست کوپن</a></span>#}
+{#                                    </div>#}
+{#                                    <div class="ms-cart-coupan-content">#}
+{#                                        <form class="ms-cart-coupan-form" name="ms-cart-coupan-form" method="post"#}
+{#                                              action="#">#}
+{#                                            <input class="ms-coupan" type="text" required=""#}
+{#                                                   placeholder="کوپن را وارد نمایید" name="ms-coupan" value="">#}
+{#                                            <button class="ms-btn-2" type="submit" name="subscribe" value="">درخواست#}
+{#                                            </button>#}
+{#                                        </form>#}
+{#                                    </div>#}
+                                    <div class="ms-cart-summary-total">
+                                        <span class="text-left">مقدار کل</span>
+                                        <span class="text-right">{{ transaction.amount }} هزار تومان </span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% if buyable %}
+                <button class="ms-btn-2 col-lg-12 col-md-12  ms-sb-block-content"
+                        onclick="raod_to_pay('{{ transaction.id }}')">پرداخت
+                </button>
+                {% endif %}
+            <div class="padding-bottom-3"></div>
+                {% if cancelable %}
+                <button class="ms-btn-2 col-lg-12 col-md-12  ms-sb-block-content"
+                        onclick="cancel_buy('{{ transaction.id }}')">انصراف
+                </button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Cart section End -->
+
+<!-- New product section -->
+<section class="ms-new-product padding-tb-30">
+    <div class="container">
+        <div class="section-title-2">
+            <h2 class="ms-title">ورود <span>جدید</span></h2>
+            <p>مجموعه محصولات برتر را مرور کنید</p>
+        </div>
+        <div class="row p-t-15">
+            <div class="ms-new-product col-lg-12">
+                <div class="section-bg-color section-space-p30 main-border-radius">
+                    <div class="ms-product-block m-minus-15">
+                        <div class="new-product-carousel owl-carousel" dir="ltr">
+                            <div class="ms-product-content">
+                                <div class="ms-product-inner">
+                                    <div class="ms-pro-image-outer">
+                                        <div class="ms-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                    <span class="label veg">
+                                                        <span class="dot"></span>
+                                                    </span>
+                                                <img class="main-image"
+                                                     src="{% static 'assets/img/product-images/30_1.jpg' %}"
+                                                     alt="محصولات">
+                                                <img class="hover-image"
+                                                     src="{% static 'assets/img/product-images/30_1.jpg' %}"
+                                                     alt="محصولات">
+                                            </a>
+                                            <span class="flags">
+                                                    <span class="new">جدید</span>
+                                                </span>
+                                            <div class="ms-pro-actions">
+                                                <a href="javascript:void(0)" class="ms-btn-group wishlist"
+                                                   title=" علاقه مندی"><img
+                                                        src="{% static 'assets/img/icons/pro_wishlist.svg' %}"
+                                                        class="svg_img pro_svg" alt=""></a>
+                                                <a href="#" class="ms-btn-group quickview" data-link-action="quickview"
+                                                   title="مشاهده سریع" data-bs-toggle="modal"
+                                                   data-bs-target="#ms_quickview_modal"><img
+                                                        src="{% static 'assets/img/icons/quickview.svg' %}"
+                                                        class="svg_img pro_svg" alt=""></a>
+                                                <a href="javascript:void(0)" class="ms-btn-group compare"
+                                                   title="مقایسه"><img src="{% static 'assets/img/icons/compare.svg' %}"
+                                                                       class="svg_img pro_svg" alt=""></a>
+                                                <a href="javascript:void(0)" title="خرید"
+                                                   class="ms-btn-group add-to-cart"><img
+                                                        src="{% static 'assets/img/icons/pro_cart.svg' %}"
+                                                        class="svg_img pro_svg" alt=""></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ms-pro-content">
+                                        <a href="shop-left-sidebar-col-3.html">
+                                            <h6 class="ms-pro-stitle">غذا</h6>
+                                        </a>
+                                        <h5 class="ms-pro-title"><a href="product-left-sidebar.html">مخلوط آجیل و
+                                            بادام</a></h5>
+                                        <p class="ms-info">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                                            با استفاده از طراحان گرافیک است.</p>
+                                        <div class="ms-pro-rat-price">
+                                                <span class="ms-pro-rating">
+                                                    <i class="fa-solid fa-star fill"></i>
+                                                    <i class="fa-solid fa-star fill"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                </span>
+                                            <span class="ms-price" dir="rtl">
+                                                    <span class="new-price">49 هزار</span>
+                                                <span class="old-price">65 هزار</span>
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ms-product-content">
+                                <div class="ms-product-inner">
+                                    <div class="ms-pro-image-outer">
+                                        <div class="ms-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                    <span class="label veg">
+                                                        <span class="dot"></span>
+                                                    </span>
+                                                <img class="main-image"
+                                                     src="{% static 'assets/img/product-images/13_1.jpg' %}"
+                                                     alt="محصولات">
+                                                <img class="hover-image"
+                                                     src="{% static 'assets/img/product-images/13_1.jpg' %}"
+                                                     alt="محصولات">
+                                            </a>
+                                            <span class="flags">
+                                                    <span class="sale">فروش</span>
+                                                </span>
+                                            <div class="ms-pro-actions">
+                                                <a class="ms-btn-group wishlist" title="علاقه مندی"><img
+                                                        src="{% static 'assets/img/icons/pro_wishlist.svg' %}"
+                                                        class="svg_img pro_svg" alt=""></a>
+                                                <a href="#" class="ms-btn-group quickview" data-link-action="quickview"
+                                                   title="بازدید سریع" data-bs-toggle="modal"
+                                                   data-bs-target="#ms_quickview_modal"><img
+                                                        src="{% static 'assets/img/icons/quickview.svg' %}"
+                                                        class="svg_img pro_svg" alt=""></a>
+                                                <a href="javascript:void(0)" class="ms-btn-group compare"
+                                                   title="مقایسه"><img src="{% static 'assets/img/icons/compare.svg' %}"
+                                                                       class="svg_img pro_svg" alt=""></a>
+                                                <a href="javascript:void(0)" title="خرید"
+                                                   class="ms-btn-group add-to-cart"><img
+                                                        src="{% static 'assets/img/icons/pro_cart.svg' %}"
+                                                        class="svg_img pro_svg" alt=""></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ms-pro-content">
+                                        <a href="shop-left-sidebar-col-3.html">
+                                            <h6 class="ms-pro-stitle">گوشت</h6>
+                                        </a>
+                                        <h5 class="ms-pro-title"><a href="product-left-sidebar.html">آجیل ادویه دار </a>
+                                        </h5>
+                                        <p class="ms-info">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                                            با استفاده از طراحان گرافیک است.</p>
+                                        <div class="ms-pro-rat-price">
+                                                <span class="ms-pro-rating">
+                                                    <i class="fa-solid fa-star fill"></i>
+                                                    <i class="fa-solid fa-star fill"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                </span>
+                                            <span class="ms-price" dir="rtl">
+                                                    <span class="new-price">49 هزار</span>
+                                                <span class="old-price">65 هزار</span>
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ms-product-content">
+                                <div class="ms-product-inner">
+                                    <div class="ms-pro-image-outer">
+                                        <div class="ms-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                    <span class="label veg">
+                                                        <span class="dot"></span>
+                                                    </span>
+                                                <img class="main-image"
+                                                     src="{% static 'assets/img/product-images/25_1.jpg' %}"
+                                                     alt="محصولات">
+                                                <img class="hover-image"
+                                                     src="{% static 'assets/img/product-images/25_1.jpg' %}"
+                                                     alt="محصولات">
+                                            </a>
+                                            <span class="flags">
+                                                    <span class="new">جدید</span>
+                                                </span>
+                                            <div class="ms-pro-actions">
+                                                <a class="ms-btn-group wishlist" title="علاقه مندی"><img
+                                                        src="{% static 'assets/img/icons/pro_wishlist.svg' %}"
+                                                        class="svg_img pro_svg" alt=""></a>
+                                                <a href="#" class="ms-btn-group quickview" data-link-action="quickview"
+                                                   title="بازدید سریع" data-bs-toggle="modal"
+                                                   data-bs-target="#ms_quickview_modal"><img
+                                                        src="{% static 'assets/img/icons/quickview.svg' %}"
+                                                        class="svg_img pro_svg" alt=""></a>
+                                                <a href="javascript:void(0)" class="ms-btn-group compare"
+                                                   title="مقایسه"><img src="{% static 'assets/img/icons/compare.svg' %}"
+                                                                       class="svg_img pro_svg" alt=""></a>
+                                                <a href="javascript:void(0)" title="خرید"
+                                                   class="ms-btn-group add-to-cart"><img
+                                                        src="{% static 'assets/img/icons/pro_cart.svg' %}"
+                                                        class="svg_img pro_svg" alt=""></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ms-pro-content">
+                                        <a href="shop-left-sidebar-col-3.html">
+                                            <h6 class="ms-pro-stitle">گوشت</h6>
+                                        </a>
+                                        <h5 class="ms-pro-title"><a href="product-left-sidebar.html">آجیل ادویه دار </a>
+                                        </h5>
+                                        <p class="ms-info">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                                            با استفاده از طراحان گرافیک است.</p>
+                                        <div class="ms-pro-rat-price">
+                                                <span class="ms-pro-rating">
+                                                    <i class="fa-solid fa-star fill"></i>
+                                                    <i class="fa-solid fa-star fill"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                </span>
+                                            <span class="ms-price" dir="rtl">
+                                                    <span class="new-price">49 هزار</span>
+                                                <span class="old-price">65 هزار</span>
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ms-product-content">
+                                <div class="ms-product-inner">
+                                    <div class="ms-pro-image-outer">
+                                        <div class="ms-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                    <span class="label veg">
+                                                        <span class="dot"></span>
+                                                    </span>
+                                                <img class="main-image"
+                                                     src="{% static 'assets/img/product-images/2_1.jpg' %}"
+                                                     alt="محصولات">
+                                                <img class="hover-image"
+                                                     src="{% static 'assets/img/product-images/2_2.jpg' %}"
+                                                     alt="محصولات">
+                                            </a>
+                                            <span class="flags">
+                                                    <span class="sale">فروش</span>
+                                                </span>
+                                            <div class="ms-pro-actions">
+                                                <a class="ms-btn-group wishlist" title="علاقه مندی"><img
+                                                        src="{% static 'assets/img/icons/pro_wishlist.svg' %}"
+                                                        class="svg_img pro_svg" alt=""></a>
+                                                <a href="#" class="ms-btn-group quickview" data-link-action="quickview"
+                                                   title="بازدید سریع" data-bs-toggle="modal"
+                                                   data-bs-target="#ms_quickview_modal"><img
+                                                        src="{% static 'assets/img/icons/quickview.svg' %}"
+                                                        class="svg_img pro_svg" alt=""></a>
+                                                <a href="javascript:void(0)" class="ms-btn-group compare"
+                                                   title="مقایسه"><img src="{% static 'assets/img/icons/compare.svg' %}"
+                                                                       class="svg_img pro_svg" alt=""></a>
+                                                <a href="javascript:void(0)" title="خرید"
+                                                   class="ms-btn-group add-to-cart"><img
+                                                        src="{% static 'assets/img/icons/pro_cart.svg' %}"
+                                                        class="svg_img pro_svg" alt=""></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ms-pro-content">
+                                        <a href="shop-left-sidebar-col-3.html">
+                                            <h6 class="ms-pro-stitle">گوشت</h6>
+                                        </a>
+                                        <h5 class="ms-pro-title"><a href="product-left-sidebar.html">آجیل ادویه دار </a>
+                                        </h5>
+                                        <p class="ms-info">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                                            با استفاده از طراحان گرافیک است.</p>
+                                        <div class="ms-pro-rat-price">
+                                                <span class="ms-pro-rating">
+                                                    <i class="fa-solid fa-star fill"></i>
+                                                    <i class="fa-solid fa-star fill"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                </span>
+                                            <span class="ms-price" dir="rtl">
+                                                    <span class="new-price">49 هزار</span>
+                                                <span class="old-price">65 هزار</span>
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ms-product-content">
+                                <div class="ms-product-inner">
+                                    <div class="ms-pro-image-outer">
+                                        <div class="ms-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                    <span class="label nonveg">
+                                                        <span class="dot"></span>
+                                                    </span>
+                                                <img class="main-image"
+                                                     src="{% static 'assets/img/product-images/19_1.jpg' %}"
+                                                     alt="محصولات">
+                                                <img class="hover-image"
+                                                     src="{% static 'assets/img/product-images/19_1.jpg' %}"
+                                                     alt="محصولات">
+                                            </a>
+                                            <div class="ms-pro-actions">
+                                                <a class="ms-btn-group wishlist" title="علاقه مندی"><img
+                                                        src="{% static 'assets/img/icons/pro_wishlist.svg' %}"
+                                                        class="svg_img pro_svg" alt=""></a>
+                                                <a href="#" class="ms-btn-group quickview" data-link-action="quickview"
+                                                   title="بازدید سریع" data-bs-toggle="modal"
+                                                   data-bs-target="#ms_quickview_modal"><img
+                                                        src="{% static 'assets/img/icons/quickview.svg' %}"
+                                                        class="svg_img pro_svg" alt=""></a>
+                                                <a href="javascript:void(0)" class="ms-btn-group compare"
+                                                   title="مقایسه"><img src="{% static 'assets/img/icons/compare.svg' %}"
+                                                                       class="svg_img pro_svg" alt=""></a>
+                                                <a href="javascript:void(0)" title="خرید"
+                                                   class="ms-btn-group add-to-cart"><img
+                                                        src="{% static 'assets/img/icons/pro_cart.svg' %}"
+                                                        class="svg_img pro_svg" alt=""></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ms-pro-content">
+                                        <a href="shop-left-sidebar-col-3.html">
+                                            <h6 class="ms-pro-stitle">گوشت</h6>
+                                        </a>
+                                        <h5 class="ms-pro-title"><a href="product-left-sidebar.html">آجیل ادویه دار </a>
+                                        </h5>
+                                        <p class="ms-info">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                                            با استفاده از طراحان گرافیک است.</p>
+                                        <div class="ms-pro-rat-price">
+                                                <span class="ms-pro-rating">
+                                                    <i class="fa-solid fa-star fill"></i>
+                                                    <i class="fa-solid fa-star fill"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                </span>
+                                            <span class="ms-price" dir="rtl">
+                                                    <span class="new-price">49 هزار</span>
+                                                <span class="old-price">65 هزار</span>
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ms-product-content">
+                                <div class="ms-product-inner">
+                                    <div class="ms-pro-image-outer">
+                                        <div class="ms-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                    <span class="label veg">
+                                                        <span class="dot"></span>
+                                                    </span>
+                                                <img class="main-image"
+                                                     src="{% static 'assets/img/product-images/24_1.jpg' %}"
+                                                     alt="محصولات">
+                                                <img class="hover-image"
+                                                     src="{% static 'assets/img/product-images/24_1.jpg' %}"
+                                                     alt="محصولات">
+                                            </a>
+                                            <span class="flags">
+                                                    <span class="new">جدید</span>
+                                                </span>
+                                            <div class="ms-pro-actions">
+                                                <a class="ms-btn-group wishlist" title="علاقه مندی"><img
+                                                        src="{% static 'assets/img/icons/pro_wishlist.svg' %}"
+                                                        class="svg_img pro_svg" alt=""></a>
+                                                <a href="#" class="ms-btn-group quickview" data-link-action="quickview"
+                                                   title="بازدید سریع" data-bs-toggle="modal"
+                                                   data-bs-target="#ms_quickview_modal"><img
+                                                        src="{% static 'assets/img/icons/quickview.svg' %}"
+                                                        class="svg_img pro_svg" alt=""></a>
+                                                <a href="javascript:void(0)" class="ms-btn-group compare"
+                                                   title="مقایسه"><img src="{% static 'assets/img/icons/compare.svg' %}"
+                                                                       class="svg_img pro_svg" alt=""></a>
+                                                <a href="javascript:void(0)" title="خرید"
+                                                   class="ms-btn-group add-to-cart"><img
+                                                        src="{% static 'assets/img/icons/pro_cart.svg' %}"
+                                                        class="svg_img pro_svg" alt=""></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ms-pro-content">
+                                        <a href="shop-left-sidebar-col-3.html">
+                                            <h6 class="ms-pro-stitle">گوشت</h6>
+                                        </a>
+                                        <h5 class="ms-pro-title"><a href="product-left-sidebar.html">آجیل ادویه دار </a>
+                                        </h5>
+                                        <p class="ms-info">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                                            با استفاده از طراحان گرافیک است.</p>
+                                        <div class="ms-pro-rat-price">
+                                                <span class="ms-pro-rating">
+                                                    <i class="fa-solid fa-star fill"></i>
+                                                    <i class="fa-solid fa-star fill"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                </span>
+                                            <span class="ms-price" dir="rtl">
+                                                    <span class="new-price">49 هزار</span>
+                                                <span class="old-price">65 هزار</span>
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ms-product-content">
+                                <div class="ms-product-inner">
+                                    <div class="ms-pro-image-outer">
+                                        <div class="ms-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                    <span class="label veg">
+                                                        <span class="dot"></span>
+                                                    </span>
+                                                <img class="main-image"
+                                                     src="{% static 'assets/img/product-images/17_1.jpg' %}"
+                                                     alt="محصولات">
+                                                <img class="hover-image"
+                                                     src="{% static 'assets/img/product-images/17_1.jpg' %}"
+                                                     alt="محصولات">
+                                            </a>
+                                            <div class="ms-pro-actions">
+                                                <a class="ms-btn-group wishlist" title="علاقه مندی"><img
+                                                        src="{% static 'assets/img/icons/pro_wishlist.svg' %}"
+                                                        class="svg_img pro_svg" alt=""></a>
+                                                <a href="#" class="ms-btn-group quickview" data-link-action="quickview"
+                                                   title="بازدید سریع" data-bs-toggle="modal"
+                                                   data-bs-target="#ms_quickview_modal"><img
+                                                        src="{% static 'assets/img/icons/quickview.svg' %}"
+                                                        class="svg_img pro_svg" alt=""></a>
+                                                <a href="javascript:void(0)" class="ms-btn-group compare"
+                                                   title="مقایسه"><img src="{% static 'assets/img/icons/compare.svg' %}"
+                                                                       class="svg_img pro_svg" alt=""></a>
+                                                <a href="javascript:void(0)" title="خرید"
+                                                   class="ms-btn-group add-to-cart"><img
+                                                        src="{% static 'assets/img/icons/pro_cart.svg' %}"
+                                                        class="svg_img pro_svg" alt=""></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ms-pro-content">
+                                        <a href="shop-left-sidebar-col-3.html">
+                                            <h6 class="ms-pro-stitle">گوشت</h6>
+                                        </a>
+                                        <h5 class="ms-pro-title"><a href="product-left-sidebar.html">آجیل ادویه دار </a>
+                                        </h5>
+                                        <p class="ms-info">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                                            با استفاده از طراحان گرافیک است.</p>
+                                        <div class="ms-pro-rat-price">
+                                                <span class="ms-pro-rating">
+                                                    <i class="fa-solid fa-star fill"></i>
+                                                    <i class="fa-solid fa-star fill"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                </span>
+                                            <span class="ms-price" dir="rtl">
+                                                    <span class="new-price">49 هزار</span>
+                                                <span class="old-price">65 هزار</span>
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- New product section End -->
+
+<!-- Footer Start -->
+ {% include '../extentions/footer.html' %}
+<!-- Footer Area End -->
+
+<!-- Quickview Modal -->
+<div class="modal fade quickview-modal" id="ms_quickview_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <button type="button" class="btn-close qty_close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-5 col-sm-12 col-xs-12" dir="ltr">
+                        <div class="qty-product-cover">
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/1_1.jpg' %}"
+                                     alt="">
+                            </div>
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/2_1.jpg' %}"
+                                     alt="">
+                            </div>
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/3_1.jpg' %}"
+                                     alt="">
+                            </div>
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/4_1.jpg' %}"
+                                     alt="">
+                            </div>
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/5_1.jpg' %}"
+                                     alt="">
+                            </div>
+                        </div>
+                        <div class="qty-nav-thumb">
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/1_1.jpg' %}"
+                                     alt="">
+                            </div>
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/2_1.jpg' %}"
+                                     alt="">
+                            </div>
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/3_1.jpg' %}"
+                                     alt="">
+                            </div>
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/4_1.jpg' %}"
+                                     alt="">
+                            </div>
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/5_1.jpg' %}"
+                                     alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-sm-12 col-xs-12">
+                        <div class="quickview-pro-content">
+                            <h5 class="ms-quick-title"><a href="product-left-sidebar.html">پاکت میوه خشک مخلوط تریل
+                                ارگانیک مرغوب</a></h5>
+                            <div class="ms-quickview-rating">
+                                <i class="fa-solid fa-star fill"></i>
+                                <i class="fa-solid fa-star fill"></i>
+                                <i class="fa-solid fa-star fill"></i>
+                                <i class="fa-solid fa-star fill"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+
+                            <div class="ms-quickview-desc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                                با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان
+                                که لازم است
+                            </div>
+                            <div class="ms-quickview-price">
+                                <span class="new-price">150 هزار تومان</span>
+                                <span class="old-price">130 هزار تومان</span>
+                            </div>
+
+                            <div class="ms-pro-variation">
+                                <div class="ms-pro-variation-inner ms-pro-variation-size ms-pro-size">
+                                    <span>اندازه</span>
+                                    <div class="ms-pro-variation-content">
+                                        <ul class="ms-opt-size">
+                                            <li class="active"><a href="javascript:void(0)" class="ms-opt-sz"
+                                                                  data-tooltip="Small">250 گرم</a></li>
+                                            <li><a href="javascript:void(0)" class="ms-opt-sz" data-tooltip="Medium">500
+                                                گرم</a></li>
+                                            <li><a href="javascript:void(0)" class="ms-opt-sz" data-tooltip="Large">1
+                                                کیلوگرم</a></li>
+                                            <li><a href="javascript:void(0)" class="ms-opt-sz"
+                                                   data-tooltip="Extra Large">2 کیلوگرم</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ms-quickview-qty">
+                                <div class="qty-plus-minus">
+                                    <input class="qty-input" type="text" name="ms_qtybtn" value="1">
+                                </div>
+                                <div class="ms-quickview-cart ">
+                                    <button class="ms-btn-3"><img src="{% static 'assets/img/icons/pro_cart.svg' %}"
+                                                                  class="svg_img pro_svg" alt=""> خرید
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Quickview Modal end -->
+
+<!-- Add to Cart Notify -->
+<div class="ms-cart-notify">
+    <a href="javascript:void(0)" class="ms-cart-toggle"><img src="{% static 'assets/img/icons/pro_cart.svg' %}"
+                                                             class="svg_img" alt="cart"><span>3</span></a>
+</div>
+
+<!-- Add to Wishlist Notify  -->
+<div class="ms-wish-notify"></div>
+
+<!-- Add to Compare list Notify  -->
+<div class="ms-compare-notify"></div>
+
+<!-- Back to top  -->
+<a class="ms-back-to-top"></a>
+
+
+<script src="{% static 'assets/js/plugins/jquery-3.5.1.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/popper.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/bootstrap-select.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/fontawesome.js' %}"></script>
+<script src="{% static 'assets/js/plugins/owl.carousel.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/infiniteslidev2.js' %}"></script>
+<script src="{% static 'assets/js/plugins/jquery.zoom.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/slick.min.js' %}"></script>
+<script src="https://static.neshan.org/sdk/leaflet/v1.9.4/neshan-sdk/v1.0.8/index.js"></script>
+<script src="{% static 'assets/js/plugins/nouislider.js' %}"></script>
+
+<!-- Main Js -->
+<script src="{% static 'assets/js/main.js' %}"></script>
+<script>
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Check if this cookie string begins with the desired name
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    $(".cart-qty-plus-minus .ms_cart_qtybtn .ms_qtybtn").on("click", function () {
+        var $cartQtyButton = $(this);
+        var $inputField = $cartQtyButton.closest(".cart-qty-plus-minus").find("input");
+        var shopId = $inputField.data("shop-id");
+        var productId = $inputField.data("product-id");
+        var cartQtyOldValue = parseFloat($inputField.val());
+        var cartQtyNewVal = cartQtyOldValue;
+
+        if ($cartQtyButton.text() === "+") {
+        } else {
+            if (cartQtyOldValue > 1) {
+            }
+        }
+
+        $inputField.val(cartQtyNewVal);
+
+        addItemToCardApi(cartQtyNewVal, shopId, productId);
+    });
+
+    function getCart(shopId) {
+        var settings = {
+            "url": `/basket/${shopId}`,
+            "method": "POST",
+            "timeout": 0,
+            "headers": {
+                "X-CSRFToken": getCookie('csrftoken'), 
+                "Authorization": "Bearer {{ token }}",   
+            }
+        };
+        return $.ajax(settings)
+    }
+
+    async function addItemToCardApi(quantity, shopId, productId) {
+        let basketId = await getCart(shopId);
+        let token = "{{ token }}";  // توکن در قالب داینامیک
+
+        // تعریف هدر پیش‌فرض
+        let header = {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-CSRFToken": getCookie('csrftoken'),
+        };
+
+        // اگر توکن موجود باشد، Authorization را به هدر اضافه می‌کنیم
+        if (token !== "") {
+            header["Authorization"] = "Bearer " + token;
+        }
+
+        // تنظیمات برای درخواست AJAX
+        var settings = {
+            "url": `/basket/${basketId['basket_id']}/product/${productId}`,
+            "method": "POST",
+            "timeout": 0,
+            "headers": header,
+            "data": {
+                "unit": quantity,
+                "shop_id": shopId
+            }
+        };
+
+        // ارسال درخواست AJAX
+        $.ajax(settings).done(function (response) {
+            console.log("Product quantity updated:", response);
+            location.reload();
+        });
+    }
+</script>
+<script> 
+    let map;
+    let marker;
+    let loc = "{{ user.location }}"
+    let selectedLocation = {lat: {{ transaction.lat }}, lng: {{ transaction.lng }}};
+    if (loc !== "None" && loc != "") {
+        loc = loc.split(",")
+        selectedLocation = {lat: loc[0], lng: loc[1]};
+    }
+
+    function initMap() {
+        map = new L.Map("map", {
+            key: "web.3188f8eb47ad4ebebec20e3bb4bc9a11",
+            maptype: "dreamy-gold",
+            poi: false,
+            traffic: false,
+            center: selectedLocation, draggable: false,// مرکز نقشه
+            zoom: 16, // سطح زوم
+        });
+           marker = new L.Marker(selectedLocation, {draggable: false}).addTo(map);
+
+    
+
+    }
+
+    initMap()
+
+</script>
+<script>
+    function cancel_buy(basket) {   
+        var settings = {
+            "url": `/basket/cancel_cart/${basket}`,
+            "method": "DELETE",
+            "timeout": 0,
+            "headers": {
+                "Authorization": "Bearer {{token}}"  // Replace `token` with actual token value
+            },
+        };
+
+        $.ajax(settings).done(function (response) {
+              window.location.href = '/shop-transactions/';
+        });
+    }
+
+    function raod_to_pay(basket) {
+        var postalCode = $('#code_posti').val();
+        var address_details = $('#address_details').val();
+        console.log(selectedLocation)
+        console.log(postalCode)
+        console.log(address_details)
+        console.log("oamada {{ token }}")
+        var settings = {
+            "url": `/transaction/payment/start/${basket}`,
+            "method": "POST",
+            "timeout": 0,
+            "headers": {
+                "Authorization": "Bearer {{token}}"  // Replace `token` with actual token value
+            },
+            "data":{
+                "code_posti": postalCode,
+                "address": address_details,
+                "lat": selectedLocation.lat,
+                "lng": selectedLocation.lng
+            }
+        };
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+
+            // Check if payment URL is available
+            if (response.payment_url && response.payment_url.authority) {
+                var paymentUrl = `https://payment.zarinpal.com/pg/StartPay/${response.payment_url.authority}`;
+                window.location.href = paymentUrl; // Redirect to payment page
+            } else {
+                console.error("Payment URL is not available in the response");
+            }
+        });
+    }
+</script>
+</body>
+
+</html>

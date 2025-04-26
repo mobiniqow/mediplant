@@ -1,0 +1,774 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <title>Masterkart - الگوی HTML تجارت الکترونیک چند منظوره</title>
+    <meta name="keywords"
+          content="Bootstrap 5.x, ecommerce, farming, food market, grocery market, grocery shop, grocery store, grocery supper market, multi vendor, organic food, supermarket, supermarket grocery">
+    <meta name="description" content="Multipurpose eCommerce HTML Template">
+    <meta name="author" content="Pilarest">
+
+    <!-- site Favicon -->
+    <link rel="icon" href="{% static 'assets/img/favicon/favicon.png' %}" sizes="32x32">
+
+    <!-- css Icon Font -->
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/msicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
+
+    <!-- css All Plugins Files -->
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap-select.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/slick.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/nouislider.css' %}">
+
+    <!-- Main Style -->
+    <link rel="stylesheet" id="main_style" href="{% static 'assets/css/demo-1.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+    <link rel="stylesheet" class="color-css" href="{% static 'assets/css/color-01.css' %}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+
+</head>
+
+<body>
+<!-- Loader -->
+<div id="ms-overlay">
+    <div class="loader"></div>
+</div>
+
+{% include '../extentions/header.html' with categories=categories_map is_active=is_active medic_notification=medic_notification shop_notification=shop_notification %}
+
+<div class="ms-side-cat-overlay"></div>
+{% include '../extentions/shops_basket.html' with basket=basket toke=token %}
+<div class="ms-side-cart-overlay"></div>
+<div id="ms-side-cart" class="ms-side-cart">
+    <div class="ms-cart-inner">
+        <div class="ms-cart-top">
+            <div class="ms-cart-title">
+                <span class="cart_title">سبد خرید من</span>
+                <a href="javascript:void(0)" class="ms-cart-close"><img src="{% static 'assets/img/icons/close.svg' %}"
+                                                                        class="svg_img pro_svg" alt="close"></a>
+            </div>
+            <ul class="ms-cart-pro-items">
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/25_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="cart-pro-title">لیمو تازه</a>
+                        <span class="cart-price"><span>2500 تومان x</span> کیلوگرم</span>
+                        <div class="qty-plus-minus">
+                            <input class="qty-input" type="text" name="ms-qtybtn" value="1">
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/17_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="cart-pro-title">زنجبیل - ارگانیک</a>
+                        <span class="cart-price"><span>5000 تومان x</span> گرم</span>
+                        <div class="qty-plus-minus">
+                            <input class="qty-input" type="text" name="ms-qtybtn" value="1">
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/2_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="cart-pro-title"> بسته خرما</a>
+                        <span class="cart-price"><span>6000 تومان x</span> بسته</span>
+                        <div class="qty-plus-minus">
+                            <input class="qty-input" type="text" name="ms-qtybtn" value="1">
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="ms-cart-bottom">
+            <div class="cart-sub-total">
+                <table class="table cart-table">
+                    <tbody>
+                    <tr>
+                        <td class="text-left">جمع فرعی:</td>
+                        <td class="text-right">300 هزار</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">مالیات بر ارزش افزوده (20%):</td>
+                        <td class="text-right">60 هزار</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">جمع :</td>
+                        <td class="text-right primary-color">360 هزار</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="cart_btn">
+                <a href="cart.html" class="ms-btn-1">مشاهده سبد خرید</a>
+                <a href="checkout.html" class="ms-btn-2">بررسی خرید</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Cart sidebar End -->
+
+<!-- Wishlist sidebar Start -->
+<div class="ms-side-wish-overlay"></div>
+<div id="ms-side-wish" class="ms-side-wish">
+    <div class="ms-wish-inner">
+        <div class="ms-wish-top">
+            <div class="ms-wish-title">
+                <span class="wish_title">لیست علاقه مندی‌ها</span>
+                <a href="javascript:void(0)" class="ms-wish-close"><img src="{% static 'assets/img/icons/close.svg' %}"
+                                                                        class="svg_img pro_svg" alt="close"></a>
+            </div>
+            <ul class="ms-wish-pro-items">
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/18_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="wish-pro-title">لیمو</a>
+                        <span class="wish-price"><span>25 هزار x </span> کیلوگرم </span>
+                        <div class="ms-availability">
+                            <p class="stock avail">موجود در انبار</p>
+                            <a href="" class="ms-btn-2">خرید</a>
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/20_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="wish-pro-title">مارچوبه</a>
+                        <span class="wish-price"><span>5 هزار x</span> گرم</span>
+                        <div class="ms-availability">
+                            <p class="stock not-avail">موجودی</p>
+                            <div class="ms-wish-contact-btns">
+                                <a href="" class="ms-btn-2 btn-disabled">خرید</a>
+                                <a href="" class="ms-btn-1">مخاطب</a>
+                            </div>
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/31_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="wish-pro-title">انبه</a>
+                        <span class="wish-price"><span>59 هزار x</span> بسته</span>
+                        <div class="ms-availability">
+                            <p class="stock avail">موجود در انبار</p>
+                            <a href="" class="ms-btn-2">خرید</a>
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="product-left-sidebar.html" class="ms-pro-img"><img
+                            src="{% static 'assets/img/product-images/23_1.jpg' %}" alt="product"></a>
+                    <div class="ms-pro-content">
+                        <a href="product-left-sidebar.html" class="wish-pro-title">توت فرنگی</a>
+                        <span class="wish-price"><span>59 هزار x</span> کیلوگرم</span>
+                        <div class="ms-availability">
+                            <p class="stock avail">موجود در انبار</p>
+                            <a href="" class="ms-btn-2">خرید</a>
+                        </div>
+                        <a href="javascript:void(0)" class="remove">×</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="page-chat">
+
+
+    <div class="tabs" id="tab-buttons">
+        <button class="tab-button active" data-tab="0">گفتگو</button>
+        <button class="tab-button" data-tab="1">نسخه</button>
+    </div>
+
+    <div id="tab-contents">
+        <div class="tab-content active" id="tab-0">
+            <div class="box-chat" id="chatContainer">
+                <!-- <div class="user">
+                    <img class="img-admin" src="./assets/img/bg/news.jpg">
+                    <div class="chat-user">
+                        sdasddadsdad
+                        <p class="time">
+                            12345
+                            <img src="./assets/img/icons/watch.png" class="time-watch-img" alt="">
+                        </p>
+                    </div>
+                </div>
+                <div class="admin">
+                    <div class="chat-admin">
+                        ascascdasdcac
+                        <p class="time-admin">
+                            12345
+                            <img src="./assets/img/icons/watch.png" class="time-watch-img" alt="">
+                        </p>
+                    </div>
+                    <img class="img-admin" src="./assets/img/bg/news.jpg">
+                </div> -->
+            </div>
+            <div class="box-sent-message mt-2">
+                <div class="detail-file-uploader" style="display: flex; align-items: center; gap: 10px;">
+                    <button id="deleteFileBtn"
+                            style="display: none; background: none; border: none; cursor: pointer; font-size: 18px; margin-top: 8px;"
+                            onclick="clearFileSelection()">🗑️
+                    </button>
+                    <img id="filePreview" style="display: none; max-width: 200px; margin-top: 10px; width: 30px;">
+                    <span id="fileName" class="file-name"></span>
+                </div>
+
+                <div class="inset-box-sent-message">
+                    <button class="btn-sent-message">
+                        <img class="img-sent" src="{% static 'assets/img/icons/send_3608124.png' %}">
+                    </button>
+                    <input class="input-text" placeholder="متن خود را بنویسید" type="text">
+                    <label class="file-label" for="fileInput">
+                        <img src="{% static 'assets/img/icons/folder_3628828.png' %}" class="file-label-img" alt="">
+                    </label>
+                    <input type="file" id="fileInput" class="hidden" onchange="updateFilePreview()">
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content tab-content-two" id="tab-1">
+            <div class="titr-list-prescription">
+                <div>
+                    <p>موضوع</p>
+                </div>
+                <div>
+                    <p>تاریخ</p>
+                </div>
+                <div style="text-align: left; padding-left: 45px;">
+                    <p>مشاهده</p>
+                </div>
+            </div>
+            <ul>
+                <li class="list-prescription">
+                    <div>
+                        <p>لورم ایپسوم</p>
+                    </div>
+                    <div>
+                        <p>۱۱۱۱</p>
+                    </div>
+                    <div style="text-align: left; padding-left: 24px;">
+                        <button onclick="openModal('این یک متن همراه با تصویر است', 'https://example.com/image.jpg')">
+                            دریافت نسخه
+                        </button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <!-- <span class="close-btn" onclick="closeModal()">&times;</span> -->
+        <div id="modal-body">
+        </div>
+        <button class="btn-close-modal" onclick="closeModal()">بستن</button>
+    </div>
+</div>
+
+<!-- Footer Start -->
+{% include '../extentions/footer.html' %}
+<!-- Footer Area End -->
+
+<!-- Quickview Modal -->
+<div class="modal fade quickview-modal" id="ms_quickview_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <button type="button" class="btn-close qty_close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-5 col-sm-12 col-xs-12" dir="ltr">
+                        <div class="qty-product-cover">
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/1_1.jpg' %}"
+                                     alt="">
+                            </div>
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/2_1.jpg' %}"
+                                     alt="">
+                            </div>
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/3_1.jpg' %}"
+                                     alt="">
+                            </div>
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/4_1.jpg' %}"
+                                     alt="">
+                            </div>
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/5_1.jpg' %}"
+                                     alt="">
+                            </div>
+                        </div>
+                        <div class="qty-nav-thumb">
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/1_1.jpg' %}"
+                                     alt="">
+                            </div>
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/2_1.jpg' %}"
+                                     alt="">
+                            </div>
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/3_1.jpg' %}"
+                                     alt="">
+                            </div>
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/4_1.jpg' %}"
+                                     alt="">
+                            </div>
+                            <div class="qty-slide">
+                                <img class="img-responsive" src="{% static 'assets/img/product-images/5_1.jpg' %}"
+                                     alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-sm-12 col-xs-12">
+                        <div class="quickview-pro-content">
+                            <h5 class="ms-quick-title"><a href="product-left-sidebar.html">پاکت میوه خشک مخلوط تریل
+                                ارگانیک مرغوب</a></h5>
+                            <div class="ms-quickview-rating">
+                                <i class="fa-solid fa-star fill"></i>
+                                <i class="fa-solid fa-star fill"></i>
+                                <i class="fa-solid fa-star fill"></i>
+                                <i class="fa-solid fa-star fill"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+
+                            <div class="ms-quickview-desc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                                با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان
+                                که لازم است
+                            </div>
+                            <div class="ms-quickview-price">
+                                <span class="new-price">150 هزار تومان</span>
+                                <span class="old-price">130 هزار تومان</span>
+                            </div>
+
+                            <div class="ms-pro-variation">
+                                <div class="ms-pro-variation-inner ms-pro-variation-size ms-pro-size">
+                                    <span>اندازه</span>
+                                    <div class="ms-pro-variation-content">
+                                        <ul class="ms-opt-size">
+                                            <li class="active"><a href="javascript:void(0)" class="ms-opt-sz"
+                                                                  data-tooltip="Small">250 گرم</a></li>
+                                            <li><a href="javascript:void(0)" class="ms-opt-sz" data-tooltip="Medium">500
+                                                گرم</a></li>
+                                            <li><a href="javascript:void(0)" class="ms-opt-sz" data-tooltip="Large">1
+                                                کیلوگرم</a></li>
+                                            <li><a href="javascript:void(0)" class="ms-opt-sz"
+                                                   data-tooltip="Extra Large">2 کیلوگرم</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ms-quickview-qty">
+                                <div class="qty-plus-minus">
+                                    <input class="qty-input" type="text" name="ms_qtybtn" value="1">
+                                </div>
+                                <div class="ms-quickview-cart ">
+                                    <button class="ms-btn-3"><img src="{% static 'assets/img/icons/pro_cart.svg' %}"
+                                                                  class="svg_img pro_svg" alt=""> خرید
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Quickview Modal end -->
+
+
+<!-- خرید Notify -->
+<div class="ms-cart-notify">
+    <a href="javascript:void(0)" class="ms-cart-toggle"><img src="{% static 'assets/img/icons/pro_cart.svg' %}"
+                                                             class="svg_img" alt="cart"><span>3</span></a>
+</div>
+
+<!-- Add to Wishlist Notify  -->
+<div class="ms-wish-notify"></div>
+
+<!-- Add to Compare list Notify  -->
+<div class="ms-compare-notify"></div>
+
+<!-- Back to top  -->
+<a class="ms-back-to-top"></a>
+
+<!-- Add to Compare list Notify  -->
+<div class="ms-compare-notify"></div>
+
+<!-- Features sidebar  -->
+<div class="ms-features-sidebar-overlay"></div>
+<div class="ms-features-sidebar">
+    <div class="tool-title">
+        <h3>تنظیمات</h3>
+    </div>
+    <a href="#" class="ms-tools-sidebar-toggle open-features">
+        <img alt="icon" src="{% static 'assets/img/icons/setting.svg' %}" class="svg_img">
+    </a>
+    <div class="ms-features-block">
+        <div class="ms-features-title">رنگ‌ها</div>
+        <ul class="bg-panel ms-change-color">
+            <li class="active" data-color="01">
+                <a href="javascript:void(0)" class="colorcode1"></a>
+            </li>
+            <li data-color="02">
+                <a href="javascript:void(0)" class="colorcode2"></a>
+            </li>
+            <li data-color="03">
+                <a href="javascript:void(0)" class="colorcode3"></a>
+            </li>
+            <li data-color="04">
+                <a href="javascript:void(0)" class="colorcode4"></a>
+            </li>
+            <li data-color="05">
+                <a href="javascript:void(0)" class="colorcode5"></a>
+            </li>
+            <li data-color="06">
+                <a href="javascript:void(0)" class="colorcode6"></a>
+            </li>
+            <li data-color="07" class="">
+                <a href="javascript:void(0)" class="colorcode7"></a>
+            </li>
+            <li data-color="08">
+                <a href="javascript:void(0)" class="colorcode8"></a>
+            </li>
+            <li data-color="09">
+                <a href="javascript:void(0)" class="colorcode9"></a>
+            </li>
+        </ul>
+    </div>
+    <div class="ms-features-block">
+        <div class="ms-tools-sidebar-content">
+            <div class="ms-features-title">حالت پس رمینه</div>
+            <div class="ms-change-mode active" id="ms-change-mode">
+                <div class="ms-mode-switch">
+                    <div class="ms-mode-btn">انتخاب</div>
+                    <div class="ms-mode-on">روشن</div>
+                    <div class="ms-mode-off">خاموش</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Plugins JS -->
+<script src="{% static 'assets/js/plugins/jquery-3.5.1.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/popper.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/bootstrap-select.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/fontawesome.js' %}"></script>
+<script src="{% static 'assets/js/plugins/owl.carousel.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/infiniteslidev2.js' %}"></script>
+<script src="{% static 'assets/js/plugins/jquery.zoom.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/slick.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/nouislider.js' %}"></script>
+
+<!-- Main Js -->
+<script src="{% static 'assets/js/main.js' %}"></script>
+<script src="{% static 'assets/js/demo-1.js' %}"></script>
+
+<!--  -->
+
+<script>
+    let socket;
+
+    function initializeSocket() {
+        socket = new WebSocket("ws://localhost:8000/ws/chat/");
+
+        socket.onopen = function () {
+            console.log("WebSocket is open");
+        };
+
+        socket.onmessage = function (event) {
+            console.log("Message from server:", event.data);
+ 
+            window.location.reload();
+ 
+        };
+    }
+
+    initializeSocket()
+    document.addEventListener("DOMContentLoaded", function () {
+        const buttons = document.querySelectorAll(".tab-button");
+        const contents = document.querySelectorAll(".tab-content");
+
+        buttons.forEach(button => {
+            button.addEventListener("click", function () {
+                const tabIndex = this.getAttribute("data-tab");
+
+                buttons.forEach(btn => btn.classList.remove("active"));
+                contents.forEach(content => content.classList.remove("active"));
+
+                this.classList.add("active");
+                document.getElementById(`tab-${tabIndex}`).classList.add("active");
+            });
+        });
+    });
+
+    function updateFilePreview() {
+        const fileInput = document.getElementById("fileInput");
+        const fileNameSpan = document.getElementById("fileName");
+        const filePreview = document.getElementById("filePreview");
+        const deleteFileBtn = document.getElementById("deleteFileBtn");
+
+        if (fileInput.files.length > 0) {
+            const file = fileInput.files[0];
+            fileNameSpan.textContent = file.name;
+            deleteFileBtn.style.display = "inline-block"; // نمایش دکمه حذف
+
+            // بررسی نوع فایل
+            if (file.type.startsWith("image/")) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    filePreview.src = e.target.result;
+                    filePreview.style.display = "block";
+                };
+                reader.readAsDataURL(file);
+            } else {
+                filePreview.style.display = "none";
+            }
+        } else {
+            clearFileSelection();
+        }
+    }
+ 
+    function clearFileSelection() {
+        const fileInput = document.getElementById("fileInput");
+        const fileNameSpan = document.getElementById("fileName");
+        const filePreview = document.getElementById("filePreview");
+        const deleteFileBtn = document.getElementById("deleteFileBtn");
+
+        fileInput.value = ""; // پاک کردن انتخاب فایل
+        fileNameSpan.textContent = "";
+        filePreview.style.display = "none";
+        deleteFileBtn.style.display = "none"; // مخفی کردن دکمه حذف
+    }
+function scrollToBottom() {
+    const chatContainer = document.getElementById("chatContainer");
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+}
+
+// بعد از اضافه شدن پیام، این تابع را صدا بزنید: 
+
+    function displayMessage(is_user, message, time, is_read, caption = "", url = "") {
+        const chatContainer = document.getElementById("chatContainer");
+        const readIcon = is_read
+            ? '<img src="{% static 'assets/img/icons/double-tick.png' %}" style="width: 20px; height: 20px;" alt="Read">'
+            : '<img src="{% static 'assets/img/icons/tick-vector.png' %}" style="width: 20px; height: 20px;" alt="Unread">';
+        let modifiedMessage = `<p style="font-size: 14px; color: black;">${message}</p>`;
+        if (url) {
+            if (url.match(/\.(jpeg|jpg|png|gif|svg)$/i)) {
+                // نمایش تصویر
+                modifiedMessage += `
+                <img src="${url}" alt="تصویر ارسال‌شده" style="max-width: 200px; border-radius: 8px; margin-top: 5px;">
+                <p style="font-size: 14px; color: black; margin-top: 3px; font-weight: bold;">${caption}</p>
+            `;
+            } else if (url.match(/\.(mp3|wav|ogg|aac|flac|m4a|wma)$/i)) {
+                // نمایش پلیر صوتی
+                modifiedMessage += `
+                <audio controls style="margin-top: 5px; width: 200px;">
+                    <source src="${url}" type="audio/${url.split('.').pop()}">
+                    مرورگر شما از پخش این فرمت صوتی پشتیبانی نمی‌کند.
+                </audio>
+                <p style="font-size: 14px; color: black; margin-top: 3px; font-weight: bold;">${caption}</p>
+            `;
+            }
+        }
+
+        const messageHTML = is_user ?
+            `<div class="user">
+                <img class="img-admin" src="{% static 'assets/img/bg/news.jpg' %}">
+                <div class="chat-user">
+                    ${modifiedMessage}
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        ${readIcon}
+                        <p class="time">
+                            ${time}
+                            <img src="{% static 'assets/img/icons/watch.png' %}" class="time-watch-img" alt="">
+                        </p>
+                    </div>
+                </div>
+            </div>`
+            :
+            `<div class="admin">
+                <div class="chat-admin">
+                    ${modifiedMessage}
+                    <p class="time-admin">
+                        ${time}
+                        <img src="{% static 'assets/img/icons/watch.png' %}" class="time-watch-img" alt="">
+                    </p>
+                </div>
+                <img class="img-admin" src="{% static 'assets/img/bg/news.jpg' %}">
+            </div>`;
+
+        chatContainer.innerHTML += messageHTML;
+                    scrollToBottom();
+
+    }
+     
+
+    {% for i in chats %}
+        displayMessage({{i.is_doctor}}, "{{ i.content }}", '{{ i.created_at }}', {{ i.is_read }}, caption = '', url = "{{ i.media_url }}");
+        
+    {% endfor %}
+
+    async function sendMessage() {
+        const fileInput = document.getElementById("fileInput");
+        const textInput = document.querySelector(".input-text");
+        const file = fileInput.files[0];
+        const messageText = textInput.value.trim();
+        if (!messageText && !file) {
+            alert("لطفاً یک پیام یا فایل ارسال کنید.");
+            return;
+        }
+        const formData = new FormData();
+        if (messageText) formData.append("message", messageText);
+        if (file) formData.append("file", file);
+        console.log(messageText, file)
+        clearFileSelection()
+        textInput.value = "";
+        sendMessageApi(file, messageText)
+    }
+    
+    function notifToUser(docktor_id){
+        const messageData = {
+            content: docktor_id,
+        };
+        socket.send(JSON.stringify(messageData));
+        console.log("پیام با موفقیت ارسال شد:", messageData);
+    }
+    
+    function sendMessageApi(file, message) {
+        var url = "/doctor-request/doctor-visit/{{ doctor.id }}/send-message/";
+        var formData = new FormData(); 
+        if (message) {
+            formData.append("content", message);
+        } 
+        if (file) {
+            formData.append("media", file);
+        } 
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            headers: {
+                "Authorization": "Bearer " + '{{token}}'
+            },
+            success: function (response) {
+                console.log("پیام با موفقیت ارسال شد:", response); 
+                var is_user = false;  
+                var displayText = response.content ? response.content : "";
+                var mediaUrl = response.media ? response.media : ""; 
+                var timestamp = new Date().toLocaleTimeString("fa-IR", {hour: "2-digit", minute: "2-digit"}); 
+                displayMessage(is_user, displayText, timestamp, false, "", mediaUrl);
+                notifToUser({{ doctor.id }});
+            },
+            error: function (xhr, status, error) {
+                console.error("خطا در ارسال پیام:", xhr.responseText || error);
+            }
+        });
+    }
+
+
+
+    function clearFileSelection() {
+        const fileInput = document.getElementById("fileInput");
+        const fileNameSpan = document.getElementById("fileName");
+        const filePreview = document.getElementById("filePreview");
+        const deleteFileBtn = document.getElementById("deleteFileBtn");
+
+        fileInput.value = "";
+        fileNameSpan.textContent = "";
+        filePreview.style.display = "none";
+        deleteFileBtn.style.display = "none";
+    }
+
+    // اضافه کردن رویداد به دکمه ارسال
+    document.querySelector(".btn-sent-message").addEventListener("click", sendMessage);
+
+    // function openModal() {
+    //     document.getElementById("myModal").style.display = "flex";
+    // }
+
+    // function closeModal() {
+    //     document.getElementById("myModal").style.display = "none";
+    // }
+
+    function openModal(text, mediaUrl) {
+        const modal = document.getElementById("myModal");
+        const modalBody = document.getElementById("modal-body");
+
+        let content = "";
+
+        // بررسی اینکه آیا mediaUrl یک تصویر است
+        if (mediaUrl.match(/\.(jpeg|jpg|png|gif|svg)$/i)) {
+            content += `<img download class="img-visit" src="${mediaUrl}" alt="تصویر" style="max-width: 100%; border-radius: 8px;">`;
+        }
+        // بررسی اینکه آیا mediaUrl یک فایل صوتی mp3 است
+        else if (mediaUrl.match(/\.(mp3)$/i)) {
+            content += `
+                    <audio controls style="margin-top: 5px; width: 100%;">
+                        <source src="${mediaUrl}" type="audio/mpeg">
+                        مرورگر شما از پخش صوت پشتیبانی نمی‌کند.
+                    </audio>
+                `;
+        }
+        if (text) {
+            content += `<p style="margin-top: 16px;">${text}</p>`;
+        }
+        modalBody.innerHTML = content;
+        modal.style.display = "flex";
+        openModal(
+            'این یک متن تستی است.',
+            'https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Sunflower_from_Silesia2.jpg/1280px-Sunflower_from_Silesia2.jpg',
+        );
+    }
+
+    function closeModal() {
+        document.getElementById("myModal").style.display = "none";
+    }
+
+    window.onclick = function (event) {
+        const modal = document.getElementById("myModal");
+        if (event.target === modal) {
+            closeModal();
+        }
+    };
+
+</script>
+</body>
+
+</html>
