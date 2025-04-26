@@ -3,11 +3,10 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
 from django.shortcuts import get_object_or_404
-from .models import Ticket, Message, TicketSection, TicketState
+from .models import Ticket, TicketSection, TicketState
 from .serializers import TicketSerializer, MessageSerializer, TicketSectionSerializer
 
 
-# ✅ ایجاد و لیست کردن تیکت‌ها
 class TicketListCreateView(generics.CreateAPIView, generics.ListAPIView):
     serializer_class = TicketSerializer
 
@@ -18,7 +17,6 @@ class TicketListCreateView(generics.CreateAPIView, generics.ListAPIView):
         serializer.save(user=self.request.user)
 
 
-# ✅ نمایش جزئیات یک تیکت خاص و تغییر وضعیت آن
 class TicketDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = TicketSerializer
 
@@ -26,7 +24,6 @@ class TicketDetailView(generics.RetrieveUpdateDestroyAPIView):
         return Ticket.objects.all().order_by('-created_at')
 
 
-# ✅ ارسال پیام جدید در یک تیکت خاص
 class MessageCreateView(generics.CreateAPIView):
     serializer_class = MessageSerializer
     permission_classes = [permissions.IsAuthenticated]
@@ -37,7 +34,6 @@ class MessageCreateView(generics.CreateAPIView):
         serializer.save(ticket=ticket, sender=self.request.user)
 
 
-# ✅ اختصاص دادن تیکت به یک پزشک یا فروشنده توسط ادمین
 class TicketAssignView(APIView):
     permission_classes = [permissions.IsAdminUser]
 
@@ -55,7 +51,6 @@ class TicketAssignView(APIView):
         return Response({"message": "Ticket assigned successfully"}, status=status.HTTP_200_OK)
 
 
-# ✅ دریافت لیست تیکت‌های کاربر (فروشنده/پزشک)
 class UserTicketsView(generics.ListAPIView):
     serializer_class = TicketSerializer
     permission_classes = [permissions.IsAuthenticated]
@@ -64,7 +59,6 @@ class UserTicketsView(generics.ListAPIView):
         return Ticket.objects.filter(assigned_to=self.request.user)
 
 
-# ✅ دریافت لیست همه تیکت‌ها برای ادمین
 class AdminTicketListView(generics.ListAPIView):
     serializer_class = TicketSerializer
     permission_classes = [permissions.IsAdminUser]
