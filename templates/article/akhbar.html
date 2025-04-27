@@ -229,7 +229,7 @@
 
 <div class="container">
     <div class="tab-buttons">
-        <button class="tab-btn active" data-tab="0">دانشنامه دارو های ترکیبی</button>
+        <button class="tab-btn active" data-tab="0"> دانشنامه دارو های ترکیبی</button>
         <button class="tab-btn" data-tab="1">دانشنامه مقالات</button>
         <button class="tab-btn" data-tab="2">دایره المعارف بیماری ها</button>
         <button class="tab-btn" data-tab="3">دایره المعارف گیاهی</button>
@@ -473,22 +473,27 @@ function loadContent(type, page = 1) {
         url = `/article/api/news/?page=${page}`;
         container = '#blog-list';
         paginationContainer = '#pagination';
+        detailBaseUrl = '/blog/news'; 
     } else if (type === 'combined-drugs') {
         url = `/article/api/combined-drugs/?page=${page}`;
         container = '#blog-darohae-tarkibi';
         paginationContainer = '#pagination-tarkibi';
+        detailBaseUrl = '/blog/encyclopedia-combined-drugs'; 
     } else if (type === 'diseases') {
         url = `/article/api/diseases/?page=${page}`;
         container = '#blog-list-bimariha';
         paginationContainer = '#pagination-bimariha';
+        detailBaseUrl = '/blog/encyclopedia-article-diseases'; 
     } else if (type === 'giahan') {
         url = `/article/api/herbal-encyclopedia/?page=${page}`;
         container = '#blog-list-giahan';
         paginationContainer = '#pagination-giahan';
+        detailBaseUrl = '/blog/encyclopedia-article-herbal'; 
     } else if (type === 'blog-list-maghale') {
         url = `/article/api/article-encyclopedia/?page=${page}`;
         container = '#blog-list-maghale';
         paginationContainer = '#pagination-maghale';
+        detailBaseUrl = '/blog/encyclopedia-combined-drugs'; 
     }
 
     $.ajax({
@@ -501,11 +506,12 @@ function loadContent(type, page = 1) {
             data.results.forEach(function (item) {
                 const imageUrl = item.images?.[0]?.image || item.image || '/default-image.jpg';
                 const hashtags = item.hashtags ? `#${item.hashtags.join(' #')}` : '';
+                const itemUrl = `${detailBaseUrl}/${item.id}`;
 
                 const itemHTML = `
                     <div class="news-info">
                         <figure class="news-img">
-                            <a href="${type === 'news' ? '#' : `/article/details/${item.id}`}">
+                            <a href="${itemUrl}">
                                 <img src="${imageUrl}" alt="تصویر">
                             </a>
                         </figure>
@@ -514,10 +520,10 @@ function loadContent(type, page = 1) {
                                 <label>${item.created_at?.split('T')[0] || ''}</label>
                                 <a href="#" class="detail-a">${item.classification || hashtags}</a>
                             </div>
-                            <h3><a href="${type === 'news' ? '#' : `/article/details/${item.id}`}">${item.title || item.name}</a></h3>
+                            <h3><a href="${itemUrl}">${item.title || item.name}</a></h3>
                             <p class="text-length">${item.excerpt || item.bomi || ''}</p>
                             <div class="more-info">
-                                <a href="${type === 'news' ? item.id : `/article/details/${item.id}`}">ادامه مطلب<span></span></a>
+                                <a href="${itemUrl}">ادامه مطلب<span></span></a>
                             </div>
                         </div>
                     </div>
