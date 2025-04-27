@@ -64,24 +64,14 @@ class Transaction(models.Model):
         return f"Transaction {self.transaction_type} - {self.amount} - {self.status}"
 
     def get_shamsi_date(self):
-        """تبدیل تاریخ میلادی به تاریخ شمسی"""
         return jdatetime.datetime.fromgregorian(datetime=self.timestamp).strftime('%Y/%m/%d')
 
     def get_transaction_details(self):
-        """بازگشت جزئیات پرداخت به صورت شمسی"""
         return {
             'amount': self.amount,
             'card_number': self.card,  # اگر شماره کارت موجود باشد
             'date_shamsi': self.get_shamsi_date(),
         }
-    # def save(self, *args, **kwargs):
-    #     if self.transaction_type == 'deposit' and self.status == 'success':
-    #         # پرداخت موفق
-    #         # cart = SaleBasket.objects.filter(user=self.user).first()
-    #         # cart
-    #         # if cart:
-    #         #     cart.items.all().delete()
-    #     super().save(*args, **kwargs)
 
 
 class Payment(models.Model):
@@ -98,7 +88,6 @@ class Payment(models.Model):
         return f"Payment for {self.cart.user.user_name} - {self.status}"
 
     def initiate_payment(self):
-        # Logic to start the payment using Zarinpal API
         amount = self.cart.price
         if amount <= 0:
             raise ValueError("سبد خرید خالی است یا مبلغ پرداخت صحیح نیست.")

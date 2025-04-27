@@ -329,38 +329,36 @@
             <h2 class="ms-title">ورود<span></span></h2>
             <p>به سفارشات، لیست خواسته ها و توصیه های خود دسترسی پیدا کنید</p>
         </div>
-      <div class="ms-login-content p-t-15">
-    <div class="ms-login-box">
-        <div class="ms-login-wrapper">
-            <div class="ms-login-container">
-                <div class="ms-login-form">
-                    <form method="POST">
-                        <span class="ms-login-wrap">
-                            <label>شماره تلفن</label>
-                            {% csrf_token %}
-                            <input id="id_phone" maxlength="12" type="text" name="phone" placeholder="شماره خود را وارد کنید" required />
-                        </span>
-                        <span class="ms-login-wrap ms-login-btn">
-                            <button class="ms-btn-2 btn" type="submit">ورود</button>
-                        </span>
-                    </form>
-                    <p>{{ error }}</p>
+        <div class="ms-login-content p-t-15">
+            <div class="ms-login-box">
+                <div class="ms-login-wrapper">
+                    <div class="ms-login-container">
+                        <div class="ms-login-form">
+                            <form id="login-form">
+                <span class="ms-login-wrap">
+                  <label>شماره تلفن</label>
+                  {% csrf_token %}
+                  <input id="id_phone" maxlength="12" type="text" name="phone" placeholder="شماره خود را وارد کنید"
+                         required/>
+                </span>
+                                <span class="ms-login-wrap ms-login-btn">
+                  <button class="ms-btn-2 btn" type="submit">ورود</button>
+                </span>
+                            </form>
+                            <p id="error-message" style="color: red;"></p>
+                            <p id="success-message" style="color: green;"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ms-login-box d-n-991">
+                <div class="ms-login-img">
+                    <img src="{% static 'assets/img/common/login.png' %}" alt="login">
                 </div>
             </div>
         </div>
     </div>
-    <div class="ms-login-box d-n-991">
-        <div class="ms-login-img">
-            <img src="{% static 'assets/img/common/login.png' %}" alt="login">
-        </div>
-    </div>
-</div>
-
-    </div>
 </section>
-<!-- Login section End -->
-
-<!-- Footer Start -->
 <footer class="ms-footer m-t-30">
     <div class="footer-container">
         <div class="footer-top padding-tb-60">
@@ -485,7 +483,8 @@
                         <!-- Footer Copyright Start -->
                         <div class="footer-copy">
                             <div class="footer-bottom-copy ">
-                                <div class="ms-copy">کپی رایت © <a class="site-name" href="../shop/index.html">پیلارست</a>
+                                <div class="ms-copy">کپی رایت © <a class="site-name"
+                                                                   href="../shop/index.html">پیلارست</a>
                                     تمامی حقوق محفوظ است. پشتیبانی شده توسط Pilarest
                                 </div>
                             </div>
@@ -522,6 +521,42 @@
 
 <!-- Main Js -->
 <script src="{% static 'assets/js/main.js' %}"></script>
+<script>
+    document.getElementById('login-form').addEventListener('submit', async function (e) {
+        e.preventDefault(); 
+        const phone = document.getElementById('id_phone').value.trim();
+        const errorMessage = document.getElementById('error-message');
+        const successMessage = document.getElementById('success-message'); 
+        errorMessage.textContent = '';
+        successMessage.textContent = ''; 
+        try {
+            const response = await fetch('/account/api/v1/login/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({phone: phone})
+            }); 
+            const data = await response.json(); 
+            if (response.ok) {
+                successMessage.textContent = data.message || "کد با موفقیت ارسال شد";
+                setTimeout(() => {
+                    window.location.href = `/verify/${phone}/`;
+                }, 1000); // 1 ثانیه بعد منتقل میشه
+            } else {
+                if (data.phone) {
+                    errorMessage.textContent = data.phone[0];
+                } else {
+                    errorMessage.textContent = "خطایی رخ داده است. لطفا دوباره تلاش کنید.";
+                }
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            errorMessage.textContent = "مشکلی در ارتباط با سرور پیش آمد.";
+        }
+    });
+</script>
 </body>
 
 </html>

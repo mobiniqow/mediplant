@@ -251,7 +251,7 @@
 <!-- Cart sidebar Start -->
 <div class="ms-side-cart-overlay"></div>
 {% include '../extentions/shops_basket.html' with basket=basket toke=token %}
- 
+
 <!-- Cart sidebar End -->
 
 <!-- Wishlist sidebar Start -->
@@ -352,43 +352,42 @@
 
 <!-- Login section -->
 <section class="ms-login padding-tb-30">
-    <div class="container">
-        <div class="section-title-2">
-            <h2 class="ms-title">ورود<span></span></h2>
-            <p>به سفارشات، لیست خواسته ها و توصیه های خود دسترسی پیدا کنید</p>
-        </div>
-        <div class="ms-login-content p-t-15">
-            <div class="ms-login-box">
-                <div class="ms-login-wrapper">
-                    <div class="ms-login-container">
-                        <div class="ms-login-form">
-                            <form method="POST">
-
-                                    <span class="ms-login-wrap">
-                                        <label>کد رو وارد کنید</label>
-                                        {% csrf_token %}
-                                        <input type="text" name="code" placeholder="کد ارسال شده را وارد کنید" required>
-                                        <input type="hidden" name="phone" maxlength="4" value="{{ phone }}" required>
-                                    </span>
-
-                                    <span class="ms-login-wrap ms-login-btn">
-                                        <button class="ms-btn-2 btn" type="submit">تایید</button>
-                                    </span>
-
-                            </form>
-                                 <p>{{ error }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="ms-login-box d-n-991">
-                <div class="ms-login-img">
-                    <img src="{% static 'assets/img/common/login.png' %}" alt="login">
-                </div>
-            </div>
-        </div>
+  <div class="container">
+    <div class="section-title-2">
+      <h2 class="ms-title">ورود<span></span></h2>
+      <p>به سفارشات، لیست خواسته ها و توصیه های خود دسترسی پیدا کنید</p>
     </div>
+    <div class="ms-login-content p-t-15">
+      <div class="ms-login-box">
+        <div class="ms-login-wrapper">
+          <div class="ms-login-container">
+            <div class="ms-login-form">
+              <form id="verify-form">
+                <span class="ms-login-wrap">
+                  <label>کد را وارد کنید</label>
+                  {% csrf_token %}
+                  <input id="id_code" type="text" name="code" placeholder="کد ارسال شده را وارد کنید" required>
+                  <input id="id_phone" type="hidden" name="phone" maxlength="12" value="{{ phone }}" required>
+                </span>
+
+                <span class="ms-login-wrap ms-login-btn">
+                  <button id="submit-btn" class="ms-btn-2 btn" type="submit">تایید</button>
+                </span>
+              </form>
+              <p id="error-message" style="color: red;"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ms-login-box d-n-991">
+        <div class="ms-login-img">
+          <img src="{% static 'assets/img/common/login.png' %}" alt="login">
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+
 <!-- Login section End -->
 
 <!-- Footer Start -->
@@ -515,7 +514,8 @@
                         <!-- Footer Copyright Start -->
                         <div class="footer-copy">
                             <div class="footer-bottom-copy ">
-                                <div class="ms-copy">کپی رایت © <a class="site-name" href="../shop/index.html">پیلارست</a> تمامی
+                                <div class="ms-copy">کپی رایت © <a class="site-name"
+                                                                   href="../shop/index.html">پیلارست</a> تمامی
                                     حقوق محفوظ است. پشتیبانی شده توسط Pilarest
                                 </div>
                             </div>
@@ -609,6 +609,60 @@
 
 <!-- Main Js -->
 <script src="{% static 'assets/js/main.js' %}"></script>
+<script>
+document.getElementById('verify-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const phone = document.getElementById('id_phone').value.trim();
+  const code = document.getElementById('id_code').value.trim();
+  const errorMessage = document.getElementById('error-message');
+  const submitBtn = document.getElementById('submit-btn');
+
+  errorMessage.textContent = '';
+  submitBtn.disabled = true;
+  submitBtn.textContent = "در حال تایید...";
+
+  try {
+    const response = await fetch('/account/api/v1/verify/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({ phone: phone, password: code })
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      if (data.access && data.refresh) {
+        // ذخیره در کوکی (1 روز اعتبار)
+        document.cookie = `access_token=${data.access}; path=/; max-age=${60 * 60 * 24};`;
+        document.cookie = `refresh_token=${data.refresh}; path=/; max-age=${60 * 60 * 24};`;
+
+        // ریدایرکت به صفحه اصلی
+        window.location.href = '/';
+      } else {
+        errorMessage.textContent = "توکن دریافتی نامعتبر است.";
+      }
+    } else {
+      if (data.non_field_errors) {
+        errorMessage.textContent = data.non_field_errors[0];
+      } else if (data.password) {
+        errorMessage.textContent = data.password[0];
+      } else {
+        errorMessage.textContent = "خطایی رخ داده است. لطفا دوباره تلاش کنید.";
+      }
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    errorMessage.textContent = "مشکلی در ارتباط با سرور پیش آمد.";
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = "تایید";
+  }
+});
+</script>
 </body>
 
 </html>
