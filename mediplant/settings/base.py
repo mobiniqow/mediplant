@@ -1,5 +1,7 @@
 from pathlib import Path
 
+import wallet.apps
+
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 SECRET_KEY = 'django-insecure-66m-$ghl%c523szciay*#l3a6vy(q^m8yh$oids82ikcriig95'
 
@@ -41,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'rest_framework',
     'django_filters',
+    'wallet.apps.WalletConfig',
 ]
 
 MIDDLEWARE = [

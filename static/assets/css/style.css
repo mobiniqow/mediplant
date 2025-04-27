@@ -5699,6 +5699,59 @@ body.ms-menu-open:before {
     max-width: 70%;
     margin: auto;
 }
+.disease-images{
+    display: grid;
+    gap: 10px;
+}
+.detail-blog{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.title-blog-single{
+    border-right: 2px solid #ccc;
+    margin: 0;
+}
+.t-top{
+    padding-right: 8px;
+}
+.disease-latin-name{
+    margin: 0;
+}
+.title-blog-single-b{
+    border-right: none;
+}
+@media only screen and (max-width: 1200px) {
+    .ms-single-blog-item .single-blog-info .single-blog-detail{
+        max-width: 99%;
+    }
+    .img-banner-news{
+        display: grid !important;
+    }
+    .disease-images{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+    }
+    .ms-slider-content,
+    .herbal-info-section {
+        width: 100% !important;
+        margin: auto;
+    }
+
+}
+@media only screen and (max-width: 480px) {
+    .detail-blog{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .title-blog-single{
+        border-right: none;
+        padding-right: 0px;
+    }
+    .responsive{
+        margin-top: 12px;
+    }
+}
 .title-blog-single{
     font-size: 20px;
     margin-bottom: 0;
@@ -10168,52 +10221,5 @@ body.ms-menu-open:before {
 }
 .detail-doctor{
     margin-right: 18px !important;
-}
-
-
-/* purya added */
-
-.detail-blog{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-.title-blog-single{
-    border-right: 2px solid #ccc;
-    margin: 0;
-}
-.t-top{
-    padding-right: 8px;
-}
-.disease-latin-name{
-    margin: 0;
-}
-.title-blog-single-b{
-    border-right: none;
-}
-@media only screen and (max-width: 1200px) {
-    .ms-single-blog-item .single-blog-info .single-blog-detail{
-        max-width: 99%;
-    }
-    .img-banner-news{
-        display: grid !important;
-    }
-    .disease-images{
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 10px;
-    }
-}
-@media only screen and (max-width: 480px) {
-    .detail-blog{
-        display: grid;
-        grid-template-columns: 1fr;
-    }
-    .title-blog-single{
-        border-right: none;
-        padding-right: 0px;
-    }
-    .responsive{
-        margin-top: 12px;
-    }
 }
 

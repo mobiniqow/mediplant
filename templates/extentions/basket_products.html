@@ -24,7 +24,7 @@
                 </table>
             </div>
             <div class="cart_btn">
-                <a href="/shop/{{ shop_id }}/cart" class="ms-btn-1">مشاهده سبد خرید</a>
+                <a href="cart" class="ms-btn-1">مشاهده سبد خرید</a>
                 {#                    <a href="checkout.html" class="ms-btn-2">بررسی خرید</a>#}
             </div>
         </div>
@@ -39,11 +39,14 @@
             "method": "GET",
             "timeout": 0,
             "headers": {
-                "Authorization": "Bearer {{ token }}",
+                "Authorization": "Bearer {{ token }}"  // توکن صحیح را وارد کنید
             },
         };
         
-        $.ajax(settings).done(function (response) { 
+        $.ajax(settings).done(function (response) {
+            console.log(response)
+            console.log(response.price)
+            console.log(response.price)
             var totalPrice = response.price;
             const formattedPrice = `${totalPrice.toLocaleString()} تومان`;
             document.querySelector('.text-right.primary-color').textContent = formattedPrice;
@@ -52,8 +55,10 @@
     }
 
     function updateCart(items) {
-        var cartContainer = $('.ms-cart-pro-items');   
-        cartContainer.empty();  
+        var cartContainer = $('.ms-cart-pro-items');  // انتخاب کانتینر برای سبد خرید
+        cartContainer.empty();  // پاک کردن محتوای قبلی
+
+        // بررسی اگر سبد خرید خالی نباشد
         if (items.length > 0) {
             items.forEach(function (item) {
                 var cartItemHTML = `

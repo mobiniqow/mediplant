@@ -26,8 +26,8 @@
                 <div class="ms-flex">
                     <div class="align-self-center ms-header-logo">
                         <div class="header-logo">
-                            <a href="/">  <img src="{% static 'assets/img/logo/logo.png' %}" alt="Site Logo"
-                                     style="width: 50px; height: auto !important;"></a>
+                            <a href="/"> <img src="{% static 'assets/img/logo/logo.png' %}" alt="Site Logo"
+                                              style="width: 70px; height: auto !important;"></a>
                         </div>
                     </div>
                     <div class="align-self-center ms-header-search">
@@ -40,7 +40,8 @@
                             </form>
                         </div>
                     </div>
-                    {% if categories.user.state != user.State.GUEST %}
+                    {#                    {% if categories.user.state != user.State.GUEST %}#}
+                    {% if is_authenticated %}
                         <div class="align-self-center">
                             <div class="ms-header-bottons">
                                 <div class="ms-acc-drop">
@@ -60,8 +61,8 @@
                                         <li><a class="dropdown-item" href="/profile"> ویرایش پروفایل
                                         </a></li>
                                         <li><a class="dropdown-item" href="/shop-transactions">سفارشات</a></li>
-                                        <li><a class="dropdown-item" href="/medicine/prescription">تاریخچه پزشکی</a></li>
-{#                                        <li><a class="dropdown-item" href="/transactions">ترکنش ها</a></li>#}
+                                        <li><a class="dropdown-item" href="/medic/prescription">نسخه های پزشکی</a></li>
+                                        <li><a class="dropdown-item" href="/transactions">ترکنش ها</a></li>
                                         <li><a class="dropdown-item" href="/logout">خروج</a></li>
                                     </ul>
                                 </div>
@@ -74,7 +75,7 @@
 
                                     </div>
                                     <div class="ms-btn-desc">
-                                        <span class="ms-btn-title">اعلانات پزشکی</span>
+                                        <!-- <span class="ms-btn-title">اعلانات پزشکی</span> -->
                                         <span class="ms-btn-stitle"><span
                                                 class="ms-wishlist-count">{{ medic_notification }}</span> مورد </span>
                                     </div>
@@ -199,7 +200,7 @@
                                         <li class="dropdown drop-list">
                                             <a href="../raw/ticket.html" class="dropdown-arrow">تیکت ها</a>
                                         </li>
-                                        
+
                                     </ul>
                                 </div>
                             </div>
@@ -237,6 +238,7 @@
                             <li class="list-inline-item">
                                 <a href="#">
                                     <i class="fa fa-instagram"></i>
+                                </a>
                             </li>
                             <li class="list-inline-item"><a href="#"><i class="fa fa-twitter-square"></i></a></li>
                             <li class="list-inline-item"><a href="#"><i class="fa fa-facebook-square"></i></a></li>
@@ -273,3 +275,25 @@
         </div>
     </div>
 </header>
+<script>
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+
+    window.addEventListener('DOMContentLoaded', (event) => {
+        const accessToken = getCookie('access_token');
+        if (accessToken) {
+            const loggedIn = document.getElementById('logged-in');
+            const guest = document.getElementById('guest');
+            if (loggedIn) loggedIn.style.display = 'block';
+            if (guest) guest.style.display = 'none';
+        } else {
+            const loggedIn = document.getElementById('logged-in');
+            const guest = document.getElementById('guest');
+            if (loggedIn) loggedIn.style.display = 'none';
+            if (guest) guest.style.display = 'block';
+        }
+    });
+</script>

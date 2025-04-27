@@ -13,6 +13,7 @@ from doctor_visit.serializers import DoctorVisitSerializer, PrescriptionSerializ
 from shop.serializers import UserShopProfileUpdateSerializer
 from transaction.models import Transaction
 from transaction.serializers import TransactionSerializer
+from wallet.models import Wallet
 
 
 class DoctorLoginView(APIView):
@@ -60,7 +61,7 @@ class NewDoctorVisitListView(APIView):
             visit.state = DoctorVisit.State.ACCEPT  # تغییر وضعیت به FAILED به معنی حذف درخواست
             visit.save()
             return Response(
-                {"message": "درخواست ویزیت با موفقیت حذف شد."},
+                {"message": "درخواست ویزیت با موفقیت درست شد."},
                 status=status.HTTP_204_NO_CONTENT
             )
         except DoctorVisit.DoesNotExist:
@@ -69,11 +70,13 @@ class NewDoctorVisitListView(APIView):
                 status=status.HTTP_404_NOT_FOUND
             )
 
-
     def delete(self, request, request_id):
         try:
             visit = DoctorVisit.objects.get(id=request_id, doctor__user=request.user, state=DoctorVisit.State.REQUEST)
-            visit.state = DoctorVisit.State.FAILED  # تغییر وضعیت به FAILED به معنی حذف درخواست
+            visit.state = DoctorVisit.State.FAILED
+            wallet = Wallet.objects.filter(user=visit.user).update(amount=0)
+            wallet.amount += visit.transaction.amount
+            wallet.save()
             visit.save()
             return Response(
                 {"message": "درخواست ویزیت با موفقیت حذف شد."},
@@ -104,10 +107,9 @@ class DoctorSettlementRequestAPIView(generics.CreateAPIView, generics.ListAPIVie
         return DoctorSettlement.objects.filter(doctor=doctor)
 
 
-
 class DoctorDetailView(APIView):
     """API برای دریافت و به‌روزرسانی اطلاعات فروشگاه"""
-    permission_classes = [permissions.IsAuthenticated,  ]
+    permission_classes = [permissions.IsAuthenticated, ]
 
     def get(self, request):
         """دریافت اطلاعات فروشگاه کاربر"""
@@ -123,6 +125,7 @@ class DoctorDetailView(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class DoctorEarningsStatisticsAPIView(APIView):
     permission_classes = [IsAuthenticated]
@@ -145,7 +148,8 @@ class DoctorEarningsStatisticsAPIView(APIView):
                 start_date = today - timedelta(weeks=(i + 1) * 4)  # ۴ هفته تقریباً برابر با یک ماه
                 end_date = today - timedelta(weeks=i * 4)
             else:
-                return Response({"error": "نوع فیلتر معتبر نیست. از daily, weekly یا monthly استفاده کنید."}, status=400)
+                return Response({"error": "نوع فیلتر معتبر نیست. از daily, weekly یا monthly استفاده کنید."},
+                                status=400)
 
             transactions = Transaction.objects.filter(
                 doctor_visit__in=doctor_visits,

@@ -30,7 +30,7 @@ urlpatterns = [
     path('shop/<int:id>/checkout', CheckoutView.as_view()),
     path('shop/<int:shop_id>/product/', ShopProductListView.as_view()),
     path('shop/<int:shop_id>/product/<int:product_id>/', ShopProductView.as_view()),
-    path('login/', LoginView.as_view()),
+    path('login/', LoginView.as_view(), name='login'),
     path('verify/<str:phone>/', VerifyView.as_view(), name='verify'),
     path('profile/', ProfileView.as_view()),
     path('track-order/<int:id>/', AfterBankGateWay.as_view()),

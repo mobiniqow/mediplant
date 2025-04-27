@@ -1,5 +1,7 @@
+from doctor_visit.models import DoctorVisit
 from feedback.models import FeedbackCart
 from sale.models import SaleBasket
+from wallet.models import Wallet
 from .models import Transaction, Payment, DoctorTransaction
 import requests
 import json
@@ -9,6 +11,10 @@ from rest_framework.decorators import api_view
 from django.conf import settings
 from rest_framework.views import APIView
 from django.http import JsonResponse, HttpResponseRedirect
+from django.utils.text import slugify
+import uuid
+
+
 @api_view(['POST'])
 def start_payment(request, shop_id):
     user = request.user
@@ -17,20 +23,23 @@ def start_payment(request, shop_id):
         return JsonResponse({"error": "سبد خرید یافت نشد"})
 
     amount = cart.price
+
+    is_ok, dept = Wallet.pay_from_user(user, amount)
+    if is_ok:
+        return JsonResponse({"message": "پرداخت با موفقیت انجام شد", })
+    else:
+        amount = dept
     address = request.data.get('address')
     lat = request.data.get('lat')
     lng = request.data.get('lng')
     code_posti = request.data.get('code_posti')
-    card = request.data.get('card')  # شماره کارت را دریافت کنیم
-
-    # اگر تراکنشی با این کارت قبلاً ایجاد شده باشد، فقط آپدیت می‌شود
+    card = request.data.get('card')
     transaction = Transaction.objects.filter(
         user=user,
         cart=cart,
         transaction_type='deposit',
         card=card
     ).first()
-
     if transaction:
         # اگر تراکنش وجود داشت، فقط آپدیت شود
         transaction.amount = amount
@@ -42,7 +51,6 @@ def start_payment(request, shop_id):
         transaction.code_posti = code_posti
         transaction.save()
     else:
-        # اگر تراکنش جدید است، ایجاد شود
         transaction = Transaction.objects.create(
             user=user,
             cart=cart,
@@ -56,26 +64,19 @@ def start_payment(request, shop_id):
             code_posti=code_posti,
             card=card
         )
-
-    # بررسی اینکه آیا پرداخت از قبل ثبت شده است
     payment, created = Payment.objects.get_or_create(
         user=user,
         cart=cart,
         transaction=transaction
     )
-
-    # شروع پرداخت
     try:
         payment_url = payment.initiate_payment()
         return JsonResponse({"payment_url": payment_url})
     except Exception as e:
         return JsonResponse({"error": str(e)})
 
-from django.utils.text import slugify
-import uuid
 
 def create_feedback_cart(user, cart):
-    """ ایجاد فیدبک کارت برای کاربر بعد از موفقیت در پرداخت """
     unique_slug = slugify(f"{user.id}-{uuid.uuid4().hex[:8]}")
     feedback_cart = FeedbackCart.objects.create(cart=cart, slug=unique_slug)
     return feedback_cart
@@ -85,7 +86,6 @@ def create_feedback_cart(user, cart):
 def verify_payment(request):
     status = request.GET.get("Status")
     authority = request.GET.get("Authority")
-
     transaction = Transaction.objects.filter(authority=authority).first()
     doctor_transaction = DoctorTransaction.objects.filter(ref_id=authority).first()
 
@@ -113,6 +113,9 @@ def verify_payment(request):
                 transaction.save()
                 payment = Payment.objects.get(transaction=transaction)
                 payment.status = 'completed'
+                wallet = Wallet.objects.get_or_create(user=transaction.user)[0]
+                wallet.amount += transaction.amount
+                wallet.save()
                 payment.save()
 
             if doctor_transaction:
@@ -137,6 +140,7 @@ def verify_payment(request):
             doctor_transaction.transaction_type = DoctorTransaction.TransactionState.FAILED
             doctor_transaction.save()
         return HttpResponseRedirect(f"/callback/?Authority={authority}&Status=ERROR")
+
 
 @api_view(['POST'])
 def get_payment_url(request):
@@ -202,9 +206,8 @@ def get_transactions(request):
     return JsonResponse(list(transactions), safe=False)
 
 
-
 class ListTransactions(APIView):
-    def get(self,request,**kwargs):
+    def get(self, request, **kwargs):
         transactions = Transaction.objects.exclude(status='cancel').select_related('cart', 'cart__shop')
         transaction_data = []
         for transaction in transactions:
@@ -221,3 +224,24 @@ class ListTransactions(APIView):
             transaction_data.append(transaction_info)
 
         return Response(transaction_data)
+
+
+class PayFromWalletApi(APIView):
+    def post(self, request, **kwargs):
+        user = request.user
+        amount = request.data.get('amount')
+        transaction_type = request.data.get('transaction_type')
+        cart_id = request.data.get('cart_id')
+
+        if transaction_type == 'BASKET':
+            cart = get_object_or_404(SaleBasket, user=user, pk=cart_id)
+            amount = cart.price
+        if transaction_type == 'DOCTOR':
+            cart = get_object_or_404(DoctorVisit, user=user, pk=cart_id)
+            amount = cart.price
+
+        is_ok, dept = Wallet.pay_from_user(user, amount)
+        if is_ok:
+            return JsonResponse({"message": "پرداخت با موفقیت انجام شد", })
+        else:
+            return JsonResponse({"error": "موجودی کیف پول کافی نیست", "dept": dept}, status=400)

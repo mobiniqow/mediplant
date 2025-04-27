@@ -26,7 +26,7 @@ class Shop(models.Model):
     name = models.CharField(max_length=40, verbose_name='نام', unique=True)
     trade_id = models.CharField(max_length=19, verbose_name='شناسه تجاری')
     state = models.IntegerField(choices=ShopStatus.choices, default=ShopStatus.PENDING, verbose_name='وضعیت')
-    user = models.ForeignKey(User, on_delete=SET_NULL, null=True, verbose_name='کاربر')
+    user = models.ForeignKey(User, on_delete=SET_NULL, null=True, verbose_name='کاربر',unique=True)
     shop_home = models.TextField(verbose_name='آدرس فروشگاه')
     national_code = models.CharField(max_length=10, unique=True, verbose_name='کدملی', blank=True)
     description = models.TextField(verbose_name='توضیحات')

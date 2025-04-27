@@ -653,7 +653,6 @@
     function addToCart() {
         const quantity = parseInt(document.getElementById('quantity').value);
         addItemToCardApi(quantity).then(() => {
-            location.reload();  
         }).catch(error => {
             console.error("خطا در اضافه کردن محصول:", error);
         });
@@ -677,7 +676,6 @@
             }
         }
         var settings = {
-            
             "url": `/basket/${basket_id['basket_id']}/product/${product}`,
             "method": "POST",
             "timeout": 0,

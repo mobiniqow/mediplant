@@ -19,13 +19,16 @@ MERCHANT_ID = "5ed2e796-0448-40db-920c-1df64ddb0551"
 CALLBACK_URL = "http://localhost:8000/transaction/payment/verify/"
 MEDIA_URL = "/media/"
 MEDIA_ROOT = '/var/html/www/mediplant/media'
+
 CSRF_TRUSTED_ORIGINS = [
-    "http://shopper.mediplant.ir",
-    "http://doctor.mediplant.ir",
-    "http://mediplant.ir",
-    "http://wwww.mediplant.ir",
+    "https://shopper.mediplant.ir",
+    "https://doctor.mediplant.ir",
+    "https://mediplant.ir",
+    "https://mediplant.ir",
+    "https://wwww.mediplant.ir",
     "http://localhost:3000",
 ]
+
 ALLOWED_HOSTS = ['*']
 STATIC_URL = '/static/'
 STATIC_ROOT = '/var/html/www/mediplant/static'
@@ -68,18 +71,19 @@ REST_FRAMEWORK = {
 # if GDAL_LIBRARY_PATH:
 #     os.environ['GDAL_LIBRARY_PATH'] = GDAL_LIBRARY_PATH
 
+
 CORS_ALLOWED_ORIGINS = [
-    "http://shopper.mediplant.ir",
-    "http://doctor.mediplant.ir",
+    "https://shopper.mediplant.ir",
+    "https://doctor.mediplant.ir",
     "https://mediplant.ir",
-    "http://wwww.mediplant.ir",
+    "https://wwww.mediplant.ir",
     "http://localhost:3000",
-    "http://localhost",
 ]
 
 
-CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOW_CREDENTIALS = True
+# CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_CREDENTIALS = True
+CSRF_COOKIE_SECURE=True
 
 CHANNEL_LAYERS = {
     "default": {

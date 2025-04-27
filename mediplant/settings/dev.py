@@ -75,3 +75,17 @@ CHANNEL_LAYERS = {
 # # GDAL_LIBRARY_PATH = os.getenv('GDAL_LIBRARY_PATH', '/usr/lib/libgdal.so')
 # if GDAL_LIBRARY_PATH:
 #     os.environ['GDAL_LIBRARY_PATH'] = GDAL_LIBRARY_PATH
+
+CORS_ALLOWED_ORIGINS = [
+    "https://shopper.mediplant.ir",
+    "https://doctor.mediplant.ir",
+    "https://mediplant.ir",
+    "https://wwww.mediplant.ir",
+    "http://localhost:3000",
+    "http://localhost:8000",
+]
+
+
+# CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_CREDENTIALS = True
+CSRF_COOKIE_SECURE=True

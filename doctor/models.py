@@ -38,6 +38,9 @@ class Doctor(models.Model):
     branch = models.ForeignKey(DockterBranch, on_delete=models.SET_NULL, null=True, verbose_name='شاخه تحصیلی')
     address = models.TextField(verbose_name='آدرس')
     state = models.IntegerField(choices=State.choices, default=State.SUSPEND, verbose_name='وضعیت')
+    certificate = models.FileField(upload_to='doctor/certificate',
+                                   validators=[FileExtensionValidator(['jpg', 'png', 'jpeg'])], blank=True, null=True,
+                                   verbose_name='تصویر جواز')
     picture = models.FileField(upload_to='doctor/avatar',
                                validators=[FileExtensionValidator(['jpg', 'png', 'jpeg'])], blank=True,
                                verbose_name='تصویر پرسنلی')

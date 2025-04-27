@@ -22,8 +22,9 @@ class LoginView(BaseTemplateView):
         if request.method == 'POST':
             form = LoginForm(request.POST)
             if form.is_valid():
-                return self.form_valid(form)
+                return redirect('/verify/' + form.cleaned_data['phone'])
             else:
+                print("else form.is_valid()")
                 return self.form_invalid(form)
         else:
             print(f'request.user.state = {request.user.state }')
