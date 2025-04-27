@@ -250,7 +250,7 @@ a {
 }
 
 .padding-tb-30 {
-    padding: 30px 0;
+    padding: 20px 0;
 }
 
 .padding-tb-60 {
@@ -358,7 +358,7 @@ button {
     position: relative;
     display: inline-block;
     outline: none;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-btn,
@@ -375,7 +375,7 @@ button {
     color: #17181c;
     border: 1px solid #17181c;
     position: relative;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .btn-disabled {
@@ -413,7 +413,7 @@ button {
     background-color: #17181c;
     color: #fff;
     text-align: center;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-btn-2:hover {
@@ -456,7 +456,7 @@ button {
     transition: all 0.3s ease-in-out;
     border: 1px solid transparent;
     padding: 30px;
-    border-radius: 0px;
+    border-radius: 8px;
     background: #fff;
 }
 
@@ -955,7 +955,7 @@ i.msicon.msi-star.fill {
     display: -ms-flexbox;
     display: flex;
     position: relative;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-cart-notify a .svg_img path {
@@ -1056,7 +1056,7 @@ i.msicon.msi-star.fill {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-pro-pagination ul li a:hover {
@@ -1103,7 +1103,7 @@ i.msicon.msi-star.fill {
     width: 40px;
     height: 40px;
     text-align: center;
-    border-radius: 4px;
+    border-radius: 8px;
     position: fixed;
     bottom: 30px;
     left: 30px;
@@ -1816,7 +1816,7 @@ i.msicon.msi-star.fill {
 }
 
 .quickview-modal .slick-slide img {
-    border-radius: 3px;
+    border-radius: 8px;
     border: 2px solid #fff;
 }
 
@@ -1840,7 +1840,7 @@ i.msicon.msi-star.fill {
     left: 0;
     z-index: 5;
     color: #fff;
-    border-radius: 3px;
+    border-radius: 8px;
     -webkit-transform: translateY(-60%);
     transform: translateY(-60%);
     opacity: 0.8;
@@ -1863,7 +1863,7 @@ i.msicon.msi-star.fill {
     right: 0;
     z-index: 5;
     color: #fff;
-    border-radius: 3px;
+    border-radius: 8px;
     -webkit-transform: translateY(-60%);
     transform: translateY(-60%);
     opacity: 0.8;
@@ -1983,7 +1983,7 @@ i.msicon.msi-star.fill {
     justify-content: center;
     font-size: 12px;
     line-height: 22px;
-    border-radius: 3px;
+    border-radius: 8px;
     font-weight: 400;
 }
 
@@ -2043,7 +2043,7 @@ i.msicon.msi-star.fill {
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .quickview-pro-content .ms-quickview-qty .qty-plus-minus .ms-qtybtn {
@@ -2078,7 +2078,7 @@ i.msicon.msi-star.fill {
 .quickview-pro-content .ms-quickview-qty .ms-quickview-cart .ms-btn-3 {
     margin: 0 15px 0 0;
     padding: 10px 15px;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .quickview-pro-content .ms-quickview-qty .ms-quickview-cart .ms-btn-3 svg {
@@ -2280,7 +2280,7 @@ i.msicon.msi-star.fill {
 .cat-sidebar .cat-sidebar-box .ms-cat-sidebar-wrap .ms-sidebar-block .ms-sb-block-content .ms-list {
     padding: 5px 15px;
     border: 1px solid #eee;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .cat-sidebar .cat-sidebar-box .ms-cat-sidebar-wrap .ms-sidebar-block .ms-sb-block-content li {
@@ -2439,7 +2439,7 @@ i.msicon.msi-star.fill {
     text-decoration: none;
     -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
+    border-radius: 8px;
 }
 
 .ms-features-sidebar .ms-tools-sidebar-toggle .svg_img {
@@ -2496,7 +2496,7 @@ i.msicon.msi-star.fill {
     width: 100%;
     height: 100%;
     display: block;
-    border-radius: 3px;
+    border-radius: 8px;
     -webkit-transform: scale(1);
     transform: scale(1);
     -webkit-transition: all 0.2s linear;
@@ -2557,7 +2557,7 @@ i.msicon.msi-star.fill {
     display: flex;
     position: relative;
     white-space: nowrap;
-    border-radius: 5px;
+    border-radius: 8px;
     -webkit-transition: all 0.2s linear;
     transition: all 0.2s linear;
     -webkit-box-align: center;
@@ -2582,7 +2582,7 @@ i.msicon.msi-star.fill {
     cursor: pointer;
     color: #ffffff;
     font-size: 12px;
-    border-radius: 3px;
+    border-radius: 8px;
     overflow: hidden;
     background: #333;
 }
@@ -2682,7 +2682,7 @@ i.msicon.msi-star.fill {
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     border: 1px solid #eee;
-    border-radius: 3px;
+    border-radius: 8px;
     cursor: pointer;
     overflow: hidden;
 }
@@ -2730,7 +2730,7 @@ i.msicon.msi-star.fill {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 
@@ -2772,7 +2772,7 @@ i.msicon.msi-star.fill {
     color: #fff;
     
     position: relative;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-product-inner .ms-pro-image .flags span.new {
@@ -2849,7 +2849,7 @@ i.msicon.msi-star.fill {
     background-color: #fff;
     border-radius: 100%;
     border: 1px solid #eeeeee;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-product-inner .ms-pro-image .ms-pro-actions .ms-btn-group:hover:not(.active) {
@@ -3098,7 +3098,7 @@ i.msicon.msi-star.fill {
     justify-content: center;
     font-size: 12px;
     line-height: 22px;
-    border-radius: 3px;
+    border-radius: 8px;
     font-weight: 400;
 }
 
@@ -3554,7 +3554,7 @@ i.msicon.msi-star.fill {
     overflow: hidden;
     padding: 0 10px;
     background: #fff;
-    border-radius: 3px;
+    border-radius: 8px;
     border: 1px solid #eee;
     -webkit-box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.1);
@@ -3677,7 +3677,7 @@ i.msicon.msi-star.fill {
     -webkit-box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.1);
     display: block;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-header-bottons .ms-acc-drop .ms-dropdown-menu a {
@@ -3950,7 +3950,7 @@ div#ms-main-menu-desk {
     width: 100%;
     z-index: 2;
     z-index: 15;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-main-menu ul li .mega-menu li ul {
@@ -4034,7 +4034,7 @@ div#ms-main-menu-desk {
     -webkit-box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.1);
     display: block;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-main-menu ul li.dropdown ul {
@@ -4254,7 +4254,7 @@ div#ms-main-menu-desk {
     right: auto;
     left: 0;
     top: 100%;
-    border-radius: 3px;
+    border-radius: 8px;
     z-index: 14;
     border: 1px solid #eee;
     border-top: 0;
@@ -4315,7 +4315,7 @@ div#ms-main-menu-desk {
     font-weight: 500;
     text-transform: capitalize;
     border: 1px solid #eee;
-    border-radius: 3px;
+    border-radius: 8px;
     cursor: pointer;
 }
 
@@ -4442,7 +4442,7 @@ div#ms-main-menu-desk {
     margin: 4px 8px;
     padding: 0;
     border: 1px solid #eee;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .header-search input:focus {
@@ -4451,7 +4451,7 @@ div#ms-main-menu-desk {
 }
 
 .header-search .dropdown-menu {
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-header-search {
@@ -5369,8 +5369,8 @@ body.ms-menu-open:before {
     margin-bottom: 24px;
     padding: 24px;
     background: #fff;
-    border-radius: 3px;
-    border: 1px solid #eee;
+    border-radius: 8px !important;
+    border: 1px solid #e4e4e4;
 }
 
 .ms-blog .news-info:hover .news-img img,
@@ -5387,7 +5387,7 @@ body.ms-menu-open:before {
     border-radius: 0px;
     position: relative;
     overflow: hidden;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-blog .news-info .news-img img,
@@ -5411,10 +5411,11 @@ body.ms-menu-open:before {
     display: inline-block;
     font-size: 13px;
     color: #999;
-    border-radius: 5px;
+    border-radius: 8px;
 }
 .detail-a{
     color: #2b2b2b !important;
+    font-size: 12px !important;
 }
 .h2{
     font-size: 24px !important;
@@ -5442,9 +5443,9 @@ body.ms-menu-open:before {
 
 .ms-blog .news-info .detail h3 a,
 .ms-news-section .news-info .detail h3 a {
-    font-family: IRANSans-med;
+    font-family: IRANSans;
     color: #17181c;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     line-height: 22px;
     text-transform: uppercase;
@@ -5471,7 +5472,7 @@ body.ms-menu-open:before {
     font-size: 13px;
     text-decoration: none;
     border: 1px solid #17181c;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-blog .news-info .detail .more-info a:hover,
@@ -5505,7 +5506,7 @@ body.ms-menu-open:before {
 .ms-blogs-sidebar .ms-blog-sidebar-wrap {
     padding: 30px;
     border: 1px solid #eee;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-blogs-sidebar .ms-blog-search {
@@ -5519,7 +5520,7 @@ body.ms-menu-open:before {
     border: 1px solid #eee;
     color: #17181c;
     position: relative;
-    border-radius: 3px;
+    border-radius: 8px;
     overflow: hidden;
 }
 
@@ -5619,7 +5620,7 @@ body.ms-menu-open:before {
     transition: all 300ms linear;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
-    border-radius: 3px;
+    border-radius: 8px;
     overflow: hidden;
 }
 
@@ -5662,7 +5663,7 @@ body.ms-menu-open:before {
 
 .ms-blogs-sidebar .ms-sidebar-block .ms-sidebar-block-item .ms-sidebar-block-img img {
     width: 100px;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-blogs-sidebar .ms-sidebar-block .ms-sidebar-block-item .ms-sidebar-block-detial .ms-blog-title a {
@@ -5692,7 +5693,7 @@ body.ms-menu-open:before {
 .ms-single-blog-item .single-blog-info .news-img img {
     width: 100%;
     margin: auto;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-single-blog-item .single-blog-info .single-blog-detail{
@@ -5741,7 +5742,7 @@ body.ms-menu-open:before {
 .ms-single-blog-item .single-blog-info .single-blog-detail .sub-img img {
     width: 100%;
     margin-bottom: 24px;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-blog-comments .ms-blog-dms-title {
@@ -5751,7 +5752,7 @@ body.ms-menu-open:before {
     font-weight: 400;
     width: max-content;
     background-color: #f5f4f9;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-blog-comments .sub-cmt {
@@ -5776,7 +5777,7 @@ body.ms-menu-open:before {
 
 .ms-blog-comments .ms-single-comment-wrapper .ms-blog-user-img img {
     width: 100%;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-blog-comments .ms-single-comment-wrapper .ms-blog-comment-content {
@@ -5812,7 +5813,7 @@ body.ms-menu-open:before {
     padding-right: 20px;
     background: transparent none repeat scroll 0 0;
     border: 1px solid #eee;
-    border-radius: 3px;
+    border-radius: 8px;
     -webkit-box-shadow: none;
     box-shadow: none;
     color: #777;
@@ -5825,7 +5826,7 @@ body.ms-menu-open:before {
     margin-bottom: 30px;
     padding: 15px 20px;
     border: 1px solid #eee;
-    border-radius: 3px;
+    border-radius: 8px;
     -webkit-box-shadow: none;
     box-shadow: none;
 }
@@ -5854,7 +5855,7 @@ body.ms-menu-open:before {
 
 .ms-ofr-banners .ms-bnr-body .ms-bnr-img img {
     width: 100%;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-ofr-banners .ms-bnr-body .ms-bnr-img .lbl {
@@ -5914,7 +5915,7 @@ body.ms-menu-open:before {
 
 .upload-container {
     border: 2px dashed #eeeeee;
-    border-radius: 4px;
+    border-radius: 8px;
     padding: 16px 32px;
     text-align: center;
     background-color: white;
@@ -6140,7 +6141,7 @@ body.ms-menu-open:before {
     -ms-flex-pack: center;
     justify-content: center;
     opacity: 0.5;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-listing .ms-list-block .ms-list-title .label .dot {
@@ -6152,7 +6153,7 @@ body.ms-menu-open:before {
 
 .ms-listing .ms-list-block .ms-list-title .veg {
     border: 1px solid #46c389;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-listing .ms-list-block .ms-list-title .veg .dot {
@@ -6188,7 +6189,7 @@ body.ms-menu-open:before {
     -webkit-box-flex: 1;
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
-    border-radius: 3px;
+    border-radius: 8px;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
@@ -7356,7 +7357,7 @@ body.ms-menu-open:before {
     padding: 30px;
     border: 1px solid #eee;
     background-color: #fff;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-checkout-wrap h3 {
@@ -7387,7 +7388,7 @@ body.ms-menu-open:before {
     border: 1px solid #eee;
     margin-bottom: 30px;
     padding: 15px;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-sidebar-wrap:last-child {
@@ -7493,7 +7494,7 @@ body.ms-menu-open:before {
     padding: 0 15px;
     width: 100%;
     outline: none;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-check-login-form .ms-check-login-fp {
@@ -7577,7 +7578,7 @@ body.ms-menu-open:before {
     padding: 0 15px;
     width: 100%;
     outline: none;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-checkout-wrap .ms-check-bill-form .ms-bill-fp label {
@@ -7602,7 +7603,7 @@ body.ms-menu-open:before {
     font-size: 14px;
     padding: 0;
     margin-bottom: 27px;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-checkout-wrap .ms-check-bill-form .ms-bl-select-inner select {
@@ -7624,7 +7625,7 @@ body.ms-menu-open:before {
     padding: 0 10px;
     color: #777;
     cursor: pointer;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-checkout-wrap .ms-check-bill-form .ms-bl-select-inner::after {
@@ -7907,7 +7908,7 @@ body.ms-menu-open:before {
     outline: none;
     font-size: 14px;
     display: block;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-sidebar-wrap.ms-checkout-pay-wrap h3 {
@@ -7927,7 +7928,7 @@ body.ms-menu-open:before {
     outline: none;
     font-size: 14px;
     display: block;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-sidebar-wrap.ms-checkout-pay-wrap .ms-pay-commemt .ms-pay-opt-head {
@@ -8038,7 +8039,7 @@ body.ms-menu-open:before {
     display: flex;
     border: 1px solid #eee;
     padding: 5px;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-checkout-coupan-form .ms-coupan {
@@ -8056,7 +8057,7 @@ body.ms-menu-open:before {
     text-align: left;
     padding-left: 10px;
     padding-right: 10px;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-checkout-coupan-form .ms-coupan-btn {
@@ -8317,7 +8318,7 @@ body.ms-menu-open:before {
 
 .ms-accordion.style-1 .ms-accordion-item {
     border-color: #eee;
-    border-radius: 3px;
+    border-radius: 8px;
     overflow: hidden;
 }
 
@@ -8416,7 +8417,7 @@ body.ms-menu-open:before {
 .ms-login-wrapper .ms-login-container {
     padding: 30px;
     border: 1px solid #eee;
-    border-radius: 3px;
+    border-radius: 8px;
     text-align: left;
     background-color: #fff;
 }
@@ -8447,7 +8448,7 @@ body.ms-menu-open:before {
     padding: 0 15px;
     background-color: transparent;
     border: 1px solid #eee;
-    border-radius: 3px;
+    border-radius: 8px;
     color: #777;
     font-size: 14px;
     outline: none;
@@ -8519,7 +8520,7 @@ body.ms-menu-open:before {
 
 .ms-login-img img {
     width: 100%;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 
@@ -8537,7 +8538,7 @@ body.ms-menu-open:before {
     padding: 30px;
     text-align: right;
     background-color: #fff;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-register-wrapper .ms-register-container .ms-register-form .ms-register-wrap {
@@ -8579,7 +8580,7 @@ body.ms-menu-open:before {
     padding: 0 15px;
     width: 300;
     outline: none;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-register-wrapper .ms-register-container .ms-register-form input::-webkit-input-placeholder {
@@ -8621,7 +8622,7 @@ body.ms-menu-open:before {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    border-radius: 3px;
+    border-radius: 8px;
     border: 1px solid #eee;
     font-size: 14px;
 }
@@ -8721,7 +8722,7 @@ body.ms-menu-open:before {
 
 .ms-track .ms-track-box {
     padding: 30px;
-    border-radius: 3px;
+    border-radius: 8px;
     background-color: #f5f4f9;
 }
 
@@ -8742,7 +8743,7 @@ body.ms-menu-open:before {
     -ms-flex-direction: column;
     flex-direction: column;
     border: 1px solid #e9ecef;
-    border-radius: 3px;
+    border-radius: 8px;
     color: #777;
     text-align: center;
     font-size: 15px;
@@ -8759,7 +8760,7 @@ body.ms-menu-open:before {
 .ms-track .ms-steps {
     margin-top: 24px;
     border: 1px solid #e9ecef;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-track .ms-steps-header {
@@ -8904,7 +8905,7 @@ body.ms-menu-open:before {
     max-width: 1140px;
     margin: 0 auto;
     background-color: #fff;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-terms-conditions .ms-cms-block h5,
@@ -9019,7 +9020,7 @@ body.ms-menu-open:before {
     justify-content: space-between;
     font-size: 14px;
     border: 1px solid #eee;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-shop .ms-pro-list-top .ms-gl-btn {
@@ -9069,7 +9070,7 @@ body.ms-menu-open:before {
 .ms-shop .ms-pro-list-top .grid-btn.active {
     background: #3e9172;
     border: 1px solid #3e9172;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-shop .ms-pro-list-top .grid-btn.active img.svg_img {
@@ -9170,7 +9171,7 @@ body.ms-menu-open:before {
     margin: 5px;
     padding: 0 10px;
     border: 1px solid #eee;
-    border-radius: 3px;
+    border-radius: 8px;
     color: #777;
     font-size: 14px;
     display: -webkit-box;
@@ -9239,7 +9240,7 @@ body.ms-menu-open:before {
 .ms-shop-sidebar .ms-blog-sidebar-wrap {
     padding: 30px;
     border: 1px solid #eee;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-shop-sidebar .ms-blog-search {
@@ -9253,7 +9254,7 @@ body.ms-menu-open:before {
     border: 1px solid #eee;
     color: #17181c;
     position: relative;
-    border-radius: 3px;
+    border-radius: 8px;
     overflow: hidden;
 }
 
@@ -9359,7 +9360,7 @@ body.ms-menu-open:before {
     transition: all 300ms linear;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
-    border-radius: 3px;
+    border-radius: 8px;
     overflow: hidden;
 }
 
@@ -9402,7 +9403,7 @@ body.ms-menu-open:before {
 
 .ms-shop-sidebar .ms-sidebar-block .ms-sidebar-block-item .ms-sidebar-block-img img {
     width: 100px;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-shop-sidebar .ms-sidebar-block .ms-sidebar-block-item .ms-sidebar-block-detial .ms-blog-title a {
@@ -9457,7 +9458,7 @@ body.ms-menu-open:before {
     transition: all 0.3s ease-in-out;
     width: 20px;
     height: 20px;
-    border-radius: 3px;
+    border-radius: 8px;
     opacity: 0.7;
     background: transparent;
     cursor: pointer;
@@ -9499,7 +9500,7 @@ body.ms-menu-open:before {
 }
 
 .ms-shop-sidebar .ms-sidebar-wrap {
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 
@@ -9687,7 +9688,7 @@ body.ms-menu-open:before {
     -ms-flex-align: center;
     align-items: center;
     background: #f5f4f9;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-price-range-slider .ms-price-input label {
@@ -9709,7 +9710,7 @@ body.ms-menu-open:before {
 }
 
 .ms-price-range-slider .ms-price-input label input {
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-price-range-slider .ms-price-input .ms-price-divider {
@@ -9978,7 +9979,7 @@ body.ms-menu-open:before {
     display: flex;
     width: 100%;
     border: 1px solid #eee;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .dropdown-us {
@@ -10037,7 +10038,7 @@ body.ms-menu-open:before {
 .ms-category .ms-category-block .ms-cat-box {
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    border-radius: 3px;
+    border-radius: 8px;
     background: #f5f4f9;
     border: 1px solid #eee;
 }
@@ -10151,7 +10152,7 @@ body.ms-menu-open:before {
     color: #fff;
     font-size: 12px;
     font-weight: 400;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-slider-content{
@@ -10190,6 +10191,10 @@ body.ms-menu-open:before {
 .title-blog-single-b{
     border-right: none;
 }
+.disease-images{
+    display: grid;
+    gap: 10px;
+}
 @media only screen and (max-width: 1200px) {
     .ms-single-blog-item .single-blog-info .single-blog-detail{
         max-width: 99%;
@@ -10217,3 +10222,68 @@ body.ms-menu-open:before {
     }
 }
 
+.tab-container {
+    display: flex;
+    gap: 20px;
+    /* padding: 20px; */
+}
+
+.tab-buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    /* flex-direction: column; */
+    /* width: 200px; */
+}
+
+.ms-blogs-content{
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media only screen and (max-width: 990px) {
+    .tab-buttons, .ms-blogs-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media only screen and (max-width: 480px) {
+    .tab-buttons, .ms-blogs-content {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+
+
+.tab-btn {
+    padding: 14px 20px;
+    margin-bottom: 10px;
+    border: none;
+    font-family: IRANSans ;
+    font-size: 14px;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+    color: #333;
+    cursor: pointer;
+    text-align: center;
+}
+
+.tab-btn.active {
+    background-color: #3e9172;
+    color: white;
+}
+
+.tab-content {
+    flex: 1;
+    background-color: white;
+    /* padding: 32px; */
+    border-radius: 8px;
+    color: black;
+}
+
+.tab-panel {
+    display: none;
+}
+
+.tab-panel.active {
+    display: block;
+}

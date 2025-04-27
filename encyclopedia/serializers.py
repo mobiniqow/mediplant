@@ -27,7 +27,7 @@ class EncyclopediaCombinedDrugsSerializer(serializers.ModelSerializer):
 class ArticleEncyclopediaSerializer(serializers.ModelSerializer):
     class Meta:
         model = ArticleEncyclopedia
-        fields = ['id','name']
+        fields = "__all__"
 
 
 class EncyclopediaOfDiseasesImageSerializer(serializers.ModelSerializer):
@@ -39,12 +39,12 @@ class EncyclopediaOfDiseasesImageSerializer(serializers.ModelSerializer):
 class ArticleEncyclopediaDiseasesSerializer(serializers.ModelSerializer):
     class Meta:
         model = ArticleEncyclopedia
-        fields = ['id', 'name']
+        fields = "__all__"
 
 class ArticleReferenceSerializer(serializers.ModelSerializer):
     class Meta:
         model = ArticleReference
-        fields = ['id', 'name']
+        fields = "__all__"
 
 class EncyclopediaOfDiseasesArticleSerializer(serializers.ModelSerializer):
     article = ArticleEncyclopediaSerializer()

@@ -295,6 +295,18 @@
                 </div>
             </div>
         </div>
+
+
+        <div class="detail-item mt-4">
+            <div class="detail-label">
+                <p>معرفی محصول:</p>
+            </div>
+            <div class="detail-value">
+                <p>{{ product_shops.0.product.description | safe |truncatechars:50 }}</p>
+            </div>
+        </div>
+
+
         <div class="shoping">
             <div class="shoping-titr">
                 <h2>فروشنده ها</h2>
@@ -372,14 +384,7 @@
                     <p>{{ product_shops.0.get_inventory_state_display }}</p>
                 </div>
             </div>
-            <div class="detail-item">
-                <div class="detail-label">
-                    <p>معرفی محصول:</p>
-                </div>
-                <div class="detail-value">
-                    <p>{{ product_shops.0.product.description | safe |truncatechars:50 }}</p>
-                </div>
-            </div>
+            
             {#            <div class="detail-item" style="display: flex; justify-content: space-between;">#}
             {#                <div class="detail-label">#}
             {#                    <p>ظرفیت:</p>#}
@@ -403,7 +408,7 @@
 </div>
 <div class="items-result">
     <div id="table1" class="pagination-table">
-        {% for i in products %}
+        {% for i in products|slice:":5" %}
 
             <div class="it-table">
                 <a href="/search/product/{{ i.id }}/" style="margin: auto;">

@@ -2680,7 +2680,7 @@ i.msicon.msi-star.fill {
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     border: 1px solid #eee;
-    border-radius: 3px;
+    border-radius: 8px;
     cursor: pointer;
     overflow: hidden;
 }
@@ -5361,7 +5361,7 @@ body.ms-menu-open:before {
     margin-bottom: 24px;
     padding: 24px;
     background: #fff;
-    border-radius: 3px;
+    border-radius: 8px;
     border: 1px solid #eee;
 }
 
@@ -5856,7 +5856,7 @@ body.ms-menu-open:before {
     justify-content: center;
     position: absolute;
     top: 50%;
-    left: 50px;
+    right: 50px;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
 }
@@ -5869,7 +5869,7 @@ body.ms-menu-open:before {
 }
 
 .ms-ofr-banners .ms-bnr-body .ms-bnr-detail p {
-    color: #777;
+    color: white;
     text-transform: capitalize;
     font-size: 16px;
     line-height: 22px;
@@ -5896,13 +5896,13 @@ body.ms-menu-open:before {
     display: flex;
     width: 100%;
     border: 1px solid #eee;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-category .ms-category-block .ms-cat-box {
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    border-radius: 3px;
+    border-radius: 8px;
     background: #f5f4f9;
     border: 1px solid #eee;
 }
@@ -6201,9 +6201,19 @@ body.ms-menu-open:before {
     -ms-grid-row-span: 2;
     grid-row-end: span 2;
 }
+.hover-content{
+    width: 100%;
+    height: 100%;
+    background-color: #00000045;
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    border-radius: 8px;
+}
 
 .ms-hero .ms-main-content .ms-slider-content .ms-main-slider .ms-slider {
-    border-radius: 3px;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .ms-hero .ms-main-content .ms-slider-content .ms-main-slider .ms-slider .ms-slide-content {
@@ -6243,6 +6253,7 @@ body.ms-menu-open:before {
 
 .ms-hero .ms-main-content .ms-slider-content .ms-main-slider .ms-slider .ms-slide-content .ms-slide-desc {
     display: block;
+    z-index: 2000;
 }
 
 .ms-hero .ms-main-content .ms-slider-content .ms-main-slider .ms-slider .ms-slide-content .ms-slide-desc p {
@@ -6292,13 +6303,20 @@ body.ms-menu-open:before {
     display: -ms-grid;
     display: grid;
     padding: 15px;
-    border-radius: 3px;
+    border-radius: 8px;
+    overflow: hidden;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     -ms-flex-line-pack: center;
     align-content: center;
     position: relative;
+}
+.hover-slider{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #00000045;
 }
 
 .ms-hero .ms-main-content .ms-banner-content .ms-slider-grid-item .ms-detail {
@@ -6432,7 +6450,7 @@ body.ms-menu-open:before {
     justify-content: center;
     -webkit-box-align: end;
     -ms-flex-align: end;
-    align-items: flex-end;
+    align-items: flex-start;
     text-align: right;
     position: relative;
 }
@@ -6450,7 +6468,8 @@ body.ms-menu-open:before {
     margin-top: 15px;
     margin-bottom: 15px;
     font-weight: 600;
-    z-index: 2;
+    z-index: 1000;
+    color: white;
 }
 
 .ms-animated-banner .ms-bnr-detail h3 span {
@@ -6463,6 +6482,7 @@ body.ms-menu-open:before {
     padding: 5px 10px;
     z-index: 2;
 }
+
 
 
 /*===== New Arrivals, Trending Product, Top Selling, Top Rated =====*/
@@ -6485,7 +6505,7 @@ body.ms-menu-open:before {
     -ms-flex-align: center;
     align-items: center;
     position: relative;
-    border-radius: 3px;
+    border-radius: 8px;
     border: 1px solid #eee;
 }
 
@@ -6695,6 +6715,7 @@ body.ms-menu-open:before {
 .ms-top-vendor .ms-top-vendor-block {
     overflow: hidden;
     background-color: #f5f4f9;
+    border-radius: 8px;
 }
 
 .ms-top-vendor .ms-top-vendor-block .ms-vendor-detail {
@@ -6920,7 +6941,7 @@ body.ms-menu-open:before {
     flex-direction: column;
     text-align: center;
     background-color: #fff;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-ser-inner:hover .ms-service-image svg {
@@ -8235,6 +8256,7 @@ section.ms-instagram-section {
     font-size: 14px;
 }
 
+
 @media only screen and (max-width: 1300px) {
     .shop-list {
         /* border: 1px solid black; */
@@ -8976,6 +8998,33 @@ section.ms-instagram-section {
     transform: rotateY(180deg);
     font-size: 11px;
 }
+
+.owl-nav button.owl-prev, .owl-nav button.owl-next {
+    background: #ddd;
+    border: none;
+    padding: 10px;
+    margin: 5px;
+    font-size: 18px;
+    border-radius: 50%;
+}
+
+.owl-nav button.owl-prev {
+    position: absolute;
+    left: -25px;
+    top: 40%;
+}
+
+.owl-nav button.owl-next {
+    position: absolute;
+    right: -25px;
+    top: 40%;
+}
+@media (max-width: 750px) {
+    .contain-btn{
+        display: flex;
+    }
+}
+
 
 
 /*# sourceMappingURL=demo-1.css.map */
