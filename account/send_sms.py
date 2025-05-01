@@ -3,7 +3,7 @@ import requests
 
 def send_otp_message(phone, code):
     print(f"phone::{phone}=> code::{code}")
-    # Thread(target=send_otp, args=(phone, code)).start()
+    Thread(target=send_otp, args=(phone, code)).start()
 
 
 
