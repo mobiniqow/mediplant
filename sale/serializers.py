@@ -7,9 +7,10 @@ from .models import SaleBasketProduct, SaleBasket
 
 class BaseProductSerializer(serializers.ModelSerializer):
     image = serializers.SerializerMethodField()
-    name = serializers.SerializerMethodField()
+    # name = serializers.SerializerMethodField()
     type = serializers.SerializerMethodField()
     price = serializers.SerializerMethodField()
+
     class Meta:
         model = SaleBasketProduct
         fields = '__all__'
@@ -24,10 +25,10 @@ class BaseProductSerializer(serializers.ModelSerializer):
             # todo default image
             pass
 
-    def get_name(self, obj:SaleBasketProduct):
-        product = obj.product.product
-        name = product.name
-        return name
+    # def get_name(self, obj:SaleBasketProduct):
+    #     product = obj.product.product
+    #     name = product.name
+    #     return name
     def get_type(self, obj:SaleBasketProduct):
         product = obj.product
         type = product.get_material_display()

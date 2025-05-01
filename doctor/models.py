@@ -1,4 +1,4 @@
-from django.core.validators import FileExtensionValidator, MinValueValidator
+from django.core.validators import FileExtensionValidator, MinValueValidator, MaxValueValidator
 from django.db import models
 from ckeditor.fields import RichTextField
 from account.models import User
@@ -35,6 +35,8 @@ class Doctor(models.Model):
         GOLD = 3
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='کاربر')
+    national_code = models.CharField(max_length=10, blank=True, null=True, verbose_name='کد ملی', )
+    public_phone = models.CharField(max_length=12, verbose_name='شماره تلفن', blank=True, null=True)
     branch = models.ForeignKey(DockterBranch, on_delete=models.SET_NULL, null=True, verbose_name='شاخه تحصیلی')
     address = models.TextField(verbose_name='آدرس')
     state = models.IntegerField(choices=State.choices, default=State.SUSPEND, verbose_name='وضعیت')
@@ -53,6 +55,12 @@ class Doctor(models.Model):
     shaba = models.CharField(max_length=12, verbose_name='شماره شبا')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='زمان ایجاد')
     medical_system_code = models.CharField(max_length=10, default="2112032")
+    instagram = models.CharField(max_length=100, blank=True, null=True, verbose_name='اینستاگرام')
+    whatsapp = models.CharField(max_length=100, blank=True, null=True, verbose_name='whatsapp')
+    start_time = models.IntegerField(validators=(MinValueValidator(1), MaxValueValidator(24)), default=0,
+                                     verbose_name='زمان شروع')
+    end_time = models.IntegerField(validators=(MinValueValidator(1), MaxValueValidator(24)), default=0,
+                                   verbose_name='زمان پایان')
 
     class Meta:
         verbose_name = "پزشک"
