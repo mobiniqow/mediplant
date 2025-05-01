@@ -197,7 +197,7 @@
             </div>
         </div>
     </div>
-    </div>
+
     <div class="ms-mobile-menu-overlay"></div>
     <div id="ms-mobile-menu" class="ms-mobile-menu">
         <div class="ms-menu-title">
@@ -261,7 +261,9 @@
         </div>
     </div>
 </header>
+
 <script>
+
     function getCookie(name) {
         const value = `; ${document.cookie}`;
         const parts = value.split(`; ${name}=`);
@@ -272,35 +274,15 @@
         const accessToken = getCookie('access_token');
         const loggedIn = document.getElementById('logged-in');
         const guest = document.getElementById('guest');
-
+        loggedIn.style.display = 'none';
+        guest.style.display = 'flex';
         if (accessToken) {
-            if (loggedIn) loggedIn.style.display = 'flex';
-            if (guest) guest.style.display = 'none';
+            loggedIn.style.display = 'flex';
+            guest.style.display = 'none';
         } else {
-            if (loggedIn) loggedIn.style.display = 'none';
-            if (guest) guest.style.display = 'flex';
-        }
-    });
-</script>
-<script>
-    function getCookie(name) {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) return parts.pop().split(';').shift();
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-        const accessToken = getCookie('access_token');
-        const loggedIn = document.getElementById('logged-in');
-        const guest = document.getElementById('guest');
-
-        if (accessToken) {
-            if (loggedIn) loggedIn.style.display = 'flex';
-            if (guest) guest.style.display = 'none';
-        } else {
-            if (loggedIn) loggedIn.style.display = 'none';
-            if (guest) guest.style.display = 'flex';
-        }
+            loggedIn.style.display = 'none';
+            guest.style.display = 'flex';
+        } 
     });
 
     function toggleDropdown() {
@@ -312,7 +294,6 @@
         }
     }
 
-    // اگر بیرون از منو کلیک شد، منو بسته شود
     window.addEventListener('click', function (e) {
         const dropdown = document.getElementById('accountDropdown');
         const toggle = document.querySelector('.ms-user-toggle');
@@ -320,4 +301,5 @@
             dropdown.style.display = 'none';
         }
     });
+
 </script>

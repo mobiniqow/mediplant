@@ -17,13 +17,10 @@ def send_otp(phone, otp):
     # response = requests.request("POST", url, headers=headers, data=payload)
     # print(f'sending otp code to {phone} with status {response.status_code}')
     url = "https://api.kavenegar.com/v1/646B3963434E773954774E7974397365686844776739584E704A685A6262597A5632615A574A4174626F673D/verify/lookup.json"
-
     payload = f'token={otp}&template=mediplant&receptor={phone}'
     headers = {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Cookie': 'cookiesession1=678A8C4087367227C1B693FF947D5992'
     }
-
     response = requests.request("POST", url, headers=headers, data=payload)
-
     print(response.text)
