@@ -27,7 +27,7 @@
                     <div class="align-self-center ms-header-logo">
                         <div class="header-logo">
                             <a href="/">  <img src="{% static 'assets/img/logo/logo.png' %}" alt="Site Logo"
-                                     style="width: 50px; height: auto !important;"></a>
+                                     style="width: 40px; height: auto !important;"></a>
                         </div>
                     </div>
                     <div class="align-self-center ms-header-search">
@@ -216,6 +216,55 @@
             <span class="menu_title">منو</span>
             <button class="ms-close-menu">×</button>
         </div>
+
+
+        <div style="display: grid; grid-template-columns: repeat(1, 1fr); gap: 16px; margin-bottom: 16px;">
+            <div class="non-drop"><a href="/" style="color: black;">خانه</a></div>
+            <!-- <div class="dropdown drop-list position-static">
+                <a href="javascript:void(0)" class="dropdown-arrow">دسته بندی‌ها<i
+                        class="fas fa-chevron-right"></i></a>
+                <ul class="mega-menu d-block">
+                    <li class="d-flex">
+                        <span class="bg"></span>
+                        {% for i in categories.base %}
+                            {#                                                        {% if not i.parent %}#}
+                            <ul class="d-block">
+                                <li class="menu_title"><a
+                                        href="/product/?category={{ i.id }}">
+                                    {{ i.name|safe|truncatechars_html:17 }}</a>
+                                </li>
+
+                                {% for j in i.children %}
+                                    <li>
+                                        <a href="/product/?category={{ j.id }}">
+                                            {{ j.name|safe|truncatechars_html:17 }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endfor %}
+                    </li>
+                </ul>
+            </div> -->
+            <div class="dropdown drop-list">
+                <a href="/shops" style="color: black;" class="dropdown-arrow">فروشگاه ها</a>
+            </div>
+            <div class="dropdown drop-list">
+                <a href="/blog/news" style="color: black;" class="dropdown-arrow">مقالات<i></i></a>
+            </div>
+            <div class="dropdown drop-list">
+                <a href="/about-us" style="color: black;" class="dropdown-arrow">درباره ما</a>
+            </div>
+            <div class="dropdown drop-list">
+                <a href="/contact-us" style="color: black;" class="dropdown-arrow">تماس با ما</a>
+            </div>
+            <div class="dropdown drop-list">
+                <a href="../raw/ticket.html" style="color: black;" class="dropdown-arrow">تیکت ها</a>
+            </div>
+        </div>
+
+
+
+
         <div class="ms-menu-inner">
             <div class="ms-menu-content">
                 <div class="ms-mobile-search">
@@ -252,19 +301,19 @@
     <div class="ms-header-bottom d-lg-none">
         <div class="container position-relative">
             <div class="row ">
-                <div class="ms-flex">
+                <div class="ms-flex" style="align-items: center;">
                     <!-- Header Logo Start -->
                     <div class="col ms-header-logo" style="max-width: none;">
                         <div class="header-logo" style="max-width: none;">
                             <a href="/">
                                 <img src="{% static 'assets/img/logo/logo.png' %}" alt="Site Logo"
-                                     style="width: 70px; height: auto !important;">
+                                     style="width: 40px; height: auto !important;">
                             </a>
                         </div>
                     </div>
 
 
-                    <a href="javascript:void(0)" class="ms-header-btn ms-site-menu-icon d-lg-none">
+                    <a href="javascript:void(0)" class="ms-header-btn ms-site-menu-icon d-lg-none" style="height: max-content;">
                         <img src="{% static 'assets/img/icons/menu.svg' %}" class="svg_img" alt="menu">
                     </a>
                 </div>

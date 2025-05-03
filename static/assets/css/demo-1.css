@@ -457,7 +457,7 @@ input {
 @media (max-width: 420px) {
     .main-image{
         width: 100%;
-        max-height: max-content;
+        /* max-height: max-content; */
     }
 }
 
@@ -5824,7 +5824,7 @@ body.ms-menu-open:before {
 
 .ms-ofr-banners .ms-bnr-body .ms-bnr-img img {
     width: 100%;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-ofr-banners .ms-bnr-body .ms-bnr-img .lbl {
@@ -6573,7 +6573,7 @@ body.ms-menu-open:before {
 .ms-new-product-block .ms-pro-image-outer .ms-pro-image img {
     width: 70px;
     height: 70px;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .ms-new-product-block .ms-pro-content {
@@ -8555,7 +8555,7 @@ section.ms-instagram-section {
     }
 
     .ms-pro-tab-nav .nav-item:not(:last-child) {
-        margin-right: 30px;
+        margin-right: 0;
     }
 
     .ms-animated-banner {
@@ -8583,6 +8583,8 @@ section.ms-instagram-section {
     .m-t-991 {
         margin-top: 30px;
     }
+
+    
 }
 
 @media (max-width: 767px) {
@@ -8623,6 +8625,8 @@ section.ms-instagram-section {
         -webkit-box-pack: start !important;
         -ms-flex-pack: start !important;
         justify-content: flex-start !important;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
     }
 
     .ms-animated-banner {
@@ -8688,6 +8692,7 @@ section.ms-instagram-section {
     .m-t-767 {
         margin-top: 30px;
     }
+    
 }
 
 @media (max-width: 575px) {
@@ -8865,17 +8870,18 @@ section.ms-instagram-section {
     .ms-pro-tab-nav .nav-item .nav-link {
         font-size: 13px;
         line-height: 28px;
+        width: max-content;
     }
 
     .ms-pro-tab-nav .nav-item:not(:last-child) {
-        margin-right: 20px;
+        margin-right: 0;
     }
 
     .ms-animated-banner .ms-bnr-detail .ms-bnr-info {
         padding: 15px;
-        background: rgba(255, 255, 255, 0.6);
+        /* background: rgba(255, 255, 255, 0.6);
         -webkit-backdrop-filter: blur(3px);
-        backdrop-filter: blur(3px);
+        backdrop-filter: blur(3px); */
         border-radius: 3px;
         z-index: 2;
     }

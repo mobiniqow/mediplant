@@ -36,6 +36,7 @@
     <link rel="stylesheet" id="main_style" href="{% static '../static/assets/css/new-page.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
     <link rel="stylesheet" class="color-css" href="{% static 'assets/css/color-01.css' %}">
+
     <style>
         .item-shop {
             display: flex;
@@ -49,7 +50,7 @@
             max-width: 100%;
             box-sizing: border-box;
         }
-
+        
         .item-shop:hover {
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
@@ -132,6 +133,35 @@
 
         .product-info .btn-buy:hover {
             background-color: #0056b3;
+        }
+
+        .detail-info-responsive{
+            display: none;
+        }
+
+        @media (max-width: 990px) {
+            .detail-info-item{
+                display: none;
+            }
+            .detail-info-responsive{
+                display: block;
+            }
+            .product-details{
+                padding: 0 10px;
+            }
+        }
+
+
+        @media (max-width: 550px) {
+            .item-shop{
+                display: block ;
+            }
+            .product-info .btn-buy {
+                width: 100%;
+            }
+            .product-details{
+                padding: 0 10px;
+            }
         }
 
     </style>
@@ -297,7 +327,7 @@
         </div>
 
 
-        <div class="detail-item mt-4">
+        <div class="detail-item detail-info-item mt-4">
             <div class="detail-label">
                 <p>معرفی محصول:</p>
             </div>
@@ -382,6 +412,15 @@
                 </div>
                 <div class="detail-value">
                     <p>{{ product_shops.0.get_inventory_state_display }}</p>
+                </div>
+            </div>
+
+            <div class="detail-item detail-info-responsive">
+                <div class="detail-label">
+                    <p>معرفی محصول:</p>
+                </div>
+                <div class="detail-value">
+                    <p>{{ product_shops.0.product.description | safe |truncatechars:50 }}</p>
                 </div>
             </div>
             
