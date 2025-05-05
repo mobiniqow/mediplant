@@ -5,7 +5,7 @@ from .base import *
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "USER": "iot_user",
+        "USER": "postgres",
         "PASSWORD": "ewrasdfwqe",
         "NAME": "mediplant",
         "HOST": "localhost",
@@ -24,7 +24,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://shopper.mediplant.ir",
     "https://doctor.mediplant.ir",
     "https://mediplant.ir",
-    "https://mediplant.ir",
+    "https://mediplant.org",
     "https://wwww.mediplant.ir",
     "http://localhost:3000",
 ]
@@ -76,6 +76,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://shopper.mediplant.ir",
     "https://doctor.mediplant.ir",
     "https://mediplant.ir",
+    "https://mediplant.org",
     "https://wwww.mediplant.ir",
     "http://localhost:3000",
 ]
