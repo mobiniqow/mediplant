@@ -31,7 +31,6 @@
                         </div>
                     </div>
                     <div class="align-self-center ms-header-search">
-
                         <div class="header-search">
                             <form class="ms-search-group-form" action="#">
                                 <input class="form-control ms-search-bar" placeholder="جستجو محصولات" type="text">
@@ -41,80 +40,8 @@
                             </form>
                         </div>
                     </div>
-                    <div class="align-self-center">
-                        <div class="ms-header-bottons"
-                             style="display: flex; align-items: center; gap: 20px; position: relative;">
+                    <div id="accounting">
 
-                            <!-- بخش لاگین شده -->
-                            <div id="logged-in"
-                                 style="display: flex; align-items: center; gap: 20px; position: relative;">
-
-                                <!-- دکمه حساب کاربری -->
-                                <div class="ms-acc-drop" style="position: relative;">
-                                    <a href="javascript:void(0)" class="ms-header-btn ms-header-user ms-user-toggle"
-                                       title="حساب کاربری" onclick="toggleDropdown()"
-                                       style="display: flex; align-items: center;">
-                                        <div class="header-icon">
-                                            <img src="{% static 'assets/img/icons/user.svg' %}"
-                                                 class="svg_img header_svg" alt="">
-                                        </div>
-                                        <div class="ms-btn-desc">
-                                            <span class="ms-btn-title">حساب کاربری</span>
-                                            <span class="ms-btn-stitle">شما</span>
-                                        </div>
-                                    </a>
-
-                                    <!-- زیرمنوی حساب کاربری -->
-                                    <ul id="accountDropdown" class="ms-dropdown-menu" style="
-                    display: none;
-                    position: absolute;
-                    top: 100%;
-                    right: 0;
-                    background: white;
-                    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
-                    list-style: none;
-                    padding: 10px;
-                    margin: 0;
-                    z-index: 100;">
-                                        <li><a class="dropdown-item" href="/profile">ویرایش پروفایل</a></li>
-                                        <li><a class="dropdown-item" href="/shop-transactions">سفارشات</a></li>
-                                        <li><a class="dropdown-item" href="/medic/prescription">نسخه های پزشکی</a></li>
-                                        <li><a class="dropdown-item" href="/transactions">تراکنش ها</a></li>
-                                        <li><a class="dropdown-item" href="/logout">خروج</a></li>
-                                    </ul>
-                                </div>
-
-                                <!-- بقیه دکمه ها مثل فیوریت و سبد خرید -->
-                                {#            <a href="javascript:void(0)" class="ms-header-btn" title="علاقه مندی" style="display: flex; align-items: center;">#}
-                                {#                <div class="header-icon">#}
-                                {#                    <img src="{% static 'assets/img/icons/wishlist.svg' %}" class="svg_img header_svg" alt="">#}
-                                {#                </div>#}
-                                {#                <div class="ms-btn-desc">#}
-                                {#                    <span class="ms-btn-stitle"><span class="ms-wishlist-count">{{ medic_notification }}</span> مورد</span>#}
-                                {#                </div>#}
-                                {#            </a>#}
-
-                                <a href="javascript:void(0)" class="ms-header-btn ms-cart-toggle" title="سبد خرید"
-                                   style="display: flex; align-items: center;">
-                                    <div class="header-icon">
-                                        <img src="{% static 'assets/img/icons/cart_5.svg' %}" class="svg_img header_svg"
-                                             alt="">
-                                    </div>
-                                    <div class="ms-btn-desc">
-                                        <span class="ms-header-btn ms-cart-toggle">سبد خرید</span>
-                                        <span class="ms-btn-stitle"><span
-                                                class="ms-cart-count ms-cart-toggle">{{ shop_notification }}</span> مورد</span>
-                                    </div>
-                                </a>
-
-                            </div>
-
-                            <!-- مهمان ها -->
-                            <div id="guest" style="display: flex; align-items: center; gap: 20px;">
-                                <!-- بقیه مشابه -->
-                            </div>
-
-                        </div>
                     </div>
 
                 </div>
@@ -197,7 +124,7 @@
             </div>
         </div>
     </div>
-
+    </div>
     <div class="ms-mobile-menu-overlay"></div>
     <div id="ms-mobile-menu" class="ms-mobile-menu">
         <div class="ms-menu-title">
@@ -262,44 +189,102 @@
     </div>
 </header>
 
+<div id="accounting"></div>
+
 <script>
 
-    function getCookie(name) {
+    function getToken() {
         const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
+        const parts = value.split(`; access_token=`);
         if (parts.length === 2) return parts.pop().split(';').shift();
+        return null;
     }
 
-    window.addEventListener('DOMContentLoaded', () => {
-        const accessToken = getCookie('access_token');
-        const loggedIn = document.getElementById('logged-in');
-        const guest = document.getElementById('guest');
-        loggedIn.style.display = 'none';
-        guest.style.display = 'flex';
-        if (accessToken) {
-            loggedIn.style.display = 'flex';
-            guest.style.display = 'none';
+    document.addEventListener("DOMContentLoaded", function () {
+        const token = getToken();
+        const accountingDiv = document.getElementById('accounting');
+
+        if (token) {
+            accountingDiv.innerHTML = `
+            <div class="align-self-center">
+                <div class="ms-header-bottons">
+                    <div class="ms-acc-drop">
+                        <a href="javascript:void(0)"
+                           class="ms-header-btn ms-header-user dropdown-toggle ms-user-toggle"
+                           title="حساب کاربری">
+                            <div class="header-icon">
+                                <img src="/static/assets/img/icons/user.svg"
+                                     class="svg_img header_svg" alt="">
+                            </div>
+                            <div class="ms-btn-desc">
+                                <span class="ms-btn-title">حساب کاربری</span>
+                                <span class="ms-btn-stitle">شما</span>
+                            </div>
+                        </a>
+                        <ul class="ms-dropdown-menu">
+                            <li><a class="dropdown-item" href="/profile">ویرایش پروفایل</a></li>
+                            <li><a class="dropdown-item" href="/shop-transactions">سفارشات</a></li>
+                            <li><a class="dropdown-item" href="/medic/prescription">نسخه‌های پزشکی</a></li>
+                            <li><a class="dropdown-item" href="/transactions">تراکنش‌ها</a></li>
+                            <li><a class="dropdown-item" href="/logout">خروج</a></li>
+                        </ul>
+                    </div>
+{#                    <a href="javascript:void(0)" class="ms-header-btn" title="علاقه‌مندی">#}
+{#                        <div class="header-icon">#}
+{#                            <img src="/static/assets/img/icons/wishlist.svg"#}
+{#                                 class="svg_img header_svg" alt="">#}
+{#                            <span class=""></span>#}
+{#                        </div>#}
+{#                        <div class="ms-btn-desc">#}
+{#                            <span class="ms-btn-stitle"><span class="ms-wishlist-count">0</span> مورد </span>#}
+{#                        </div>#}
+{#                    </a>#}
+                    <a href="#" class="ms-header-btn" title="سبدهای خرید">
+                        <div class="header-icon">
+                            <img src="/static/assets/img/icons/cart_5.svg"
+                                 class="svg_img header_svg" alt="">
+                            <span class=""></span>
+                        </div>
+                        <div class="ms-btn-desc">
+                            <span class="ms-header-btn ms-cart-toggle">سبد خرید</span>
+                            <span class="ms-btn-stitle"><span class="ms-cart-count ms-cart-toggle">0</span> مورد </span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        `;
         } else {
-            loggedIn.style.display = 'none';
-            guest.style.display = 'flex';
-        } 
-    });
-
-    function toggleDropdown() {
-        const menu = document.getElementById('accountDropdown');
-        if (menu.style.display === 'none' || menu.style.display === '') {
-            menu.style.display = 'block';
-        } else {
-            menu.style.display = 'none';
+            // نسخه کاربران مهمان
+            accountingDiv.innerHTML = `
+            <div class="align-self-center">
+                <div class="ms-header-bottons">
+                    <div class="ms-acc-drop">
+                        <a href="javascript:void(0)"
+                           class="ms-header-btn ms-header-user dropdown-toggle ms-user-toggle"
+                           title="حساب کاربری">
+                            <div class="header-icon">
+                                <img src="/static/assets/img/icons/user.svg"
+                                     onclick='window.open("/login/?callback=" + window.location.pathname, "_self")'
+                                     class="svg_img header_svg" alt="">
+                            </div>
+                            <span onclick='window.open("/login/?callback=" + window.location.pathname, "_self")'
+                                  class="ms-btn-stitle">ورود</span>
+                        </a>
+                    </div>
+                    <a href="javascript:void(0)" class="ms-header-btn ms-cart-toggle" title="سبد خرید">
+                        <div class="header-icon">
+                            <img src="/static/assets/img/icons/cart_5.svg"
+                                 class="svg_img header_svg" alt="">
+                            <span class=""></span>
+                        </div>
+                        <div class="ms-btn-desc">
+                            <span class="ms-btn-title">سبد خرید</span>
+                            <span class="ms-btn-stitle"><span class="ms-cart-count">0</span> مورد </span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        `;
         }
-    }
-
-    window.addEventListener('click', function (e) {
-        const dropdown = document.getElementById('accountDropdown');
-        const toggle = document.querySelector('.ms-user-toggle');
-        if (!toggle.contains(e.target) && !dropdown.contains(e.target)) {
-            dropdown.style.display = 'none';
-        }
     });
-
 </script>

@@ -624,6 +624,7 @@
     });
 </script>
 <script>
+    console.log(getToken());
     let maxOrderQuantity = 10; // حداکثر تعداد قابل سفارش
     let pricePerUnit = 100; // قیمت هر واحد
 
@@ -658,22 +659,22 @@
         });
     }
 
+    function getToken() {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; access_token=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+        return null;
+    }
 
     async function addItemToCardApi(quantity) {
         let basket_id = await getCart()
         let product = '{{ product_id }}'
-        let token = "{{ token }}";
+        let token = getToken();
+
         let header = {
             "Content-Type": "application/x-www-form-urlencoded",
             "X-CSRFToken": getCookie('csrftoken'),
-        }
-        if (token != "") {
-
-            header = {
-                "Content-Type": "application/x-www-form-urlencoded",
-                "X-CSRFToken": getCookie('csrftoken'),
-                "Authorization": "Bearer {{token}}"
-            }
+            "Authorization": `Bearer ${token}`
         }
         var settings = {
             "url": `/basket/${basket_id['basket_id']}/product/${product}`,
@@ -691,14 +692,16 @@
     }
 
     function getCart() {
+
         let shop = "{{ shop_id }}";
+        let token = getToken();
         var settings = {
             "url": `/basket/${shop}`,
             "method": "POST",
             "timeout": 0,
             "headers": {
                 "X-CSRFToken": getCookie('csrftoken'),
-                "Authorization": "Bearer {{ token }}",
+                "Authorization": `Bearer ${token}`,
             }
         };
         return $.ajax(settings)
