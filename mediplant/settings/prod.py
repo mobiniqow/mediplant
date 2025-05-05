@@ -12,7 +12,7 @@ DATABASES = {
         "PORT": "5432",
     }
 }
-DATA_UPLOAD_MAX_MEMORY_SIZE = 524288000  # 50 MB
+DATA_UPLOAD_MAX_MEMORY_SIZE = 524288000
 FILE_UPLOAD_MAX_MEMORY_SIZE = 524288000
 
 MERCHANT_ID = "5ed2e796-0448-40db-920c-1df64ddb0551"
@@ -33,7 +33,6 @@ ALLOWED_HOSTS = ['*']
 STATIC_URL = '/static/'
 STATIC_ROOT = '/var/html/www/mediplant/static'
 
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(days=14),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=45),
@@ -62,15 +61,6 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
-# CORS_ALLOW_ALL_ORIGINS = True
-# CORS_ALLOW_CREDENTIALS = True
-# import os
-#
-# GDAL_LIBRARY_PATH = os.getenv('GDAL_LIBRARY_PATH', '/usr/lib/libgdal.so')
-#
-# if GDAL_LIBRARY_PATH:
-#     os.environ['GDAL_LIBRARY_PATH'] = GDAL_LIBRARY_PATH
-
 
 CORS_ALLOWED_ORIGINS = [
     "https://shopper.mediplant.ir",
@@ -81,10 +71,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
 ]
 
-
-# CORS_ALLOW_ALL_ORIGINS = True
-# CORS_ALLOW_CREDENTIALS = True
-CSRF_COOKIE_SECURE=True
+CSRF_COOKIE_SECURE = True
 
 CHANNEL_LAYERS = {
     "default": {
