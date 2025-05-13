@@ -199,50 +199,50 @@
                         <span class="ms-register-wrap ms-register-half">
                             <label>نام و نام خانوادگی *</label>
                             <input id="edit-firstname" type="text" name="user_name"
-                                value="{{ user.user_name }}" readonly
-                                onclick="openEditDialog('نام و نام خانوادگی','edit-firstname')">
+                                   value="" readonly
+                                   onclick="openEditDialog('نام و نام خانوادگی','edit-firstname')">
                         </span>
 
                         <span class="ms-register-wrap ms-register-half">
                             <label>شهر</label>
-                            <input id="edit-city" type="text" name="city" value="{{ user.city }}"
-                                readonly
-                                onclick="openEditDialog('شهر','edit-city')">
+                            <input id="edit-city" type="text" name="city" value=""
+                                   readonly
+                                   onclick="openEditDialog('شهر','edit-city')">
                         </span>
                         <span class="ms-register-wrap ms-register-half">
                             <label>ایمیل *</label>
                             <input type="email" name="email" onclick="openVerificationDialog()"
-                                placeholder="{{ user.email }}" readonly required>
+                                   placeholder="" readonly required>
                         </span>
                         <span class="ms-register-wrap ms-register-half">
                             <label>تلفن *</label>
                             <input type="text" name="phonenumber" onclick="openMobileVerificationDialog()"
-                                readonly placeholder="{{ user.phone }}" required>
+                                   readonly placeholder="" required>
                         </span>
                         <span class="ms-register-wrap ms-register-half">
                             <label>لوکیشن</label>
                             <input type="text" name="postalcode" id="postalcode"
-                                placeholder="{{ user.location }}" onclick="openMapDialog()">                                
+                                   placeholder="" onclick="openMapDialog()">
                         </span>
                         <span class="ms-register-wrap ms-register-half">
                             <label>کدپستی</label>
                             <input type="text" id="edit-post-code" name="postal_code"
-                                value="{{ user.postal_code }}"
-                                readonly onclick="openEditDialog('کدپستی','edit-post-code')">
+                                   value=""
+                                   readonly onclick="openEditDialog('کدپستی','edit-post-code')">
                         </span>
                         <span class="ms-register-wrap">
                             <label>آدرس</label>
-                            <input type="text" id="edit-address" name="address" value="{{ user.address }}"
-                                readonly
-                                onclick="openEditDialog('آدرس','edit-address',true)">
+                            <input type="text" id="edit-address" name="address" value=""
+                                   readonly
+                                   onclick="openEditDialog('آدرس','edit-address',true)">
                         </span>
                         <span class="ms-register-wrap ms-recaptcha">
                             <span class="g-recaptcha" data-sitekey="6LfKURIUAAAAAO50vlwWZkyK_G2ywqE52NU7YO0S"
-                                data-callback="verifyRecaptchaCallback"
-                                data-expired-callback="expiredRecaptchaCallback">
+                                  data-callback="verifyRecaptchaCallback"
+                                  data-expired-callback="expiredRecaptchaCallback">
                             </span>
                             <input class="form-control d-none" data-recaptcha="true" required
-                                    data-error="Please complete the Captcha">
+                                   data-error="Please complete the Captcha">
                             <span class="help-block with-errors"></span>
                         </span>
                         {#                                <span class="ms-register-wrap ms-register-btn">#}
@@ -262,10 +262,12 @@
 <div id="editDialog" class="dialog">
     <div class="dialog-content">
         <span id="closeDialog" class="close-btn">&times;</span>
-        <label for="edit-input" id="dialog-title" class="text-right w-full text-sm"> نام</label> <!-- تغییر به ID برای تغییر عنوان -->
+        <label for="edit-input" id="dialog-title" class="text-right w-full text-sm"> نام</label>
+        <!-- تغییر به ID برای تغییر عنوان -->
 
         <!-- Input/textarea will be dynamically added here -->
-        <div id="input-container" class="border my-2 rounded"></div> <!-- جایی که input یا textarea در آن قرار می‌گیرد -->
+        <div id="input-container" class="border my-2 rounded"></div>
+        <!-- جایی که input یا textarea در آن قرار می‌گیرد -->
 
         <!-- دکمه‌های ذخیره و کنسل -->
         <div class=" grid grid-cols-2 gap-2">
@@ -279,11 +281,12 @@
 <div id="verificationDialog" class="dialog">
     <div class="dialog-content">
         <span id="closeVerificationDialog" class="close-btn">&times;</span>
-        <label for="verification-input" id="verification-title" class="w-full text-right text-xs"> ایمیل خود را وارد کنید :</label>
+        <label for="verification-input" id="verification-title" class="w-full text-right text-xs"> ایمیل خود را وارد
+            کنید :</label>
 
         <!-- Input field for email -->
         <div id="input-container" class="my-2">
-            <input type="email" id="verification-input" class="border w-full rounded !h-9 !text-xs px-2" >
+            <input type="email" id="verification-input" class="border w-full rounded !h-9 !text-xs px-2">
         </div>
 
         <!-- دکمه‌های تایید و لغو -->
@@ -317,11 +320,13 @@
 <div id="mobileVerificationDialog" class="dialog">
     <div class="dialog-content">
         <span id="closeMobileVerificationDialog" class="close-btn">&times;</span>
-        <label for="mobile-verification-input" id="mobile-verification-title" class="text-sm w-full text-right">شماره موبایل خود را وارد کنید</label>
+        <label for="mobile-verification-input" id="mobile-verification-title" class="text-sm w-full text-right">شماره
+            موبایل خود را وارد کنید</label>
 
         <!-- Input field for mobile -->
         <div id="mobile-input-container" class="my-2">
-            <input type="text" class="border !h-8 rounded !text-xs" id="mobile-verification-input" placeholder="شماره موبایل خود را وارد کنید"
+            <input type="text" class="border !h-8 rounded !text-xs" id="mobile-verification-input"
+                   placeholder="شماره موبایل خود را وارد کنید"
                    maxlength="11">
         </div>
 
@@ -429,7 +434,7 @@
     function openVerificationDialog() {
         // نمایش دیالوگ ورود ایمیل
         document.getElementById('verificationDialog').style.display = 'flex';
-        document.getElementById('verification-input').value= "{{ user.email }}"
+        document.getElementById('verification-input').value = ""
         // بستن دیالوگ با کلیک روی close
         document.getElementById('cancel-email-btn').addEventListener('click', function () {
             document.getElementById('verificationDialog').style.display = 'none';
@@ -437,7 +442,7 @@
 
         document.getElementById('verify-email-btn').addEventListener('click', function () {
             var email = document.getElementById('verification-input').value;
-            
+
             if (validateEmail(email)) {
                 alert('کد تایید به ایمیل شما ارسال شد!');
                 sendEmailOtp(email)
@@ -471,7 +476,7 @@
         document.getElementById('confirm-code-btn').addEventListener('click', function () {
             var code = document.getElementById('verification-code-input').value;
             var email = document.getElementById('verification-input').value;
-            verifyEmailOtp(email, code, '{{token}}'); // ارسال کد تایید به API
+            verifyEmailOtp(email, code); // ارسال کد تایید به API
         });
 
         // دکمه لغو
@@ -484,14 +489,14 @@
     // تابع ارسال OTP به ایمیل
     document.getElementById('send-otp-btn').addEventListener('click', function () {
         var email = document.getElementById('email-input').value;
-        sendEmailOtp(email, '{{token}}'); // ارسال درخواست برای ارسال OTP به ایمیل
+        sendEmailOtp(email,); // ارسال درخواست برای ارسال OTP به ایمیل
     });
 
     function openMobileVerificationDialog() {
         // نمایش دیالوگ ورود شماره موبایل
         document.getElementById('mobileVerificationDialog').style.display = 'flex';
-        document.getElementById('mobile-verification-input').value = '{{ user.phone }}';
-        
+        document.getElementById('mobile-verification-input').value = '';
+
         // بستن دیالوگ با کلیک روی close
         document.getElementById('closeMobileVerificationDialog').addEventListener('click', function () {
             document.getElementById('mobileVerificationDialog').style.display = 'none';
@@ -531,14 +536,14 @@
         document.getElementById('closeMobileCodeDialog').addEventListener('click', function () {
             document.getElementById('mobileCodeDialog').style.display = 'none';
         });
- 
+
         document.getElementById('confirm-mobile-code-btn').addEventListener('click', function () {
             var code = document.getElementById('mobile-verification-code-input').value;
             var phone = document.getElementById('mobile-verification-input').value;
-            
-            verifyPhoneOtp(phone, code, '{{token}}'); // ارسال کد تایید به API
+
+            verifyPhoneOtp(phone, code,); // ارسال کد تایید به API
         });
- 
+
         document.getElementById('cancel-mobile-code-btn').addEventListener('click', function () {
             document.getElementById('mobileCodeDialog').style.display = 'none'; // بستن دیالوگ کد تایید
         });
@@ -550,7 +555,7 @@
     let marker;
     let loc = "{{ user.location }}"
     let selectedLocation = {lat: 35.6895, lng: 51.3890};
-    if (loc !== "None" && loc!="" ) {
+    if (loc !== "None" && loc != "") {
         loc = loc.split(",")
         selectedLocation = {lat: loc[0], lng: loc[1]};
     }
@@ -617,7 +622,7 @@
             "timeout": 0,
             "headers": {
                 "Content-Type": "application/x-www-form-urlencoded",
-                "Authorization": "Bearer {{token}}" // توکن JWT خود را اینجا قرار دهید
+                "Authorization": `Bearer ${getToken()}`
             },
             "data": {
                 [fieldName]: fieldValue // نام فیلد و مقدار آن
@@ -629,7 +634,7 @@
             .done(function (response) {
                 if (response) {
                     console.log(response)
-                    location.reload();
+                    fetchUserProfile();
                 }
 
             })
@@ -650,7 +655,7 @@
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer  {{token}}`  // ارسال توکن برای احراز هویت
+                'Authorization': `Bearer  ${getToken()}`  // ارسال توکن برای احراز هویت
             },
             body: JSON.stringify({email: email})
         })
@@ -668,14 +673,13 @@
                 alert('مشکلی پیش آمد');
             });
     }
-
-    function verifyEmailOtp(email, code, token) {
+    function verifyEmailOtp(email, code) {
         // ارسال درخواست به API برای تایید کد OTP
         fetch('/account/api/v1/verify-email-otp/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`  // ارسال توکن برای احراز هویت
+                'Authorization': `Bearer ${getToken()}`  // ارسال توکن برای احراز هویت
             },
             body: JSON.stringify({email: email, otp: code})
         })
@@ -684,7 +688,7 @@
                 if (data.message) {
                     alert(data.message);
                     document.getElementById('codeDialog').style.display = 'none';
-                    location.reload();
+                    fetchUserProfile();
                 } else {
                     alert('کد تایید صحیح نمی‌باشد');
                 }
@@ -694,7 +698,6 @@
                 alert('مشکلی پیش آمد');
             });
     }
-
     function sendPhoneOtp(phone) {
         if (!validateMobileNumber(phone)) {
             alert("لطفاً موبایل معتبر وارد کنید");
@@ -706,7 +709,7 @@
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer  {{token}}`  // ارسال توکن برای احراز هویت
+                'Authorization': `Bearer  ${getToken()}`  // ارسال توکن برای احراز هویت
             },
             body: JSON.stringify({phone: phone})
         })
@@ -739,7 +742,7 @@
                 if (data.message) {
                     alert(data.message);
                     document.getElementById('codeDialog').style.display = 'none';
-                    location.reload();
+                    fetchUserProfile();
                 } else {
                     alert('کد تایید صحیح نمی‌باشد');
                 }
@@ -751,6 +754,51 @@
     }
 
 </script>
+<script>
+    function getToken() {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; access_token=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+        return null;
+    }
+    async function fetchUserProfile() {
+        const token = getToken();
+        if (!token) {
+            console.error("No access token found.");
+            return;
+        }
+
+        try {
+            const response = await fetch("/account/api/v1/profile/", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": "Bearer " + token
+                },
+                credentials: "include" // if cookies like sessionid are needed
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                // پر کردن فیلدها با داده‌های دریافتی
+                document.querySelector('[name="user_name"]').value = data.user_name || '';
+                document.querySelector('[name="city"]').value = data.city || '';
+                document.querySelector('[name="email"]').placeholder = data.email || '';
+                document.querySelector('[name="phonenumber"]').placeholder = data.phone || '';
+                document.querySelector('[name="postal_code"]').value = data.postal_code || '';
+                document.querySelector('[name="address"]').value = data.address || '';
+                document.querySelector('[name="postalcode"]').placeholder = data.location || '';
+            } else {
+                console.error("Failed to fetch:", data);
+            }
+        } catch (error) {
+            console.error("AJAX Error:", error);
+        }
+    }
+    document.addEventListener("DOMContentLoaded", fetchUserProfile);
+    console.log(getToken())
+</script>
+
 </body>
 
 </html>
