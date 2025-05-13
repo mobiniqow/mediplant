@@ -144,23 +144,24 @@ class DeleteProductFromBasket(APIView):
 
 class ProductToBasket(APIView):
     def post(self, request, basket_id, product_id):
-        if request.user is not None:
+        # if request.user is not None:
             # session_key = request.session.session_key or request.META.get('REMOTE_ADDR')
-            basket = SaleBasket.objects.filter(id=basket_id, user=request.user)
-            if basket.exists():
-                basket = basket[0]
-                if basket.user is None:
-                    basket.user = request.user
-                    basket.save()
-            basket = get_object_or_404(SaleBasket, id=basket_id, user=request.user)
-        else:
-            session_key = request.session.session_key or request.META.get('REMOTE_ADDR')
-            basket = SaleBasket.objects.filter(id=basket_id, session_key=session_key)
-            if not basket.exists():
-                return Response({"message": "not found"}, status=status.HTTP_404_NOT_FOUND)
-            else:
-                basket = basket[0]
-        shop_product = ShopProduct.objects.filter(id=product_id, shop=basket.shop)
+        basket = SaleBasket.objects.filter(id=basket_id, user=request.user)
+        if basket.exists():
+            basket = basket[0]
+            if basket.user is None:
+                basket.user = request.user
+                basket.save()
+        basket = get_object_or_404(SaleBasket, id=basket_id, user=request.user)
+        # else:
+        #     session_key = request.session.session_key or request.META.get('REMOTE_ADDR')
+        #     basket = SaleBasket.objects.filter(id=basket_id, session_key=session_key)
+        #     if not basket.exists():
+        #         return Response({"message": "not found"}, status=status.HTTP_404_NOT_FOUND)
+        #     else:
+        #         basket = basket[0]
+
+        shop_product = ShopProduct.objects.filter(id=product_id  )
         if not shop_product.exists():
             return Response({"message": "not found"}, status=status.HTTP_404_NOT_FOUND)
         if shop_product.first().capacity < 1:

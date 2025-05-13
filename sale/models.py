@@ -36,7 +36,6 @@ class SaleBasket(models.Model):
         verbose_name_plural = 'سبد‌های خرید'
 
     def get_delivery_date(self):
-        """تبدیل تاریخ میلادی به تاریخ شمسی"""
         if self.delivery_date:
             return jdatetime.date.fromgregorian(date=self.delivery_date).strftime('%Y/%m/%d')
         return "-"
@@ -46,7 +45,6 @@ class SaleBasket(models.Model):
         return f"سبد خرید برای {self.user} - وضعیت: {state_display} - قیمت: {self.price} تومان"
 
     def get_step_number(self):
-        """برگرداندن عدد استپ براساس وضعیت"""
         step_mapping = {
             self.State.SUSPEND: 0,
             self.State.IN_PAY: 0,

@@ -1,5 +1,3 @@
-from multiprocessing.managers import State
-
 from abstract_view.base_template_view import BaseTemplateView
 from product.models import Product, ProductImage
 from sale.models import SaleBasket, SaleBasketProduct

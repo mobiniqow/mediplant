@@ -39,13 +39,13 @@ class BaseProductSerializer(serializers.ModelSerializer):
         return price
 
 class BasketSerializer(serializers.ModelSerializer):
-    image = serializers.SerializerMethodField()
-    name = serializers.SerializerMethodField()
+    # image = serializers.SerializerMethodField()
+    # name = serializers.SerializerMethodField()
     class Meta:
         model = SaleBasket
         fields = '__all__'
 
-    def get_image(self, obj:SaleBasket):
-        return obj.shop.image.url
-    def get_name(self, obj:SaleBasket):
-        return obj.shop.name
+    # def get_image(self, obj:SaleBasket):
+    #     return obj.shop.image.url
+    # def get_name(self, obj:SaleBasket):
+    #     return obj.shop.name

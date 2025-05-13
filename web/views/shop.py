@@ -227,7 +227,7 @@ class AfterBankGateWay(BaseTemplateView):
         context = super().get_context_data(**kwargs)
         shop_id = kwargs['id']
         transaction = Transaction.objects.get(id=shop_id)
-        shop = get_object_or_404(Shop, pk=transaction.cart.shop.id)
+        # shop = get_object_or_404(Shop, pk=transaction.cart.shop.id)
 
         basket = get_object_or_404(SaleBasket, shop=shop, state__in=[
             SaleBasket.State.SUSPEND,
@@ -241,7 +241,7 @@ class AfterBankGateWay(BaseTemplateView):
             i.price_all = '{:,.0f}'.format(i.product.price * i.unit)
 
         context['user'] = self.request.user
-        context['shop'] = shop
+        # context['shop'] = shop
         context['product'] = product
 
         context['date'] = basket.get_delivery_date()
