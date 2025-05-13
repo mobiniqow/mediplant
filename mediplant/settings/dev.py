@@ -4,11 +4,11 @@ from datetime import timedelta
 from .base import *
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_ROOT = 'C:/Users/mobiniqow/Documents/medi_media'
 DEBUG = True
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 DATABASES = {
     'default': {
@@ -16,6 +16,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 20003
 
 REST_FRAMEWORK = {
@@ -58,10 +59,10 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=99),
 }
 
-APPEND_SLASH=True
+APPEND_SLASH = True
 CHANNEL_LAYERS = {
     "default": {
-        "BACKEND":  "channels.layers.InMemoryChannelLayer",
+        "BACKEND": "channels.layers.InMemoryChannelLayer",
     },
 }
 
@@ -74,4 +75,4 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",
 ]
 
-CSRF_COOKIE_SECURE=True
+CSRF_COOKIE_SECURE = True
