@@ -4926,6 +4926,7 @@ body.ms-menu-open:before {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    width: max-content;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
@@ -5165,6 +5166,11 @@ body.ms-menu-open:before {
     display: none;
 }
 
+.banner-celler{
+    display: flex;
+    gap: 16px;
+}
+
 @media only screen and (max-width: 1399px) {
     .ms-footer .footer-top .ms-footer-widget .ms-footer-links .ms-footer-link a {
         font-size: 15px;
@@ -5279,7 +5285,7 @@ body.ms-menu-open:before {
     }
 
     .ms-footer-links.ms-footer-dropdown {
-        display: none;
+        display: block;
         padding: 0 0 20px 0;
     }
 
@@ -5329,6 +5335,11 @@ body.ms-menu-open:before {
 
     .m-minus-991 {
         margin-bottom: -30px;
+        display: block !important;
+    }
+    .banner-celler{
+        display: grid;
+        gap: 16px;
     }
 }
 
@@ -5337,7 +5348,6 @@ body.ms-menu-open:before {
         width: 100%;
     }
 }
-
 
 /**===== Blog & News Section =====**/
 
@@ -8256,6 +8266,10 @@ section.ms-instagram-section {
     font-size: 14px;
 }
 
+.footer-body{
+    display: flex;
+}
+
 
 @media only screen and (max-width: 1300px) {
     .shop-list {
@@ -9030,6 +9044,7 @@ section.ms-instagram-section {
         display: flex;
     }
 }
+
 
 
 
