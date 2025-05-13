@@ -5,10 +5,9 @@ from .base import *
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = 'C:/Users/mobiniqow/Documents/medi_media'
+STATICFILES_DIRS  = ["C:/Users/mobiniqow/Documents/static/", ]
 DEBUG = True
 STATIC_URL = '/static/'
-
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 DATABASES = {
     'default': {
