@@ -26,7 +26,7 @@ class SaleBasket(models.Model):
     address = models.TextField(verbose_name='آدرس')
     state = models.IntegerField(choices=State.choices, default=0, verbose_name='وضعیت')
     discount = models.IntegerField(validators=[MinValueValidator(0)], verbose_name='تخفیف', default=0)
-    shop = models.ForeignKey(Shop, on_delete=models.SET_NULL, null=True, verbose_name='فروشگاه')
+    # shop = models.ForeignKey(Shop, on_delete=models.SET_NULL, null=True, verbose_name='فروشگاه')
     transaction = models.ForeignKey('transaction.Transaction', on_delete=models.SET_NULL, null=True,
                                     verbose_name='تراکنش', blank=True)
     delivery_date = models.DateField(null=True, blank=True, verbose_name='زمان تحویل')

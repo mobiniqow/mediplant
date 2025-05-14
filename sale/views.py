@@ -18,6 +18,7 @@ class CreateDeleteBasket(APIView):
         session_key = request.session.session_key or request.META.get('REMOTE_ADDR')
         shop = get_object_or_404(Shop, pk=shopid)
         user = request.user
+        # todo injaro ok konam
         if user.is_authenticated:
             basket, created = SaleBasket.objects.get_or_create(
                 shop=shop,
@@ -299,22 +300,22 @@ class UpdateTransactionStatus(APIView):
 
 class MyBasket(APIView):
     def get(self, request):
-        session_key = request.session.session_key or request.META.get('REMOTE_ADDR')
-        if request.user.is_authenticated:
-            basket = SaleBasket.objects.filter(user=request.user, state__lte=SaleBasket.State.PAY_FAILED)
-        else:
-            basket = SaleBasket.objects.filter(session_key=session_key, state__lte=SaleBasket.State.PAY_FAILED)
+        # session_key = request.session.session_key or request.META.get('REMOTE_ADDR')
+        # if request.user.is_authenticated:
+        basket = SaleBasket.objects.filter(user=request.user, state__lte=SaleBasket.State.PAY_FAILED)
+        # else:
+        #     basket = SaleBasket.objects.filter(session_key=session_key, state__lte=SaleBasket.State.PAY_FAILED)
 
         baskets = BasketSerializer(basket, many=True).data
 
         return Response(baskets, status=status.HTTP_200_OK)
 
     def delete(self, request, basket_id):
-        session_key = request.session.session_key or request.META.get('REMOTE_ADDR')
-        if request.user.is_authenticated:
-            basket = SaleBasket.objects.filter(user=request.user, id=basket_id)
-        else:
-            basket = SaleBasket.objects.filter(session_key=session_key, id=basket_id)
+        # session_key = request.session.session_key or request.META.get('REMOTE_ADDR')
+        # if request.user.is_authenticated:
+        basket = SaleBasket.objects.filter(user=request.user, id=basket_id)
+        # else:
+        #     basket = SaleBasket.objects.filter(session_key=session_key, id=basket_id)
         if not basket.exists():
             return Response({"message": "not found"}, status=status.HTTP_404_NOT_FOUND)
         basket.delete()
