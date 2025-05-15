@@ -338,7 +338,8 @@
     }
     .list-view .ms-product-content,
     .list-view-50 .ms-product-content {
-        max-width: 50%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         margin: auto;
     }
     .ms-ofr-banners .ms-bnr-body .ms-bnr-detail {
@@ -447,7 +448,7 @@
     }
     .list-view .ms-product-content,
     .list-view-50 .ms-product-content {
-        max-width: 350px;
+        max-width: max-content;
     }
     .ms-single-product .ms-single-pro-tab-content .ms-single-pro-tab-moreinfo li {
         margin-bottom: 10px !important;
@@ -489,6 +490,10 @@
         font-size: 13px;
         line-height: 17px;
     }
+    .list-view .ms-product-content,
+    .list-view-50 .ms-product-content {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
 }
 
 @media (max-width: 360px) {

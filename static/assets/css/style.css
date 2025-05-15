@@ -5202,6 +5202,10 @@ body.ms-menu-open:before {
     display: none;
 }
 
+.img-doctor{
+    width: 200px;
+}
+
 @media only screen and (max-width: 1399px) {
     .ms-footer .footer-top .ms-footer-widget .ms-footer-links .ms-footer-link a {
         font-size: 15px;
@@ -5297,7 +5301,7 @@ body.ms-menu-open:before {
         padding-right: 10px;
     }
     .ms-footer-links.ms-footer-dropdown {
-        display: none;
+        display: block;
         padding: 0 0 20px 0;
     }
     .footer-bottom-copy {
@@ -5337,6 +5341,12 @@ body.ms-menu-open:before {
     }
     .m-minus-991 {
         margin-bottom: -30px;
+    }
+}
+
+@media (max-width: 767px) {
+    .img-doctor{
+        width: max-content;
     }
 }
 
@@ -10206,6 +10216,9 @@ body.ms-menu-open:before {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 10px;
+    }
+    .ms-slider-content{
+        width: 100%;
     }
 }
 @media only screen and (max-width: 480px) {
