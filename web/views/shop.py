@@ -202,7 +202,7 @@ class ShopCartView(BaseTemplateView):
         context = super().get_context_data(**kwargs)
         shop_id = kwargs['id']
         shop = get_object_or_404(Shop, pk=shop_id)
-        basket = get_object_or_404(SaleBasket, user=self.request.user, shop=shop, state__in=[
+        basket = get_object_or_404(SaleBasket, user=self.request.user,  state__in=[
             SaleBasket.State.SUSPEND,
             SaleBasket.State.IN_PAY,
             SaleBasket.State.PAY_FAILED,
