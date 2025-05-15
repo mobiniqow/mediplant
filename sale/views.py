@@ -10,6 +10,7 @@ from .models import SaleBasket, SaleBasketProduct
 from django.shortcuts import get_object_or_404
 
 from .serializers import BaseProductSerializer, BasketSerializer
+from rest_framework.exceptions import ValidationError
 
 
 class CreateDeleteBasket(APIView):
@@ -65,6 +66,37 @@ class CreateDeleteBasket(APIView):
             "price": basket.price,
         }, status=status.HTTP_200_OK)
 
+    def patch(self, request, shopid):
+        print(f'shopid {shopid}')
+        user = request.user
+        product_id = shopid
+        unit = request.data.get('unit')
+
+        if not product_id or unit is None:
+            return Response({"detail": "product_id و unit الزامی هستند."}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            unit = int(unit)
+            if unit < 1:
+                raise ValidationError("تعداد باید حداقل ۱ باشد.")
+        except (ValueError, TypeError):
+            return Response({"detail": "تعداد نامعتبر است."}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            basket = SaleBasket.objects.get(user=user, state__lte=SaleBasket.State.IN_PAY)
+        except SaleBasket.DoesNotExist:
+            return Response({"detail": "سبد خرید یافت نشد."}, status=status.HTTP_404_NOT_FOUND)
+
+        try:
+            basket_product = SaleBasketProduct.objects.get(basket=basket, id=product_id)
+        except SaleBasketProduct.DoesNotExist:
+            return Response({"detail": "محصول در سبد یافت نشد."}, status=status.HTTP_404_NOT_FOUND)
+
+        # به‌روزرسانی تعداد
+        basket_product.unit = unit
+        basket_product.save()
+
+        return Response({"detail": "تعداد با موفقیت به‌روزرسانی شد."}, status=status.HTTP_200_OK)
 
 class DeleteProductFromBasket(APIView):
     def delete(self, request, shop_id, product_id):
@@ -120,11 +152,7 @@ class DeleteProductFromBasket(APIView):
 
 class ProductToBasket(APIView):
     def post(self, request, basket_id, product_id):
-        # if request.user is not None:
-        # session_key = request.session.session_key or request.META.get('REMOTE_ADDR')
-        print(1)
         basket = SaleBasket.objects.filter(id=basket_id, user=request.user)
-        print(2)
         if basket.exists():
             basket = basket[0]
             if basket.user is None:
