@@ -17,7 +17,8 @@ class DoctorTransaction(models.Model):
     user = models.ForeignKey("account.User", on_delete=models.CASCADE, verbose_name="کاربر")
     amount = models.IntegerField(verbose_name="مبلغ")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ایجاد")
-    transaction_type = models.IntegerField(choices=TransactionState.choices, default=TransactionState.SUSPEND, verbose_name="وضعیت تراکنش")
+    transaction_type = models.IntegerField(choices=TransactionState.choices, default=TransactionState.SUSPEND,
+                                           verbose_name="وضعیت تراکنش")
     card = models.CharField("شماره کارت", max_length=33, null=True, blank=True)
     card_hash = models.CharField("هش کارت", max_length=128, null=True, blank=True)
     ref_id = models.CharField("کد پیگیری", max_length=32, null=True, blank=True)
@@ -41,6 +42,11 @@ class Transaction(models.Model):
         ('cancel', 'لغو شده'),
     ]
 
+    class CourierType(models.IntegerChoices):
+        POST = 1, 'پست'
+        SNAPP = 2, 'اسنپ'
+
+    courier_type = models.IntegerField(choices=CourierType.choices, default=CourierType.POST)
     user = models.ForeignKey("account.User", on_delete=models.CASCADE, verbose_name="کاربر")
     amount = models.DecimalField(verbose_name="مبلغ", max_digits=10, decimal_places=2)
     transaction_type = models.CharField(verbose_name="نوع تراکنش", max_length=10, choices=TRANSACTION_TYPES)
@@ -52,8 +58,10 @@ class Transaction(models.Model):
     lat = models.TextField(verbose_name="عرض جغرافیایی", null=True, blank=True)
     lng = models.TextField(verbose_name="طول جغرافیایی", null=True, blank=True)
     code_posti = models.CharField(verbose_name="کد پستی", max_length=40, default="")
-    cart = models.ForeignKey(SaleBasket, on_delete=models.CASCADE, null=True, blank=True, related_name='cart_transaction', verbose_name="سبد خرید")
-    doctor_visit = models.ForeignKey('doctor_visit.DoctorVisit', on_delete=models.SET_NULL, null=True, blank=True, related_name="visit", verbose_name="ویزیت پزشک")
+    cart = models.ForeignKey(SaleBasket, on_delete=models.CASCADE, null=True, blank=True,
+                             related_name='cart_transaction', verbose_name="سبد خرید")
+    doctor_visit = models.ForeignKey('doctor_visit.DoctorVisit', on_delete=models.SET_NULL, null=True, blank=True,
+                                     related_name="visit", verbose_name="ویزیت پزشک")
     card = models.CharField(verbose_name="شماره کارت", max_length=33, null=True, blank=True)
     card_hash = models.CharField(verbose_name="هش کارت", max_length=128, null=True, blank=True)
     ref_id = models.CharField(verbose_name="کد پیگیری", max_length=32, null=True, blank=True)

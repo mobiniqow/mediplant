@@ -27,8 +27,8 @@ class LoginView(BaseTemplateView):
                 print("else form.is_valid()")
                 return self.form_invalid(form)
         else:
-            print(f'request.user.state = {request.user.state }')
-            print(f'User.State.GUEST = {User.State.GUEST }')
+            print(f'request.user.state = {request.user.state}')
+            print(f'User.State.GUEST = {User.State.GUEST}')
             if request.user.state != User.State.GUEST:
                 return redirect('/')
             context = self.get_context_data()
@@ -109,17 +109,14 @@ class ProfileView(BaseTemplateView):
         else:
             user = request.user
             context = self.get_context_data()
-
-            # Create JWT token for the authenticated user
             refresh = RefreshToken.for_user(user)
-            access_token = str(refresh.access_token)  # Get the access token as string
+            access_token = str(refresh.access_token)
             context['user'] = request.user
-            context['token'] = access_token  # Pass the JWT token to the context
-
+            context['token'] = access_token
             profile = ProfileForm(instance=user)
             context['form'] = profile
-
         return self.render_to_response(context)
+
 class Tickets(BaseTemplateView):
     template_name = "account/ticket.html"
 
@@ -135,6 +132,8 @@ class Tickets(BaseTemplateView):
         context['news'] = news
         context['hashtags'] = hashtags
         return context
+
+
 class NewTicket(BaseTemplateView):
     template_name = "account/new_ticket.html"
 
@@ -150,6 +149,8 @@ class NewTicket(BaseTemplateView):
         context['news'] = news
         context['hashtags'] = hashtags
         return context
+
+
 class TicketHistory(BaseTemplateView):
     template_name = "account/ticket_history.html"
 

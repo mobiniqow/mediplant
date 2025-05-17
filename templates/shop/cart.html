@@ -1030,7 +1030,9 @@
     function raod_to_pay(basket) {
         var postalCode = $('#code_posti').val();
         var address_details = $('#address_details').val();
+        var courierType = $('input[name="delivery_method"]:checked').val();
         console.log(selectedLocation)
+        console.log(basket)
         console.log(postalCode)
         console.log(address_details)
         console.log("oamada {{ token }}")
@@ -1039,13 +1041,15 @@
             "method": "POST",
             "timeout": 0,
             "headers": {
-                "Authorization": "Bearer {{token}}"  // Replace `token` with actual token value
+                "Authorization": "Bearer"+ getToken()// Replace `token` with actual token value
             },
             "data": {
                 "code_posti": postalCode,
                 "address": address_details,
                 "lat": selectedLocation.lat,
-                "lng": selectedLocation.lng
+                "lng": selectedLocation.lng,
+                "courier_type": courierType === 'post' ? 1 : 2  // ارسال عدد صحیح معادل انتخاب کاربر
+
             }
         };
 

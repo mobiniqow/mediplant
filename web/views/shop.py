@@ -200,23 +200,6 @@ class ShopCartView(BaseTemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # shop_id = kwargs['id']
-        # shop = get_object_or_404(Shop, pk=shop_id)
-        basket = get_object_or_404(SaleBasket, user=self.request.user,  state__in=[
-            SaleBasket.State.SUSPEND,
-            SaleBasket.State.IN_PAY,
-            SaleBasket.State.PAY_FAILED,
-        ])
-        product = SaleBasketProduct.objects.filter(basket=basket)
-        print(product)
-        for i in product:
-            i.image = ProductImage.objects.filter(product=i.product.product).first()
-            i.price = '{:,.0f}'.format(i.product.price)
-            i.price_all = '{:,.0f}'.format(i.product.price * i.unit)
-        context['user'] = self.request.user
-        # context['shop'] = shop
-        context['product'] = product
-
         return context
 
 
