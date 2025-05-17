@@ -4,7 +4,8 @@ from django.utils import timezone
 import uuid
 import jdatetime
 from sale.models import SaleBasket
-
+import requests
+import json
 
 class DoctorTransaction(models.Model):
     class TransactionState(models.IntegerChoices):
@@ -102,3 +103,37 @@ class Payment(models.Model):
 
     def __str__(self):
         return f"پرداخت {self.cart.user.user_name} - {self.status}"
+
+    def initiate_payment(self):
+        amount = self.cart.price
+        if amount <= 0:
+            raise ValueError("سبد خرید خالی است یا مبلغ پرداخت صحیح نیست.")
+
+        url = "https://api.zarinpal.com/pg/v4/payment/request.json"
+        data = {
+            'merchant_id': settings.MERCHANT_ID,
+            'amount': str(amount),
+            'callback_url': settings.CALLBACK_URL,
+            'description': f"پرداخت برای سبد خرید {self.user.user_name}",
+        }
+        headers = {'Content-Type': 'application/json'}
+        response = requests.post(url, data=json.dumps(data), headers=headers)
+
+        if response.status_code == 200:
+            response_data = json.loads(response.text)
+            if response_data['data']['code'] == 100:
+                self.payment_url = response_data['data']
+                transaction = self.transaction
+                transaction.authority = response_data['data']['authority']
+                transaction.save()
+                self.status = 'pending'
+                self.save()
+                return self.payment_url
+            else:
+                self.status = 'failed'
+                self.save()
+                raise Exception(f"خطا در درخواست پرداخت: {response_data['data']['message']}")
+        else:
+            self.status = 'failed'
+            self.save()
+            raise Exception("خطا در ارتباط با زرین‌پال")

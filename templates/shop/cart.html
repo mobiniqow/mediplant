@@ -1035,20 +1035,20 @@
         console.log(basket)
         console.log(postalCode)
         console.log(address_details)
-        console.log("oamada {{ token }}")
+        console.log(`oamada ${getToken()}`)
         var settings = {
-            "url": `/transaction/payment/start/${basket}`,
+            "url": `/transaction/payment/start/`,
             "method": "POST",
             "timeout": 0,
             "headers": {
-                "Authorization": "Bearer"+ getToken()// Replace `token` with actual token value
+                "Authorization": "Bearer "+ getToken()
             },
             "data": {
                 "code_posti": postalCode,
                 "address": address_details,
                 "lat": selectedLocation.lat,
                 "lng": selectedLocation.lng,
-                "courier_type": courierType === 'post' ? 1 : 2  // ارسال عدد صحیح معادل انتخاب کاربر
+                "courier_type": courierType === 'post' ? 1 : 2
 
             }
         };
@@ -1198,12 +1198,7 @@ function updateQuantity(id, newQty) {
 $(document).ready(function () {
     fetchBasket();
 });    
-function getToken() {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; access_token=`);
-        if (parts.length === 2) return parts.pop().split(';').shift();
-        return null;
-    }
+ 
     function fetchUserProfile() {
     const token = getToken();
 
