@@ -296,7 +296,6 @@ class UpdateTransactionStatus(APIView):
 
         return Response({"message": "Transaction state updated"}, status=status.HTTP_200_OK)
 
-
 class MyBasket(APIView):
     def get(self, request):
         basket = SaleBasket.objects.filter(user=request.user, state__lte=SaleBasket.State.PAY_FAILED)
