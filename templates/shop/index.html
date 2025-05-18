@@ -31,6 +31,8 @@
     <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
     <link rel="stylesheet" class="color-css" href="{% static 'assets/css/color-01.css' %}">
     <meta name="enamad" content="59357136"/>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
 </head>
 
 <body>
@@ -245,56 +247,63 @@
 <section class="section ms-hero m-t-30">
     <div class="container">
         <div class="ms-main-content">
-            <div class="ms-slider-content">
-                <div class="ms-main-slider">
+            <div class="ms-slider-content relative">
+                {% for i in top_banners %}
+                <a href="{{ i.link_url }}">
+                <div class="hover-content"></div>
+                <div class="ms-main-slider relative top-0">
                     <div class="ms-slider swiper-container main-slider-nav main-slider-dot">
                         <div class="swiper-wrapper">
-                            {% for i in top_banners %}
                                 <div class="ms-slide-item swiper-slide d-flex slide-1">
-                                    <img src="{{ i.image.url }}" style="position: absolute" width="100%"
+                                    <img src="{{ i.image.url }}" style="position: absolute ; height: 100%;" width="100%"
                                          height="100%">
                                     <div class="ms-slide-content slider-animation">
-                                        <h2 class="ms-slide-stitle">{{ i.name|truncatechars:20 }}</h2>
+                                        <!-- <h2 class="ms-slide-stitle">{{ i.name|truncatechars:20 }}</h2> -->
                                         <h1 class="ms-slide-title">{{ i.content|truncatechars:20 }}</h1>
-                                        <div class="ms-slide-desc">
+                                        <!-- <div class="ms-slide-desc">
                                             <a href="{{ i.link_url }}" class="ms-btn-2">مشاهده <i
                                                     class="fa-solid fa-angles-left"></i></a>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
-                            {% endfor %}
-                        </div>
-                        <div class="swiper-pagination swiper-pagination-white"></div>
-                        <div class="swiper-buttons">
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-button-prev"></div>
+                            </div>
+                            <div class="swiper-pagination swiper-pagination-white"></div>
+                            <div class="swiper-buttons">
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
+                {% endfor %}
             </div>
             <!-- Hero Banner 1 Start -->
             <div class="ms-banner-content align-self-center">
+                <a href="{{ two_banners.0.link_url }}">
                 <div class="ms-slider-grid-item" style="background-image:url( {{ two_banners.0.image.url }});">
-
+                    <div class="hover-slider"></div>
                     <div class="ms-detail">
-                        <h6 class="grid-animation"><span
-                                class="ms-grid-sub-title">{{ two_banners.0.name |truncatechars:19 }}</span></h6>
-                        <a href="{{ two_banners.0.link_url }}" class="ms-btn-2">مشاهده<i
-                                class="fa-solid fa-angles-left"></i></a>
+                        <!-- <h6 class="grid-animation"><span
+                                class="ms-grid-sub-title text-black">{{ two_banners.0.name |truncatechars:19 }}</span></h6> -->
+                        <!-- <a href="{{ two_banners.0.link_url }}" class="ms-btn-2">مشاهده<i
+                                class="fa-solid fa-angles-left"></i></a> -->
                     </div>
                 </div>
+                </a>
             </div>
 
             <div class="ms-banner-content align-self-center">
+                <a href="{{ two_banners.1.link_url }}">
                 <div class="ms-slider-grid-item" style="background-image:url( {{ two_banners.1.image.url }});">
-
+                    <div class="hover-slider"></div>
                     <div class="ms-detail">
-                        <h6 class="grid-animation"><span
+                        <h6 class="grid-animation text-black"><span
                                 class="ms-grid-sub-title">{{ two_banners.1.name |truncatechars:19 }}</span></h6>
-                        <a href="{{ two_banners.1.link_url }}" class="ms-btn-2">مشاهده <i
-                                class="fa-solid fa-angles-left"></i></a>
+                        <!-- <a href="{{ two_banners.1.link_url }}" class="ms-btn-2">مشاهده <i
+                                class="fa-solid fa-angles-left"></i></a> -->
                     </div>
                 </div>
+                </a>
             </div>
         </div>
     </div>
@@ -306,15 +315,20 @@
             <div class="col-xl-12 border-content-color">
                 <div class="ms-category-block owl-carousel" dir="ltr">
                     {% for model in categories %}
-                        <div class="ms-cat-box ms-cat-box-9">
-                            <a href="/product?category={{ model.id }}" class="ms-cat-icon">
-                                <img src="{{ model.image.url }}" class="svg_img" alt="icon">
-                                <h4 class="ms-cat-title">{{ model.name }}</h4>
-                            </a>
-                        </div>
+                    <div class="ms-cat-box ms-cat-box-9">
+                        <a href="/product?category={{ model.id }}" class="ms-cat-icon">
+                            <img src="{{ model.image.url }}" class="svg_img" alt="icon">
+                            <h4 class="ms-cat-title">{{ model.name }}</h4>
+                        </a>
+                    </div>
                     {% endfor %}
-
+                    
                 </div>
+                <div class="contain-btn w-full justify-start gap-3 mt-3 hidden">
+                    <button class="custom-prev px-3 py-2 border !rounded-full">&lt;</button>
+                    <button class="custom-next px-3 py-2 border !rounded-full">&gt;</button>
+                </div>
+
             </div>
         </div>
     </div>
@@ -333,7 +347,7 @@
 
             <!-- Tab Start -->
             <div class="ms-pro-tab">
-                <ul class="ms-pro-tab-nav nav justify-content-end">
+                <ul class="ms-pro-tab-nav nav justify-content-end index-tab-product">
                     <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#all">همه</a></li>
                     <li class="nav-item"><a class="nav-link" data-bs-toggle="tab"
                                             href="#snack">پرفروش ترین</a>
@@ -377,11 +391,11 @@
                                             <a onclick="eventItems({{ product.id }})">
                                                 <h6 class="ms-pro-stitle">{{ product.name  |truncatechars:13 }}</h6>
                                             </a>
-                                            <h5 class="ms-pro-title"><a
+                                            <!-- <h5 class="ms-pro-title"><a
                                                     onclick="eventItems({{ product.id }})">
                                                 {{ product.description|striptags|slice:":26" }}
                                             </a>
-                                            </h5>
+                                            </h5> -->
                                             <div class="ms-pro-rat-price">
                                                 <span class="ms-price">
                                                     <span class="new-price">{{ product.price |intcomma:False }}  تومان </span> 
@@ -543,15 +557,18 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="ms-animated-banner" style="background-image: url( {{ middle_banner.image.url }} )">
+                    <a href="{{ middle_banner.link_url }}">
+                    <div class="hover-content"></div>
                     {#                    <img class="ms-animated-banner-img" src="{{ middle_banner.image.url }}">#}
                     <h2 class="d-none">تخفیفات</h2>
                     <div class="ms-bnr-detail">
                         <div class="ms-bnr-info">
-                            <h2> {{ middle_banner.name|truncatechars:20 }}</h2>
-                            <h3>{{ middle_banner.content|truncatechars:20 }}</h3>
-                            <a href="{{ middle_banner.link_url }}" class="ms-btn-2">مشاهده</a>
+                            <!-- <h2> {{ middle_banner.name|truncatechars:20 }}</h2> -->
+                            <h3 class="">{{ middle_banner.content|truncatechars:20 }}</h3>
+                            <!-- <a href="{{ middle_banner.link_url }}" class="ms-btn-2">مشاهده</a> -->
                         </div>
                     </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -760,37 +777,43 @@
 <section class="ms-offer-section padding-tb-30">
     <div class="container" data-animation="fadeIn">
         <!--  Offer banners -->
-        <div class="row">
+        <div class="banner-celler">
 
-            <div class="col-md-6">
+            <div>
                 <div class="ms-ofr-banners">
-                    <div class="ms-bnr-body">
-                        <div class="ms-bnr-img">
-                            {#                            <span class="lbl">%70 تخفیف</span>#}
-                            <img src="{{ bottom_banner.0.image.url }}" alt="banner">
+                    <a href="{{ bottom_banner.0.link_url }}">
+                        <div class="ms-bnr-body">
+                            <div class="hover-slider"></div>
+                            <div class="ms-bnr-img">
+                                {#                            <span class="lbl">%70 تخفیف</span>#}
+                                <img src="{{ bottom_banner.0.image.url }}" alt="banner">
+                            </div>
+                            <div class="ms-bnr-detail">
+                                <!-- <h5>{{ bottom_banner.0.name |truncatechars:10 }}</h5> -->
+                                <p>{{ bottom_banner.0.content|truncatechars:15 }}</p>
+                                <!-- <a href="{{ bottom_banner.0.link_url }}" class="ms-btn-2">مشاهده</a> -->
+                            </div>
                         </div>
-                        <div class="ms-bnr-detail">
-                            <h5>{{ bottom_banner.0.name |truncatechars:10 }}</h5>
-                            <p>{{ bottom_banner.0.content|truncatechars:15 }}</p>
-                            <a href="{{ bottom_banner.0.link_url }}" class="ms-btn-2">مشاهده</a>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </div>
 
-            <div class="col-md-6">
+            <div>
                 <div class="ms-ofr-banners">
+                    <a href="{{ bottom_banner.1.link_url }}">
                     <div class="ms-bnr-body">
+                        <div class="hover-slider"></div>
                         <div class="ms-bnr-img">
                             {#                            <span class="lbl">%70 تخفیف</span>#}
                             <img src="{{ bottom_banner.1.image.url }}" alt="banner">
                         </div>
                         <div class="ms-bnr-detail">
-                            <h5>{{ bottom_banner.1.name |truncatechars:10 }}</h5>
-                            <p>{{ bottom_banner.1.content|truncatechars:15 }}</p>
-                            <a href="{{ bottom_banner.1.link_url }}" class="ms-btn-2">مشاهده</a>
+                            <!-- <h5>{{ bottom_banner.1.name |truncatechars:10 }}</h5> -->
+                            <p class="">{{ bottom_banner.1.content|truncatechars:15 }}</p>
+                            <!-- <a href="{{ bottom_banner.1.link_url }}" class="ms-btn-2">مشاهده</a> -->
                         </div>
                     </div>
+                    </a>
                 </div>
             </div>
 
@@ -806,7 +829,7 @@
             <div class="ms-deal-section col-lg-12">
                 <div class="section-bg-color section-space-p30 main-border-radius">
                     <div class="section-title">
-                        <h2 class="ms-title">معامله <span>روز</span></h2>
+                        <h2 class="ms-title">بیشترین <span>فروش</span></h2>
                         {#                        <div id="dealend" class="dealend-timer"></div>#}
                     </div>
                     <div class="ms-deal-block m-minus-12">
@@ -887,7 +910,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="ms-vendor-products">
+                        <!-- <div class="ms-vendor-products">
                             <a href="/shop/{{ i.id }}/product/{{ i.images_list.0.product_id }}"><img
                                     src="{{ i.images_list.0.image.image.url }}"
                                     alt="product"></a>
@@ -900,7 +923,7 @@
                             <a href="/shop/{{ i.id }}/product/{{ i.images_list.3.product_id }}"><img
                                     src="{{ i.images_list.3.image.image.url }}"
                                     alt="product"></a>
-                        </div>
+                        </div> -->
                     </div>
                 {% endfor %}
             </div>
@@ -967,9 +990,9 @@
     <div class="container">
         <div class="row m-b-minus-24px">
             <div class="section-title">
-                <h2>خواندن <span>مقاله ها</span></h2>
+                <h2>اخرین <span>نوشته ها</span></h2>
                 <span class="title-link">
-                        <a href="/blog/news/">همه اخبار<i class="fa-solid fa-angles-left"></i></a>
+                        <a href="/blog/news/">همه نوشته ها<i class="fa-solid fa-angles-left"></i></a>
                     </span>
             </div>
             <div class="ms-blog-carousel owl-carousel" dir="ltr">
@@ -1224,6 +1247,40 @@
     function openShopProduct(shop, product) {
         return `/blog/${shop}/product/${product}`;
     }
+
+    // button corusel
+
+    $(document).ready(function() {
+        var $owl = $('.ms-category-block');
+        var itemCount = $owl.find('.ms-cat-box').length; // تعداد آیتم‌ها
+        
+        $owl.owlCarousel({
+            loop: itemCount > 2, // اگر آیتم زیاد بود لوپ
+            margin: 10,
+            rtl: false,
+            nav: false, // دکمه‌های پیش‌فرض Owl خاموش
+            dots: false,
+            responsive: {
+                0: {
+                    items: 2
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 5
+                }
+            }
+        });
+
+        // کنترل دکمه‌های دستی
+        $('.custom-prev').click(function() {
+            $owl.trigger('prev.owl.carousel');
+        });
+        $('.custom-next').click(function() {
+            $owl.trigger('next.owl.carousel');
+        });
+    });
 </script>
 <!-- Plugins JS -->
 <script src="{% static 'assets/js/plugins/jquery-3.5.1.min.js' %}"></script>

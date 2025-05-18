@@ -28,15 +28,13 @@
     <link rel="stylesheet" class="color-css" href="{% static 'assets/css/color-01.css' %}">
     <style>
         /* اطمینان از چینش صحیح آیتم‌ها */
-        #blog-list {
+        /* #blog-list {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
-        }
-        .ms-blog-block {
-            flex: 1 1 calc(33.33% - 20px); /* هر آیتم ۳۳٪ عرض بگیرد */
-            max-width: calc(33.33% - 20px);
-        }
+        } */
+        
+        
     </style>
 </head>
 
@@ -229,30 +227,83 @@
 </div>
 <!-- Breadcrumb end -->
 
+<div class="container">
+    <div class="tab-buttons">
+        <button class="tab-btn active" data-tab="0"> دانشنامه دارو های ترکیبی</button>
+        <button class="tab-btn" data-tab="1">دانشنامه مقالات</button>
+        <button class="tab-btn" data-tab="2">دایره المعارف بیماری ها</button>
+        <button class="tab-btn" data-tab="3">دایره المعارف گیاهی</button>
+        <button class="tab-btn" data-tab="4">اخبار</button>
+    </div>
+</div>
+
 <!-- Blog section -->
 <section class="ms-blog padding-tb-30">
     <div class="container">
         <div class="row">
             <div class="ms-blogs-rightside col-lg-8 col-md-12">
-
                 <!-- Blog content Start -->
                 <div class="ms-blogs-content">
                     <div class="ms-blogs-inner">
-                        <div class="row">
-                            <div class="ms-blogs-rightside col-md-12">
-                                <!-- Blog content Start -->
-                                <div class="ms-blogs-content" id="blog-list">
-                                    <!-- اخبار به‌صورت داینامیک در این بخش بارگذاری می‌شوند -->
+                        <div class="tab-container">
+                            <div class="tab-content">
+                                <div class="tab-panel active" data-panel="0">
+                                    <div class="">
+                                        <div class="ms-blogs-rightside">
+                                            <div class="ms-blogs-contents" id="blog-darohae-tarkibi"></div>
+                                            <div class="ms-pro-pagination"><ul id="pagination-tarkibi"></ul></div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <!-- Pagination Start -->
-                                <div class="ms-pro-pagination">
-                                    <ul id="pagination">
-                                        <!-- دکمه‌های پیجینیشن اینجا اضافه می‌شوند -->
-                                    </ul>
+                                <div class="tab-panel" data-panel="1">
+                                    <div class="">
+                                        <div class="ms-blogs-rightside ">
+                                            <div class="ms-blogs-contents" id="blog-list-maghale"></div>
+                                            <div class="ms-pro-pagination" id="pagination-maghale"></div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <!-- Pagination End -->
+                                <div class="tab-panel" data-panel="2">
+                                    <div class="">
+                                        <div class="ms-blogs-rightside ">
+                                            <div class="ms-blogs-contents" id="blog-list-bimariha"></div>
+                                            <div class="ms-pro-pagination"><ul id="pagination-bimariha"></ul></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-panel" data-panel="3">
+                                    <div class="">
+                                        <div class="ms-blogs-rightside ">
+                                            <div class="ms-blogs-contents" id="blog-list-giahan"></div>
+                                            <div class="ms-pro-pagination" id="pagination-giahan"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-panel" data-panel="4">
+                                    <div class="">
+                                        <div class="ms-blogs-rightside ">
+                                            <div class="ms-blogs-contents" id="blog-list"></div>
+                                            <div class="ms-pro-pagination"><ul id="pagination"></ul></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <!-- <div class="row">
+                            <div class="ms-blogs-rightside col-md-12">
+                                Blog content Start
+                                <div class="ms-blogs-content" id="blog-list">
+                                    اخبار به‌صورت داینامیک در این بخش بارگذاری می‌شوند
+                                </div>
+                                Pagination Start
+                                <div class="ms-pro-pagination">
+                                    <ul id="pagination">
+                                        دکمه‌های پیجینیشن اینجا اضافه می‌شوند
+                                    </ul>
+                                </div>
+                                Pagination End
+                            </div>
+                        </div> -->
                     </div>
                     <!-- Pagination Start -->
 
@@ -381,65 +432,123 @@
 <!-- Main Js -->
 <script src="{% static 'assets/js/main.js' %}"></script>
 <script>
-let currentPage = 1;
 
-function loadNews(page = 1) {
+
+const buttons = document.querySelectorAll('.tab-btn');
+const panels = document.querySelectorAll('.tab-panel');
+
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        const tabIndex = button.getAttribute('data-tab');
+
+        // حذف active از همه دکمه‌ها و پنل‌ها
+        buttons.forEach(btn => btn.classList.remove('active'));
+        panels.forEach(panel => panel.classList.remove('active'));
+
+        // اضافه کردن active به دکمه و پنل انتخاب شده
+        button.classList.add('active');
+        document.querySelector(`.tab-panel[data-panel="${tabIndex}"]`).classList.add('active');
+    });
+});
+
+
+$(document).ready(function () {
+    loadContent('news', 1);
+    loadContent('combined-drugs', 1);
+    loadContent('diseases', 1);
+    loadContent('giahan', 1);
+    loadContent('blog-list-maghale', 1);
+    
+    // blog-list-maghale
+    // blog-list-giahan
+});
+
+// تابع مشترک برای بارگذاری دیتا
+function loadContent(type, page = 1) {
+    let url = '';
+    let container = '';
+    let paginationContainer = '';
+
+    if (type === 'news') {
+        url = `/article/api/news/?page=${page}`;
+        container = '#blog-list';
+        paginationContainer = '#pagination';
+        detailBaseUrl = '/blog/news'; 
+    } else if (type === 'combined-drugs') {
+        url = `/article/api/combined-drugs/?page=${page}`;
+        container = '#blog-darohae-tarkibi';
+        paginationContainer = '#pagination-tarkibi';
+        detailBaseUrl = '/blog/encyclopedia-combined-drugs'; 
+    } else if (type === 'diseases') {
+        url = `/article/api/diseases/?page=${page}`;
+        container = '#blog-list-bimariha';
+        paginationContainer = '#pagination-bimariha';
+        detailBaseUrl = '/blog/encyclopedia-article-diseases'; 
+    } else if (type === 'giahan') {
+        url = `/article/api/herbal-encyclopedia/?page=${page}`;
+        container = '#blog-list-giahan';
+        paginationContainer = '#pagination-giahan';
+        detailBaseUrl = '/blog/encyclopedia-article-herbal'; 
+    } else if (type === 'blog-list-maghale') {
+        url = `/article/api/article-encyclopedia/?page=${page}`;
+        container = '#blog-list-maghale';
+        paginationContainer = '#pagination-maghale';
+        detailBaseUrl = '/blog/encyclopedia-combined-drugs'; 
+    }
+
     $.ajax({
-        url: `/article/api/news/?page=${page}`,
+        url: url,
         method: 'GET',
-        success: function(data) {
-            $('#blog-list').empty(); // حذف اخبار قبلی
-            data.results.forEach(function(news) {
-                const newsHTML = `
-                    <div class="col-lg-4 col-md-6 col-sm-12 ms-blog-block">
-                        <div class="ms-blog-item">
-                            <div class="news-info">
-                                <figure class="news-img">
-                                    <a href="#">
-                                        <img src="${news.image}" alt="${news.title}">
-                                    </a>
-                                </figure>
-                                <div class="detail">
-                                    <div class="d-flex justify-content-between mt-4">
-                                        <label>${news.created_at.split('T')[0]} </label>
-                                        <a href="#" class="detail-a">#${news.hashtags.join(' #')}</a>
-                                    </div>
-                                    <h3><a href="#">${news.title}</a></h3>
-                                    <p class="text-length">${news.excerpt}</p>
-                                    <div class="more-info">
-                                        <a href="${news.id}">ادامه مطلب<span></span></a>
-                                    </div>
-                                </div>
+        success: function (data) {
+            $(container).empty();
+            $(paginationContainer).empty();
+
+            data.results.forEach(function (item) {
+                const imageUrl = item.images?.[0]?.image || item.image || '/default-image.jpg';
+                const hashtags = item.hashtags ? `#${item.hashtags.join(' #')}` : '';
+                const itemUrl = `${detailBaseUrl}/${item.id}`;
+
+                const itemHTML = `
+                    <div class="news-info">
+                        <figure class="news-img">
+                            <a href="${itemUrl}">
+                                <img src="${imageUrl}" alt="تصویر">
+                            </a>
+                        </figure>
+                        <div class="detail">
+                            <div class="d-flex justify-content-between mt-4">
+                                <label>${item.created_at?.split('T')[0] || ''}</label>
+                                <a href="#" class="detail-a">${item.classification || hashtags}</a>
+                            </div>
+                            <h3><a href="${itemUrl}">${item.title || item.name}</a></h3>
+                            <p class="text-length">${item.excerpt || item.bomi || ''}</p>
+                            <div class="more-info">
+                                <a href="${itemUrl}">ادامه مطلب<span></span></a>
                             </div>
                         </div>
                     </div>
                 `;
-                $('#blog-list').append(newsHTML);
+                $(container).append(itemHTML);
             });
 
-            // پیجینیشن
-            $('#pagination').empty();
+            // ساخت پیجینیشن
+            const pageCount = Math.ceil(data.count / 9);
             if (data.previous) {
-                $('#pagination').append(`<li><a href="#" onclick="loadNews(${page - 1})">قبلی</a></li>`);
+                $(paginationContainer).append(`<li><a href="#" onclick="loadContent('${type}', ${page - 1})">قبلی</a></li>`);
             }
-            for (let i = 1; i <= Math.ceil(data.count / 9); i++) {
-                $('#pagination').append(`
-                    <li><a href="#" onclick="loadNews(${i})" ${i === page ? 'class="active"' : ''}>${i}</a></li>
-                `);
+            for (let i = 1; i <= pageCount; i++) {
+                $(paginationContainer).append(`<li><a href="#" onclick="loadContent('${type}', ${i})" ${i === page ? 'class="active"' : ''}>${i}</a></li>`);
             }
             if (data.next) {
-                $('#pagination').append(`<li><a href="#" onclick="loadNews(${page + 1})">بعدی</a></li>`);
+                $(paginationContainer).append(`<li><a href="#" onclick="loadContent('${type}', ${page + 1})">بعدی</a></li>`);
             }
         },
-        error: function() {
-            alert('مشکلی در بارگذاری داده‌ها پیش آمد.');
+        error: function () {
+            alert('مشکلی در بارگذاری اطلاعات پیش آمد.');
         }
     });
 }
 
-$(document).ready(function() {
-    loadNews(currentPage);
-});
 </script>
 
 </body>

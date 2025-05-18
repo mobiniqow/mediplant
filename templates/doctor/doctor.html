@@ -676,12 +676,12 @@
         } else {
             doctors.forEach(doctor => {
                 doctorList += `
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content ms-product-content width-100" onclick="window.location.href='${doctor.id}'">
+                <div class=" mb-6 pro-gl-content ms-product-content width-100" onclick="window.location.href='${doctor.id}'">
                     <div class="ms-product-inner">
                         <div class="ms-pro-image-outer">
                             <div class="ms-pro-image">
                                 <a href="doctor-profile.html?id=${doctor.id}" class="image">
-                                    <img class="main-image" src="${doctor.picture}" alt="${doctor.branch_name}">
+                                    <img class="main-image img-doctor" src="${doctor.picture}" alt="${doctor.branch_name}">
                                 </a>
                                 <span class="flags">
                                     <span class="sale">${doctor.branch_name}</span>
