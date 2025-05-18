@@ -1,10 +1,10 @@
 from threading import Thread
 import requests
 
+
 def send_otp_message(phone, code):
     print(f"phone::{phone}=> code::{code}")
     Thread(target=send_otp, args=(phone, code)).start()
-
 
 
 def send_otp(phone, otp):
@@ -36,4 +36,3 @@ def state_sending(phone):
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text)
-
