@@ -10,35 +10,18 @@ from .models import SaleBasket, SaleBasketProduct
 from django.shortcuts import get_object_or_404
 
 from .serializers import BaseProductSerializer, BasketSerializer
+from rest_framework.exceptions import ValidationError
 
 
 class CreateDeleteBasket(APIView):
     def post(self, request, shopid):
-        print(f"shop_id received: {shopid}")  # اضافه کردن لاگ برای بررسی مقدار shop_id
-        session_key = request.session.session_key or request.META.get('REMOTE_ADDR')
-        shop = get_object_or_404(Shop, pk=shopid)
         user = request.user
-        if user.is_authenticated:
-            basket, created = SaleBasket.objects.get_or_create(
-                shop=shop,
-                user=user,
-                session_key=session_key,
-                defaults={
-                    'price': 0,
-                    'address': request.data.get('address', ''),
-                    'discount': request.data.get('discount', 0)
-                }
-            )
-        else:
-            basket, created = SaleBasket.objects.get_or_create(
-                shop=shop,
-                session_key=session_key,
-                defaults={
-                    'price': 0,
-                    'address': request.data.get('address', ''),
-                    'discount': request.data.get('discount', 0)
-                }
-            )
+        # todo injaro ok konam
+        basket, created = SaleBasket.objects.get_or_create(
+            user=user,
+        )
+        basket.address = request.data.get('address', '')
+        basket.discount = request.data.get('discount', 0)
         product = SaleBasketProduct.objects.filter(basket=basket)
         items = BaseProductSerializer(product, many=True).data
         return Response({
@@ -68,14 +51,8 @@ class CreateDeleteBasket(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
     def get(self, request, shopid):
-        session_key = request.session.session_key or request.META.get('REMOTE_ADDR')
-        shop = get_object_or_404(Shop, pk=shopid)
-        user = request.user
         print(f"request.user.id{request.user.id}")
-        if request.user.id is not None:
-            basket ,_= SaleBasket.objects.get_or_create(shop=shop, user=user, state__lte=SaleBasket.State.PAY_FAILED)
-        else:
-            basket = SaleBasket.objects.filter(shop=shop, session_key=session_key, state__lte=SaleBasket.State.IN_PAY)
+        basket, _ = SaleBasket.objects.get_or_create(user=request.user, state__lte=SaleBasket.State.IN_PAY)
         # if not basket.exists():
         #     return Response({"message": "not found"}, status=status.HTTP_404_NOT_FOUND)
         print(111)
@@ -89,6 +66,37 @@ class CreateDeleteBasket(APIView):
             "price": basket.price,
         }, status=status.HTTP_200_OK)
 
+    def patch(self, request, shopid):
+        print(f'shopid {shopid}')
+        user = request.user
+        product_id = shopid
+        unit = request.data.get('unit')
+
+        if not product_id or unit is None:
+            return Response({"detail": "product_id و unit الزامی هستند."}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            unit = int(unit)
+            if unit < 1:
+                raise ValidationError("تعداد باید حداقل ۱ باشد.")
+        except (ValueError, TypeError):
+            return Response({"detail": "تعداد نامعتبر است."}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            basket = SaleBasket.objects.get(user=user, state__lte=SaleBasket.State.IN_PAY)
+        except SaleBasket.DoesNotExist:
+            return Response({"detail": "سبد خرید یافت نشد."}, status=status.HTTP_404_NOT_FOUND)
+
+        try:
+            basket_product = SaleBasketProduct.objects.get(basket=basket, id=product_id)
+        except SaleBasketProduct.DoesNotExist:
+            return Response({"detail": "محصول در سبد یافت نشد."}, status=status.HTTP_404_NOT_FOUND)
+
+        # به‌روزرسانی تعداد
+        basket_product.unit = unit
+        basket_product.save()
+
+        return Response({"detail": "تعداد با موفقیت به‌روزرسانی شد."}, status=status.HTTP_200_OK)
 
 class DeleteProductFromBasket(APIView):
     def delete(self, request, shop_id, product_id):
@@ -144,23 +152,24 @@ class DeleteProductFromBasket(APIView):
 
 class ProductToBasket(APIView):
     def post(self, request, basket_id, product_id):
-        if request.user is not None:
-            # session_key = request.session.session_key or request.META.get('REMOTE_ADDR')
-            basket = SaleBasket.objects.filter(id=basket_id, user=request.user)
-            if basket.exists():
-                basket = basket[0]
-                if basket.user is None:
-                    basket.user = request.user
-                    basket.save()
-            basket = get_object_or_404(SaleBasket, id=basket_id, user=request.user)
-        else:
-            session_key = request.session.session_key or request.META.get('REMOTE_ADDR')
-            basket = SaleBasket.objects.filter(id=basket_id, session_key=session_key)
-            if not basket.exists():
-                return Response({"message": "not found"}, status=status.HTTP_404_NOT_FOUND)
-            else:
-                basket = basket[0]
-        shop_product = ShopProduct.objects.filter(id=product_id, shop=basket.shop)
+        basket = SaleBasket.objects.filter(id=basket_id, user=request.user)
+        if basket.exists():
+            basket = basket[0]
+            if basket.user is None:
+                basket.user = request.user
+                basket.save()
+        print(3)
+        basket = get_object_or_404(SaleBasket, id=basket_id, user=request.user)
+        print(4)
+        # else:
+        #     session_key = request.session.session_key or request.META.get('REMOTE_ADDR')
+        #     basket = SaleBasket.objects.filter(id=basket_id, session_key=session_key)
+        #     if not basket.exists():
+        #         return Response({"message": "not found"}, status=status.HTTP_404_NOT_FOUND)
+        #     else:
+        #         basket = basket[0]
+
+        shop_product = ShopProduct.objects.filter(id=product_id)
         if not shop_product.exists():
             return Response({"message": "not found"}, status=status.HTTP_404_NOT_FOUND)
         if shop_product.first().capacity < 1:
@@ -222,22 +231,14 @@ class ProductToBasket(APIView):
         return Response({"message": "Product unit updated"}, status=status.HTTP_200_OK)
 
     def delete(self, request, basket_id, product_id):
-        if request.user.is_authenticated:
-            basket = SaleBasket.objects.filter(id=basket_id, user=request.user).first()
-        else:
-            session_key = request.session.session_key or request.META.get('REMOTE_ADDR')
-            basket = SaleBasket.objects.filter(id=basket_id, session_key=session_key).first()
-
-        # بررسی وجود سبد خرید
+        basket = SaleBasket.objects.filter(id=basket_id, user=request.user).first()
         if not basket:
             return Response({"error": "Basket not found"}, status=status.HTTP_404_NOT_FOUND)
-
-        # بررسی وجود محصول در سبد خرید
         basket_product = SaleBasketProduct.objects.filter(basket=basket, product_id=product_id).first()
         if not basket_product:
             return Response({"error": "Product not found in the basket"}, status=status.HTTP_404_NOT_FOUND)
 
-        # بروزرسانی قیمت کل
+        print(12)
         basket.price -= basket_product.product.price * basket_product.unit
         basket_product.delete()
         basket.save()
@@ -295,30 +296,19 @@ class UpdateTransactionStatus(APIView):
 
         return Response({"message": "Transaction state updated"}, status=status.HTTP_200_OK)
 
-
 class MyBasket(APIView):
     def get(self, request):
-        session_key = request.session.session_key or request.META.get('REMOTE_ADDR')
-        if request.user.is_authenticated:
-            basket = SaleBasket.objects.filter(user=request.user, state__lte=SaleBasket.State.PAY_FAILED)
-        else:
-            basket = SaleBasket.objects.filter(session_key=session_key, state__lte=SaleBasket.State.PAY_FAILED)
-
-        baskets = BasketSerializer(basket, many=True).data
-
-        return Response(baskets, status=status.HTTP_200_OK)
+        basket = SaleBasket.objects.filter(user=request.user, state__lte=SaleBasket.State.PAY_FAILED)
+        items = SaleBasketProduct.objects.filter(basket=basket.last())
+        serializers = BaseProductSerializer(items,many=True)
+        return Response(serializers.data, status=status.HTTP_200_OK)
 
     def delete(self, request, basket_id):
-        session_key = request.session.session_key or request.META.get('REMOTE_ADDR')
-        if request.user.is_authenticated:
-            basket = SaleBasket.objects.filter(user=request.user, id=basket_id)
-        else:
-            basket = SaleBasket.objects.filter(session_key=session_key, id=basket_id)
-        if not basket.exists():
+        product = SaleBasketProduct.objects.filter( id=basket_id)
+        if not product.exists():
             return Response({"message": "not found"}, status=status.HTTP_404_NOT_FOUND)
-        basket.delete()
+        product.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
 
 class CancelBasket(APIView):
     def delete(self, request, basket_id):

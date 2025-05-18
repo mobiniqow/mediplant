@@ -10,6 +10,10 @@ class Wallet(models.Model):
     description = models.TextField(verbose_name='توضیحات')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='تاریخ بروزرسانی')
 
+    class Meta:
+        verbose_name = "کیف پول"
+        verbose_name_plural = "کیف‌های پول"
+
     def __str__(self):
         return f"کیف پول {self.user} - موجودی: {self.amount} تومان"
 
@@ -22,10 +26,9 @@ class Wallet(models.Model):
             self.save()
             return True, 0
         else:
-
             return False, amount - self.amount
 
     @staticmethod
     def pay_from_user(user, amount):
-        wallet = Wallet.objects.get_or_create(user=user)[0]
+        wallet, _ = Wallet.objects.get_or_create(user=user)
         return wallet.pay(amount)

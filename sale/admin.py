@@ -9,7 +9,7 @@ class SaleBasketProductInline(admin.TabularInline):
 
 @admin.register(SaleBasket)
 class SaleBasketAdmin(admin.ModelAdmin):
-    list_display = ['id', 'user', 'created_at', 'price', 'address', 'state', 'discount', 'shop', 'transaction']
+    list_display = ['id', 'user', 'created_at', 'price', 'address', 'state', 'discount', 'transaction']
     list_filter = ['state', 'created_at']
     search_fields = ['user__username', 'shop__name']
     list_per_page = 20

@@ -1,4 +1,5 @@
 {% load static %}
+
 <div id="ms-side-cart" class="ms-side-cart">
     <div class="ms-cart-inner">
         <div class="ms-cart-top">
@@ -8,50 +9,15 @@
                                                                          class="svg_img pro_svg" alt="close"></a>
             </div>
             <ul class="ms-cart-pro-items">
-{#                {% for i in basket %}#}
-{#                    <li>#}
-{#                        <a href="shop/{{ i.shop.id }}" class="ms-pro-img"><img#}
-{#                                src="{{ i.shop.image.url }}" alt="product"></a>#}
-{#                        <div class="ms-pro-content">#}
-{#                            <a href="shop/{{ i.shop.id }}" class="cart-pro-title">{{ i.shop.name }}</a>#}
-{#                            <span class="cart-price"><span>2500 تومان x</span> قیمت</span>#}
-{#                            <a href="#" onclick="removeShopBasket({{ i.id }})" class="remove">×</a>#}
-{#                        </div>#}
-{#                    </li>#}
-{#                {% endfor %}#}
+
             </ul>
         </div>
 
-{#        <div class="ms-cart-bottom">#}
-{#            <div class="cart-sub-total">#}
-{#                <table class="table cart-table">#}
-{#                    <tbody>#}
-{#                    <tr>#}
-{#                        <td class="text-left">جمع فرعی:</td>#}
-{#                        <td class="text-right">300 هزار</td>#}
-{#                    </tr>#}
-{#                    <tr>#}
-{#                        <td class="text-left">مالیات بر ارزش افزوده (20%):</td>#}
-{#                        <td class="text-right">60 هزار</td>#}
-{#                    </tr>#}
-{#                    <tr>#}
-{#                        <td class="text-left">جمع :</td>#}
-{#                        <td class="text-right primary-color">360 هزار</td>#}
-{#                    </tr>#}
-{#                    </tbody>#}
-{#                </table>#}
-{#            </div>#}
-{#            <div class="cart_btn">#}
-{#                <a href="cart.html" class="ms-btn-1">مشاهده سبد خرید</a>#}
-{#                <a href="checkout.html" class="ms-btn-2">بررسی خرید</a>#}
-{#            </div>#}
-{#        </div>#}
     </div>
 </div>
 <script>
 
     function removeShopBasket(shopId) {
-        
         var settings = {
             "url": `/basket/${shopId}`,
             "method": "DELETE",
@@ -61,7 +27,6 @@
                 "Cookie": "sessionid=e3cepmodnidpiw6ynv73fqogurvalb7x"
             },
         };
-
         $.ajax(settings).done(function (response) {
             console.log(response);
         });
@@ -69,17 +34,24 @@
 </script>
 <script src="{% static 'assets/js/plugins/jquery-3.5.1.min.js' %}"></script>
 <script>
+       function getToken() {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; access_token=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+        return null;
+    }
 function getAllBasket() {
     var settings = {
         "url": "/basket/", 
         "method": "GET",
         "timeout": 0,
         "headers": {
-            "Authorization": "Bearer {{ token }}",  
+            "Authorization": `Bearer ${getToken()}`,
         },
     };
 
     $.ajax(settings).done(function (response) {
+    console.log(response) 
         updateBasket(response);  
     });
 }
@@ -87,24 +59,39 @@ function updateBasket(basketItems) {
     var basketContainer = $('.ms-cart-pro-items');  
     basketContainer.empty();  
 
+    let totalPrice = 0;
+
     if (basketItems.length > 0) {
         basketItems.forEach(function(item) {
+            totalPrice += parseInt(item.price);  // جمع زدن قیمت‌ها
             var basketItemHTML = `
-                <li>
+                <li style="margin-bottom: 2px;">
                     <a href="shop/${item.shop}" class="ms-pro-img">
-                        <img src="${item.image}" alt="product">
+                        <img src="${item.image}" alt="product" style="width: 80px; height: auto; border-radius: 2px;">
                     </a>
-                    <div class="ms-pro-content">
-                        <a href="shop/${item.shop}" class="cart-pro-title">${item.name}</a>
-                        <span class="cart-price"><span>${item.price} تومان x</span> قیمت</span>
-                        <a href="#" onclick="removeShopBasket(${item.id})" class="remove">×</a>
+                    <div class="ms-pro-content" style="flex: 1;">
+                        <a href="shop/${item.shop}" class="cart-pro-title" style="display: block; margin-bottom: 2px;">${item.name}</a>
+                        <span class="cart-price" style="display: block; margin-bottom: 2px;"><span>${item.price} تومان</span></span>
+                        <a href="#" onclick="removeShopBasket(${item.id})" class="remove" style="color: red; text-decoration: none;">×</a>
                     </div>
                 </li>
             `;
-            basketContainer.append(basketItemHTML);  // اضافه کردن آیتم جدید به سبد خرید
+            basketContainer.append(basketItemHTML);
         });
+
+        // اضافه کردن بخش مجموع و دکمه‌ها
+        var cartFooterHTML = `
+            <div class="cart_btn" style="margin-top: 15px; border-top: 1px solid #ccc; padding-top: 10px;">
+                <div class="cart-total" style="margin-bottom: 10px; font-weight: bold;">
+                    مجموع: ${totalPrice.toLocaleString()} تومان
+                </div>
+                <a href="shop/cart" class="ms-btn-1">مشاهده سبد خرید</a>
+                <a href="shop/cart" class="ms-btn-2">بررسی خرید</a>
+            </div>
+        `;
+        basketContainer.append(cartFooterHTML);
     } else {
-        basketContainer.append("<li>سبد خرید شما خالی است</li>");  // نمایش پیام در صورت خالی بودن سبد خرید
+        basketContainer.append("<li>سبد خرید شما خالی است</li>");
     }
 }
 function removeShopBasket(itemId) {

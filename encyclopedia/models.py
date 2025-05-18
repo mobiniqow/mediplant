@@ -281,40 +281,51 @@ from django.db import models
 
 
 class News(models.Model):
-    title = models.CharField(max_length=200)
-    content = RichTextField()
-    excerpt = models.TextField()
-    image = models.ImageField(upload_to='news_images/')
-    hashtags = models.ManyToManyField('Hashtag', related_name='news')
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    title = models.CharField(max_length=200, verbose_name="عنوان خبر")
+    content = RichTextField(verbose_name="متن خبر")
+    excerpt = models.TextField(verbose_name="خلاصه خبر")
+    image = models.ImageField(upload_to='news_images/', verbose_name="تصویر")
+    hashtags = models.ManyToManyField('Hashtag', related_name='news', verbose_name="هشتگ‌ها")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ایجاد")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="تاریخ بروزرسانی")
+
+    class Meta:
+        verbose_name = "خبر"
+        verbose_name_plural = "اخبار"
 
     def __str__(self):
         return self.title
 
 
 class Hashtag(models.Model):
-    name = models.CharField(max_length=100, unique=True)
+    name = models.CharField(max_length=100, unique=True, verbose_name="نام هشتگ")
+
+    class Meta:
+        verbose_name = "هشتگ"
+        verbose_name_plural = "هشتگ‌ها"
 
     def __str__(self):
         return self.name
 
-
 class Comment(models.Model):
     COMMENT_STATUS_CHOICES = [
-        ('active', 'Active'),
-        ('inactive', 'Inactive'),
-        ('recomment', 'Recomment'),
+        ('active', 'فعال'),
+        ('inactive', 'غیرفعال'),
+        ('recomment', 'پاسخ'),
     ]
 
-    news = models.ForeignKey(News, related_name='comments', on_delete=models.CASCADE)
-    user_name = models.CharField(max_length=100)
-    email = models.EmailField()
-    message = models.TextField()
-    status = models.CharField(max_length=10, choices=COMMENT_STATUS_CHOICES, default='active')
-    created_at = models.DateTimeField(auto_now_add=True)
+    news = models.ForeignKey(News, related_name='comments', on_delete=models.CASCADE, verbose_name="خبر")
+    user_name = models.CharField(max_length=100, verbose_name="نام کاربر")
+    email = models.EmailField(verbose_name="ایمیل")
+    message = models.TextField(verbose_name="پیام")
+    status = models.CharField(max_length=10, choices=COMMENT_STATUS_CHOICES, default='active', verbose_name="وضعیت")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ارسال")
     parent_comment = models.ForeignKey('self', related_name='recomments', null=True, blank=True,
-                                       on_delete=models.CASCADE)
+                                       on_delete=models.CASCADE, verbose_name="پاسخ به")
+
+    class Meta:
+        verbose_name = "نظر"
+        verbose_name_plural = "نظرات"
 
     def __str__(self):
-        return f"Comment by {self.user_name} on {self.news.title}"
+        return f"نظر توسط {self.user_name} درباره {self.news.title}"
