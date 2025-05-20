@@ -2,10 +2,10 @@ import os
 from datetime import timedelta
 
 from .base import *
-
+print(BASE_DIR)
 MEDIA_URL = "/media/"
 MEDIA_ROOT = '\\Users\\mobin\\Documents\\mediplant\\medi_media'
-STATICFILES_DIRS  = ["C:\\Users\\mobin\\Documents\\mediplant\\static", ]
+STATICFILES_DIRS  = [BASE_DIR/'static', ]
 DEBUG = True
 STATIC_URL = '/static/'
 

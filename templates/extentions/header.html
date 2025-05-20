@@ -21,101 +21,108 @@
 
 <header class="ms-header">
 
-    <div class="ms-header-bottom d-none d-lg-block">
+    <div class="ms-header-bottom d-lg-block">
         <div class="container position-relative">
             <div class="row">
-                <div class="ms-flex">
+
+                
+                <div class="ms-flex items-center">
                     <div class="align-self-center ms-header-logo">
                         <div class="header-logo">
                             <a href="/"> <img src="{% static 'assets/img/logo/logo.png' %}" alt="Site Logo"
                                               style="width: 70px; height: auto !important;"></a>
                         </div>
                     </div>
-                    <div class="align-self-center ms-header-search">
-                        <div class="header-search">
-                            <form class="ms-search-group-form" action="#">
-                                <input class="form-control ms-search-bar" placeholder="جستجو محصولات" type="text">
-                                <button class="search_submit" type="submit">
-                                    <img src="{% static 'assets/img/icons/search.svg' %}" class="svg_img search_svg"
-                                         alt="">
-                                </button>
-                            </form>
+                    <div class="flex w-full justify-between max-[1200px]:hidden">
+                        <div class="align-self-center ms-header-search">
+                            <div class="header-search">
+                                <form class="ms-search-group-form" action="#">
+                                    <input class="form-control ms-search-bar" placeholder="جستجو محصولات" type="text">
+                                    <button class="search_submit" type="submit">
+                                        <img src="{% static 'assets/img/icons/search.svg' %}" class="svg_img search_svg"
+                                            alt="">
+                                    </button>
+                                </form>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- شروع بخش برای کاربران لاگین شده -->
-                    <div class="align-self-center auth-only">
-                        <div class="ms-header-bottons">
-                            <div class="ms-acc-drop">
-                                <a href="javascript:void(0)"
-                                   class="ms-header-btn ms-header-user dropdown-toggle ms-user-toggle"
-                                   title="حساب کاربری">
+                        <!-- شروع بخش برای کاربران لاگین شده -->
+                        <div class="align-self-center auth-only " >
+                            <div class="ms-header-bottons">
+                                <div class="ms-acc-drop">
+                                    <a href="javascript:void(0)"
+                                    class="ms-header-btn ms-header-user dropdown-toggle ms-user-toggle"
+                                    title="حساب کاربری">
+                                        <div class="header-icon">
+                                            <img src="{% static 'assets/img/icons/user.svg' %}" class="svg_img header_svg"
+                                                alt="">
+                                        </div>
+                                        <div class="ms-btn-desc">
+                                            <span class="ms-btn-title">حساب کاربری</span>
+                                            <span class="ms-btn-stitle">شما</span>
+                                        </div>
+                                    </a>
+                                    <ul class="ms-dropdown-menu">
+                                        <li><a class="dropdown-item" href="/profile">ویرایش پروفایل</a></li>
+                                        <li><a class="dropdown-item" href="/shop-transactions">سفارشات</a></li>
+                                        <li><a class="dropdown-item" href="/medic/prescription">نسخه‌های پزشکی</a></li>
+                                        <li><a class="dropdown-item" href="/transactions">تراکنش‌ها</a></li>
+                                        <li><a class="dropdown-item" href="/logout">خروج</a></li>
+                                    </ul>
+                                </div>
+                                <a href="#" class="ms-header-btn" title="سبد خرید">
                                     <div class="header-icon">
-                                        <img src="{% static 'assets/img/icons/user.svg' %}" class="svg_img header_svg"
-                                             alt="">
+                                        <img src="{% static 'assets/img/icons/cart_5.svg' %}" class="svg_img header_svg"
+                                            alt="">
                                     </div>
                                     <div class="ms-btn-desc">
-                                        <span class="ms-btn-title">حساب کاربری</span>
-                                        <span class="ms-btn-stitle">شما</span>
+                                        <span class="ms-header-btn ms-cart-toggle">سبد خرید</span>
+                                        <span class="ms-btn-stitle"><span class="ms-cart-count">0</span> مورد</span>
                                     </div>
                                 </a>
-                                <ul class="ms-dropdown-menu">
-                                    <li><a class="dropdown-item" href="/profile">ویرایش پروفایل</a></li>
-                                    <li><a class="dropdown-item" href="/shop-transactions">سفارشات</a></li>
-                                    <li><a class="dropdown-item" href="/medic/prescription">نسخه‌های پزشکی</a></li>
-                                    <li><a class="dropdown-item" href="/transactions">تراکنش‌ها</a></li>
-                                    <li><a class="dropdown-item" href="/logout">خروج</a></li>
-                                </ul>
                             </div>
-                            <a href="#" class="ms-header-btn" title="سبد خرید">
-                                <div class="header-icon">
-                                    <img src="{% static 'assets/img/icons/cart_5.svg' %}" class="svg_img header_svg"
-                                         alt="">
-                                </div>
-                                <div class="ms-btn-desc">
-                                    <span class="ms-header-btn ms-cart-toggle">سبد خرید</span>
-                                    <span class="ms-btn-stitle"><span class="ms-cart-count">0</span> مورد</span>
-                                </div>
-                            </a>
                         </div>
-                    </div>
 
-                    <!-- شروع بخش برای مهمان -->
-                    <div class="align-self-center guest-only">
-                        <div class="ms-header-bottons">
-                            <div class="ms-acc-drop">
-                                <a href="javascript:void(0)"
-                                   class="ms-header-btn ms-header-user dropdown-toggle ms-user-toggle"
-                                   title="حساب کاربری">
+                        <!-- شروع بخش برای مهمان -->
+                        <div class="align-self-center guest-only ">
+                            <div class="ms-header-bottons">
+                                <div class="ms-acc-drop">
+                                    <a href="javascript:void(0)"
+                                    class="ms-header-btn ms-header-user dropdown-toggle ms-user-toggle"
+                                    title="حساب کاربری">
+                                        <div class="header-icon">
+                                            <img src="{% static 'assets/img/icons/user.svg' %}"
+                                                onclick='window.open("/login/?callback=" + window.location.pathname, "_self")'
+                                                class="svg_img header_svg" alt="">
+                                        </div>
+                                        <span onclick='window.open("/login/?callback=" + window.location.pathname, "_self")'
+                                            class="ms-btn-stitle">ورود</span>
+                                    </a>
+                                </div>
+
+                                <a href="javascript:void(0)" class="ms-header-btn ms-cart-toggle" title="سبد خرید">
                                     <div class="header-icon">
-                                        <img src="{% static 'assets/img/icons/user.svg' %}"
-                                             onclick='window.open("/login/?callback=" + window.location.pathname, "_self")'
-                                             class="svg_img header_svg" alt="">
+                                        <img src="{% static 'assets/img/icons/cart_5.svg' %}" class="svg_img header_svg"
+                                            alt="">
                                     </div>
-                                    <span onclick='window.open("/login/?callback=" + window.location.pathname, "_self")'
-                                          class="ms-btn-stitle">ورود</span>
+                                    <div class="ms-btn-desc">
+                                        <span class="ms-btn-title">سبد خرید</span>
+                                        <span class="ms-btn-stitle"><span class="ms-cart-count">0</span> مورد</span>
+                                    </div>
                                 </a>
                             </div>
-
-                            <a href="javascript:void(0)" class="ms-header-btn ms-cart-toggle" title="سبد خرید">
-                                <div class="header-icon">
-                                    <img src="{% static 'assets/img/icons/cart_5.svg' %}" class="svg_img header_svg"
-                                         alt="">
-                                </div>
-                                <div class="ms-btn-desc">
-                                    <span class="ms-btn-title">سبد خرید</span>
-                                    <span class="ms-btn-stitle"><span class="ms-cart-count">0</span> مورد</span>
-                                </div>
-                            </a>
                         </div>
                     </div>
-
+                    <button onclick="toggleOffcanvas()" class="p-2 h-max hidden max-[1200px]:!block">
+                        <img src="{% static 'assets/img/icons/menu.svg' %}" 
+                            alt="">
+                    </button>
                 </div>
             </div>
-            <div class="ms-header-cat d-none d-lg-block">
+            <div class="ms-header-cat max-[1200px]:hidden">
                 <div class="container position-relative">
                     <div class="row justify-content-between">
-                        <div id="ms-main-menu-desk" class="d-none d-lg-block sticky-nav">
+                        <div id="ms-main-menu-desk" class="sticky-nav">
                             <div class="position-relative nav-desk">
                                 <div class="row">
                                     <div class="col-md-12 align-self-center">
@@ -192,7 +199,92 @@
             </div>
         </div>
     </div>
+</div>
+<div id="offcanvas" class=" fixed top-0 right-0 h-full w-72 p-3 bg-white shadow-lg transform translate-x-full transition-transform duration-300 z-50">
+    <div class="flex items-center justify-between !p-0 border-b border-gray-300">
+        <p class="text-md font-semibold">منو</p>
+        <button onclick="toggleOffcanvas()" class="!text-2xl text-gray-600">&times;</button>
     </div>
+    <div class="text-sm text-gray-700">
+        <ul class="mt-2">
+            <li><a href="/" class="block text-black py-2 hover:bg-gray-100 rounded">خانه</a></li>
+
+            <li>
+                <details class="group">
+                    <summary class="flex justify-between items-center cursor-pointer py-2 hover:bg-gray-100 rounded">
+                        <span>دسته‌بندی‌ها</span>
+                        <!-- <i class="fas fa-chevron-down group-open:rotate-180 transition-transform"></i> -->
+                    </summary>
+                    <ul class="pr-[40px] mt-2 space-y-1">
+                    {% for i in categories.base %}
+                        <li>
+                        <details>
+                            <summary class="cursor-pointer py-1 hover:text-blue-600">{{ i.name|safe|truncatechars_html:17 }}</summary>
+                            <ul class="pl-4 space-y-1">
+                            {% for j in i.children %}
+                                <li>
+                                <a href="/product/?category={{ j.id }}" class="block py-1 text-gray-600 hover:text-blue-600">
+                                    {{ j.name|safe|truncatechars_html:17 }}
+                                </a>
+                                </li>
+                            {% endfor %}
+                            </ul>
+                        </details>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                </details>
+            </li>
+
+            <li><a href="/shops" class="block text-black py-2 hover:bg-gray-100 rounded">فروشگاه‌ها</a></li>
+            <li><a href="/medicine" class="block text-black py-2 hover:bg-gray-100 rounded">پزشکان</a></li>
+
+            <li>
+                <details class="group">
+                    <summary class="flex justify-between items-center cursor-pointer py-2 hover:bg-gray-100 rounded">
+                        <span>مقالات</span>
+                    </summary>
+                    <ul class="mr-[40px] mt-2 space-y-1">
+                        <li><a href="/blog/encyclopedia-combined-drugs" class="block py-1 text-gray-600 hover:text-blue-600">دانشنامه داروهای ترکیبی</a></li>
+                        <li><a href="/blog/encyclopedia-article-encyclopedia" class="block py-1 text-gray-600 hover:text-blue-600">دانشنامه مقالات</a></li>
+                        <li><a href="/blog/encyclopedia-article-diseases" class="block py-1 text-gray-600 hover:text-blue-600">دایره المعارف بیماری‌ها</a></li>
+                        <li><a href="/blog/encyclopedia-article-herbal" class="block py-1 text-gray-600 hover:text-blue-600">دایره المعارف گیاهی</a></li>
+                        <li><a href="/blog/news" class="block py-1 text-gray-600 hover:text-blue-600">اخبار</a></li>
+                    </ul>
+                </details>
+            </li>
+
+            <li><a href="/about-us" class="block text-black py-2 hover:bg-gray-100 rounded">درباره ما</a></li>
+            <li><a href="/contact-us" class="block text-black py-2 hover:bg-gray-100 rounded">تماس با ما</a></li>
+            <li><a href="../raw/ticket.html" class="block text-black py-2 hover:bg-gray-100 rounded">تیکت‌ها</a></li>
+        </ul>
+
+        <div class="align-self-center ms-header-search">
+            <div class="header-search !min-w-0 !p-0">
+                <form class="ms-search-group-form" action="#">
+                    <input class="form-control ms-search-bar" placeholder="جستجو محصولات" type="text">
+                    <button class="search_submit" type="submit">
+                        <img src="{% static 'assets/img/icons/search.svg' %}" class="svg_img search_svg"
+                            alt="">
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="flex justify-center gap-6 mt-4">
+            <div>
+                <i class='fab fa-instagram' style='font-size:24px'></i>
+            </div>
+            <div>
+                <i class='fab fa-twitter-square' style='font-size:24px'></i>
+            </div>
+            <div>
+                <i class='fab fa-facebook' style='font-size:24px'></i>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 </header>
 
@@ -213,4 +305,21 @@
             document.querySelectorAll('.guest-only').forEach(el => el.style.display = 'block');
         }
     });
+
+    // 
+
+    function toggleOffcanvas() {
+        const panel = document.getElementById('offcanvas');
+        const isOpen = panel.classList.contains('translate-x-0');
+
+        if (isOpen) {
+            panel.classList.remove('translate-x-0');
+            panel.classList.add('translate-x-full');
+            // backdrop.classList.add('hidden');
+        } else {
+            panel.classList.remove('translate-x-full');
+            panel.classList.add('translate-x-0');
+            // backdrop.classList.remove('hidden');
+        }
+    }
 </script>
