@@ -10248,16 +10248,18 @@ body.ms-menu-open:before {
     /* flex-direction: column; */
     /* width: 200px; */
 }
-
 .ms-blogs-content{
-    display: grid !important;
+    display: grid;
     grid-template-columns: repeat(3, 1fr);
-}
 
+}
 @media only screen and (max-width: 990px) {
     .tab-buttons, .ms-blogs-content {
         grid-template-columns: repeat(2, 1fr);
     }
+    .ms-blogs-content{
+    width: 100% !important;
+}
 }
 @media only screen and (max-width: 480px) {
     .tab-buttons, .ms-blogs-content {
