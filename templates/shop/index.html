@@ -238,11 +238,37 @@
         </div>
     </div>
 </div>
+<!-- section tablet -->
+<section class="ms-category body-bg hidden max-[990px]:!flex">
+   <div class="container">
+       <div class="row">
+           <div class="col-xl-12 border-content-color">
+               <div class="ms-category-block owl-carousel" dir="ltr">
+                   {% for model in categories %}
+                   <div class="ms-cat-box ms-cat-box-9">
+                       <a href="/product?category={{ model.id }}" class="ms-cat-icon">
+                           <img src="{{ model.image.url }}" class="svg_img" alt="icon">
+                           <h4 class="ms-cat-title">{{ model.name }}</h4>
+                       </a>
+                   </div>
+                   {% endfor %}
+                   
+               </div>
+               <div class="contain-btn w-full justify-start gap-3 mt-3 hidden">
+                   <button class="custom-prev px-3 py-2 border !rounded-full">&lt;</button>
+                   <button class="custom-next px-3 py-2 border !rounded-full">&gt;</button>
+               </div>
+
+           </div>
+       </div>
+   </div>
+</section>
+<!-- section tablet -->
 
 <div class="ms-side-cart-overlay"></div>
 {% include '../extentions/shops_basket.html' with basket=basket toke=token %}
 
- 
+
 
 <section class="section ms-hero m-t-30">
     <div class="container">
@@ -309,7 +335,7 @@
     </div>
 </section>
 
-<section class="ms-category body-bg p-b-30">
+<section class="ms-category body-bg p-b-30 max-[990px]:hidden">
     <div class="container">
         <div class="row">
             <div class="col-xl-12 border-content-color">
