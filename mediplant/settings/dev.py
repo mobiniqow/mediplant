@@ -4,8 +4,8 @@ from datetime import timedelta
 from .base import *
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = 'C:/Users/mobiniqow/Documents/medi_media'
-STATICFILES_DIRS  = ["C:/Users/mobiniqow/Documents/static/", ]
+MEDIA_ROOT = '\\Users\\mobin\\Documents\\mediplant\\medi_media'
+STATICFILES_DIRS  = ["C:\\Users\\mobin\\Documents\\mediplant\\static", ]
 DEBUG = True
 STATIC_URL = '/static/'
 
