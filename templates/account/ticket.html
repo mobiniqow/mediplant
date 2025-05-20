@@ -49,46 +49,54 @@
 
 <!-- <div class="absolute h-40 bg-linear-to-l from-[#2b4a83] to-[#21254e] w-full"> -->
     
-    <div class="border w-3/5 !mt-11 m-auto rounded-t-lg bg-white">
-        <div class="flex justify-between items-center p-4">
-            <div>
-                <p class="m-0">تیکت ها</p>
-                <span class="text-xs">تمامِ تیکت‌هایی که برای واحد امور مشتریان زرین‌پال ارسال کرده‌اید، در این صفحه لیست شده‌اند:</span>
-            </div>
-            <div>
-                <button class="!text-sm px-3 py-2 !rounded-xl border">
-                    <a class="text-black" href="/ticket/new">
-                        ارسال تیکت جدید
-                    </a>
-                </button>
+    <div class="max-[990px]:w-[700px] max-[766px]:w-[520px] max-[580px]:w-full m-auto">
+        <div class="border w-3/5 max-[990px]:w-[100%] !max-[580px]:mx-3 m-auto !mt-11 rounded-t-lg bg-white">
+            <div class="flex justify-between items-center p-4 max-[766px]:block">
+                <div>
+                    <p class="m-0">تیکت ها</p>
+                    <span class="text-xs">تمامِ تیکت‌هایی که برای واحد امور مشتریان زرین‌پال ارسال کرده‌اید، در این صفحه لیست شده‌اند:</span>
+                </div>
+                <div>
+                    <button class="!text-sm px-3 py-2 !rounded-xl border">
+                        <a class="text-black" href="/ticket/new">
+                            ارسال تیکت جدید
+                        </a>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-    <div class="border grid grid-cols-6 m-auto w-3/5 px-6 text-sm py-2 bg-[#f7f8f9]">
-        <p class="m-0">شناسه</p>
-        <p class="m-0 col-span-2">عنوان</p>
-        <p class="m-0">آخرین بروزرسانی</p>
-        <p class="m-0">وضعیت</p>
-        <p class="m-0">بازخورد</p>
-    </div>
-    
-    <a href="/ticket/history">
-        <div class="border grid grid-cols-6 m-auto w-3/5 px-6 text-sm py-2 text-gray-500 bg-white">
-            <p class="m-0">140209250010294</p>
-            <p class="m-0 col-span-2 truncate w-28 ">افزايش سطح تاييد حساب zp.2039464</p>
-            <p class="m-0"> 25 آذر 02، 10:13 </p>
-            <p class="m-0">بسته</p>
-            <p class="m-0">بازخورد</p>
+   <div class="overflow-x-scroll w-full">
+        <div class="min-w-[400px]">
+            <div class="border grid grid-cols-6 m-auto w-3/5 px-6 text-sm py-2 bg-[#f7f8f9] min-w-3/5 max-w-3/5">
+                <p class="m-0">شناسه</p>
+                <p class="m-0 col-span-2">عنوان</p>
+                <p class="m-0">آخرین بروزرسانی</p>
+                <p class="m-0">وضعیت</p>
+                <p class="m-0">بازخورد</p>
+            </div>
+            
+            <a href="/ticket/history">
+                <div class="border grid grid-cols-6 m-auto w-3/5 px-6 text-sm py-2 text-gray-500 bg-white min-w-3/5">
+                    <p class="m-0">140209250010294</p>
+                    <p class="m-0 col-span-2 truncate w-28">افزايش سطح تاييد حساب zp.2039464</p>
+                    <p class="m-0">25 آذر 02، 10:13</p>
+                    <p class="m-0">بسته</p>
+                    <p class="m-0">بازخورد</p>
+                </div>
+            </a>
+            
+            <div class="border grid grid-cols-6 m-auto w-3/5 px-6 text-sm py-2 text-gray-500 bg-white min-w-3/5">
+                <p class="m-0">140209250010294</p>
+                <p class="m-0 col-span-2 truncate w-28">افزايش سطح تاييد حساب zp.2039464</p>
+                <p class="m-0">25 آذر 02، 10:13</p>
+                <p class="m-0">بسته</p>
+                <p class="m-0">بازخورد</p>
+            </div>
+            
+            <div class="border w-3/5 m-auto h-8 rounded-b-lg"></div>
         </div>
-    </a>
-    <div class="border grid grid-cols-6 m-auto w-3/5 px-6 text-sm py-2 text-gray-500 bg-white">
-        <p class="m-0">140209250010294</p>
-        <p class="m-0 col-span-2 truncate w-28 ">افزايش سطح تاييد حساب zp.2039464</p>
-        <p class="m-0"> 25 آذر 02، 10:13 </p>
-        <p class="m-0">بسته</p>
-        <p class="m-0">بازخورد</p>
     </div>
-    <div class=" border w-3/5 m-auto h-8 rounded-b-lg"></div>
 <!-- </div> -->
 
 <!-- Footer Start -->
