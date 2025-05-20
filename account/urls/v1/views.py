@@ -60,7 +60,7 @@ class ProfileAPIView(APIView):  # تنها کاربران وارد شده می�
 
 class VerifyAPIView(GenericAPIView):
     serializer_class = VerifySerializer
-    # throttle_classes = [SevenPerMinuteThrottle, TwentyPerHourThrottle, FiftyPerDay]
+    throttle_classes = [SevenPerMinuteThrottle, TwentyPerHourThrottle, FiftyPerDay]
 
     @swagger_auto_schema(
         responses={200: TokenSerializer(many=True), 404: GeneralSerializer()}
@@ -86,7 +86,7 @@ class VerifyAPIView(GenericAPIView):
 
 class RegisterAPIView(GenericAPIView):
     serializer_class = UserRegisterSerializer
-    # throttle_classes = [SevenPerMinuteThrottle, TwentyPerHourThrottle, FiftyPerDay]
+    throttle_classes = [SevenPerMinuteThrottle, TwentyPerHourThrottle, FiftyPerDay]
 
     @swagger_auto_schema(responses={200: GeneralSerializer()})
     def post(self, request):
@@ -103,7 +103,7 @@ class RegisterAPIView(GenericAPIView):
 
 class LoginAPIView(GenericAPIView):
     serializer_class = LoginSerializer
-    # throttle_classes = [SevenPerMinuteThrottle, TwentyPerHourThrottle, FiftyPerDay]
+    throttle_classes = [SevenPerMinuteThrottle, TwentyPerHourThrottle, FiftyPerDay]
 
     @swagger_auto_schema(responses={200: GeneralSerializer()})
     def post(self, request):
