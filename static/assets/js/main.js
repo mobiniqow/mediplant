@@ -695,5 +695,6 @@
             $('link.dark').remove();
         }
     });
+    
 
 })(jQuery);
