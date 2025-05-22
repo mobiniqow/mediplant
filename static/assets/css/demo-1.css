@@ -4950,15 +4950,17 @@ body.ms-menu-open:before {
 }
 
 .ms-footer .footer-top .ms-footer-widget .ms-footer-detail {
-    max-width: 400px;
+    width: max-content;
     margin-bottom: 30px;
     padding: 0;
     font-size: 16px;
     line-height: 27px;
     font-weight: 300;
     color: #bbb;
-    display: inline-block;
-    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    /* display: inline-block; */
+    /* position: relative; */
 }
 
 .ms-footer .footer-top .ms-footer-widget .app-img img {
@@ -5201,6 +5203,7 @@ body.ms-menu-open:before {
 
     .ms-footer .footer-top .ms-footer-widget .ms-footer-detail {
         font-size: 14px;
+        width: 40%;
     }
 
     .ms-footer .footer-top .ms-footer-widget .ms-foo-location .svg_img.foo_svg {
