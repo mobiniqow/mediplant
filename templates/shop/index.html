@@ -243,7 +243,9 @@
    <div class="container">
        <div class="row">
            <div class="col-xl-12 border-content-color">
-               <div class="ms-category-block owl-carousel" dir="ltr">
+               <button class="custom-prev px-3 py-2 border absolute top-[90px] right-[70px] z-[20] bg-white !rounded-full">&lt;</button>
+               <div class="ms-category-block owl-carousel relative" dir="ltr">
+
                    {% for model in categories %}
                    <div class="ms-cat-box ms-cat-box-9">
                        <a href="/product?category={{ model.id }}" class="ms-cat-icon">
@@ -253,12 +255,8 @@
                    </div>
                    {% endfor %}
                    
-               </div>
-               <div class="contain-btn w-full justify-start gap-3 mt-3 hidden">
-                   <button class="custom-prev px-3 py-2 border !rounded-full">&lt;</button>
-                   <button class="custom-next px-3 py-2 border !rounded-full">&gt;</button>
-               </div>
-
+                </div>
+                <button class="custom-next px-3 py-2 border absolute top-[90px] left-[70px] z-[20] bg-white !rounded-full">&gt;</button>
            </div>
        </div>
    </div>
@@ -283,9 +281,9 @@
                                 <div class="ms-slide-item swiper-slide d-flex slide-1">
                                     <img src="{{ i.image.url }}" style="position: absolute ; height: 100%;" width="100%"
                                          height="100%">
-                                    <div class="ms-slide-content slider-animation">
+                                    <div class="ms-slide-content slider-animation text-white z-[200] relative">
                                         <!-- <h2 class="ms-slide-stitle">{{ i.name|truncatechars:20 }}</h2> -->
-                                        <h1 class="ms-slide-title">{{ i.content|truncatechars:20 }}</h1>
+                                        <h1 class="ms-slide-title text-white z-[200] ">{{ i.content|truncatechars:20 }}</h1>
                                         <!-- <div class="ms-slide-desc">
                                             <a href="{{ i.link_url }}" class="ms-btn-2">مشاهده <i
                                                     class="fa-solid fa-angles-left"></i></a>
@@ -323,8 +321,8 @@
                 <div class="ms-slider-grid-item" style="background-image:url( {{ two_banners.1.image.url }});">
                     <div class="hover-slider"></div>
                     <div class="ms-detail">
-                        <h6 class="grid-animation text-black"><span
-                                class="ms-grid-sub-title">{{ two_banners.1.name |truncatechars:19 }}</span></h6>
+                        <h6 class="grid-animation"><span
+                                class="ms-grid-sub-title text-[#ccc] z-[200] relative">{{ two_banners.1.name |truncatechars:19 }}</span></h6>
                         <!-- <a href="{{ two_banners.1.link_url }}" class="ms-btn-2">مشاهده <i
                                 class="fa-solid fa-angles-left"></i></a> -->
                     </div>
@@ -338,8 +336,9 @@
 <section class="ms-category body-bg p-b-30 max-[990px]:hidden">
     <div class="container">
         <div class="row">
-            <div class="col-xl-12 border-content-color">
-                <div class="ms-category-block owl-carousel" dir="ltr">
+            <div class="col-xl-12 border-content-color relative">
+                <button class="custom-prev px-3 py-2 border absolute top-[90px] -right-[10px] z-[20] bg-white  !rounded-full">&lt;</button>
+                <div class="ms-category-block owl-carousel " dir="ltr">
                     {% for model in categories %}
                     <div class="ms-cat-box ms-cat-box-9">
                         <a href="/product?category={{ model.id }}" class="ms-cat-icon">
@@ -350,10 +349,9 @@
                     {% endfor %}
                     
                 </div>
-                <div class="contain-btn w-full justify-start gap-3 mt-3 hidden">
-                    <button class="custom-prev px-3 py-2 border !rounded-full">&lt;</button>
-                    <button class="custom-next px-3 py-2 border !rounded-full">&gt;</button>
-                </div>
+                <button class="custom-next px-3 py-2 border absolute top-[90px] -left-[10px] z-[20] bg-white !rounded-full">&gt;</button>
+                <!-- <div class="contain-btn w-full justify-start gap-3 mt-3 hidden"> -->
+                <!-- </div> -->
 
             </div>
         </div>
@@ -628,10 +626,10 @@
                                 <div class="ms-pro-content">
                                     <h5 class="ms-pro-title"><a
                                             onclick="eventItems({{ product.id }})">{{ product.name }}</a></h5>
-                                    <h6 class="ms-pro-stitle"><a
+                                    <!-- <h6 class="ms-pro-stitle"><a
                                             onclick="eventItems({{ product.id }})">
                                         {{ product.description|striptags|slice:":26" }}</a>
-                                    </h6>
+                                    </h6> -->
                                     <div class="ms-pro-rat-price">
                                         <div class="ms-pro-rat-pri-inner">
                                             <span class="ms-price">
@@ -675,10 +673,10 @@
                                 <div class="ms-pro-content">
                                     <h5 class="ms-pro-title"><a
                                             onclick="eventItems({{ product.id }})">{{ product.name }}</a></h5>
-                                    <h6 class="ms-pro-stitle"><a
+                                    <!-- <h6 class="ms-pro-stitle"><a
                                             onclick="eventItems({{ product.id }})">
                                         {{ product.description|striptags|slice:":26" }}</a>
-                                    </h6>
+                                    </h6> -->
                                     <div class="ms-pro-rat-price">
                                         <div class="ms-pro-rat-pri-inner">
                                             <span class="ms-price">
@@ -722,10 +720,10 @@
                                 <div class="ms-pro-content">
                                     <h5 class="ms-pro-title"><a
                                             onclick="eventItems({{ product.id }})">{{ product.name }}</a></h5>
-                                    <h6 class="ms-pro-stitle"><a
+                                    <!-- <h6 class="ms-pro-stitle"><a
                                             onclick="eventItems({{ product.id }})">
                                         {{ product.description|striptags|slice:":26" }}</a>
-                                    </h6>
+                                    </h6> -->
                                     <div class="ms-pro-rat-price">
                                         <div class="ms-pro-rat-pri-inner">
                                             <span class="ms-price">
@@ -769,16 +767,16 @@
                                 <div class="ms-pro-content">
                                     <h5 class="ms-pro-title"><a
                                             onclick="eventItems({{ product.id }})">{{ product.name }}</a></h5>
-                                    <h6 class="ms-pro-stitle"><a
+                                    <!-- <h6 class="ms-pro-stitle"><a
                                             onclick="eventItems({{ product.id }})">
                                         {{ product.description|striptags|slice:":26" }}</a>
-                                    </h6>
+                                    </h6> -->
                                     <div class="ms-pro-rat-price">
                                         <div class="ms-pro-rat-pri-inner">
-                                            <span class="ms-price">
+                                            <span class="ms-price" style="display: grid;">
+                                                <span class="qty"> {{ product.get_type_display }}   </span>
                                                 <span class="new-price">{{ product.price | intcomma:False }}  تومان</span>
-{#                                            <span class="old-price">55 هزار</span>#}
-                                            <span class="qty">- {{ product.get_type_display }}   </span>
+                                                {#<span class="old-price">هزار</span>#}
                                             </span>
                                         </div>
                                     </div>
@@ -885,9 +883,9 @@
                                             <a>
                                                 <h6 class="ms-pro-stitle">{{ product.name }}</h6>
                                             </a>
-                                            <h5 class="ms-pro-title"><a
+                                            <!-- <h5 class="ms-pro-title"><a
                                             >{{ product.description|striptags|slice:":26" }}</a>
-                                            </h5>
+                                            </h5> -->
                                             <div class="ms-pro-rat-price">
                                        
                                                 <span class="ms-price">
