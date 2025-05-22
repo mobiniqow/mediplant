@@ -239,25 +239,25 @@
     </div>
 </div>
 <!-- section tablet -->
-<section class="ms-category body-bg hidden max-[990px]:!flex">
+<section class="ms-category body-bg hidden max-[1200px]:!flex">
    <div class="container">
        <div class="row">
-           <div class="col-xl-12 border-content-color">
-               <button class="custom-prev px-3 py-2 border absolute top-[90px] right-[70px] z-[20] bg-white !rounded-full">&lt;</button>
-               <div class="ms-category-block owl-carousel relative" dir="ltr">
-
+           <div class="col-xl-12 border-content-color ">
+               <button class="custom-prev px-[17px] py-[8px] border !text-[18px] relative top-[100px] -right-[22px] z-[2] bg-white !rounded-full">&lt;</button>
+               <button class="custom-next px-[17px] py-[8px] border !text-[18px] relative top-[100px] -left-[627px] z-[2] bg-white !rounded-full">&gt;</button>
+               <div class="ms-category-block owl-carousel !mt-0" dir="ltr">
+                   
                    {% for model in categories %}
                    <div class="ms-cat-box ms-cat-box-9">
                        <a href="/product?category={{ model.id }}" class="ms-cat-icon">
                            <img src="{{ model.image.url }}" class="svg_img" alt="icon">
                            <h4 class="ms-cat-title">{{ model.name }}</h4>
-                       </a>
-                   </div>
-                   {% endfor %}
-                   
+                        </a>
+                    </div>
+                    {% endfor %}
+                    
                 </div>
-                <button class="custom-next px-3 py-2 border absolute top-[90px] left-[70px] z-[20] bg-white !rounded-full">&gt;</button>
-           </div>
+            </div>
        </div>
    </div>
 </section>
@@ -307,8 +307,8 @@
                 <div class="ms-slider-grid-item" style="background-image:url( {{ two_banners.0.image.url }});">
                     <div class="hover-slider"></div>
                     <div class="ms-detail">
-                        <!-- <h6 class="grid-animation"><span
-                                class="ms-grid-sub-title text-black">{{ two_banners.0.name |truncatechars:19 }}</span></h6> -->
+                        <h6 class="grid-animation"><span
+                                class="ms-grid-sub-title text-white z-[200] relative">{{ two_banners.0.name |truncatechars:19 }}</span></h6>
                         <!-- <a href="{{ two_banners.0.link_url }}" class="ms-btn-2">مشاهده<i
                                 class="fa-solid fa-angles-left"></i></a> -->
                     </div>
@@ -322,7 +322,7 @@
                     <div class="hover-slider"></div>
                     <div class="ms-detail">
                         <h6 class="grid-animation"><span
-                                class="ms-grid-sub-title text-[#ccc] z-[200] relative">{{ two_banners.1.name |truncatechars:19 }}</span></h6>
+                                class="ms-grid-sub-title text-white z-[200] relative">{{ two_banners.1.name |truncatechars:19 }}</span></h6>
                         <!-- <a href="{{ two_banners.1.link_url }}" class="ms-btn-2">مشاهده <i
                                 class="fa-solid fa-angles-left"></i></a> -->
                     </div>
@@ -337,7 +337,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xl-12 border-content-color relative">
-                <button class="custom-prev px-3 py-2 border absolute top-[90px] -right-[10px] z-[20] bg-white  !rounded-full">&lt;</button>
+                <button class="custom-prev px-[17px] py-[8px] border text-[24px] absolute top-[90px] -right-[10px] z-[20] bg-white  !rounded-full">&lt;</button>
                 <div class="ms-category-block owl-carousel " dir="ltr">
                     {% for model in categories %}
                     <div class="ms-cat-box ms-cat-box-9">
@@ -349,7 +349,7 @@
                     {% endfor %}
                     
                 </div>
-                <button class="custom-next px-3 py-2 border absolute top-[90px] -left-[10px] z-[20] bg-white !rounded-full">&gt;</button>
+                <button class="custom-next px-[17px] py-[8px] border text-[24px] absolute top-[90px] -left-[10px] z-[20] bg-white !rounded-full">&gt;</button>
                 <!-- <div class="contain-btn w-full justify-start gap-3 mt-3 hidden"> -->
                 <!-- </div> -->
 
@@ -588,7 +588,7 @@
                     <div class="ms-bnr-detail">
                         <div class="ms-bnr-info">
                             <!-- <h2> {{ middle_banner.name|truncatechars:20 }}</h2> -->
-                            <h3 class="">{{ middle_banner.content|truncatechars:20 }}</h3>
+                            <h3>{{ middle_banner.content|truncatechars:20 }}</h3>
                             <!-- <a href="{{ middle_banner.link_url }}" class="ms-btn-2">مشاهده</a> -->
                         </div>
                     </div>
@@ -632,10 +632,10 @@
                                     </h6> -->
                                     <div class="ms-pro-rat-price">
                                         <div class="ms-pro-rat-pri-inner">
-                                            <span class="ms-price">
+                                            <span class="ms-price" style="display: grid;">
                                                 <span class="new-price">{{ product.price | intcomma:False }}  تومان</span>
-{#                                            <span class="old-price">55 هزار</span>#}
-                                            <span class="qty">- {{ product.get_type_display }}   </span>
+                                                <span class="qty">- {{ product.get_type_display }}   </span>
+                                                {#<span class="old-price">55 هزار</span>#}
                                             </span>
                                         </div>
                                     </div>
@@ -679,10 +679,10 @@
                                     </h6> -->
                                     <div class="ms-pro-rat-price">
                                         <div class="ms-pro-rat-pri-inner">
-                                            <span class="ms-price">
+                                            <span class="ms-price" style="display: grid;">
                                                 <span class="new-price">{{ product.price | intcomma:False }}  تومان</span>
-{#                                            <span class="old-price">55 هزار</span>#}
-                                            <span class="qty">- {{ product.get_type_display }}   </span>
+                                                <span class="qty">- {{ product.get_type_display }}   </span>
+                                                {#<span class="old-price">55 هزار</span>#}
                                             </span>
                                         </div>
                                     </div>
@@ -726,10 +726,10 @@
                                     </h6> -->
                                     <div class="ms-pro-rat-price">
                                         <div class="ms-pro-rat-pri-inner">
-                                            <span class="ms-price">
+                                            <span class="ms-price" style="display: grid;">
                                                 <span class="new-price">{{ product.price | intcomma:False }}  تومان</span>
-{#                                            <span class="old-price">55 هزار</span>#}
-                                            <span class="qty">- {{ product.get_type_display }}   </span>
+                                                <span class="qty">- {{ product.get_type_display }}   </span>
+                                                {#<span class="old-price">55 هزار</span>#}
                                             </span>
                                         </div>
                                     </div>
@@ -807,7 +807,7 @@
                 <div class="ms-ofr-banners">
                     <a href="{{ bottom_banner.0.link_url }}">
                         <div class="ms-bnr-body">
-                            <div class="hover-slider"></div>
+                            <div class="hover-slider rounded-lg"></div>
                             <div class="ms-bnr-img">
                                 {#                            <span class="lbl">%70 تخفیف</span>#}
                                 <img src="{{ bottom_banner.0.image.url }}" alt="banner">
@@ -826,14 +826,14 @@
                 <div class="ms-ofr-banners">
                     <a href="{{ bottom_banner.1.link_url }}">
                     <div class="ms-bnr-body">
-                        <div class="hover-slider"></div>
+                        <div class="hover-slider rounded-lg"></div>
                         <div class="ms-bnr-img">
                             {#                            <span class="lbl">%70 تخفیف</span>#}
                             <img src="{{ bottom_banner.1.image.url }}" alt="banner">
                         </div>
                         <div class="ms-bnr-detail">
                             <!-- <h5>{{ bottom_banner.1.name |truncatechars:10 }}</h5> -->
-                            <p class="">{{ bottom_banner.1.content|truncatechars:15 }}</p>
+                            <p>{{ bottom_banner.1.content|truncatechars:15 }}</p>
                             <!-- <a href="{{ bottom_banner.1.link_url }}" class="ms-btn-2">مشاهده</a> -->
                         </div>
                     </div>
@@ -925,7 +925,7 @@
                             </div>
 
                             <div class="ms-vendor-info">
-                                <a href="/shop/{{ i.id }}/">فروشگاه {{ i.name |slice:":9" }}</a>
+                                <a href="/shop/{{ i.id }}/" class="flex gap-4">فروشگاه <span>{{ i.name |slice:":9" }}</span></a>
 
                                 <p>{{ i.product_number }} محصول</p>
                        
@@ -1022,19 +1022,21 @@
             <div class="ms-blog-carousel owl-carousel" dir="ltr">
                 {% for i in articles %}
                     <div class="ms-blog-item" onclick="openArticles({{ i.id }})">
-                        <div class="news-info" dir="rtl">
-                            <figure class="news-img">
-                                <a href="#"><img src="{{ i.image.url }}" alt="news imag"></a>
-                            </figure>
-                            <div class="detail">
-                                <label>{{ i.created_at |date }}<a href="#"></a></label>
-                                <h3><a href="#">{{ i.abstract|safe|truncatechars_html:33 }}</a></h3>
-                                <p class="text-length">{{ i.content|safe|truncatechars_html:43 }}</p>
-                                <div class="more-info">
-                                    <a href="/blog/news/{{ i.id }}">ادامه مطلب<span></span></a>
+                        <a href="/blog/news/{{ i.id }}">
+                            <div class="news-info" dir="rtl">
+                                <figure class="news-img">
+                                    <a href="#"><img src="{{ i.image.url }}" alt="news imag"></a>
+                                </figure>
+                                <div class="detail">
+                                    <label>{{ i.created_at |date }}<a href="#"></a></label>
+                                    <h3><a href="#">{{ i.abstract|safe|truncatechars_html:33 }}</a></h3>
+                                    <p class="text-length">{{ i.content|safe|truncatechars_html:43 }}</p>
+                                    <div class="more-info">
+                                        <a href="/blog/news/{{ i.id }}">ادامه مطلب<span></span></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 {% endfor %}
             </div>
