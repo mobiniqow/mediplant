@@ -1,5 +1,4 @@
 from datetime import timedelta
-
 from .base import *
 
 DATABASES = {
@@ -12,6 +11,7 @@ DATABASES = {
         "PORT": "5432",
     }
 }
+
 DATA_UPLOAD_MAX_MEMORY_SIZE = 524288000
 FILE_UPLOAD_MAX_MEMORY_SIZE = 524288000
 
@@ -54,6 +54,7 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_LIFETIME": timedelta(days=99),
     "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=99),
 }
+
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 16,
