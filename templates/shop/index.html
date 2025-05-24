@@ -1016,23 +1016,26 @@
             <div class="section-title">
                 <h2>اخرین <span>نوشته ها</span></h2>
                 <span class="title-link">
-                        <a href="/blog/news/">همه نوشته ها<i class="fa-solid fa-angles-left"></i></a>
-                    </span>
+                    <a href="/blog/news/">همه نوشته ها<i class="fa-solid fa-angles-left"></i></a>
+                </span>
             </div>
-            <div class="ms-blog-carousel owl-carousel" dir="ltr">
+            <div class="grid grid-cols-5 max-[1200px]:grid-cols-4 max-[992px]:grid-cols-3 max-[767px]:grid-cols-2 max-[580px]:grid-cols-1  gap-4">
                 {% for i in articles %}
-                    <div class="ms-blog-item" onclick="openArticles({{ i.id }})">
+                    <div class="ms-blog-item !h-max" onclick="openArticles({{ i.id }})">
+                    <!-- <div class="ms-blog-item"> -->
                         <a href="/blog/news/{{ i.id }}">
-                            <div class="news-info" dir="rtl">
+                        <a >
+                            <div class="news-info !mb-0" dir="rtl">
                                 <figure class="news-img">
                                     <a href="#"><img src="{{ i.image.url }}" alt="news imag"></a>
+                                    <!-- <a href="#"><img src="../../static/assets/img/banner/Category-2_cLaZIFD.jpeg" alt="news imag"></a> -->
                                 </figure>
                                 <div class="detail">
                                     <label>{{ i.created_at |date }}<a href="#"></a></label>
                                     <h3><a href="#">{{ i.abstract|safe|truncatechars_html:33 }}</a></h3>
                                     <p class="text-length">{{ i.content|safe|truncatechars_html:43 }}</p>
                                     <div class="more-info">
-                                        <a href="/blog/news/{{ i.id }}">ادامه مطلب<span></span></a>
+                                        <a>ادامه مطلب<span></span></a>
                                     </div>
                                 </div>
                             </div>
