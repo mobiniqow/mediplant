@@ -4,7 +4,7 @@ from .doctor_view import start_doctor_payment,  generate_doctor_payment_token
 
 urlpatterns = [
     path('transactions/', views.ListTransactions.as_view(), name='list_transactions'),
-    path('payment/start/', views.start_payment, name='start_payment'),
+    path('payment/start/<int:shop_id>', views.start_payment, name='start_payment'),
     path('payment/verify/', views.verify_payment, name='verify_payment'),
     path('payment/transactions/', views.get_transactions, name='get_transactions'),
     path('payment/url/', views.get_payment_url, name='get_payment_url'),

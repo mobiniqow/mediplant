@@ -239,27 +239,26 @@
     </div>
 </div>
 <!-- section tablet -->
-<section class="ms-category body-bg hidden max-[990px]:!flex">
+<section class="ms-category body-bg hidden max-[1200px]:!flex max-[990px]:mt-[24px]">
    <div class="container">
        <div class="row">
-           <div class="col-xl-12 border-content-color">
-               <div class="ms-category-block owl-carousel" dir="ltr">
-                   {% for model in categories %}
-                   <div class="ms-cat-box ms-cat-box-9">
-                       <a href="/product?category={{ model.id }}" class="ms-cat-icon">
-                           <img src="{{ model.image.url }}" class="svg_img" alt="icon">
-                           <h4 class="ms-cat-title">{{ model.name }}</h4>
-                       </a>
-                   </div>
-                   {% endfor %}
-                   
-               </div>
-               <div class="contain-btn w-full justify-start gap-3 mt-3 hidden">
-                   <button class="custom-prev px-3 py-2 border !rounded-full">&lt;</button>
-                   <button class="custom-next px-3 py-2 border !rounded-full">&gt;</button>
-               </div>
+            <div class="relative">
+                <button class="shadow-sm custom-prev absolute -left-[15px] top-[60px] !rounded-full p-3 max-[580px]:!p-[10px] max-[580px]:left-[10px]" style="background-color: white; z-index: 2;"><img class="w-5 max-[580px]:w-3" src="../../static/assets/img/left-arrow.png" alt=""></button>
+                <button class="shadow-sm custom-next absolute -right-[15px] top-[60px] !rounded-full bg-white p-3 max-[580px]:!p-[10px] max-[580px]:right-[10px]" style="background-color: white; z-index: 2;"><img class="w-5 max-[580px]:w-3" src="../../static/assets/img/right-arrow.png" alt=""></button>
 
-           </div>
+                <div class="col-xl-12 border-content-color ">
+                    <div class="ms-category-block owl-carousel !mt-0" dir="ltr">
+                        {% for model in categories %}
+                        <div class="ms-cat-box ms-cat-box-9">
+                            <a href="/product?category={{ model.id }}" class="ms-cat-icon">
+                                <img src="{{ model.image.url }}" class="svg_img" alt="icon">
+                                <h4 class="ms-cat-title">{{ model.name }}</h4>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
        </div>
    </div>
 </section>
@@ -283,9 +282,9 @@
                                 <div class="ms-slide-item swiper-slide d-flex slide-1">
                                     <img src="{{ i.image.url }}" style="position: absolute ; height: 100%;" width="100%"
                                          height="100%">
-                                    <div class="ms-slide-content slider-animation">
+                                    <div class="ms-slide-content slider-animation text-white z-[200] relative">
                                         <!-- <h2 class="ms-slide-stitle">{{ i.name|truncatechars:20 }}</h2> -->
-                                        <h1 class="ms-slide-title">{{ i.content|truncatechars:20 }}</h1>
+                                        <h1 class="ms-slide-title text-white z-[200] ">{{ i.content|truncatechars:20 }}</h1>
                                         <!-- <div class="ms-slide-desc">
                                             <a href="{{ i.link_url }}" class="ms-btn-2">مشاهده <i
                                                     class="fa-solid fa-angles-left"></i></a>
@@ -309,8 +308,8 @@
                 <div class="ms-slider-grid-item" style="background-image:url( {{ two_banners.0.image.url }});">
                     <div class="hover-slider"></div>
                     <div class="ms-detail">
-                        <!-- <h6 class="grid-animation"><span
-                                class="ms-grid-sub-title text-black">{{ two_banners.0.name |truncatechars:19 }}</span></h6> -->
+                        <h6 class="grid-animation"><span
+                                class="ms-grid-sub-title text-white z-[200] relative">{{ two_banners.0.name |truncatechars:19 }}</span></h6>
                         <!-- <a href="{{ two_banners.0.link_url }}" class="ms-btn-2">مشاهده<i
                                 class="fa-solid fa-angles-left"></i></a> -->
                     </div>
@@ -323,8 +322,8 @@
                 <div class="ms-slider-grid-item" style="background-image:url( {{ two_banners.1.image.url }});">
                     <div class="hover-slider"></div>
                     <div class="ms-detail">
-                        <h6 class="grid-animation text-black"><span
-                                class="ms-grid-sub-title">{{ two_banners.1.name |truncatechars:19 }}</span></h6>
+                        <h6 class="grid-animation"><span
+                                class="ms-grid-sub-title text-white z-[200] relative">{{ two_banners.1.name |truncatechars:19 }}</span></h6>
                         <!-- <a href="{{ two_banners.1.link_url }}" class="ms-btn-2">مشاهده <i
                                 class="fa-solid fa-angles-left"></i></a> -->
                     </div>
@@ -338,8 +337,9 @@
 <section class="ms-category body-bg p-b-30 max-[990px]:hidden">
     <div class="container">
         <div class="row">
-            <div class="col-xl-12 border-content-color">
-                <div class="ms-category-block owl-carousel" dir="ltr">
+            <div class="col-xl-12 border-content-color relative">
+                <button class="custom-prev px-[17px] py-[8px] border text-[24px] absolute top-[90px] -right-[10px] z-[20] bg-white  !rounded-full">&lt;</button>
+                <div class="ms-category-block owl-carousel " dir="ltr">
                     {% for model in categories %}
                     <div class="ms-cat-box ms-cat-box-9">
                         <a href="/product?category={{ model.id }}" class="ms-cat-icon">
@@ -350,10 +350,9 @@
                     {% endfor %}
                     
                 </div>
-                <div class="contain-btn w-full justify-start gap-3 mt-3 hidden">
-                    <button class="custom-prev px-3 py-2 border !rounded-full">&lt;</button>
-                    <button class="custom-next px-3 py-2 border !rounded-full">&gt;</button>
-                </div>
+                <button class="custom-next px-[17px] py-[8px] border text-[24px] absolute top-[90px] -left-[10px] z-[20] bg-white !rounded-full">&gt;</button>
+                <!-- <div class="contain-btn w-full justify-start gap-3 mt-3 hidden"> -->
+                <!-- </div> -->
 
             </div>
         </div>
@@ -374,13 +373,13 @@
             <!-- Tab Start -->
             <div class="ms-pro-tab">
                 <ul class="ms-pro-tab-nav nav justify-content-end index-tab-product">
-                    <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#all">همه</a></li>
-                    <li class="nav-item"><a class="nav-link" data-bs-toggle="tab"
+                    <li class="nav-item !ml-[35px]"><a class="nav-link active" data-bs-toggle="tab" href="#all">همه</a></li>
+                    <li class="nav-item !ml-[35px]"><a class="nav-link" data-bs-toggle="tab"
                                             href="#snack">پرفروش ترین</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" data-bs-toggle="tab"
+                    <li class="nav-item !ml-[35px]"><a class="nav-link" data-bs-toggle="tab"
                                             href="#fruit">جدید ترین</a></li>
-                    <li class="nav-item"><a class="nav-link" data-bs-toggle="tab"
+                    <li class="nav-item !ml-[35px]"><a class="nav-link" data-bs-toggle="tab"
                                             href="#veg">پربازدیدترین</a></li>
                 </ul>
             </div>
@@ -590,7 +589,7 @@
                     <div class="ms-bnr-detail">
                         <div class="ms-bnr-info">
                             <!-- <h2> {{ middle_banner.name|truncatechars:20 }}</h2> -->
-                            <h3 class="">{{ middle_banner.content|truncatechars:20 }}</h3>
+                            <h3>{{ middle_banner.content|truncatechars:20 }}</h3>
                             <!-- <a href="{{ middle_banner.link_url }}" class="ms-btn-2">مشاهده</a> -->
                         </div>
                     </div>
@@ -628,16 +627,16 @@
                                 <div class="ms-pro-content">
                                     <h5 class="ms-pro-title"><a
                                             onclick="eventItems({{ product.id }})">{{ product.name }}</a></h5>
-                                    <h6 class="ms-pro-stitle"><a
+                                    <!-- <h6 class="ms-pro-stitle"><a
                                             onclick="eventItems({{ product.id }})">
                                         {{ product.description|striptags|slice:":26" }}</a>
-                                    </h6>
+                                    </h6> -->
                                     <div class="ms-pro-rat-price">
                                         <div class="ms-pro-rat-pri-inner">
-                                            <span class="ms-price">
+                                            <span class="ms-price" style="display: grid;">
                                                 <span class="new-price">{{ product.price | intcomma:False }}  تومان</span>
-{#                                            <span class="old-price">55 هزار</span>#}
-                                            <span class="qty">- {{ product.get_type_display }}   </span>
+                                                <span class="qty">- {{ product.get_type_display }}   </span>
+                                                {#<span class="old-price">55 هزار</span>#}
                                             </span>
                                         </div>
                                     </div>
@@ -675,16 +674,16 @@
                                 <div class="ms-pro-content">
                                     <h5 class="ms-pro-title"><a
                                             onclick="eventItems({{ product.id }})">{{ product.name }}</a></h5>
-                                    <h6 class="ms-pro-stitle"><a
+                                    <!-- <h6 class="ms-pro-stitle"><a
                                             onclick="eventItems({{ product.id }})">
                                         {{ product.description|striptags|slice:":26" }}</a>
-                                    </h6>
+                                    </h6> -->
                                     <div class="ms-pro-rat-price">
                                         <div class="ms-pro-rat-pri-inner">
-                                            <span class="ms-price">
+                                            <span class="ms-price" style="display: grid;">
                                                 <span class="new-price">{{ product.price | intcomma:False }}  تومان</span>
-{#                                            <span class="old-price">55 هزار</span>#}
-                                            <span class="qty">- {{ product.get_type_display }}   </span>
+                                                <span class="qty">- {{ product.get_type_display }}   </span>
+                                                {#<span class="old-price">55 هزار</span>#}
                                             </span>
                                         </div>
                                     </div>
@@ -722,16 +721,16 @@
                                 <div class="ms-pro-content">
                                     <h5 class="ms-pro-title"><a
                                             onclick="eventItems({{ product.id }})">{{ product.name }}</a></h5>
-                                    <h6 class="ms-pro-stitle"><a
+                                    <!-- <h6 class="ms-pro-stitle"><a
                                             onclick="eventItems({{ product.id }})">
                                         {{ product.description|striptags|slice:":26" }}</a>
-                                    </h6>
+                                    </h6> -->
                                     <div class="ms-pro-rat-price">
                                         <div class="ms-pro-rat-pri-inner">
-                                            <span class="ms-price">
+                                            <span class="ms-price" style="display: grid;">
                                                 <span class="new-price">{{ product.price | intcomma:False }}  تومان</span>
-{#                                            <span class="old-price">55 هزار</span>#}
-                                            <span class="qty">- {{ product.get_type_display }}   </span>
+                                                <span class="qty">- {{ product.get_type_display }}   </span>
+                                                {#<span class="old-price">55 هزار</span>#}
                                             </span>
                                         </div>
                                     </div>
@@ -769,16 +768,16 @@
                                 <div class="ms-pro-content">
                                     <h5 class="ms-pro-title"><a
                                             onclick="eventItems({{ product.id }})">{{ product.name }}</a></h5>
-                                    <h6 class="ms-pro-stitle"><a
+                                    <!-- <h6 class="ms-pro-stitle"><a
                                             onclick="eventItems({{ product.id }})">
                                         {{ product.description|striptags|slice:":26" }}</a>
-                                    </h6>
+                                    </h6> -->
                                     <div class="ms-pro-rat-price">
                                         <div class="ms-pro-rat-pri-inner">
-                                            <span class="ms-price">
+                                            <span class="ms-price" style="display: grid;">
+                                                <span class="qty"> {{ product.get_type_display }}   </span>
                                                 <span class="new-price">{{ product.price | intcomma:False }}  تومان</span>
-{#                                            <span class="old-price">55 هزار</span>#}
-                                            <span class="qty">- {{ product.get_type_display }}   </span>
+                                                {#<span class="old-price">هزار</span>#}
                                             </span>
                                         </div>
                                     </div>
@@ -809,7 +808,7 @@
                 <div class="ms-ofr-banners">
                     <a href="{{ bottom_banner.0.link_url }}">
                         <div class="ms-bnr-body">
-                            <div class="hover-slider"></div>
+                            <div class="hover-slider rounded-lg"></div>
                             <div class="ms-bnr-img">
                                 {#                            <span class="lbl">%70 تخفیف</span>#}
                                 <img src="{{ bottom_banner.0.image.url }}" alt="banner">
@@ -828,14 +827,14 @@
                 <div class="ms-ofr-banners">
                     <a href="{{ bottom_banner.1.link_url }}">
                     <div class="ms-bnr-body">
-                        <div class="hover-slider"></div>
+                        <div class="hover-slider rounded-lg"></div>
                         <div class="ms-bnr-img">
                             {#                            <span class="lbl">%70 تخفیف</span>#}
                             <img src="{{ bottom_banner.1.image.url }}" alt="banner">
                         </div>
                         <div class="ms-bnr-detail">
                             <!-- <h5>{{ bottom_banner.1.name |truncatechars:10 }}</h5> -->
-                            <p class="">{{ bottom_banner.1.content|truncatechars:15 }}</p>
+                            <p>{{ bottom_banner.1.content|truncatechars:15 }}</p>
                             <!-- <a href="{{ bottom_banner.1.link_url }}" class="ms-btn-2">مشاهده</a> -->
                         </div>
                     </div>
@@ -885,9 +884,9 @@
                                             <a>
                                                 <h6 class="ms-pro-stitle">{{ product.name }}</h6>
                                             </a>
-                                            <h5 class="ms-pro-title"><a
+                                            <!-- <h5 class="ms-pro-title"><a
                                             >{{ product.description|striptags|slice:":26" }}</a>
-                                            </h5>
+                                            </h5> -->
                                             <div class="ms-pro-rat-price">
                                        
                                                 <span class="ms-price">
@@ -927,7 +926,7 @@
                             </div>
 
                             <div class="ms-vendor-info">
-                                <a href="/shop/{{ i.id }}/">فروشگاه {{ i.name |slice:":9" }}</a>
+                                <a href="/shop/{{ i.id }}/" class="flex gap-4">فروشگاه <span>{{ i.name |slice:":9" }}</span></a>
 
                                 <p>{{ i.product_number }} محصول</p>
                        
@@ -1018,25 +1017,30 @@
             <div class="section-title">
                 <h2>اخرین <span>نوشته ها</span></h2>
                 <span class="title-link">
-                        <a href="/blog/news/">همه نوشته ها<i class="fa-solid fa-angles-left"></i></a>
-                    </span>
+                    <a href="/blog/news/">همه نوشته ها<i class="fa-solid fa-angles-left"></i></a>
+                </span>
             </div>
-            <div class="ms-blog-carousel owl-carousel" dir="ltr">
+            <div class="grid grid-cols-5 max-[1200px]:grid-cols-4 max-[992px]:grid-cols-3 max-[767px]:grid-cols-2 max-[580px]:grid-cols-1  gap-4">
                 {% for i in articles %}
-                    <div class="ms-blog-item" onclick="openArticles({{ i.id }})">
-                        <div class="news-info" dir="rtl">
-                            <figure class="news-img">
-                                <a href="#"><img src="{{ i.image.url }}" alt="news imag"></a>
-                            </figure>
-                            <div class="detail">
-                                <label>{{ i.created_at |date }}<a href="#"></a></label>
-                                <h3><a href="#">{{ i.abstract|safe|truncatechars_html:33 }}</a></h3>
-                                <p class="text-length">{{ i.content|safe|truncatechars_html:43 }}</p>
-                                <div class="more-info">
-                                    <a href="/blog/news/{{ i.id }}">ادامه مطلب<span></span></a>
+                    <div class="ms-blog-item !h-max" onclick="openArticles({{ i.id }})">
+                    <!-- <div class="ms-blog-item"> -->
+                        <a href="/blog/news/{{ i.id }}">
+                        <a >
+                            <div class="news-info !mb-0" dir="rtl">
+                                <figure class="news-img">
+                                    <a href="#"><img src="{{ i.image.url }}" alt="news imag"></a>
+                                    <!-- <a href="#"><img src="../../static/assets/img/banner/Category-2_cLaZIFD.jpeg" alt="news imag"></a> -->
+                                </figure>
+                                <div class="detail">
+                                    <label>{{ i.created_at |date }}<a href="#"></a></label>
+                                    <h3><a href="#">{{ i.abstract|safe|truncatechars_html:33 }}</a></h3>
+                                    <p class="text-length">{{ i.content|safe|truncatechars_html:43 }}</p>
+                                    <div class="more-info">
+                                        <a>ادامه مطلب<span></span></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 {% endfor %}
             </div>

@@ -39,12 +39,12 @@ class EncyclopediaOfDiseasesImageSerializer(serializers.ModelSerializer):
 class ArticleEncyclopediaDiseasesSerializer(serializers.ModelSerializer):
     class Meta:
         model = ArticleEncyclopedia
-        fields = "__all__"
+        fields = ['id', 'name']
 
 class ArticleReferenceSerializer(serializers.ModelSerializer):
     class Meta:
         model = ArticleReference
-        fields = "__all__"
+        fields = ['id', 'name']
 
 class EncyclopediaOfDiseasesArticleSerializer(serializers.ModelSerializer):
     article = ArticleEncyclopediaSerializer()

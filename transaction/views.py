@@ -16,10 +16,9 @@ import uuid
 
 
 @api_view(['POST'])
-def start_payment(request,):
+def start_payment(request, shop_id):
     user = request.user
-    print(f'user is {user}')
-    cart = get_object_or_404(SaleBasket, user=user, state__lte=SaleBasket.State.PAY_FAILED)
+    cart = get_object_or_404(SaleBasket, user=user, pk=shop_id)
     if not cart:
         return JsonResponse({"error": "سبد خرید یافت نشد"})
 
@@ -34,8 +33,6 @@ def start_payment(request,):
     lat = request.data.get('lat')
     lng = request.data.get('lng')
     code_posti = request.data.get('code_posti')
-    courier_type = request.data.get('courier_type')
-    print(f'courier_type {courier_type}')
     card = request.data.get('card')
     transaction = Transaction.objects.filter(
         user=user,
@@ -52,7 +49,6 @@ def start_payment(request,):
         transaction.lat = lat
         transaction.lng = lng
         transaction.code_posti = code_posti
-        transaction.courier_type = courier_type
         transaction.save()
     else:
         transaction = Transaction.objects.create(

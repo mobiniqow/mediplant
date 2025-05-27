@@ -76,7 +76,10 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'mediplant.wsgi.application'
-ASGI_APPLICATION = "mediplant.asgi.application"
+ASGI_APPLICATION = "mediplant.asgi.application"  # آدرس برنامه ASGI
+
+# Database
+# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -85,6 +88,8 @@ DATABASES = {
     }
 }
 
+# Password validation
+# https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 AUTH_USER_MODEL = 'account.User'
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -100,6 +105,9 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# Internationalization
+# https://docs.djangoproject.com/en/4.2/topics/i18n/
 
 LANGUAGE_CODE = 'fa-ir'
 
